@@ -3367,13 +3367,17 @@ input[type="button"].btn-block {
 
   display: block;
   border-radius: 50px;
-  padding: 0.5rem 1rem; }
+  padding: 0.5rem 1rem;
+  display: flex; justify-content: center;
+   }
   .nav-link:hover, .nav-link:focus {
     text-decoration: none; }
   .nav-link.disabled {
     color: #6c757d;
     pointer-events: none;
     cursor: default; }
+
+
 
 .nav-tabs {
   border-bottom: 1px solid #dee2e6; }

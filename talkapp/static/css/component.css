@@ -17,7 +17,7 @@
 	font-size: 1.3em;
 	line-height: 2.5;
 	font-weight: 400;
-	color: #fff;
+	color: #ffa500;
 	padding-top: 2em;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .dr-menu.dr-menu-open > div .dr-icon {
-	color: #60a773;
+	color: #1c69b5;
 	left: 100%;
 	-webkit-transform: translateX(-100%);
 	-moz-transform: translateX(-100%);
@@ -158,11 +158,11 @@
 .dr-menu ul li a {
 	display: inline-block;
 	padding: 0 20px;
-	color: #fff;
+
 }
 
 .dr-menu ul li a:hover {
-	color: #60a773;
+	color: #1c69b5;
 }
 
 .dr-icon:before, 
