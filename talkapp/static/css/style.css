@@ -3618,8 +3618,8 @@ input[type="button"].btn-block {
       .navbar-expand-lg .navbar-nav .dropdown-menu {
         position: absolute; }
       .navbar-expand-lg .navbar-nav .nav-link {
-        padding-right: 1.5rem;
-        padding-left: 1.5rem; }
+        padding-right: 2rem;
+        padding-left: 2rem; }
     .navbar-expand-lg > .container,
     .navbar-expand-lg > .container-fluid {
       -ms-flex-wrap: nowrap;
@@ -3715,7 +3715,7 @@ input[type="button"].btn-block {
   color: rgba(255, 255, 255, 9); }
   .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
     color: rgba(255, 255, 255, 0.9);
-     background-color: #0d1128;}
+     background-color: #0062cc;}
   .navbar-light .navbar-nav .nav-link.disabled {
     color: rgba(255, 255, 255, 0.3); }
 

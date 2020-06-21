@@ -3,4 +3,5 @@ from .views import *
 
 urlpatterns = [
     path('', index),
+    path('profile', profile),
 ]
