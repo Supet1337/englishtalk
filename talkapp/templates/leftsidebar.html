@@ -30,44 +30,128 @@
   function loadContentMyCourses(){
       $("#content").empty();
       $("#content").append(
-      '<div class="row row-cols-1 row-cols-md-3" style="margin-right: 15px;">'+
+      '<div class="row row-cols-1 row-cols-md-3">'+
   '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;">'+
-      '<img src={% static "images/course-1.jpg" %} class="card-img-top" alt="...">'+
+    '<div id="c1"   class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
+      '<img src={% static "images/course1.jpg" %} class="card-img-top" alt="...">'+
       '<div class="card-body">'+
-        '<h5 class="card-title">Card title</h5>'+
-        '<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>'+
+        '<h5 class="card-title">Подготовка к Ilets</h5>'+
+        '<button  class="btn btn-success w-100">Перейти к курсу</button>'+
       '</div>'+
     '</div>'+
   '</div>'+
   '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;">'+
-      '<img src={% static "images/course-2.jpg" %} class="card-img-top" alt="...">'+
+    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
+      '<img src={% static "images/course2.jpg" %} class="card-img-top" alt="...">'+
       '<div class="card-body">'+
-        '<h5 class="card-title">Card title</h5>'+
-        '<p class="card-text">This is a short card.</p>'+
+        '<h5 class="card-title">Cобеседование</h5>'+
+        '<button class="btn btn-success w-100">Перейти к курсу</button>'+
       '</div>'+
     '</div>'+
   '</div>'+
   '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;">'+
-      '<img src={% static "images/course-3.jpg" %} class="card-img-top" alt="...">'+
+    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
+      '<img src={% static "images/course3.jpg" %} class="card-img-top" alt="...">'+
       '<div class="card-body">'+
-        '<h5 class="card-title">Card title</h5>'+
-        '<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>'+
-      '</div>'+
+        '<h5 class="card-title">Говорим свободно</h5>'+
+        '<button class="btn btn-success w-100">Перейти к курсу</button>'+
+        '</div>'+
     '</div>'+
   '</div>'+
   '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;">'+
-      '<img src={% static "images/course-4.jpg" %} class="card-img-top" alt="...">'+
+    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
+      '<img src={% static "images/course4.jpg" %} class="card-img-top" alt="...">'+
       '<div class="card-body">'+
-        '<h5 class="card-title">Card title</h5>'+
-        '<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>'+
-      '</div>'+
+        '<h5 class="card-title">Английский для IT</h5>'+
+        '<button class="btn btn-success w-100">Перейти к курсу</button>'+
+        '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="col mb-4">'+
+    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
+      '<img src={% static "images/course5.jpg" %} class="card-img-top" alt="...">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">Для путешествий</h5>'+
+        '<button class="btn btn-success w-100">Перейти к курсу</button>'+
+        '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="col mb-4">'+
+    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
+      '<img src={% static "images/course6.jpg" %} class="card-img-top" alt="...">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">Бизнес английский</h5>'+
+        '<button class="btn btn-success w-100">Перейти к курсу</button>'+
+        '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="col mb-4">'+
+    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
+      '<img src={% static "images/course7.jpg" %} class="card-img-top" alt="...">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">Подготовка к ЕГЭ</h5>'+
+        '<button class="btn btn-success w-100">Перейти к курсу</button>'+
+        '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="col mb-4">'+
+    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
+      '<img src={% static "images/course8.jpg" %} class="card-img-top" alt="...">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">Английский для инженеров</h5>'+
+        '<button class="btn btn-success w-100">Перейти к курсу</button>'+
+        '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="col mb-4">'+
+    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
+      '<img src={% static "images/course9.jpg" %} class="card-img-top" alt="...">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">Английский для подростков</h5>'+
+        '<button class="btn btn-success w-100">Перейти к курсу</button>'+
+        '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="col mb-4">'+
+    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
+      '<img src={% static "images/course10.jpg" %} class="card-img-top" alt="...">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">Английский детям</h5>'+
+        '<button class="btn btn-success w-100">Перейти к курсу</button>'+
+        '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="col mb-4">'+
+    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
+      '<img src={% static "images/course11.jpg" %} class="card-img-top" alt="...">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">Персональный курс</h5>'+
+        '<button class="btn btn-success w-100">Перейти к курсу</button>'+
+        '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="col mb-4">'+
+    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
+      '<img src={% static "images/course12.jpg" %} class="card-img-top" alt="...">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">Старт с любого уровня</h5>'+
+        '<button class="btn btn-success w-100">Перейти к курсу</button>'+
+        '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="col mb-4">'+
+    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;max-width: 366px">'+
+      '<img src={% static "images/course13.jpg" %} class="card-img-top" alt="...">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">Грамматика – это просто</h5>'+
+        '<button class="btn btn-success w-100">Перейти к курсу</button>'+
+        '</div>'+
     '</div>'+
   '</div>'+
 '</div>'
 );
+  }
+    function f1(){
+    document.getElementById("c1").className = "card h-100 animate__animated animate__pulse";
   }
   </script>
