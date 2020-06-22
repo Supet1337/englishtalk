@@ -4,4 +4,4 @@ def index(request):
     return render(request,'index.html')
 
 def profile(request):
-    return render(request,'sidebar.html')
+    return render(request,'profile.html')

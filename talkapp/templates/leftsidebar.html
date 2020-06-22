@@ -1,0 +1,25 @@
+<div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Меню </div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-light">Онлайн-платформа</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Мои курсы</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Расписание</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Домашнее задание</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Видеопрактика</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Грамматика</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Разговорник</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Блог</a>
+      </div>
+    </div>
+<button class="btn btn-primary" style="border-radius: 1px;" onclick="tog()" id="menu-toggle"><i class="fa fa-angle-left" id="angle" aria-hidden="true"></i> </button>
+<script>
+  var s = 1;
+  function tog(){
+      if(s % 2 == 1)
+        document.getElementById("angle").className = "fa fa-angle-right";
+      else
+        document.getElementById("angle").className = "fa fa-angle-left";
+      s += 1;
+      $("#wrapper").toggleClass("toggled");
+      }
+  </script>
