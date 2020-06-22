@@ -1,14 +1,15 @@
-<div class="bg-light border-right" id="sidebar-wrapper">
+{% load static %}
+<div class="bg-light border-right"  id="sidebar-wrapper">
       <div class="sidebar-heading">Меню </div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-light">Онлайн-платформа</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Мои курсы</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Расписание</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Домашнее задание</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Видеопрактика</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Грамматика</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Разговорник</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Блог</a>
+        <a href="#" onclick="loadContent('avno1')" class="list-group-item list-group-item-action bg-light">Онлайн-платформа</a>
+        <a href="#" onclick="loadContentMyCourses()" class="list-group-item list-group-item-action bg-light">Мои курсы</a>
+        <a href="#" onclick="loadContent('avno3')" class="list-group-item list-group-item-action bg-light">Расписание</a>
+        <a href="#" onclick="loadContent('avno4')" class="list-group-item list-group-item-action bg-light">Домашнее задание</a>
+        <a href="#" onclick="loadContent('avno5')" class="list-group-item list-group-item-action bg-light">Видеопрактика</a>
+        <a href="#" onclick="loadContent('avno6')" class="list-group-item list-group-item-action bg-light">Грамматика</a>
+        <a href="#" onclick="loadContent('avno7')" class="list-group-item list-group-item-action bg-light">Разговорник</a>
+        <a href="#" onclick="loadContent('avno8')" class="list-group-item list-group-item-action bg-light">Блог</a>
       </div>
     </div>
 <button class="btn btn-primary" style="border-radius: 1px;" onclick="tog()" id="menu-toggle"><i class="fa fa-angle-left" id="angle" aria-hidden="true"></i> </button>
@@ -22,4 +23,51 @@
       s += 1;
       $("#wrapper").toggleClass("toggled");
       }
+  function loadContent(content){
+      $("#content").empty();
+      $("#content").append(content);
+  }
+  function loadContentMyCourses(){
+      $("#content").empty();
+      $("#content").append(
+      '<div class="row row-cols-1 row-cols-md-3" style="margin-right: 15px;">'+
+  '<div class="col mb-4">'+
+    '<div class="card h-100" style="min-width: 297px;">'+
+      '<img src={% static "images/course-1.jpg" %} class="card-img-top" alt="...">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">Card title</h5>'+
+        '<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>'+
+      '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="col mb-4">'+
+    '<div class="card h-100" style="min-width: 297px;">'+
+      '<img src={% static "images/course-2.jpg" %} class="card-img-top" alt="...">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">Card title</h5>'+
+        '<p class="card-text">This is a short card.</p>'+
+      '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="col mb-4">'+
+    '<div class="card h-100" style="min-width: 297px;">'+
+      '<img src={% static "images/course-3.jpg" %} class="card-img-top" alt="...">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">Card title</h5>'+
+        '<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>'+
+      '</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="col mb-4">'+
+    '<div class="card h-100" style="min-width: 297px;">'+
+      '<img src={% static "images/course-4.jpg" %} class="card-img-top" alt="...">'+
+      '<div class="card-body">'+
+        '<h5 class="card-title">Card title</h5>'+
+        '<p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>'+
+      '</div>'+
+    '</div>'+
+  '</div>'+
+'</div>'
+);
+  }
   </script>
