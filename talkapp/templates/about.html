@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
     <link rel="stylesheet" href={% static "css/animate.css"%}>
@@ -47,7 +49,8 @@
 					</div>
 					<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate">
           	<h2 class="mb-4">Подготовка к IELTS</h2>
-						<p>Если вы хотите построить карьеру в международной компании, переехать за границу или получить образование в иностранном вузе, мы подготовим вас к сдаче международного экзамена по английскому языку.</p>
+                        <p>Если вы хотите построить карьеру в международной компании, переехать за границу или получить образование в иностранном вузе, мы подготовим вас к сдаче международного экзамена по английскому языку.</p>
+                        <button class="btn btn-primary">Поробовать бесплатно!</button>
 					</div>
 				</div>
 			</div>
@@ -60,7 +63,7 @@
 						<div class="img" style="background-image: url(static/images/about.jpg); border"></div>
 					</div>
 					<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate">
-          	<h2 class="mb-4">What We Offer</h2>
+          	<h2 class="mb-4">Характеристики курса</h2>
 						<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word.</p>
 						<div class="row mt-5">
 							<div class="col-lg-6">
@@ -135,42 +138,52 @@
             <div class="carousel-testimony owl-carousel">
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="text ml-2" style="text-align: left">
+                  <div class="card">
+                      <div class="card-body">
                       <h3> Разнообразие аутентичного материала</h3>
                     <p>Подготовка к экзамену IELTS — это уникальный адаптивный курс, который преподаватель подстроит под ваши нужды. Испытываете проблемы с устной частью? Научитесь отвечать грамотно и развернуто на все вопросы экзаменатора. Хотите комплексно подготовиться ко всем частям теста? Учитель поможет разобраться в структуре экзамена, проработать ваши навыки владения английским языком и освоить тактики, необходимые для успешной сдачи IELTS.</p>
                   </div>
                 </div>
               </div>
+            </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="text ml-2" style="text-align: left">
+                  <div class="card">
+                      <div class="card-body">
                       <h3> Ориентация на практику</h3>
                     <p>Вы успешно сдадите экзамен, если выполните множество различных заданий по формату IELTS. В ходе курса вы доведете до автоматизма навыки выполнения каждого типа заданий и на самом экзамене будете готовы ко всему.</p>
                   </div>
                 </div>
               </div>
+            </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="text ml-2" style="text-align: left">
+                  <div class="card">
+                      <div class="card-body">
                       <h3>Советы и секреты</h3>
                     <p>Наши преподаватели знают критерии оценивания устной и письменной частей экзамена. По каждому выполненному заданию они дают обратную связь: как можно улучшить, дополнить или изменить свой ответ, чтобы получить максимальный балл на международном экзамене по английскому языку IELTS.</p>
                   </div>
                 </div>
               </div>
+              </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="text ml-2" style="text-align: left">
+                   <div class="card">
+                      <div class="card-body">
                       <h3>Первоначальное тестирование</h3>
                     <p>На вводном уроке наш преподаватель оценит ваш уровень знания английского, а также даст задания по формату экзамена, которые помогут определить необходимое время на подготовку к IELTS на нужную оценку.</p>
                   </div>
                 </div>
+                </div>
               </div>
               <div class="item">
                 <div class="testimony-wrap d-flex">
-                  <div class="text ml-2" style="text-align: left">
-                      <h3>Выпускной экзамен</h3>
+                      <div class="card">
+                      <div class="card-body">
+                        <h3>Выпускной экзамен</h3>
                     <p>По окончании курса вам предложат пройти экзамен, который будет полностью соответствовать формату IELTS. Для сдачи устной части вы встретитесь с одним из наших методистов в онлайн-классе или Скайпе — он проведет тестирование и даст объективную оценку вашей готовности.</p>
-                  </div>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>
@@ -179,6 +192,23 @@
       </div>
     </section>
 
+
+<div data-aos="fade-right">
+          <div class=" card text-white bg-danger" style="max-width: 1920px; border-radius: 0rem;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{% static "images/self-study.png" %}" style="width:50%" class="card-img">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h1 class="card-title text-white">Вводный урок — бесплатно!</h1>
+        <p class="card-text">Пора начать учить английский прямо сейчас.</p>
+        <p class="card-text"><button class="btn btn-primary">Попробовать бесплатно</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 		
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
