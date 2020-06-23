@@ -5,7 +5,7 @@ urlpatterns = [
     path('', index),
     path('dashboard', dashboard),
     path('courses', courses),
-    path('course/<ielts', ielts),
+    path('course/ielts', ielts),
     path('course/interview', interview),
     path('course/freespeaking', freespeaking),
     path('course/it', it),
