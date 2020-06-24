@@ -22,6 +22,50 @@
     <link rel="stylesheet" href={% static "css/flaticon.css"%}>
     <link rel="stylesheet" href={% static "css/icomoon.css"%}>
     <link rel="stylesheet" href={% static "css/style.css"%}>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <style>
+
+.modal-dialog {
+      max-width: 800px;
+      margin: 30px auto;
+  }
+.modal-body {
+  position:relative;
+  padding:0px;
+}
+.close {
+  position:absolute;
+  right:-30px;
+  top:0;
+  z-index:999;
+  font-size:2rem;
+  font-weight: normal;
+  color:#fff;
+  opacity:1;
+}
+    </style>
+    <script>
+    $(document).ready(function() {
+
+var $videoSrc;
+$('.video-btn').click(function() {
+    $videoSrc = $(this).data( "src" );
+});
+console.log($videoSrc);
+
+$('#myModal').on('shown.bs.modal', function (e) {
+$("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
+})
+
+$('#myModal').on('hide.bs.modal', function (e) {
+    // a poor man's stop video
+    $("#video").attr('src',$videoSrc);
+})
+
+
+});
+</script>
   </head>
   <body>
 	  {% include "header.html"%}
@@ -33,11 +77,50 @@
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
             <h1 class="mb-2 bread">Курсы</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="./">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Courses <i class="ion-ios-arrow-forward"></i></span></p>
+			  <p class="breadcrumbs"><span class="mr-2"><a href="./">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Courses <i class="ion-ios-arrow-forward"></i></span></p>
+			  <a><button style="background:#0062cc; border:#0062cc" class="btn btn-primary">Пробный урок бесплатно</button></a>
+			  <br>
+			  <br>
+			  <button type="button" class="btn btn-danger video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/JUSuCm6MXVI" data-target="#myModal">
+  <a><i style="color: #fff" class="icon-youtube-play"></i> Смотреть пример урока</a>
+</button>
+
+
+
           </div>
         </div>
       </div>
-    </section>
+	  </section>
+
+
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+
+      <div class="modal-body">
+
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <!-- 16:9 aspect ratio -->
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+</div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
 
     <section class="ftco-section">
 			<div class="container-fluid px-4">
