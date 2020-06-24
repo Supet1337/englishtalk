@@ -9331,13 +9331,14 @@ textarea.form-control {
   background: rgba(255, 255, 255, 0.1);
   color: rgba(0, 0, 0, 0.8); }
   .testimony-wrap .user-img {
-    width: 120px;
-    height: 120px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     position: relative; }
   .testimony-wrap .text {
-    width: calc(100% - 120px);
-    position: relative; }
+    width: 248px;
+    position: relative;
+    word-wrap: break-word; }
   .testimony-wrap .quote {
     position: absolute;
     top: -40px;
