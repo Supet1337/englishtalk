@@ -120,11 +120,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]
+
 
 STATIC_ROOT = "./collectedstatic"
+
 ASGI_APPLICATION = 'englishtalk.routing.application'
 SECURE_SSL_REDIRECT = False
 
