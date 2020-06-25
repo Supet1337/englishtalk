@@ -8617,7 +8617,7 @@ h1, h2, h3, h4, h5,
   background: #fafafa !important; }
 
 .bg-darken {
-  background: #0d1128 !important; }
+  background: #0062cc !important; }
 
 .bg-white {
   background: #fff !important; }
@@ -8760,23 +8760,26 @@ h1, h2, h3, h4, h5,
         color: #fff; }
 
 .services-2 {
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+  text-align: center;}
   .services-2 .icon {
     line-height: 1;
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     background: #ffa500;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
-    border-radius: 50%; }
+    border-radius: 50%;
+     margin: 0 auto}
     .services-2 .icon span {
-      font-size: 30px;
+      font-size: 45px;
       color: #fff; }
   .services-2 .text {
-    width: calc(100% - 80px); }
+    width: calc(100%); }
     .services-2 .text h3 {
+      width: calc(100%);
       font-size: 20px;
       font-weight: 500; }
 
