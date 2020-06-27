@@ -3621,8 +3621,8 @@ input[type="button"].btn-block {
       .navbar-expand-lg .navbar-nav .dropdown-menu {
         position: absolute; }
       .navbar-expand-lg .navbar-nav .nav-link {
-        padding-right: 2rem;
-        padding-left: 2rem; }
+        padding-right: 1rem;
+        padding-left: 1rem; }
     .navbar-expand-lg > .container,
     .navbar-expand-lg > .container-fluid {
       -ms-flex-wrap: nowrap;
@@ -3635,6 +3635,13 @@ input[type="button"].btn-block {
       flex-basis: auto; }
     .navbar-expand-lg .navbar-toggler {
       display: none; } }
+
+@media (min-width: 1542px) {
+    .navbar-expand-lg .navbar-nav .nav-link {
+        padding-right: 2rem;
+        padding-left: 2rem;
+    }
+}
 
 @media (max-width: 1199.98px) {
   .navbar-expand-xl > .container,
