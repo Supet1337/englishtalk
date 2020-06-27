@@ -18,6 +18,6 @@ urlpatterns = [
     path('course/personally', personally),
     path('course/anylevel', anylevel),
     path('course/grammar', grammar),
-
+    path('blog', blog),
 
 ]

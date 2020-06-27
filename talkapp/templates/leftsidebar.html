@@ -12,14 +12,12 @@
         <a class="list-group-item list-group-item-action" id="dd8" data-toggle="list" href="#d8" role="tab">Блог</a>
       </div>
     </div>
-<button class="btn btn-white" style="border-radius: 0px;" onclick="tog()" id="menu-toggle"><i class="fa fa-angle-left" id="angle" aria-hidden="true"></i> </button>
+<button class="btn btn-white fixbut" style="border-radius: 0px;" onclick="tog()" id="menu-toggle"><i class="fa fa-angle-left" id="angle" aria-hidden="true"></i> </button>
 <script src={% static "js/jquery.min.js" %}></script>
 <script>
     $(document).ready(function(){
         $('button[id^="c"]').click(function () {
-                console.log("success");
 			    elementClick = $(this).attr("id");
-			    console.log(elementClick);
 				$("#"+elementClick).addClass("animate__animated animate__heartBeat");
 				return false;
 		   });

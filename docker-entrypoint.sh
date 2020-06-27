@@ -16,7 +16,7 @@ if [ "$DEBUG" == "True" ]; then
     ./manage.py runserver 0.0.0.0:80
 else
 
-#-e ssl:443:privateKey=config/ssl_keys/privkey.pem:certKey=config/ssl_keys/fullchain.pem
-    daphne  -b 0.0.0.0 -p 80 englishtalk.asgi:application
+
+    daphne -e ssl:443:privateKey=config/ssl_keys/privkey.pem:certKey=config/ssl_keys/fullchain.pem  -b 0.0.0.0 -p 80 englishtalk.asgi:application
 
 fi

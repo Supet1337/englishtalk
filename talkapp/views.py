@@ -48,4 +48,7 @@ def anylevel(request):
 def grammar(request):
     return render(request,'courses/grammar.html')
 
+def blog(request):
+    return render(request,'blog-single.html')
+
 
