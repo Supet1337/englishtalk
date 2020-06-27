@@ -1,18 +1,31 @@
 {% load static %}
 <div class="bg-light border-right"  id="sidebar-wrapper">
-      <div class="sidebar-heading">Меню </div>
-      <div class="list-group list-group-flush">
-        <a href="#" onclick="loadContent('avno1')" class="list-group-item list-group-item-action bg-light">Онлайн-платформа</a>
-        <a href="#" onclick="loadContentMyCourses()" class="list-group-item list-group-item-action bg-light">Мои курсы</a>
-        <a href="#" onclick="loadContent('avno3')" class="list-group-item list-group-item-action bg-light">Расписание</a>
-        <a href="#" onclick="loadContent('avno4')" class="list-group-item list-group-item-action bg-light">Домашнее задание</a>
-        <a href="#" onclick="loadContent('avno5')" class="list-group-item list-group-item-action bg-light">Видеопрактика</a>
-        <a href="#" onclick="loadContent('avno6')" class="list-group-item list-group-item-action bg-light">Грамматика</a>
-        <a href="#" onclick="loadContent('avno7')" class="list-group-item list-group-item-action bg-light">Разговорник</a>
-        <a href="#" onclick="loadContent('avno8')" class="list-group-item list-group-item-action bg-light">Блог</a>
+      <div class="sidebar-heading">Меню</div>
+      <div class="list-group" id="list-tab" role="tablist">
+        <a class="list-group-item list-group-item-action active" id="dd1" data-toggle="list" href="#d1" role="tab">Платформа</a>
+        <a class="list-group-item list-group-item-action" id="dd2" data-toggle="list" href="#d2" role="tab">Мои курсы</a>
+        <a class="list-group-item list-group-item-action" id="dd3" data-toggle="list" href="#d3" role="tab">Расписание</a>
+        <a class="list-group-item list-group-item-action" id="dd4" data-toggle="list" href="#d4" role="tab">Домашнее задание</a>
+        <a class="list-group-item list-group-item-action" id="dd5" data-toggle="list" href="#d5" role="tab">Видеопрактика</a>
+        <a class="list-group-item list-group-item-action" id="dd6" data-toggle="list" href="#d6" role="tab">Грамматика</a>
+        <a class="list-group-item list-group-item-action" id="dd7" data-toggle="list" href="#d7" role="tab">Разговорник</a>
+        <a class="list-group-item list-group-item-action" id="dd8" data-toggle="list" href="#d8" role="tab">Блог</a>
       </div>
     </div>
 <button class="btn btn-white" style="border-radius: 0px;" onclick="tog()" id="menu-toggle"><i class="fa fa-angle-left" id="angle" aria-hidden="true"></i> </button>
+<script src={% static "js/jquery.min.js" %}></script>
+<script>
+    $(document).ready(function(){
+        $('button[id^="c"]').click(function () {
+                console.log("success");
+			    elementClick = $(this).attr("id");
+			    console.log(elementClick);
+				$("#"+elementClick).addClass("animate__animated animate__heartBeat");
+				return false;
+		   });
+    });
+</script>
+
 <script>
   var s = 1;
   function tog(){
@@ -23,172 +36,5 @@
       s += 1;
       $("#wrapper").toggleClass("toggled");
       }
-  function loadContent(content){
-      $("#content").empty();
-      $("#content").append(content);
-  }
-  function loadContentMyCourses(){
-      $("#content").empty();
-      $("#content").append(
-      '<div class="row row-cols-1 row-cols-md-3">'+
-  '<div class="col mb-4">'+
-    '<div  class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
-      '<img src={% static "images/course1.jpg" %} class="card-img-top">'+
-      '<div class="card-body">'+
-        '<h5 class="card-title">Подготовка к Ielts</h5>'+
-        '<button onclick="f1()" id="c1" class="btn btn-success w-100">Перейти к курсу</button>'+
-      '</div>'+
-    '</div>'+
-  '</div>'+
-  '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
-      '<img src={% static "images/course2.jpg" %} class="card-img-top" alt="...">'+
-      '<div class="card-body">'+
-        '<h5 class="card-title">Cобеседование</h5>'+
-        '<button onclick="f2()" id="c2" class="btn btn-success w-100">Перейти к курсу</button>'+
-      '</div>'+
-    '</div>'+
-  '</div>'+
-  '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
-      '<img src={% static "images/course3.jpg" %} class="card-img-top" alt="...">'+
-      '<div class="card-body">'+
-        '<h5 class="card-title">Говорим свободно</h5>'+
-        '<button onclick="f3()" id="c3" class="btn btn-success w-100">Перейти к курсу</button>'+
-        '</div>'+
-    '</div>'+
-  '</div>'+
-  '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
-      '<img src={% static "images/course4.png" %} class="card-img-top" alt="...">'+
-      '<div class="card-body">'+
-        '<h5 class="card-title">Английский для IT</h5>'+
-        '<button onclick="f4()" id="c4" class="btn btn-success w-100">Перейти к курсу</button>'+
-        '</div>'+
-    '</div>'+
-  '</div>'+
-  '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
-      '<img src={% static "images/course5.png" %} class="card-img-top" alt="...">'+
-      '<div class="card-body">'+
-        '<h5 class="card-title">Для путешествий</h5>'+
-        '<button onclick="f5()" id="c5" class="btn btn-success w-100">Перейти к курсу</button>'+
-        '</div>'+
-    '</div>'+
-  '</div>'+
-  '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
-      '<img src={% static "images/course6.jpg" %} class="card-img-top" alt="...">'+
-      '<div class="card-body">'+
-        '<h5 class="card-title">Бизнес английский</h5>'+
-        '<button onclick="f6()" id="c6" class="btn btn-success w-100">Перейти к курсу</button>'+
-        '</div>'+
-    '</div>'+
-  '</div>'+
-  '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
-      '<img src={% static "images/course7.jpg" %} class="card-img-top" alt="...">'+
-      '<div class="card-body">'+
-        '<h5 class="card-title">Подготовка к ЕГЭ</h5>'+
-        '<button onclick="f7()" id="c7" class="btn btn-success w-100">Перейти к курсу</button>'+
-        '</div>'+
-    '</div>'+
-  '</div>'+
-  '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
-      '<img src={% static "images/course8.jpg" %} class="card-img-top" alt="...">'+
-      '<div class="card-body">'+
-        '<h5 class="card-title">Английский для инженеров</h5>'+
-        '<button onclick="f8()" id="c8" class="btn btn-success w-100">Перейти к курсу</button>'+
-        '</div>'+
-    '</div>'+
-  '</div>'+
-  '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
-      '<img src={% static "images/course9.jpg" %} class="card-img-top" alt="...">'+
-      '<div class="card-body">'+
-        '<h5 class="card-title">Английский для подростков</h5>'+
-        '<button onclick="f9()" id="c9" class="btn btn-success w-100">Перейти к курсу</button>'+
-        '</div>'+
-    '</div>'+
-  '</div>'+
-  '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
-      '<img src={% static "images/course10.jpg" %} class="card-img-top" alt="...">'+
-      '<div class="card-body">'+
-        '<h5 class="card-title">Английский детям</h5>'+
-        '<button onclick="f10()" id="c10" class="btn btn-success w-100">Перейти к курсу</button>'+
-        '</div>'+
-    '</div>'+
-  '</div>'+
-  '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
-      '<img src={% static "images/course11.jpg" %} class="card-img-top" alt="...">'+
-      '<div class="card-body">'+
-        '<h5 class="card-title">Персональный курс</h5>'+
-        '<button onclick="f11()" id="c11" class="btn btn-success w-100">Перейти к курсу</button>'+
-        '</div>'+
-    '</div>'+
-  '</div>'+
-  '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">'+
-      '<img src={% static "images/course12.jpg" %} class="card-img-top" alt="...">'+
-      '<div class="card-body">'+
-        '<h5 class="card-title">Старт с любого уровня</h5>'+
-        '<button onclick="f12()" id="c12"class="btn btn-success w-100">Перейти к курсу</button>'+
-        '</div>'+
-    '</div>'+
-  '</div>'+
-  '<div class="col mb-4">'+
-    '<div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;max-width: 366px">'+
-      '<img src={% static "images/course13.jpg" %} class="card-img-top" alt="...">'+
-      '<div class="card-body">'+
-        '<h5 class="card-title">Грамматика – это просто</h5>'+
-        '<button onclick="f13()"  id="c13" class="btn btn-success w-100">Перейти к курсу</button>'+
-        '</div>'+
-    '</div>'+
-  '</div>'+
-'</div>'
-);
-  }
-    function f1(){
-    document.getElementById("c1").className = "btn btn-success w-100 animate__animated animate__heartBeat";
-  }
-  function f2(){
-    document.getElementById("c2").className = "btn btn-success w-100 animate__animated animate__heartBeat";
-  }
-  function f3(){
-    document.getElementById("c3").className = "btn btn-success w-100 animate__animated animate__heartBeat";
-  }
-  function f4(){
-    document.getElementById("c4").className = "btn btn-success w-100 animate__animated animate__heartBeat";
-  }
-  function f5(){
-    document.getElementById("c5").className = "btn btn-success w-100 animate__animated animate__heartBeat";
-  }
-  function f6(){
-    document.getElementById("c6").className = "btn btn-success w-100 animate__animated animate__heartBeat";
-  }
-  function f7(){
-    document.getElementById("c7").className = "btn btn-success w-100 animate__animated animate__heartBeat";
-  }
-  function f8(){
-    document.getElementById("c8").className = "btn btn-success w-100 animate__animated animate__heartBeat";
-  }
-  function f9(){
-    document.getElementById("c9").className = "btn btn-success w-100 animate__animated animate__heartBeat";
-  }
-  function f10(){
-    document.getElementById("c10").className = "btn btn-success w-100 animate__animated animate__heartBeat";
-  }
-  function f11(){
-    document.getElementById("c11").className = "btn btn-success w-100 animate__animated animate__heartBeat";
-  }
-  function f12(){
-    document.getElementById("c12").className = "btn btn-success w-100 animate__animated animate__heartBeat";
-  }
-  function f13(){
-    document.getElementById("c13").className = "btn btn-success w-100 animate__animated animate__heartBeat";
-  }
 
   </script>

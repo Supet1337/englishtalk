@@ -5,7 +5,7 @@
         <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Simple YouTube Menu Effect</title>
+		<title>Онлайн-платформа</title>
         {%load static%}
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
@@ -31,36 +31,136 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-      <div class="container-fluid" id="content">
-        <h1 class="mt-4">Онлайн Платформа</h1>
-		  <div class="card-deck" >
-
-  <div class="card" style="margin-right: 15px;right: 10px;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="d1" role="tabpanel" aria-labelledby="dd1" style="margin: 20px;">1</div>
+      <div class="tab-pane fade" id="d2" role="tabpanel" aria-labelledby="dd2" style="margin: 20px;">
+<div class="row row-cols-1 row-cols-md-3">
+  <div class="col mb-4">
+    <div  class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
+      <img src={% static "images/course1.jpg" %} class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">Подготовка к Ielts</h5>
+        <button id="c1" class="btn btn-success w-100">Перейти к курсу</button>
+      </div>
     </div>
   </div>
-			  <div class="card" style="margin-right: 15px;right: 10px;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <div class="col mb-4">
+    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
+      <img src={% static "images/course2.jpg" %} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Cобеседование</h5>
+        <button id="c2" class="btn btn-success w-100">Перейти к курсу</button>
+      </div>
     </div>
   </div>
-			  <div class="card" style="margin-right: 15px;right: 10px;">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  <div class="col mb-4">
+    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
+      <img src={% static "images/course3.jpg" %} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Говорим свободно</h5>
+        <button id="c3" class="btn btn-success w-100">Перейти к курсу</button>
+        </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
+      <img src={% static "images/course4.png" %} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Английский для IT</h5>
+        <button id="c4" class="btn btn-success w-100">Перейти к курсу</button>
+        </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
+      <img src={% static "images/course5.png" %} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Для путешествий</h5>
+        <button id="c5" class="btn btn-success w-100">Перейти к курсу</button>
+        </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
+      <img src={% static "images/course6.jpg" %} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Бизнес английский</h5>
+        <button id="c6" class="btn btn-success w-100">Перейти к курсу</button>
+        </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
+      <img src={% static "images/course7.jpg" %} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Подготовка к ЕГЭ</h5>
+        <button id="c7" class="btn btn-success w-100">Перейти к курсу</button>
+        </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
+      <img src={% static "images/course8.jpg" %} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Английский для инженеров</h5>
+        <button id="c8" class="btn btn-success w-100">Перейти к курсу</button>
+        </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
+      <img src={% static "images/course9.jpg" %} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Английский для подростков</h5>
+        <button id="c9" class="btn btn-success w-100">Перейти к курсу</button>
+        </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
+      <img src={% static "images/course10.jpg" %} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Английский детям</h5>
+        <button id="c10" class="btn btn-success w-100">Перейти к курсу</button>
+        </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
+      <img src={% static "images/course11.jpg" %} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Персональный курс</h5>
+        <button id="c11" class="btn btn-success w-100">Перейти к курсу</button>
+        </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
+      <img src={% static "images/course12.jpg" %} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Старт с любого уровня</h5>
+        <button id="c12" class="btn btn-success w-100">Перейти к курсу</button>
+        </div>
+    </div>
+  </div>
+  <div class="col mb-4">
+    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;max-width: 366px">
+      <img src={% static "images/course13.jpg" %} class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Грамматика – это просто</h5>
+        <button id="c13" class="btn btn-success w-100">Перейти к курсу</button>
+        </div>
     </div>
   </div>
 </div>
       </div>
+      <div class="tab-pane fade" id="d3" role="tabpanel" aria-labelledby="dd3" style="margin: 20px;">3</div>
+      <div class="tab-pane fade" id="d4" role="tabpanel" aria-labelledby="dd4" style="margin: 20px;">4</div>
+		<div class="tab-pane fade" id="d5" role="tabpanel" aria-labelledby="dd5" style="margin: 20px;">5</div>
+		<div class="tab-pane fade" id="d6" role="tabpanel" aria-labelledby="dd6" style="margin: 20px;">6</div>
+		<div class="tab-pane fade" id="d7" role="tabpanel" aria-labelledby="dd7" style="margin: 20px;">7</div>
+		<div class="tab-pane fade" id="d8" role="tabpanel" aria-labelledby="dd8" style="margin: 20px;">8</div>
+    </div>
     </div>
     <!-- /#page-content-wrapper -->
 
@@ -71,7 +171,6 @@
 
   <!-- Menu Toggle Script -->
 
-		<script src={% static "js/jquery.min.js" %}></script>
 	  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
 	  <script src={% static "js/popper.min.js" %}></script>
 	  <script src={% static "js/bootstrap.min.js" %}></script>
