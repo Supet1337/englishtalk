@@ -46,7 +46,7 @@
           <div class="col-md-6 ftco-animate">
             <h1 class="mb-4 bebebe" style="color: white;font-weight: bold;">Выучить английский по Скайп</h1>
             <p class="bababa" style="color: white;">Персональные занятия онлайн на интерактивном учебнике. От 490 р.</p>
-            <p style="width:200%;"><a href="#reg" class="btn btn-primary bobobo px-4 py-3 mt-3" style="color: black;">Начать учиться бесплатно</a></p>
+            <p style="width:200%;"><a href="#sreg" class="btn btn-primary bobobo px-4 py-3 mt-3" style="color: black;">Начать учиться бесплатно</a></p>
           </div>
         </div>
         </div>
@@ -130,7 +130,7 @@
       <div class="card-body">
         <h1 class="card-title text-white">Бесплатный вводный урок!</h1>
         <p class="card-text">Познакомимся. Определим уровень. Подберем программу!</p>
-		  <p class="card-text"><a href="#reg"><button class="btn btn-primary">Начать учиться бесплатно.</button></a></p>
+		  <p class="card-text"><a href="#sreg"><button class="btn btn-primary">Начать учиться бесплатно.</button></a></p>
       </div>
     </div>
   </div>
@@ -259,7 +259,7 @@
 			</div>
 		</section>
 
-	  <section class="ftco-section testimony-section bg-light" id="coost">
+	  <section class="ftco-section testimony-section bg-light" id="scoost">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
@@ -305,14 +305,14 @@
       <div class="card-body">
         <h1 class="card-title text-white">Бесплатный вводный урок!</h1>
         <p class="card-text">Познакомимся. Определим уровень. Подберем программу!</p>
-        <p class="card-text"><a href="#reg"><button class="btn btn-primary">Начать учиться бесплатно.</button></a></p>
+        <p class="card-text"><a href="#sreg"><button class="btn btn-primary">Начать учиться бесплатно.</button></a></p>
       </div>
     </div>
   </div>
 </div>
 </div>
 
-		<section class="ftco-section testimony-section">
+		<section class="ftco-section testimony-section" id="sreview">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
@@ -399,7 +399,7 @@
     </section>
 
 	  <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url({% static "images/bg_6.jpg" %});" data-stellar-background-ratio="0.5">
-    	<div class="container">
+    	<div class="container" id="sabout">
     		<div class="row justify-content-center mb-5 pb-2 d-flex">
           <div class="col-md-6 heading-section heading-section-white ftco-animate pl-lg-5 pt-md-0 pt-5">
             <h2 class="mb-4">Нам доверяют</h2>
@@ -483,7 +483,7 @@
       </div>
     </section>
 
-	      <section class="ftco-section ftco-consult ftco-no-pt ftco-no-pb" id="reg" style="background-image: url({% static "images/bg_4.svg"%});" data-stellar-background-ratio="0.5">
+	      <section class="ftco-section ftco-consult ftco-no-pt ftco-no-pb" id="sreg" style="background-image: url({% static "images/bg_4.svg"%});" data-stellar-background-ratio="0.5">
     	<div class="overlay"></div>
     	<div class="container">
 
@@ -613,8 +613,11 @@
 	  <script src={% static "js/jquery.min.js" %}></script>
 	  <script type="text/javascript">
 		$(document).ready(function(){
+
+
+
 			// Плавный скролл по якорям
-			$('a[href^="#"]').click(function () {
+			$('a[href^="#s"]').click(function () {
 			    elementClick = $(this).attr("href");
 				destination = $(elementClick).offset().top;
 			    $('html').animate( { scrollTop: destination }, 1500 );
