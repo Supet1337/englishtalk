@@ -40,7 +40,11 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="d1" role="tabpanel" aria-labelledby="dd1" style="margin: 20px;">1</div>
+      <div class="tab-pane fade show active" id="d1" role="tabpanel" aria-labelledby="dd1" style="margin: 20px;">
+          <div id="chat">
+
+          </div>
+      </div>
       <div class="tab-pane fade" id="d2" role="tabpanel" aria-labelledby="dd2" style="margin: 20px;">
 <div class="row row-cols-1 row-cols-md-3">
   <div class="col mb-4">
@@ -318,7 +322,7 @@
   <!-- Bootstrap core JavaScript -->
 
   <!-- Menu Toggle Script -->
-
+      <script src='https://meet.jit.si/external_api.js'></script>
 	  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
 	  <script src={% static "js/popper.min.js" %}></script>
 	  <script src={% static "js/bootstrap.min.js" %}></script>
@@ -333,5 +337,17 @@
 	  <script src={% static "js/scrollax.min.js" %}></script>
 	  <script src={% static "js/google-map.js" %}></script>
 	  <script src={% static "js/main.js" %}></script>
+
+    <script>
+        const domain = 'meet.jit.si';
+const options = {
+    roomName: 'PickAnAppropriateMeetingNameHere',
+    width: '100%',
+    height: 700,
+    configOverwrite: { defaultLanguage: 'ru' },
+    parentNode: document.querySelector('#chat')
+};
+const api = new JitsiMeetExternalAPI(domain, options);
+    </script>
 	</body>
 </html>
