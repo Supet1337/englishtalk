@@ -47,18 +47,21 @@
       <div class="tab-pane fade show active" id="d1" role="tabpanel" aria-labelledby="dd1" style="margin: 20px;">
           <div class="row">
               <div class="col-8">
-              <div class="card" style="height: 700px;">
+              <div class="card" style="height: 700px; overflow-y: scroll;">
                   <div class="card-header">
-                    <ul class="nav nav-tabs card-header-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" id="tab1">Учебные материалы</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="tab2">Link</a>
-                    </li>
-                    </ul>
-                </div>
-                  <div class="card-body" style="overflow-y: scroll;">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><div class="card-body" >
                   <div class="card" style="width: 100%;">
                     <div class="card-header">
                         1
@@ -99,10 +102,26 @@
                         <li class="list-group-item">Vestibulum at eros</li>
                     </ul>
                 </div>
-              </div>
+                <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        3
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                </div>
+              </div></div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+</div>
+                </div>
+
                   </div>
                   </div>
               <div class="col">
+                  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
               <div class="card" id="chat" style="min-width: 320px;"></div>
                   </div>
           </div>
@@ -400,24 +419,7 @@
 	  <script src={% static "js/google-map.js" %}></script>
 	  <script src={% static "js/main.js" %}></script>
 
-    <script>
-       $(document).ready(function(){
-        $("#tab1").click(function () {
-                if not $("#tab1").hasClass("active"):
-				    $("#tab1").toggleClass("active");
-				    $("#tab2").toggleClass("active");
 
-				return false;
-		   });
-		 $("#tab2").click(function () {
-                if not $("#tab2").hasClass("active"):
-				    $("#tab1").toggleClass("active");
-				    $("#tab2").toggleClass("active");
-
-				return false;
-		   });
-    });
-    </script>
 
     <script>
         const domain = 'meet.jit.si';
