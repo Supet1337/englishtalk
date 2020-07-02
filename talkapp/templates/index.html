@@ -498,10 +498,11 @@
 		          <div class="heading-section heading-section-white ftco-animate mb-5">
 		            <h2 class="mb-4">Начать учиться бесплатно</h2>
 		            </div>
-		          <form action="#" class="appointment-form ftco-animate">
+		          <form method="POST" action="/register-user" class="appointment-form ftco-animate">
+					  {% csrf_token %}
 		    				<div class="d-md-flex">
 			    				<div class="form-group">
-			    					<input type="text" class="form-control" required placeholder="Имя">
+			    					<input  type="text" id="name" name="name" class="form-control" required placeholder="Имя">
 			    				</div>
 			    				<div class="form-group ml-md-4">
 			    					<input type="email" class="form-control" required placeholder="Email">
@@ -509,7 +510,7 @@
 		    				</div>
 		    				<div class="d-md-flex">
 		    					<div class="form-group ml-md-4">
-			    					<input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required class="form-control" placeholder="Телефон">
+			    					<input type="tel" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
 			    				</div>
 		    				</div>
 		    				<div class="d-md-flex">
