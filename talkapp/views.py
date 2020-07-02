@@ -1,6 +1,7 @@
 import json
 import redis
 from django.shortcuts import render
+from django.utils.crypto import get_random_string
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout, login, authenticate
@@ -11,18 +12,17 @@ from django.core.mail import send_mail
 from .models import *
 from .forms import *
 
-def register_user(request, backend='django.contrib.auth.backends.ModelBackend'):
+def register_user(request):
 
     if request.method == "POST":
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.email = form.data['email']
-            user.first_name = request.POST.get('name')
-            user.password = "User.objects.make_random_password()"
-            user_add = UserAdditionals()
-            user_add.user = user
-            user_add.phone_number = request.POST.get('phone')
+        user = User()
+        user.username = get_random_string(length=16)
+        user.first_name = request.POST.get('first_name')
+        user.email = request.POST.get('email')
+        user.password = make_password(User.objects.make_random_password())
+        user_add = UserAdditionals()
+        user_add.user = user
+        user_add.phone_number = request.POST.get('phone')
             #if len(User.objects.filter(email=form.data['email'])) > 0:
                 #messages.error(
                    # request, "Пользователь с такой почтой уже существует.")
@@ -35,9 +35,9 @@ def register_user(request, backend='django.contrib.auth.backends.ModelBackend'):
                 #messages.error(request, 'Пароли не совпадают.')
                 #return HttpResponseRedirect("/")
             #else:
-            user.save()
-            user_add.save()
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        user.save()
+        user_add.save()
+        login(request, user)
                 #message = "Здравствуйте! {}\nПоздравляем!" \
                       #    " Вы успешно зарегестрировали аккаунт Geochat.\nВперёд к " \
                      #     "новым приключениям!\n\n\n" \
