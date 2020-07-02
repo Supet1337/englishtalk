@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Онлайн-платформа</title>
         {%load static%}
+        <link rel="stylesheet" href={% static "css/shedule.css" %}>
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
     <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
@@ -15,9 +16,6 @@
 	  <link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
 	  <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
 	  <link rel="stylesheet" href={% static "css/aos.css" %}>
-	  <link rel="stylesheet" href={% static "css/ionicons.min.css" %}>
-	  <link rel="stylesheet" href={% static "css/flaticon.css" %}>
-	  <link rel="stylesheet" href={% static "css/icomoon.css" %}>
 	  <link rel="stylesheet" href={% static "css/style.css" %}>
 		<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
 	</head>
@@ -132,7 +130,7 @@
       <img src={% static "images/course1.jpg" %} class="card-img-top">
       <div class="card-body">
         <h5 class="card-title">Подготовка к Ielts</h5>
-        <button id="c1" class="btn btn-success w-100">Перейти к курсу</button>
+          <a href="course/ielts"><button id="c1" class="btn btn-success w-100">Перейти к курсу</button></a>
       </div>
     </div>
   </div>
@@ -141,7 +139,7 @@
       <img src={% static "images/course2.jpg" %} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Cобеседование</h5>
-        <button id="c2" class="btn btn-success w-100">Перейти к курсу</button>
+          <a href="course/interview"><button id="c2" class="btn btn-success w-100">Перейти к курсу</button></a>
       </div>
     </div>
   </div>
@@ -150,7 +148,7 @@
       <img src={% static "images/course3.jpg" %} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Говорим свободно</h5>
-        <button id="c3" class="btn btn-success w-100">Перейти к курсу</button>
+          <a href="course/freespeaking"><button id="c3" class="btn btn-success w-100">Перейти к курсу</button></a>
         </div>
     </div>
   </div>
@@ -159,7 +157,7 @@
       <img src={% static "images/course4.png" %} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Английский для IT</h5>
-        <button id="c4" class="btn btn-success w-100">Перейти к курсу</button>
+          <a href="course/it"><button id="c4" class="btn btn-success w-100">Перейти к курсу</button></a>
         </div>
     </div>
   </div>
@@ -168,7 +166,7 @@
       <img src={% static "images/course5.png" %} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Для путешествий</h5>
-        <button id="c5" class="btn btn-success w-100">Перейти к курсу</button>
+          <a href="course/travel"><button id="c5" class="btn btn-success w-100">Перейти к курсу</button></a>
         </div>
     </div>
   </div>
@@ -177,7 +175,7 @@
       <img src={% static "images/course6.jpg" %} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Бизнес английский</h5>
-        <button id="c6" class="btn btn-success w-100">Перейти к курсу</button>
+          <a href="course/business"><button id="c6" class="btn btn-success w-100">Перейти к курсу</button></a>
         </div>
     </div>
   </div>
@@ -186,7 +184,7 @@
       <img src={% static "images/course7.jpg" %} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Подготовка к ЕГЭ</h5>
-        <button id="c7" class="btn btn-success w-100">Перейти к курсу</button>
+          <a href="course/exam"><button id="c7" class="btn btn-success w-100">Перейти к курсу</button></a>
         </div>
     </div>
   </div>
@@ -195,7 +193,7 @@
       <img src={% static "images/course8.jpg" %} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Английский для инженеров</h5>
-        <button id="c8" class="btn btn-success w-100">Перейти к курсу</button>
+          <a href="course/engineer"><button id="c8" class="btn btn-success w-100">Перейти к курсу</button></a>
         </div>
     </div>
   </div>
@@ -204,7 +202,7 @@
       <img src={% static "images/course9.jpg" %} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Английский для подростков</h5>
-        <button id="c9" class="btn btn-success w-100">Перейти к курсу</button>
+          <a href="course/teen"><button id="c9" class="btn btn-success w-100">Перейти к курсу</button></a>
         </div>
     </div>
   </div>
@@ -213,7 +211,7 @@
       <img src={% static "images/course10.jpg" %} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Английский детям</h5>
-        <button id="c10" class="btn btn-success w-100">Перейти к курсу</button>
+          <a href="course/child"><button id="c10" class="btn btn-success w-100">Перейти к курсу</button></a>
         </div>
     </div>
   </div>
@@ -222,7 +220,7 @@
       <img src={% static "images/course11.jpg" %} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Персональный курс</h5>
-        <button id="c11" class="btn btn-success w-100">Перейти к курсу</button>
+          <a href="course/personally"><button id="c11" class="btn btn-success w-100">Перейти к курсу</button></a>
         </div>
     </div>
   </div>
@@ -231,7 +229,7 @@
       <img src={% static "images/course12.jpg" %} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Старт с любого уровня</h5>
-        <button id="c12" class="btn btn-success w-100">Перейти к курсу</button>
+          <a href="course/anylevel"><button id="c12" class="btn btn-success w-100">Перейти к курсу</button></a>
         </div>
     </div>
   </div>
@@ -240,25 +238,359 @@
       <img src={% static "images/course13.jpg" %} class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">Грамматика – это просто</h5>
-        <button id="c13" class="btn btn-success w-100">Перейти к курсу</button>
+        <a href="course/grammar"><button id="c13" class="btn btn-success w-100">Перейти к курсу</button></a>
         </div>
     </div>
   </div>
 </div>
       </div>
-      <div class="tab-pane fade" id="d3" role="tabpanel" aria-labelledby="dd3" style="margin: 20px;">3</div>
+      <div class="tab-pane fade" id="d3" role="tabpanel" aria-labelledby="dd3" style="margin: 20px;">
+          <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
+
+    <div class="cd-schedule__events">
+      <ul>
+        <li class="cd-schedule__group">
+          <div class="cd-schedule__top-info"><span>1 июня</span></div>
+
+          <ul>
+            <li class="cd-schedule__event">
+              <a data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
+                <em class="cd-schedule__name">Занятие 1</em>
+              </a>
+            </li>
+
+            <li class="cd-schedule__event">
+              <a data-start="11:00" data-end="12:30" data-content="event-rowing-workout" data-event="event-2" href="#0">
+                <em class="cd-schedule__name">Занятие 2</em>
+              </a>
+            </li>
+
+            <li class="cd-schedule__event">
+              <a data-start="14:00" data-end="15:15"  data-content="event-yoga-1" data-event="event-3" href="#0">
+                <em class="cd-schedule__name">Занятие 3</em>
+              </a>
+            </li>
+
+              <li class="cd-schedule__event">
+              <a data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
+                <em class="cd-schedule__name">Занятие 1</em>
+              </a>
+            </li>
+
+              <li class="cd-schedule__event">
+              <a data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
+                <em class="cd-schedule__name">Занятие 1</em>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="cd-schedule__group">
+          <div class="cd-schedule__top-info"><span>2 июня</span></div>
+
+          <ul>
+            <li class="cd-schedule__event">
+              <a data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2" href="#0">
+                <em class="cd-schedule__name">Занятие 1</em>
+              </a>
+            </li>
+
+            <li class="cd-schedule__event">
+              <a data-start="11:30" data-end="13:00"  data-content="event-restorative-yoga" data-event="event-4" href="#0">
+                <em class="cd-schedule__name">Restorative Yoga</em>
+              </a>
+            </li>
+
+            <li class="cd-schedule__event">
+              <a data-start="13:30" data-end="15:00" data-content="event-abs-circuit" data-event="event-1" href="#0">
+                <em class="cd-schedule__name">Abs Circuit</em>
+              </a>
+            </li>
+
+            <li class="cd-schedule__event">
+              <a data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3" href="#0">
+                <em class="cd-schedule__name">Yoga Level 1</em>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="cd-schedule__group">
+          <div class="cd-schedule__top-info"><span>3 июня</span></div>
+
+          <ul>
+            <li class="cd-schedule__event">
+              <a data-start="09:00" data-end="10:15" data-content="event-restorative-yoga" data-event="event-4" href="#0">
+                <em class="cd-schedule__name">Restorative Yoga</em>
+              </a>
+            </li>
+
+            <li class="cd-schedule__event">
+              <a data-start="10:45" data-end="11:45" data-content="event-yoga-1" data-event="event-3" href="#0">
+                <em class="cd-schedule__name">Yoga Level 1</em>
+              </a>
+            </li>
+
+            <li class="cd-schedule__event">
+              <a data-start="12:00" data-end="13:45"  data-content="event-rowing-workout" data-event="event-2" href="#0">
+                <em class="cd-schedule__name">Rowing Workout</em>
+              </a>
+            </li>
+
+            <li class="cd-schedule__event">
+              <a data-start="13:45" data-end="15:00" data-content="event-yoga-1" data-event="event-3" href="#0">
+                <em class="cd-schedule__name">Yoga Level 1</em>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="cd-schedule__group">
+          <div class="cd-schedule__top-info"><span>4 июня</span></div>
+
+          <ul>
+            <li class="cd-schedule__event">
+              <a data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
+                <em class="cd-schedule__name">Abs Circuit</em>
+              </a>
+            </li>
+
+            <li class="cd-schedule__event">
+              <a data-start="12:00" data-end="13:45" data-content="event-restorative-yoga" data-event="event-4" href="#0">
+                <em class="cd-schedule__name">Restorative Yoga</em>
+              </a>
+            </li>
+
+            <li class="cd-schedule__event">
+              <a data-start="15:30" data-end="16:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
+                <em class="cd-schedule__name">Abs Circuit</em>
+              </a>
+            </li>
+
+            <li class="cd-schedule__event">
+              <a data-start="17:00" data-end="18:30"  data-content="event-rowing-workout" data-event="event-2" href="#0">
+                <em class="cd-schedule__name">Rowing Workout</em>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="cd-schedule__group">
+          <div class="cd-schedule__top-info"><span>5 июня</span></div>
+
+          <ul>
+            <li class="cd-schedule__event">
+              <a data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2" href="#0">
+                <em class="cd-schedule__name">Rowing Workout</em>
+              </a>
+            </li>
+
+            <li class="cd-schedule__event">
+              <a data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1" href="#0">
+                <em class="cd-schedule__name">Abs Circuit</em>
+              </a>
+            </li>
+
+            <li class="cd-schedule__event">
+              <a data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3" href="#0">
+                <em class="cd-schedule__name">Yoga Level 1</em>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="cd-schedule__cover-layer"></div>
+  </div>
+      </div>
       <div class="tab-pane fade" id="d4" role="tabpanel" aria-labelledby="dd4" style="margin: 20px;">
-          <div class="container">
-              <div class="row">
-                  <div class="col">
-                      <div class="card">
-                          KEKS
+          <div class="row">
+                      <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="1">
+                          <div class="card-header">
+                              <h5 class="card-title text-white">Тема урока:</h5>
+                              <p>temaaaaaaaaa</p>
+                          </div>
+                          <div class="card-body">
+                              <h5 class="card-title text-white">Срок сдачи:</h5>
+                              <p class="card-text">25 мая 2020</p>
+                          </div>
+                      </div>
+                      <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="2">
+                          <div class="card-header">
+                              <h5 class="card-title text-white">Тема урока:</h5>
+                              <p>tema</p>
+                          </div>
+                          <div class="card-body">
+                              <h5 class="card-title text-white">Срок сдачи:</h5>
+                              <p class="card-text">32 мая 2020</p>
+                          </div>
+                      </div>
+              <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="2">
+                          <div class="card-header">
+                              <h5 class="card-title text-white">Тема урока:</h5>
+                              <p>tema</p>
+                          </div>
+                          <div class="card-body">
+                              <h5 class="card-title text-white">Срок сдачи:</h5>
+                              <p class="card-text">32 мая 2020</p>
+                          </div>
+                      </div>
+              <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="2">
+                          <div class="card-header">
+                              <h5 class="card-title text-white">Тема урока:</h5>
+                              <p>tema</p>
+                          </div>
+                          <div class="card-body">
+                              <h5 class="card-title text-white">Срок сдачи:</h5>
+                              <p class="card-text">32 мая 2020</p>
+                          </div>
+                      </div>
+              <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="2">
+                          <div class="card-header">
+                              <h5 class="card-title text-white">Тема урока:</h5>
+                              <p>tema</p>
+                          </div>
+                          <div class="card-body">
+                              <h5 class="card-title text-white">Срок сдачи:</h5>
+                              <p class="card-text">32 мая 2020</p>
+                          </div>
+                      </div>
+              <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="2">
+                          <div class="card-header">
+                              <h5 class="card-title text-white">Тема урока:</h5>
+                              <p>tema</p>
+                          </div>
+                          <div class="card-body">
+                              <h5 class="card-title text-white">Срок сдачи:</h5>
+                              <p class="card-text">32 мая 2020</p>
+                          </div>
+                      </div>
+              <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="2">
+                          <div class="card-header">
+                              <h5 class="card-title text-white">Тема урока:</h5>
+                              <p>tema</p>
+                          </div>
+                          <div class="card-body">
+                              <h5 class="card-title text-white">Срок сдачи:</h5>
+                              <p class="card-text">32 мая 2020</p>
+                          </div>
                       </div>
                   </div>
-              </div>
           </div>
-      </div>
-		<div class="tab-pane fade" id="d5" role="tabpanel" aria-labelledby="dd5" style="margin: 20px;">5</div>
+		<div class="tab-pane fade" id="d5" role="tabpanel" aria-labelledby="dd5" style="margin: 20px;">
+            <section class="ftco-section" style="padding: 1em;">
+			<div class="container">
+				<div class="row">
+          <div class="col-lg-8 ftco-animate">
+              <div class="row row-cols-1 row-cols-md-3">
+            <div class="card mr-2 mb-2" style="width: 20rem;">
+                <div class="card-header">
+                    Путешествие
+                </div>
+                <img src={% static "images/about-2.jpg" %} class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Видево</h5>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-play-circle"></i> Видео</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-cube"></i> Конструктор</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-headphones"></i> Аудирование</a>
+
+                </div>
+            </div>
+            <div class="card mr-2 mb-2" style="width: 20rem;">
+                <div class="card-header">
+                    Путешествие
+                </div>
+                <img src={% static "images/about-2.jpg" %} class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Видево</h5>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-play-circle"></i> Видео</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-cube"></i> Конструктор</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-headphones"></i> Аудирование</a>
+
+                </div>
+            </div>
+            <div class="card mr-2 mb-2" style="width: 20rem;">
+                <div class="card-header">
+                    Путешествие
+                </div>
+                <img src={% static "images/about-2.jpg" %} class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Видево</h5>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-play-circle"></i> Видео</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-cube"></i> Конструктор</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-headphones"></i> Аудирование</a>
+
+                </div>
+            </div>
+            <div class="card mr-2 mb-2" style="width: 20rem;">
+                <div class="card-header">
+                    Путешествие
+                </div>
+                <img src={% static "images/about-2.jpg" %} class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Видево</h5>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-play-circle"></i> Видео</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-cube"></i> Конструктор</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-headphones"></i> Аудирование</a>
+
+                </div>
+            </div>
+            <div class="card mr-2 mb-2" style="width: 20rem;">
+                <div class="card-header">
+                    Путешествие
+                </div>
+                <img src={% static "images/about-2.jpg" %} class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Видево</h5>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-play-circle"></i> Видео</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-cube"></i> Конструктор</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#"><i class="fa fa-headphones"></i> Аудирование</a>
+
+                </div>
+            </div>
+                  </div>
+          </div> <!-- .col-md-8 -->
+
+          <div class="col-lg-4 sidebar ftco-animate">
+            <div class="sidebar-box">
+              <form action="#" class="search-form">
+                <div class="form-group">
+                  <span class="icon icon-search"></span>
+                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                </div>
+              </form>
+            </div>
+            <div class="sidebar-box ftco-animate">
+            	<h3>Category</h3>
+              <ul class="categories">
+                <li><a href="#">Art <span>(6)</span></a></li>
+                <li><a href="#">Sports <span>(8)</span></a></li>
+                <li><a href="#">Language <span>(2)</span></a></li>
+                <li><a href="#">Food <span>(2)</span></a></li>
+                <li><a href="#">Music <span>(2)</span></a></li>
+              </ul>
+            </div>
+          </div><!-- END COL -->
+        </div>
+			</div>
+		</section>
+        </div>
 		<div class="tab-pane fade" id="d6" role="tabpanel" aria-labelledby="dd6" style="margin: 20px;">6</div>
 		<div class="tab-pane fade" id="d7" role="tabpanel" aria-labelledby="dd7" style="margin: 20px;">7</div>
 		<div class="tab-pane fade" id="d8" role="tabpanel" aria-labelledby="dd8" style="margin: 20px;">
@@ -407,81 +739,55 @@
     <!-- /#page-content-wrapper -->
 
   </div>
+    <div class="modal fade" id="dzModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Здесь тема урока</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <label for="file-name" class="col-form-label">Файл с дз:</label>
+          <a id="dzFile" href="https://docs.google.com/document/d/1MtkJZii58GWNr4L9hBadG3MfXNIHnAYJ53body4Z7hQ/edit?usp=sharing" download>
+              <button type="button" class="btn btn-primary" id="file-name">Скачать</button>
+          </a>
+          <form id="submit-dz">
+              {% csrf_token %}
+              <h5>Отправить на проверку:</h5>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile">
+            <label class="custom-file-label" for="customFile" data-browse="Открыть">Выберите файл...</label>
+            </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+        <button type="submit" form="submit-dz" class="btn btn-primary">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
 
   <!-- Menu Toggle Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+    <script src={% static "js/jquery.min.js" %}></script>
       <script src='https://meet.jit.si/external_api.js'></script>
 	  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
-	  <script src={% static "js/popper.min.js" %}></script>
 	  <script src={% static "js/bootstrap.min.js" %}></script>
-	  <script src={% static "js/jquery.easing.1.3.js" %}></script>
 	  <script src={% static "js/jquery.waypoints.min.js" %}></script>
 	  <script src={% static "js/jquery.stellar.min.js" %}></script>
 	  <script src={% static "js/owl.carousel.min.js" %}></script>
 	  <script src={% static "js/jquery.magnific-popup.min.js" %}></script>
 	  <script src={% static "js/aos.js" %}></script>
 	  <script src={% static "js/bootstrap.bundle.min.js" %}></script>
-	  <script src={% static "js/jquery.animateNumber.min.js" %}></script>
 	  <script src={% static "js/scrollax.min.js" %}></script>
 	  <script src={% static "js/main.js" %}></script>
-
-    <script>
-        function closeDoc(id){
-            $("#docLabel"+id).remove();
-            $("#doc"+id).remove();
-            $("#home-tab").addClass('active');
-            $("#home").addClass('show active');
-        }
-        $('a[id^="openDoc"]').click(function () {
-        i = $(this).attr("id");
-        id = i.slice(7);
-        if(!$("#docLabel"+id).length){
-            $("#home-tab").removeClass('active');
-            $("#home").removeClass('show active');
-            $("#myTab").append('<li class="nav-item" id="docLabel'+id+'" role="presentation">'+
-                            '<a class="nav-link active" id="docTab'+id+'" data-toggle="tab" href="#doc'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">KEKEW'+
-                            '<button type="button" class="close" onclick="closeDoc('+id+')" style="padding-left: 5px;" aria-label="Close">'+
-                                '<span aria-hidden="true">&times;</span>'+
-                            '</button>'+
-                            '</a>'+
-                            '</li>');
-            $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
-                        '<div class="card-body" style="height: 700px;">'+
-                            '<object><embed src="https://docs.google.com/document/d/1MtkJZii58GWNr4L9hBadG3MfXNIHnAYJ53body4Z7hQ/edit?usp=sharing" style="width: 100%; height: 100%"></object>'+
-                        '</div>'+
-                        '</div>');
-        }
-        else {
-            $("#home-tab").removeClass('active');
-            $("#home").removeClass('show active');
-            $("#docTab"+id).addClass('active');
-            $("#doc"+id).addClass('show active');
-        }
-        });
-    </script>
-    <script>
-        const domain = 'meet.jit.si';
-const options = {
-    roomName: 'asdffhdgfha',
-    width: '100%',
-    height: 700,
-    configOverwrite: { defaultLanguage: 'ru',
-     enableClosePage: false},
-    interfaceConfigOverwrite: {
-        APP_NAME : "English-talk meet",
-        DEFAULT_REMOTE_DISPLAY_NAME : 'Ученик',
-        DEFAULT_LOCAL_DISPLAY_NAME : "Я",
-        JITSI_WATERMARK_LINK : "",
-        NATIVE_APP_NAME : "English-talk meet",
-        HIDE_KICK_BUTTON_FOR_GUESTS: true,
-        MOBILE_DOWNLOAD_LINK_ANDROID: '',
-        MOBILE_DOWNLOAD_LINK_IOS: '',
-     },
-    parentNode: document.querySelector('#chat')
-};
-const api = new JitsiMeetExternalAPI(domain, options);
-    </script>
+      <script src={% static "js/dashboard.js" %}></script>
+      <script src={% static "js/shedule.js" %}></script>
 	</body>
 </html>

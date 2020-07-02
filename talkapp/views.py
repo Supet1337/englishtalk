@@ -51,4 +51,5 @@ def grammar(request):
 def blog(request):
     return render(request,'blog-single.html')
 
-
+def video(request):
+    return render(request,'video.html')
