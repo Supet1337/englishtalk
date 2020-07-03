@@ -23,29 +23,22 @@ def register_user(request):
         user_add = UserAdditionals()
         user_add.user = user
         user_add.phone_number = request.POST.get('phone')
-            #if len(User.objects.filter(email=form.data['email'])) > 0:
-                #messages.error(
-                   # request, "Пользователь с такой почтой уже существует.")
-                #return HttpResponseRedirect("../")
-            #elif len(User.objects.filter(username=form.data['username'])) > 0:
-              #  messages.error(
-               #     request, "Пользователь с таким ником уже существует.")
-              #  return HttpResponseRedirect("/")
-            #elif check_password(request.POST.get('password1'), request.POST.get('password2')):
-                #messages.error(request, 'Пароли не совпадают.')
-                #return HttpResponseRedirect("/")
-            #else:
-        user.save()
-        user_add.save()
-        login(request, user)
-                #message = "Здравствуйте! {}\nПоздравляем!" \
-                      #    " Вы успешно зарегестрировали аккаунт Geochat.\nВперёд к " \
-                     #     "новым приключениям!\n\n\n" \
-                     #     " С уважением, команда Geochat  ".format(user.username)
-                #send_mail(
-                   # 'Регистрация аккаунта Geochat', message, 'shp.geochat@yandex.ru', [
-                     #   user.email], fail_silently=False)
-        return HttpResponseRedirect('../')
+        if len(User.objects.filter(email=user.email)) > 0:
+            messages.error(
+                request, "Пользователь с такой почтой уже существует.")
+        else:
+            user.save()
+            user_add.save()
+            login(request, user)
+            message = "Здравствуйте! {}\nПоздравляем!" \
+                " Вы успешно зарегестрировали аккаунт Geochat.\nВперёд к " \
+                "новым приключениям!\n\n\n" \
+                " С уважением, команда Geochat  ".format(user.username)
+            send_mail(
+                'Регистрация аккаунта Geochat', message, 'noreply.englishtalk@gmail.com', [
+                user.email], fail_silently=False)
+            messages.success(request, "Вы успешно зарегистрировались.")
+    return HttpResponseRedirect('../')
 
 
 
