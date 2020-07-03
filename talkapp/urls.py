@@ -4,6 +4,7 @@ from .views import *
 urlpatterns = [
     path('', index),
     path('register-user', register_user),
+    path('ajax_load_lessons/<int:number>', ajax_load_lessons),
     path('dashboard', dashboard),
     path('courses', courses),
     path('course/ielts', ielts),

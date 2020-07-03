@@ -41,12 +41,25 @@ def register_user(request):
     return HttpResponseRedirect('../')
 
 
-
 def index(request):
     return render(request,'index.html')
 
 def dashboard(request):
-    return render(request,'dashboard.html')
+    context = {}
+    lsn = Lessons.objects.all()
+    context["lsn"] = lsn
+    return render(request,'dashboard.html', context)
+
+
+
+def ajax_load_lessons(request, number):
+    lsn = []
+    for ls in Lessons.objects.filter(id=number):
+        lsn.append(ls.json())
+    return HttpResponse(json.dumps(lsn))
+
+
+
 
 def courses(request):
     return render(request,'courses.html')
