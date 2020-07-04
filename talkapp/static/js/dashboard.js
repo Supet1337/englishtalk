@@ -1,4 +1,4 @@
-    $('#dzModal').on('show.bs.modal', function (event) {
+$('#dzModal').on('show.bs.modal', function (event) {
     var div = $(event.relatedTarget)
     var recipient = div.data('number')
     var modal = $(this)
@@ -37,6 +37,27 @@ $('a[id^="openDoc"]').click(function () {
                  '<object><embed src="'+json[i].docx_url+'" style="width: 100%; height: 100%"></object>'+
                  '</div>'+
                  '</div>');
+
+        $.ajax({
+            url: "/ajax_load_lessons_videos/"+id,
+            success: function (result) {
+                $("#myTabContent").append('<div class="card-body"><p>Видеоматериалы:</p>');
+                var json = $.parseJSON(result);
+                json.forEach(function(item, i, json) {
+                    $("#myTabContent").append('<p>'+json[i].video_url+'</p>');
+                });
+                $("#myTabContent").append('</div>');
+        }})
+        $.ajax({
+            url: "/ajax_load_lessons_audios/"+id,
+            success: function (result) {
+                $("#myTabContent").append('<div class="card-body"><p>Аудиоматериалы:</p>');
+                var json = $.parseJSON(result);
+                json.forEach(function(item, i, json) {
+                    $("#myTabContent").append('<p>'+json[i].audio_url+'</p>');
+                });
+                $("#myTabContent").append('</div>');
+        }})
     }
 
     else {
@@ -47,6 +68,7 @@ $('a[id^="openDoc"]').click(function () {
     }
     });
     }})
+
 });
 const domain = 'meet.jit.si';
 const options = {
@@ -78,3 +100,16 @@ $(document).ready(function(){
 	});
 });
 
+var s = 1;
+function tog(){
+    if(s % 2 == 1)
+        document.getElementById("angle").className = "fa fa-angle-right";
+    else
+        document.getElementById("angle").className = "fa fa-angle-left";
+    s += 1;
+    $("#wrapper").toggleClass("toggled");
+}
+
+$(document).ready(function () {
+ bsCustomFileInput.init()
+})

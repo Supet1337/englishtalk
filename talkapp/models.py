@@ -6,24 +6,10 @@ from django.contrib.auth.hashers import make_password
 from phonenumber_field.modelfields import PhoneNumberField
 
 def video_directory_path(instance, filename):
-    """
-    Функция возврата пути изображения для профиля
-
-    :param instance: Пример
-    :param filename: Имя файла
-    :return: Возвращает путь к файлу
-    """
-    return 'lesson/video/id_{0}/{1}'.format(instance.lessons.id, filename)
+    return 'lessons/lesson_{0}/videos/{1}'.format(instance.lesson.id, filename)
 
 def audio_directory_path(instance, filename):
-    """
-    Функция возврата пути изображения для профиля
-
-    :param instance: Пример
-    :param filename: Имя файла
-    :return: Возвращает путь к файлу
-    """
-    return 'lesson/audio/id_{0}/{1}'.format(instance.lessons.id, filename)
+    return 'lessons/lesson_{0}/audio/{1}'.format(instance.lesson.id, filename)
 
 class UserAdditionals(models.Model):
     """
@@ -33,7 +19,7 @@ class UserAdditionals(models.Model):
     phone_number = PhoneNumberField()
 
 # Create your models here.
-class Lessons(models.Model):
+class Lesson(models.Model):
     docx_url = models.URLField()
     name = models.CharField(max_length=12)
     date = models.DateTimeField(auto_now_add=True)
@@ -46,12 +32,24 @@ class Lessons(models.Model):
             'date': str(datef),
             'id': self.id,
             }
+    def get_lesson_videos(self):
+        return Lesson_video.objects.filter(lesson_id=self.id)
+    def get_lesson_audios(self):
+        return Lesson_audio.objects.filter(lesson_id=self.id)
 
 
-class Video_Courses(models.Model):
+class Lesson_video(models.Model):
     video_url = models.FileField(upload_to=video_directory_path, blank=True)
-    lessons = models.ForeignKey(to=Lessons, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(to=Lesson, on_delete=models.CASCADE)
+    def json(self):
+        return {
+            'video_url': self.video_url
+            }
 
-class Audio_Courses(models.Model):
+class Lesson_audio(models.Model):
     audio_url = models.FileField(upload_to=audio_directory_path, blank=True)
-    lessons = models.ForeignKey(to=Lessons, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(to=Lesson, on_delete=models.CASCADE)
+    def json(self):
+        return {
+            'audio_url': self.audio_url
+            }

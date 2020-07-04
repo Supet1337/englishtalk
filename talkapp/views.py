@@ -73,7 +73,7 @@ def index(request):
 
 def dashboard(request):
     context = {}
-    lsn = Lessons.objects.all()
+    lsn = Lesson.objects.all()
     context["lsn"] = lsn
     return render(request,'dashboard.html', context)
 
@@ -81,9 +81,20 @@ def dashboard(request):
 
 def ajax_load_lessons(request, number):
     lsn = []
-    for ls in Lessons.objects.filter(id=number):
-        lsn.append(ls.json())
+    lsn.append(Lesson.objects.get(id=number).json())
     return HttpResponse(json.dumps(lsn))
+
+def ajax_load_lessons_videos(request, number):
+    vid = []
+    for i in Lesson.objects.get(id=number).get_lesson_videos():
+        vid.append(i.json())
+    return HttpResponse(json.dumps(vid))
+
+def ajax_load_lessons_audios(request, number):
+    aud = []
+    for i in Lesson.objects.get(id=number).get_lesson_audios():
+        aud.append(i.json())
+    return HttpResponse(json.dumps(aud))
 
 
 
