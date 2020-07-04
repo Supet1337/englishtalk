@@ -43,7 +43,7 @@ class Lesson_video(models.Model):
     lesson = models.ForeignKey(to=Lesson, on_delete=models.CASCADE)
     def json(self):
         return {
-            'video_url': self.video_url
+            'video_url': self.video_url.url
             }
 
 class Lesson_audio(models.Model):
@@ -51,5 +51,5 @@ class Lesson_audio(models.Model):
     lesson = models.ForeignKey(to=Lesson, on_delete=models.CASCADE)
     def json(self):
         return {
-            'audio_url': self.audio_url
+            'audio_url': self.audio_url.url
             }

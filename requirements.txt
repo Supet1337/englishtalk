@@ -10,3 +10,4 @@ django-storages
 boto3
 django-debug-toolbar
 django-phonenumber-field[phonenumbers]
+django-sesame

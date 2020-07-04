@@ -97,7 +97,17 @@
         </button>
       </div>
             <div class="container">
-                   <form class="needs-validation" method="POST" action="/login-user" novalidate>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-lock"> По паролю</i></a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-magic"> По магической ссылке</i></a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <form class="needs-validation" method="POST" action="/login-user" novalidate>
                         {% csrf_token %}
                         <br>
                       <input type="text" id="username_auth" style="border-radius: 20px" name="email_auth"  class="form-control mb-2" placeholder="Email" required>
@@ -107,7 +117,19 @@
                            Неверный логин или пароль.
                           </div>
                     </form>
-                    <p><a href="accounts/password_reset">Забыли пароль?</a></p>
+                    <p><a href="accounts/password_reset">Забыли пароль?</a></p></div>
+                      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                          <form class="needs-validation" method="POST" action="/send-magic-link" novalidate>
+                        {% csrf_token %}
+                        <br>
+                      <input type="text" id="magic_email" style="border-radius: 20px" name="magic_email"  class="form-control mb-2" placeholder="Email" required>
+                      <input type="submit" style="width:100%" value="Войти" class="btn btn-dark mb-2">
+                       <div class="invalid-feedback">
+                           Неверная электронная почта.
+                          </div>
+                    </form>
+                      </div>
+</div>
 
                     <a href="/accounts/vk/login/?process=login"><span style="font-size:40px; color:#4a76a8" class="fab fa-vk"></span></a>
                     <a href="/accounts/discord/login/?process=login"><span style="font-size:40px; color:#6a84c6" class="fab fa-discord"></span></a>
@@ -115,8 +137,6 @@
     </div>
   </div>
 </div>
-
-
 
 
 <script>

@@ -41,22 +41,20 @@ $('a[id^="openDoc"]').click(function () {
         $.ajax({
             url: "/ajax_load_lessons_videos/"+id,
             success: function (result) {
-                $("#myTabContent").append('<div class="card-body"><p>Видеоматериалы:</p>');
+                $("#doc"+id).append('<p>Видеоматериалы:</p>');
                 var json = $.parseJSON(result);
                 json.forEach(function(item, i, json) {
-                    $("#myTabContent").append('<p>'+json[i].video_url+'</p>');
+                    $("#doc"+id).append('<p>'+json[i].video_url+'</p>');
                 });
-                $("#myTabContent").append('</div>');
         }})
         $.ajax({
             url: "/ajax_load_lessons_audios/"+id,
             success: function (result) {
-                $("#myTabContent").append('<div class="card-body"><p>Аудиоматериалы:</p>');
+                $("#doc"+id).append('<p>Аудиоматериалы:</p>');
                 var json = $.parseJSON(result);
                 json.forEach(function(item, i, json) {
-                    $("#myTabContent").append('<p>'+json[i].audio_url+'</p>');
+                    $("#doc"+id).append('<p>'+json[i].audio_url+'</p>');
                 });
-                $("#myTabContent").append('</div>');
         }})
     }
 
