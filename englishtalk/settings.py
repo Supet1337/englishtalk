@@ -137,10 +137,10 @@ SECURE_SSL_REDIRECT = False
 
 AWS_ACCESS_KEY_ID = "SCW4SVBT18GT43CDK17N"
 AWS_SECRET_ACCESS_KEY = "b19e4f2e-70dc-472a-972f-ba81296cb5ed"
-AWS_STORAGE_BUCKET_NAME = "englishtalk-static"
+AWS_STORAGE_BUCKET_NAME = "englishtalk-static-2"
 AWS_DEFAULT_ACL = 'public-read'
-AWS_S3_REGION_NAME = "nl-ams"
-AWS_S3_ENDPOINT_URL = "https://s3.nl-ams.scw.cloud"
+AWS_S3_REGION_NAME = "fr-par"
+AWS_S3_ENDPOINT_URL = "https://s3.fr-par.scw.cloud"
 
 if not DEBUG:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
