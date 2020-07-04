@@ -67,14 +67,77 @@
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img alt="User Avatar" style="width: 40px; height: 40px;" class="rounded-circle user-avatar-xxl" src={% static "images/indus.jpeg" %}>
                             </a>
+                             {% if request.user.is_authenticated %}
                             <div class="dropdown-menu dropdown-menu-right" style="background-color: #0062cc;top: 90%;box-shadow: 0 1px 9px black;" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" style="" href="../dashboard">Личный кабинет</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Оплата</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Выход</a>
+                                <a class="dropdown-item" href="/logout">Выход</a>
                             </div>
+                            {% else %}
+                             <div class="dropdown-menu dropdown-menu-right" style="background-color: #0062cc;top: 90%;box-shadow: 0 1px 9px black;" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" data-toggle="modal" data-target="#myModal" style="" href="">Авторизоваться</a>
+                            </div>
+                            {% endif %}
                         </li>
                     </ul>
                 </div>
         </nav>
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h4 class="modal-title" id="myModalLabel">Авторизация</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+            <div class="container">
+                   <form class="needs-validation" method="POST" action="/login-user" novalidate>
+                        {% csrf_token %}
+                        <br>
+                      <input type="text" id="username_auth" style="border-radius: 20px" name="email_auth"  class="form-control mb-2" placeholder="Email" required>
+                       <input type="password" id="password" style="border-radius: 20px" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*" name="password"  class="form-control mb-2" placeholder="Пароль" required>
+                        <input type="submit" style="width:100%" value="Войти" class="btn btn-dark mb-2">
+                       <div class="invalid-feedback">
+                           Неверный логин или пароль.
+                          </div>
+                    </form>
+                    <p><a href="accounts/password_reset">Забыли пароль?</a></p>
+
+                    <a href="/accounts/vk/login/?process=login"><span style="font-size:40px; color:#4a76a8" class="fab fa-vk"></span></a>
+                    <a href="/accounts/discord/login/?process=login"><span style="font-size:40px; color:#6a84c6" class="fab fa-discord"></span></a>
+            </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<script>
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>

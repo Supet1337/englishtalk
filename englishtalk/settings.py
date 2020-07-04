@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rv(-m=hx@341@qi-$kqodugk+^#rrbiz!wq4ynxjsifjq^!3xr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -105,15 +105,16 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+DATE_FORMAT = 'd.m G:i'
+
 
 
 # Static files (CSS, JavaScript, Images)
@@ -122,6 +123,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = "./media/"
 
 STATIC_ROOT = "./collectedstatic"
 
@@ -154,3 +157,4 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 EMAIL_HOST_USER = 'noreply.englishtalk@gmail.com'
 EMAIL_HOST_PASSWORD = 'z20051994'
 DEFAULT_FROM_EMAIL = 'noreply.englishtalk@gmail.com'
+
