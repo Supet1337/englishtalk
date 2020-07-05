@@ -56,7 +56,9 @@ $(document).ready(function(){
                                 $("#doc"+id).append('<p>Аудиоматериалы:</p>');
                                 var json = $.parseJSON(result);
                                 json.forEach(function(item, i, json) {
-                                    $("#doc"+id).append('<p>'+json[i].audio_url+'</p>');
+                                    $("#doc"+id).append('<audio controls>'+
+                                        '<source src="'+json[i].audio_url+'" type="audio/mpeg">'+
+                                        '</audio>');
                                 });
                         }})
                     }

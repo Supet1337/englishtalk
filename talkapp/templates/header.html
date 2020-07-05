@@ -96,47 +96,68 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-            <div class="container">
-                <ul class="nav nav-tabs" id="myTabModal" role="tablist">
-  <li class="nav-item" role="presentation">
-    <a class="nav-link active" id="home-tabModal" data-toggle="tab" href="#homeModal" role="tab" aria-controls="homeModal" aria-selected="true"><i class="fa fa-lock"> По паролю</i></a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-magic"> По магической ссылке</i></a>
-  </li>
-</ul>
-<div class="tab-content" id="myTabContentModal">
-  <div class="tab-pane fade show active" id="homeModal" role="tabpanel" aria-labelledby="home-tabModal">
-      <form class="needs-validation" method="POST" action="/login-user" novalidate>
+            <div class="row">
+                <div class="w-100"></div>
+                <div class="col">
+                     <form method="POST" class="needs-validation" style="margin-left: 1em" action="/register-user" novalidate>
+                        {% csrf_token %}
+                         <br>
+                        <input type="text" id="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,16}$" name="username" class="form-control" placeholder="Логин" required>
+                          <div class="invalid-feedback">
+                           Логин должен состоять не менее чем из 4 символов и не более 16 символов
+                          </div>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
+                         <div class="invalid-feedback">
+                           <small style="font-size:10.5px">Адрес электронной почты должен содеражть @</small>
+                          </div>
+                        <input type="password" id="password1"  pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*" name="password1" class="form-control" placeholder="Пароль" required>
+                         <div class="invalid-feedback">
+                           Минимум 8 символов, одна цифра, одна буква в верхнем регистре и одна в нижнем
+                          </div>
+                        <input type="password" id="password2"  pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*" name="password2" class="form-control" placeholder="Подтвердите пароль" required>
+                         <div class="invalid-feedback">
+                           Минимум 8 символов, одна цифра, одна буква в верхнем регистре и одна в нижнем
+                          </div>
+                        <input type="submit" style="margin-top:10px; width:100%" value="Зарегистрироваться" class="btn btn-dark">
+                         <br>
+                         <br>
+                    </form>
+
+
+
+
+                </div>
+
+                <div class="col">
+
+                   <form class="needs-validation" style="margin-right: 1em" method="POST" action="/login-user" novalidate>
                         {% csrf_token %}
                         <br>
-                      <input type="text" id="username_auth" style="border-radius: 20px" name="email_auth"  class="form-control mb-2" placeholder="Email" required>
-                       <input type="password" id="password" style="border-radius: 20px" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*" name="password"  class="form-control mb-2" placeholder="Пароль" required>
-                        <input type="submit" style="width:100%" value="Войти" class="btn btn-dark mb-2">
+
+                      <input type="text" id="username_auth" name="username_auth"  class="form-control" placeholder="Логин" required>
+                       <input type="password" id="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*" name="password"  class="form-control" placeholder="Пароль" required>
+                        <input type="submit" style="margin-top:10px; width:100%" value="Войти" class="btn btn-dark">
                        <div class="invalid-feedback">
                            Неверный логин или пароль.
                           </div>
                     </form>
-                    <p><a href="accounts/password_reset">Забыли пароль?</a></p></div>
-                      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                          <form class="needs-validation" method="POST" action="/send-magic-link" novalidate>
-                        {% csrf_token %}
-                        <br>
-                      <input type="text" id="magic_email" style="border-radius: 20px" name="magic_email"  class="form-control mb-2" placeholder="Email" required>
-                      <input type="submit" style="width:100%" value="Войти" class="btn btn-dark mb-2">
-                       <div class="invalid-feedback">
-                           Неверная электронная почта.
-                          </div>
-                    </form>
-                      </div>
-</div>
+                    <p><a href="accounts/password_reset">Забыли пароль?</a></p>
+                    <!-- load socialaccount -->
 
                     <a href="/accounts/vk/login/?process=login"><span style="font-size:40px; color:#4a76a8" class="fab fa-vk"></span></a>
                     <a href="/accounts/discord/login/?process=login"><span style="font-size:40px; color:#6a84c6" class="fab fa-discord"></span></a>
+
+
+
+                </div>
+              </div>
             </div>
-    </div>
-  </div>
+
 </div>
+
+            </div>
+
+
 
 
 <script>

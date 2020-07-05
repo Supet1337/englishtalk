@@ -18,52 +18,52 @@ def loggout(request):
     return HttpResponseRedirect("/")
 
 def login_user(request):
-
     if request.method == "POST":
-        email = request.POST['email_auth']
+        username = request.POST['username_auth']
         password = request.POST['password']
-        usernm = User.objects.get(email=email)
-        user = authenticate(username=usernm.username, password=password)
+        user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.error(request, 'Вы успешно авторизировались.')
             return HttpResponseRedirect("/")
         else:
-            messages.error(request, 'Введены неверные данные.')
+            messages.error(request, 'Неправильный логин или пароль.')
             return HttpResponseRedirect("/")
+
 
 
 
 
 def register_user(request):
     if request.method == "POST":
-        user = User()
-        user.username = get_random_string(length=16)
-        user.first_name = request.POST.get('first_name')
-        user.last_name = request.POST.get('surname')
-        user.email = request.POST.get('email')
-        password = User.objects.make_random_password()
-        user.password = make_password(password)
-        user_add = UserAdditionals()
-        user_add.user = user
-        user_add.phone_number = request.POST.get('phone')
-        if len(User.objects.filter(email=user.email)) > 0:
-            messages.error(
-                request, "Пользователь с такой почтой уже существует.")
-        else:
-            user.save()
-            user_add.save()
-            login(request, user)
-            message = "Hello!" +user.first_name+" "+user.last_name+ "\nПоздравляем!" \
-                " Вы успешно зарегестрировали аккаунт EnglishTalk.\nВперёд к " \
-                "новым знаниям!\n" \
-                      "Ваш пароль:\n"+str(password)+"\n" \
-                " С уважением, команда EnglishTalk  "
-            send_mail(
-                'Регистрация аккаунта EnglishTalk', message, 'noreply.englishtalk@gmail.com', [
-                user.email], fail_silently=False)
-            messages.success(request, "Вы успешно зарегистрировались. Ваш пароль отправлен на "+str(user.email))
-    return HttpResponseRedirect('../')
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.email = form.data['email']
+            user_add = UserAdditionals()
+            user_add.user = user
+            if len(User.objects.filter(email=form.data['email'])) > 0:
+                messages.error(
+                    request, "Пользователь с такой почтой уже существует.")
+                return HttpResponseRedirect("../")
+            elif len(User.objects.filter(username=form.data['username'])) > 0:
+                messages.error(
+                    request, "Пользователь с таким ником уже существует.")
+                return HttpResponseRedirect("/")
+            elif check_password(request.POST.get('password1'), request.POST.get('password2')):
+                messages.error(request, 'Пароли не совпадают.')
+                return HttpResponseRedirect("/")
+            else:
+                user.save()
+                user_add.save()
+                login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+                message = "Hello! {}\nПоздравляем!" \
+                          " Вы успешно зарегестрировали аккаунт EnglishTalk.\nВперёд к " \
+                          "новым знаниям!\n\n\n" \
+                          "С уважением, команда Englishtalk  ".format(user.username)
+                send_mail(
+                    'Регистрация аккаунта Englishtalk', message, 'noreply.englishtalk@gmail.com', [
+                        user.email], fail_silently=False)
+        return HttpResponseRedirect('../')
 
 
 def send_request_view(request):
