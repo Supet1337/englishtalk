@@ -8,7 +8,6 @@ from django.contrib.auth import logout, login, authenticate
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password
 from django.core.mail import send_mail
-from sesame import utils
 
 from .models import *
 from .forms import *
@@ -97,28 +96,6 @@ def ajax_load_lessons_audios(request, number):
         aud.append(i.json())
     return HttpResponse(json.dumps(aud))
 
-def send_magic_link(request):
-    if request.method == "POST":
-        email = request.POST.get('magic_email')
-        user = User.objects.get(email=email)
-        if user is not None:
-            login_token = utils.get_query_string(user)
-            login_link = "0.0.0.0/{}".format(login_token)
-            html_message = """
-            <p>Hi there,</p>
-            <p>Here is your <a href="{}">{}</a> </p>
-            <p>Thanks,</p>
-            <p>Django Admin</p>
-            """.format(login_link,login_link)
-
-            send_mail(
-                'Вход в аккаунт EnglishTalk', html_message, 'noreply.englishtalk@gmail.com', [email], fail_silently=False, html_message=html_message
-            )
-            messages.success(request, "Проверьте свой почтовый ящик. Ваша ссылка для входа отправлена на " + email)
-            return HttpResponseRedirect('/')
-        else:
-            messages.error(request, "Проверьте введённый email или вы ещё не зарегистрировались")
-            return HttpResponseRedirect('/')
 
 
 def courses(request):

@@ -49,7 +49,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'sesame.middleware.AuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'englishtalk.urls'
@@ -159,6 +158,3 @@ EMAIL_HOST_USER = 'noreply.englishtalk@gmail.com'
 EMAIL_HOST_PASSWORD = 'z20051994'
 DEFAULT_FROM_EMAIL = 'noreply.englishtalk@gmail.com'
 
-AUTHENTICATION_BACKENDS = ['sesame.backends.ModelBackend']
-SESAME_TOKEN_NAME = "url_auth_token"
-SESAME_MAX_AGE = 3 * 60 * 60 # 3 hour

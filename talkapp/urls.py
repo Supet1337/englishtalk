@@ -8,7 +8,6 @@ urlpatterns = [
     path('ajax_load_lessons/<int:number>', ajax_load_lessons),
     path('ajax_load_lessons_videos/<int:number>', ajax_load_lessons_videos),
     path('ajax_load_lessons_audios/<int:number>', ajax_load_lessons_audios),
-    path('send-magic-link',send_magic_link),
     path('dashboard', dashboard),
     path('logout', loggout),
     path('courses', courses),
