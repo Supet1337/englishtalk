@@ -158,6 +158,7 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 EMAIL_HOST_USER = 'noreply.englishtalk@gmail.com'
 EMAIL_HOST_PASSWORD = 'z20051994'
 DEFAULT_FROM_EMAIL = 'noreply.englishtalk@gmail.com'
+EMAIL_USE_SSL = True
 
 AUTHENTICATION_BACKENDS = ['sesame.backends.ModelBackend']
 SESAME_TOKEN_NAME = "url_auth_token"
