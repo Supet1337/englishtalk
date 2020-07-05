@@ -13,61 +13,62 @@ function closeDoc(id){
 }
 
 
-
-$('a[id^="openDoc"]').click(function () {
-    i = $(this).attr("id");
-   const id = i.slice(7);
-    $.ajax({
-        url: "/ajax_load_lessons/"+id,
-        success: function (result) {
-            var json = $.parseJSON(result);
-            json.forEach(function(item, i, json) {
-    if(!$("#docLabel"+id).length){
-        $("#home-tab").removeClass('active');
-        $("#home").removeClass('show active');
-        $("#myTab").append('<li class="nav-item" id="docLabel'+id+'" role="presentation">'+
-                 '<a class="nav-link active" id="docTab'+id+'" data-toggle="tab" href="#doc'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+json[i].name+
-                 '<button type="button" class="close" onclick="closeDoc('+id+')" style="padding-left: 5px;" aria-label="Close">'+
-                 '<span aria-hidden="true">&times;</span>'+
-                 '</button>'+
-                 '</a>'+
-                 '</li>');
-        $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
-                 '<div class="card-body" style="height: 700px;">'+
-                 '<object><embed src="'+json[i].docx_url+'" style="width: 100%; height: 100%"></object>'+
-                 '</div>'+
-                 '</div>');
-
+$(document).ready(function(){
+    $('a[id^="openDoc"]').click(function () {
+        i = $(this).attr("id");
+       const id = i.slice(7);
         $.ajax({
-            url: "/ajax_load_lessons_videos/"+id,
+            url: "/ajax_load_lessons/"+id,
             success: function (result) {
-                $("#doc"+id).append('<p>Видеоматериалы:</p>');
                 var json = $.parseJSON(result);
                 json.forEach(function(item, i, json) {
-                    $("#doc"+id).append('<p>'+json[i].video_url+'</p>');
-                });
-        }})
-        $.ajax({
-            url: "/ajax_load_lessons_audios/"+id,
-            success: function (result) {
-                $("#doc"+id).append('<p>Аудиоматериалы:</p>');
-                var json = $.parseJSON(result);
-                json.forEach(function(item, i, json) {
-                    $("#doc"+id).append('<p>'+json[i].audio_url+'</p>');
-                });
-        }})
-    }
+                    if(!$("#docLabel"+id).length){
+                        $("#home-tab").removeClass('active');
+                        $("#home").removeClass('show active');
+                        $("#myTab").append('<li class="nav-item" id="docLabel'+id+'" role="presentation">'+
+                                 '<a class="nav-link active" id="docTab'+id+'" data-toggle="tab" href="#doc'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+json[i].name+
+                                 '<button type="button" class="close" onclick="closeDoc('+id+')" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<span aria-hidden="true">&times;</span>'+
+                                 '</button>'+
+                                 '</a>'+
+                                 '</li>');
+                        $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
+                                 '<div class="card-body" style="height: 700px;">'+
+                                 '<object><embed src="'+json[i].docx_url+'" style="width: 100%; height: 100%"></object>'+
+                                 '</div>'+
+                                 '</div>');
 
-    else {
-        $("#home-tab").removeClass('active');
-        $("#home").removeClass('show active');
-        $("#docTab"+id).addClass('active');
-        $("#doc"+id).addClass('show active');
-    }
+                        $.ajax({
+                            url: "/ajax_load_lessons_videos/"+id,
+                            success: function (result) {
+                                $("#doc"+id).append('<p>Видеоматериалы:</p>');
+                                var json = $.parseJSON(result);
+                                json.forEach(function(item, i, json) {
+                                    $("#doc"+id).append('<p>'+json[i].video_url+'</p>');
+                                });
+                        }})
+                        $.ajax({
+                            url: "/ajax_load_lessons_audios/"+id,
+                            success: function (result) {
+                                $("#doc"+id).append('<p>Аудиоматериалы:</p>');
+                                var json = $.parseJSON(result);
+                                json.forEach(function(item, i, json) {
+                                    $("#doc"+id).append('<p>'+json[i].audio_url+'</p>');
+                                });
+                        }})
+                    }
+
+                    else {
+                        $("#home-tab").removeClass('active');
+                        $("#home").removeClass('show active');
+                        $("#docTab"+id).addClass('active');
+                        $("#doc"+id).addClass('show active');
+                    }
+                });
+        }});
+
     });
-    }})
-
-});
+})
 const domain = 'meet.jit.si';
 const options = {
     roomName: 'asdffhdgfha',

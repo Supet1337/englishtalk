@@ -97,16 +97,16 @@
         </button>
       </div>
             <div class="container">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <ul class="nav nav-tabs" id="myTabModal" role="tablist">
   <li class="nav-item" role="presentation">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><i class="fa fa-lock"> По паролю</i></a>
+    <a class="nav-link active" id="home-tabModal" data-toggle="tab" href="#homeModal" role="tab" aria-controls="homeModal" aria-selected="true"><i class="fa fa-lock"> По паролю</i></a>
   </li>
   <li class="nav-item" role="presentation">
     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><i class="fa fa-magic"> По магической ссылке</i></a>
   </li>
 </ul>
-<div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+<div class="tab-content" id="myTabContentModal">
+  <div class="tab-pane fade show active" id="homeModal" role="tabpanel" aria-labelledby="home-tabModal">
       <form class="needs-validation" method="POST" action="/login-user" novalidate>
                         {% csrf_token %}
                         <br>
