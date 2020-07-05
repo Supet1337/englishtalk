@@ -36,8 +36,6 @@ def login_user(request):
 
 
 def register_user(request):
-
-
     if request.method == "POST":
         user = User()
         user.username = get_random_string(length=16)
@@ -66,6 +64,23 @@ def register_user(request):
                 user.email], fail_silently=False)
             messages.success(request, "Вы успешно зарегистрировались. Ваш пароль отправлен на "+str(user.email))
     return HttpResponseRedirect('../')
+
+
+def send_request_view(request):
+    if request.method == "POST":
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('surname')
+        email = request.POST.get('email')
+        phone_number = request.POST.get('phone')
+        message = "Hello! " +first_name+" "+last_name+ "\nПоздравляем!" \
+            " Вы подали заявку на пробный урок. \nВ скором времени вам " \
+            "перезвонят.\n\n\n" \
+            "С уважением, команда EnglishTalk  "
+        send_mail(
+            'Заявка на курс EnglishTalk', message, 'noreply.englishtalk@gmail.com', [
+            email], fail_silently=False)
+        messages.success(request, "Вы успешно подали заявку. Проверьте почтовый ящик "+str(email))
+        return HttpResponseRedirect('/')
 
 
 def index(request):

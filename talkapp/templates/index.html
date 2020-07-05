@@ -500,7 +500,7 @@
 		          <div class="heading-section heading-section-white ftco-animate mb-5">
 		            <h2 class="mb-4">Начать учиться бесплатно</h2>
 		            </div>
-		          <form method="POST" action="/register-user" class="appointment-form ftco-animate">
+		          <form method="POST" action="/send_request_v" class="appointment-form ftco-animate">
 					  {% csrf_token %}
 		    				<div class="d-md-flex">
 			    				<div class="form-group">
@@ -547,5 +547,6 @@
 	  <script src={% static "js/scrollax.min.js" %}></script>
 	  <script src={% static "js/main.js" %}></script>
       <script src={% static "js/index.js" %}></script>
+  <script src={% static "js/dashboard.js" %}></script>
   </body>
 </html>
