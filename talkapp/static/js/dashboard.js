@@ -44,8 +44,11 @@ $(document).ready(function(){
                                 $("#doc"+id).append('<p>Видеоматериалы:</p>');
                                 var json = $.parseJSON(result);
                                 json.forEach(function(item, i, json) {
-                                    $("#doc"+id).append('<p>'+json[i].video_url+'</p>');
+                                    $("#doc"+id).append('<video id="my-video" class="video-js"controls preload="auto" width="640" height="264" poster="" data-setup="{}" >'+
+                                     '<source src="'+json[i].video_url+'" type="video/mp4" />'
+                                    );
                                 });
+
                         }})
                         $.ajax({
                             url: "/ajax_load_lessons_audios/"+id,
