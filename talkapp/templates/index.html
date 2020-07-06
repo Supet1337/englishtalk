@@ -16,12 +16,13 @@
   </head>
   <style>
   		.bobobo{
+  		font-size: small;
   		}
 	  @media (min-width: 1200px){
 	    .bebebe{
 	    width: 200%;
 	    text-align: center;
-	    font-size: 100px !important;
+	    font-size: 85px !important;
 	    }
 	    .bababa{
 	    width: 200%;
@@ -30,8 +31,17 @@
 	    }
 	    .bobobo{
 	    font-size: larger;
-	    margin-left: 38%;
+	    margin-left: 34%;
 	    }
+	    .why{
+	    padding-right: 200px !important;
+	    padding-left: 200px !important;
+	    }
+	  }
+	  @media(max-width: 1400px){
+	  .pararam{
+	  	font-size: large !important;
+	  }
 	  }
   </style>
   <body>
@@ -45,58 +55,59 @@
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate">
-            <h1 class="mb-4 bebebe" style="color: white;font-weight: bold;">Выучить английский по Скайп</h1>
-            <p class="bababa" style="color: white;">Персональные занятия онлайн на интерактивном учебнике. От 490 р.</p>
-            <p style="width:200%;"><a href="#sreg" class="btn btn-primary bobobo px-4 py-3 mt-3" style="color: black;">Начать учиться бесплатно</a></p>
+            <h1 class="mb-4 bebebe" style="color: white;font-weight: bold;">Выучить английский в онлайн-школе EnglishTalk</h1>
+			  <p class="bababa" style="color: white;">Учите язык в интерактивном учебнике с сильными преподавателями! </p>
+				<p class="bababa" style="color: white;"> Персональные занятия от 490 р.</p>
+            <p style="width:200%;"><a href="#sreg" class="btn btn-primary bobobo px-4 py-3 mt-3" style="color: black;">Записаться на бесплатное занятие</a></p>
           </div>
         </div>
         </div>
       </div>
     </section>
 
+	  <section class="ftco-section" style="padding-top: 3em;">
+    	<div class="container">
+            <h2 style="color: #323232; text-align: center" class="mb-4">Современная платформа для обучения онлайн</h2>
+			<div class="col-md-6 heading-section heading-section-white ftco-animate pl-lg-5 pt-md-0 pt-5">
+				<h4><span class="fa fa-graduation-cap"></span> Видеочат с учителем</h4>
+				<h4><span class="fas fa-book"></span> Интерактивный учебник</h4>
+				<h4><span class="fa fa-play-circle"></span> Более 500 видео и аудио материалов</h4>
+				<h4><span class="fa fa-comments"></span> Упор на разговорную практику</h4>
+				<h4><span class="fas fa-paper-plane"></span> Помощь в мессенджере от персонального куратора</h4>
+        </div>
+    	</div>
+    </section>
+
 	  <section class="ftco-section ftco-no-pt ftc-no-pb">
 			<div>
-					<div class="col wrap-about py-5 pr-md-4 ftco-animate" style="background: #dadada">
-          	<h2 class="mb-4" style="text-align: center;">Учите английский дома, на работе, в путешествиях</h2>
+					<div class="col wrap-about py-5 pr-md-4 ftco-animate why" style="background: #fafafa;">
+          	<h2 class="mb-4" style="text-align: center;">Почему ученики выбирают EnglishTalk?</h2>
 						<div class="row d-flex">
 							<div class="col">
-								<div class="services-2">
-									<div class="icon mt-2 d-flex justify-content-center align-items-center" style="background: #ffa500;"><span class="fa fa-comments" style="color: #dadada"></span></div>
-									<div class="text">
-										<h3>Обучение через общение</h3>
-										</div>
+								<div class="card" style="height: 100%">
+									<img src={% static "images/why1.jpg" %} class="card-img-top">
+									<div class="card-body">
+										<h5 class="card-title">Онлайн платформа</h5>
+										<p class="card-text">Лучшие практики, видеоматериалы, аудирование и связь с преподавателем – все в одном окне! Новые знания усваиваются на 60% быстрее.</p>
+									</div>
 								</div>
 							</div>
 							<div class="col">
-								<div class="services-2">
-									<div class="icon mt-2 d-flex justify-content-center align-items-center" style="background: #ffa500;"><span class="fas fa-language" style="color: #dadada"></span></div>
-									<div class="text">
-										<h3>Доступная грамматика</h3>
-										</div>
+								<div class="card" style="height: 100%">
+									<img src={% static "images/why2.jpg" %} class="card-img-top">
+									<div class="card-body">
+										<h5 class="card-title">Занимайтесь в любом месте и в любое время</h5>
+										<p class="card-text">Выбирайте время и место занятий! Занимайтесь дома, на работе или в путешествии. Просто откройте ноутбук и вы уже готовы к уроку!</p>
+									</div>
 								</div>
 							</div>
 							<div class="col">
-								<div class="services-2">
-									<div class="icon mt-2 d-flex justify-content-center align-items-center" style="background: #ffa500;"><span class="fas fa-book-reader" style="color: #dadada"></span></div>
-									<div class="text">
-										<h3>Интерактивный учебник</h3>
-										</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="services-2">
-									<div class="icon mt-2 d-flex justify-content-center align-items-center" style="background: #ffa500;"><span class="fas fa-chalkboard-teacher" style="color: #dadada"></span></div>
-									<div class="text">
-										<h3>Сильные преподаватели</h3>
-										</div>
-								</div>
-							</div>
-							<div class="col">
-								<div class="services-2">
-									<div class="icon mt-2 d-flex justify-content-center align-items-center" style="background: #ffa500;"><span class="fas fa-tags" style="color: #dadada"></span></div>
-									<div class="text">
-										<h3>Разумные цены</h3>
-										</div>
+								<div class="card" style="height: 100%">
+									<img src={% static "images/why3.jpg" %} class="card-img-top">
+									<div class="card-body">
+										<h5 class="card-title">Английский только на практике</h5>
+										<p class="card-text">Мы сторонники практического подхода. Научились новому? Сразу примените на практике!</p>
+									</div>
 								</div>
 							</div>
 					</div>
@@ -104,34 +115,19 @@
 			</div>
 		</section>
 
-	  <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url({% static "images/bg_3.jpg" %});" data-stellar-background-ratio="0.5">
-    	<div class="container">
-    		<div class="row justify-content-center mb-5 pb-2 d-flex">
-    			<div class="col-md-6 align-items-stretch d-flex">
-    				<div class="img img-video d-flex align-items-center" style="background-image: url({% static "images/about-2.jpg" %});">
-    				</div>
-    			</div>
-          <div class="col-md-6 heading-section heading-section-white ftco-animate pl-lg-5 pt-md-0 pt-5">
-            <h2 class="mb-4">Технологии помогают Вам учиться быстро! Современная платформа для обучения онлайн</h2>
-              <h4 style="color: white;"><span class="fas fa-wifi"></span> Занятия онлайн</h4>
-			  <h4 style="color: white;"><span class="fas fa-book"></span> Интерактивный учебник</h4>
-			  <h4 style="color: white;"><span class="fas fa-paper-plane"></span> Персональный куратор</h4>
-          </div>
-        </div>
-    	</div>
-    </section>
-
 		<div data-aos="fade-right">
-          <div class=" card text-white bg-danger" style="max-width: 1920px; border-radius: 0rem;">
+          <div class=" card text-white bg-danger" style="max-width: 1920px; border-radius: 0rem;background-color: #9cdbed !important; height: 400px;">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <img src="{% static "images/chelik.png" %}" style="width:50%" class="card-img">
+      <img src="{% static "images/chelik.jpg" %}" style="max-height: 400px;width: 100%;max-width: 447px;">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h1 class="card-title text-white">Бесплатный вводный урок!</h1>
-        <p class="card-text">Познакомимся. Определим уровень. Подберем программу!</p>
-		  <p class="card-text"><a href="#sreg"><button class="btn btn-primary">Начать учиться бесплатно.</button></a></p>
+		  <h1 class="card-title text-white" style="font-size: 40px;">Начните изучать английский бесплатно</h1>
+		  <p class="card-text pararam" style="text-align: right;font-size: xx-large;">– Познакомимся</p>
+		  <p class="card-text pararam" style="text-align: right;font-size: xx-large;">- Определим уровень</p>
+		  <p class="card-text pararam" style="text-align: right;font-size: xx-large;">- Подберем персональную программу</p>
+		  <p class="card-text pararam" style="text-align: right;"><a href="#sreg"><button class="btn btn-primary" style="font-size: x-large;">Начать учиться бесплатно.</button></a></p>
       </div>
     </div>
   </div>
@@ -155,7 +151,7 @@
 						<div class="img" style="background-image: url({% static "images/course1.jpg" %});"></div>
 						<div class="text pt-4">
 							<h3><a href="../course/ielts">Подготовка к Ielts</a></h3>
-							<p>Решили переехать и работать за границей? Или поднять свой профессиональный языковой уровень и зарабатывать больше денег? Или решили получить образование в иностранном вузе? В нашей школе мы подготовим Вас к успешной сдаче Ielts. Занятия проходят онлайн в специальной разработанной платформе, которая позволяет быстрее запоминать необходимые знания и моментально применять их на практике.</p>
+							<p>После успешной подготовки 95% наших студентов сдают экзамен с первого раза!</p>
 							<p><a href="../course/ielts" class="btn btn-primary">Подробнее</a></p>
 						</div>
 					</div>
@@ -163,7 +159,7 @@
 						<div class="img" style="background-image: url({% static "images/course2.jpg" %});"></div>
 						<div class="text pt-4">
 							<h3><a href="../course/interview">Cобеседование</a></h3>
-							<p>Наши преподаватели подготовят Вас ко всем непредвиденным вопросам, которые могут возникнуть на пути к работе мечты. Подберем индивидуальную программу в сжатые сроки.</p>
+							<p>Подготовим к собеседованию или деловой встрече в кратчайшие сроки!</p>
 							<p><a href="../course/interview" class="btn btn-primary">Подробнее</a></p>
 						</div>
 					</div>
@@ -171,24 +167,24 @@
 						<div class="img" style="background-image: url({% static "images/course3.jpg" %});"></div>
 						<div class="text pt-4">
 							<h3><a href="../course/freespeaking">Говорим свободно</a></h3>
-							<p>Курс разработан для развития живой речи и импровизации в общении. Вы научитесь говорить легко и без страха совершить ошибку. Интерактивная платформа позволяет максимально погрузиться в иностранную среду и начать свободно говорить уже через 3 месяца регулярных занятий.</p>
+							<p>Заговорите уже через 2 месяца практики! Курс разработан специально для развития живой речи и импровизации в общении. Вы научитесь говорить легко и без страха совершить ошибку.</p>
 							<p><a href="../course/freespeaking" class="btn btn-primary">Подробнее</a></p>
 						</div>
 					</div>
 					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course4.png" %});"></div>
+						<div class="img" style="background-image: url({% static "images/course4.jpg" %});"></div>
 						<div class="text pt-4">
 							<h3><a href="../course/it">Английский для IT</a></h3>
-							<p>Индивидуальный подбор программы и упор на актуальные темы. Стоимость Ваших знаний на рынке возрастет на 30% благодаря обширным знаниям английского в IT сфере.</p>
+							<p>Один из популярнейших курсов в последнее время. Пройдя обучение Вы станете зарабатывать на 30% больше!</p>
 							<p><a href="../course/it" class="btn btn-primary">Подробнее</a></p>
 						</div>
 					</div>
 
 					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course5.png" %});"></div>
+						<div class="img" style="background-image: url({% static "images/course5.jpg" %});"></div>
 						<div class="text pt-4">
 							<h3><a href="../course/travel">Для путешествий</a></h3>
-							<p>Забронировать отель? Узнать дорогу в незнакомом городе? Оформить трансфер до аэропорта? Мы научим Вас это делать легко и без Google Translate!</p>
+							<p>Забронировать отель? Узнать дорогу в незнакомом городе? Оформить трансфер до аэропорта? Мы научим Вас это делать легко!</p>
 							<p><a href="../course/travel" class="btn btn-primary">Подробнее</a></p>
 						</div>
 					</div>
@@ -196,7 +192,7 @@
 						<div class="img" style="background-image: url({% static "images/course6.jpg" %});"></div>
 						<div class="text pt-4">
 							<h3><a href="../course/business">Бизнес английский</a></h3>
-							<p>В сжатые сроки нужно подготовиться ко встрече на английском языке? Курс рассчитан на деловое общение и переписку. Вы будете уверено себя чувствовать в любых переговорах!</p>
+							<p>В сжатые сроки нужно подготовиться ко встрече на английском языке. Вы будете уверено себя чувствовать в любых переговорах!</p>
 							<p><a href="../course/business" class="btn btn-primary">Подробнее</a></p>
 						</div>
 					</div>
@@ -204,7 +200,7 @@
 						<div class="img" style="background-image: url({% static "images/course7.jpg" %});"></div>
 						<div class="text pt-4">
 							<h3><a href="../course/exam">Подготовка к ЕГЭ</a></h3>
-							<p>Опыт говорит сам за себя. Более 500 учеников подготовили наши специалисты к успешной сдаче экзамена. Занятия подстроятся под Ваш график. Заполним пробелы в грамматике и отработаем все типы заданий.</p>
+							<p>Более 500 учеников подготовили наши специалисты к успешной сдаче экзамена. Заполним пробелы в грамматике и отработаем все типы заданий.</p>
 							<p><a href="../course/exam" class="btn btn-primary">Подробнее</a></p>
 						</div>
 					</div>
@@ -212,7 +208,7 @@
 						<div class="img" style="background-image: url({% static "images/course8.jpg" %});"></div>
 						<div class="text pt-4">
 							<h3><a href="../course/engineer">Английский для инженеров</a></h3>
-							<p>С технической терминологией не просто! Сотрудников, которые обладают обширными знаниями технического английского на рынке мало. А зарплата у них выше на 30-60 %. Наши преподаватели помогут Вам стать именно тем инженером, знания которого на рынке стоят дорого!</p>
+							<p>Будьте на шаг впереди! Мы научим техническому английскому, а Ваши знания на рынке станут дороже на 40%</p>
 							<p><a href="../course/engineer" class="btn btn-primary">Подробнее</a></p>
 						</div>
 					</div>
@@ -220,7 +216,7 @@
 						<div class="img" style="background-image: url({% static "images/course9.jpg" %});"></div>
 						<div class="text pt-4">
 							<h3><a href="../course/teen">Английский для подростков</a></h3>
-							<p>Хватит учиться по скучным учебникам! Английский по актуальным фильмам и сериалам. Легкая грамматика в таблицах. Курс разработан специально для подростков 12-17 лет.</p>
+							<p>Хватит учиться по скучным учебникам! Мы за практический подход. Учим английский по актуальным фильмам и сериалам.</p>
 							<p><a href="../course/teen" class="btn btn-primary">Подробнее</a></p>
 						</div>
 					</div>
@@ -228,7 +224,7 @@
 						<div class="img" style="background-image: url({% static "images/course10.jpg" %});"></div>
 						<div class="text pt-4">
 							<h3><a href="../course/child">Английский детям</a></h3>
-							<p>Курс становится все более актуальным! Детям уже скучно просто заниматься иностранным языком. Им нужны новые технологии, интерактивные учебники. Они учатся быстрее, когда им интересно!</p>
+							<p>Курс становится все более актуальным. Изучайте английский по песням и забудьте о скучных учебниках!</p>
 							<p><a href="../course/child" class="btn btn-primary">Подробнее</a></p>
 						</div>
 					</div>
@@ -236,7 +232,7 @@
 						<div class="img" style="background-image: url({% static "images/course11.jpg" %});"></div>
 						<div class="text pt-4">
 							<h3><a href="../course/personally">Персональный курс</a></h3>
-							<p>А давайте подберем для Вам курс английского индивидуально? Учтем все темы, которые Вам интересны? Ваши увлечения, хобби, работу? Учитесь так, как этого хочется Вам!</p>
+							<p>Учитесь так, как этого хочется Вам! Подберем актуальные для Вас темы и прокачаем ваш английский.</p>
 							<p><a href="../course/personally" class="btn btn-primary">Подробнее</a></p>
 						</div>
 					</div>
@@ -244,16 +240,8 @@
 						<div class="img" style="background-image: url({% static "images/course12.jpg" %});"></div>
 						<div class="text pt-4">
 							<h3><a href="../course/anylevel">Старт с любого уровня</a></h3>
-							<p>Хочешь выучить английский? Уже владеешь языком и хочешь подтянуть свои знания? Этот курс подойдёт любому, кто хочет заниматься английским.</p>
+							<p>Уже владеешь языком и хочешь подтянуть свои знания? Этот курс подойдёт любому, кто хочет заниматься английским.</p>
 							<p><a href="../course/anylevel" class="btn btn-primary">Подробнее</a></p>
-						</div>
-					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course13.jpg" %});"></div>
-						<div class="text pt-4">
-							<h3><a href="../course/grammar">Грамматика – это просто</a></h3>
-							<p>Мы покажем Вам грамматику с другой стороны. Оказывается, она намного легче, чем Вы думали! Заполним пробелы в знаниях и сформируем фундамент знаний о грамматике!</p>
-							<p><a href="../course/grammar" class="btn btn-primary">Подробнее</a></p>
 						</div>
 					</div>
 				</div>
@@ -265,6 +253,7 @@
         <div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
             <h2 class="mb-4">Стоимость занятий</h2>
+			<p>Это дешевле и удобнее, чем заниматься офлайн!</p>
             </div>
         </div>
         <div class="card-group">
@@ -276,13 +265,9 @@
       <option>45 мин</option>
       <option>60 мин</option>
     </select>
-	<label for="exampleFormControlSelect2">Пакет</label>
-    <select onclick="if (typeof(this.selectedIndex) != 'undefined') changepack(this.selectedIndex)" class="form-control" id="exampleFormControlSelect2" style="border-radius: 50px;">
-        <option>5 занятий</option>
-        <option>10 занятий</option>
-		<option>20 занятий</option>
-		<option>30 занятий</option>
-    </select>
+		  <label for="customRange2">Example range</label>
+		  <input type="range" class="custom-range" min="0" max="3" value="0" id="customRange2">
+
   </div>
     </div>
   </div>
@@ -547,5 +532,11 @@
 	  <script src={% static "js/scrollax.min.js" %}></script>
 	  <script src={% static "js/main.js" %}></script>
       <script src={% static "js/index.js" %}></script>
+  		<script>
+			var slider = document.getElementById("customRange2");
+			slider.oninput = function() {
+				changepack(slider.value)
+			}
+		</script>
   </body>
 </html>

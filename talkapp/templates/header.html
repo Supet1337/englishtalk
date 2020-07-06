@@ -1,5 +1,5 @@
 {%load static%}
-<nav class="navbar sticky-top navbar-expand-lg navbar-light fixed-top" style="background-color: #0062cc;width: 100%;padding-top: 0px;padding-bottom: 0px;box-shadow: 0px 2px 7px 0px black;">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light fixed-top" style="background: radial-gradient(circle farthest-side at 30px 20px, #37bdc7, #3495c0);width: 100%;padding-top: 0px;padding-bottom: 0px;box-shadow: 0px 2px 7px 0px black;">
                     <a class="navbar-brand" href="../../">EnglishTalk</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -14,7 +14,7 @@
         <a class="nav-link dropdown-toggle" style="padding-top: 14px; padding-bottom: 14px;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Курсы
         </a>
-        <div class="dropdown-menu" style="background-color: #0062cc;top: 90%;box-shadow: 0 1px 9px black;overflow-y: scroll; height: 500px;" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" style="background-color: #37bdc7;top: 90%;box-shadow: 0 1px 9px black;overflow-y: scroll; height: 500px;" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" style="" href="../courses">Все курсы</a>
             <div class="dropdown-divider"></div>
           <a class="dropdown-item" style="" href="../course/ielts">Подготовка к Ielts</a>
@@ -64,11 +64,11 @@
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item dropdown nav-user">
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img alt="User Avatar" style="width: 40px; height: 40px;" class="rounded-circle user-avatar-xxl" src={% static "images/indus.jpeg" %}>
-                            </a>
                              {% if request.user.is_authenticated %}
-                            <div class="dropdown-menu dropdown-menu-right" style="background-color: #0062cc;top: 90%;box-shadow: 0 1px 9px black;" aria-labelledby="navbarDropdown">
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img alt="User Avatar" style="width: 46px; height: 40px;" src={% static "images/logotip.png" %}>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" style="background-color: #37bdc7;top: 90%;box-shadow: 0 1px 9px black;" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" style="" href="../dashboard">Личный кабинет</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Оплата</a>
@@ -76,9 +76,9 @@
                                 <a class="dropdown-item" href="/logout">Выход</a>
                             </div>
                             {% else %}
-                             <div class="dropdown-menu dropdown-menu-right" style="background-color: #0062cc;top: 90%;box-shadow: 0 1px 9px black;" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" data-toggle="modal" data-target="#myModal" style="" href="">Авторизоваться</a>
-                            </div>
+                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary">Войти</button>
+                            </a>
                             {% endif %}
                         </li>
                     </ul>
