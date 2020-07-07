@@ -44,3 +44,19 @@ function changepack(np){
     pack = np;
     calccost();
 }
+function val(){
+	elem = document.getElementById('customRange2').value;
+	if (elem == 0){
+		elem = 5;
+	}
+	if (elem == 1){
+		elem = 10;
+	}
+	if (elem == 2){
+		elem = 15;
+	}
+	if (elem == 3){
+		elem = 20;
+	}
+	document.getElementById('val').innerHTML = elem;
+}

@@ -43,6 +43,7 @@
 	  	font-size: large !important;
 	  }
 	  }
+
   </style>
   <body>
 	  {% include "header.html" %}
@@ -265,11 +266,9 @@
       <option>45 мин</option>
       <option>60 мин</option>
     </select>
-		  <label for="customRange2">Example range</label>
-		  <input type="range" class="custom-range" min="0" max="3" value="0" id="customRange2">
+		  <label for="customRange2">Выберите кол-во занятий: <span id="val"5</span></label>
+			  <input type="range" onmousemove="val()" class="custom-range" min="0" max="3" value="0" id="customRange2">
 
-  </div>
-    </div>
   </div>
   <div class="card">
     <div class="card-body">
