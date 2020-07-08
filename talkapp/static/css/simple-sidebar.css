@@ -1,50 +1,134 @@
+
 /*!
- * Start Bootstrap - Simple Sidebar (https://startbootstrap.com/templates/simple-sidebar)
- * Copyright 2013-2020 Start Bootstrap
- * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-simple-sidebar/blob/master/LICENSE)
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
- #wrapper {
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
     overflow-x: hidden;
- }
-
-#sidebar-wrapper {
-  min-height: 100vh;
-  margin-left: -15rem;
-  -webkit-transition: margin .25s ease-out;
-  -moz-transition: margin .25s ease-out;
-  -o-transition: margin .25s ease-out;
-  transition: margin .25s ease-out;
 }
 
-#sidebar-wrapper .sidebar-heading {
-  padding: 0.875rem 1.25rem;
-  font-size: 1.2rem;
+#wrapper.left-toggled {
+    padding-left: 250px;
 }
 
-#sidebar-wrapper .list-group {
-  width: 15rem;
+#wrapper.right-toggled {
+    padding-right: 250px;
+}
+
+
+#left-sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#right-sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    right: 250px;
+    width: 0;
+    height: 100%;
+    margin-right: -250px;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.left-toggled #left-sidebar-wrapper {
+    width: 250px;
+}
+
+#wrapper.right-toggled #right-sidebar-wrapper {
+    width: 250px;
 }
 
 #page-content-wrapper {
-  min-width: 100vw;
-}
-
-#wrapper.toggled #sidebar-wrapper {
-  margin-left: 0;
-}
-
-@media (min-width: 768px) {
-  #sidebar-wrapper {
-    margin-left: 0;
-  }
-
-  #page-content-wrapper {
-    min-width: 0;
     width: 100%;
-  }
+    position: absolute;
+    padding: 15px;
+}
 
-  #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
-  }
+#wrapper.left-toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+#wrapper.right-toggled #page-content-wrapper {
+    position: absolute;
+}
+
+/* Sidebar Styles */
+
+
+/* Sub-bar styles */
+
+
+/* Toggle Buttons */
+
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+        padding-right: 250px;
+    }
+
+    #wrapper.left-toggled {
+        padding-left: 0;
+    }
+
+    #wrapper.right-toggled {
+        padding-right: 0;
+    }
+
+    #left-sidebar-wrapper {
+        width: 250px;
+    }
+
+    #right-sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.left-toggled #left-sidebar-wrapper {
+        width: 0;
+    }
+
+    #wrapper.right-toggled #right-sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.left-toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+
+    #wrapper.right-toggled #page-content-wrapper {
+        position: relative;
+        margin-left: 0;
+    }
 }

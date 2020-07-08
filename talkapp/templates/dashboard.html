@@ -34,19 +34,15 @@
     </style>
 	<body>
 	{% include "header.html" %}
-		<div class="d-flex" id="wrapper">
-
-    <!-- Sidebar -->
+    <div class="d-flex" id="wrapper">
     {% include "leftsidebar.html" %}
-    <!-- /#sidebar-wrapper -->
+    {% include "right-sidebar.html" %}
     {% include "messages.html" %}
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="tab-content" id="nav-tabContent">
-
         <div class="tab-pane fade show active" id="d0" role="tabpanel" aria-labelledby="dd0" style="margin: 20px;"><div role="tabpanel" style="margin: 20px;">
-
                 <div class="card border-warning mb-3">
                     <div class="card-header">
                         Баланс
@@ -111,8 +107,6 @@
         </div>
         </div>
       <div class="tab-pane fade " id="d1" role="tabpanel" aria-labelledby="dd1" style="margin: 20px;">
-          <div class="row">
-              <div class="col-8">
               <div class="card">
                   <div class="card-header">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -140,12 +134,7 @@
                 </div>
 
                   </div>
-                  </div>
-              <div class="col">
-                  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-              <div class="card" id="chat" style="min-width: 320px;"></div>
-                  </div>
-          </div>
+
       </div>
       <div class="tab-pane fade" id="d2" role="tabpanel" aria-labelledby="dd2" style="margin: 20px;">
 <div class="row row-cols-1 row-cols-md-3">
@@ -762,7 +751,6 @@
     </div>
     <!-- /#page-content-wrapper -->
 
-  </div>
     <div class="modal fade" id="dzModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

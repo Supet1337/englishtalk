@@ -33,7 +33,7 @@ $(document).ready(function(){
                                  '</a>'+
                                  '</li>');
                         $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
-                                 '<div class="card-body" style="height: 700px;">'+
+                                 '<div class="card-body" style="height: 1200px;">'+
                                  '<object><embed src="'+json[i].docx_url+'" style="width: 100%; height: 100%"></object>'+
                                  '</div>'+
                                  '</div>');
@@ -111,9 +111,20 @@ function tog(){
     else
         document.getElementById("angle").className = "fa fa-angle-left";
     s += 1;
-    $("#wrapper").toggleClass("toggled");
+    $("#wrapper").toggleClass("left-toggled");
 }
 
 $(document).ready(function () {
  bsCustomFileInput.init()
 })
+
+var s = 1;
+function tog_right(){
+    if(s % 2 == 1)
+        document.getElementById("angle-right").className = "fa fa-angle-left";
+    else
+        document.getElementById("angle-right").className = "fa fa-angle-right";
+    s += 1;
+    $("#wrapper").toggleClass("right-toggled");
+}
+
