@@ -6,10 +6,27 @@ $('#dzModal').on('show.bs.modal', function (event) {
     $('#dzFile').attr('href',recipient)
 })
 function closeDoc(id){
+    if ($("#docTab"+id).hasClass('active')){
+        $("#home-tab").addClass('active');
+        $("#home").addClass('show active');
+    }
     $("#docLabel"+id).remove();
     $("#doc"+id).remove();
-    $("#home-tab").addClass('active');
-    $("#home").addClass('show active');
+}
+
+function closeVid(id,lid){
+    if ($("#vidTab"+id).hasClass('active')){
+        if(!$("#docTab"+lid).length){
+            $("#home-tab").addClass('active');
+            $("#home").addClass('show active');
+        }
+        else{
+            $("#docTab"+lid).addClass('active');
+            $("#doc"+lid).addClass('show active');
+        }
+    }
+    $("#vidLabel"+id).remove();
+    $("#vid"+id).remove();
 }
 
 
@@ -39,18 +56,6 @@ $(document).ready(function(){
                                  '</div>');
 
                         $.ajax({
-                            url: "/ajax_load_lessons_videos/"+id,
-                            success: function (result) {
-                                $("#doc"+id).append('<p>Видеоматериалы:</p>');
-                                var json = $.parseJSON(result);
-                                json.forEach(function(item, i, json) {
-                                    $("#doc"+id).append('<video id="my-video" class="video-js"controls preload="auto" width="640" height="264" poster="" data-setup="{}" >'+
-                                     '<source src="'+json[i].video_url+'" type="video/mp4" />'
-                                    );
-                                });
-
-                        }})
-                        $.ajax({
                             url: "/ajax_load_lessons_audios/"+id,
                             success: function (result) {
                                 $("#doc"+id).append('<p>Аудиоматериалы:</p>');
@@ -60,7 +65,17 @@ $(document).ready(function(){
                                         '<source src="'+json[i].audio_url+'" type="audio/mpeg">'+
                                         '</audio>');
                                 });
-                        }})
+                        }}).then(
+                        $.ajax({
+                            url: "/ajax_load_lessons_videos/"+id,
+                            success: function (result) {
+                                $("#doc"+id).append('<p>Видеоматериалы:</p>');
+                                var json = $.parseJSON(result);
+                                json.forEach(function(item, i, json) {
+                                    $("#doc"+id).append('<a id="openVid'+json[i].video_id+'" href="#">'+json[i].video_name+'</a>');
+                                });
+
+                        }}));
                     }
 
                     else {
@@ -73,7 +88,47 @@ $(document).ready(function(){
         }});
 
     });
-})
+
+    $("#myTabContent").on('click','a[id^="openVid"]', function () {
+        i = $(this).attr("id");
+       const id = i.slice(7);
+        $.ajax({
+            url: "/ajax_load_video/"+id,
+            success: function (result) {
+                var json = $.parseJSON(result);
+                json.forEach(function(item, i, json) {
+                    if(!$("#vidLabel"+id).length){
+                        $("#docTab"+json[i].lesson_id).removeClass('active');
+                        $("#doc"+json[i].lesson_id).removeClass('show active');
+                        $("#myTab").append('<li class="nav-item" id="vidLabel'+id+'" role="presentation">'+
+                                 '<a class="nav-link active" id="vidTab'+id+'" data-toggle="tab" href="#vid'+id+'" role="tab" aria-controls="vid'+id+'" aria-selected="false">'+json[i].video_name+
+                                 '<button type="button" class="close" onclick="closeVid('+id+','+json[i].lesson_id+')" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<span aria-hidden="true">&times;</span>'+
+                                 '</button>'+
+                                 '</a>'+
+                                 '</li>');
+                        $("#myTabContent").append('<div class="tab-pane fade show active" id="vid'+id+'" role="tabpanel" aria-labelledby="vidTab'+id+'">'+
+                                 '<div class="card-body" style="height: 700px;">'+
+                                 '<video id="my-video" class="video-js"controls preload="auto" width="640" height="264" poster="" data-setup="{}" >'+
+                                 '<source src="'+json[i].video_url+'" type="video/mp4" />'+
+                                 '</div>'+
+                                 '</div>');
+                    }
+
+                    else {
+                        $("#docTab"+json[i].lesson_id).removeClass('active');
+                        $("#doc"+json[i].lesson_id).removeClass('show active');
+                        $("#vidTab"+id).addClass('active');
+                        $("#vid"+id).addClass('show active');
+                    }
+                });
+        }});
+
+    });
+});
+
+
+
 const domain = 'meet.jit.si';
 const options = {
     roomName: 'asdffhdgfha',

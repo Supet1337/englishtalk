@@ -105,6 +105,11 @@ def ajax_load_lessons_videos(request, number):
         vid.append(i.json())
     return HttpResponse(json.dumps(vid))
 
+def ajax_load_video(request, number):
+    vid = []
+    vid.append(Lesson_video.objects.get(id=number).json())
+    return HttpResponse(json.dumps(vid))
+
 def ajax_load_lessons_audios(request, number):
     aud = []
     for i in Lesson.objects.get(id=number).get_lesson_audios():
