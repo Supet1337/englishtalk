@@ -1,15 +1,7 @@
 {% load static %}
-        <div id="right-sidebar-wrapper">
-            <div class="bg-light border-right" id="left-sidebar-wrapper">
-    <div style="padding: 0.875rem 1.25rem;font-size: 1.2rem;">Меню</div>
-      <div class="list-group" id="list-tab" role="tablist">
-        <a class="list-group-item list-group-item-action active" id="dd0" data-toggle="list" href="#d0" role="tab">Личный кабинет</a>
-        <a class="list-group-item list-group-item-action" id="dd1" data-toggle="list" href="#d1" role="tab">Платформа</a>
-        <a class="list-group-item list-group-item-action" id="dd3" data-toggle="list" href="#d3" role="tab">Расписание</a>
-        <a class="list-group-item list-group-item-action" id="dd4" data-toggle="list" href="#d4" role="tab">Домашнее задание</a>
-        <a class="list-group-item list-group-item-action" id="dd5" data-toggle="list" href="#d5" role="tab">Видеопрактика</a>
-        <a class="list-group-item list-group-item-action" id="dd8" data-toggle="list" href="#d8" role="tab">Блог</a>
-      </div>
-</div>
-        </div>
-             <button class="btn btn-white fixbut" style="border-radius: 0px;" onclick="tog_right()" id="menu-toggle-right"><i class="fa fa-angle-right" id="angle-right" aria-hidden="true"></i> </button>
+    <div class="bg-light border-right" id="right-sidebar-wrapper">
+        <div style="padding: 0.875rem 1.25rem;font-size: 1.2rem;">Видеочат</div>
+            <div class="card" id="chat" style="min-width: 320px;"></div>
+    </div>
+<button class="btn btn-white fixbut" style="border-radius: 0px; position: fixed;right:0;bottom: 0;z-index: 1001" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> </button>
+

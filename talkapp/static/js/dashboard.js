@@ -2,7 +2,6 @@ $('#dzModal').on('show.bs.modal', function (event) {
     var div = $(event.relatedTarget)
     var recipient = div.data('number')
     var modal = $(this)
-    modal.find('.modal-title').text(recipient)
     $('#dzFile').attr('href',recipient)
 })
 function closeDoc(id){
@@ -53,6 +52,7 @@ $(document).ready(function(){
                                  '<div class="card-body" style="height: 1200px;">'+
                                  '<object><embed src="'+json[i].docx_url+'" style="width: 100%; height: 100%"></object>'+
                                  '</div>'+
+                                 '<button type="button" class="btn btn-primary" data-toggle="modal" data-number="'+json[i].docx_url+'" data-target="#dzModal">Отправить дз ученику</button>'+
                                  '</div>');
 
                         $.ajax({
@@ -70,6 +70,7 @@ $(document).ready(function(){
                             url: "/ajax_load_lessons_videos/"+id,
                             success: function (result) {
                                 $("#doc"+id).append('<p>Видеоматериалы:</p>');
+
                                 var json = $.parseJSON(result);
                                 json.forEach(function(item, i, json) {
                                     $("#doc"+id).append('<a id="openVid'+json[i].video_id+'" href="#">'+json[i].video_name+'</a>');
@@ -148,7 +149,7 @@ const options = {
      },
     parentNode: document.querySelector('#chat')
 };
-//const api = new JitsiMeetExternalAPI(domain, options);
+const api = new JitsiMeetExternalAPI(domain, options);
 
 
 $(document).ready(function(){
@@ -172,14 +173,26 @@ function tog(){
 $(document).ready(function () {
  bsCustomFileInput.init()
 })
-
-var s = 1;
 function tog_right(){
-    if(s % 2 == 1)
-        document.getElementById("angle-right").className = "fa fa-angle-left";
-    else
-        document.getElementById("angle-right").className = "fa fa-angle-right";
-    s += 1;
+    $("#angle-right").toggleClass("rotate");
     $("#wrapper").toggleClass("right-toggled");
 }
 
+
+$("#ddd8").click(function () {
+    $("#dd8").toggleClass("active");
+    $("#dd0").toggleClass("active");
+
+})
+
+$("#ddd1").click(function () {
+    $("#dd1").toggleClass("active");
+    $("#dd0").toggleClass("active");
+
+})
+
+$("#ddd3").click(function () {
+    $("#dd3").toggleClass("active");
+    $("#dd0").toggleClass("active");
+
+})

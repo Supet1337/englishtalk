@@ -106,7 +106,7 @@
     }
 
     #right-sidebar-wrapper {
-        width: 250px;
+        width: 650px;
     }
 
     #wrapper.left-toggled #left-sidebar-wrapper {
@@ -132,3 +132,10 @@
         margin-left: 0;
     }
 }
+.rotate {
+  transform: rotate(180deg);
+  transition: all 1s ease;
+
+.rotate2 {
+  transform: rotate(-180deg);
+  transition: all 1s ease;

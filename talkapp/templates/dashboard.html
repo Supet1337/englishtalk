@@ -34,7 +34,7 @@
     </style>
 	<body>
 	{% include "header.html" %}
-    <div class="d-flex" id="wrapper">
+    <div class="d-flex right-toggled" id="wrapper">
     {% include "leftsidebar.html" %}
     {% include "right-sidebar.html" %}
     {% include "messages.html" %}
@@ -43,64 +43,110 @@
     <div id="page-content-wrapper">
         <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="d0" role="tabpanel" aria-labelledby="dd0" style="margin: 20px;"><div role="tabpanel" style="margin: 20px;">
-                <div class="card border-warning mb-3">
-                    <div class="card-header">
-                        Баланс
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">4 занятия</h5>
-                        <a href class="card-text">История оплат.</a>
-                        <a href="#" class="btn btn-primary"> Пополнить счёт</a>
-                        <p class="card-text">Оплачено 11 занятий из 30</p>
-                  </div>
-                </div>
-
-            <div class="card border-info mb-3">
-                    <div class="card-header">
-                        Текущий курс
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col">
-                                <h5 class="card-title">Курс</h5>
-                                <a href class="card-text">Пройдено уроков 1/22</a>
-                            </div>
-                            <div class="col">
-                                <h5 class="card-title">Преподаватель</h5>
-                                <div class="item">
-                                    <div class="testimony-wrap d-flex">
-                                      <div class="user-img mr-4" style="background-image: url({% static "images/teacher-2.jpg" %}); width: 120px; height: 120px;">
-                                      </div>
-                                      <div class="text ml-2">
-                                        <span class="quote d-flex align-items-center justify-content-center">
-                                          <i class="fas fa-book"></i>
-                                        </span>
-                                        <p class="name">Нина Ивановна</p>
-                                      </div>
-                                    </div>
-                                  </div>
-                            </div>
-
-
-                    </div>
-                </div>
+            <div class="card border-danger mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{% static "images/private_cab.png" %}" style="border-radius: 16px;" class="card-img w-75">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+          <div class="card-title"><h3>Добро пожаловать в ваш личный кабинет, {{request.user.first_name}} !</h3></div>
+          <a class="card-text">Команда EnglishTalk приветствует Вас в Личном кабинете! </a>
+          <p class="card-text">Мы всегда готовы ответить на любые Ваши вопросы по обучению или даже просто поболтать 😊</p>
+          <div class="ftco-footer-widget mb-5">
+  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Спросить</button>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body" style="max-width:300px">
+                <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                    <li class="ftco-animate">8 800 555 35 35</li>
+                    <li class="ftco-animate">help.englishtalk@gmail.com</li>
+                    <br>
+                    <li class="ftco-animate">@aaaaa</li>
+                </ul>
+          </div>
         </div>
-                            <div class="card border-success mb-3">
+          </div>
+          <div class="card border-success mb-3">
                           <div class="card-header">
                              Настройки личного кабинета
                           </div>
-                                <form method="post" action="../update-profile-settings">
+                                <form method="post" action="../change_email">
                                     {%csrf_token%}
                                 <div class="card-body border-top">
                                     <div class="">
                                         <ul class="list-unstyled mb-0">
                                             <a href="../accounts/password_reset"><li class="mb-2"><i class="fa fa-lock"></i> Сменить пароль</li></a>
+                                            <a data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2" href="#"><li class="mb-2"><i class="fas fa-envelope"></i> Сменить почту</li></a>
+                                            <div class="collapse" id="collapseExample2">
+                                              <div class="card card-body" style="max-width:300px">
+                                                  <input type="email" id="change_email" name="change_email" class="form-control" placeholder="Введите email" required>
+                                              </div>
+                                            </div>
                                         </ul>
                                     </div>
                                 </div>
                                     <input type="submit" class= "btn btn-success" style="width:100%" value="Сохранить изменения">
                                 </form>
                         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            <div class="card border-info mb-3">
+            <section class="ftco-services ftco-no-pb">
+                <div class="container-wrap">
+                    <div class="row no-gutters">
+                        <div class="card-group" style="width:100%">
+                        <div class="card bg-white text-center" >
+                              <div class="card-body">
+                                <h5 class="card-title ">Текущий курс</h5>
+                                <p class="card-text ">Какой-то курсец.</p>
+                                 <a class="btn btn-primary " id="ddd1" data-toggle="list" href="#d1" role="tab">Перейти в онлайн класс</a>
+                              </div>
+                            </div>
+                        <div class="card bg-light text-center">
+                          <div class="item">
+                              <img class="mt-2" src="{% static "images/teacher-2.jpg" %}" width="120" height="120" align="center">
+                                  </div>
+                          <div class="card-body">
+                            <h5 class="card-title">Имя Фамилия</h5>
+                              <a href="mailto:Englishtalk.abc@gmail.com@?subject=Вопрос по Englex" class="btn btn-primary"><i class="fas fa-envelope"></i> Написать</a>
+                              <br>
+                              <br>
+                            <a href="https://t.me/Svvvnd" class="btn btn-primary"><i class="fab fa-telegram"></i> Связаться с куратором</a>
+                          </div>
+                        </div>
+                        <div class="card bg-white text-center" >
+                          <div class="card-body">
+                            <h5 class="card-title">Следущее занятие</h5>
+                              <div style="background: radial-gradient(circle farthest-side at 30px 20px, #37bdc7, #3495c0);" class="card mb-3">
+                              <p  class="card-text"><h3 style="color: white">01.09.20 16.45</h3></p>
+                              </div>
+                              <a class="btn btn-primary " id="ddd3" data-toggle="list" href="#d3" role="tab">Перейти в расписание</a>
+                          </div>
+                        </div>
+                        <div class="card bg-light text-center" style="width:100%">
+                              <div class="card-body">
+                                <h5 class="card-title">Баланс</h5>
+                                  <p class="card-text">Осталось<h2 style="color: red"> 2 </h2>занятия по <h6 style="color: red">60</h6> минут</p>
+                                  <a class="btn btn-success" href="#" >Пополнить $</a>
+                              </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        </section>
+            </div>
+            <div class="card border-success mb-3 text-center">
+              <div class="card-header">Материалы для самоподготовки</div>
+              <div class="card-body text-success">
+                <h5 class="card-title">Учитесь и развивайтесь!</h5>
+                   <a class="btn btn-primary " id="ddd8" data-toggle="list" href="#d8" role="tab">Перейти в блог</a>
+              </div>
+            </div>
 
 
 
@@ -762,12 +808,12 @@
       </div>
       <div class="modal-body">
           <label for="file-name" class="col-form-label">Файл с дз:</label>
-          <a id="dzFile" href="https://docs.google.com/document/d/1MtkJZii58GWNr4L9hBadG3MfXNIHnAYJ53body4Z7hQ/edit?usp=sharing" download>
-              <button type="button" class="btn btn-primary" id="file-name">Скачать</button>
+          <a id="dzFile" href="" download>
+              <button type="button" class="btn btn-primary" id="file-name">Перейти</button>
           </a>
           <form id="submit-dz">
               {% csrf_token %}
-              <h5>Отправить на проверку:</h5>
+              <h5>Отправить ученику:</h5>
           <div class="custom-file">
             <input type="file" class="custom-file-input" id="customFile">
             <label class="custom-file-label" for="customFile" data-browse="Открыть">Выберите файл...</label>

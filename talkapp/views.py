@@ -12,7 +12,7 @@ from django.core.mail import send_mail
 from .models import *
 from .forms import *
 
-
+@login_required
 def loggout(request):
     logout(request)
     return HttpResponseRedirect("/")
@@ -86,13 +86,28 @@ def send_request_view(request):
 def index(request):
     return render(request,'index.html')
 
+@login_required
 def dashboard(request):
     context = {}
     lsn = Lesson.objects.all()
     context["lsn"] = lsn
     return render(request,'dashboard.html', context)
 
-
+@login_required
+def change_email(request):
+    if request.method == "POST":
+        email = request.POST.get("change_email")
+        user = request.user
+        user.email = email
+        if len(User.objects.filter(email=email)) > 0:
+                messages.error(
+                    request, "Пользователь с такой почтой уже существует.")
+                return HttpResponseRedirect("../")
+        else:
+            user.save()
+            messages.success(
+                    request, "Почта успешно изменена.")
+        return HttpResponseRedirect('/dashboard')
 
 def ajax_load_lessons(request, number):
     lsn = []
