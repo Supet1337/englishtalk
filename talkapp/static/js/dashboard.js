@@ -1,8 +1,9 @@
 $('#dzModal').on('show.bs.modal', function (event) {
     var div = $(event.relatedTarget)
     var recipient = div.data('number')
+    var emaill = div.data('email')
     var modal = $(this)
-    $('#dzFile').attr('href',recipient)
+    $('#student_email').attr('href','mailto:'+emaill+'?subject=Домашнее задание&body=Привет, тебе пришло домашнее задание.')
 })
 function closeDoc(id){
     if ($("#docTab"+id).hasClass('active')){
@@ -50,24 +51,29 @@ $(document).ready(function(){
                                  '</li>');
                         $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
                                  '<div class="card-body" style="height: 1200px;">'+
-                                 '<object><embed src="'+json[i].docx_url+'" style="width: 100%; height: 100%"></object>'+
+                                 '<object><embed src="'+json[i].docx_copy+'" style="width: 100%; height: 100%"></object>'+
                                  '</div>'+
-                                 '<button type="button" class="btn btn-primary" data-toggle="modal" data-number="'+json[i].docx_url+'" data-target="#dzModal">Отправить дз ученику</button>'+
                                  '</div>');
 
+                        if (is_teacher){
+                            $("#doc"+id).append('<button type="button" class="btn btn-primary" data-toggle="modal" data-number="'+json[i].docx_copy+'" data-email="'+json[i].student_email+'" data-target="#dzModal">Отправить дз ученику</button>');
+                            }
+
                         $.ajax({
-                            url: "/ajax_load_lessons_audios/"+id,
+                            url: "/ajax_load_lessons_audios/"+json[i].lesson_id,
                             success: function (result) {
                                 $("#doc"+id).append('<p>Аудиоматериалы:</p>');
                                 var json = $.parseJSON(result);
                                 json.forEach(function(item, i, json) {
-                                    $("#doc"+id).append('<audio controls>'+
+                                    $("#doc"+id).append(
+                                    '<p>'+json[i].audio_name+'</p>'+
+                                    '<audio controls>'+
                                         '<source src="'+json[i].audio_url+'" type="audio/mpeg">'+
                                         '</audio>');
                                 });
                         }}).then(
                         $.ajax({
-                            url: "/ajax_load_lessons_videos/"+id,
+                            url: "/ajax_load_lessons_videos/"+json[i].lesson_id,
                             success: function (result) {
                                 $("#doc"+id).append('<p>Видеоматериалы:</p>');
 

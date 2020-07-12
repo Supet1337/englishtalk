@@ -50,7 +50,7 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-          <div class="card-title"><h3>Добро пожаловать в ваш личный кабинет, {{request.user.first_name}} !</h3></div>
+          <div class="card-title"><h3>Добро пожаловать в ваш личный кабинет, {{req}}!</h3></div>
           <a class="card-text">Команда EnglishTalk приветствует Вас в Личном кабинете! </a>
           <p class="card-text">Мы всегда готовы ответить на любые Ваши вопросы по обучению или даже просто поболтать 😊</p>
           <div class="ftco-footer-widget mb-5">
@@ -103,7 +103,7 @@
                         <div class="card bg-white text-center" >
                               <div class="card-body">
                                 <h5 class="card-title ">Текущий курс</h5>
-                                <p class="card-text ">Какой-то курсец.</p>
+                                <p class="card-text ">{{course}}</p>
                                  <a class="btn btn-primary " id="ddd1" data-toggle="list" href="#d1" role="tab">Перейти в онлайн класс</a>
                               </div>
                             </div>
@@ -113,7 +113,7 @@
                                   </div>
                           <div class="card-body">
                             <h5 class="card-title">Имя Фамилия</h5>
-                              <a href="mailto:Englishtalk.abc@gmail.com@?subject=Вопрос по Englex" class="btn btn-primary"><i class="fas fa-envelope"></i> Написать</a>
+                              <a href="mailto:Englishtalk.abc@gmail.com?subject=Вопрос по Englex" class="btn btn-primary"><i class="fas fa-envelope"></i> Написать</a>
                               <br>
                               <br>
                             <a href="https://t.me/Svvvnd" class="btn btn-primary"><i class="fab fa-telegram"></i> Связаться с куратором</a>
@@ -123,7 +123,7 @@
                           <div class="card-body">
                             <h5 class="card-title">Следущее занятие</h5>
                               <div style="background: radial-gradient(circle farthest-side at 30px 20px, #37bdc7, #3495c0);" class="card mb-3">
-                              <p  class="card-text"><h3 style="color: white">01.09.20 16.45</h3></p>
+                              <p  class="card-text"><h3 style="color: white">{{next_lsn}}</h3></p>
                               </div>
                               <a class="btn btn-primary " id="ddd3" data-toggle="list" href="#d3" role="tab">Перейти в расписание</a>
                           </div>
@@ -131,8 +131,8 @@
                         <div class="card bg-light text-center" style="width:100%">
                               <div class="card-body">
                                 <h5 class="card-title">Баланс</h5>
-                                  <p class="card-text">Осталось<h2 style="color: red"> 2 </h2>занятия по <h6 style="color: red">60</h6> минут</p>
-                                  <a class="btn btn-success" href="#" >Пополнить $</a>
+                                  <p class="card-text">Осталось<h2 style="color: red"> 2 </h2>занятия по <h6 style="color: red">{{lsn_time}}</h6> минут</p>
+                                  <a class="btn btn-success" href="../price" >Пополнить $</a>
                               </div>
                             </div>
                         </div>
@@ -163,16 +163,20 @@
 <div class="tab-content" id="myTabContent" style="height: 700px; overflow-y: scroll;">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <div class="card-body" >
+                {% if lsn == 0 %}
+          <h2 style="text-align: center">Здесь будут отображаться ваши занятия</h2>
+                {% else %}
                 {% for lesson in lsn %}
                   <div class="card" style="width: 100%;">
                     <div class="card-header">
                         {{lesson.date}}
                     </div>
                     <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><a href="#" id="openDoc{{lesson.id}}">{{lesson.name}}</a></li>
+                            <li class="list-group-item"><a href="#" id="openDoc{{lesson.id}}">{{lesson.lesson.name}}</a></li>
                     </ul>
                 </div>
-          {% endfor %}
+                {% endfor %}
+                {% endif %}
               </div>
   </div>
 
@@ -181,127 +185,6 @@
 
                   </div>
 
-      </div>
-      <div class="tab-pane fade" id="d2" role="tabpanel" aria-labelledby="dd2" style="margin: 20px;">
-<div class="row row-cols-1 row-cols-md-3">
-  <div class="col mb-4">
-    <div  class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
-      <img src={% static "images/course1.jpg" %} class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title">Подготовка к Ielts</h5>
-          <a href="course/ielts"><button id="c1" class="btn btn-success w-100">Перейти к курсу</button></a>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
-      <img src={% static "images/course2.jpg" %} class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Cобеседование</h5>
-          <a href="course/interview"><button id="c2" class="btn btn-success w-100">Перейти к курсу</button></a>
-      </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
-      <img src={% static "images/course3.jpg" %} class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Говорим свободно</h5>
-          <a href="course/freespeaking"><button id="c3" class="btn btn-success w-100">Перейти к курсу</button></a>
-        </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
-      <img src={% static "images/course4.png" %} class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Английский для IT</h5>
-          <a href="course/it"><button id="c4" class="btn btn-success w-100">Перейти к курсу</button></a>
-        </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
-      <img src={% static "images/course5.png" %} class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Для путешествий</h5>
-          <a href="course/travel"><button id="c5" class="btn btn-success w-100">Перейти к курсу</button></a>
-        </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
-      <img src={% static "images/course6.jpg" %} class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Бизнес английский</h5>
-          <a href="course/business"><button id="c6" class="btn btn-success w-100">Перейти к курсу</button></a>
-        </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
-      <img src={% static "images/course7.jpg" %} class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Подготовка к ЕГЭ</h5>
-          <a href="course/exam"><button id="c7" class="btn btn-success w-100">Перейти к курсу</button></a>
-        </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
-      <img src={% static "images/course8.jpg" %} class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Английский для инженеров</h5>
-          <a href="course/engineer"><button id="c8" class="btn btn-success w-100">Перейти к курсу</button></a>
-        </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
-      <img src={% static "images/course9.jpg" %} class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Английский для подростков</h5>
-          <a href="course/teen"><button id="c9" class="btn btn-success w-100">Перейти к курсу</button></a>
-        </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
-      <img src={% static "images/course10.jpg" %} class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Английский детям</h5>
-          <a href="course/child"><button id="c10" class="btn btn-success w-100">Перейти к курсу</button></a>
-        </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
-      <img src={% static "images/course11.jpg" %} class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Персональный курс</h5>
-          <a href="course/personally"><button id="c11" class="btn btn-success w-100">Перейти к курсу</button></a>
-        </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;">
-      <img src={% static "images/course12.jpg" %} class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Старт с любого уровня</h5>
-          <a href="course/anylevel"><button id="c12" class="btn btn-success w-100">Перейти к курсу</button></a>
-        </div>
-    </div>
-  </div>
-  <div class="col mb-4">
-    <div class="card h-100" style="min-width: 297px;margin-right: 15px;right: 10px;max-width: 366px">
-      <img src={% static "images/course13.jpg" %} class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Грамматика – это просто</h5>
-        <a href="course/grammar"><button id="c13" class="btn btn-success w-100">Перейти к курсу</button></a>
-        </div>
-    </div>
-  </div>
-</div>
       </div>
       <div class="tab-pane fade" id="d3" role="tabpanel" aria-labelledby="dd3" style="margin: 20px;">
           <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
@@ -463,80 +346,6 @@
     <div class="cd-schedule__cover-layer"></div>
   </div>
       </div>
-      <div class="tab-pane fade" id="d4" role="tabpanel" aria-labelledby="dd4" style="margin: 20px;">
-          <div class="row">
-                      <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="1">
-                          <div class="card-header">
-                              <h5 class="card-title text-white">Тема урока:</h5>
-                              <p>temaaaaaaaaa</p>
-                          </div>
-                          <div class="card-body">
-                              <h5 class="card-title text-white">Срок сдачи:</h5>
-                              <p class="card-text">25 мая 2020</p>
-                          </div>
-                      </div>
-                      <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="2">
-                          <div class="card-header">
-                              <h5 class="card-title text-white">Тема урока:</h5>
-                              <p>tema</p>
-                          </div>
-                          <div class="card-body">
-                              <h5 class="card-title text-white">Срок сдачи:</h5>
-                              <p class="card-text">32 мая 2020</p>
-                          </div>
-                      </div>
-              <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="2">
-                          <div class="card-header">
-                              <h5 class="card-title text-white">Тема урока:</h5>
-                              <p>tema</p>
-                          </div>
-                          <div class="card-body">
-                              <h5 class="card-title text-white">Срок сдачи:</h5>
-                              <p class="card-text">32 мая 2020</p>
-                          </div>
-                      </div>
-              <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="2">
-                          <div class="card-header">
-                              <h5 class="card-title text-white">Тема урока:</h5>
-                              <p>tema</p>
-                          </div>
-                          <div class="card-body">
-                              <h5 class="card-title text-white">Срок сдачи:</h5>
-                              <p class="card-text">32 мая 2020</p>
-                          </div>
-                      </div>
-              <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="2">
-                          <div class="card-header">
-                              <h5 class="card-title text-white">Тема урока:</h5>
-                              <p>tema</p>
-                          </div>
-                          <div class="card-body">
-                              <h5 class="card-title text-white">Срок сдачи:</h5>
-                              <p class="card-text">32 мая 2020</p>
-                          </div>
-                      </div>
-              <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="2">
-                          <div class="card-header">
-                              <h5 class="card-title text-white">Тема урока:</h5>
-                              <p>tema</p>
-                          </div>
-                          <div class="card-body">
-                              <h5 class="card-title text-white">Срок сдачи:</h5>
-                              <p class="card-text">32 мая 2020</p>
-                          </div>
-                      </div>
-              <div class="card text-white bg-primary mb-3 mr-2" style="width: 18rem;cursor: pointer;" data-toggle="modal" data-target="#dzModal" data-number="2">
-                          <div class="card-header">
-                              <h5 class="card-title text-white">Тема урока:</h5>
-                              <p>tema</p>
-                          </div>
-                          <div class="card-body">
-                              <h5 class="card-title text-white">Срок сдачи:</h5>
-                              <p class="card-text">32 мая 2020</p>
-                          </div>
-                      </div>
-                  </div>
-          </div>
 		<div class="tab-pane fade" id="d5" role="tabpanel" aria-labelledby="dd5" style="margin: 20px;">
             <section class="ftco-section" style="padding: 1em;">
 			<div class="container">
@@ -811,18 +620,11 @@
           <a id="dzFile" href="" download>
               <button type="button" class="btn btn-primary" id="file-name">Перейти</button>
           </a>
-          <form id="submit-dz">
-              {% csrf_token %}
-              <h5>Отправить ученику:</h5>
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile">
-            <label class="custom-file-label" for="customFile" data-browse="Открыть">Выберите файл...</label>
-            </div>
-        </form>
+          <br>
+              <a id="student_email" href="" target="_blank" rel="noopener noreferrer">Отправить домашнее задание</a>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-        <button type="submit" form="submit-dz" class="btn btn-primary">Отправить</button>
       </div>
     </div>
   </div>
@@ -848,5 +650,12 @@
       <script src={% static "js/shedule.js" %}></script>
       <script src={% static "js/dashboard.js" %}></script>
       <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+        <script>
+            {% if is_teacher %}
+            var is_teacher = true;
+            {% else %}
+            var is_teacher = false;
+            {% endif %}
+        </script>
 	</body>
 </html>
