@@ -11,28 +11,28 @@ var time = 0;
 var pack = 0;
 function calccost(){
     if(time == 0 && pack == 0){
-	    document.getElementById('cost').innerHTML = "770 ₽";
+	    document.getElementById('cost').innerHTML = "860 ₽";
     }
     else if(time == 0 && pack == 1){
-	    document.getElementById('cost').innerHTML = "680 ₽";
+	    document.getElementById('cost').innerHTML = "800 ₽";
     }
     else if(time == 0 && pack == 2){
-        document.getElementById('cost').innerHTML = "580 ₽";
+        document.getElementById('cost').innerHTML = "740 ₽";
     }
     else if(time == 0 && pack == 3){
-	    document.getElementById('cost').innerHTML = "450 ₽";
+	    document.getElementById('cost').innerHTML = "660 ₽";
     }
     else if(time == 1 && pack == 0){
-	    document.getElementById('cost').innerHTML = "880 ₽";
+	    document.getElementById('cost').innerHTML = "920 ₽";
     }
     else if(time == 1 && pack == 1){
-	    document.getElementById('cost').innerHTML = "770 ₽";
+	    document.getElementById('cost').innerHTML = "880 ₽";
     }
     else if(time == 1 && pack == 2){
-	    document.getElementById('cost').innerHTML = "670 ₽";
+	    document.getElementById('cost').innerHTML = "820 ₽";
     }
     else if(time == 1 && pack == 3){
-	    document.getElementById('cost').innerHTML = "540 ₽";
+	    document.getElementById('cost').innerHTML = "740 ₽";
     }
 }
 
@@ -59,10 +59,10 @@ function val(){
 		elem = 10;
 	}
 	if (elem == 2){
-		elem = 15;
+		elem = 20;
 	}
 	if (elem == 3){
-		elem = 20;
+		elem = 30;
 	}
 	document.getElementById('val').innerHTML = elem;
 }

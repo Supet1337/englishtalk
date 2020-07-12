@@ -7,6 +7,7 @@ urlpatterns = [
     path('login-user', login_user),
     path('change_email', change_email),
     path('send_request_v', send_request_view),
+    path('price', price),
     path('ajax_load_lessons/<int:number>', ajax_load_lessons),
     path('ajax_load_lessons_videos/<int:number>', ajax_load_lessons_videos),
     path('ajax_load_video/<int:number>', ajax_load_video),

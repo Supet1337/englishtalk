@@ -131,7 +131,9 @@ def ajax_load_lessons_audios(request, number):
         aud.append(i.json())
     return HttpResponse(json.dumps(aud))
 
-
+@login_required
+def price(request):
+    return render(request,'price.html')
 
 def courses(request):
     return render(request,'courses.html')
