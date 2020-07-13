@@ -207,7 +207,10 @@ def grammar(request):
     return render(request,'courses/grammar.html')
 
 def blog(request):
-    return render(request,'blog-single.html')
+    context = {}
+    blog = Blog.objects.get(id=1)
+    context["blog"] = blog
+    return render(request,'blog-single.html', context)
 
 def video(request):
     return render(request,'video.html')

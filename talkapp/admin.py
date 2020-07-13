@@ -1,5 +1,20 @@
 from django.contrib import admin
-from .models import Lesson, Lesson_video, Lesson_audio, User_Lesson, Request, Teacher, Course
+from .forms import *
+from .models import Lesson, Lesson_video, Lesson_audio, User_Lesson, Request, Teacher, Course, Blog
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
+class BlogAdminForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget())
+    class Meta:
+        model = Blog
+        fields = '__all__'
+
+@admin.register(Blog)
+class MovieAdmin(admin.ModelAdmin):
+    form = BlogAdminForm
+
+
+
 
 admin.site.register(Lesson)
 admin.site.register(Lesson_video)

@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'talkapp',
     'phonenumber_field',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -131,8 +133,12 @@ STATIC_ROOT = "./collectedstatic"
 ASGI_APPLICATION = 'englishtalk.routing.application'
 SECURE_SSL_REDIRECT = False
 
+CKEDITOR_UPLOAD_PATH = 'blog/'
 # s3 serve static
 
+
+
+CKEDITOR_BROWSE_SHOW_DIRS = True
 
 AWS_ACCESS_KEY_ID = "SCW2K49F6ZF9M296YGH2"
 AWS_SECRET_ACCESS_KEY = "4fd5fb51-ff07-414f-8005-4b707680ce95"

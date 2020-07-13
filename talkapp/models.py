@@ -82,3 +82,7 @@ class Request(models.Model):
     first_name = models.CharField(max_length=64)
     last_name = models.CharField(max_length=64)
     phone_number = PhoneNumberField()
+
+class Blog(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    content = models.CharField(max_length=10000)
