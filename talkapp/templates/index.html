@@ -145,18 +145,25 @@
 		</section>
 
 		<div data-aos="fade-right">
-          <div class=" card text-white bg-danger" style=" border-radius: 0rem;background-color: #9cdbed !important">
+          <div class=" card text-white bg-danger" style=" border-radius: 0rem;background-color: #a7e3eb !important">
   <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="{% static "images/chelik.jpg" %}" class="chelic" style="max-height: 400px;width: 100%;max-width: 447px">
+    <div class="col-md-4" style="text-align: center">
+      <img src="{% static "images/chelik.jpg" %}" class="chelic" style="max-height: 400px;max-width: 447px">
     </div>
     <div class="col-md-8">
       <div class="card-body">
-		  <h1 class="card-title text-white" style="font-size: 40px;">Начните изучать английский бесплатно</h1>
-		  <p class="card-text pararam" style="text-align: right;font-size: xx-large;">– Познакомимся</p>
-		  <p class="card-text pararam" style="text-align: right;font-size: xx-large;">- Определим уровень</p>
-		  <p class="card-text pararam" style="text-align: right;font-size: xx-large;">- Подберем персональную программу</p>
-		  <p class="card-text pararam" style="text-align: right;"><a href="#sreg"><button class="btn btn-primary" style="font-size: x-large;">Начать учиться бесплатно.</button></a></p>
+		  <div class="row" style="color: #082567">
+			  <div class="col">
+		  <h1 class="card-title" style="font-size: 40px;color: #082567">Первый урок -</h1>
+		  <p class="card-text pararam" style="font-size: xx-large;">– Познакомимся</p>
+		  <p class="card-text pararam" style="font-size: xx-large;">- Определим уровень</p>
+		  <p class="card-text pararam" style="font-size: xx-large;">- Подберем персональную программу</p>
+		  </div>
+			  <div class="col">
+		  <p class="card-text pararam" style="text-align: center;padding-top: 40%"><a href="#sreg"><button class="btn btn-primary" style="font-size: xx-large;color: #082567">Записаться на бесплатный урок</button></a></p>
+				 <p class="card-text pararam" style="text-align: center;">Нажимая, вы принимаете <b>условия соглашения</b></p>
+		 </div>
+		  </div>
       </div>
     </div>
   </div>
@@ -167,112 +174,126 @@
 
 
 
-		<section class="ftco-section" id="scourses">
+		<section class="ftco-section bg-light" id="scourses">
 			<div class="container-fluid px-4">
 				<div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
-            <h2 class="mb-4">Пора начать говорить!</h2>
-			  <p>Для Вас мы выделили наиболее популярные курс английского языка. Вы можете пройти курс целиком, либо мы подберем для Вас индивидуальную программу!</p>
-            </div>
+            <h2 class="mb-4">Самые популярные курсы в школе EnglishTalk по версии наших учеников</h2>
+			  </div>
         </div>
-				<div class="row">
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course1.jpg" %});"></div>
-						<div class="text pt-4">
-							<h3 style="text-align: center;"><a href="../course/ielts">Подготовка к Ielts</a></h3>
-							<p style="text-align: center;">После успешной подготовки 95% наших студентов сдают экзамен с первого раза!</p>
-							<p style="text-align: center;"><a href="../course/ielts" class="btn btn-primary">Подробнее</a></p>
+				<div class="card-group py-4">
+					<div class="card">
+						<div class="card-header">
+							<h2 class="card-text" style="text-align: center">Старт с любого уровня</h2>
+						</div>
+						<img src={% static "images/course12.jpg" %} class="card-img-left">
+						<div class="card-body">
+							<p class="card-text">- Индивидуальная программа</p>
+							<p class="card-text">- Темы, которые Вам интересны</p>
+							<p class="card-text">- Методика Quizlet</p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course2.jpg" %});"></div>
-						<div class="text pt-4">
-							<h3 style="text-align: center;"><a href="../course/interview">Cобеседование</a></h3>
-							<p style="text-align: center;">Подготовим к собеседованию или деловой встрече в кратчайшие сроки!</p>
-							<p style="text-align: center;"><a href="../course/interview" class="btn btn-primary">Подробнее</a></p>
+					<div class="card">
+						<div class="card-header">
+							<h2 class="card-text" style="text-align: center">Говорим свободно</h2>
+						</div>
+						<img src={% static "images/course3.jpg" %} class="card-img-left">
+						<div class="card-body">
+							<p class="card-text">- Только практика</p>
+							<p class="card-text">- Вы перестанете бояться ошибок</p>
+							<p class="card-text">- Погруение в иностранную среду </p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course3.jpg" %});"></div>
-						<div class="text pt-4">
-							<h3 style="text-align: center;"><a href="../course/freespeaking">Говорим свободно</a></h3>
-							<p style="text-align: center;">Заговорите уже через 2 месяца практики! Курс разработан специально для развития живой речи и импровизации в общении. Вы научитесь говорить легко и без страха совершить ошибку.</p>
-							<p style="text-align: center;"><a href="../course/freespeaking" class="btn btn-primary">Подробнее</a></p>
+				</div>
+
+				<div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-8 text-center heading-section ftco-animate">
+            <h2 class="mb-4">А еще у нас есть много интересного для Вас!</h2>
+			  </div>
+        </div>
+
+				<div class="card-deck py-4">
+					<div class="card">
+						<img src={% static "images/course1.jpg" %} class="card-img-top" style="max-height: 200px;max-width: 200px;text-align: center">
+						<div class="card-body">
+							<h3 class="card-title" style="text-align: center;"><a href="../course/ielts">Подготовка к Ielts</a></h3>
+							<p class="card-text" style="text-align: center;">После успешной подготовки 95% наших студентов сдают экзамен с первого раза!</p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course4.jpg" %});"></div>
-						<div class="text pt-4">
-							<h3 style="text-align: center;"><a href="../course/it">Английский для IT</a></h3>
-							<p style="text-align: center;">Один из популярнейших курсов в последнее время. Пройдя обучение Вы станете зарабатывать на 30% больше!</p>
-							<p style="text-align: center;"><a href="../course/it" class="btn btn-primary">Подробнее</a></p>
+				<div class="card">
+						<img src={% static "images/course2.jpg" %} class="card-img-top" style="max-height: 200px;max-width: 200px;text-align: center">
+						<div class="card-body">
+							<h3 class="card-title" style="text-align: center;"><a href="../course/interview">Cобеседование</a></h3>
+							<p class="card-text" style="text-align: center;">Подготовим к собеседованию или деловой встрече в кратчайшие сроки!</p>
 						</div>
 					</div>
 
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course5.jpg" %});"></div>
-						<div class="text pt-4">
-							<h3 style="text-align: center;"><a href="../course/travel">Для путешествий</a></h3>
-							<p style="text-align: center;">Забронировать отель? Узнать дорогу в незнакомом городе? Оформить трансфер до аэропорта? Мы научим Вас это делать легко!</p>
-							<p style="text-align: center;"><a href="../course/travel" class="btn btn-primary">Подробнее</a></p>
+				<div class="card">
+						<img src={% static "images/course4.jpg" %} class="card-img-top" style="max-height: 200px;max-width: 200px;text-align: center">
+						<div class="card-body">
+							<h3 class="card-title" style="text-align: center;"><a href="../course/it">Английский для IT</a></h3>
+							<p class="card-text" style="text-align: center;">Один из популярнейших курсов в последнее время. Пройдя обучение Вы станете зарабатывать на 30% больше!</p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course6.jpg" %});"></div>
-						<div class="text pt-4">
-							<h3 style="text-align: center;"><a href="../course/business">Бизнес английский</a></h3>
-							<p style="text-align: center;">В сжатые сроки нужно подготовиться ко встрече на английском языке. Вы будете уверено себя чувствовать в любых переговорах!</p>
-							<p style="text-align: center;"><a href="../course/business" class="btn btn-primary">Подробнее</a></p>
+
+				<div class="card">
+						<img src={% static "images/course5.jpg" %} class="card-img-top" style="max-height: 200px;max-width: 200px;text-align: center">
+						<div class="card-body">
+							<h3 class="card-title" style="text-align: center;"><a href="../course/travel">Для путешествий</a></h3>
+							<p class="card-text" style="text-align: center;">Забронировать отель? Узнать дорогу в незнакомом городе? Оформить трансфер до аэропорта? Мы научим Вас это делать легко!</p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course7.jpg" %});"></div>
-						<div class="text pt-4">
-							<h3 style="text-align: center;"><a href="../course/exam">Подготовка к ЕГЭ</a></h3>
-							<p style="text-align: center;">Более 500 учеников подготовили наши специалисты к успешной сдаче экзамена. Заполним пробелы в грамматике и отработаем все типы заданий.</p>
-							<p style="text-align: center;"><a href="../course/exam" class="btn btn-primary">Подробнее</a></p>
+
+
+					<div class="card">
+						<img src={% static "images/course6.jpg" %} class="card-img-top" style="max-height: 200px;max-width: 200px;text-align: center">
+						<div class="card-body">
+							<h3 class="card-title" style="text-align: center;"><a href="../course/business">Бизнес английский</a></h3>
+							<p class="card-text" style="text-align: center;">В сжатые сроки нужно подготовиться ко встрече на английском языке. Вы будете уверено себя чувствовать в любых переговорах!</p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course8.jpg" %});"></div>
-						<div class="text pt-4">
-							<h3 style="text-align: center;"><a href="../course/engineer">Английский для инженеров</a></h3>
-							<p style="text-align: center;">Будьте на шаг впереди! Мы научим техническому английскому, а Ваши знания на рынке станут дороже на 40%</p>
-							<p style="text-align: center;"><a href="../course/engineer" class="btn btn-primary">Подробнее</a></p>
+				</div>
+				<div class="card-deck">
+					<div class="card">
+						<img src={% static "images/course7.jpg" %} class="card-img-top" style="max-height: 200px;max-width: 200px;text-align: center">
+						<div class="card-body">
+							<h3 class="card-title" style="text-align: center;"><a href="../course/exam">Подготовка к ЕГЭ</a></h3>
+							<p class="card-text" style="text-align: center;">Более 500 учеников подготовили наши специалисты к успешной сдаче экзамена. Заполним пробелы в грамматике и отработаем все типы заданий.</p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course9.jpg" %});"></div>
-						<div class="text pt-4">
-							<h3 style="text-align: center;"><a href="../course/teen">Английский для подростков</a></h3>
-							<p style="text-align: center;">Хватит учиться по скучным учебникам! Мы за практический подход. Учим английский по актуальным фильмам и сериалам.</p>
-							<p style="text-align: center;"><a href="../course/teen" class="btn btn-primary">Подробнее</a></p>
+
+					<div class="card">
+						<img src={% static "images/course8.jpg" %} class="card-img-top" style="max-height: 200px;max-width: 200px;text-align: center">
+						<div class="card-body">
+							<h3 class="card-title" style="text-align: center;"><a href="../course/engineer">Английский для инженеров</a></h3>
+							<p class="card-text" style="text-align: center;">Будьте на шаг впереди! Мы научим техническому английскому, а Ваши знания на рынке станут дороже на 40%</p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course10.jpg" %});"></div>
-						<div class="text pt-4">
-							<h3 style="text-align: center;"><a href="../course/child">Английский детям</a></h3>
-							<p style="text-align: center;">Курс становится все более актуальным. Изучайте английский по песням и забудьте о скучных учебниках!</p>
-							<p style="text-align: center;"><a href="../course/child" class="btn btn-primary">Подробнее</a></p>
+
+				<div class="card">
+						<img src={% static "images/course9.jpg" %} class="card-img-top" style="max-height: 200px;max-width: 200px;text-align: center">
+						<div class="card-body">
+							<h3 class="card-title" style="text-align: center;"><a href="../course/teen">Английский для подростков</a></h3>
+							<p class="card-text" style="text-align: center;">Хватит учиться по скучным учебникам! Мы за практический подход. Учим английский по актуальным фильмам и сериалам.</p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course11.jpg" %});"></div>
-						<div class="text pt-4">
-							<h3 style="text-align: center;"><a href="../course/personally">Персональный курс</a></h3>
-							<p style="text-align: center;">Учитесь так, как этого хочется Вам! Подберем актуальные для Вас темы и прокачаем ваш английский.</p>
-							<p style="text-align: center;"><a href="../course/personally" class="btn btn-primary">Подробнее</a></p>
+
+				<div class="card">
+						<img src={% static "images/course10.jpg" %} class="card-img-top" style="max-height: 200px;max-width: 200px;text-align: center">
+						<div class="card-body">
+							<h3 class="card-title" style="text-align: center;"><a href="../course/child">Английский детям</a></h3>
+							<p class="card-text" style="text-align: center;">Курс становится все более актуальным. Изучайте английский по песням и забудьте о скучных учебниках!</p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course12.jpg" %});"></div>
-						<div class="text pt-4">
-							<h3 style="text-align: center;"><a href="../course/anylevel">Старт с любого уровня</a></h3>
-							<p style="text-align: center;">Уже владеешь языком и хочешь подтянуть свои знания? Этот курс подойдёт любому, кто хочет заниматься английским.</p>
-							<p style="text-align: center;"><a href="../course/anylevel" class="btn btn-primary">Подробнее</a></p>
+
+				<div class="card">
+						<img src={% static "images/course11.jpg" %} class="card-img-top" style="max-height: 200px;max-width: 200px;text-align: center">
+						<div class="card-body">
+							<h3 class="card-title" style="text-align: center;"><a href="../course/personally">Персональный курс</a></h3>
+							<p class="card-text" style="text-align: center;">Учитесь так, как этого хочется Вам! Подберем актуальные для Вас темы и прокачаем ваш английский.</p>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</section>
