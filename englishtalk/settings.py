@@ -27,6 +27,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+AWS_QUERYSTRING_AUTH = False
 
 # Application definition
 
