@@ -16,22 +16,15 @@
   </head>
   <style>
   		.bobobo{
-  		font-size: small;
+  		font-size: large;
   		}
 	  @media (min-width: 1200px){
 	    .bebebe{
-	    width: 200%;
 	    text-align: center;
-	    font-size: 85px !important;
 	    }
 	    .bababa{
-	    width: 200%;
 	    text-align: center;
 	    font-size: x-large;
-	    }
-	    .bobobo{
-	    font-size: larger;
-	    margin-left: 34%;
 	    }
 	    .why{
 	    padding-right: 200px !important;
@@ -57,35 +50,59 @@
 
   </style>
   <body>
+
 	  {% include "header.html" %}
 
 	  {% include "messages.html" %}
     <!-- END nav -->
     
-    <section class="ftco-section ftco-counter img" id="section-counter"  style="background-image: url({% static "images/bg_1.jpg" %});" data-stellar-background-ratio="0.5">
+    <section class="ftco-section ftco-counter img"  style="background-image: url({% static "images/bg_gray.jpg" %});" data-stellar-background-ratio="0.5">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate">
             <h1 class="mb-4 bebebe" style="color: white;font-weight: bold;">Выучить английский в онлайн-школе EnglishTalk</h1>
 			  <p class="bababa" style="color: white;">Учите язык в интерактивном учебнике с сильными преподавателями! </p>
-				<p class="bababa" style="color: white;"> Персональные занятия от 490 р.</p>
-            <p style="width:200%;"><a href="#sreg" class="btn btn-primary bobobo px-4 py-3 mt-3" style="color: black;">Записаться на бесплатное занятие</a></p>
+            <p style="text-align: center;"><a href="#sreg" class="btn btn-secondary bobobo py-3 mt-3" style="border-radius: 0;">Начать бесплатный урок</a>
+				<a class="btn btn-secondary bobobo py-3 mt-3 video-btn" style="border-radius: 0;color: white" data-toggle="modal" data-src="https://www.youtube.com/embed/JUSuCm6MXVI" data-target="#myModalVid"><i style="color: #fff" class="fab fa-youtube"></i> Смотреть пример урока</a>
+			</p>
           </div>
         </div>
         </div>
       </div>
     </section>
 
+  <div class="modal fade" id="myModalVid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+
+      <div class="modal-body">
+
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <!-- 16:9 aspect ratio -->
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+</div>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
 	  <section class="ftco-section" style="padding-top: 3em;">
     	<div class="container">
-            <h2 style="color: #323232; text-align: center" class="mb-4">Современная платформа для обучения онлайн</h2>
+            <h1 style="color: #323232; text-align: center" class="mb-4">Современная платформа для обучения онлайн</h1>
 			<div class="col-md-6 heading-section heading-section-white ftco-animate pl-lg-5 pt-md-0 pt-5">
-				<h4><span class="fa fa-graduation-cap"></span> Видеочат с учителем</h4>
-				<h4><span class="fas fa-book"></span> Интерактивный учебник</h4>
-				<h4><span class="fa fa-play-circle"></span> Более 500 видео и аудио материалов</h4>
-				<h4><span class="fa fa-comments"></span> Упор на разговорную практику</h4>
-				<h4><span class="fas fa-paper-plane"></span> Помощь в мессенджере от персонального куратора</h4>
+				<h4  style="font-size: xx-large"><span class="fa fa-graduation-cap mb-4"></span> Видеочат с учителем</h4>
+				<h4  style="font-size: xx-large"><span class="fas fa-book mb-4"></span> Интерактивный учебник</h4>
+				<h4  style="font-size: xx-large"><span class="fa fa-play-circle mb-4"></span> Более 500 видео и аудио материалов</h4>
+				<h4  style="font-size: xx-large"><span class="fa fa-comments mb-4"></span> Упор на разговорную практику</h4>
+				<h4  style="font-size: xx-large"><span class="fas fa-paper-plane"></span> Помощь в мессенджере от персонального куратора</h4>
         </div>
     	</div>
     </section>
@@ -93,12 +110,12 @@
 	  <section class="ftco-section ftco-no-pt ftc-no-pb">
 			<div>
 					<div class="col wrap-about py-5 pr-md-4 ftco-animate why" style="background: #fafafa;">
-          	<h2 class="mb-4" style="text-align: center;">Почему ученики выбирают EnglishTalk?</h2>
+          	<h2 class="mb-4" style="text-align: center;">Почему ученики выбирают онлайн-школу EnglishTalk?</h2>
 						<div class="row d-flex">
 							<div class="col">
 								<div class="card" style="height: 100%">
 									<img src={% static "images/why1.jpg" %} class="card-img-top">
-									<div class="card-body">
+									<div class="card-body" style="text-align: center">
 										<h5 class="card-title">Онлайн платформа</h5>
 										<p class="card-text">Лучшие практики, видеоматериалы, аудирование и связь с преподавателем – все в одном окне! Новые знания усваиваются на 60% быстрее.</p>
 									</div>
@@ -107,7 +124,7 @@
 							<div class="col">
 								<div class="card" style="height: 100%">
 									<img src={% static "images/why2.jpg" %} class="card-img-top">
-									<div class="card-body">
+									<div class="card-body" style="text-align: center">
 										<h5 class="card-title">Занимайтесь в любом месте и в любое время</h5>
 										<p class="card-text">Выбирайте время и место занятий! Занимайтесь дома, на работе или в путешествии. Просто откройте ноутбук и вы уже готовы к уроку!</p>
 									</div>
@@ -116,7 +133,7 @@
 							<div class="col">
 								<div class="card" style="height: 100%">
 									<img src={% static "images/why3.jpg" %} class="card-img-top">
-									<div class="card-body">
+									<div class="card-body" style="text-align: center">
 										<h5 class="card-title">Английский только на практике</h5>
 										<p class="card-text">Мы сторонники практического подхода. Научились новому? Сразу примените на практике!</p>
 									</div>
@@ -597,5 +614,26 @@
 	  <script src={% static "js/scrollax.min.js" %}></script>
 	  <script src={% static "js/main.js" %}></script>
       <script src={% static "js/index.js" %}></script>
+  <script>
+    $(document).ready(function() {
+
+var $videoSrc;
+$('.video-btn').click(function() {
+    $videoSrc = $(this).data( "src" );
+});
+console.log($videoSrc);
+
+$('#myModalVid').on('shown.bs.modal', function (e) {
+$("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
+})
+
+$('#myModalVid').on('hide.bs.modal', function (e) {
+    // a poor man's stop video
+    $("#video").attr('src',$videoSrc);
+})
+
+
+});
+</script>
   </body>
 </html>

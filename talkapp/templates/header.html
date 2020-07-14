@@ -4,17 +4,17 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="height: 56px;">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item">
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                              <li class="nav-item">
 
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" style="padding-top: 14px; padding-bottom: 14px;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Курсы
+        <a class="nav-link dropdown-toggle" href="#" style="padding-top: 14px; padding-bottom: 14px;" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Для взрослых
         </a>
-        <div class="dropdown-menu" style="background-color: #37bdc7;top: 90%;box-shadow: 0 1px 9px black;overflow-y: scroll; height: 500px;" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" style="background-color: #37bdc7;top: 90%;box-shadow: 0 1px 9px black;" aria-labelledby="navbarDropdown1">
             <a class="dropdown-item" style="" href="../courses">Все курсы</a>
             <div class="dropdown-divider"></div>
           <a class="dropdown-item" style="" href="../course/ielts">Подготовка к Ielts</a>
@@ -29,19 +29,31 @@
             <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="../course/business">Бизнес английский</a>
             <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="../course/exam">Подготовка к ЕГЭ</a>
-            <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="../course/engineer">Английский для инженеров</a>
+            <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="../course/personally">Персональный курс</a>
+            <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="../course/anylevel">Старт с любого уровня</a>
+        </div>
+      </li>
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" style="padding-top: 14px; padding-bottom: 14px;" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Для детей и подростков
+        </a>
+        <div class="dropdown-menu" style="background-color: #37bdc7;top: 90%;box-shadow: 0 1px 9px black;" aria-labelledby="navbarDropdown2">
+            <a class="dropdown-item" style="" href="../courses">Все курсы</a>
+            <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="../course/exam">Подготовка к ЕГЭ</a>
             <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="../course/teen">Английский для подростков</a>
             <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="../course/child">Английский детям</a>
             <div class="dropdown-divider"></div>
+             <a class="dropdown-item" href="../course/freespeaking">Говорим свободно</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="../course/travel">Для путешествий</a>
+            <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="../course/personally">Персональный курс</a>
-            <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="../course/anylevel">Старт с любого уровня</a>
-            <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="../course/grammar">Грамматика – это просто</a>
         </div>
       </li>
         <li class="nav-item">
@@ -57,12 +69,8 @@
         <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;"><span style="padding-top: 7px; padding-bottom: 7x; padding-right: 4px;" class="fa fa-phone"></span>88005353535</a>
       </li>
         <li class="nav-item">
-            <a class="nav-link" href="../#sreg"><button class="btn btn-primary">Попробовать бесплатно</button></a>
+            <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="../#sreg">Попробовать бесплатно</a>
       </li>
-    </ul>
-  </div>
-                <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item dropdown nav-user">
                              {% if request.user.is_authenticated %}
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,13 +79,11 @@
                             <div class="dropdown-menu dropdown-menu-right" style="background-color: #37bdc7;top: 90%;box-shadow: 0 1px 9px black;" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" style="" href="../dashboard">Личный кабинет</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Оплата</a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/logout">Выход</a>
                             </div>
                             {% else %}
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <button type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-primary">Войти</button>
+                            <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="#" id="navbarDropdownMenuLink2" data-toggle="modal" data-target="#myModal1" aria-haspopup="true" aria-expanded="false">
+                                    Войти
                             </a>
                             {% endif %}
                         </li>
