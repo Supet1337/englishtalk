@@ -16,6 +16,24 @@
 	  <link rel="stylesheet" href={% static "css/timeline.css" %}>
   </head>
   <style>
+  		.pchovtl{
+  		  transition: transform .2s ease-in-out;
+  		}
+  		.pchovtr{
+  		  transition: transform .2s ease-in-out;
+  		}
+  		.pchovtl:hover {
+  		  transform: translate3d(-80px, 0px, 0px);
+  		}
+  		.pchovtr:hover {
+  		  transform: translate3d(80px, 0px, 0px);
+  		}
+  		.pchov{
+  		  transition: transform .2s ease-in-out;
+  		}
+  		.pchov:hover {
+  		  transform: translate3d(0px, -50px, 0px);
+  		}
   		.bobobo{
   		font-size: large;
   		}
@@ -185,29 +203,32 @@
             <h2 class="mb-4">Самые популярные курсы в школе EnglishTalk по версии наших учеников</h2>
 			  </div>
         </div>
-				<div class="card-group py-4">
-					<div class="card">
+				<div class="card-group py-4 why">
+					<div class="card pchovtl" onclick="goto('anylevel')" style="cursor: pointer;">
 						<div class="card-header">
 							<h2 class="card-text" style="text-align: center">Старт с любого уровня</h2>
 						</div>
-						<img src={% static "images/course12.jpg" %} class="card-img">
+						<img src={% static "images/course12.jpg" %} class="card-img-top mx-auto" style="max-width: 361.75px;max-height: 218.25px">
 						<div class="card-body">
-							<p class="card-text">- Индивидуальная программа</p>
-							<p class="card-text">- Темы, которые Вам интересны</p>
-							<p class="card-text">- Методика Quizlet</p>
+							<p class="card-text" style="text-align: center">- Индивидуальная программа</p>
+							<p class="card-text" style="text-align: center">- Темы, которые Вам интересны</p>
+							<p class="card-text" style="text-align: center">- Методика Quizlet</p>
 						</div>
 					</div>
-					<div class="card">
+					<div class="card pchovtr" onclick="goto('freespeaking')" style="cursor: pointer;">
 						<div class="card-header">
 							<h2 class="card-text" style="text-align: center">Говорим свободно</h2>
 						</div>
-						<img src={% static "images/course3.jpg" %} class="card-img">
+						<img src={% static "images/course3.jpg" %} class="card-img-top mx-auto" style="max-width: 361.75px;max-height: 218.25px">
 						<div class="card-body">
-							<p class="card-text">- Только практика</p>
-							<p class="card-text">- Вы перестанете бояться ошибок</p>
-							<p class="card-text">- Погруение в иностранную среду </p>
+							<p class="card-text" style="text-align: center">- Только практика</p>
+							<p class="card-text" style="text-align: center">- Вы перестанете бояться ошибок</p>
+							<p class="card-text" style="text-align: center">- Погруение в иностранную среду </p>
 						</div>
 					</div>
+				</div>
+				<div style="margin-bottom: 100px;">
+					<p style="text-align: center"><a href="#sreg"><button class="btn btn-primary" style="font-size: xx-large;">Записаться на бесплатный урок</button></a></p>
 				</div>
 
 				<div class="row justify-content-center mb-5 pb-2">
@@ -217,83 +238,83 @@
         </div>
 
 				<div class="card-deck py-4">
-					<div class="card">
+					<div class="card pchov" onclick="goto('ielts')" style="cursor: pointer;">
 						<img src={% static "images/course1.jpg" %} class="card-img-top mx-auto" style="max-height: 200px;max-width: 200px;text-align: center">
 						<div class="card-body">
-							<h3 class="card-title" style="text-align: center;"><a href="../course/ielts">Подготовка к Ielts</a></h3>
+							<h3 class="card-title" style="text-align: center;">Подготовка к Ielts</h3>
 							<p class="card-text" style="text-align: center;">После успешной подготовки 95% наших студентов сдают экзамен с первого раза!</p>
 						</div>
 					</div>
-				<div class="card">
+				<div class="card pchov" onclick="goto('interview')" style="cursor: pointer;">
 						<img src={% static "images/course2.jpg" %} class="card-img-top mx-auto" style="max-height: 200px;max-width: 200px;text-align: center">
 						<div class="card-body">
-							<h3 class="card-title" style="text-align: center;"><a href="../course/interview">Cобеседование</a></h3>
+							<h3 class="card-title" style="text-align: center;">Cобеседование</h3>
 							<p class="card-text" style="text-align: center;">Подготовим к собеседованию или деловой встрече в кратчайшие сроки!</p>
 						</div>
 					</div>
 
-				<div class="card">
+				<div class="card pchov" onclick="goto('it')" style="cursor: pointer;">
 						<img src={% static "images/course4.png" %} class="card-img-top mx-auto" style="max-height: 200px;max-width: 200px;text-align: center">
 						<div class="card-body">
-							<h3 class="card-title" style="text-align: center;"><a href="../course/it">Английский для IT</a></h3>
+							<h3 class="card-title" style="text-align: center;">Английский для IT</h3>
 							<p class="card-text" style="text-align: center;">Один из популярнейших курсов в последнее время. Пройдя обучение Вы станете зарабатывать на 30% больше!</p>
 						</div>
 					</div>
 
-				<div class="card">
+				<div class="card pchov" onclick="goto('travel')" style="cursor: pointer;">
 						<img src={% static "images/course5.jpg" %} class="card-img-top mx-auto" style="max-height: 200px;max-width: 200px;text-align: center">
 						<div class="card-body">
-							<h3 class="card-title" style="text-align: center;"><a href="../course/travel">Для путешествий</a></h3>
+							<h3 class="card-title" style="text-align: center;">Для путешествий</h3>
 							<p class="card-text" style="text-align: center;">Забронировать отель? Узнать дорогу в незнакомом городе? Оформить трансфер до аэропорта? Мы научим Вас это делать легко!</p>
 						</div>
 					</div>
 
 
-					<div class="card">
+					<div class="card pchov" onclick="goto('business')" style="cursor: pointer;">
 						<img src={% static "images/course6.jpg" %} class="card-img-top mx-auto" style="max-height: 200px;max-width: 200px;text-align: center">
 						<div class="card-body">
-							<h3 class="card-title" style="text-align: center;"><a href="../course/business">Бизнес английский</a></h3>
+							<h3 class="card-title" style="text-align: center;">Бизнес английский</h3>
 							<p class="card-text" style="text-align: center;">В сжатые сроки нужно подготовиться ко встрече на английском языке. Вы будете уверено себя чувствовать в любых переговорах!</p>
 						</div>
 					</div>
 				</div>
 				<div class="card-deck">
-					<div class="card">
+					<div class="card pchov" onclick="goto('exam')" style="cursor: pointer;">
 						<img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 200px;max-width: 200px;text-align: center">
 						<div class="card-body">
-							<h3 class="card-title" style="text-align: center;"><a href="../course/exam">Подготовка к ЕГЭ</a></h3>
+							<h3 class="card-title" style="text-align: center;">Подготовка к ЕГЭ</h3>
 							<p class="card-text" style="text-align: center;">Более 500 учеников подготовили наши специалисты к успешной сдаче экзамена. Заполним пробелы в грамматике и отработаем все типы заданий.</p>
 						</div>
 					</div>
 
-					<div class="card">
+					<div class="card pchov" onclick="goto('engineer')" style="cursor: pointer;">
 						<img src={% static "images/course8.jpg" %} class="card-img-top mx-auto" style="max-height: 200px;max-width: 200px;text-align: center">
 						<div class="card-body">
-							<h3 class="card-title" style="text-align: center;"><a href="../course/engineer">Английский для инженеров</a></h3>
+							<h3 class="card-title" style="text-align: center;">Английский для инженеров</h3>
 							<p class="card-text" style="text-align: center;">Будьте на шаг впереди! Мы научим техническому английскому, а Ваши знания на рынке станут дороже на 40%</p>
 						</div>
 					</div>
 
-				<div class="card">
+				<div class="card pchov" onclick="goto('teen')" style="cursor: pointer;">
 						<img src={% static "images/course9.jpg" %} class="card-img-top mx-auto" style="max-height: 200px;max-width: 200px;text-align: center">
 						<div class="card-body">
-							<h3 class="card-title" style="text-align: center;"><a href="../course/teen">Английский для подростков</a></h3>
+							<h3 class="card-title" style="text-align: center;">Английский для подростков</h3>
 							<p class="card-text" style="text-align: center;">Хватит учиться по скучным учебникам! Мы за практический подход. Учим английский по актуальным фильмам и сериалам.</p>
 						</div>
 					</div>
 
-				<div class="card">
+				<div class="card pchov" onclick="goto('child')" style="cursor: pointer;">
 						<img src={% static "images/course10.jpg" %} class="card-img-top mx-auto" style="max-height: 200px;max-width: 200px;text-align: center">
 						<div class="card-body">
-							<h3 class="card-title" style="text-align: center;"><a href="../course/child">Английский детям</a></h3>
+							<h3 class="card-title" style="text-align: center;">Английский детям</h3>
 							<p class="card-text" style="text-align: center;">Курс становится все более актуальным. Изучайте английский по песням и забудьте о скучных учебниках!</p>
 						</div>
 					</div>
 
-				<div class="card">
+				<div class="card pchov" onclick="goto('personally')" style="cursor: pointer;">
 						<img src={% static "images/course11.jpg" %} class="card-img-top mx-auto" style="max-height: 200px;max-width: 200px;text-align: center">
 						<div class="card-body">
-							<h3 class="card-title" style="text-align: center;"><a href="../course/personally">Персональный курс</a></h3>
+							<h3 class="card-title" style="text-align: center;">Персональный курс</h3>
 							<p class="card-text" style="text-align: center;">Учитесь так, как этого хочется Вам! Подберем актуальные для Вас темы и прокачаем ваш английский.</p>
 						</div>
 					</div>
@@ -597,12 +618,12 @@
 			    					<input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="first_name" name="first_name" class="form-control" required placeholder="Имя">
 			    				</div>
 			    				<div class="form-group ml-md-4">
-			    					<input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; id="surname" name="surname" class="form-control" required placeholder="Фамилия">
+			    					<input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="surname" name="surname" class="form-control" required placeholder="Фамилия">
 			    				</div>
 		    				</div>
 		    				<div class="d-md-flex">
 		    					<div class="form-group ml-md-4">
-			    					<input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
+			    					<input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
 			    				</div>
 		    				</div>
 		    				<div class="d-md-flex">
@@ -658,6 +679,11 @@ $('#myModalVid').on('hide.bs.modal', function (e) {
 
 
 });
+
+function goto(hr){
+	window.location.href = '../course/'+hr;
+	return false;
+}
 </script>
   </body>
 </html>

@@ -203,9 +203,6 @@ def personally(request):
 def anylevel(request):
     return render(request,'courses/anylevel.html')
 
-def grammar(request):
-    return render(request,'courses/grammar.html')
-
 def blog(request):
     context = {}
     blog = Blog.objects.get(id=1)

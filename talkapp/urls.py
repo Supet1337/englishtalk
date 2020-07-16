@@ -27,7 +27,6 @@ urlpatterns = [
     path('course/child', child),
     path('course/personally', personally),
     path('course/anylevel', anylevel),
-    path('course/grammar', grammar),
     path('blog', blog),
     path('video', video),
 ]
