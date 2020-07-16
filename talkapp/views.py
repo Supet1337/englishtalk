@@ -31,8 +31,16 @@ def login_user(request):
             return HttpResponseRedirect("/")
 
 
+def password_reset_done(request):
+    messages.success(
+        request, "Мы отправили инструкцию по восстановлению пароля на вашу почту. "
+                 "Если в течение нескольких минут ничего не пришло, проверьте спам.")
+    return HttpResponseRedirect("/")
 
-
+def password_reset_complete(request):
+    messages.success(
+        request, "Пароль успешно изменён!")
+    return HttpResponseRedirect("/")
 
 def register_user(request):
     if request.method == "POST":

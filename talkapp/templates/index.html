@@ -190,7 +190,7 @@
 						<div class="card-header">
 							<h2 class="card-text" style="text-align: center">Старт с любого уровня</h2>
 						</div>
-						<img src={% static "images/course12.jpg" %} class="card-img">
+						<a href="course/anylevel"><img src={% static "images/course12.jpg" %} class="card-img"></a>
 						<div class="card-body">
 							<p class="card-text">- Индивидуальная программа</p>
 							<p class="card-text">- Темы, которые Вам интересны</p>
@@ -201,7 +201,7 @@
 						<div class="card-header">
 							<h2 class="card-text" style="text-align: center">Говорим свободно</h2>
 						</div>
-						<img src={% static "images/course3.jpg" %} class="card-img">
+						<a href="course/freespeaking"><img src={% static "images/course3.jpg" %} class="card-img"></a>
 						<div class="card-body">
 							<p class="card-text">- Только практика</p>
 							<p class="card-text">- Вы перестанете бояться ошибок</p>
@@ -572,7 +572,7 @@
 		</section>
 
 
-<div data-aos="fade-right">
+<div data-aos="fade-right" id="sreg">
           <div class=" card text-white bg-danger" style=" border-radius: 0rem;background-color: #a7e3eb !important">
   <div class="row no-gutters">
     <div class="col-md-4" style="text-align: center">
@@ -597,12 +597,12 @@
 			    					<input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="first_name" name="first_name" class="form-control" required placeholder="Имя">
 			    				</div>
 			    				<div class="form-group ml-md-4">
-			    					<input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; id="surname" name="surname" class="form-control" required placeholder="Фамилия">
+			    					<input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; id=" id="surname" name="surname" class="form-control" required placeholder="Фамилия">
 			    				</div>
 		    				</div>
 		    				<div class="d-md-flex">
 		    					<div class="form-group ml-md-4">
-			    					<input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
+			    					<input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
 			    				</div>
 		    				</div>
 		    				<div class="d-md-flex">
