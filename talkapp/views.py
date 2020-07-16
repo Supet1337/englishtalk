@@ -44,13 +44,6 @@ def register_user(request):
                 messages.error(
                     request, "Пользователь с такой почтой уже существует.")
                 return HttpResponseRedirect("../")
-            elif len(User.objects.filter(username=form.data['username'])) > 0:
-                messages.error(
-                    request, "Пользователь с таким ником уже существует.")
-                return HttpResponseRedirect("/")
-            elif check_password(request.POST.get('password1'), request.POST.get('password2')):
-                messages.error(request, 'Пароли не совпадают.')
-                return HttpResponseRedirect("/")
             else:
                 user.save()
                 login(request, user, backend='django.contrib.auth.backends.ModelBackend')
@@ -61,7 +54,15 @@ def register_user(request):
                 send_mail(
                     'Регистрация аккаунта Englishtalk', message, 'noreply.englishtalk@gmail.com', [
                         user.email], fail_silently=False)
-        return HttpResponseRedirect('../')
+        else:
+            if len(User.objects.filter(username=form.data['username'])) > 0:
+                messages.error(
+                    request, "Пользователь с таким ником уже существует.")
+                return HttpResponseRedirect("/")
+            elif check_password(request.POST.get('password1'), request.POST.get('password2')):
+                messages.error(request, 'Пароли не совпадают.')
+                return HttpResponseRedirect("/")
+    return HttpResponseRedirect('../')
 
 def send_request_view(request):
     if request.method == "POST":
