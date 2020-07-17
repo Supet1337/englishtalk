@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'ckeditor',
     'ckeditor_uploader',
+    'nested_admin',
 ]
 
 MIDDLEWARE = [

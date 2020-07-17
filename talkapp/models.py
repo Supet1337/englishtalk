@@ -16,11 +16,17 @@ def audio_directory_path(instance, filename):
 class Course(models.Model):
     name = models.CharField(max_length=64)
 
+    def __str__(self):
+        return self.name
+
 # Create your models here.
 class Lesson(models.Model):
     course = models.ForeignKey(to=Course, on_delete=models.CASCADE)
     docx_url = models.URLField()
     name = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.name
 
     def json(self):
         return {
@@ -38,6 +44,10 @@ class Lesson_video(models.Model):
     name = models.CharField(max_length=64)
     video_url = models.FileField(upload_to=video_directory_path, blank=True)
     lesson = models.ForeignKey(to=Lesson, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
     def json(self):
         return {
             'video_url': self.video_url.url,
@@ -48,6 +58,9 @@ class Lesson_video(models.Model):
 
 class Teacher(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
 
 class User_Lesson(models.Model):
     student = models.ForeignKey(to=User, on_delete=models.CASCADE)
@@ -71,6 +84,10 @@ class Lesson_audio(models.Model):
     name = models.CharField(max_length=64)
     audio_url = models.FileField(upload_to=audio_directory_path, blank=True)
     lesson = models.ForeignKey(to=Lesson, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
     def json(self):
         return {
             'audio_url': self.audio_url.url,

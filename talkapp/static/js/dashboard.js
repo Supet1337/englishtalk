@@ -116,7 +116,7 @@ $(document).ready(function(){
                                  '</li>');
                         $("#myTabContent").append('<div class="tab-pane fade show active" id="vid'+id+'" role="tabpanel" aria-labelledby="vidTab'+id+'">'+
                                  '<div class="card-body" style="height: 700px;">'+
-                                 '<video id="my-video" class="video-js"controls preload="auto" width="640" height="264" poster="" data-setup="{}" >'+
+                                 '<video id="my-video" class="video-js mx-auto" controls preload="auto" width="1280" height="720" poster="" data-setup="{}" >'+
                                  '<source src="'+json[i].video_url+'" type="video/mp4" />'+
                                  '</div>'+
                                  '</div>');
