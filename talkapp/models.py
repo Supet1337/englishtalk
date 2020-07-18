@@ -12,9 +12,24 @@ def video_directory_path(instance, filename):
 def audio_directory_path(instance, filename):
     return 'lessons/lesson_{0}/audio/{1}'.format(instance.lesson.id, filename)
 
+class Teacher(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+
 
 class Course(models.Model):
     name = models.CharField(max_length=64)
+    student = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(to=Teacher, on_delete=models.CASCADE)
+
+    LESSON_TIME_CHOISES = [
+        (True, '60 минут'),
+        (False, '45 минут')
+    ]
+
+    lesson_time = models.BooleanField(choices=LESSON_TIME_CHOISES,default=False)
 
     def __str__(self):
         return self.name
@@ -24,6 +39,9 @@ class Lesson(models.Model):
     course = models.ForeignKey(to=Course, on_delete=models.CASCADE)
     docx_url = models.URLField()
     name = models.CharField(max_length=64)
+    date = models.DateTimeField()
+    is_completed = models.BooleanField(default=False)
+    video_chat = models.CharField(max_length=16, default=get_random_string(length=16))
 
     def __str__(self):
         return self.name
@@ -54,30 +72,6 @@ class Lesson_video(models.Model):
             'video_id': self.id,
             'video_name': self.name,
             'lesson_id': self.lesson.id,
-            }
-
-class Teacher(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.user.username
-
-class User_Lesson(models.Model):
-    student = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    teacher = models.ForeignKey(to=Teacher, on_delete=models.CASCADE)
-    lesson = models.ForeignKey(to=Lesson, on_delete=models.CASCADE)
-    is_completed = models.BooleanField(default=False)
-    video_chat = models.CharField(max_length=16, default=get_random_string(length=16))
-    lesson_time = models.BooleanField()
-    date = models.DateTimeField()
-    doc_copy = models.URLField()
-
-    def json(self):
-        return {
-            'docx_copy': self.doc_copy,
-            'name': self.lesson.name,
-            'lesson_id': self.lesson.id,
-            'student_email': self.student.email
             }
 
 class Lesson_audio(models.Model):
