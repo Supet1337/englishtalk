@@ -1,5 +1,7 @@
+import datetime
 import json
 import redis
+import time
 from django.shortcuts import render
 from django.utils.crypto import get_random_string
 from django.http import HttpResponseRedirect, HttpResponse
@@ -20,9 +22,10 @@ def loggout(request):
 
 def login_user(request):
     if request.method == "POST":
-        username = request.POST['username_auth']
+        email = request.POST['email_auth']
         password = request.POST['password']
-        user = authenticate(username=username, password=password)
+        username = User.objects.get(email=email)
+        user = authenticate(username=username.username, password=password)
         if user is not None:
             login(request, user)
             return HttpResponseRedirect("/")
@@ -42,59 +45,36 @@ def password_reset_complete(request):
         request, "Пароль успешно изменён!")
     return HttpResponseRedirect("/")
 
-def register_user(request):
-    if request.method == "POST":
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.email = form.data['email']
-            if len(User.objects.filter(email=form.data['email'])) > 0:
-                messages.error(
-                    request, "Пользователь с такой почтой уже существует.")
-                return HttpResponseRedirect("../")
-            else:
-                user.save()
-                login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-                message = "Hello! {}\nПоздравляем!" \
-                          " Вы успешно зарегестрировали аккаунт EnglishTalk.\nВперёд к " \
-                          "новым знаниям!\n\n\n" \
-                          "С уважением, команда Englishtalk  ".format(user.username)
-                send_mail(
-                    'Регистрация аккаунта Englishtalk', message, 'noreply.englishtalk@gmail.com', [
-                        user.email], fail_silently=False)
-        else:
-            if len(User.objects.filter(username=form.data['username'])) > 0:
-                messages.error(
-                    request, "Пользователь с таким ником уже существует.")
-                return HttpResponseRedirect("/")
-            elif check_password(request.POST.get('password1'), request.POST.get('password2')):
-                messages.error(request, 'Пароли не совпадают.')
-                return HttpResponseRedirect("/")
-    return HttpResponseRedirect('../')
+
 
 def send_request_view(request):
     if request.method == "POST":
-        if request.user.is_authenticated:
+        user = User()
+        user.username = get_random_string(length=16)
+        user.first_name = request.POST.get('first_name')
+        user.last_name = request.POST.get('surname')
+        user.email = request.POST.get('email')
+        password = User.objects.make_random_password()
+        user.password = make_password(password)
+        if len(User.objects.filter(email=request.POST.get('email'))) > 0:
+            messages.error(request, 'Пользователь с такой почтой уже существует.')
+        else:
+            user.save()
             req = Request()
-            first_name = request.POST.get('first_name')
-            last_name = request.POST.get('surname')
             phone_number = request.POST.get('phone')
-            req.user = request.user
-            req.first_name = first_name
-            req.last_name = last_name
+            req.user = user
             req.phone_number = phone_number
             req.save()
-            message = "Hello! " +first_name+" "+last_name+ "\nПоздравляем!" \
-                " Вы подали заявку на пробный урок. \nВ скором времени вам " \
-                "перезвонят.\n\n\n" \
-                "С уважением, команда EnglishTalk  "
+            message = "Hello," +user.first_name+" "+user.last_name+ "!\nПоздравляем!" \
+                    " Вы успешно подали заявку на пробный урок. \nВ скором времени вам " \
+                    "перезвонят." \
+                    "Ваш пароль для входа в уч.запись "+ password +"\n\n\n" \
+                    "С уважением, команда EnglishTalk  "
             send_mail(
                 'Заявка на курс EnglishTalk', message, 'noreply.englishtalk@gmail.com', [
-                request.user.email], fail_silently=False)
-            messages.success(request, "Вы успешно подали заявку. Проверьте почтовый ящик "+str(request.user.email))
-        else:
-            messages.warning(request, "Для подачи заявки необходима авторизация")
-        return HttpResponseRedirect('/')
+                user.email], fail_silently=False)
+            messages.success(request, "Вы успешно подали заявку. Проверьте почтовый ящик "+str(user.email))
+    return HttpResponseRedirect('/')
 
 
 def index(request):
@@ -107,11 +87,6 @@ def dashboard(request):
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
-    try:
-        context["req"] = Request.objects.get(user=request.user).first_name
-    except:
-        context["req"] = request.user.username
-
     if is_teacher:
         lsn = User_Lesson.objects.filter(teacher=Teacher.objects.get(user=request.user))
     else:
@@ -122,7 +97,10 @@ def dashboard(request):
         context['course'] = "Нет"
     else:
         lsn.order_by('date')
-        context['next_lsn'] = lsn[0].date
+        i = 0
+        if lsn[i].date.strftime("%Y-%m-%d %H:%M") == datetime.datetime.now().strftime("%Y-%m-%d %H:%M"):
+            i += 1
+        context['next_lsn'] = lsn[i].date
         if lsn[0].lesson_time:
             context['lsn_time'] = "60"
         else:

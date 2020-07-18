@@ -102,46 +102,13 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-            <div class="row">
-                <div class="w-100"></div>
-                <div class="col">
-                     <form method="POST" class="needs-validation" style="margin-left: 1em" action="/register-user" novalidate>
-                        {% csrf_token %}
-                         <br>
-                        <input type="text" id="username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{3,16}$" name="username" class="form-control" placeholder="Логин" required>
-                          <div class="invalid-feedback">
-                           Логин должен состоять не менее чем из 4 символов и не более 16 символов
-                          </div>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="Email" required>
-                         <div class="invalid-feedback">
-                           <small style="font-size:10.5px">Адрес электронной почты должен содеражть @</small>
-                          </div>
-                        <input type="password" id="password1"  pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*" name="password1" class="form-control" placeholder="Пароль" required>
-                         <div class="invalid-feedback">
-                           Минимум 8 символов, одна цифра, одна буква в верхнем регистре и одна в нижнем
-                          </div>
-                        <input type="password" id="password2"  pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*" name="password2" class="form-control" placeholder="Подтвердите пароль" required>
-                         <div class="invalid-feedback">
-                           Минимум 8 символов, одна цифра, одна буква в верхнем регистре и одна в нижнем
-                          </div>
-                        <input type="submit" style="margin-top:10px; width:100%" value="Зарегистрироваться" class="btn btn-dark">
-                         <br>
-                         <br>
-                    </form>
-
-
-
-
-                </div>
-
-                <div class="col">
 
                    <form class="needs-validation" style="margin-right: 1em" method="POST" action="/login-user" novalidate>
                         {% csrf_token %}
                         <br>
 
-                      <input type="text" id="username_auth" name="username_auth"  class="form-control" placeholder="Логин" required>
-                       <input type="password" id="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*" name="password"  class="form-control" placeholder="Пароль" required>
+                      <input type="email" id="email_auth" name="email_auth"  class="form-control" placeholder="Email" required>
+                       <input type="password" id="password"  name="password"  class="form-control" placeholder="Пароль" required>
                         <input type="submit" style="margin-top:10px; width:100%" value="Войти" class="btn btn-dark">
                        <div class="invalid-feedback">
                            Неверный логин или пароль.
@@ -157,10 +124,6 @@
 
                 </div>
               </div>
-            </div>
-
-</div>
-
             </div>
 
 

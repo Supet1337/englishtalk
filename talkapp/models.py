@@ -96,8 +96,6 @@ class Lesson_audio(models.Model):
 
 class Request(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=64)
-    last_name = models.CharField(max_length=64)
     phone_number = PhoneNumberField()
 
 class Blog(models.Model):
