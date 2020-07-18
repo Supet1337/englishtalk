@@ -88,26 +88,24 @@ def dashboard(request):
         is_teacher = True
     context["is_teacher"] = is_teacher
     if is_teacher:
-        lsn = Course.objects.filter(teacher=Teacher.objects.get(user=request.user))
+        crs = Course.objects.filter(teacher=Teacher.objects.get(user=request.user))
     else:
-        lsn = Course.objects.filter(student=request.user)
-    lesson = []
-    for l in lsn:
-        lesson.append(Lesson.objects.filter(course=l))
-    if len(lesson) == 0:
+        crs = Course.objects.filter(student=request.user)
+    lessons = Lesson.objects.filter(course__in=crs)
+    if len(lessons) == 0:
         context["lsn"] = 0
         context['next_lsn'] = "У вас нет занятий"
         context['course'] = "Нет"
     else:
-        lesson[0].order_by('date')
+        lessons.order_by('date')
         i = 0
-        context['next_lsn'] = lesson[0][i].date
-        if lesson[0].lesson_time:
+        context['next_lsn'] = lessons[i].date
+        if lessons[i].course.lesson_time:
             context['lsn_time'] = "60"
         else:
             context['lsn_time'] = "45"
-        context['course'] = lesson[0][i].lesson.course.name
-        context["lsn"] = lesson
+        context['course'] = lessons[i].course.name
+        context["lsn"] = lessons
     return render(request,'dashboard.html', context)
 
 @login_required

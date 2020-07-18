@@ -29,22 +29,49 @@ class InLineLesson(nested_admin.NestedStackedInline):
     inlines = [InLineAudioLesson,InLineVideoLesson]
     model = Lesson
     extra = 0
+    fields = ('name','docx_url','date')
 
 @admin.register(Course)
 class CourseAdmin(nested_admin.NestedModelAdmin):
     inlines = [InLineLesson]
+    raw_id_fields = ("student","teacher")
+    list_display = ('name', 'student_name','teacher_name')
+    search_fields = ['name', 'student__username', 'teacher__username']
+    list_filter = ('teacher',)
+    def student_name(self,obj):
+        return "{} {}".format(obj.student.first_name, obj.student.last_name)
 
-@admin.register(Lesson)
-class LessonAdmin(admin.ModelAdmin):
-    inlines = [InLineVideoLesson,InLineAudioLesson]
-    raw_id_fields = ("course",)
-    list_display = ('name','course')
-    list_filter = ('name','course')
-    search_fields = ['name','course__name']
+    def teacher_name(self,obj):
+        return "{} {}".format(obj.teacher.user.first_name, obj.teacher.user.last_name)
 
-admin.site.register(Lesson_video)
-admin.site.register(Lesson_audio)
-admin.site.register(Request)
-admin.site.register(Teacher)
+#@admin.register(Lesson)
+#class LessonAdmin(admin.ModelAdmin):
+#    inlines = [InLineVideoLesson,InLineAudioLesson]
+#  list_display = ('name','course','docx_url','date')
+#    list_filter = ('course',)
+#    search_fields = ['name','course__name']
+
+@admin.register(Teacher)
+class TeacherAdmin(admin.ModelAdmin):
+    list_display = ('teacher_name', 'teacher_email','phone')
+    search_fields = ['user__first_name', 'user__last_name','user__email']
+    def teacher_email(self,obj):
+        return obj.user.email
+    def phone(self,obj):
+        return Request.objects.get(user=obj.user).phone_number
+    def teacher_name(self,obj):
+        return "{} {}".format(obj.user.first_name, obj.user.last_name)
+
+@admin.register(Request)
+class RequestAdmin(admin.ModelAdmin):
+    list_display = ('user_name', 'user_email', 'phone_number')
+    search_fields = ['user__first_name', 'user__last_name', 'user__email','phone_number']
+
+    def user_name(self,obj):
+        return "{} {}".format(obj.user.first_name, obj.user.last_name)
+
+    def user_email(self,obj):
+        return obj.user.email
+
 admin.site.unregister(Group)
 # Register your models here.
