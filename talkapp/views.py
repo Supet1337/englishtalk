@@ -88,25 +88,26 @@ def dashboard(request):
         is_teacher = True
     context["is_teacher"] = is_teacher
     if is_teacher:
-        lsn = User_Lesson.objects.filter(teacher=Teacher.objects.get(user=request.user))
+        lsn = Course.objects.filter(teacher=Teacher.objects.get(user=request.user))
     else:
-        lsn = User_Lesson.objects.filter(student=request.user)
-    if len(lsn) == 0:
+        lsn = Course.objects.filter(student=request.user)
+    lesson = []
+    for l in lsn:
+        lesson.append(Lesson.objects.filter(course=l))
+    if len(lesson) == 0:
         context["lsn"] = 0
         context['next_lsn'] = "У вас нет занятий"
         context['course'] = "Нет"
     else:
-        lsn.order_by('date')
+        lesson[0].order_by('date')
         i = 0
-        if lsn[i].date.strftime("%Y-%m-%d %H:%M") == datetime.datetime.now().strftime("%Y-%m-%d %H:%M"):
-            i += 1
-        context['next_lsn'] = lsn[i].date
-        if lsn[0].lesson_time:
+        context['next_lsn'] = lesson[0][i].date
+        if lesson[0].lesson_time:
             context['lsn_time'] = "60"
         else:
             context['lsn_time'] = "45"
-        context['course'] = lsn[0].lesson.course.name
-        context["lsn"] = lsn
+        context['course'] = lesson[0][i].lesson.course.name
+        context["lsn"] = lesson
     return render(request,'dashboard.html', context)
 
 @login_required
