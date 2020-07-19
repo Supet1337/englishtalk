@@ -4,7 +4,7 @@
     <title>EnglishTalk</title>
 	{% load static %}
     <meta charset="utf-8">
-	  <link rel="shortcut icon" href={% static "images/logotip.png" %}  type="image/png">
+	  <link rel="shortcut icon" href={% static "images/black_logotip.png" %}  type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
@@ -67,10 +67,9 @@
 
 	  	}
 	  }
-
-		.appointment-form .form-control::placeholder{
-			color: rgb(8, 37, 103) !important;
-		}
+	.appointment-form .form-control::placeholder{
+		color: rgb(8, 37, 103) !important;
+	}
   </style>
   <body>
 
@@ -341,74 +340,73 @@
             <h2 class="mb-4">Начать проще, чем кажется!</h2>
 		  </div>
         </div>
-				<div class="container">
+	<div class="container">
       <div class="timeline">
-        <div class="row no-gutters justify-content-end justify-content-md-around align-items-start  timeline-nodes">
+			<div class="row no-gutters justify-content-end justify-content-md-around align-items-start  timeline-nodes">
           <div class="col-10 col-md-5 order-3 order-md-1 timeline-content">
             <div data-aos="fade-right">
-			  <div class="card" style="border: 0;">
-				  <h3 class="card-title" style="color: white">Запишись на бесплатный урок</h3>
-					<p class="card-text">Подберем удобное время для занятия. Занимайся в любом месте и в любое время</p>
+			  <div class="card text-center" style="border: 0;">
+				  <h3 class="card-title text-center" style="color: white">Запишись на бесплатный урок</h3>
+					<p class="card-text text-center">Подберем удобное время для занятия. Занимайся в любом месте и в любое время</p>
 				  	<p class="card-text pararam" style="text-align: center;"><a href="#sreg"><button class="btn btn-primary">Записаться на бесплатный урок</button></a></p>
-			  <div class="card-deck ">
-				<div class="card">
-				  <img src="{% static "images/start1.jpeg" %}" class="card-img">
-				</div>
 			  </div>
-				</div>
 			</div>
           </div>
           <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
             <img src="{% static "images/1.png" %}" class="img-fluid" alt="img">
           </div>
-          <div class="col-10 col-md-5 order-1 order-md-3 py-3 timeline-date">
-          </div>
+          <div class="col-10 col-md-5 order-1 order-md-3 py-1 card" style="border-radius:0; border-color: #37bdc7">
+			  <div data-aos="fade-left">
+            <img src="{% static "images/start1.jpeg" %}" class="card-img">
+				   </div>
+		  </div>
         </div>
+
 
         <div class="row no-gutters justify-content-end justify-content-md-around align-items-start  timeline-nodes">
           <div class="col-10 col-md-5 order-3 order-md-1 timeline-content">
 				<div data-aos="fade-left">
-			  <div class="card" style="border: 0;">
-				  <h3 class="card-title" style="color: white">Познакомься с преподавателем</h3>
-					<p class="card-text">Определим уровень. Подготовим персональную программу! Выберем время и комфортное кол-во занятий.</p>
-			  <div class="card-deck ">
-				<div class="card">
-				  <img src="{% static "images/start2.jpg" %}" class="card-img">
-				</div>
+			  <div class="card text-center" style="border: 0;">
+				  <h3 class="card-title text-center" style="color: white">Познакомься с преподавателем</h3>
+					<p class="card-text text-center">Определим уровень. Подготовим персональную программу! Выберем время и комфортное кол-во занятий.</p>
 			  </div>
 				</div>
 			</div>
-          </div>
           <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
             <img src="{% static "images/2.png" %}" class="img-fluid" alt="img">
           </div>
-          <div class="col-10 col-md-5 order-1 order-md-3 py-3 timeline-date">
+
+          <div class="col-10 col-md-5 order-1 order-md-3 py-1 card" style="border-radius:0; border-color: #37bdc7">
+			  <div data-aos="fade-right">
+			  <img src="{% static "images/start2.jpg" %}" class="card-img">
+				  </div>
           </div>
-        </div>
+
+	  </div>
+
         <div class="row no-gutters justify-content-end justify-content-md-around align-items-start  timeline-nodes">
           <div class="col-10 col-md-5 order-3 order-md-1 timeline-content">
             <div data-aos="fade-right">
-			  <div class="card" style="border: 0;">
-				  <h3 class="card-title" style="color: white">Открой ноутбук и начни изучать английский!</h3>
-					<p class="card-text" >Инновационная платформа позволяет делать все в режиме онлайн. Видеочат, мессенджер, аудирование, интерактивный учебник – все в одном окне!</p>
-			  <div class="card-deck ">
-				<div class="card">
-				  <img src="{% static "images/start3.jpg" %}" class="card-img">
-				</div>
+			  <div class="card text-center" style="border: 0;">
+				  <h3 class="card-title text-center" style="color: white">Открой ноутбук и начни изучать английский!</h3>
+					<p class="card-text text-center" >Инновационная платформа позволяет делать все в режиме онлайн. Видеочат, мессенджер, аудирование, интерактивный учебник – все в одном окне!</p>
 			  </div>
-				</div>
 			</div>
           </div>
           <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
             <img src="{% static "images/3.png" %}" class="img-fluid" alt="img">
           </div>
-          <div class="col-10 col-md-5 order-1 order-md-3 py-3 timeline-date">
+          <div class="col-10 col-md-5 order-1 order-md-3 py-1 card" style="border-radius:0; border-color: #37bdc7">
+			  <div data-aos="fade-left">
+			  <img src="{% static "images/start3.jpg" %}" class="card-img">
+			  </div>
           </div>
         </div>
-      </div>
-    </div>
+	  </div>
+			</div>
 			</div>
 		</section>
+
 	  <div data-aos="fade-right">
           <div class=" card text-white bg-danger" style=" border-radius: 0rem;background-color: #a7e3eb !important">
   <div class="row no-gutters">
@@ -446,47 +444,50 @@
     <div class="card-body">
       <div class="form-group">
     <label for="exampleFormControlSelect1">Продолжительность занятия</label>
-    <select onclick="if (typeof(this.selectedIndex) != 'undefined') changetime(this.selectedIndex)" class="form-control" id="exampleFormControlSelect1" style="border-radius: 50px;margin-bottom: 30px;">
+    <select onclick="if (typeof(this.selectedIndex) != 'undefined') changetime(this.selectedIndex)" class="form-control" id="exampleFormControlSelect1" style="border-radius: 50px;margin-bottom: 30px; height: 40px !important;">
       <option>45 мин</option>
       <option>60 мин</option>
     </select>
 	<label for="exampleFormControlSelect2">Количество занятий</label>
-    <select onclick="if (typeof(this.selectedIndex) != 'undefined') changepack(this.selectedIndex)" class="form-control" id="exampleFormControlSelect2" style="border-radius: 50px;">
+    <select onclick="if (typeof(this.selectedIndex) != 'undefined') changepack(this.selectedIndex)" class="form-control" id="exampleFormControlSelect2" style="border-radius: 50px; height: 40px !important;">
         <option>5 занятий</option>
         <option>10 занятий</option>
 		<option>20 занятий</option>
-		<option>30 занятий</option>
+		<option selected>30 занятий</option>
     </select>
   </div>
     </div>
   </div>
+
   <div class="card">
     <div class="card-body">
 		<h2 class="card-title" style="text-align: center;">Стоимость за одно занятие:</h2>
-      <p class="card-text" id="cost" style="font-size: 90px;color: #dc3545;text-align: center;">860 ₽</p>
+		 <p class="card-text" id="cost" style="font-size: 90px;color: #dc3545;text-align: center;">660 ₽</p>
 		<img src="{% static "images/cost.jpeg" %}" class="card-img">
     </div>
   </div>
 	<div class="card">
     <div class="card-body">
-		<h2 class="card-title" style="text-align: center;"><b>Бесплатно</b> вы получаете:</h2>
-        <p class="card-text" style="text-align: center">- Доступ к платформе 24/7</p>
-		<p class="card-text" style="text-align: center">- Персонального куратора</p>
-		<p class="card-text" style="text-align: center">- Гарантию результата</p>
-		<p class="card-text" style="text-align: center">- Уникальные материалы для самостоятельной подготовки</p>
+		<h2 class="card-title mb-4" style="text-align: center; font-size: 1.5rem;"><b>Бесплатно вы получаете:</b></h2>
+        <p class="card-text" style="text-align: center; font-size: x-large; margin-bottom: 2em"><i class="far fa-calendar-check"></i> Доступ к платформе 24/7</p>
+		<p class="card-text" style="text-align: center; font-size: x-large; margin-bottom: 2em"><i class="fas fa-chalkboard-teacher"></i> Персонального куратора</p>
+		<p class="card-text" style="text-align: center; font-size: x-large; margin-bottom: 2em"><i class="fas fa-chart-line"></i> Гарантию результата</p>
+		<p class="card-text" style="text-align: center; font-size: x-large; margin-bottom: 2em"><i class="fas fa-book"></i> Уникальные материалы для самостоятельной подготовки</p>
     </div>
   </div>
 </div>
       </div>
     </section>
-  <!--
+
 <section class="ftco-section testimony-section" id="sreview">
       <div class="container">
+		  <div data-aos="fade-center">
         <div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
             <h2 class="mb-4">Что говорят студенты о нас?</h2>
             </div>
         </div>
+		  </div>
         <div class="row ftco-animate justify-content-center">
           <div class="col-md-12">
             <div class="carousel-testimony owl-carousel">
@@ -564,64 +565,92 @@
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
 
 	  <section class="ftco-section testimony-section bg-light">
-			<div class="container-fluid easystart">
-				<div class="row justify-content-center mb-5 pb-2">
+
+		<div data-aos="fade-center">
+		  <div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
             <h2 class="mb-4">Почему наши ученики учатся быстрее?</h2>
 			  <p>Мы верим, что за этим будущее в образовании! Убедитесь в этом сами!</p>
 		  </div>
         </div>
-				<div data-aos="flip-left">
-			  <div class="card-group">
-				<div class="card">
-				  <img src="{% static "images/eff1.jpg" %}" class="card-img">
-				<div class="card-body" style="text-align: center;">
-				  <h3 class="card-title">Экономим 30% вашего времени</h3>
-					<p class="card-text">Все упражнения, аудио и видео файлы загружены на онлайн-платформу и уже ждут Вас. Просто откройте ноутбук и учитесь английскому!</p>
+		</div>
+		  <div data-aos="fade-right">
+		<div class="card mb-5" >
+			  <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="{% static "images/eff1.jpg" %}" class="card-img" style=" max-height: 340px">
 				</div>
-				</div>
-				  <div class="card">
-				  <img src="{% static "images/eff2.jpg" %}" class="card-img">
-				<div class="card-body" style="text-align: center;">
-				  <h3 class="card-title">Повышаем усваиваемость информации на 60%</h3>
-					<p class="card-text">Учиться без практического применения – бесполезно. Поэтому все новые знания применяются на практике на этом же уроке!</p>
-				</div>
-				</div>
-				  <div class="card">
-				  <img src="{% static "images/eff3.jpg" %}" class="card-img">
-				<div class="card-body" style="text-align: center;">
-				  <h3 class="card-title">Индивидуальная программа каждого курса и контроль куратора</h3>
-					<p class="card-text">Мы детально готовим программу каждому ученику. Уже с начала обучения Вы видите план каждого урока и знаете, что будете изучать дальше.</p>
-				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					  <h3 class="card-title" style="text-align: center; font-size: 35px"><b>Экономим 30% вашего времени</b></h3>
+					  <p class="card-text" style="text-align: center; font-size: xx-large">Все упражнения, аудио и видео файлы загружены на онлайн-платформу и уже ждут Вас. Просто откройте ноутбук и учитесь английскому!</p>
+				  </div>
 				</div>
 			  </div>
-				</div>
 			</div>
+		  </div>
+		  <div data-aos="fade-left">
+		<div class="card mb-5" >
+			  <div class="row no-gutters">
+				<div class="col-md-8">
+				  <div class="card-body">
+					  <h3 class="card-title" style="text-align: center; font-size: 35px"><b>Повышаем усваиваемость информации на 60%</b></h3>
+					  <p class="card-text" style="text-align: center; font-size: xx-large">Учиться без практического применения – бесполезно. Поэтому все новые знания применяются на практике на этом же уроке!</p>
+				  </div>
+				</div>
+				<div class="col-md-4">
+					<img src="{% static "images/eff2.jpg" %}" class="card-img-top" style=" max-height: 340px">
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <div data-aos="fade-right">
+		<div class="card mb-5">
+			  <div class="row no-gutters">
+				<div class="col-md-4">
+				  <img src="{% static "images/eff3.jpg" %}" class="card-img" style=" max-height: 340px">
+				</div>
+				<div class="col-md-8">
+				  <div class="card-body">
+					  <h3 class="card-title" style="text-align: center; font-size: 35px" ><b>Индивидуальная программа каждого курса и контроль куратора</b></h3>
+					  <p class="card-text" style="text-align: center; font-size: xx-large">Мы детально готовим программу каждому ученику. Уже с начала обучения Вы видите план каждого урока и знаете, что будете изучать дальше.</p>
+				  </div>
+				</div>
+			  </div>
+		</div>
+		  </div>
 		</section>
 
 
 <div data-aos="fade-right" id="sreg">
           <div class=" card text-white bg-danger" style=" border-radius: 0rem;background-color: #a7e3eb !important">
   <div class="row no-gutters">
-    <div class="col-md-4" style="text-align: center">
+    <div class="col" style="text-align: center">
 		<div class="heading-section heading-section-white ftco-animate mb-0 mt-3">
 		    <h1 class="card-title" style="font-size: 40px;color: #082567"><b>Пройти первый урок бесплатно!</b></h1>
-			 <img src={% static "images/chelik.jpg" %} class="chelic" style="max-height: 400px;max-width: 447px">
 		</div>
     </div>
-    <div class="col-md-8">
+	  <div class="col" style="text-align: center">
+		  <img src={% static "images/chelik.jpg" %} class="chelic" style="max-height: 400px;max-width: 447px">
+	  </div>
+    <div class="col">
       <div class="card-body" style="padding-bottom: 0">
 		  <div class="row" style="color: #082567">
 
 			  <div class="col">
-				  <div class="heading-section heading-section-white ftco-animate" style="margin-bottom: 6rem !important; text-align:center">
+				  <div class="heading-section heading-section-white ftco-animate" style=" text-align:center">
 		            <h1 class="card-title" style="font-size: 40px;color: #082567"><b>Мы свяжемся с вами и запишем на урок</b></h1>
+					  <h3 style="color: white;" >Как вас зовут?</h3>
+					  <h3 style="color: white; font-size: 30px"><b>Какой у вас номер телефона?</b></h3>
+		  				<p class="card-text pararam" style="text-align: center"><a href="#sreg"><button class="btn btn-primary" style="font-size: 28px;color: #082567;border-radius: 0"><b>Записаться на<br> бесплатный урок</b></button></a></p>
+				 		<p class="card-text pararam" style="text-align: center;">Нажимая, вы принимаете <b>условия соглашения</b></p>
 		            </div>
-		  <div class="col-md-12 py-0 md-5">
+
+		  <!-- <div class="col-md-12 py-0 md-5">
 		          <form method="POST" action="/send_request_v" class="appointment-form ftco-animate">
 					  {% csrf_token %}
 		    				<div class="d-md-flex">
@@ -647,7 +676,7 @@
 			            </div>
 		    				</div>
 		    			</form>
-		    		</div>
+		    		</div> -->
     			</div>
 		 </div>
 		  </div>
