@@ -51,8 +51,10 @@ def send_request_view(request):
     if request.method == "POST":
         user = User()
         user.username = get_random_string(length=16)
-        user.first_name = request.POST.get('first_name')
-        user.last_name = request.POST.get('surname')
+        name = request.POST.get('name')
+        FIO = list(name.split())
+        user.first_name = FIO[0]
+        user.last_name = FIO[1]
         user.email = request.POST.get('email')
         password = User.objects.make_random_password()
         user.password = make_password(password)

@@ -76,6 +76,10 @@
 	.appointment-form .form-control::placeholder{
 		color: rgb(8, 37, 103) !important;
 	}
+	.forma .form-control::placeholder{
+		color: rgb(8, 37, 103) !important;
+		font-size: 18px;
+	}
   </style>
   <body>
 
@@ -349,7 +353,7 @@
 	<div class="container">
       <div class="timeline">
 			<div class="row no-gutters justify-content-end justify-content-md-around align-items-start  timeline-nodes">
-          <div class="col-10 col-md-5 order-3 order-md-1 timeline-content">
+          <div class="col-10 col-md-5 order-3 order-md-1 timeline-content" style="margin-bottom: 200px">
             <div data-aos="fade-right">
 			  <div class="card text-center" style="border: 0;">
 				  <h3 class="card-title text-center" style="color: white">Запишись на бесплатный урок</h3>
@@ -361,7 +365,7 @@
           <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
             <img src="{% static "images/1.png" %}" class="img-fluid" alt="img">
           </div>
-          <div class="col-10 col-md-5 order-1 order-md-3 py-1 card" style="border-radius:0; border-color: #37bdc7">
+          <div class="col-10 col-md-5 order-1 order-md-3 py-1 card" style="border-radius:0; border-color: #37bdc7; margin-bottom: 200px">
 			  <div data-aos="fade-left">
             <img src="{% static "images/start1.jpeg" %}" class="card-img">
 				   </div>
@@ -370,7 +374,7 @@
 
 
         <div class="row no-gutters justify-content-end justify-content-md-around align-items-start  timeline-nodes">
-          <div class="col-10 col-md-5 order-3 order-md-1 timeline-content">
+          <div class="col-10 col-md-5 order-3 order-md-1 timeline-content" style="margin-bottom: 200px">
 				<div data-aos="fade-left">
 			  <div class="card text-center" style="border: 0;">
 				  <h3 class="card-title text-center" style="color: white">Познакомься с преподавателем</h3>
@@ -382,7 +386,7 @@
             <img src="{% static "images/2.png" %}" class="img-fluid" alt="img">
           </div>
 
-          <div class="col-10 col-md-5 order-1 order-md-3 py-1 card" style="border-radius:0; border-color: #37bdc7">
+          <div class="col-10 col-md-5 order-1 order-md-3 py-1 card" style="border-radius:0; border-color: #37bdc7; margin-bottom: 200px; width: 100%">
 			  <div data-aos="fade-right">
 			  <img src="{% static "images/start2.jpg" %}" class="card-img">
 				  </div>
@@ -450,13 +454,13 @@
   <div class="card">
     <div class="card-body">
       <div class="form-group">
-    <label for="exampleFormControlSelect1">Продолжительность занятия</label>
-    <select onclick="if (typeof(this.selectedIndex) != 'undefined') changetime(this.selectedIndex)" class="form-control" id="exampleFormControlSelect1" style="border-radius: 50px;margin-bottom: 30px; height: 40px !important;">
-      <option>45 мин</option>
+    <label for="exampleFormControlSelect1" style="font-size: 20px">Продолжительность занятия</label>
+    <select onclick="if (typeof(this.selectedIndex) != 'undefined') changetime(this.selectedIndex)" class="form-control" id="exampleFormControlSelect1" style="border-radius: 50px;margin-bottom: 30px; height: 40px !important; text-align: center; text-align-last: center; width: 60%">
+      <option selected >45 мин</option>
       <option>60 мин</option>
     </select>
-	<label for="exampleFormControlSelect2">Количество занятий</label>
-    <select onclick="if (typeof(this.selectedIndex) != 'undefined') changepack(this.selectedIndex)" class="form-control" id="exampleFormControlSelect2" style="border-radius: 50px; height: 40px !important;">
+	<label for="exampleFormControlSelect2" style="font-size: 20px">Количество занятий</label>
+    <select  onclick="if (typeof(this.selectedIndex) != 'undefined') changepack(this.selectedIndex)" class="form-control" id="exampleFormControlSelect2" style="border-radius: 50px; height: 40px !important; text-align: center; text-align-last: center; width: 60%">
         <option>5 занятий</option>
         <option>10 занятий</option>
 		<option>20 занятий</option>
@@ -634,7 +638,7 @@
 		    <h1 class="card-title" style="font-size: 40px;color: #082567"><b>Пройти первый урок бесплатно!</b></h1>
 		</div>
     </div>
-	  <div class="col" style="text-align: center">
+	  <div class="col" style="text-align: left">
 		  <img src={% static "images/chelik.jpg" %} class="chelic" style="max-height: 400px;max-width: 447px">
 	  </div>
     <div class="col">
@@ -643,11 +647,15 @@
 
 			  <div class="col">
 				  <div class="heading-section heading-section-white ftco-animate" style=" text-align:center">
-		            <h1 class="card-title" style="font-size: 40px;color: #082567"><b>Мы свяжемся с вами и запишем на урок</b></h1>
-					  <h3 style="color: white;" >Как вас зовут?</h3>
-					  <h3 style="color: white; font-size: 30px"><b>Какой у вас номер телефона?</b></h3>
-		  				<p class="card-text pararam" style="text-align: center"><a href="#sreg"><button class="btn btn-primary" style="font-size: 28px;color: #082567;border-radius: 0"><b>Записаться на<br> бесплатный урок</b></button></a></p>
-				 		<p class="card-text pararam" style="text-align: center;">Нажимая, вы принимаете <b>условия соглашения</b></p>
+					  <form method="POST" action="/send_request_v" class="ftco-animate forma">
+						  {% csrf_token %}
+		            		<h1 class="card-title" style="font-size: 40px;color: #082567"><b>Мы свяжемся с вами и запишем на урок</b></h1>
+					  		<input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="name" name="name" class="form-control mx-auto mb-1" pattern="[А-Яа-я]{2, 20}\s[А-Яа-я]{2, 20}" required placeholder="Как вас зовут?">
+					  		<input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control mx-auto mb-1" placeholder="Какой у вас номер телефона?">
+						    <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="email" name="email" required class="form-control mx-auto mb-1" placeholder="Какой у вас email?">
+		  				  	<input type="submit" value="Записаться на бесплатный урок" class="btn btn-primary py-3 px-4" style="color: #082567; border-radius: 0; font-size: 20px" >
+							<p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <b>условия соглашения</b></p>
+					  </form>
 		            </div>
 
 		  <!-- <div class="col-md-12 py-0 md-5">
