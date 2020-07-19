@@ -8,7 +8,7 @@ $(document).ready(function(){
 });
 
 var time = 0;
-var pack = 0;
+var pack = 3;
 function calccost(){
     if(time == 0 && pack == 0){
 	    document.getElementById('cost').innerHTML = "860 ₽";

@@ -127,43 +127,136 @@
             </div>
 
 
-<div class="modal fade" id="reqModal" tabindex="-1" role="dialog" aria-labelledby="reqModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl" role="document">
+<div class="modal fade" id="reqModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
             <div class="modal-body mx-auto" style="padding: 0">
                 <div class="card-group" style="background: #9ddde7">
-                    <div class="card" style="border: 0;">
-                        <div class="card-body" style="background: #9ddde7">
-                            <h3 class="card-title">Первый урок - бесплатно!</h3>
+                    <div class="card" style="border: 0;text-align: center;background: #9ddde7">
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #082567;">Первый урок - бесплатно!</h3>
                         </div>
+                        <img src="{% static "images/mahaet.jpg" %}" class="chelic mx-auto" style="max-width: 387.75px;max-height: 374.25px;">
                     </div>
                     <div class="card" style="border: 0;">
-                        <div class="card-body" style="background: #c5cfd8;">
-                            <h3 class="card-title">Мы свяжемся с вами и запишем на первый урок</h3>
-                        </div>
-                    </div>
-                    <div class="card" style="border: 0;">
-                        <button type="button" class="close" style="text-align: right;background: #9ddde7;opacity: 1;" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" style="text-align: right;background: #c5cfd8;opacity: 1;color: #082567;" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <img src="{% static "images/mahaet.jpg" %}" class="chelic" style="max-width: 387.75px;max-height: 374.25px;">
-                    </div>
-                </div>
-                   <form style="margin-right: 1em" method="POST" action="../send_request_v" novalidate>
+                        <div class="card-body" style="background: #c5cfd8;">
+                            <h3 class="card-title" style="color: #082567;text-align: center;">Мы свяжемся с вами и запишем на первый урок</h3>
+                            <form style="margin-right: 1em" class="appointment-form ftco-animate" method="POST" action="../send_request_v">
                         {% csrf_token %}
                         <br>
-                        <input type="text" id="first_name" name="first_name" class="form-control" required placeholder="Имя">
-                       <input type="text" id="surname" name="surname" class="form-control" required placeholder="Фамилия">
-                      <input type="email" id="email" name="email"  class="form-control" placeholder="Email" required>
-                       <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
-                        <input type="submit" style="margin-top:10px; width:100%" value="Записаться на бесплатный урок" class="btn btn-dark">
+                        <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="first_name" name="first_name" class="form-control" required placeholder="Имя">
+                       <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="surname" name="surname" class="form-control" required placeholder="Фамилия">
+                      <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="email" name="email"  class="form-control" placeholder="Email" required>
+                       <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
+                        <input type="submit" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;width: 100%" value="Записаться на бесплатный урок" class="btn btn-primary">
+                                <p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <b>условия соглашения</b></p>
                     </form>
+                        </div>
+                    </div>
+                </div>
 
                     </div>
 
                 </div>
               </div>
             </div>
+
+<div class="modal fade" id="reqTeachModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+            <div class="modal-body mx-auto" style="padding: 0">
+                <div class="card-group" style="background: #9ddde7">
+                    <div class="card" style="border: 0;text-align: center;background: #9ddde7">
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #082567;">Это будет круто!</h3>
+                            <h4 class="card-text" style="color: #082567;">Будем рады видеть Вас в нашей команде!</h4>
+                        </div>
+                        <img src="{% static "images/teach.png" %}" class="chelic mx-auto" style="max-width: 387.75px;max-height: 374.25px;">
+                    </div>
+                    <div class="card" style="border: 0;">
+                        <button type="button" class="close" style="text-align: right;background: #c5cfd8;opacity: 1;color: #082567;" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="card-body" style="background: #c5cfd8;">
+                            <h3 class="card-title" style="color: #082567;text-align: center;">Мы свяжемся с Вами и обсудим условия работы</h3>
+                            <form style="margin-right: 1em" class="appointment-form ftco-animate" method="POST" action="../send_request_vt">
+                        {% csrf_token %}
+                        <br>
+                        <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="first_name" name="first_name" class="form-control" required placeholder="Имя">
+                       <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="surname" name="surname" class="form-control" required placeholder="Фамилия">
+                      <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="email" name="email"  class="form-control" placeholder="Email" required>
+                       <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
+                        <input type="submit" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;width: 100%" value="Записаться на бесплатный урок" class="btn btn-primary">
+                                <p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <b>условия соглашения</b></p>
+                    </form>
+                        </div>
+                    </div>
+                </div>
+
+                    </div>
+
+                </div>
+              </div>
+            </div>
+
+<div class="modal fade" id="askModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+            <div class="modal-body mx-auto" style="padding: 0">
+                <div class="card-group" style="background: #9ddde7">
+                    <div class="card" style="border: 0;text-align: center;background: #9ddde7">
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #082567;">Привет!</h3>
+                        </div>
+                        <img src="{% static "images/mahaet.jpg" %}" class="chelic mx-auto" style="max-width: 387.75px;max-height: 374.25px;">
+                    </div>
+                    <div class="card" style="border: 0;">
+                        <button type="button" class="close" style="text-align: right;background: #c5cfd8;opacity: 1;color: #082567;" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="card-body" style="background: #c5cfd8;">
+                            <h3 class="card-title" style="color: #082567;text-align: center;">Мы свяжемся с Вами и ответим на все вопросы по обучению </h3>
+                            <form style="margin-right: 1em" class="appointment-form ftco-animate" method="POST" action="../ask_question">
+                        {% csrf_token %}
+                        <br>
+                        <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="first_name" name="first_name" class="form-control" required placeholder="Имя">
+                       <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="surname" name="surname" class="form-control" required placeholder="Фамилия">
+                       <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
+                        <input type="submit" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;width: 100%" value="Хочу пообщаться" class="btn btn-primary">
+                                <p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <b>условия соглашения</b></p>
+                    </form>
+                        </div>
+                    </div>
+                </div>
+
+                    </div>
+
+                </div>
+              </div>
+            </div>
+
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+            <div class="modal-body mx-auto" style="padding: 0">
+                    <div class="card" style="border: 0;text-align: center;background: #9ddde7;border-radius: 0;">
+                        <div class="card-body">
+                            <h2 class="card-title" style="color: #082567;">Ура!</h2>
+                            <p class="card-text" style="color: #082567;font-size: x-large">Мы свяжемся с Вами в кратчайшие сроки и обсудим детали 😊</p>
+                            <p><button type="button" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;margin-right: 30px;width: 187.61px" data-dismiss="modal" class="btn btn-primary">Окей! <br> Буду ждать!</button><button type="button" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;background: #c5cfd8;border-color: #082567" data-dismiss="modal" data-toggle="modal" data-src="https://www.youtube.com/embed/JUSuCm6MXVI" data-target="#myModalVid" class="btn btn-primary video-btn">Хочу посмотреть <br> пример урока</button></p>
+                        </div>
+                    </div>
+
+                    </div>
+
+                </div>
+              </div>
+            </div>
+
+
 
 <script>
 (function() {
