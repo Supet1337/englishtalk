@@ -50,6 +50,12 @@
 	    padding-right: 200px !important;
 	    padding-left: 200px !important;
 	    }
+	    .wsmtt{
+	    font-size: 35px;
+	    }
+	    .wsmt{
+	    font-size: xx-large;
+	    }
 	  }
 	  @media(max-width: 1400px){
 	  .pararam{
@@ -410,20 +416,20 @@
 	  <div data-aos="fade-right">
           <div class=" card text-white bg-danger" style=" border-radius: 0rem;background-color: #a7e3eb !important">
   <div class="row no-gutters">
-    <div class="col-md-4" style="text-align: center">
-      <img src="{% static "images/chelik.jpg" %}" class="chelic" style="max-height: 400px;max-width: 447px">
+    <div class="col-md-4" style="text-align: right">
+      <img src="{% static "images/chelik.jpg" %}" class="chelic" style="max-height: 300px;max-width: 335,25px">
     </div>
     <div class="col-md-8">
-      <div class="card-body">
+      <div class="card-body" style="padding-top: 0">
 		  <div class="row" style="color: #082567">
-			  <div class="col">
-		  <h1 class="card-title" style="font-size: 40px;color: #082567">Первый урок -</h1>
-		  <p class="card-text pararam" style="font-size: xx-large;">– Познакомимся</p>
-		  <p class="card-text pararam" style="font-size: xx-large;">- Определим уровень</p>
-		  <p class="card-text pararam" style="font-size: xx-large;">- Подберем персональную программу</p>
+			  <div class="col" style="text-align: center">
+		  <h1 class="card-title" style="font-size: 35px;color: #082567;font-weight: 600">Первый урок -</h1>
+		  <p class="card-text pararam" style="font-size: 28px;"><b>– Познакомимся</b></p>
+		  <p class="card-text pararam" style="font-size: 28px;"><b>- Определим уровень</b></p>
+		  <p class="card-text pararam" style="font-size: 28px;"><b>- Подберем программу</b></p>
 		  </div>
 			  <div class="col">
-		  <p class="card-text pararam" style="text-align: center;padding-top: 40%"><a href="#sreg"><button class="btn btn-primary" style="font-size: xx-large;color: #082567">Записаться на бесплатный урок</button></a></p>
+		  <p class="card-text pararam" style="text-align: center;padding-top: 15%"><a href="#sreg"><button class="btn btn-primary" style="font-size: 28px;color: #082567;border-radius: 0"><b>Записаться на<br> бесплатный урок</b></button></a></p>
 				 <p class="card-text pararam" style="text-align: center;">Нажимая, вы принимаете <b>условия соглашения</b></p>
 		 </div>
 		  </div>
@@ -432,6 +438,7 @@
   </div>
 </div>
 </div>
+
 	  <section class="ftco-section testimony-section bg-light" id="scoost">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-2">
@@ -570,57 +577,50 @@
 
 	  <section class="ftco-section testimony-section bg-light">
 
-		<div data-aos="fade-center">
-		  <div class="row justify-content-center mb-5 pb-2">
+		  <div class="row justify-content-center mb-5 pb-2" style="margin-right: 0;">
           <div class="col-md-8 text-center heading-section ftco-animate">
             <h2 class="mb-4">Почему наши ученики учатся быстрее?</h2>
 			  <p>Мы верим, что за этим будущее в образовании! Убедитесь в этом сами!</p>
 		  </div>
         </div>
-		</div>
-		  <div data-aos="fade-right">
-		<div class="card mb-5" >
-			  <div class="row no-gutters">
-				<div class="col-md-4">
-				  <img src="{% static "images/eff1.jpg" %}" class="card-img" style=" max-height: 340px">
+		  <div data-aos="fade-up">
+			  <div class="card-group mb-5 px-5">
+
+				<div class="card" style="max-width: 483px; border-right: 0">
+				  <img src="{% static "images/eff1.jpg" %}" class="card-img ml-auto" style="max-width: 483px; max-height: 331.5px">
 				</div>
-				<div class="col-md-8">
+				<div class="card">
 				  <div class="card-body">
-					  <h3 class="card-title" style="text-align: center; font-size: 35px"><b>Экономим 30% вашего времени</b></h3>
-					  <p class="card-text" style="text-align: center; font-size: xx-large">Все упражнения, аудио и видео файлы загружены на онлайн-платформу и уже ждут Вас. Просто откройте ноутбук и учитесь английскому!</p>
+					  <h3 class="card-title wsmtt" style="text-align: center;"><b>Экономим 30% вашего времени</b></h3>
+					  <p class="card-text wsmt" style="text-align: center;">Все упражнения, аудио и видео файлы загружены на онлайн-платформу и уже ждут Вас. Просто откройте ноутбук и учитесь английскому!</p>
 				  </div>
 				</div>
 			  </div>
+		  </div>
+		  <div data-aos="fade-up">
+		<div class="card-group mb-5 px-5">
+				<div class="card">
+				  <div class="card-body">
+					  <h3 class="card-title wsmtt" style="text-align: center;"><b>Повышаем усваиваемость информации на 60%</b></h3>
+					  <p class="card-text wsmt" style="text-align: center;">Учиться без практического применения – бесполезно. Поэтому все новые знания применяются на практике на этом же уроке!</p>
+				  </div>
+				</div>
+				<div class="card" style="max-width: 483px">
+					<img src="{% static "images/eff2.jpg" %}" class="card-img ml-auto" style="max-width: 483px; max-height: 331.5px">
+				</div>
 			</div>
 		  </div>
-		  <div data-aos="fade-left">
-		<div class="card mb-5" >
-			  <div class="row no-gutters">
-				<div class="col-md-8">
+		  <div data-aos="fade-up">
+		<div class="card-group mb-5 px-5">
+				<div class="card" style="max-width: 483px">
+				  <img src="{% static "images/eff3.jpg" %}" class="card-img ml-auto" style="max-width: 483px; max-height: 331.5px">
+				</div>
+				<div class="card">
 				  <div class="card-body">
-					  <h3 class="card-title" style="text-align: center; font-size: 35px"><b>Повышаем усваиваемость информации на 60%</b></h3>
-					  <p class="card-text" style="text-align: center; font-size: xx-large">Учиться без практического применения – бесполезно. Поэтому все новые знания применяются на практике на этом же уроке!</p>
+					  <h3 class="card-title wsmtt" style="text-align: center;" ><b>Индивидуальная программа каждого курса и контроль куратора</b></h3>
+					  <p class="card-text wsmt" style="text-align: center;">Мы детально готовим программу каждому ученику. Уже с начала обучения Вы видите план каждого урока и знаете, что будете изучать дальше.</p>
 				  </div>
 				</div>
-				<div class="col-md-4">
-					<img src="{% static "images/eff2.jpg" %}" class="card-img-top" style=" max-height: 340px">
-				</div>
-			  </div>
-			</div>
-		  </div>
-		  <div data-aos="fade-right">
-		<div class="card mb-5">
-			  <div class="row no-gutters">
-				<div class="col-md-4">
-				  <img src="{% static "images/eff3.jpg" %}" class="card-img" style=" max-height: 340px">
-				</div>
-				<div class="col-md-8">
-				  <div class="card-body">
-					  <h3 class="card-title" style="text-align: center; font-size: 35px" ><b>Индивидуальная программа каждого курса и контроль куратора</b></h3>
-					  <p class="card-text" style="text-align: center; font-size: xx-large">Мы детально готовим программу каждому ученику. Уже с начала обучения Вы видите план каждого урока и знаете, что будете изучать дальше.</p>
-				  </div>
-				</div>
-			  </div>
 		</div>
 		  </div>
 		</section>
@@ -687,8 +687,7 @@
 </div>
 	  {% include 'footer.html' %}
 
-	  <script type="text/javascript" src="https://vc.ivcbox.com/v2/js/index.js?hash=661EEgHdRRgahdHqgr501sxTTh30q36d6Q2mvrO3iSGYHcK2l" charset="UTF-8"></script>
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+	  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 	  <script src={% static "js/jquery.min.js" %}></script>
 	  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>

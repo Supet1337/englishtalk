@@ -69,7 +69,7 @@
         <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;"><span style="padding-top: 7px; padding-bottom: 7x; padding-right: 4px;" class="fa fa-phone"></span>88005353535</a>
       </li>
         <li class="nav-item">
-            <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="../#sreg">Попробовать бесплатно</a>
+            <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="#" data-toggle="modal" data-target="#reqModal">Попробовать бесплатно</a>
       </li>
                         <li class="nav-item dropdown nav-user">
                              {% if request.user.is_authenticated %}
@@ -102,7 +102,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
+                <div class="modal-body mx-auto">
                    <form class="needs-validation" style="margin-right: 1em" method="POST" action="/login-user" novalidate>
                         {% csrf_token %}
                         <br>
@@ -120,14 +120,50 @@
                     <a href="/accounts/vk/login/?process=login"><span style="font-size:40px; color:#4a76a8" class="fab fa-vk"></span></a>
                     <a href="/accounts/discord/login/?process=login"><span style="font-size:40px; color:#6a84c6" class="fab fa-discord"></span></a>
 
-
+                </div>
 
                 </div>
               </div>
             </div>
 
 
+<div class="modal fade" id="reqModal" tabindex="-1" role="dialog" aria-labelledby="reqModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+            <div class="modal-body mx-auto" style="padding: 0">
+                <div class="card-group" style="background: #9ddde7">
+                    <div class="card" style="border: 0;">
+                        <div class="card-body" style="background: #9ddde7">
+                            <h3 class="card-title">Первый урок - бесплатно!</h3>
+                        </div>
+                    </div>
+                    <div class="card" style="border: 0;">
+                        <div class="card-body" style="background: #c5cfd8;">
+                            <h3 class="card-title">Мы свяжемся с вами и запишем на первый урок</h3>
+                        </div>
+                    </div>
+                    <div class="card" style="border: 0;">
+                        <button type="button" class="close" style="text-align: right;background: #9ddde7;opacity: 1;" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <img src="{% static "images/mahaet.jpg" %}" class="chelic" style="max-width: 387.75px;max-height: 374.25px;">
+                    </div>
+                </div>
+                   <form style="margin-right: 1em" method="POST" action="../send_request_v" novalidate>
+                        {% csrf_token %}
+                        <br>
+                        <input type="text" id="first_name" name="first_name" class="form-control" required placeholder="Имя">
+                       <input type="text" id="surname" name="surname" class="form-control" required placeholder="Фамилия">
+                      <input type="email" id="email" name="email"  class="form-control" placeholder="Email" required>
+                       <input type="tel" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
+                        <input type="submit" style="margin-top:10px; width:100%" value="Записаться на бесплатный урок" class="btn btn-dark">
+                    </form>
 
+                    </div>
+
+                </div>
+              </div>
+            </div>
 
 <script>
 (function() {
