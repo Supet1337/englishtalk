@@ -453,14 +453,14 @@
         <div class="card-group">
   <div class="card">
     <div class="card-body">
-      <div class="form-group">
-    <label for="exampleFormControlSelect1" style="font-size: 20px">Продолжительность занятия</label>
-    <select onclick="if (typeof(this.selectedIndex) != 'undefined') changetime(this.selectedIndex)" class="form-control" id="exampleFormControlSelect1" style="border-radius: 50px;margin-bottom: 30px; height: 40px !important; text-align: center; text-align-last: center; width: 60%">
+      <div class="form-group" style="text-align: center">
+    <label for="exampleFormControlSelect1" style="font-size: 24px">Продолжительность занятия</label>
+    <select onclick="if (typeof(this.selectedIndex) != 'undefined') changetime(this.selectedIndex)" class="form-control mx-auto" id="exampleFormControlSelect1" style="border-radius: 50px;margin-bottom: 30px; height: 40px !important; text-align: center; text-align-last: center; width: 60%">
       <option selected >45 мин</option>
       <option>60 мин</option>
     </select>
-	<label for="exampleFormControlSelect2" style="font-size: 20px">Количество занятий</label>
-    <select  onclick="if (typeof(this.selectedIndex) != 'undefined') changepack(this.selectedIndex)" class="form-control" id="exampleFormControlSelect2" style="border-radius: 50px; height: 40px !important; text-align: center; text-align-last: center; width: 60%">
+	<label for="exampleFormControlSelect2" style="font-size: 24px">Количество занятий</label>
+    <select  onclick="if (typeof(this.selectedIndex) != 'undefined') changepack(this.selectedIndex)" class="form-control mx-auto" id="exampleFormControlSelect2" style="border-radius: 50px; height: 40px !important; text-align: center; text-align-last: center; width: 60%">
         <option>5 занятий</option>
         <option>10 занятий</option>
 		<option>20 занятий</option>
@@ -651,7 +651,7 @@
 						  {% csrf_token %}
 		            		<h1 class="card-title" style="font-size: 40px;color: #082567"><b>Мы свяжемся с вами и запишем на урок</b></h1>
 					  		<input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="name" name="name" class="form-control mx-auto mb-1" pattern="[А-Яа-я]{2, 20}\s[А-Яа-я]{2, 20}" required placeholder="Как вас зовут?">
-					  		<input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control mx-auto mb-1" placeholder="Какой у вас номер телефона?">
+					  		<input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="phone" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control mx-auto mb-1" placeholder="Какой у вас номер телефона?">
 						    <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="email" name="email" required class="form-control mx-auto mb-1" placeholder="Какой у вас email?">
 		  				  	<input type="submit" value="Записаться на бесплатный урок" class="btn btn-primary py-3 px-4" style="color: #082567; border-radius: 0; font-size: 20px" >
 							<p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <b>условия соглашения</b></p>

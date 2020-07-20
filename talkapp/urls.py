@@ -9,6 +9,8 @@ urlpatterns = [
     path('send_request_vt', send_request_view_teach),
     path('ask_question', ask_question),
     path('price', price),
+    path('confidentiality', confidentiality),
+    path('oferta', oferta),
     path('ajax_load_lessons/<int:number>', ajax_load_lessons),
     path('ajax_load_lessons_videos/<int:number>', ajax_load_lessons_videos),
     path('ajax_load_video/<int:number>', ajax_load_video),
