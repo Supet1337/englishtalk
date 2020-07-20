@@ -66,7 +66,7 @@
         <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="../#sabout">О школе</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;"><span style="padding-top: 7px; padding-bottom: 7x; padding-right: 4px;" class="fa fa-phone"></span>88005353535</a>
+        <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;"><span style="padding-top: 7px; padding-bottom: 7x; padding-right: 4px;" class="fa fa-phone"></span>8 (995) 793-02-03</a>
       </li>
         <li class="nav-item">
             <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="#" data-toggle="modal" data-target="#reqModal">Попробовать бесплатно</a>
@@ -147,10 +147,9 @@
                             <form style="margin-right: 1em" class="appointment-form ftco-animate" method="POST" action="../send_request_v">
                         {% csrf_token %}
                         <br>
-                        <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="first_name" name="first_name" class="form-control" required placeholder="Имя">
-                       <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="surname" name="surname" class="form-control" required placeholder="Фамилия">
+                       <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="name" name="name" pattern="[А-Яа-я]{2, 20}\s[А-Яа-я]{2, 20}" class="form-control" required placeholder="Как вас зовут?">
                       <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="email" name="email"  class="form-control" placeholder="Email" required>
-                       <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
+                       <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control" placeholder="Телефон">
                         <input type="submit" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;width: 100%" value="Записаться на бесплатный урок" class="btn btn-primary">
                                 <p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <b>условия соглашения</b></p>
                     </form>
@@ -185,10 +184,9 @@
                             <form style="margin-right: 1em" class="appointment-form ftco-animate" method="POST" action="../send_request_vt">
                         {% csrf_token %}
                         <br>
-                        <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="first_name" name="first_name" class="form-control" required placeholder="Имя">
-                       <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="surname" name="surname" class="form-control" required placeholder="Фамилия">
+                         <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="name" name="name" pattern="[А-Яа-я]{2, 20}\s[А-Яа-я]{2, 20}" class="form-control" required placeholder="Как вас зовут?">
                       <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="email" name="email"  class="form-control" placeholder="Email" required>
-                       <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
+                       <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control" placeholder="Телефон">
                         <input type="submit" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;width: 100%" value="Записаться на бесплатный урок" class="btn btn-primary">
                                 <p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <b>условия соглашения</b></p>
                     </form>
@@ -222,9 +220,8 @@
                             <form style="margin-right: 1em" class="appointment-form ftco-animate" method="POST" action="../ask_question">
                         {% csrf_token %}
                         <br>
-                        <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="first_name" name="first_name" class="form-control" required placeholder="Имя">
-                       <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="surname" name="surname" class="form-control" required placeholder="Фамилия">
-                       <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
+                        <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="name" name="name" class="form-control" pattern="[А-Яа-я]{2, 20}\s[А-Яа-я]{2, 20}" required placeholder="Как вас зовут?">
+                       <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control" placeholder="Телефон">
                         <input type="submit" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;width: 100%" value="Хочу пообщаться" class="btn btn-primary">
                                 <p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <b>условия соглашения</b></p>
                     </form>

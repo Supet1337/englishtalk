@@ -47,7 +47,11 @@ def password_reset_complete(request):
         request, "Пароль успешно изменён!")
     return HttpResponseRedirect("/")
 
+def confidentiality(request):
+    return render(request, "confidentiality.html")
 
+def oferta(request):
+    return render(request, "oferta.html")
 
 def send_request_view(request):
     if request.method == "POST":
@@ -90,8 +94,10 @@ def send_request_view_teach(request):
     if request.method == "POST":
         user = User()
         user.username = get_random_string(length=32)
-        user.first_name = request.POST.get('first_name')
-        user.last_name = request.POST.get('surname')
+        name = request.POST.get('name')
+        FIO = list(name.split())
+        user.first_name = FIO[0]
+        user.last_name = FIO[1]
         user.email = request.POST.get('email')
         password = User.objects.make_random_password()
         user.password = make_password(password)
@@ -105,7 +111,7 @@ def send_request_view_teach(request):
             req.phone_number = phone_number
             req.save()
             message = "Здраствуйте," +user.first_name+" "+user.last_name+ "!\n" \
-                    " Вы успешно подали заявку на преподавание урок. \nВ скором времени вам " \
+                    " Вы успешно подали заявку на преподавание уроками. \nВ скором времени вам " \
                     "перезвонят.\n\n\n" \
                     "Данные для входа в личный кабинет:\n" \
                     "Логин: "+ user.email +"\n"\
@@ -124,10 +130,10 @@ def send_request_view_teach(request):
 
 def ask_question(request):
     if request.method == "POST":
-        first_name = request.POST.get('first_name')
-        last_name = request.POST.get('surname')
+        name = request.POST.get('name')
+        FIO = list(name.split())
         phone_number = request.POST.get('phone')
-        message = "Как зовут клиента: "+first_name+" "+last_name+ ".\n" \
+        message = "Как зовут клиента: "+FIO[0]+" "+FIO[1]+ ".\n" \
                     "Телефон клиента: " + phone_number
         send_mail(
             'Нужна консультация!', message, 'noreply.englishtalk@gmail.com', [
