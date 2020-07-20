@@ -51,16 +51,16 @@ $(document).ready(function(){
                                  '</li>');
                         $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
                                  '<div class="card-body" style="height: 1200px;">'+
-                                 '<object><embed src="'+json[i].docx_copy+'" style="width: 100%; height: 100%"></object>'+
+                                 '<object><embed src="'+json[i].docx_url_copy+'" style="width: 100%; height: 100%"></object>'+
                                  '</div>'+
                                  '</div>');
 
                         if (is_teacher){
-                            $("#doc"+id).append('<button type="button" class="btn btn-primary" data-toggle="modal" data-number="'+json[i].docx_copy+'" data-email="'+json[i].student_email+'" data-target="#dzModal">Отправить дз ученику</button>');
+                            $("#doc"+id).append('<button type="button" class="btn btn-primary" data-toggle="modal" data-number="'+json[i].docx_url_copy+'" data-email="'+json[i].student_email+'" data-target="#dzModal">Отправить дз ученику</button>');
                             }
 
                         $.ajax({
-                            url: "/ajax_load_lessons_audios/"+json[i].lesson_id,
+                            url: "/ajax_load_lessons_audios/"+id,
                             success: function (result) {
                                 $("#doc"+id).append('<p>Аудиоматериалы:</p>');
                                 var json = $.parseJSON(result);
@@ -73,7 +73,7 @@ $(document).ready(function(){
                                 });
                         }}).then(
                         $.ajax({
-                            url: "/ajax_load_lessons_videos/"+json[i].lesson_id,
+                            url: "/ajax_load_lessons_videos/"+id,
                             success: function (result) {
                                 $("#doc"+id).append('<p>Видеоматериалы:</p>');
 
@@ -138,7 +138,7 @@ $(document).ready(function(){
 
 const domain = 'meet.jit.si';
 const options = {
-    roomName: 'asdffhdgfha',
+    roomName: room_name,
     width: '100%',
     height: 700,
     configOverwrite: { defaultLanguage: 'ru',

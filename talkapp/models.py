@@ -19,49 +19,74 @@ class Teacher(models.Model):
         return self.user.username
 
 
-class Course(models.Model):
+class DefaultCourse(models.Model):
     name = models.CharField(max_length=64)
-    student = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    teacher = models.ForeignKey(to=Teacher, on_delete=models.CASCADE)
-
-    LESSON_TIME_CHOISES = [
-        (True, '60 минут'),
-        (False, '45 минут')
-    ]
-
-    lesson_time = models.BooleanField(choices=LESSON_TIME_CHOISES,default=False)
 
     def __str__(self):
         return self.name
 
 # Create your models here.
-class Lesson(models.Model):
-    course = models.ForeignKey(to=Course, on_delete=models.CASCADE)
-    docx_url = models.URLField()
+class DefaultLesson(models.Model):
+    course = models.ForeignKey(to=DefaultCourse, on_delete=models.CASCADE)
     name = models.CharField(max_length=64)
-    date = models.DateTimeField()
-    is_completed = models.BooleanField(default=False)
-    video_chat = models.CharField(max_length=16, default=get_random_string(length=16))
+    docx_url = models.URLField()
 
     def __str__(self):
         return self.name
 
-    def json(self):
-        return {
-            'docx_url': self.docx_url,
-            'name': self.name,
-            'id': self.id,
-            }
     def get_lesson_videos(self):
         return Lesson_video.objects.filter(lesson_id=self.id)
     def get_lesson_audios(self):
         return Lesson_audio.objects.filter(lesson_id=self.id)
 
+class UserCourse(models.Model):
+    student = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(to=Teacher, on_delete=models.CASCADE)
+
+    LESSON_TIME_CHOISES = [
+        (True, '60 минут'),
+       (False, '45 минут')
+    ]
+    TYPE_CHOISES = [
+        ('Подготовка к IELTS', 'Подготовка к IELTS'),
+        ('Собеседование', 'Собеседование'),
+        ('Английский для IT', 'Английский для IT'),
+        ('Английский для любого уровня', 'Английский для любого уровня'),
+        ('Английский для путешествий', 'Английский для путешествий'),
+        ('Бизнес Английский', 'Бизнес Английский'),
+        ('Подготовка к ЕГЭ', 'Подготовка к ЕГЭ'),
+        ('Английский для инженеров', 'Английский для инженеров'),
+        ('Английский для подростков', 'Английский для подростков'),
+        ('Английский детям', 'Английский детям'),
+        ('Говорим свободно', 'Говорим свободно'),
+        ('Персональный курс', 'Персональный курс'),
+    ]
+    course_type = models.CharField(choices=TYPE_CHOISES,max_length=64)
+    lesson_time = models.BooleanField(choices=LESSON_TIME_CHOISES,default=False)
+
+
+class UserLesson(models.Model):
+    user_course = models.ForeignKey(to=UserCourse, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(to=DefaultLesson, on_delete=models.CASCADE)
+    docx_url_copy = models.URLField()
+    date = models.DateTimeField()
+    is_completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.lesson.name
+
+    def json(self):
+        return {
+            'docx_url_copy': self.docx_url_copy,
+            'name': self.lesson.name,
+            'student_email': self.user_course.student.email
+            }
+
 
 class Lesson_video(models.Model):
     name = models.CharField(max_length=64)
     video_url = models.FileField(upload_to=video_directory_path, blank=True)
-    lesson = models.ForeignKey(to=Lesson, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(to=DefaultLesson, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -77,7 +102,7 @@ class Lesson_video(models.Model):
 class Lesson_audio(models.Model):
     name = models.CharField(max_length=64)
     audio_url = models.FileField(upload_to=audio_directory_path, blank=True)
-    lesson = models.ForeignKey(to=Lesson, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(to=DefaultLesson, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -88,9 +113,10 @@ class Lesson_audio(models.Model):
             'audio_name': self.name,
             }
 
-class Request(models.Model):
+class UserAdditional(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     phone_number = PhoneNumberField()
+    video_chat = models.CharField(max_length=32, default=get_random_string(length=32))
 
 class Blog(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)

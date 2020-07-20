@@ -52,7 +52,7 @@ def password_reset_complete(request):
 def send_request_view(request):
     if request.method == "POST":
         user = User()
-        user.username = get_random_string(length=16)
+        user.username = get_random_string(length=32)
         name = request.POST.get('name')
         FIO = list(name.split())
         user.first_name = FIO[0]
@@ -64,7 +64,7 @@ def send_request_view(request):
             messages.error(request, 'Пользователь с такой почтой уже существует.')
         else:
             user.save()
-            req = Request()
+            req = UserAdditional()
             phone_number = request.POST.get('phone')
             req.user = user
             req.phone_number = phone_number
@@ -82,14 +82,14 @@ def send_request_view(request):
                             "Почта клиента: "+ user.email + "."
             send_mail(
                 'Ура! У нас новая зявка на обучение!', help_message, 'noreply.englishtalk@gmail.com', [
-                    "maksrubinov@mail.ru"], fail_silently=False)
+                    "help.englishtalk@gmail.com"], fail_silently=False)
             messages.info(request, "Вы успешно подали заявку. Проверьте почтовый ящик "+str(user.email))
     return HttpResponseRedirect('/')
 
 def send_request_view_teach(request):
     if request.method == "POST":
         user = User()
-        user.username = get_random_string(length=16)
+        user.username = get_random_string(length=32)
         user.first_name = request.POST.get('first_name')
         user.last_name = request.POST.get('surname')
         user.email = request.POST.get('email')
@@ -99,7 +99,7 @@ def send_request_view_teach(request):
             messages.error(request, 'Пользователь с такой почтой уже существует.')
         else:
             user.save()
-            req = Request()
+            req = UserAdditional()
             phone_number = request.POST.get('phone')
             req.user = user
             req.phone_number = phone_number
@@ -118,7 +118,7 @@ def send_request_view_teach(request):
                            "Почта: " + user.email + "."
             send_mail(
                 'Новая заявка от преподавателя!', help_message, 'noreply.englishtalk@gmail.com', [
-                    "maksrubinov@mail.ru"], fail_silently=False)
+                    "help.englishtalk@gmail.com"], fail_silently=False)
             messages.info(request, "Вы успешно подали заявку. Проверьте почтовый ящик "+str(user.email))
     return HttpResponseRedirect('/')
 
@@ -131,7 +131,7 @@ def ask_question(request):
                     "Телефон клиента: " + phone_number
         send_mail(
             'Нужна консультация!', message, 'noreply.englishtalk@gmail.com', [
-                'maksrubinov@mail.ru'], fail_silently=False)
+                'help.englishtalk@gmail.com'], fail_silently=False)
         messages.info(request, "Вы успешно подали заявку. Проверьте почтовый ящик")
     return HttpResponseRedirect('/')
 
@@ -146,10 +146,11 @@ def dashboard(request):
         is_teacher = True
     context["is_teacher"] = is_teacher
     if is_teacher:
-        crs = Course.objects.filter(teacher=Teacher.objects.get(user=request.user))
+        crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
     else:
-        crs = Course.objects.filter(student=request.user)
-    lessons = Lesson.objects.filter(course__in=crs)
+        crs = UserCourse.objects.filter(student=request.user)
+    lessons = UserLesson.objects.filter(user_course__in=crs)
+    context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
     if len(lessons) == 0:
         context["lsn"] = 0
         context['next_lsn'] = "У вас нет занятий"
@@ -158,11 +159,12 @@ def dashboard(request):
         lessons.order_by('date')
         i = 0
         context['next_lsn'] = lessons[i].date
-        if lessons[i].course.lesson_time:
+        if lessons[i].user_course.lesson_time:
             context['lsn_time'] = "60"
         else:
             context['lsn_time'] = "45"
-        context['course'] = lessons[i].course.name
+        context['course'] = lessons[i].user_course.course_type
+        context['teacher'] = '{} {}'.format(lessons[i].user_course.teacher.user.first_name,lessons[i].user_course.teacher.user.last_name)
         context["lsn"] = lessons
     return render(request,'dashboard.html', context)
 
@@ -184,12 +186,13 @@ def change_email(request):
 
 def ajax_load_lessons(request, number):
     lsn = []
-    lsn.append(User_Lesson.objects.get(id=number).json())
+    l = UserLesson.objects.get(id=number)
+    lsn.append(l.json())
     return HttpResponse(json.dumps(lsn))
 
 def ajax_load_lessons_videos(request, number):
     vid = []
-    for i in Lesson.objects.get(id=number).get_lesson_videos():
+    for i in UserLesson.objects.get(id=number).lesson.get_lesson_videos():
         vid.append(i.json())
     return HttpResponse(json.dumps(vid))
 
@@ -200,7 +203,7 @@ def ajax_load_video(request, number):
 
 def ajax_load_lessons_audios(request, number):
     aud = []
-    for i in Lesson.objects.get(id=number).get_lesson_audios():
+    for i in UserLesson.objects.get(id=number).lesson.get_lesson_audios():
         aud.append(i.json())
     return HttpResponse(json.dumps(aud))
 
