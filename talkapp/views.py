@@ -26,8 +26,11 @@ def login_user(request):
     if request.method == "POST":
         email = request.POST['email_auth']
         password = request.POST['password']
-        username = User.objects.get(email=email)
-        user = authenticate(username=username.username, password=password)
+        try:
+            username = User.objects.get(email=email)
+            user = authenticate(username=username.username, password=password)
+        except:
+            user = None
         if user is not None:
             login(request, user)
             return HttpResponseRedirect("/")
@@ -84,9 +87,9 @@ def send_request_view(request):
             help_message = "Новая заявка на обучение от " +user.first_name+" "+user.last_name+ "!\n" \
                             "Телефон клиента: "+ phone_number + ",\n"\
                             "Почта клиента: "+ user.email + "."
-            send_mail(
-                'Ура! У нас новая зявка на обучение!', help_message, 'noreply.englishtalk@gmail.com', [
-                    "help.englishtalk@gmail.com"], fail_silently=False)
+            #send_mail(
+                #'Ура! У нас новая зявка на обучение!', help_message, 'noreply.englishtalk@gmail.com', [
+                  #  "help.englishtalk@gmail.com"], fail_silently=False)
             messages.info(request, "Вы успешно подали заявку. Проверьте почтовый ящик "+str(user.email))
     return HttpResponseRedirect('/')
 

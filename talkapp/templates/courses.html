@@ -1,118 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Fox University - Free Bootstrap 4 Template by Colorlib</title>
+    <title>EnglishTalk</title>
     <meta charset="utf-8">
 	  {% load static %}
 	  <link rel="shortcut icon" href={% static "images/black_logotip.png" %}  type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
     <link rel="stylesheet" href={% static "css/animate.css"%}>
-    
     <link rel="stylesheet" href={% static "css/owl.carousel.min.css"%}>
     <link rel="stylesheet" href={% static "css/owl.theme.default.min.css"%}>
     <link rel="stylesheet" href={% static "css/magnific-popup.css"%}>
-
     <link rel="stylesheet" href={% static "css/aos.css"%}>
     <link rel="stylesheet" href={% static "css/style.css"%}>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <style>
-
-.modal-dialog {
-      max-width: 800px;
-      margin: 30px auto;
-  }
-.modal-body {
-  position:relative;
-  padding:0px;
-}
-.close {
-  position:absolute;
-  right:-30px;
-  top:0;
-  z-index:999;
-  font-size:2rem;
-  font-weight: normal;
-  color:#fff;
-  opacity:1;
-}
+.bobobo{
+  		font-size: large;
+  		}
+	  @media (min-width: 1200px){
+	    .bebebe{
+	    text-align: center;
+	    }
+	    .bababa{
+	    text-align: center;
+	    font-size: 31px;
+	    }
+	    .why{
+	    padding-right: 200px !important;
+	    padding-left: 200px !important;
+	    }
+	    .wsmtt{
+	    font-size: 35px;
+	    }
+	    .wsmt{
+	    font-size: xx-large;
+	    }
+	  }
+	  @media(max-width: 1400px){
+	  .pararam{
+	  	font-size: large !important;
+	  	}
+	  }
+	  @media(min-width: 1440px){
+	  	.easystart{
+	  		padding-right: 350px;
+	  		padding-left: 350px;
+	  	}
+	  }
     </style>
-    <script>
-    $(document).ready(function() {
-
-var $videoSrc;
-$('.video-btn').click(function() {
-    $videoSrc = $(this).data( "src" );
-});
-console.log($videoSrc);
-
-$('#myModal').on('shown.bs.modal', function (e) {
-$("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
-})
-
-$('#myModal').on('hide.bs.modal', function (e) {
-    // a poor man's stop video
-    $("#video").attr('src',$videoSrc);
-})
-
-
-});
-</script>
   </head>
   <body>
 	  {% include "header.html"%}
     <!-- END nav -->
     
-    <section class="hero-wrap hero-wrap-2" style="background-image: url({% static "images/bg_2.jpg" %});">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-            <h1 class="mb-2 bread">Курсы</h1>
-			  <p class="breadcrumbs"><span class="mr-2"><a href="./">Home <i class="fas fa-chevron-right"></i></a></span> <span>Courses <i class="fas fa-chevron-right"></i></span></p>
-			  <a href="../#sreg" ><button style="background:#0062cc; border:#0062cc" class="btn btn-primary">Попробовать бесплатно первый урок</button></a>
-			  <br>
-			  <br>
-			  <button type="button" class="btn btn-danger video-btn" data-toggle="modal" data-src="https://www.youtube.com/embed/JUSuCm6MXVI" data-target="#myModal">
-  <a><i style="color: #fff" class="fab fa-youtube"></i> Смотреть пример урока</a>
-</button>
-
-
-
+    <section class="ftco-section ftco-counter img"  style="background-image: url({% static "images/bg_gray.jpg" %});" data-stellar-background-ratio="0.5">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-md-6 ml-auto ftco-animate">
+            <h1 class="mb-4 bebebe" style="color: white;font-weight: bold;">Выучить английский в онлайн-школе EnglishTalk</h1>
+			  <p class="bababa" style="color: white;">Учите язык в интерактивном учебнике с сильными преподавателями! </p>
+            <p style="text-align: center;"><a href="#" data-toggle="modal" data-target="#reqModal" class="btn btn-secondary bobobo py-3 mt-3" style="border-radius: 0;">Начать бесплатный урок</a>
+				<a class="btn btn-secondary bobobo py-3 mt-3 video-btn" style="border-radius: 0;color: white" data-toggle="modal" data-src="https://www.youtube.com/embed/JUSuCm6MXVI" data-target="#myModalVid"><i style="color: #fff" class="fab fa-youtube"></i> Смотреть пример урока</a>
+			</p>
           </div>
         </div>
+        </div>
       </div>
-	  </section>
+    </section>
 
-
-
-
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+	  <div class="modal fade" id="myModalVid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="max-width: 800px; margin: 30px auto;">
     <div class="modal-content">
-
-
-      <div class="modal-body">
-
-       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <div class="modal-body" style=" position:relative;padding:0px;">
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute;right:-30px;top:0;z-index:999;font-size:2rem;font-weight: normal;color:#fff;opacity:1;">
           <span aria-hidden="true">&times;</span>
         </button>
-        <!-- 16:9 aspect ratio -->
-<div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
-</div>
-
-
+			<div class="embed-responsive embed-responsive-16by9">
+			  <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+			</div>
       </div>
-
     </div>
   </div>
 </div>
+
+
+
+<div class="modal fade" id="CourseModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" style="max-width: 1500px" role="document">
+    <div class="modal-content">
+            <div class="modal-body mx-auto" style="padding: 0">
+                <div class="card-group" style="">
+                    <div class="card" style="border: 0;">
+						<h3 id="titl" class="card-title mb-4" style="color: #082567;text-align: center;">.</h3>
+	<section class="ftco-section ftco-no-pt ftc-no-pb">
+				<div class="card-group">
+					<div class="card" style="border: 0;">
+						<img src={% static "images/course1.jpg" %} id="course_img" class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
+					</div>
+					<div class="card" style="border: 0;">
+
+                        <div class="row mt-5">
+								<div class="services-2 d-flex">
+									<div class="icon mt-2 d-flex justify-content-center align-items-center" style="margin-left: 10px;margin-right: 0;width: 50px; height: 50px;margin-top: 0 !important;"><span style="font-size: 30px" class="fas fa-paper-plane"></span></div>
+									<div class="text pl-3" style="width: 70%;text-align: left;">
+										<h3 style="font-size: x-large;">С вами работают преподаватели, которые подготовили десятки учеников к успешной сдаче Ilets</h3>
+									</div>
+								</div>
+                        </div>
+                            <div class="row mt-5">
+								<div class="services-2 d-flex">
+									<div class="icon mt-2 d-flex justify-content-center align-items-center" style="margin-left: 10px;margin-right: 0;width: 100px; height: 100px;margin-top: 0 !important;"><span class="fas fa-paper-plane"></span></div>
+									<div class="text pl-3" style="width: 70%;text-align: left;">
+										<h3 style="font-size: x-large;">Вы выбираете для себя комфортное время для индивидуальных занятий</h3>
+									</div>
+								</div>
+							</div>
+							<div class="row mt-5">
+								<div class="services-2 d-flex">
+									<div class="icon mt-2 d-flex justify-content-center align-items-center" style="margin-left: 10px;margin-right: 0;width: 100px; height: 100px;margin-top: 0 !important;"><span class="fas fa-paper-plane"></span></div>
+									<div class="text pl-3" style="width: 70%;text-align: left;">
+										<h3 style="font-size: x-large;">Имитация экзамена вместе с преподавателем</h3>
+									</div>
+								</div>
+							</div>
+					</div>
+					</div>
+					</section>
+
+			</div>
+					<div class="card" style="border: 0;text-align: center;background: #9ddde7">
+						<button type="button" class="close" style="text-align: right;background: #9ddde7;opacity: 1;color: #082567;" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #082567;">Привет!</h3>
+                        </div>
+                    </div>
+                    </div>
+						</div>
+                </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
 
 
 
@@ -121,105 +161,112 @@ $('#myModal').on('hide.bs.modal', function (e) {
     <section class="ftco-section">
 			<div class="container-fluid px-4">
 				<div class="row">
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course1.jpg" %});"></div>
+					<div class="col-md-3 course ftco-animate" style="text-align: center">
+						<img src={% static "images/course1.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
 						<div class="text pt-4">
 							<h3><a href="../course/ielts">Подготовка к Ielts</a></h3>
-							<p>Решили переехать и работать за границей? Или поднять свой профессиональный языковой уровень и зарабатывать больше денег? Или решили получить образование в иностранном вузе? В нашей школе мы подготовим Вас к успешной сдаче Ielts. Занятия проходят онлайн в специальной разработанной платформе, которая позволяет быстрее запоминать необходимые знания и моментально применять их на практике.</p>
-							<p><a href="../course/ielts" class="btn btn-primary">Подробнее</a></p>
+							<p>После успешной подготовки 95% наших студентов сдают экзамен с первого раза!</p>
+							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course1.jpg" %}" data-title="Подготовка к Ielts" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course2.jpg" %});"></div>
+					<div class="col-md-3 course ftco-animate" style="text-align: center">
+						<img src={% static "images/course2.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
 						<div class="text pt-4">
 							<h3><a href="../course/interview">Cобеседование</a></h3>
-							<p>Наши преподаватели подготовят Вас ко всем непредвиденным вопросам, которые могут возникнуть на пути к работе мечты. Подберем индивидуальную программу в сжатые сроки.</p>
-							<p><a href="../course/interview" class="btn btn-primary">Подробнее</a></p>
+							<p>Подготовим к собеседованию или деловой встрече в кратчайшие сроки!</p>
+							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course2.jpg" %}" data-title="Собсеседование" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course3.jpg" %});"></div>
+					<div class="col-md-3 course ftco-animate" style="text-align: center">
+						<img src={% static "images/course3.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
 						<div class="text pt-4">
 							<h3><a href="../course/freespeaking">Говорим свободно</a></h3>
 							<p>Курс разработан для развития живой речи и импровизации в общении. Вы научитесь говорить легко и без страха совершить ошибку. Интерактивная платформа позволяет максимально погрузиться в иностранную среду и начать свободно говорить уже через 3 месяца регулярных занятий.</p>
-							<p><a href="../course/freespeaking" class="btn btn-primary">Подробнее</a></p>
+							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course3.jpg" %}" data-title="Говорим свободно" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course4.png" %});"></div>
+					<div class="col-md-3 course ftco-animate" style="text-align: center">
+						<img src={% static "images/course4.png" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
 						<div class="text pt-4">
 							<h3><a href="../course/it">Английский для IT</a></h3>
-							<p>Индивидуальный подбор программы и упор на актуальные темы. Стоимость Ваших знаний на рынке возрастет на 30% благодаря обширным знаниям английского в IT сфере.</p>
-							<p><a href="../course/it" class="btn btn-primary">Подробнее</a></p>
+							<p>Один из популярнейших курсов в последнее время. Пройдя обучение Вы станете зарабатывать на 30% больше!</p>
+							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course4.jpg" %}" data-title="Английский для IT" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
 						</div>
 					</div>
 
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course5.jpg" %});"></div>
+					<div class="col-md-3 course ftco-animate" style="text-align: center">
+						<img src={% static "images/course5.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
 						<div class="text pt-4">
 							<h3><a href="../course/travel">Для путешествий</a></h3>
-							<p>Забронировать отель? Узнать дорогу в незнакомом городе? Оформить трансфер до аэропорта? Мы научим Вас это делать легко и без Google Translate!</p>
-							<p><a href="../course/travel" class="btn btn-primary">Подробнее</a></p>
+							<p>Забронировать отель? Узнать дорогу в незнакомом городе? Оформить трансфер до аэропорта? Мы научим Вас это делать легко!</p>
+							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course5.jpg" %}" data-title="Для путешествий" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course6.jpg" %});"></div>
+					<div class="col-md-3 course ftco-animate" style="text-align: center">
+						<img src={% static "images/course6.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
 						<div class="text pt-4">
 							<h3><a href="../course/business">Бизнес английский</a></h3>
-							<p>В сжатые сроки нужно подготовиться ко встрече на английском языке? Курс рассчитан на деловое общение и переписку. Вы будете уверено себя чувствовать в любых переговорах!</p>
-							<p><a href="../course/business" class="btn btn-primary">Подробнее</a></p>
+							<p>В сжатые сроки нужно подготовиться ко встрече на английском языке. Вы будете уверено себя чувствовать в любых переговорах!</p>
+							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course6.jpg" %}" data-title="Бизнес английский" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course7.jpg" %});"></div>
+					<div class="col-md-3 course ftco-animate" style="text-align: center">
+						<img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
 						<div class="text pt-4">
 							<h3><a href="../course/exam">Подготовка к ЕГЭ</a></h3>
-							<p>Опыт говорит сам за себя. Более 500 учеников подготовили наши специалисты к успешной сдаче экзамена. Занятия подстроятся под Ваш график. Заполним пробелы в грамматике и отработаем все типы заданий.</p>
-							<p><a href="../course/exam" class="btn btn-primary">Подробнее</a></p>
+							<p>Более 500 учеников подготовили наши специалисты к успешной сдаче экзамена. Заполним пробелы в грамматике и отработаем все типы заданий.</p>
+							<p align="center"><a href="#" class="btn btn-primary" data-title="Подготовка к ЕГЭ" data-course_img="{% static "images/course7.jpg" %}" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course8.jpg" %});"></div>
+					<div class="col-md-3 course ftco-animate" style="text-align: center">
+						<img src={% static "images/course8.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
 						<div class="text pt-4">
 							<h3><a href="../course/engineer">Английский для инженеров</a></h3>
-							<p>С технической терминологией не просто! Сотрудников, которые обладают обширными знаниями технического английского на рынке мало. А зарплата у них выше на 30-60 %. Наши преподаватели помогут Вам стать именно тем инженером, знания которого на рынке стоят дорого!</p>
-							<p><a href="../course/engineer" class="btn btn-primary">Подробнее</a></p>
+							<p>Будьте на шаг впереди! Мы научим техническому английскому, а Ваши знания на рынке станут дороже на 40%</p>
+							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course8.jpg" %}" data-title="Английский для инженеров" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course9.jpg" %});"></div>
+					<div class="col-md-3 course ftco-animate" style="text-align: center">
+						<img src={% static "images/course9.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
 						<div class="text pt-4">
 							<h3><a href="../course/teen">Английский для подростков</a></h3>
-							<p>Хватит учиться по скучным учебникам! Английский по актуальным фильмам и сериалам. Легкая грамматика в таблицах. Курс разработан специально для подростков 12-17 лет.</p>
-							<p><a href="../course/teen" class="btn btn-primary">Подробнее</a></p>
+							<p>Хватит учиться по скучным учебникам! Мы за практический подход. Учим английский по актуальным фильмам и сериалам.</p>
+							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course9.jpg" %}" data-title="Английский для подростков" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course10.jpg" %});"></div>
+					<div class="col-md-3 course ftco-animate" style="text-align: center">
+						<img src={% static "images/course10.jpg" %} class="card-img-top mx-auto" data-course_img="{% static "images/course10.jpg" %}" style="max-height: 250px;max-width: 250px;text-align: center">
 						<div class="text pt-4">
 							<h3><a href="../course/child">Английский детям</a></h3>
-							<p>Курс становится все более актуальным! Детям уже скучно просто заниматься иностранным языком. Им нужны новые технологии, интерактивные учебники. Они учатся быстрее, когда им интересно!</p>
-							<p><a href="../course/child" class="btn btn-primary">Подробнее</a></p>
+							<p>Курс становится все более актуальным. Изучайте английский по песням и забудьте о скучных учебниках!</p>
+							<p align="center"><a href="#" class="btn btn-primary" data-title="Английский детям" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course11.jpg" %});"></div>
+					<div class="col-md-3 course ftco-animate" style="text-align: center">
+						<img src={% static "images/course11.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
 						<div class="text pt-4">
 							<h3><a href="../course/personally">Персональный курс</a></h3>
-							<p>А давайте подберем для Вам курс английского индивидуально? Учтем все темы, которые Вам интересны? Ваши увлечения, хобби, работу? Учитесь так, как этого хочется Вам!</p>
-							<p><a href="../course/personally" class="btn btn-primary">Подробнее</a></p>
+							<p>Учитесь так, как этого хочется Вам! Подберем актуальные для Вас темы и прокачаем ваш английский.</p>
+							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course11.jpg" %}" data-title="Персональный курс" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
 						</div>
 					</div>
-					<div class="col-md-3 course ftco-animate">
-						<div class="img" style="background-image: url({% static "images/course12.jpg" %});"></div>
+					<div class="col-md-3 course ftco-animate" style="text-align: center">
+						<img src={% static "images/course12.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
 						<div class="text pt-4">
 							<h3><a href="../course/anylevel">Старт с любого уровня</a></h3>
 							<p>Хотите вновь заняться английским? Подтянуть давно забытый уровень? Или начать говорить свободно и уверенно себя чувствовать за границей? Начнем с любого уровня и поможем достичь Ваших целей!</p>
-							<p><a href="../course/anylevel" class="btn btn-primary">Подробнее</a></p>
+							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course12.jpg" %}" data-title="Старт с любого уровня" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
 						</div>
 					</div>
 				</div>
 			</div>
+		<div class="row justify-content-center mb-5 pb-2" style="padding-top: 80px">
+          <div class="col-md-8 text-center heading-section ftco-animate">
+            <h2 class="mb-4">Можно индивидуально выбрать подходящюю программу!</h2>
+			  <p>Наш методист свяжется с Вами и подберет индивидуальный курс</p>
+			  <a href="#" data-toggle="modal" data-target="#askModal" ><button class="btn btn-primary" style="font-size: xx-large;border-radius: 0;color: #323232;width: 60%">Спросить</button></a>
+			  </div>
+        </div>
 		</section>
 
 
@@ -241,6 +288,30 @@ $('#myModal').on('hide.bs.modal', function (e) {
   <script src={% static "js/aos.js" %}></script>
   <script src={% static "js/scrollax.min.js" %}></script>
   <script src={% static "js/main.js" %}></script>
-    
+        <script>
+$(document).ready(function() {
+
+var $videoSrc;
+$('.video-btn').click(function() {
+    $videoSrc = $(this).data( "src" );
+});
+
+$('#myModalVid').on('shown.bs.modal', function (e) {
+$("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
+})
+
+$('#myModalVid').on('hide.bs.modal', function (e) {
+    $("#video").attr('src',$videoSrc);
+})
+});
+
+$('#CourseModal').on('shown.bs.modal', function (event) {
+	var div = $(event.relatedTarget);
+	var title = div.data('title');
+	var course_img = div.data('course_img');
+    $('#titl').html(title);
+    $('#course_img').attr('src', course_img);
+    })
+</script>
   </body>
 </html>
