@@ -60,10 +60,7 @@ def send_request_view(request):
     if request.method == "POST":
         user = User()
         user.username = get_random_string(length=32)
-        name = request.POST.get('name')
-        FIO = list(name.split())
-        user.first_name = FIO[0]
-        user.last_name = FIO[1]
+        user.first_name = request.POST.get('name')
         user.email = request.POST.get('email')
         password = User.objects.make_random_password()
         user.password = make_password(password)
@@ -84,12 +81,12 @@ def send_request_view(request):
             send_mail(
                 'Команда EnglishTalk приветствует Вас!', message, 'noreply.englishtalk@gmail.com', [
                 user.email], fail_silently=False, html_message=html_message)
-            help_message = "Новая заявка на обучение от " +user.first_name+" "+user.last_name+ "!\n" \
+            help_message = "Новая заявка на обучение от " +user.first_name+"!\n" \
                             "Телефон клиента: "+ phone_number + ",\n"\
                             "Почта клиента: "+ user.email + "."
-            #send_mail(
-                #'Ура! У нас новая зявка на обучение!', help_message, 'noreply.englishtalk@gmail.com', [
-                  #  "help.englishtalk@gmail.com"], fail_silently=False)
+            send_mail(
+                'Ура! У нас новая зявка на обучение!', help_message, 'noreply.englishtalk@gmail.com', [
+                    "help.englishtalk@gmail.com"], fail_silently=False)
             messages.info(request, "Вы успешно подали заявку. Проверьте почтовый ящик "+str(user.email))
     return HttpResponseRedirect('/')
 
@@ -97,10 +94,7 @@ def send_request_view_teach(request):
     if request.method == "POST":
         user = User()
         user.username = get_random_string(length=32)
-        name = request.POST.get('name')
-        FIO = list(name.split())
-        user.first_name = FIO[0]
-        user.last_name = FIO[1]
+        user.first_name = request.POST.get('name')
         user.email = request.POST.get('email')
         password = User.objects.make_random_password()
         user.password = make_password(password)
@@ -113,7 +107,7 @@ def send_request_view_teach(request):
             req.user = user
             req.phone_number = phone_number
             req.save()
-            message = "Здраствуйте," +user.first_name+" "+user.last_name+ "!\n" \
+            message = "Здраствуйте," +user.first_name+"!\n" \
                     " Вы успешно подали заявку на преподавание уроками. \nВ скором времени вам " \
                     "перезвонят.\n\n\n" \
                     "Данные для входа в личный кабинет:\n" \
@@ -122,7 +116,7 @@ def send_request_view_teach(request):
             send_mail(
                 'Заявка на курс EnglishTalk', message, 'noreply.englishtalk@gmail.com', [
                 user.email], fail_silently=False)
-            help_message = user.first_name + " " + user.last_name + " хочет начать преподавать.\n" \
+            help_message = user.first_name + " хочет начать преподавать.\n" \
                            "Телефон: " + phone_number + ",\n" \
                            "Почта: " + user.email + "."
             send_mail(
@@ -134,9 +128,8 @@ def send_request_view_teach(request):
 def ask_question(request):
     if request.method == "POST":
         name = request.POST.get('name')
-        FIO = list(name.split())
         phone_number = request.POST.get('phone')
-        message = "Как зовут клиента: "+FIO[0]+" "+FIO[1]+ ".\n" \
+        message = "Как зовут клиента: "+name+".\n" \
                     "Телефон клиента: " + phone_number
         send_mail(
             'Нужна консультация!', message, 'noreply.englishtalk@gmail.com', [
@@ -166,15 +159,30 @@ def dashboard(request):
         context['course'] = "Нет"
     else:
         lessons.order_by('date')
+        flag = False
+        for l in lessons:
+            end = l.date
+            if l.user_course.lesson_time:
+                end += datetime.timedelta(minutes=60)
+            else:
+                end += datetime.timedelta(minutes=45)
+            if end < datetime.datetime.now():
+                l.is_completed = True
+                l.save()
+            if not l.is_completed and not flag:
+                flag = True
+                context['next_lsn'] = l.date
+        if not flag:
+            context['next_lsn'] = "У вас нет ближайших занятий."
         i = 0
-        context['next_lsn'] = lessons[i].date
         if lessons[i].user_course.lesson_time:
             context['lsn_time'] = "60"
         else:
             context['lsn_time'] = "45"
         context['course'] = lessons[i].user_course.course_type
-        context['teacher'] = '{} {}'.format(lessons[i].user_course.teacher.user.first_name,lessons[i].user_course.teacher.user.last_name)
+        context['teacher'] = lessons[i].user_course.teacher.user.first_name
         context["lsn"] = lessons
+
     return render(request,'dashboard.html', context)
 
 @login_required

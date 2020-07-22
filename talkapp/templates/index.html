@@ -650,7 +650,7 @@
 					  <form method="POST" action="/send_request_v" class="ftco-animate forma">
 						  {% csrf_token %}
 		            		<h1 class="card-title" style="font-size: 40px;color: #082567"><b>Мы свяжемся с вами и запишем на урок</b></h1>
-					  		<input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="name" name="name" class="form-control mx-auto mb-1" pattern="[А-Яа-я]{2, 20}\s[А-Яа-я]{2, 20}" required placeholder="Как вас зовут?">
+					  		<input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="name" name="name" class="form-control mx-auto mb-1" pattern="[А-Яа-я]{2, 20}" required placeholder="Как вас зовут?">
 					  		<input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="phone" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control mx-auto mb-1" placeholder="Какой у вас номер телефона?">
 						    <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="email" name="email" required class="form-control mx-auto mb-1" placeholder="Какой у вас email?">
 		  				  	<input type="submit" value="Записаться на бесплатный урок" class="btn btn-primary py-3 px-4" style="color: #082567; border-radius: 0; font-size: 20px" >

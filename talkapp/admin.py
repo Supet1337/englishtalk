@@ -46,13 +46,13 @@ class CourseAdmin(nested_admin.NestedModelAdmin):
     inlines = [InLineUserLesson]
     raw_id_fields = ("student","teacher")
     list_display = ('student_name','teacher_name','course_type')
-    search_fields = ['student__first_name', 'student__last_name', 'teacher__first_name', 'teacher__last_name','course_type']
+    search_fields = ['student__first_name', 'teacher__first_name', 'course_type']
     list_filter = ('teacher','course_type')
     def student_name(self,obj):
-        return "{} {}".format(obj.student.first_name, obj.student.last_name)
+        return obj.student.first_name
 
     def teacher_name(self,obj):
-        return "{} {}".format(obj.teacher.user.first_name, obj.teacher.user.last_name)
+        return obj.teacher.user.first_name
 
 @admin.register(DefaultLesson)
 class LessonAdmin(admin.ModelAdmin):
@@ -71,15 +71,15 @@ class TeacherAdmin(admin.ModelAdmin):
     def phone(self,obj):
         return UserAdditional.objects.get(user=obj.user).phone_number
     def teacher_name(self,obj):
-        return "{} {}".format(obj.user.first_name, obj.user.last_name)
+        return obj.user.first_name
 
 @admin.register(UserAdditional)
 class UserAdditionals(admin.ModelAdmin):
     list_display = ('user_name', 'user_email', 'phone_number')
-    search_fields = ['user__first_name', 'user__last_name', 'user__email','phone_number']
+    search_fields = ['user__first_name', 'user__email', 'phone_number']
 
     def user_name(self,obj):
-        return "{} {}".format(obj.user.first_name, obj.user.last_name)
+        return obj.user.first_name
 
     def user_email(self,obj):
         return obj.user.email
