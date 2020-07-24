@@ -158,11 +158,11 @@ if DEBUG:
     INTERNAL_IPS = type(str('c'), (), {'__contains__': lambda *a: True})()
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
 ACCOUNT_EMAIL_VERIFICATION = "none"
-EMAIL_HOST_USER = 'noreply.englishtalk@gmail.com'
-EMAIL_HOST_PASSWORD = 'z20051994'
-DEFAULT_FROM_EMAIL = 'noreply.englishtalk@gmail.com'
-EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'shp.geochat@yandex.ru'
+EMAIL_HOST_PASSWORD = 'srgobbbgbhzoeias'
+DEFAULT_FROM_EMAIL = 'shp.geochat@yandex.ru'
 
