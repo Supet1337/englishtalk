@@ -79,13 +79,13 @@ def send_request_view(request):
 
             message = strip_tags(html_message)
             send_mail(
-                'Команда EnglishTalk приветствует Вас!', message, 'noreply.englishtalk@gmail.com', [
+                'Команда EnglishTalk приветствует Вас!', message, 'shp.geochat@yandex.ru', [
                 user.email], fail_silently=False, html_message=html_message)
             help_message = "Новая заявка на обучение от " +user.first_name+"!\n" \
                             "Телефон клиента: "+ phone_number + ",\n"\
                             "Почта клиента: "+ user.email + "."
             send_mail(
-                'Ура! У нас новая зявка на обучение!', help_message, 'noreply.englishtalk@gmail.com', [
+                'Ура! У нас новая зявка на обучение!', help_message, 'shp.geochat@yandex.ru', [
                     "help.englishtalk@gmail.com"], fail_silently=False)
             messages.info(request, "Вы успешно подали заявку. Проверьте почтовый ящик "+str(user.email))
     return HttpResponseRedirect('/')
@@ -114,13 +114,13 @@ def send_request_view_teach(request):
                     "Логин: "+ user.email +"\n"\
                     "Пароль: "+ password
             send_mail(
-                'Заявка на курс EnglishTalk', message, 'noreply.englishtalk@gmail.com', [
+                'Заявка на курс EnglishTalk', message, 'shp.geochat@yandex.ru', [
                 user.email], fail_silently=False)
             help_message = user.first_name + " хочет начать преподавать.\n" \
                            "Телефон: " + phone_number + ",\n" \
                            "Почта: " + user.email + "."
             send_mail(
-                'Новая заявка от преподавателя!', help_message, 'noreply.englishtalk@gmail.com', [
+                'Новая заявка от преподавателя!', help_message, 'shp.geochat@yandex.ru', [
                     "help.englishtalk@gmail.com"], fail_silently=False)
             messages.info(request, "Вы успешно подали заявку. Проверьте почтовый ящик "+str(user.email))
     return HttpResponseRedirect('/')
@@ -132,7 +132,7 @@ def ask_question(request):
         message = "Как зовут клиента: "+name+".\n" \
                     "Телефон клиента: " + phone_number
         send_mail(
-            'Нужна консультация!', message, 'noreply.englishtalk@gmail.com', [
+            'Нужна консультация!', message, 'shp.geochat@yandex.ru', [
                 'help.englishtalk@gmail.com'], fail_silently=False)
         messages.info(request, "Вы успешно подали заявку. Проверьте почтовый ящик")
     return HttpResponseRedirect('/')
