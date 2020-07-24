@@ -165,4 +165,6 @@ EMAIL_HOST_USER = 'noreply.englishtalk@gmail.com'
 EMAIL_HOST_PASSWORD = 'zojdrhyddxdtbeag'
 DEFAULT_FROM_EMAIL = 'noreply.englishtalk@gmail.com'
 EMAIL_USE_SSL = True
+EMAIL_SSL_KEYFILE = os.path.join(BASE_DIR, 'config/ssl_keys/privkey.key')
+EMAIL_SSL_CERTFILE = os.path.join(BASE_DIR, 'config/ssl_keys/fullchain.crt')
 
