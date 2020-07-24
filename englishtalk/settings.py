@@ -159,12 +159,9 @@ if DEBUG:
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 465
+EMAIL_PORT = 587
 ACCOUNT_EMAIL_VERIFICATION = "none"
 EMAIL_HOST_USER = 'noreply.englishtalk@gmail.com'
 EMAIL_HOST_PASSWORD = 'zojdrhyddxdtbeag'
 DEFAULT_FROM_EMAIL = 'noreply.englishtalk@gmail.com'
-EMAIL_USE_SSL = True
-EMAIL_SSL_KEYFILE = os.path.join(BASE_DIR, 'config/ssl_keys/privkey.key')
-EMAIL_SSL_CERTFILE = os.path.join(BASE_DIR, 'config/ssl_keys/fullchain.crt')
-
+EMAIL_USE_TLS = True
