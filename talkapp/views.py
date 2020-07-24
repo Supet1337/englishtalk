@@ -276,3 +276,11 @@ def blog(request):
 
 def video(request):
     return render(request,'video.html')
+
+
+def view_404(request, exception):
+    return render(request, "errors/404.html")
+
+
+def view_500(request):
+    return render(request, "errors/500.html")

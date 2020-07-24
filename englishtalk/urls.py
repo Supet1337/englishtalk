@@ -19,6 +19,8 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+handler404 = 'talkapp.views.view_404'
+handler500 = 'talkapp.views.view_500'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
