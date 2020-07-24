@@ -162,7 +162,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
 ACCOUNT_EMAIL_VERIFICATION = "none"
 EMAIL_HOST_USER = 'noreply.englishtalk@gmail.com'
-EMAIL_HOST_PASSWORD = 'z20051994'
+EMAIL_HOST_PASSWORD = 'zojdrhyddxdtbeag'
 DEFAULT_FROM_EMAIL = 'noreply.englishtalk@gmail.com'
 EMAIL_USE_SSL = True
 

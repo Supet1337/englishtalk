@@ -12,9 +12,12 @@ def video_directory_path(instance, filename):
 def audio_directory_path(instance, filename):
     return 'lessons/lesson_{0}/audio/{1}'.format(instance.lesson.id, filename)
 
+def teacher_image_directory_path(instance, filename):
+    return 'lessons/teacher_{0}/{1}'.format(instance.user.id, filename)
+
 class Teacher(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-
+    image = models.ImageField(upload_to=teacher_image_directory_path, blank=True)
     def __str__(self):
         return self.user.username
 
