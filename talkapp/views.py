@@ -133,7 +133,7 @@ def ask_question(request):
                     "Телефон клиента: " + phone_number
         send_mail(
             'Нужна консультация!', message, 'noreply.englishtalk@gmail.com', [
-                'maksrubinov@mail.ru'], fail_silently=False)
+                'help.englishtalk@gmail.com'], fail_silently=False)
         messages.info(request, "Вы успешно подали заявку. Проверьте почтовый ящик")
     return HttpResponseRedirect('/')
 
