@@ -158,9 +158,11 @@ if DEBUG:
     INTERNAL_IPS = type(str('c'), (), {'__contains__': lambda *a: True})()
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 25
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+ACCOUNT_EMAIL_VERIFICATION = "none"
 EMAIL_HOST_USER = 'noreply.englishtalk@gmail.com'
 EMAIL_HOST_PASSWORD = 'zojdrhyddxdtbeag'
-EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL = 'noreply.englishtalk@gmail.com'
+EMAIL_USE_TLS = True
+
