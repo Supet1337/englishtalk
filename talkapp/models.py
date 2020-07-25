@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
@@ -73,6 +75,7 @@ class UserLesson(models.Model):
     lesson = models.ForeignKey(to=DefaultLesson, on_delete=models.CASCADE)
     docx_url_copy = models.URLField()
     date = models.DateTimeField()
+    date_end = models.DateTimeField(default=datetime.datetime.now())
     is_completed = models.BooleanField(default=False)
 
     def __str__(self):

@@ -32,6 +32,21 @@
       min-width: 0;
       width: 0;
       }
+
+      .blink1 {
+  -webkit-animation: blink1 3s linear infinite;
+  animation: blink1 3s linear infinite;
+}
+@-webkit-keyframes blink1 {
+  0% { color: rgba(34, 34, 34, 1); }
+  50% { color: rgba(34, 34, 34, 0); }
+  100% { color: rgba(34, 34, 34, 1); }
+}
+@keyframes blink1 {
+  0% { color: rgba(34, 34, 34, 1); }
+  50% { color: rgba(34, 34, 34, 0); }
+  100% { color: rgba(34, 34, 34, 1); }
+}
     </style>
 	<body>
 	{% include "header.html" %}
@@ -167,7 +182,23 @@
                 {% if lsn == 0 %}
           <h2 style="text-align: center">Здесь будут отображаться ваши занятия</h2>
                 {% else %}
-                {% for lesson in lsn %}
+                {% if cur_lsn %}
+                    <div class="card animate__animated animate__pulse animate__infinite infinite" style="width: 100%;text-align: center">
+                    <div class="card-header">
+                        Идет сейчас
+                    </div>
+                    <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="#" id="openDoc{{cur_lsn.id}}" style="font-size: x-large">{{cur_lsn.lesson.name}}</a></li>
+                    </ul>
+                    </div>
+                {% endif %}
+                {% if past_lsn %}
+                <div class="card mt-5" style="width: 100%;">
+                    <div class="card-header" style="text-align: center">
+                        Прошедшие занятия
+                    </div>
+          <div class="card-body">
+                {% for lesson in past_lsn %}
                   <div class="card" style="width: 100%;">
                     <div class="card-header">
                         {{lesson.date}}
@@ -177,6 +208,30 @@
                     </ul>
                 </div>
                 {% endfor %}
+              </div>
+                    </div>
+                {% endif %}
+
+                {% if future_lsn %}
+          <div class="card mt-3" style="width: 100%;">
+                    <div class="card-header" style="text-align: center">
+                        Предстоящие занятия
+                    </div>
+          <div class="card-body">
+                {% for lsnf in future_lsn %}
+                  <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        {{lsnf.date}}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item disabled"><a href="#">{{lsnf.lesson.name}}</a></li>
+                    </ul>
+                </div>
+                {% endfor %}
+              </div>
+              </div>
+                {% endif %}
+
                 {% endif %}
               </div>
   </div>
@@ -192,158 +247,23 @@
 
     <div class="cd-schedule__events">
       <ul>
+          {% for day in calendar %}
         <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>1 июня</span></div>
-
-          <ul>
+          <div class="cd-schedule__top-info"><span>{{day.0.date|date:'d E'}}</span></div>
+            <ul>
+            {% for d in day %}
             <li class="cd-schedule__event">
-              <a data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                <em class="cd-schedule__name">Занятие 1</em>
+              <a data-start="{{d.date|date:'H'}}:{{d.date|date:'i'}}" data-end="{{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}" data-content="event-abs-circuit" data-event="event-4">
+                  <em class="cd-schedule__name">{{d.user_course.course_type}}</em>
+                  <em class="cd-schedule__name">{{d.lesson.name}}</em>
               </a>
             </li>
-
-            <li class="cd-schedule__event">
-              <a data-start="11:00" data-end="12:30" data-content="event-rowing-workout" data-event="event-2" href="#0">
-                <em class="cd-schedule__name">Занятие 2</em>
-              </a>
-            </li>
-
-            <li class="cd-schedule__event">
-              <a data-start="14:00" data-end="15:15"  data-content="event-yoga-1" data-event="event-3" href="#0">
-                <em class="cd-schedule__name">Занятие 3</em>
-              </a>
-            </li>
-
-              <li class="cd-schedule__event">
-              <a data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                <em class="cd-schedule__name">Занятие 1</em>
-              </a>
-            </li>
-
-              <li class="cd-schedule__event">
-              <a data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                <em class="cd-schedule__name">Занятие 1</em>
-              </a>
-            </li>
+            {% endfor %}
           </ul>
         </li>
-
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>2 июня</span></div>
-
-          <ul>
-            <li class="cd-schedule__event">
-              <a data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2" href="#0">
-                <em class="cd-schedule__name">Занятие 1</em>
-              </a>
-            </li>
-
-            <li class="cd-schedule__event">
-              <a data-start="11:30" data-end="13:00"  data-content="event-restorative-yoga" data-event="event-4" href="#0">
-                <em class="cd-schedule__name">Restorative Yoga</em>
-              </a>
-            </li>
-
-            <li class="cd-schedule__event">
-              <a data-start="13:30" data-end="15:00" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                <em class="cd-schedule__name">Abs Circuit</em>
-              </a>
-            </li>
-
-            <li class="cd-schedule__event">
-              <a data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3" href="#0">
-                <em class="cd-schedule__name">Yoga Level 1</em>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>3 июня</span></div>
-
-          <ul>
-            <li class="cd-schedule__event">
-              <a data-start="09:00" data-end="10:15" data-content="event-restorative-yoga" data-event="event-4" href="#0">
-                <em class="cd-schedule__name">Restorative Yoga</em>
-              </a>
-            </li>
-
-            <li class="cd-schedule__event">
-              <a data-start="10:45" data-end="11:45" data-content="event-yoga-1" data-event="event-3" href="#0">
-                <em class="cd-schedule__name">Yoga Level 1</em>
-              </a>
-            </li>
-
-            <li class="cd-schedule__event">
-              <a data-start="12:00" data-end="13:45"  data-content="event-rowing-workout" data-event="event-2" href="#0">
-                <em class="cd-schedule__name">Rowing Workout</em>
-              </a>
-            </li>
-
-            <li class="cd-schedule__event">
-              <a data-start="13:45" data-end="15:00" data-content="event-yoga-1" data-event="event-3" href="#0">
-                <em class="cd-schedule__name">Yoga Level 1</em>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>4 июня</span></div>
-
-          <ul>
-            <li class="cd-schedule__event">
-              <a data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                <em class="cd-schedule__name">Abs Circuit</em>
-              </a>
-            </li>
-
-            <li class="cd-schedule__event">
-              <a data-start="12:00" data-end="13:45" data-content="event-restorative-yoga" data-event="event-4" href="#0">
-                <em class="cd-schedule__name">Restorative Yoga</em>
-              </a>
-            </li>
-
-            <li class="cd-schedule__event">
-              <a data-start="15:30" data-end="16:30" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                <em class="cd-schedule__name">Abs Circuit</em>
-              </a>
-            </li>
-
-            <li class="cd-schedule__event">
-              <a data-start="17:00" data-end="18:30"  data-content="event-rowing-workout" data-event="event-2" href="#0">
-                <em class="cd-schedule__name">Rowing Workout</em>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>5 июня</span></div>
-
-          <ul>
-            <li class="cd-schedule__event">
-              <a data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2" href="#0">
-                <em class="cd-schedule__name">Rowing Workout</em>
-              </a>
-            </li>
-
-            <li class="cd-schedule__event">
-              <a data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1" href="#0">
-                <em class="cd-schedule__name">Abs Circuit</em>
-              </a>
-            </li>
-
-            <li class="cd-schedule__event">
-              <a data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3" href="#0">
-                <em class="cd-schedule__name">Yoga Level 1</em>
-              </a>
-            </li>
-          </ul>
-        </li>
+        {% endfor %}
       </ul>
     </div>
-
     <div class="cd-schedule__cover-layer"></div>
   </div>
       </div>

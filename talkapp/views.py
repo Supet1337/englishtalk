@@ -160,18 +160,44 @@ def dashboard(request):
     else:
         lessons.order_by('date')
         flag = False
+        past_lessons = []
+        future_lessons = []
         for l in lessons:
             end = l.date
             if l.user_course.lesson_time:
                 end += datetime.timedelta(minutes=60)
             else:
                 end += datetime.timedelta(minutes=45)
-            if end < datetime.datetime.now():
+            l.date_end = end
+            l.save()
+            if l.date <= datetime.datetime.now() <= end and not flag:
+                context['cur_lsn'] = l
+                context['next_lsn'] = "Идет сейчас"
+                flag = True
+            elif end < datetime.datetime.now():
                 l.is_completed = True
                 l.save()
-            if not l.is_completed and not flag:
-                flag = True
-                context['next_lsn'] = l.date
+                past_lessons.append(l)
+            elif not l.is_completed:
+                if not flag:
+                    flag = True
+                    context['next_lsn'] = l.date
+                future_lessons.append(l)
+        context['past_lsn'] = past_lessons
+        context['future_lsn'] = future_lessons
+        calendar = []
+        day = []
+        for i in range(len(lessons)):
+            if i == 0:
+                day.append(lessons[i])
+            elif lessons[i].date.day == lessons[i-1].date.day:
+                day.append(lessons[i])
+            else:
+                calendar.append(day)
+                day = []
+                day.append(lessons[i])
+        calendar.append(day)
+        context['calendar'] = calendar
         if not flag:
             context['next_lsn'] = "У вас нет ближайших занятий."
         i = 0
