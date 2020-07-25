@@ -17,6 +17,9 @@ def audio_directory_path(instance, filename):
 def teacher_image_directory_path(instance, filename):
     return 'lessons/teacher_{0}/{1}'.format(instance.user.id, filename)
 
+def blog_image_directory_path(instance, filename):
+    return 'blog/blog_{0}/{1}'.format(instance.id, filename)
+
 class Teacher(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to=teacher_image_directory_path, blank=True)
@@ -127,3 +130,7 @@ class UserAdditional(models.Model):
 class Blog(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     content = models.CharField(max_length=10000)
+    description = models.CharField(max_length=300)
+    title_picture = models.ImageField(upload_to=blog_image_directory_path, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=100)

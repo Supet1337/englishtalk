@@ -15,6 +15,7 @@ class BlogAdminForm(forms.ModelForm):
 @admin.register(Blog)
 class MovieAdmin(admin.ModelAdmin):
     form = BlogAdminForm
+    raw_id_fields = ('user',)
 
 class InLineVideoLesson(nested_admin.NestedStackedInline):
     model = Lesson_video

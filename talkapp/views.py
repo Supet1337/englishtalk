@@ -143,6 +143,7 @@ def index(request):
 @login_required
 def dashboard(request):
     context = {}
+    context['blog'] = Blog.objects.all()
     is_teacher = False
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
@@ -294,11 +295,13 @@ def personally(request):
 def anylevel(request):
     return render(request,'courses/anylevel.html')
 
-def blog(request):
+def blog(request, number):
     context = {}
-    blog = Blog.objects.get(id=1)
-    context["blog"] = blog
-    return render(request,'blog-single.html', context)
+    blog = Blog.objects.get(id=number)
+    context['blog'] = blog
+    return render(request, 'blog-single.html', context)
+
+
 
 def video(request):
     return render(request,'video.html')

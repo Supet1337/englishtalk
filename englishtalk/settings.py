@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rv(-m=hx@341@qi-$kqodugk+^#rrbiz!wq4ynxjsifjq^!3xr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -141,6 +141,34 @@ CKEDITOR_UPLOAD_PATH = 'blog/'
 
 
 CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': [
+            ['Undo', 'Redo',
+             '-', 'Bold', 'Italic', 'Underline',
+             '-', 'Link', 'Unlink', 'Anchor',
+             '-', 'Format',
+             '-', 'Maximize',
+             '-', 'Table',
+             '-', 'Image',
+             '-', 'Source',
+             '-', 'NumberedList', 'BulletedList'
+            ],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+             '-', 'Font', 'FontSize', 'TextColor',
+             '-', 'Outdent', 'Indent',
+             '-', 'HorizontalRule',
+             '-', 'Blockquote'
+            ]
+        ],
+        'height': 500,
+        'width': '100%',
+        'toolbarCanCollapse': False,
+        'forcePasteAsPlainText': True
+    }
+}
+
+
 
 AWS_ACCESS_KEY_ID = "SCW2K49F6ZF9M296YGH2"
 AWS_SECRET_ACCESS_KEY = "4fd5fb51-ff07-414f-8005-4b707680ce95"
