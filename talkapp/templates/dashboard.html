@@ -273,86 +273,24 @@
 				<div class="row">
           <div class="col-lg-8 ftco-animate">
               <div class="row row-cols-1 row-cols-md-3">
+                  {% for vid in videos %}
             <div class="card mr-2 mb-2" style="width: 20rem;">
                 <div class="card-header">
                     Путешествие
                 </div>
-                <img src={% static "images/about-2.jpg" %} class="card-img-top" alt="...">
+                <img src="{{vid.picture.url}}" class="card-img-top">
                 <div class="card-body">
-                    <h5 class="card-title">Видево</h5>
+                    <h5 class="card-title">{{vid.name}}</h5>
                     <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-play-circle"></i> Видео</a>
+                    <a href="video/{{vid.id}}"><i class="fa fa-play-circle"></i> Видео</a>
                     <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-cube"></i> Конструктор</a>
+                    <a href="video/{{vid.id}}"><i class="fa fa-cube"></i> Конструктор</a>
                     <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-headphones"></i> Аудирование</a>
+                    <a href="video/{{vid.id}}"><i class="fa fa-headphones"></i> Аудирование</a>
 
                 </div>
             </div>
-            <div class="card mr-2 mb-2" style="width: 20rem;">
-                <div class="card-header">
-                    Путешествие
-                </div>
-                <img src={% static "images/about-2.jpg" %} class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Видево</h5>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-play-circle"></i> Видео</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-cube"></i> Конструктор</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-headphones"></i> Аудирование</a>
-
-                </div>
-            </div>
-            <div class="card mr-2 mb-2" style="width: 20rem;">
-                <div class="card-header">
-                    Путешествие
-                </div>
-                <img src={% static "images/about-2.jpg" %} class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Видево</h5>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-play-circle"></i> Видео</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-cube"></i> Конструктор</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-headphones"></i> Аудирование</a>
-
-                </div>
-            </div>
-            <div class="card mr-2 mb-2" style="width: 20rem;">
-                <div class="card-header">
-                    Путешествие
-                </div>
-                <img src={% static "images/about-2.jpg" %} class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Видево</h5>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-play-circle"></i> Видео</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-cube"></i> Конструктор</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-headphones"></i> Аудирование</a>
-
-                </div>
-            </div>
-            <div class="card mr-2 mb-2" style="width: 20rem;">
-                <div class="card-header">
-                    Путешествие
-                </div>
-                <img src={% static "images/about-2.jpg" %} class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Видево</h5>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-play-circle"></i> Видео</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-cube"></i> Конструктор</a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#"><i class="fa fa-headphones"></i> Аудирование</a>
-
-                </div>
-            </div>
+                  {% endfor %}
                   </div>
           </div> <!-- .col-md-8 -->
 

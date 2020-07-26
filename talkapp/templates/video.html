@@ -36,7 +36,7 @@
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
             <h1 class="mb-2 bread">Изучай одно видео в день, чтобы понимать английский на слух</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="../">Home<i class="fas fa-chevron-right"></i></a></span><span>Video<i class="fas fa-chevron-right"></i></span> <span>Nazvanie<i class="fas fa-chevron-right"></i></span></p>
+            <p class="breadcrumbs"><span class="mr-2"><a href="../">Home<i class="fas fa-chevron-right"></i></a></span><span>Video<i class="fas fa-chevron-right"></i></span> <span>{{video.name}}<i class="fas fa-chevron-right"></i></span></p>
           </div>
         </div>
       </div>
@@ -47,7 +47,7 @@
 				<div class="row d-flex">
 					<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate abc">
                         <div class="video">
-                        <iframe  width="1110" height="624" src="https://www.youtube.com/embed/EoFNYxopbsk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe  width="1110" height="624" src="{{video.video_url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                             <section class="ftco-section ftco-no-pt ftc-no-pb">
 			<div class="container">
@@ -58,32 +58,11 @@
                             <div class="services-2 d-flex">
                                 <div class="container">
                                   <div class="row">
+                                      {% for word in video.get_words %}
                                     <div class="col">
-                                        <a onclick="speak('hello')"><button type="button" class="btn btn-primary mt-2"><i class="fa fa-play-circle"></i></button> <a>Hello</a></a>
+                                        <a onclick="speak('{{word.word}}')"><button type="button" class="btn btn-primary mt-2"><i class="fa fa-play-circle"></i></button> <a>{{word.word}}</a></a>
                                     </div>
-                                    <div class="col">
-                                        <a onclick="speak('hello')"><button type="button" class="btn btn-primary mt-2"><i class="fa fa-play-circle"></i></button> <a>Hello</a></a>
-									</div>
-                                    <div class="w-100"></div>
-                                    <div class="col">
-                                        <a onclick="speak('hello')"><button type="button" class="btn btn-primary mt-2"><i class="fa fa-play-circle"></i></button> <a>Hello</a></a>
-									</div>
-                                      <div class="col">
-                                        <a onclick="speak('hello')"><button type="button" class="btn btn-primary mt-2"><i class="fa fa-play-circle"></i></button> <a>Hello</a></a>
-									</div>
-                                      <div class="w-100"></div>
-                                    <div class="col">
-                                        <a onclick="speak('hello')"><button type="button" class="btn btn-primary mt-2"><i class="fa fa-play-circle"></i></button> <a>Hello</a></a>
-									</div>
-                                      <div class="col">
-                                        <a onclick="speak('hello')"><button type="button" class="btn btn-primary mt-2"><i class="fa fa-play-circle"></i></button> <a>Hello</a></a>
-									</div><div class="w-100"></div>
-                                    <div class="col">
-                                        <a onclick="speak('hello')"><button type="button" class="btn btn-primary mt-2"><i class="fa fa-play-circle"></i></button> <a>Hello</a></a>
-									</div>
-                                      <div class="col">
-                                        <a onclick="speak('hello')"><button type="button" class="btn btn-primary mt-2"><i class="fa fa-play-circle"></i></button> <a>Hello</a></a>
-									</div>
+                                      {% endfor %}
 									</div>
                                   </div>
                                 </div>

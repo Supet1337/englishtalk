@@ -18,7 +18,10 @@ def teacher_image_directory_path(instance, filename):
     return 'lessons/teacher_{0}/{1}'.format(instance.user.id, filename)
 
 def blog_image_directory_path(instance, filename):
-    return 'blog/blog_{0}/{1}'.format(instance.id, filename)
+    return 'blogs/blog_{0}/{1}'.format(instance.id, filename)
+
+def video_image_directory_path(instance, filename):
+    return 'Videos/video_{0}/{1}'.format(instance.id, filename)
 
 class Teacher(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
@@ -134,3 +137,16 @@ class Blog(models.Model):
     title_picture = models.ImageField(upload_to=blog_image_directory_path, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100)
+
+class VideoPractise(models.Model):
+    author = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    video_url = models.URLField()
+    name = models.CharField(max_length=100)
+    picture = models.ImageField(upload_to=video_image_directory_path, blank=True)
+
+    def get_words(self):
+        return VideoPractiseWord.objects.filter(video_practise=self)
+
+class VideoPractiseWord(models.Model):
+    video_practise = models.ForeignKey(to=VideoPractise, on_delete=models.CASCADE)
+    word = models.CharField(max_length=100)

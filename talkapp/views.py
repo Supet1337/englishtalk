@@ -144,6 +144,7 @@ def index(request):
 def dashboard(request):
     context = {}
     context['blog'] = Blog.objects.all()
+    context['videos'] = VideoPractise.objects.all()
     is_teacher = False
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
@@ -303,8 +304,10 @@ def blog(request, number):
 
 
 
-def video(request):
-    return render(request,'video.html')
+def video(request,number):
+    context = {}
+    context['video'] = VideoPractise.objects.get(id=number)
+    return render(request,'video.html', context)
 
 
 def view_404(request, exception):
