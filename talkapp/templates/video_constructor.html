@@ -45,8 +45,7 @@
 			<div class="container">
 				<div class="row d-flex">
 					<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate abc">
-                        <div id="player">
-                        </div>
+                        <iframe id="player" width="1110" height="624" src="http://www.youtube.com/embed/{{video.video_url}}?autoplay=1&controls=1&modestbranding=1&rel=0&showInfo=0&start={{constructors.0.get_start_seconds}}&end={{constructors.0.get_end_seconds}}&wmode=opaque&iv_load_policy=3&enablejsapi=1&origin=http://0.0.0.0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             <section class="ftco-section ftco-no-pt ftc-no-pb">
 			<div class="container">
 				<div class="row d-flex">
@@ -140,10 +139,8 @@
       var player;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
-          height: '360',
-          width: '640',
-          end: {{constructors.0.get_end_seconds}},
-          videoId: 'POb02mjj2zE',
+          height: '624',
+          width: '1110',
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -155,15 +152,15 @@
         player.seekTo(st);
       }
 
-
+      var flag = true;
       function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAY) {
+        if (event.data == YT.PlayerState.PLAYING && flag) {
           player.seekTo(st);
-
+          flag = false;
         }
-      }
-      function stopVideo() {
-        player.stopVideo();
+        if (event.data == YT.PlayerState.ENDED) {
+          flag = true;
+        }
       }
     </script>
   </body>
