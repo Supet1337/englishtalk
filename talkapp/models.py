@@ -165,7 +165,7 @@ class VideoPractiseConstructor(models.Model):
         return l
 
     def get_start_seconds(self):
-        return int(datetime.timedelta(minutes=self.video_start_time.minute,seconds=self.video_start_time.second).total_seconds())
+        return int(datetime.timedelta(hours=self.video_start_time.hour,minutes=self.video_start_time.minute,seconds=self.video_start_time.second).total_seconds())
 
     def get_end_seconds(self):
-        return int(datetime.timedelta(minutes=self.video_end_time.minute,seconds=self.video_end_time.second).total_seconds())
+        return int(datetime.timedelta(hours=self.video_end_time.hour,minutes=self.video_end_time.minute,seconds=self.video_end_time.second).total_seconds())

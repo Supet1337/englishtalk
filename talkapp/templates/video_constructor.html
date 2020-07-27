@@ -41,13 +41,11 @@
         </div>
       </div>
     </section>
-
 		<section class="ftco-section ftco-no-pt ftc-no-pb">
 			<div class="container">
 				<div class="row d-flex">
 					<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate abc">
-                        <div class="video">
-                        <iframe  width="1110" height="624" src="https://www.youtube.com/embed/{{video.video_url}}?fs=1&autoplay=1&controls=1&modestbranding=1&rel=0&showInfo=0&start={{constructors.0.get_start_seconds}}&end={{constructors.0.get_end_seconds}}&wmode=opaque&iv_load_policy=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div id="player">
                         </div>
                             <section class="ftco-section ftco-no-pt ftc-no-pb">
 			<div class="container">
@@ -100,6 +98,8 @@
   <script src={% static "js/scrollax.min.js" %}></script>
   <script src={% static "js/main.js" %}></script>
       <script>
+        var st = {{constructors.0.get_start_seconds}}
+        var et = {{constructors.0.get_end_seconds}}
         var msg = new SpeechSynthesisUtterance();
         var voices = speechSynthesis.getVoices();
         msg.voice = voices[1];
@@ -129,6 +129,42 @@
                 alert('Лох');
             }
         }
-</script>
+
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '360',
+          width: '640',
+          end: {{constructors.0.get_end_seconds}},
+          videoId: 'POb02mjj2zE',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      function onPlayerReady(event) {
+        player.seekTo(st);
+      }
+
+
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAY) {
+          player.seekTo(st);
+
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+    </script>
   </body>
 </html>
