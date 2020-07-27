@@ -34,4 +34,5 @@ urlpatterns = [
     path('course/anylevel', anylevel),
     path('blog/<int:number>', blog),
     path('video/<int:number>', video),
+    path('video-constructor/<int:number>', video_constructor),
 ]

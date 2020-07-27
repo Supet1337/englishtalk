@@ -47,7 +47,7 @@
 				<div class="row d-flex">
 					<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate abc">
                         <div class="video">
-                        <iframe  width="1110" height="624" src="{{video.video_url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe  width="1110" height="624" src="https://www.youtube.com/embed/{{video.video_url}}?fs=1&autoplay=1&controls=1&modestbranding=1&rel=0&showInfo=0&start={{constructors.0.get_start_seconds}}&end={{constructors.0.get_end_seconds}}&wmode=opaque&iv_load_policy=3" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                             <section class="ftco-section ftco-no-pt ftc-no-pb">
 			<div class="container">
@@ -58,12 +58,14 @@
                             <div class="services-2 d-flex">
                                 <div class="container">
                                   <div class="row">
-                                      {% for word in video.get_words %}
-                                    <div class="col">
-                                        <a onclick="speak('{{word.word}}')"><button type="button" class="btn btn-primary mt-2"><i class="fa fa-play-circle"></i></button> <a>{{word.word}} </a>-<a> {{word.translate}}</a></a>
+                                    <div class="col" id="possible_answers">
+                                        <p id="sheetAnswer"></p>
+                                        {% for a in constructors.0.get_possible_answers %}
+                                        <button class="btn btn-primary mt-2" style="border-radius: 0" onclick="speak('{{a}}');add_word('{{a}}');$(this).remove();">{{a}}</button>
+                                        {% endfor %}
                                     </div>
-                                      {% endfor %}
 									</div>
+                                    <button type="button" id="check_answer" onclick="check_answer('{{constructors.0.answer}}')" class="btn btn-primary mt-2">Проверить</button>
                                   </div>
                                 </div>
 
@@ -109,6 +111,23 @@
         function speak(text) {
             msg.text = text;
             speechSynthesis.speak(msg);
+        }
+        var sk = "'";
+        function add_answer(word){
+            $('#possible_answers').append('<button class="btn btn-primary mt-2" style="border-radius: 0" onclick="speak('+sk+word+sk+');add_word('+sk+word+sk+');$(this).remove();">'+word+'</button>')
+        }
+        function add_word(word){
+            $("#sheetAnswer").append('<button class="btn btn-primary" style="border-radius: 0;color: gray;background: #c5cfd8;border-color: gray" onclick="$(this).remove();add_answer('+sk+word+sk+')">'+ word +' </button>');
+        }
+        function check_answer(answer){
+            var b = $("#sheetAnswer").text()
+            var a = b.substring(0, b.length - 1)
+            if (a == answer){
+                alert('Красава');
+            }
+            else{
+                alert('Лох');
+            }
         }
 </script>
   </body>

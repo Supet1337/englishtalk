@@ -1,4 +1,5 @@
 import datetime
+import random
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -140,7 +141,7 @@ class Blog(models.Model):
 
 class VideoPractise(models.Model):
     author = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    video_url = models.URLField()
+    video_url = models.CharField(max_length=32)
     name = models.CharField(max_length=100)
     picture = models.ImageField(upload_to=video_image_directory_path, blank=True)
 
@@ -150,3 +151,21 @@ class VideoPractise(models.Model):
 class VideoPractiseWord(models.Model):
     video_practise = models.ForeignKey(to=VideoPractise, on_delete=models.CASCADE)
     word = models.CharField(max_length=100)
+    translate = models.CharField(max_length=100)
+
+class VideoPractiseConstructor(models.Model):
+    video_practise = models.ForeignKey(to=VideoPractise, on_delete=models.CASCADE)
+    video_start_time = models.TimeField()
+    video_end_time = models.TimeField()
+    answer = models.CharField(max_length=100)
+
+    def get_possible_answers(self):
+        l = list(self.answer.split())
+        random.shuffle(l)
+        return l
+
+    def get_start_seconds(self):
+        return int(datetime.timedelta(minutes=self.video_start_time.minute,seconds=self.video_start_time.second).total_seconds())
+
+    def get_end_seconds(self):
+        return int(datetime.timedelta(minutes=self.video_end_time.minute,seconds=self.video_end_time.second).total_seconds())
