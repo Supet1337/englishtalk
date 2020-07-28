@@ -45,7 +45,10 @@
 			<div class="container">
 				<div class="row d-flex">
 					<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate abc">
-                        <iframe id="player" width="1110" height="624" src="http://www.youtube.com/embed/{{video.video_url}}?autoplay=1&controls=1&modestbranding=1&rel=0&showInfo=0&start={{constructors.0.get_start_seconds}}&end={{constructors.0.get_end_seconds}}&wmode=opaque&iv_load_policy=3&enablejsapi=1&origin=http://0.0.0.0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        {% for c in constructors %}
+                        <div id="video-section{{c.id}}">
+                        </div>
+                        {% endfor %}
                             <section class="ftco-section ftco-no-pt ftc-no-pb">
 			<div class="container">
 				<div class="row d-flex">
@@ -53,17 +56,19 @@
           	<h2 class="mb-4">Рекомендуемые слова</h2>
                         <div class="row mt-3">
                             <div class="services-2 d-flex">
-                                <div class="container">
+                                {% for c in constructors %}
+                                 <div class="container" id="con{{c.id}}" hidden>
                                   <div class="row">
-                                    <div class="col" id="possible_answers">
-                                        <p id="sheetAnswer"></p>
-                                        {% for a in constructors.0.get_possible_answers %}
-                                        <button class="btn btn-primary mt-2" style="border-radius: 0" onclick="speak('{{a}}');add_word('{{a}}');$(this).remove();">{{a}}</button>
+                                    <div class="col" id="possible_answers{{c.id}}">
+                                        <p id="sheetAnswer{{c.id}}"></p>
+                                        {% for a in c.get_possible_answers %}
+                                        <button class="btn btn-primary mt-2" style="border-radius: 0" onclick="speak('{{a}}');add_word('{{a}}',{{c.id}});$(this).remove();">{{a}}</button>
                                         {% endfor %}
                                     </div>
 									</div>
-                                    <button type="button" id="check_answer" onclick="check_answer('{{constructors.0.answer}}')" class="btn btn-primary mt-2">Проверить</button>
+                                    <button type="button" id="check_answer{{c.id}}" onclick="check_answer('{{c.answer}}',{{c.id}})" class="btn btn-primary mt-2">Проверить</button>
                                   </div>
+                                {% endfor %}
                                 </div>
 
 								</div>
@@ -97,8 +102,9 @@
   <script src={% static "js/scrollax.min.js" %}></script>
   <script src={% static "js/main.js" %}></script>
       <script>
-        var st = {{constructors.0.get_start_seconds}}
-        var et = {{constructors.0.get_end_seconds}}
+        document.getElementById("con{{constructors.0.id}}").hidden = false;
+        var conCount = {{constructors|length}};
+        var i = 0;
         var msg = new SpeechSynthesisUtterance();
         var voices = speechSynthesis.getVoices();
         msg.voice = voices[1];
@@ -111,18 +117,61 @@
             msg.text = text;
             speechSynthesis.speak(msg);
         }
+        {% for c in constructors %}
+        var player{{c.id}};
+        {% endfor %}
         var sk = "'";
-        function add_answer(word){
-            $('#possible_answers').append('<button class="btn btn-primary mt-2" style="border-radius: 0" onclick="speak('+sk+word+sk+');add_word('+sk+word+sk+');$(this).remove();">'+word+'</button>')
+        function add_answer(word,conId){
+            $('#possible_answers'+conId).append('<button class="btn btn-primary mt-2" style="border-radius: 0" onclick="speak('+sk+word+sk+');add_word('+sk+word+sk+','+conId+');$(this).remove();">'+word+'</button>')
         }
-        function add_word(word){
-            $("#sheetAnswer").append('<button class="btn btn-primary" style="border-radius: 0;color: gray;background: #c5cfd8;border-color: gray" onclick="$(this).remove();add_answer('+sk+word+sk+')">'+ word +' </button>');
+        function add_word(word,conId){
+            $("#sheetAnswer"+conId).append('<button class="btn btn-primary" style="border-radius: 0;color: gray;background: #c5cfd8;border-color: gray" onclick="$(this).remove();add_answer('+sk+word+sk+','+conId+')">'+ word +' </button>');
         }
-        function check_answer(answer){
-            var b = $("#sheetAnswer").text()
+        function check_answer(answer,conId){
+            var b = $("#sheetAnswer"+conId).text()
             var a = b.substring(0, b.length - 1)
             if (a == answer){
-                alert('Красава');
+                i += 1;
+                if (i < conCount){
+                    $('#con'+conId).remove()
+                    $('#video-section'+conId).remove()
+                    var f = false;
+                    var nextId;
+                    {% for c in constructors %}
+                    if (f){
+                        f = false
+                        nextId = {{c.id}}
+                        player{{c.id}} = new YT.Player('video-section{{c.id}}', {
+                          height: '360',
+                          width: '640',
+                          videoId: '{{video.video_url}}',
+                          playerVars: {
+                            'autoplay': 1,
+                            'controls': 1,
+                            'enablejsapi': 1,
+                            'start': {{c.get_start_seconds}},
+                            'end': {{c.get_end_seconds}},
+                            'iv_load_policy': 3,
+                            'modestbranding': 1,
+                            'origin': 'http://0.0.0.0',
+                            'rel': 0,
+                            'showinfo': 0
+                          },
+                          events: {
+                            'onStateChange': onPlayerStateChange{{c.id}}
+                          }
+                        });
+                    }
+                    if (conId == {{c.id}}){
+                        f = true
+                    }
+                    {% endfor %}
+
+                    document.getElementById("con"+nextId).hidden = false;
+                }
+                else{
+                    alert('Поздравляем, вы проши на gay party');
+                }
             }
             else{
                 alert('Лох');
@@ -136,32 +185,47 @@
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 
-      var player;
+
       function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          height: '624',
-          width: '1110',
+        player{{constructors.0.id}} = new YT.Player('video-section{{constructors.0.id}}', {
+          height: '360',
+          width: '640',
+          videoId: '{{video.video_url}}',
+          playerVars: {
+            'autoplay': 1,
+            'controls': 1,
+            'enablejsapi': 1,
+            'start': {{constructors.0.get_start_seconds}},
+            'end': {{constructors.0.get_end_seconds}},
+            'iv_load_policy': 3,
+            'modestbranding': 1,
+            'origin': 'http://0.0.0.0',
+            'rel': 0,
+            'showinfo': 0
+          },
           events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
+            'onStateChange': onPlayerStateChange{{constructors.0.id}}
           }
         });
       }
+      {% for c in constructors %}
+      var st{{c.id}} = {{c.get_start_seconds}}
+      var et{{c.id}} = {{c.get_end_seconds}}
 
-      function onPlayerReady(event) {
-        player.seekTo(st);
+      var flag{{c.id}} = true;
+      function onPlayerStateChange{{c.id}}(event) {
+        if (event.data == YT.PlayerState.PLAYING && flag{{c.id}}) {
+          player{{c.id}}.seekTo(st{{c.id}});
+          flag{{c.id}} = false;
+        }
+        if (event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.PAUSED) {
+          flag{{c.id}} = true;
+        }
       }
 
-      var flag = true;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && flag) {
-          player.seekTo(st);
-          flag = false;
-        }
-        if (event.data == YT.PlayerState.ENDED) {
-          flag = true;
-        }
-      }
+      {% endfor %}
+
+
     </script>
   </body>
 </html>
