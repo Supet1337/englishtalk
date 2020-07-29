@@ -317,6 +317,14 @@ def video_constructor(request,number):
     context['constructors'] = constructors
     return render(request,'video_constructor.html', context)
 
+def video_listening(request,number):
+    context = {}
+    video = VideoPractise.objects.get(id=number)
+    context['video'] = video
+    listenings = VideoPractiseListening.objects.filter(video_practise=video)
+    context['listenings'] = listenings
+    return render(request,'video_listening.html', context)
+
 def view_404(request, exception):
     return render(request, "errors/404.html")
 

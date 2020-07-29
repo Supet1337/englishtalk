@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from .forms import *
 import nested_admin
-from .models import DefaultLesson, Lesson_video, Lesson_audio, UserAdditional, Teacher, DefaultCourse, Blog, UserCourse, UserLesson, VideoPractiseWord, VideoPractise, VideoPractiseConstructor
+from .models import DefaultLesson, Lesson_video, Lesson_audio, UserAdditional, Teacher, DefaultCourse,\
+    Blog, UserCourse, UserLesson, VideoPractiseWord, VideoPractise, VideoPractiseConstructor,VideoPractiseListening
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 admin.site.site_header = 'Englishtalk администрирование'
@@ -42,6 +43,10 @@ class InLineWord(admin.StackedInline):
 
 class InLineConstructor(admin.StackedInline):
     model = VideoPractiseConstructor
+    extra = 0
+
+class InLineListening(admin.StackedInline):
+    model = VideoPractiseListening
     extra = 0
 
 @admin.register(DefaultCourse)
@@ -95,7 +100,7 @@ class UserAdditionals(admin.ModelAdmin):
 
 @admin.register(VideoPractise)
 class VideoPractiseAdmin(admin.ModelAdmin):
-    inlines = [InLineWord,InLineConstructor]
+    inlines = [InLineWord,InLineConstructor,InLineListening]
     raw_id_fields = ('author',)
     list_display = ('name', 'author_name', 'video_url')
     search_fields = ['author__first_name', 'name']

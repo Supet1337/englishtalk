@@ -35,4 +35,5 @@ urlpatterns = [
     path('blog/<int:number>', blog),
     path('video/<int:number>', video),
     path('video-constructor/<int:number>', video_constructor),
+    path('video-listening/<int:number>', video_listening),
 ]

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <title>Видео-конструктор</title>
+    <title>Видео-аудирование</title>
     <meta charset="utf-8">
       {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,16 +25,6 @@
 
 .video iframe {position:absolute;top:0;left:0;width:99.8%;height:100%;}
 
-    .correct-answer{
-       background: #d4edda !important;
-       color: #155724 !important;
-       border-color: #155724 !important;
-    }
-    .incorrect-answer{
-       background: #f8d7da !important;
-       color: #721c24 !important;
-       border-color: #721c24 !important;
-    }
   </style>
   <body>
 	  {% include "header.html" %}
@@ -45,7 +35,7 @@
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
             <h1 class="mb-2 bread">Изучай одно видео в день, чтобы понимать английский на слух</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="../">Home<i class="fas fa-chevron-right"></i></a></span><span>Video-Constructor<i class="fas fa-chevron-right"></i></span> <span>{{video.name}}<i class="fas fa-chevron-right"></i></span></p>
+            <p class="breadcrumbs"><span class="mr-2"><a href="../">Home<i class="fas fa-chevron-right"></i></a></span><span>Video-Listening<i class="fas fa-chevron-right"></i></span> <span>{{video.name}}<i class="fas fa-chevron-right"></i></span></p>
           </div>
         </div>
       </div>
@@ -54,9 +44,9 @@
 			<div class="container">
 				<div class="row d-flex">
 					<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate abc" style="background-color: #dddddd2e">
-                        {% for c in constructors %}
+                        {% for l in listenings %}
                         <!-- <div class="video"> -->
-                        <div id="video-section{{c.id}}">
+                        <div id="video-section{{l.id}}">
                        <!-- </div> -->
                         </div>
                         {% endfor %}
@@ -71,21 +61,24 @@
                             <div id="alerts">
                                 </div>
                             <div class="services-2 d-flex">
-                                {% for c in constructors %}
-                                 <div class="container" id="con{{c.id}}" hidden>
+                                {% for l in listenings %}
+                                 <div class="container" id="lis{{l.id}}" hidden>
+                                     {% for x in l.get_answer %}
                                   <div class="row">
-                                    <div class="col" id="possible_answers{{c.id}}">
-                                        <p id="sheetAnswer{{c.id}}"></p>
-                                        <p id="translate-answer{{c.id}}" hidden>Перевод: {{c.answer_translate}}</p>
-                                        {% for a in c.get_possible_answers %}
-                                        <button class="btn btn-primary mt-2" style="border-radius: 0" onclick="speak('{{a}}');add_word('{{a}}',{{c.id}});$(this).remove();">{{a}}</button>
-                                        {% endfor %}
+                                    <div class="col" id="possible_answers{{l.id}}">
+                                        <p id="sheetAnswer{{l.id}}">
+                                            {{x.0.0}}
+                                            <input type="text" id="input-word{{l.id}}" placeholder="Answer">
+                                            {{x.1.0}}
+                                        </p>
+                                        <p id="translate-answer{{l.id}}" hidden>Перевод: {{l.answer_translate}}</p>
                                     </div>
 									</div>
                                      <div id="buttons-section" style="position: absolute; width: 100%;">
-                                    <button type="button" id="check_answer{{c.id}}" onclick="check_answer('{{c.answer}}',{{c.id}})" class="btn btn-primary mt-2 a">Проверить</button>
-                                         <button type="button" id="next_con{{c.id}}" onclick="next_con({{c.id}})" class="btn btn-primary mt-2 a" hidden>Следующее задание</button>
+                                    <button type="button" id="check_answer{{l.id}}" onclick="check_answer('{{l.answer}}','{{x.0.0}}','{{x.1.0}}',{{l.id}})" class="btn btn-primary mt-2 a">Проверить</button>
+                                         <button type="button" id="next_con{{l.id}}" onclick="next_con({{l.id}})" class="btn btn-primary mt-2 a" hidden>Следующее задание</button>
                                      </div>
+                                     {% endfor %}
                                  </div>
                                 {% endfor %}
                                 </div>
@@ -121,8 +114,8 @@
   <script src={% static "js/scrollax.min.js" %}></script>
   <script src={% static "js/main.js" %}></script>
       <script>
-        document.getElementById("con{{constructors.0.id}}").hidden = false;
-        var conCount = {{constructors|length}};
+        document.getElementById("lis{{listenings.0.id}}").hidden = false;
+        var conCount = {{listenings|length}};
         var i = 0;
         var msg = new SpeechSynthesisUtterance();
         var voices = speechSynthesis.getVoices();
@@ -141,44 +134,32 @@
             speechSynthesis.speak(msg);
             sleep(700);
         }
-        {% for c in constructors %}
+        {% for c in listenings %}
         var player{{c.id}};
         {% endfor %}
         var sk = "'";
-        function add_answer(word,conId){
-            $('#possible_answers'+conId).append('<button class="btn btn-primary mt-2" style="border-radius: 0" onclick="speak('+sk+word+sk+');add_word('+sk+word+sk+','+conId+');$(this).remove();">'+word+'</button>')
-            $('.answer-state').removeClass('incorrect-answer');
-        }
-        function add_word(word,conId){
-            $("#sheetAnswer"+conId).append('<a role="button" class="btn btn-primary answer-state" style="border-radius: 0;color: gray;background: #c5cfd8;border-color: gray" onclick="$(this).remove();add_answer('+sk+word+sk+','+conId+')">'+ word +' </a>');
-            $('.answer-state').removeClass('incorrect-answer');
-        }
-        function check_answer(answer,conId){
-            var b = $("#sheetAnswer"+conId).text()
-            var a = b.substring(0, b.length - 1)
+        function check_answer(answer,p1,p2,conId){
+            var b = document.getElementById('input-word'+conId).value
+            a = p1 + b + p2;
             if (a == answer){
                 i += 1;
                 if (i < conCount){
-                    $('.answer-state').removeClass('incorrect-answer');
-                    $('.answer-state').addClass('disabled correct-answer');
                     $('#check_answer'+conId).remove()
                     document.getElementById("translate-answer"+conId).hidden = false;
                     document.getElementById("next_con"+conId).hidden = false;
                 }
                 else{
-                    $('.answer-state').removeClass('incorrect-answer');
-                    $('.answer-state').addClass('disabled correct-answer');
                     document.getElementById("translate-answer"+conId).hidden = false;
                     $('#check_answer'+conId).remove()
                     $('#buttons-section').append('<button type="button" onclick="end_con('+conId+')" class="btn btn-primary mt-2 a">Завершить</button>')
                 }
             }
             else{
-                $('.answer-state').addClass('incorrect-answer');
+                alert('gavno');
             }
       }
       function end_con(conId){
-        $('#con'+conId).remove()
+        $('#lis'+conId).remove()
         $('#video-section'+conId).remove()
         $('#alerts').append('<div id="alert_success_end" class="alert alert-success alert-dismissible fade show" role="alert">'+
                                              'Ого! Ты сделал всё правильно! Переходи к cледующим конструкторам.'+
@@ -189,11 +170,11 @@
                                         '</div>')
       }
       function next_con(conId){
-                    $('#con'+conId).remove()
+                    $('#lis'+conId).remove()
                     $('#video-section'+conId).remove()
                     var f = false;
                     var nextId;
-                    {% for c in constructors %}
+                    {% for c in listenings %}
                     if (f){
                         f = false
                         nextId = {{c.id}}
@@ -223,7 +204,7 @@
                     }
                     {% endfor %}
 
-                    document.getElementById("con"+nextId).hidden = false;
+                    document.getElementById("lis"+nextId).hidden = false;
       }
       var tag = document.createElement('script');
 
@@ -234,7 +215,7 @@
 
 
       function onYouTubeIframeAPIReady() {
-        player{{constructors.0.id}} = new YT.Player('video-section{{constructors.0.id}}', {
+        player{{listenings.0.id}} = new YT.Player('video-section{{listenings.0.id}}', {
           height: '360',
           width: '640',
           videoId: '{{video.video_url}}',
@@ -242,8 +223,8 @@
             'autoplay': 1,
             'controls': 1,
             'enablejsapi': 1,
-            'start': {{constructors.0.get_start_seconds}},
-            'end': {{constructors.0.get_end_seconds}},
+            'start': {{listenings.0.get_start_seconds}},
+            'end': {{listenings.0.get_end_seconds}},
             'iv_load_policy': 3,
             'modestbranding': 1,
             'origin': 'http://0.0.0.0',
@@ -251,11 +232,11 @@
             'showinfo': 0
           },
           events: {
-            'onStateChange': onPlayerStateChange{{constructors.0.id}}
+            'onStateChange': onPlayerStateChange{{listenings.0.id}}
           }
         });
       }
-      {% for c in constructors %}
+      {% for c in listenings %}
       var st{{c.id}} = {{c.get_start_seconds}}
       var et{{c.id}} = {{c.get_end_seconds}}
 

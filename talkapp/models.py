@@ -158,11 +158,39 @@ class VideoPractiseConstructor(models.Model):
     video_start_time = models.TimeField()
     video_end_time = models.TimeField()
     answer = models.CharField(max_length=100)
+    answer_translate = models.CharField(max_length=100)
 
     def get_possible_answers(self):
         l = list(self.answer.split())
         random.shuffle(l)
         return l
+
+    def get_start_seconds(self):
+        return int(datetime.timedelta(hours=self.video_start_time.hour,minutes=self.video_start_time.minute,seconds=self.video_start_time.second).total_seconds())
+
+    def get_end_seconds(self):
+        return int(datetime.timedelta(hours=self.video_end_time.hour,minutes=self.video_end_time.minute,seconds=self.video_end_time.second).total_seconds())
+
+class VideoPractiseListening(models.Model):
+    video_practise = models.ForeignKey(to=VideoPractise, on_delete=models.CASCADE)
+    video_start_time = models.TimeField()
+    video_end_time = models.TimeField()
+    answer = models.CharField(max_length=100)
+    answer_translate = models.CharField(max_length=100)
+
+    def get_answer(self):
+        l = list(self.answer.split())
+        r = random.randint(0,len(l)-1)
+        first = ''
+        second = ' '
+        for a in l[:r]:
+            first += a + ' '
+        for a in l[r+1:len(l)]:
+            second += a + ' '
+        second = second[:-1]
+        res1 = [[first],[second]]
+        res = [res1]
+        return res
 
     def get_start_seconds(self):
         return int(datetime.timedelta(hours=self.video_start_time.hour,minutes=self.video_start_time.minute,seconds=self.video_start_time.second).total_seconds())
