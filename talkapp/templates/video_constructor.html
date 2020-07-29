@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
-    <title>Fox University - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Видео-конструктор</title>
     <meta charset="utf-8">
       {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,38 +23,60 @@
   }
 .video {position:relative;padding-bottom:56.25%;//padding-top:25px;height:0;}
 
-.video iframe {position:absolute;top:0;left:0;width:100%;height:100%;}
+.video iframe {position:absolute;top:0;left:0;width:99.8%;height:100%;}
 
   </style>
   <body>
 	  {% include "header.html" %}
     <!-- END nav -->
-
     <section class="hero-wrap hero-wrap-2" style="background-image: url({% static "images/bg_1.jpg" %});">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
           <div class="col-md-9 ftco-animate text-center">
             <h1 class="mb-2 bread">Изучай одно видео в день, чтобы понимать английский на слух</h1>
-            <p class="breadcrumbs"><span class="mr-2"><a href="../">Home<i class="fas fa-chevron-right"></i></a></span><span>Video<i class="fas fa-chevron-right"></i></span> <span>{{video.name}}<i class="fas fa-chevron-right"></i></span></p>
+            <p class="breadcrumbs"><span class="mr-2"><a href="../">Home<i class="fas fa-chevron-right"></i></a></span><span>Video-Constructor<i class="fas fa-chevron-right"></i></span> <span>{{video.name}}<i class="fas fa-chevron-right"></i></span></p>
           </div>
         </div>
       </div>
     </section>
-		<section class="ftco-section ftco-no-pt ftc-no-pb">
+		<div class="ftco-section ftco-no-pt ftc-no-pb">
 			<div class="container">
 				<div class="row d-flex">
-					<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate abc">
+					<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate abc" style="background-color: #dddddd2e">
                         {% for c in constructors %}
+                        <!-- <div class="video"> -->
                         <div id="video-section{{c.id}}">
+                       <!-- </div> -->
                         </div>
                         {% endfor %}
-                            <section class="ftco-section ftco-no-pt ftc-no-pb">
+            <section class="ftco-section ftco-no-pt ftc-no-pb">
 			<div class="container">
 				<div class="row d-flex">
 					<div class="col-md-7 wrap-about py-1 pr-md-1 ftco-animate mx-auto">
-          	<h2 class="mb-4">Рекомендуемые слова</h2>
+                        <div class="card" style="border-radius: 0; width: 100%">
+          	<h4 style="text-align: center" >Постройте правильную последовательность</h4>
+                        </div>
                         <div class="row mt-3">
+            <div id="alert_next_success" hidden class="alert alert-success alert-dismissible fade show" role="alert">
+                 Верно! выполни следующее задание.
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+            </div>
+             <div id="alert_success_end" hidden class="alert alert-success alert-dismissible fade show" role="alert">
+                 Ого! Ты сделал всё правильно! Переходи к cледующим конструкторам.
+                   <a href="../../dashboard" >Перейти</a>
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+            </div>
+                                <div id="alert_error" hidden class="alert alert-danger alert-dismissible fade show w-100" role="alert">
+                 Ты где-то ошибся :(
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true">&times;</span>
+                   </button>
+            </div>
                             <div class="services-2 d-flex">
                                 {% for c in constructors %}
                                  <div class="container" id="con{{c.id}}" hidden>
@@ -66,8 +88,10 @@
                                         {% endfor %}
                                     </div>
 									</div>
-                                    <button type="button" id="check_answer{{c.id}}" onclick="check_answer('{{c.answer}}',{{c.id}})" class="btn btn-primary mt-2">Проверить</button>
-                                  </div>
+                                     <div style="position: absolute; width: 100%;">
+                                    <button type="button" id="check_answer{{c.id}}" onclick="check_answer('{{c.answer}}',{{c.id}})" class="btn btn-primary mt-2 a">Проверить</button>
+                                     </div>
+                                 </div>
                                 {% endfor %}
                                 </div>
 
@@ -113,9 +137,14 @@
         msg.rate = 1;
         msg.pitch = 1;
         msg.lang = 'en-EN';
+        function sleep(ms) {
+            ms += new Date().getTime();
+            while (new Date() < ms){}
+        }
         function speak(text) {
             msg.text = text;
             speechSynthesis.speak(msg);
+            sleep(700);
         }
         {% for c in constructors %}
         var player{{c.id}};
@@ -168,13 +197,14 @@
                     {% endfor %}
 
                     document.getElementById("con"+nextId).hidden = false;
+                    document.getElementById("alert_next_success").hidden = false;
                 }
                 else{
-                    alert('Поздравляем, вы проши на gay party');
+                     document.getElementById("alert_success_end").hidden = false;
                 }
             }
             else{
-                alert('Лох');
+                document.getElementById("alert_error").hidden = false;
             }
         }
 
