@@ -21,6 +21,19 @@
     left: 20%;
     }
   }
+    .green-form{
+       border-color: #669170;
+       background: #e1f1e5 !important;
+       color: #669170;
+    }
+    .red-form{
+        background: #f8d7da !important;
+        color: #721c24 !important;
+        border-color: #721c24
+    }
+    .frm:focus, .frm:active {
+        border-color: #666666; }
+
 .video {position:relative;padding-bottom:56.25%;//padding-top:25px;height:0;}
 
 .video iframe {position:absolute;top:0;left:0;width:99.8%;height:100%;}
@@ -54,9 +67,8 @@
 			<div class="container">
 				<div class="row d-flex">
 					<div class="col-md-7 wrap-about py-1 pr-md-1 ftco-animate mx-auto">
-                        <div class="card" style="border-radius: 0; width: 100%">
-          	<h4 style="text-align: center" >Постройте правильную последовательность</h4>
-                        </div>
+
+          	<h4 id="titl" style="text-align: center" >Напишите пропущенное слово</h4>
                         <div class="row mt-3">
                             <div id="alerts">
                                 </div>
@@ -66,9 +78,9 @@
                                      {% for x in l.get_answer %}
                                   <div class="row">
                                     <div class="col" id="possible_answers{{l.id}}">
-                                        <p id="sheetAnswer{{l.id}}">
+                                        <p id="sheetAnswer{{l.id}}" style="font-size: 1.4em;" >
                                             {{x.0.0}}
-                                            <input type="text" id="input-word{{l.id}}" placeholder="Answer">
+                                            <input type="text" class="frm" id="input-word{{l.id}}" style="height: 26px !important;width: 28%;  border: 1px solid rgba(0, 0, 0, 0.1); color: #666666" placeholder="Ответ">
                                             {{x.1.0}}
                                         </p>
                                         <p id="translate-answer{{l.id}}" hidden>Перевод: {{l.answer_translate}}</p>
@@ -147,27 +159,29 @@
                     $('#check_answer'+conId).remove()
                     document.getElementById("translate-answer"+conId).hidden = false;
                     document.getElementById("next_con"+conId).hidden = false;
+                    document.getElementById("input-word"+conId).className += " green-form";
+                    document.getElementById("input-word"+conId).classList.remove("red-form");
                 }
                 else{
                     document.getElementById("translate-answer"+conId).hidden = false;
                     $('#check_answer'+conId).remove()
                     $('#buttons-section').append('<button type="button" onclick="end_con('+conId+')" class="btn btn-primary mt-2 a">Завершить</button>')
+                     document.getElementById("input-word"+conId).className += " green-form";
+                     document.getElementById("input-word"+conId).classList.remove("red-form");
                 }
             }
             else{
-                alert('gavno');
+                document.getElementById("input-word"+conId).className += " red-form";
             }
       }
       function end_con(conId){
         $('#lis'+conId).remove()
         $('#video-section'+conId).remove()
+        $('#titl').remove()
         $('#alerts').append('<div id="alert_success_end" class="alert alert-success alert-dismissible fade show" role="alert">'+
-                                             'Ого! Ты сделал всё правильно! Переходи к cледующим конструкторам.'+
+                                             'Ого! Ты сделал всё правильно! Продолжай практиковаться. '+
                                                '<a href="../../dashboard" >Перейти</a>'+
-                                               '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-                                                   '<span aria-hidden="true">&times;</span>'+
-                                               '</button>'+
-                                        '</div>')
+                                            '</div>')
       }
       function next_con(conId){
                     $('#lis'+conId).remove()

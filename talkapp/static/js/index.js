@@ -45,10 +45,6 @@ function changepack(np){
     calccost();
 }
 
-var slider = document.getElementById("customRange2");
-slider.oninput = function() {
-    changepack(slider.value)
-}
 
 function val(){
 	elem = document.getElementById('customRange2').value;

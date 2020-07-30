@@ -64,13 +64,13 @@
 			<div class="container">
 				<div class="row d-flex">
 					<div class="col-md-7 wrap-about py-1 pr-md-1 ftco-animate mx-auto">
-                        <div class="card" style="border-radius: 0; width: 100%">
-          	<h4 style="text-align: center" >Постройте правильную последовательность</h4>
-                        </div>
+
+          	<h4 style="text-align: center" id="titl" >Постройте правильную последовательность</h4>
+
                         <div class="row mt-3">
                             <div id="alerts">
                                 </div>
-                            <div class="services-2 d-flex">
+                            <div class="services-2 d-flex mx-auto">
                                 {% for c in constructors %}
                                  <div class="container" id="con{{c.id}}" hidden>
                                   <div class="row">
@@ -82,7 +82,7 @@
                                         {% endfor %}
                                     </div>
 									</div>
-                                     <div id="buttons-section" style="position: absolute; width: 100%;">
+                                     <div id="buttons-section">
                                     <button type="button" id="check_answer{{c.id}}" onclick="check_answer('{{c.answer}}',{{c.id}})" class="btn btn-primary mt-2 a">Проверить</button>
                                          <button type="button" id="next_con{{c.id}}" onclick="next_con({{c.id}})" class="btn btn-primary mt-2 a" hidden>Следующее задание</button>
                                      </div>
@@ -180,13 +180,11 @@
       function end_con(conId){
         $('#con'+conId).remove()
         $('#video-section'+conId).remove()
+        $('#titl').remove()
         $('#alerts').append('<div id="alert_success_end" class="alert alert-success alert-dismissible fade show" role="alert">'+
-                                             'Ого! Ты сделал всё правильно! Переходи к cледующим конструкторам.'+
-                                               '<a href="../../dashboard" >Перейти</a>'+
-                                               '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
-                                                   '<span aria-hidden="true">&times;</span>'+
-                                               '</button>'+
-                                        '</div>')
+                                             'Ого! Ты сделал всё правильно! Переходи к аудированию. '+
+                                               '<a href="../../video-listening/{{video.id}}">Перейти</a>'+
+                                                '</div>')
       }
       function next_con(conId){
                     $('#con'+conId).remove()

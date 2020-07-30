@@ -45,7 +45,7 @@
 		<section class="ftco-section ftco-no-pt ftc-no-pb">
 			<div class="container">
 				<div class="row d-flex">
-					<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate abc">
+					<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate abc" style="background-color: #dddddd2e">
                         <div class="video">
                         <iframe  width="1110" height="624" src="http://www.youtube.com/embed/{{video.video_url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
@@ -56,17 +56,18 @@
           	<h2 class="mb-4">Рекомендуемые слова</h2>
                         <div class="row mt-3">
                             <div class="services-2 d-flex">
-                                <div class="container">
-                                  <div class="row">
+
+                                  <div style="text-align: left" class="row">
                                       {% for word in video.get_words %}
-                                    <div class="col">
-                                        <a onclick="speak('{{word.word}}')"><button type="button" class="btn btn-primary mt-2"><i class="fa fa-play-circle"></i></button> <a>{{word.word}} </a>-<a> {{word.translate}}</a></a>
+                                    <div class="col" style="padding-left: 1px !important; padding-right: 1px !important; padding-top: 2px !important;">
+                                        <a onclick="speak('{{word.word}}')"><button type="button" style="text-align: left; border-radius: 0" class="btn btn-primary w-100"><i class="fa fa-play-circle"></i> <a style="font-size: 15px">{{word.word}} - {{word.translate}}</a></button></a>
                                     </div>
+                                      {% cycle '' '<div class="w-100"></div>' %}
                                       {% endfor %}
 									</div>
-                                  </div>
-                                </div>
 
+                                </div>
+                            <a href="../../video-constructor/{{video.id}}" class="btn btn-secondary text-white mx-auto" style="border-radius: 0" >Перейти в конструктор</a>
 								</div>
                         </div>
 					</div>
