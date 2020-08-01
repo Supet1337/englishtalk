@@ -274,9 +274,9 @@
           <div class="col-lg-8 ftco-animate">
               <div class="row row-cols-1 row-cols-md-3">
                   {% for vid in videos %}
-            <div class="card mr-2 mb-2" style="width: 20rem;">
+            <div class="card mr-2 mb-2 category-{{vid.category.id}}" style="width: 20rem;">
                 <div class="card-header">
-                    Путешествие
+                    {{vid.category.name}}
                 </div>
                 <img src="{{vid.picture.url}}" class="card-img-top">
                 <div class="card-body">
@@ -295,22 +295,13 @@
           </div> <!-- .col-md-8 -->
 
           <div class="col-lg-4 sidebar ftco-animate">
-            <div class="sidebar-box">
-              <form action="#" class="search-form">
-                <div class="form-group">
-                  <span class="icon icon-search"></span>
-                  <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-                </div>
-              </form>
-            </div>
             <div class="sidebar-box ftco-animate">
             	<h3>Category</h3>
               <ul class="categories">
-                <li><a href="#">Art <span>(6)</span></a></li>
-                <li><a href="#">Sports <span>(8)</span></a></li>
-                <li><a href="#">Language <span>(2)</span></a></li>
-                <li><a href="#">Food <span>(2)</span></a></li>
-                <li><a href="#">Music <span>(2)</span></a></li>
+                  <li><a onclick="category_showAll()" href="#">Все<span>({{videos|length}})</span></a></li>
+                  {% for c in video_categories %}
+                <li><a onclick="category({{c.id}})" href="#">{{c.name}}<span>({{c.get_videos|length}})</span></a></li>
+                  {% endfor %}
               </ul>
             </div>
           </div><!-- END COL -->
@@ -408,6 +399,21 @@
             var is_teacher = false;
             {% endif %}
             var room_name = '{{video_chat}}';
+            function category(id){
+                {% for c in video_categories %}
+                if (id == {{c.id}}){
+                    $('.category-{{c.id}}').show()
+                }
+                else{
+                   $('.category-{{c.id}}').hide()
+                }
+                {% endfor %}
+            }
+            function category_showAll(){
+                {% for c in video_categories %}
+                $('.category-{{c.id}}').show()
+                {% endfor %}
+            }
         </script>
         <script src={% static "js/dashboard.js" %}></script>
       <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>

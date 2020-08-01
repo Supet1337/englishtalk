@@ -139,11 +139,20 @@ class Blog(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100)
 
+class VideoCategory(models.Model):
+    name = models.CharField(max_length=32)
+    def __str__(self):
+        return self.name
+
+    def get_videos(self):
+        return VideoPractise.objects.filter(category=self)
+
 class VideoPractise(models.Model):
     author = models.ForeignKey(to=User, on_delete=models.CASCADE)
     video_url = models.CharField(max_length=32)
     name = models.CharField(max_length=100)
-    picture = models.ImageField(upload_to=video_image_directory_path, blank=True)
+    picture = models.ImageField(upload_to=video_image_directory_path)
+    category = models.ForeignKey(to=VideoCategory, on_delete=models.CASCADE)
 
     def get_words(self):
         return VideoPractiseWord.objects.filter(video_practise=self)

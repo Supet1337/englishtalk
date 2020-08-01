@@ -155,6 +155,7 @@
             a = p1 + b + p2;
             if (a == answer){
                 i += 1;
+                speak(answer);
                 if (i < conCount){
                     $('#check_answer'+conId).remove()
                     document.getElementById("translate-answer"+conId).hidden = false;
