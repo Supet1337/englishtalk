@@ -261,42 +261,6 @@ def price(request):
 def courses(request):
     return render(request,'courses.html')
 
-def ielts(request):
-    return render(request,'courses/ielts.html')
-
-def interview(request):
-    return render(request,'courses/interview.html')
-
-def freespeaking(request):
-    return render(request,'courses/freespeaking.html')
-
-def it(request):
-    return render(request,'courses/it.html')
-
-def travel(request):
-    return render(request,'courses/travel.html')
-
-def business(request):
-    return render(request,'courses/business.html')
-
-def exam(request):
-    return render(request,'courses/exam.html')
-
-def engineer(request):
-    return render(request,'courses/engineer.html')
-
-def teen(request):
-    return render(request,'courses/teen.html')
-
-def child(request):
-    return render(request,'courses/child.html')
-
-def personally(request):
-    return render(request,'courses/personally.html')
-
-def anylevel(request):
-    return render(request,'courses/anylevel.html')
-
 def blog(request, number):
     context = {}
     blog = Blog.objects.get(id=number)
