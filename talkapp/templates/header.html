@@ -309,8 +309,7 @@
             </div>
 
 <script src={% static "js/jquery.min.js" %}></script>
-  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
-  <script src={% static "js/bootstrap.min.js" %}></script>
+<script src={% static "js/bootstrap.min.js" %}></script>
 
 <script>
 (function() {
@@ -352,5 +351,18 @@ $('#CourseModal').on('shown.bs.modal', function (event) {
     $('#icon2').attr('class',icon2);
     $('#icon3').attr('class',icon3);
     })
+$(document).ready(function () {
+var s = 0;
+  $(".navbar-toggler").click(function(event) {
+    s += 1;
+    if (s % 2 == 0){
+        $('.navbar-collapse').collapse('hide');
+        return false;
+    }
+    else{
+        $('.navbar-collapse').collapse('show');
+    }
+  });
+})
 </script>
 

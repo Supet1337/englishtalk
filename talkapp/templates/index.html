@@ -68,11 +68,12 @@
 	  		padding-left: 350px;
 	  	}
 	  }
-	  @media(min-width: 768px) and (max-width: 1155px){
-	  	.chelic{
-
+	   @media(min-width: 680px) and (max-width: 806px){
+	  	.strtany{
+			font-size: 1.98rem;
 	  	}
 	  }
+
 	.appointment-form .form-control::placeholder{
 		color: rgb(8, 37, 103) !important;
 	}
@@ -80,6 +81,11 @@
 		color: rgb(8, 37, 103) !important;
 		font-size: 18px;
 	}
+		@media (max-width: 770px){
+	  	.tmln{
+			margin-bottom: 0px;
+	  	}
+	  }
   </style>
   <body>
 
@@ -179,8 +185,8 @@
 		<div data-aos="fade-right">
           <div class=" card text-white bg-danger" style=" border-radius: 0rem;background-color: #a7e3eb !important">
   <div class="row no-gutters">
-    <div class="col-md-4" style="text-align: right">
-      <img src="{% static "images/chelik.jpg" %}" class="chelic" style="max-height: 300px;max-width: 335,25px">
+    <div class="col-md-4" style="text-align: center">
+      <img src="{% static "images/chelik.jpg" %}" class="chelic" style="max-height: 300px;max-width: 335.25px">
     </div>
     <div class="col-md-8">
       <div class="card-body" style="padding-top: 0">
@@ -216,7 +222,7 @@
 				<div class="card-group py-4 why">
 					<div class="card pchovtl" onclick="goto('anylevel')" style="cursor: pointer;">
 						<div class="card-header">
-							<h2 class="card-text" style="text-align: center">Старт с любого уровня</h2>
+							<h2 class="card-text strtany" style="text-align: center">Старт с любого уровня</h2>
 						</div>
 						<img src={% static "images/course12.jpg" %} class="card-img-top mx-auto pt-3" style="max-width: 361.75px;max-height: 218.25px">
 						<div class="card-body" style="font-size: x-large;">
@@ -227,7 +233,7 @@
 					</div>
 					<div class="card pchovtr" onclick="goto('freespeaking')" style="cursor: pointer;">
 						<div class="card-header">
-							<h2 class="card-text" style="text-align: center">Говорим свободно</h2>
+							<h2 class="card-text strtany" style="text-align: center">Говорим свободно</h2>
 						</div>
 						<img src={% static "images/course3.jpg" %} class="card-img-top mx-auto pt-3" style="max-width: 361.75px;max-height: 218.25px">
 						<div class="card-body" style="font-size: x-large;">
@@ -352,8 +358,8 @@
         </div>
 	<div class="container">
       <div class="timeline">
-			<div class="row no-gutters justify-content-end justify-content-md-around align-items-start  timeline-nodes">
-          <div class="col-10 col-md-5 order-3 order-md-1 timeline-content" style="margin-bottom: 200px">
+			<div class="row no-gutters justify-content-end justify-content-md-around align-items-start timeline-nodes">
+          <div class="col-10 col-md-5 order-3 order-md-1 timeline-content tmln" >
             <div data-aos="fade-right">
 			  <div class="card text-center" style="border: 0;">
 				  <h3 class="card-title text-center" style="color: white">Запишись на бесплатный урок</h3>
@@ -365,7 +371,7 @@
           <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
             <img src="{% static "images/1.png" %}" class="img-fluid" alt="img">
           </div>
-          <div class="col-10 col-md-5 order-1 order-md-3 py-1 card" style="border-radius:0; border-color: #37bdc7; margin-bottom: 200px">
+          <div class="col-10 col-md-5 order-1 order-md-3 py-1 card tmln" style="border-radius:0; border-color: #37bdc7">
 			  <div data-aos="fade-right">
             <img src="{% static "images/start1.jpeg" %}" class="card-img">
 				   </div>
@@ -374,7 +380,7 @@
 
 
         <div class="row no-gutters justify-content-end justify-content-md-around align-items-start  timeline-nodes">
-          <div class="col-10 col-md-5 order-3 order-md-1 timeline-content" style="margin-bottom: 200px">
+          <div class="col-10 col-md-5 order-3 order-md-1 timeline-content tmln ">
 				<div data-aos="fade-right">
 			  <div class="card text-center" style="border: 0;">
 				  <h3 class="card-title text-center" style="color: white">Познакомься с преподавателем</h3>
@@ -386,7 +392,7 @@
             <img src="{% static "images/2.png" %}" class="img-fluid" alt="img">
           </div>
 
-          <div class="col-10 col-md-5 order-1 order-md-3 py-1 card" style="border-radius:0; border-color: #37bdc7; margin-bottom: 200px; width: 100%">
+          <div class="col-10 col-md-5 order-1 order-md-3 py-1 card tmln" style="border-radius:0; border-color: #37bdc7; width: 100%">
 			  <div data-aos="fade-right">
 			  <img src="{% static "images/start2.jpg" %}" class="card-img">
 				  </div>
@@ -420,8 +426,8 @@
 	  <div data-aos="fade-right">
           <div class=" card text-white bg-danger" style=" border-radius: 0rem;background-color: #a7e3eb !important">
   <div class="row no-gutters">
-    <div class="col-md-4" style="text-align: right">
-      <img src="{% static "images/chelik.jpg" %}" class="chelic" style="max-height: 300px;max-width: 335,25px">
+    <div class="col-md-4" style="text-align: center">
+      <img src="{% static "images/chelik.jpg" %}" class="chelic" style="max-height: 300px;max-width: 335.25px">
     </div>
     <div class="col-md-8">
       <div class="card-body" style="padding-top: 0">
@@ -473,7 +479,7 @@
   <div class="card">
     <div class="card-body">
 		<h2 class="card-title" style="text-align: center;">Стоимость за одно занятие:</h2>
-		 <p class="card-text" id="cost" style="font-size: 90px;color: #dc3545;text-align: center;">660 ₽</p>
+		 <p class="card-text" id="cost" style="font-size: 88px;color: #dc3545;text-align: center;">660 ₽</p>
 		<img src="{% static "images/cost.jpeg" %}" class="card-img">
     </div>
   </div>
