@@ -14,43 +14,46 @@
 	  <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
 	  <link rel="stylesheet" href={% static "css/aos.css" %}>
 	  <link rel="stylesheet" href={% static "css/style.css" %}>
+	  <style>
+		  @media(max-width: 1400px){
+		  .pararam{
+			font-size: large !important;
+			}
+	  }
+	  </style>
   </head>
   <body>
 {% include "header.html" %}
 {% include "messages.html" %}
 
-    <section class="ftco-section testimony-section bg-light" id="scoost" style=" background: linear-gradient(45deg, rgba(103, 0, 31, .8), rgba(34, 101, 163, .5)) !important;">
+    <section class="ftco-section testimony-section bg-light" id="scoost" style=" background: linear-gradient(to top, rgba(130, 128, 207, 1.0), rgba(1, 86, 189, 1.0)) !important;">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
             <h2 style="color: white" class="mb-4">Стоимость занятий</h2>
-			<p style="color: white" >Это дешевле и удобнее, чем заниматься офлайн!</p>
+			<h3 style="color: white" >Это дешевле и удобнее, чем заниматься офлайн!</h3>
             </div>
         </div>
         <div class="card-group">
   <div class="card">
     <div class="card-body">
       <div class="form-group">
-    <label for="exampleFormControlSelect1">Продолжительность занятия</label>
-    <select onclick="if (typeof(this.selectedIndex) != 'undefined') changetime(this.selectedIndex)" class="form-control" id="exampleFormControlSelect1" style="border-radius: 50px;margin-bottom: 30px;">
-      <option>45 мин</option>
-      <option>60 мин</option>
-    </select>
-		  <h2 class="card-title" style="text-align: center;">Чем больше уроков – тем дешевле.</h2>
-		  <label for="customRange2">Выберите кол-во занятий: <span id="val">5</span></label>
-			  <input type="range" onmousemove="val()" class="custom-range" min="0" max="3" value="0" id="customRange2">
-
-  </div>
-  <div class="card">
-    <div class="card-body">
-		<h2 class="card-title" style="text-align: center;">Стоимость за одно занятие:</h2>
-      <p class="card-text" id="cost" style="font-size: 90px;color: #dc3545;text-align: center;">860 ₽</p>
+		   <div class="list-group list-group-horizontal mx-auto" style="max-width: 300px; text-align: center" id="list-tab" role="tablist">
+      <a style="border-top-left-radius: 50px;border-bottom-left-radius: 50px" class="list-group-item list-group-item-action active" id="list-45-list" data-toggle="list" href="#list-45" role="tab" aria-controls="home">45 минут</a>
+      <a style="border-top-right-radius: 50px;border-bottom-right-radius: 50px" class="list-group-item list-group-item-action" id="list-60-list" data-toggle="list" href="#list-60" role="tab" aria-controls="profile">60 минут</a>
     </div>
+		  <h2 class="card-title" style="text-align: center;">Чем больше уроков – тем дешевле.</h2>
   </div>
-		<h2 class="card-title" style="text-align: center;padding-top: 20px"><a href=""><button class="btn btn-primary" style="font-size: x-large;">Совершить оплату</button></a></h2>
-		<h2 class="card-title" style="text-align: center;">Дополнительно вы получаете</h2>
-			<div class="card-group">
+		 <div class="tab-content" id="nav-tabContent">
+		<div class="tab-pane fade show active" id="list-45" role="tabpanel" aria-labelledby="list-45-list">
+  <div class="card-group">
 	  <div class="card">
+		<div class="card-body">
+		  <h5 class="card-title" style="text-align: center">Доступ к платформе 2sdfsdfs4/7</h5>
+		  <p class="card-text" style="text-align: center">- Бесплатная подборка обучающих видеоматериалов</p>
+		</div>
+	  </div>
+	<div class="card">
 		<div class="card-body">
 		  <h5 class="card-title" style="text-align: center">Доступ к платформе 24/7</h5>
 		  <p class="card-text" style="text-align: center">- Бесплатная подборка обучающих видеоматериалов</p>
@@ -70,6 +73,111 @@
 		</div>
 	  </div>
 	</div>
+	</div>
+	<div class="tab-pane fade" id="list-60" role="tabpanel" aria-labelledby="list-60-list"  >
+	<div class="card-group">
+	  <div class="card">
+		<div class="card-body">
+		  <h5 class="card-title" style="text-align: center">Доступ к платформе 24/7</h5>
+		  <p class="card-text" style="text-align: center">- Бесплатная подборка обучающих видеоматериалов</p>
+		</div>
+	  </div>
+	<div class="card">
+		<div class="card-body">
+		  <h5 class="card-title" style="text-align: center">Доступ к платформе 24/7</h5>
+		  <p class="card-text" style="text-align: center">- Бесплатная подборка обучающих видеоматериалов</p>
+		</div>
+	  </div>
+	  <div class="card">
+		<div class="card-body">
+		  <h5 class="card-title" style="text-align: center">Гарантия</h5>
+		  <p class="card-text" style="text-align: center">- Возвращаем деньги при отмене занятий.</p>
+			<p class="card-text" style="text-align: center">- Безлимитная заморозка</p>
+		</div>
+	  </div>
+	  <div class="card">
+		<div class="card-body">
+		  <h5 class="card-title" style="text-align: center">Персональный куратор</h5>
+		  <p class="card-text" style="text-align: center">- Связь по любым вопросам 24/7</p>
+		</div>
+	  </div>
+	</div>
+	</div>
+		 </div>
+
+<div data-aos="fade-right">
+     <div class=" card text-white bg-danger mt-2" style=" border-radius: 1rem;background-color: #a7e3eb !important">
+  		<div class="row no-gutters">
+    	<div class="col-md-4" style="text-align: center">
+      		<img src="{% static "images/chelik.jpg" %}" class="chelic" style="max-height: 300px;max-width: 335.25px">
+    	</div>
+    <div class="col-md-8">
+      <div class="card-body" style="padding-top: 0; padding-bottom: 0">
+		  <div class="row" style="color: #082567">
+			  <div class="col" style="text-align: center">
+		  <h1 class="card-title" style="font-size: 35px;color: #082567;font-weight: 600">Первый урок -</h1>
+		  <p class="card-text pararam" style="font-size: 28px;"><b>– Познакомимся</b></p>
+		  <p class="card-text pararam" style="font-size: 28px;"><b>- Определим уровень</b></p>
+		  <p class="card-text pararam" style="font-size: 28px;"><b>- Подберем программу</b></p>
+		  </div>
+			  <div class="col">
+		  <p class="card-text pararam" style="text-align: center;padding-top: 15%"><a href="#" data-toggle="modal" data-target="#reqModal"><button class="btn btn-primary" style="font-size: 28px;color: #082567;border-radius: 0"><b>Записаться на<br> бесплатный урок</b></button></a></p>
+				 <p class="card-text pararam" style="text-align: center;">Нажимая, вы принимаете <b>условия соглашения</b></p>
+		 </div>
+		  </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+		<div class="accordion mt-2" id="accordionExample" >
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Collapsible Group Item #1
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Collapsible Group Item #2
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </button>
+      </h2>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>
+
 </div>
       </div>
     </section>
