@@ -47,6 +47,74 @@
   50% { color: rgba(34, 34, 34, 0); }
   100% { color: rgba(34, 34, 34, 1); }
 }
+
+.calendar{
+	margin:.25em 10px 10px 0;
+	float:left;
+	width:80px;
+	background:#ededef;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededef), to(#ccc));
+	background: -moz-linear-gradient(top,  #ededef,  #ccc);
+	font:bold 30px/60px Arial Black, Arial, Helvetica, sans-serif;
+	text-align:center;
+	color:#000;
+	text-shadow:#fff 0 1px 0;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	position:relative;
+	-moz-box-shadow:0 2px 2px #888;
+	-webkit-box-shadow:0 2px 2px #888;
+	box-shadow:0 2px 2px #888;
+	}
+	.calendar em{
+	display:block;
+	font:normal bold 11px/30px Arial, Helvetica, sans-serif;
+	color:#fff;
+	text-shadow:#d5292c 0 -1px 0;
+	background:#d5292c;
+	-moz-border-radius-bottomright:3px;
+	-webkit-border-bottom-right-radius:3px;
+	border-bottom-right-radius:3px;
+	-moz-border-radius-bottomleft:3px;
+	-webkit-border-bottom-left-radius:3px;
+	border-bottom-left-radius:3px;
+	}
+	.calendar:before, .calendar:after{
+	content:'';
+	float:left;
+	position:absolute;
+	top:5px;
+	width:8px;
+	height:8px;
+	background:#111;
+	z-index:1;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	-moz-box-shadow:0 1px 1px #fff;
+	-webkit-box-shadow:0 1px 1px #fff;
+	box-shadow:0 1px 1px #fff;
+	}
+.calendar:before{left:11px;}
+.calendar:after{right:11px;}
+.calendar em:before, .calendar em:after{
+	content:'';
+	float:left;
+	position:absolute;
+	top:-5px;
+	width:4px;
+	height:14px;
+	background:#dadada;
+	background:-webkit-gradient(linear, left top, left bottom, from(#f1f1f1), to(#aaa));
+	background:-moz-linear-gradient(top,  #f1f1f1,  #aaa);
+	z-index:2;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	border-radius:2px;
+	}
+.calendar em:before{left:13px;}
+.calendar em:after{right:13px;}
     </style>
 	<body>
 	{% include "header.html" %}
@@ -59,51 +127,37 @@
     <div id="page-content-wrapper">
         <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="d0" role="tabpanel" aria-labelledby="dd0" style="margin: 20px;"><div role="tabpanel" style="margin: 20px;">
-            <div class="card border-danger mb-3">
+            <div class="card mb-3" style="background: #a4cee7; border-color: #a4cee7">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <img src="{% static "images/private_cab.png" %}" style="border-radius: 16px;" class="card-img w-75">
+      <img src="{% static "images/welcome.jpg" %}" style="border-radius: 16px;bottom: 0" class="card-img">
     </div>
     <div class="col-md-8">
-      <div class="card-body">
-          <div class="card-title"><h3>Добро пожаловать в ваш личный кабинет, {{request.user.first_name  | safe}}!</h3></div>
-          <a class="card-text">Команда EnglishTalk приветствует Вас в Личном кабинете! </a>
-          <p class="card-text">Мы всегда готовы ответить на любые Ваши вопросы по обучению или даже просто поболтать 😊</p>
-          <div class="ftco-footer-widget mb-5">
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Спросить</button>
-        <div class="collapse" id="collapseExample">
-          <div class="card card-body" style="max-width:300px">
-                <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-                    <li class="ftco-animate">8 (995) 793-02-03</li>
-                    <a class="ftco-animate" style="" href="mailto:help.englishtalk@gmail.co?subject=Вопрос по Englex">help.englishtalk@gmail.com</a>
-                    <br>
-                    <a class="ftco-animate" href="https://t.me/Svvvnd">@Svvvnd</a>
-                </ul>
-          </div>
-        </div>
-          </div>
-          <div class="card border-success mb-3">
-                          <div class="card-header">
-                             Настройки личного кабинета
-                          </div>
-                                <form method="post" action="../change_email">
+      <div class="card-body" style="padding-bottom: 0;padding-top: 0">
+          <img src="{% static "images/welcome2.jpg" %}" style="border-radius: 16px;" class="card-img">
+          <div class="card-title" style="text-align: center"><h3 style="color: white">Добро пожаловать в ваш личный кабинет, {{request.user.first_name  | safe}}!</h3></div>
+          <p class="card-text" style="color: white;text-align: center;margin-bottom: 0;font-size: larger">Команда EnglishTalk приветствует Вас в Личном кабинете! </p>
+          <p class="card-text" style="color: white;text-align: center;font-size: larger">Если у Вас возникли вопросы, мы с радостью на них ответим или даже просто будем рады поболтать 😊</p>
+          <div class="ftco-footer-widget">
+              <div>
+              <a href="../accounts/password_reset"><button class="btn btn-primary mb-3"><i class="fa fa-lock"></i> Сменить пароль</button></a>
+              <br>
+              <a data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2" href="#"><button class="btn btn-primary"> <i class="fas fa-envelope"></i> Сменить почту</button></a>
+              <div class="collapse" id="collapseExample2">
+              <form method="post" action="../change_email">
                                     {%csrf_token%}
-                                <div class="card-body border-top">
-                                    <div class="">
-                                        <ul class="list-unstyled mb-0">
-                                            <a href="../accounts/password_reset"><li class="mb-2"><i class="fa fa-lock"></i> Сменить пароль</li></a>
-                                            <a data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2" href="#"><li class="mb-2"><i class="fas fa-envelope"></i> Сменить почту</li></a>
-                                            <div class="collapse" id="collapseExample2">
-                                              <div class="card card-body" style="max-width:300px">
-                                                  <input type="email" id="change_email" name="change_email" class="form-control" placeholder="Введите email" required>
-                                              </div>
+                                <div class="card-body">
+                                            <div class="card card-body" style="max-width:300px">
+                                                <input type="email" id="change_email" name="change_email" class="form-control" placeholder="Введите email" required>
+                                                <input type="submit" class= "btn btn-success" style="width:100%" value="Сохранить изменения">
                                             </div>
-                                        </ul>
-                                    </div>
                                 </div>
-                                    <input type="submit" class= "btn btn-success" style="width:100%" value="Сохранить изменения">
-                                </form>
-                        </div>
+
+              </form>
+                  </div>
+              <a href="https://t.me/Svvvnd" class="btn btn-primary"><i class="fab fa-telegram"></i> Связаться с куратором</a>
+              </div>
+          </div>
       </div>
     </div>
   </div>
@@ -118,28 +172,52 @@
                         <div class="card-group" style="width:100%">
                         <div class="card bg-white text-center" >
                               <div class="card-body">
-                                <h5 class="card-title ">Текущий курс</h5>
+                                <h5 class="card-title ">Текущий курс обучения</h5>
+                                  {% if course %}
                                 <p class="card-text ">{{course}}</p>
+                                  {% else %}
+                                  <a class="btn btn-primary mb-2" href="courses">Выбрать подходяций курс</a>
+                                  {% endif %}
+                                  <img class="mt-2" src="{% static "images/kit.png" %}" style="width: auto; height: auto"  align="center">
                                  <a class="btn btn-primary " id="ddd1" data-toggle="list" href="#d1" role="tab">Перейти в онлайн класс</a>
                               </div>
                             </div>
                         <div class="card bg-light text-center">
-                          <div class="item">
-                              <img class="mt-2" id="teacher-img" src="{{ava}}" style="width: auto; height: auto"  align="center">
-                                  </div>
                           <div class="card-body">
+                              <h5 class="card-title">Преподаватель</h5>
+                              {% if teacher %}
+                              <div class="item">
+                                  {% if ava %}
+                              <img class="mt-2" id="teacher-img" src="{{ava}}" style="width: auto; height: auto"  align="center">
+                                  {% else %}
+                                  <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto"  align="center">
+                                  {% endif %}
+                              </div>
                             <h5 class="card-title">{{teacher}}</h5>
-                              <a href="mailto:help.englishtalk@gmail.co?subject=Вопрос по Englex" class="btn btn-primary"><i class="fas fa-envelope"></i> Написать</a>
+                              <p class="card-text">Чтобы вы не соскучились, мы помесили сюда фото вашего преподавателя 😊</p>
+                              <a href="mailto:help.englishtalk@gmail.co?subject=Вопрос по Englishtalk" class="btn btn-primary mb-2"><i class="fas fa-envelope"></i>Написать преподавателю</a>
+                              <a href="https://t.me/Svvvnd" class="btn btn-primary"><i class="fab fa-telegram"></i> Связаться с куратором</a>
+                              {% else %}
+                              <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto"  align="center">
+                              <h5 class="card-title">У вас пока нет преподавателя</h5>
+                              {% endif %}
                               <br>
                               <br>
-                            <a href="https://t.me/Svvvnd" class="btn btn-primary"><i class="fab fa-telegram"></i> Связаться с куратором</a>
                           </div>
                         </div>
                         <div class="card bg-white text-center" >
                           <div class="card-body">
                             <h5 class="card-title">Следущее занятие</h5>
                               <div style="background: radial-gradient(circle farthest-side at 30px 20px, #37bdc7, #3495c0);" class="card mb-3">
-                              <p  class="card-text"><h3 style="color: white">{{next_lsn}}</h3></p>
+                                  {% if next_lsn %}
+                                   {% if now_lsn %}
+                                    <p class="card-text"><h3 style="color: white">Идёт сейчас</h3></p>
+                                    {% else %}
+                                  <div class="calendar mx-auto"><em>{{next_lsn|date:'F'}}</em>{{next_lsn|date:'d'}}</div>
+                                   {% endif %}
+                                  {% else %}
+                                  <p class="card-text"><h3 style="color: white">У вас нет занятий</h3></p>
+                                  {% endif %}
                               </div>
                               <a class="btn btn-primary " id="ddd3" data-toggle="list" href="#d3" role="tab">Перейти в расписание</a>
                           </div>
@@ -147,8 +225,10 @@
                         <div class="card bg-light text-center" style="width:100%">
                               <div class="card-body">
                                 <h5 class="card-title">Баланс</h5>
-                                  <p class="card-text">Осталось<h2 style="color: red"> 2 </h2>занятия по <h6 style="color: red">{{lsn_time}}</h6> минут</p>
-                                  <a class="btn btn-success" href="../price" >Пополнить $</a>
+                                  <img class="mt-2" id="teacher-img" src="{% static "images/pay.png" %}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
+                                  <p class="card-text">Осталось:<h2 style="color: red"> {{future_lsn|length}} </h2>
+                                   <p class="card-text">Занятия по <font color="red">{{lsn_time}}</font> минут</p>
+                                  <a class="btn btn-success" href="../price" >Пополнить баланс</a>
                               </div>
                             </div>
                         </div>

@@ -158,8 +158,6 @@ def dashboard(request):
     context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
     if len(lessons) == 0:
         context["lsn"] = 0
-        context['next_lsn'] = "У вас нет занятий"
-        context['course'] = "Нет"
     else:
         lessons.order_by('date')
         flag = False
@@ -175,7 +173,7 @@ def dashboard(request):
             l.save()
             if l.date <= datetime.datetime.now() <= end and not flag:
                 context['cur_lsn'] = l
-                context['next_lsn'] = "Идет сейчас"
+                context['now_lsn'] = True
                 flag = True
             elif end < datetime.datetime.now():
                 l.is_completed = True
@@ -201,8 +199,6 @@ def dashboard(request):
                 day.append(lessons[i])
         calendar.append(day)
         context['calendar'] = calendar
-        if not flag:
-            context['next_lsn'] = "У вас нет ближайших занятий."
         i = 0
         if lessons[i].user_course.lesson_time:
             context['lsn_time'] = "60"
