@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
     <title>Видео-конструктор</title>
-    <meta charset="utf-8">
-      {% load static %}
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link rel="shortcut icon" href={% static "images/black_logotip.png" %}  type="image/png">
+ {% endblock %}
+{% block cssfiles %}
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href={% static "css/animate.css"%}>
@@ -14,7 +12,6 @@
     <link rel="stylesheet" href={% static "css/magnific-popup.css"%}>
     <link rel="stylesheet" href={% static "css/aos.css"%}>
     <link rel="stylesheet" href={% static "css/style.css"%}>
-  </head>
   <style>
   @media (min-width: 768px){
     .abc{
@@ -36,7 +33,8 @@
        border-color: #721c24 !important;
     }
   </style>
-  <body>
+{% endblock %}
+{% block content %}
 	  {% include "header.html" %}
     <!-- END nav -->
     <section class="hero-wrap hero-wrap-2" style="background-image: url({% static "images/bg_1.jpg" %});">
@@ -108,8 +106,8 @@
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
+{% endblock %}
+{% block jsfiles %}
   <script src={% static "js/jquery.min.js" %}></script>
   <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
   <script src={% static "js/bootstrap.min.js" %}></script>
@@ -272,5 +270,4 @@
 
 
     </script>
-  </body>
-</html>
+{% endblock %}

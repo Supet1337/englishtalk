@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <title>EnglishTalk</title>
-    <meta charset="utf-8">
-	  {% load static %}
-	  <link rel="shortcut icon" href={% static "images/black_logotip.png" %}  type="image/png">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Курсы</title>
+ {% endblock %}
+{% block cssfiles %}
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
@@ -52,8 +50,8 @@
 	  	}
 	  }
     </style>
-  </head>
-  <body>
+{% endblock %}
+{% block content %}
 	  {% include "header.html"%}
     <!-- END nav -->
     
@@ -206,8 +204,8 @@
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
+{% endblock %}
+{% block jsfiles %}
   <script src={% static "js/jquery.min.js" %}></script>
   <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
   <script src={% static "js/bootstrap.min.js" %}></script>
@@ -255,5 +253,4 @@ $('#CourseModal').on('shown.bs.modal', function (event) {
     $('#icon3').attr('class',icon3);
     })
 </script>
-  </body>
-</html>
+{% endblock %}
