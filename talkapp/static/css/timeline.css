@@ -72,22 +72,7 @@
     position: relative;
     z-index: 100;
 }
-.timeline-image::before {
-    content: "";
-    width: 80px;
-    height: 80px;
-    border: 2px dashed gray;
-    border-radius: 50%;
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background-color: #fff;
-    z-index: 1;
 
-
-}
 .timeline-image img {
     position: relative;
     z-index: 100;

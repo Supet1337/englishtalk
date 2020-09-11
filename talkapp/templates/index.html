@@ -86,6 +86,16 @@
 			margin-bottom: 0px;
 	  	}
 	  }
+
+	.tmnu{
+		width: 60px;
+		height: 60px;
+		line-height: 60px;
+		background: #ffa500;
+		margin-left: 0.05em;
+		border-radius: 50%;
+		text-align: center;
+	}
   </style>
   <body>
 
@@ -94,7 +104,7 @@
 	  {% include "messages.html" %}
     <!-- END nav -->
     
-    <section class="ftco-section ftco-counter img"  style="background-image: url({% static "images/bg_gray.jpg" %});" data-stellar-background-ratio="0.5">
+    <section class="ftco-section ftco-counter img"  style="background-image: url({% static "images/bg_gray.jpg" %});" data-stellar-background-ratio="0.7">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
@@ -154,7 +164,7 @@
 								<div class="card" style="height: 100%">
 									<img src={% static "images/why1.jpg" %} class="card-img-top">
 									<div class="card-body" style="text-align: center">
-										<h3 class="card-title">Онлайн платформа</h3>
+										<h3 class="card-title"><b>Онлайн платформа</b></h3>
 										<p class="card-text" style="font-size: larger">Лучшие практики, видеоматериалы, аудирование и связь с преподавателем – все в одном окне! Новые знания усваиваются на 60% быстрее.</p>
 									</div>
 								</div>
@@ -163,7 +173,7 @@
 								<div class="card" style="height: 100%">
 									<img src={% static "images/why2.jpg" %} class="card-img-top">
 									<div class="card-body" style="text-align: center">
-										<h3 class="card-title">Занимайтесь в любом месте и в любое время</h3>
+										<h3 class="card-title"><b>Занимайтесь в любом месте и в любое время</b></h3>
 										<p class="card-text" style="font-size: larger">Выбирайте время и место занятий! Занимайтесь дома, на работе или в путешествии. Просто откройте ноутбук и вы уже готовы к уроку!</p>
 									</div>
 								</div>
@@ -172,7 +182,7 @@
 								<div class="card" style="height: 100%">
 									<img src={% static "images/why3.jpg" %} class="card-img-top">
 									<div class="card-body" style="text-align: center">
-										<h3 class="card-title">Английский только на практике</h3>
+										<h3 class="card-title" style="margin-top: 1.5em" ><b>Английский только на практике</b></h3>
 										<p class="card-text" style="font-size: larger">Мы сторонники практического подхода. Научились новому? Сразу примените на практике!</p>
 									</div>
 								</div>
@@ -192,14 +202,17 @@
       <div class="card-body" style="padding-top: 0">
 		  <div class="row" style="color: #082567">
 			  <div class="col" style="text-align: center">
-		  <h1 class="card-title" style="font-size: 35px;color: #082567;font-weight: 600">Первый урок -</h1>
-		  <p class="card-text pararam" style="font-size: 28px;"><b>– Познакомимся</b></p>
+				  <div class="col" style="text-align: left">
+		  <br>
+		  <p class="card-text pararam" style="font-size: 28px; margin-top: 1em;"><b>– Познакомимся</b></p>
 		  <p class="card-text pararam" style="font-size: 28px;"><b>- Определим уровень</b></p>
-		  <p class="card-text pararam" style="font-size: 28px;"><b>- Подберем программу</b></p>
+		  <p class="card-text pararam" style="font-size: 28px; margin-bottom: 1em;"><b>- Подберем программу</b></p>
+				  </div>
 		  </div>
 			  <div class="col">
-		  <p class="card-text pararam" style="text-align: center;padding-top: 15%"><a href="#" data-toggle="modal" data-target="#reqModal"><button class="btn btn-primary" style="font-size: 28px;color: #082567;border-radius: 0"><b>Записаться на<br> бесплатный урок</b></button></a></p>
-				 <p class="card-text pararam" style="text-align: center;">Нажимая, вы принимаете <b>условия соглашения</b></p>
+				  <h1 class="card-title pararam" style="font-size: 30px !important;color: #082567;font-weight: 600; text-align: center;">Первый урок бесплатно</h1>
+		  <p class="card-text pararam" style="text-align: center;padding-top: 7%"><a href="#" data-toggle="modal" data-target="#reqModal"><button class="btn btn-primary pararam" style="font-size: 28px;color: #082567;border-radius: 0"><b>Записаться на<br> бесплатный урок</b></button></a></p>
+				  <p class="card-text pararam" style="text-align: center;">Нажимая, вы принимаете <a href="confidentiality" style="color: #082567;"><b>условия соглашения</b></a></p>
 		 </div>
 		  </div>
       </div>
@@ -220,31 +233,31 @@
 			  </div>
         </div>
 				<div class="card-group py-4 why">
-					<div class="card pchovtl" onclick="goto('anylevel')" style="cursor: pointer;">
+					<div class="card pchov" onclick="goto('anylevel')" style="cursor: pointer;">
 						<div class="card-header">
 							<h2 class="card-text strtany" style="text-align: center">Старт с любого уровня</h2>
 						</div>
 						<img src={% static "images/course12.jpg" %} class="card-img-top mx-auto pt-3" style="max-width: 361.75px;max-height: 218.25px">
 						<div class="card-body" style="font-size: x-large;">
-							<p class="card-text" style="text-align: center">- Индивидуальная программа</p>
-							<p class="card-text" style="text-align: center">- Темы, которые Вам интересны</p>
-							<p class="card-text" style="text-align: center">- Методика Quizlet</p>
+							<p class="card-text" style="text-align: center">Индивидуальная программа</p>
+							<p class="card-text" style="text-align: center"> Темы, которые Вам интересны</p>
+							<p class="card-text" style="text-align: center"> Методика Quizlet</p>
 						</div>
 					</div>
-					<div class="card pchovtr" onclick="goto('freespeaking')" style="cursor: pointer;">
+					<div class="card pchov" onclick="goto('freespeaking')" style="cursor: pointer;">
 						<div class="card-header">
 							<h2 class="card-text strtany" style="text-align: center">Говорим свободно</h2>
 						</div>
-						<img src={% static "images/course3.jpg" %} class="card-img-top mx-auto pt-3" style="max-width: 361.75px;max-height: 218.25px">
+						<img src={% static "images/course3.jpg" %} class="card-img-top mx-auto pt-3" style="max-width: 350.75px;max-height: 218.25px">
 						<div class="card-body" style="font-size: x-large;">
-							<p class="card-text" style="text-align: center">- Только практика</p>
-							<p class="card-text" style="text-align: center">- Вы перестанете бояться ошибок</p>
-							<p class="card-text" style="text-align: center">- Погружение в иностранную среду </p>
+							<p class="card-text" style="text-align: center"> Только практика</p>
+							<p class="card-text" style="text-align: center"> Вы перестанете бояться ошибок</p>
+							<p class="card-text" style="text-align: center"> Погружение в иностранную среду </p>
 						</div>
 					</div>
 				</div>
 				<div style="margin-bottom: 100px;padding-top: 50px">
-					<p style="text-align: center"><a href="#" data-toggle="modal" data-target="#reqModal"><button class="btn btn-primary" style="font-size: xx-large;">Записаться на бесплатный урок</button></a></p>
+					<p style="text-align: center"><a href="#" data-toggle="modal" data-target="#reqModal"><button class="btn btn-primary" style="font-size: xx-large; width: 35%">Записаться на бесплатный урок</button></a></p>
 				</div>
 
 				<div class="row justify-content-center mb-5 pb-2">
@@ -340,8 +353,8 @@
 				<div class="row justify-content-center mb-5 pb-2" style="padding-top: 80px">
           <div class="col-md-8 text-center heading-section ftco-animate">
             <h2 class="mb-4">Можно индивидуально выбрать подходящюю программу!</h2>
-			  <p>Наш методист свяжется с Вами и подберет индивидуальный курс</p>
-			  <a href="#" data-toggle="modal" data-target="#askModal" ><button class="btn btn-primary" style="font-size: xx-large;border-radius: 0;color: #323232;width: 60%">Спросить</button></a>
+			  <p style="font-size: x-large">Наш методист свяжется с Вами и подберет индивидуальный курс</p>
+			  <a href="#" data-toggle="modal" data-target="#askModal" ><button class="btn btn-primary" style="font-size: xx-large;color: #323232;width: 35%">Спросить</button></a>
 			  </div>
         </div>
 
@@ -364,12 +377,14 @@
 			  <div class="card text-center" style="border: 0;">
 				  <h3 class="card-title text-center" style="color: white">Запишись на бесплатный урок</h3>
 					<p class="card-text text-center">Подберем удобное время для занятия. Занимайся в любом месте и в любое время</p>
-				  	<p class="card-text pararam" style="text-align: center;"><a href="#" data-toggle="modal" data-target="#reqModal"><button class="btn btn-primary">Записаться на бесплатный урок</button></a></p>
+				  	<p class="card-text pararam mb-3" style="text-align: center;"><a href="#" data-toggle="modal" data-target="#reqModal"><button class="btn btn-primary">Записаться на бесплатный урок</button></a></p>
 			  </div>
 			</div>
           </div>
           <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
-            <img src="{% static "images/1.png" %}" class="img-fluid" alt="img">
+             <div class="tmnu" >
+				 <a style="color: white; font-size: xx-large; font-family: Arial">1</a>
+			 </div>
           </div>
           <div class="col-10 col-md-5 order-1 order-md-3 py-1 card tmln" style="border-radius:0; border-color: #37bdc7">
 			  <div data-aos="fade-right">
@@ -389,7 +404,9 @@
 				</div>
 			</div>
           <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
-            <img src="{% static "images/2.png" %}" class="img-fluid" alt="img">
+             <div class="tmnu" >
+				 <a style="color: white; font-size: xx-large">2</a>
+			 </div>
           </div>
 
           <div class="col-10 col-md-5 order-1 order-md-3 py-1 card tmln" style="border-radius:0; border-color: #37bdc7; width: 100%">
@@ -410,7 +427,9 @@
 			</div>
           </div>
           <div class="col-2 col-sm-1 px-md-3 order-2 timeline-image text-md-center">
-            <img src="{% static "images/3.png" %}" class="img-fluid" alt="img">
+             <div class="tmnu" >
+				 <a style="color: white; font-size: xx-large">3</a>
+			 </div>
           </div>
           <div class="col-10 col-md-5 order-1 order-md-3 py-1 card" style="border-radius:0; border-color: #37bdc7">
 			  <div data-aos="fade-right">
