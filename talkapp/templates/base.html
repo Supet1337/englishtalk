@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    {% block title %}
+    {% endblock %}
+    <link rel="shortcut icon" href={% static "images/blue_logo.png" %}  type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block cssfiles %}
+    {% endblock %}
+</head>
+<body>
+{% include "messages.html" %}
+{% block content %}
+{% endblock %}
+{% block jsfiles %}
+{% endblock %}
+</body>
+</html>
