@@ -90,8 +90,13 @@
 		line-height: 60px;
 		background: #ffa500;
 		margin-left: 0.05em;
+		margin-top: 1em;
 		border-radius: 50%;
 		text-align: center;
+		display: block;
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%,-50%);
 	}
   </style>
 	{% endblock %}
@@ -385,6 +390,7 @@
 				 <a style="color: white; font-size: xx-large; font-family: Arial">1</a>
 			 </div>
           </div>
+
           <div class="col-10 col-md-5 order-1 order-md-3 py-1 card tmln" style="border-radius:0; border-color: #37bdc7">
 			  <div data-aos="fade-right">
             <img src="{% static "images/start1.jpeg" %}" class="card-img">
