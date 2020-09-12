@@ -612,11 +612,11 @@
 		  <div class="row justify-content-center mb-5 pb-2" style="margin-right: 0;">
           <div class="col-md-8 text-center heading-section ftco-animate">
             <h2 class="mb-4">Почему наши ученики учатся быстрее?</h2>
-			  <p>Мы верим, что за этим будущее в образовании! Убедитесь в этом сами!</p>
+			  <p style="font-size: 25px">Мы верим, что за этим будущее в образовании! Убедитесь в этом сами!</p>
 		  </div>
         </div>
 		  <div data-aos="fade-up">
-			  <div class="card-group mb-5 px-5">
+			  <div class="card-group mb-5" style="padding-right: 15rem;padding-left: 15rem;">
 
 				<div class="card" style="max-width: 483px; border-right: 0">
 				  <img src="{% static "images/eff1.jpg" %}" class="card-img ml-auto" style="max-width: 483px; max-height: 331.5px">
@@ -630,7 +630,7 @@
 			  </div>
 		  </div>
 		  <div data-aos="fade-up">
-		<div class="card-group mb-5 px-5">
+		<div class="card-group mb-5" style="padding-right: 15rem;padding-left: 15rem;">
 				<div class="card">
 				  <div class="card-body">
 					  <h3 class="card-title wsmtt" style="text-align: center;"><b>Повышаем усваиваемость информации на 60%</b></h3>
@@ -643,7 +643,7 @@
 			</div>
 		  </div>
 		  <div data-aos="fade-up">
-		<div class="card-group mb-5 px-5">
+		<div class="card-group mb-5" style="padding-right: 15rem;padding-left: 15rem;">
 				<div class="card" style="max-width: 483px">
 				  <img src="{% static "images/eff3.jpg" %}" class="card-img ml-auto" style="max-width: 483px; max-height: 331.5px">
 				</div>
@@ -660,13 +660,13 @@
 
 <div data-aos="fade-right" id="sreg">
           <div class=" card text-white bg-danger" style=" border-radius: 0rem;background-color: #a7e3eb !important">
-  <div class="row no-gutters">
+  <div class="row no-gutters" style="margin-right: 15%; margin-left: 15%">
     <div class="col" style="text-align: center">
 		<div class="heading-section heading-section-white ftco-animate mb-0 mt-3">
 		    <h1 class="card-title" style="font-size: 40px;color: #082567"><b>Пройти первый урок бесплатно!</b></h1>
 		</div>
     </div>
-	  <div class="col" style="text-align: left">
+	  <div class="col" style="text-align: left;max-width: 272.02px">
 		  <img src={% static "images/chelik.jpg" %} class="chelic" style="max-height: 400px;max-width: 447px">
 	  </div>
     <div class="col">
@@ -678,10 +678,10 @@
 					  <form method="POST" action="/send_request_v" class="ftco-animate forma">
 						  {% csrf_token %}
 		            		<h1 class="card-title" style="font-size: 40px;color: #082567"><b>Мы свяжемся с вами и запишем на урок</b></h1>
-					  		<input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="name" name="name" class="form-control mx-auto mb-1" pattern="[А-Яа-я]{2, 20}" required placeholder="Как вас зовут?">
-					  		<input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="phone" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control mx-auto mb-1" placeholder="Какой у вас номер телефона?">
-						    <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="email" name="email" required class="form-control mx-auto mb-1" placeholder="Какой у вас email?">
-		  				  	<input type="submit" value="Записаться на бесплатный урок" class="btn btn-primary py-3 px-4" style="color: #082567; border-radius: 0; font-size: 20px" >
+					  		<input type="text" style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="name" name="name" class="form-control mx-auto mb-1" pattern="[А-Яа-я]{2, 20}" required placeholder="Как вас зовут?">
+					  		<input type="tel" style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="phone" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control mx-auto mb-1" placeholder="Какой у вас номер телефона?">
+						    <input type="email" style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important; width: 60%; color: #082567;" id="email" name="email" required class="form-control mx-auto mb-1" placeholder="Какой у вас email?">
+		  				  	<input type="submit" value="Записаться на бесплатный урок" class="btn btn-primary py-3 px-4" style="color: #082567; font-size: 20px" >
 							<p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <b>условия соглашения</b></p>
 					  </form>
 		            </div>

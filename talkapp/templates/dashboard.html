@@ -125,8 +125,8 @@
         <div class="tab-pane fade show active" id="d0" role="tabpanel" aria-labelledby="dd0" style="margin: 20px;"><div role="tabpanel" style="margin: 20px;">
             <div class="card mb-3" style="background: #a4cee7; border-color: #a4cee7">
   <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="{% static "images/welcome.jpg" %}" style="border-radius: 16px;bottom: 0" class="card-img">
+    <div class="col-md-4" style="position: relative">
+      <img src="{% static "images/welcome.jpg" %}" style="border-radius: 16px;bottom: 0;position: absolute;max-height: 428.31px" class="card-img">
     </div>
     <div class="col-md-8">
       <div class="card-body" style="padding-bottom: 0;padding-top: 0">
@@ -168,15 +168,15 @@
                         <div class="card-group" style="width:100%">
                         <div class="card bg-white text-center" >
                               <div class="card-body">
-                                <h5 class="card-title ">Текущий курс обучения</h5>
+                                <h5 class="card-title">Текущий курс обучения</h5>
                                   {% if course %}
                                 <p class="card-text ">{{course}}</p>
                                   {% else %}
                                   <a class="btn btn-primary mb-2" href="courses">Выбрать подходяций курс</a>
                                   {% endif %}
-                                  <img class="mt-2" src="{% static "images/kit.png" %}" style="width: auto; height: auto"  align="center">
+                                  <img class="mt-5 mb-5" src="{% static "images/kit.png" %}" style="width: auto; height: auto"  align="center">
                                  <a class="btn btn-primary " id="ddd1" data-toggle="list" href="#d1" role="tab">Перейти в онлайн класс</a>
-                              </div>
+                                  </div>
                             </div>
                         <div class="card bg-light text-center">
                           <div class="card-body">
@@ -184,9 +184,9 @@
                               {% if teacher %}
                               <div class="item">
                                   {% if ava %}
-                              <img class="mt-2" id="teacher-img" src="{{ava}}" style="width: auto; height: auto"  align="center">
+                              <img class="mt-2" id="teacher-img" src="{{ava}}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
                                   {% else %}
-                                  <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto"  align="center">
+                                  <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
                                   {% endif %}
                               </div>
                             <h5 class="card-title">{{teacher}}</h5>
@@ -194,7 +194,7 @@
                               <a href="mailto:help.englishtalk@gmail.co?subject=Вопрос по Englishtalk" class="btn btn-primary mb-2"><i class="fas fa-envelope"></i>Написать преподавателю</a>
                               <a href="https://t.me/Svvvnd" class="btn btn-primary"><i class="fab fa-telegram"></i> Связаться с куратором</a>
                               {% else %}
-                              <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto"  align="center">
+                              <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
                               <h5 class="card-title">У вас пока нет преподавателя</h5>
                               {% endif %}
                               <br>
@@ -215,7 +215,7 @@
                                   <p class="card-text"><h3 style="color: white">У вас нет занятий</h3></p>
                                   {% endif %}
                               </div>
-                              <a class="btn btn-primary " id="ddd3" data-toggle="list" href="#d3" role="tab">Перейти в расписание</a>
+                              <a class="btn btn-primary " id="ddd3" data-toggle="list" href="#d3" role="tab" style="margin-top: 81%">Перейти в расписание</a>
                           </div>
                         </div>
                         <div class="card bg-light text-center" style="width:100%">
@@ -224,7 +224,7 @@
                                   <img class="mt-2" id="teacher-img" src="{% static "images/pay.png" %}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
                                   <p class="card-text">Осталось:<h2 style="color: red"> {{future_lsn|length}} </h2>
                                    <p class="card-text">Занятия по <font color="red">{{lsn_time}}</font> минут</p>
-                                  <a class="btn btn-success" href="../price" >Пополнить баланс</a>
+                                  <a class="btn btn-success" href="../price" style="margin-top: 20%">Пополнить баланс</a>
                               </div>
                             </div>
                         </div>
