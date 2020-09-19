@@ -1,15 +1,20 @@
 {%load static%}
-<nav class="navbar sticky-top navbar-expand-lg navbar-light fixed-top" style="background: radial-gradient(circle farthest-side at 30px 20px, #37bdc7, #3495c0);width: 100%;padding-top: 0px;padding-bottom: 0px;box-shadow: 0px 2px 7px 0px black;">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light fixed-top adaptive-header" style="background: radial-gradient(circle farthest-side at 30px 20px, #37bdc7, #3495c0);width: 100%;padding-top: 0px;padding-bottom: 0px;box-shadow: 0px 2px 7px 0px black;">
                     <a class="navbar-brand" href="../../">EnglishTalk</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
                     <ul class="navbar-nav ml-auto navbar-right-top">
-                              <li class="nav-item">
-
-      </li>
-
+                        <li class="nav-item dropdown nav-user nav-user-mobile">
+                             {% if request.user.is_authenticated %}
+                                <a class="nav-link" href="../dashboard">Личный кабинет</a>
+                            {% else %}
+                            <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="#" id="navbarDropdownMenuLink2" data-toggle="modal" data-target="#myModal1" aria-haspopup="true" aria-expanded="false">Войти</a>
+                            {% endif %}
+                        </li>
+<div class="dropdown-divider"></div>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" style="padding-top: 14px; padding-bottom: 14px;" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Для взрослых
@@ -36,6 +41,7 @@
           <a class="dropdown-item" href="#" data-course_img="{% static "images/course12.jpg" %}" data-icon1="fas fa-user" data-icon2="fas fa-tasks" data-icon3="fas fa-clock" data-desc1="Индивидуальный подбираем программу, исходя из вашего уровня" data-desc2="Подбираем темы, которые вам интересны. Ведем Вас до результата по проверенным программам" data-desc3="Индивидуально выбираете время для занятий" data-title="Старт с любого уровня" data-toggle="modal" data-target="#CourseModal" >Старт с любого уровня</a>
         </div>
       </li>
+       <div class="dropdown-divider"></div>
        <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" style="padding-top: 14px; padding-bottom: 14px;" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Для детей и подростков
@@ -56,19 +62,28 @@
           <a class="dropdown-item" href="#" data-course_img="{% static "images/course11.jpg" %}" data-icon1="fas fa-user-friends" data-icon2="fas fa-smile" data-icon3="far fa-calendar-check" data-desc1="Индивидуально разработаем программу с учетом вашего уровня" data-desc2="Перестанете бояться ошибаться" data-desc3="Сжатые сроки подготовки. Индивидуально выбираете время" data-title="Персональный курс" data-toggle="modal" data-target="#CourseModal" >Персональный курс</a>
         </div>
       </li>
+                        <div class="dropdown-divider"></div>
         <li class="nav-item">
         <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="../#scoost">Стоимость</a>
       </li>
+                        <div class="dropdown-divider"></div>
      <li class="nav-item">
         <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="../#sreview">Отзывы</a>
       </li>
+                        <div class="dropdown-divider"></div>
        <li class="nav-item">
         <a class="nav-link" href="tel:89957930203" style="padding-top: 14px; padding-bottom: 14px;"><span style="padding-top: 7px; padding-bottom: 7x; padding-right: 4px;" class="fa fa-phone"></span>8 (995) 793-02-03</a>
       </li>
+                        <div class="dropdown-divider"></div>
         <li class="nav-item">
             <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="#" data-toggle="modal" data-target="#reqModal">Попробовать бесплатно</a>
-      </li>
-                        <li class="nav-item dropdown nav-user">
+      </li>             {% if request.user.is_authenticated %}
+                        <div class="dropdown-divider nav-user-mobile"></div>
+                        <li class="nav-item nav-user-mobile">
+                        <a class="nav-link" href="/logout">Выход</a>
+                             </li>
+                        {% endif %}
+                        <li class="nav-item dropdown nav-user nav-user-not-mobile">
                              {% if request.user.is_authenticated %}
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img alt="User Avatar" style="width: 46px; height: 40px;" src={% static "images/white_logotip.png" %}>
@@ -92,52 +107,60 @@
   <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px" role="document">
     <div class="modal-content">
             <div class="modal-body mx-auto" style="padding: 0">
-                <div class="card-group" style="">
+                <div class="card-group course-modal">
                     <div class="card" style="border: 0;">
+                        <button type="button" class="btn button-close-modal" data-dismiss="modal" aria-label="Close">
+                             <- Закрыть
+                        </button>
 						<h3 id="titl" class="card-title mb-4" style="color: #082567;text-align: center;margin-top: 10px"></h3>
 				<div class="card-group">
 					<div class="card" style="border: 0;">
 						<img id="course_img" class="card-img my-auto mx-auto" style="max-height: 300px;max-width: 300px;text-align: center">
-						<div class="card-footer text-muted" style="height: 56px;">
-							Связаться с нами 8 (995) 793-02-03
-						</div>
 					</div>
 					<div class="card" style="border: 0;">
                         <div class="row">
 								<div class="services-2 d-flex">
-									<div class="icon d-flex justify-content-center align-items-center" style="margin-left: 10px;margin-right: 0;width: 50px; height: 50px;margin-top: 0 !important;"><span style="font-size: 30px" id="icon1" class="fas fa-paper-plane"></span></div>
-									<div class="text pl-1" style="width: 70%;text-align: center;">
-										<h3 id="desc1" style="font-size: medium;">С вами работают преподаватели, которые подготовили десятки учеников к успешной сдаче Ilets</h3>
+                                    <div class="col-4">
+                                    <div class="icon d-flex justify-content-center align-items-center" style="margin-right: 0;width: 50px; height: 50px;margin-top: 0 !important;"><span style="font-size: 30px" id="icon1" class="fas fa-paper-plane"></span></div>
 									</div>
+                                    <div class="col-8">
+                                    <div class="text pl-1" style="width: 70%;text-align: center;">
+										<h3 class="course-modal-text" id="desc1">С вами работают преподаватели, которые подготовили десятки учеников к успешной сдаче Ilets</h3>
+									</div>
+                                        </div>
 								</div>
                         </div>
                             <div class="row">
 								<div class="services-2 d-flex">
-									<div class="icon d-flex justify-content-center align-items-center" style="margin-left: 10px;margin-right: 0;width: 50px; height: 50px;margin-top: 0 !important;"><span style="font-size: 30px" id="icon2" class="fas fa-paper-plane"></span></div>
-									<div class="text pl-1" style="width: 70%;text-align: center;">
-										<h3 id="desc2" style="font-size: medium;">Вы выбираете для себя комфортное время для индивидуальных занятий</h3>
+                                    <div class="col-4">
+									<div class="icon d-flex justify-content-center align-items-center" style="margin-right: 0;width: 50px; height: 50px;margin-top: 0 !important;"><span style="font-size: 30px" id="icon2" class="fas fa-paper-plane"></span></div>
 									</div>
+                                    <div class="col-8">
+                                        <div class="text pl-1" style="width: 70%;text-align: center;">
+										<h3 class="course-modal-text" id="desc2">Вы выбираете для себя комфортное время для индивидуальных занятий</h3>
+									</div>
+                                    </div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="services-2 d-flex">
-									<div class="icon d-flex justify-content-center align-items-center" style="margin-left: 10px;margin-right: 0;width: 50px; height: 50px;margin-top: 0 !important;"><span style="font-size: 30px" id="icon3" class="fas fa-paper-plane"></span></div>
-									<div class="text pl-1" style="width: 70%;text-align: center;">
-										<h3 id="desc3" style="font-size: medium;">Имитация экзамена вместе с преподавателем</h3>
+                                    <div class="col-4">
+									<div class="icon d-flex justify-content-center align-items-center" style="margin-right: 0;width: 50px; height: 50px;margin-top: 0 !important;"><span style="font-size: 30px" id="icon3" class="fas fa-paper-plane"></span></div>
 									</div>
+                                        <div class="col-8">
+                                    <div class="text pl-1" style="width: 70%;text-align: center;">
+										<h3 class="course-modal-text" id="desc3">Имитация экзамена вместе с преподавателем</h3>
+									</div>
+                                    </div>
 								</div>
 							</div>
-						<div class="card-footer text-muted">
-							<p style="margin-bottom: 0;text-align: center"><a href="#" style="margin-right: 30px;" ><img src="https://pngicon.ru/file/uploads/instagram-256x256.png" style="width: 32px;height: 32px"></a><a href="https://t.me/Svvvnd" style="margin-right: 30px;"><img src="https://pngicon.ru/file/uploads/telegram.png" style="width: 32px;height: 32px"></a><a href="#" style="margin-right: 30px;"><img src="https://pngicon.ru/file/uploads/youtube-1.png" style="width: 32px;height: 32px"></a></p>
+					</div>
+					</div>
+                <div class="card-footer text-muted">
+							<p style="margin-bottom: 0;text-align: center;font-size: 14px">Связаться с нами: 8 (995) 793-02-03 <a href="#" style="margin-right: 30px;" ><img src="https://pngicon.ru/file/uploads/instagram-256x256.png" style="width: 32px;height: 32px"></a><a href="https://t.me/Svvvnd" style="margin-right: 30px;"><img src="https://pngicon.ru/file/uploads/telegram.png" style="width: 32px;height: 32px"></a><a href="#" style="margin-right: 30px;"><img src="https://pngicon.ru/file/uploads/youtube-1.png" style="width: 32px;height: 32px"></a></p>
 						</div>
-					</div>
-					</div>
-
 			</div>
-					<div class="card" style="border-radius: 0;border: 0;text-align: center;background: #9ddde7;max-width: 350px">
-						<button type="button" class="close" style="text-align: right;background: #9ddde7;opacity: 1;color: #082567;" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+					<div class="card blue-card" style="border-radius: 0;border: 0;text-align: center;background: #9ddde7;">
                         <div class="card-body">
                             <h4 class="card-title" style="color: #082567;">Первый урок - бесплатно!</h4>
 							<a href="#" data-dismiss="modal" data-toggle="modal" data-target="#reqModal"><button type="button" class="btn btn-primary" style="border-radius: 0; color: #082567;font-size: large;max-width: 250px">Записаться на бесплатный урок</button></a>
@@ -186,26 +209,26 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
             <div class="modal-body mx-auto" style="padding: 0">
-                <div class="card-group" style="background: #9ddde7">
+                <div class="card-group first-lesson-modal" style="background: #9ddde7">
                     <div class="card" style="border: 0;text-align: center;background: #9ddde7">
+                        <button type="button" class="btn button-close-modal" data-dismiss="modal" aria-label="Close">
+                             <- Закрыть
+                        </button>
                         <div class="card-body">
                             <h3 class="card-title" style="color: #082567;">Первый урок - бесплатно!</h3>
                         </div>
                         <img src="{% static "images/mahaet.jpg" %}" class="chelic mx-auto" style="max-width: 387.75px;max-height: 374.25px;">
                     </div>
                     <div class="card" style="border: 0;">
-                        <button type="button" class="close" style="text-align: right;background: #c5cfd8;opacity: 1;color: #082567;" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                         <div class="card-body" style="background: #c5cfd8;">
                             <h3 class="card-title" style="color: #082567;text-align: center;">Мы свяжемся с вами и запишем на первый урок</h3>
-                            <form style="margin-right: 1em" class="appointment-form ftco-animate" method="POST" action="../send_request_v">
+                            <form class="appointment-form ftco-animate" method="POST" action="../send_request_v">
                         {% csrf_token %}
                         <br>
                        <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="name1" name="name" class="form-control" required placeholder="Как вас зовут?">
                       <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="email1" name="email"  class="form-control" placeholder="Email" required>
                        <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone1" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control" placeholder="Телефон">
-                        <input type="submit" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;width: 100%" value="Записаться на бесплатный урок" class="btn btn-primary">
+                        <input type="submit" class="btn btn-primary" style="margin-top: 10px;border-radius: 0;color: #082567;width: 100%" value="Записаться на бесплатный урок">
                                 <p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <b>условия соглашения</b></p>
                     </form>
                         </div>
@@ -222,8 +245,11 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
             <div class="modal-body mx-auto" style="padding: 0">
-                <div class="card-group" style="background: #9ddde7">
+                <div class="card-group teach-modal" style="background: #9ddde7">
                     <div class="card" style="border: 0;text-align: center;background: #9ddde7">
+                        <button type="button" class="btn button-close-modal" data-dismiss="modal" aria-label="Close">
+                             <- Закрыть
+                        </button>
                         <div class="card-body">
                             <h3 class="card-title" style="color: #082567;">Это будет круто!</h3>
                             <h4 class="card-text" style="color: #082567;">Будем рады видеть Вас в нашей команде!</h4>
@@ -231,18 +257,15 @@
                         <img src="{% static "images/teach.png" %}" class="chelic mx-auto" style="max-width: 387.75px;max-height: 374.25px;">
                     </div>
                     <div class="card" style="border: 0;">
-                        <button type="button" class="close" style="text-align: right;background: #c5cfd8;opacity: 1;color: #082567;" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                         <div class="card-body" style="background: #c5cfd8;">
                             <h3 class="card-title" style="color: #082567;text-align: center;">Мы свяжемся с Вами и обсудим условия работы</h3>
-                            <form style="margin-right: 1em" class="appointment-form ftco-animate" method="POST" action="../send_request_vt">
+                            <form class="appointment-form ftco-animate" method="POST" action="../send_request_vt">
                         {% csrf_token %}
                         <br>
                          <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="name2" name="name" class="form-control" required placeholder="Как вас зовут?">
                       <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="email2" name="email"  class="form-control" placeholder="Email" required>
                        <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone2" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control" placeholder="Телефон">
-                        <input type="submit" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;width: 100%" value="Записаться на бесплатный урок" class="btn btn-primary">
+                        <input type="submit" style="margin-top: 10px;border-radius: 0;color: #082567;width: 100%" value="Записаться на бесплатный урок" class="btn btn-primary">
                                 <p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <b>условия соглашения</b></p>
                     </form>
                         </div>
@@ -259,17 +282,17 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
             <div class="modal-body mx-auto" style="padding: 0">
-                <div class="card-group" style="background: #9ddde7">
+                <div class="card-group ask-modal" style="background: #9ddde7">
                     <div class="card" style="border: 0;text-align: center;background: #9ddde7">
+                        <button type="button" class="btn button-close-modal" data-dismiss="modal" aria-label="Close">
+                             <- Закрыть
+                        </button>
                         <div class="card-body">
                             <h3 class="card-title" style="color: #082567;">Привет!</h3>
                         </div>
                         <img src="{% static "images/mahaet.jpg" %}" class="chelic mx-auto" style="max-width: 387.75px;max-height: 374.25px;">
                     </div>
                     <div class="card" style="border: 0;">
-                        <button type="button" class="close" style="text-align: right;background: #c5cfd8;opacity: 1;color: #082567;" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                         <div class="card-body" style="background: #c5cfd8;">
                             <h3 class="card-title" style="color: #082567;text-align: center;">Мы свяжемся с Вами и ответим на все вопросы по обучению </h3>
                             <form style="margin-right: 1em" class="appointment-form ftco-animate" method="POST" action="../ask_question">
