@@ -25,6 +25,10 @@ def video_image_directory_path(instance, filename):
     return 'Videos/video_{0}/{1}'.format(instance.id, filename)
 
 class Teacher(models.Model):
+
+    class Meta:
+        verbose_name_plural = "Учителя"
+
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to=teacher_image_directory_path, blank=True)
     def __str__(self):
@@ -34,6 +38,9 @@ class Teacher(models.Model):
 class DefaultCourse(models.Model):
     name = models.CharField(max_length=64)
 
+    class Meta:
+        verbose_name_plural = "Базовые курсы"
+
     def __str__(self):
         return self.name
 
@@ -42,6 +49,9 @@ class DefaultLesson(models.Model):
     course = models.ForeignKey(to=DefaultCourse, on_delete=models.CASCADE)
     name = models.CharField(max_length=64)
     docx_url = models.URLField()
+
+    class Meta:
+        verbose_name_plural = "Базовые уроки"
 
     def __str__(self):
         return self.name
@@ -54,6 +64,9 @@ class DefaultLesson(models.Model):
 class UserCourse(models.Model):
     student = models.ForeignKey(to=User, on_delete=models.CASCADE)
     teacher = models.ForeignKey(to=Teacher, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = "Ученик и его курс"
 
     LESSON_TIME_CHOISES = [
         (True, '60 минут'),
@@ -127,11 +140,19 @@ class Lesson_audio(models.Model):
             }
 
 class UserAdditional(models.Model):
+
+    class Meta:
+        verbose_name_plural = "Дополнительная информация о пользователях"
+
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     phone_number = PhoneNumberField()
     video_chat = models.CharField(max_length=32, default=get_random_string(length=32))
 
 class Blog(models.Model):
+
+    class Meta:
+        verbose_name_plural = "Блоги"
+
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     content = models.CharField(max_length=10000)
     description = models.CharField(max_length=300)
@@ -141,6 +162,10 @@ class Blog(models.Model):
 
 class VideoCategory(models.Model):
     name = models.CharField(max_length=32)
+
+    class Meta:
+        verbose_name_plural = "Категории видео"
+
     def __str__(self):
         return self.name
 
@@ -153,6 +178,9 @@ class VideoPractise(models.Model):
     name = models.CharField(max_length=100)
     picture = models.ImageField(upload_to=video_image_directory_path)
     category = models.ForeignKey(to=VideoCategory, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = "Видеопрактика"
 
     def get_words(self):
         return VideoPractiseWord.objects.filter(video_practise=self)

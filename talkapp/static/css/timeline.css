@@ -3,7 +3,7 @@
     position: relative;
 }
 .timeline-nodes {
-        padding-bottom: 25px;
+        padding-bottom: 150px;
         position: relative;
     }
 .timeline-nodes:nth-child(even) {

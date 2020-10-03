@@ -33,7 +33,7 @@ def login_user(request):
             user = None
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/dashboard")
         else:
             messages.error(request, 'Неправильный логин или пароль.')
             return HttpResponseRedirect("/")
@@ -143,19 +143,19 @@ def index(request):
 @login_required
 def dashboard(request):
     context = {}
-    context['blog'] = Blog.objects.all()
-    context['videos'] = VideoPractise.objects.all()
-    context['video_categories'] = VideoCategory.objects.all()
     is_teacher = False
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
+    context['blog'] = Blog.objects.all()
+    context['videos'] = VideoPractise.objects.all()
+    context['video_categories'] = VideoCategory.objects.all()
     if is_teacher:
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
     else:
         crs = UserCourse.objects.filter(student=request.user)
+        context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
     lessons = UserLesson.objects.filter(user_course__in=crs)
-    context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
     if len(lessons) == 0:
         context["lsn"] = 0
     else:
@@ -173,6 +173,8 @@ def dashboard(request):
             l.save()
             if l.date <= datetime.datetime.now() <= end and not flag:
                 context['cur_lsn'] = l
+                if is_teacher:
+                    context['video_chat'] = UserAdditional.objects.get(user=l.user_course.student).video_chat
                 context['now_lsn'] = True
                 flag = True
             elif end < datetime.datetime.now():

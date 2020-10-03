@@ -50,6 +50,11 @@
 	.course-modal .blue-card{
 		max-width: 350px
 	}
+	.button-close-modal{
+	    margin-top: -41px;
+	    width: 50% !important;
+	    color: white !important;
+	}
 }
 .button-close-modal{
 	border-radius: 0;
@@ -140,13 +145,16 @@
 		height: 60px;
 		line-height: 60px;
 		background: #ffa500;
-		margin-left: 0.05em;
+		margin-left: -0.6em;
 		border-radius: 50%;
 		text-align: center;
 	}
 	@media(min-width: 768px){
 	  .asasas{
 	  width: 40%;
+	  }
+	  .tmnu{
+	    margin-left: 0.05em;
 	  }
 }
 
