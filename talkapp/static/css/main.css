@@ -103,11 +103,11 @@
 	    padding-left: 200px !important;
 	    }
 	    .wsmtt{
-	    font-size: 25px;
+	    font-size: 23px;
 	    margin-left: 0 !important;
 	    }
 	    .wsmt{
-	    font-size: x-large;
+	    font-size: 20px;
 	    }
 	  }
 	  @media(max-width: 1400px){
@@ -252,3 +252,38 @@
 	}
 .calendar em:before{left:13px;}
 .calendar em:after{right:13px;}
+
+.reasons .card-group{
+    margin-bottom: 120px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+@media screen and (min-width: 768px) and (max-width: 1023px){
+    .reasons .card-group{
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+}
+@media screen and (min-width: 1024px) and (max-width: 1439px){
+    .reasons .card-group{
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+}
+@media screen and (min-width: 1440px){
+    .reasons .card-group{
+        padding-left: 25%;
+        padding-right: 25%;
+    }
+}
+@media screen and (min-width: 425px){
+    .forma #phone, #name, #email{
+        width: 75%;
+    }
+}
+footer .btn-primary{
+    color: #232323 !important
+}
+footer .btn-primary:hover{
+    color: white !important
+}

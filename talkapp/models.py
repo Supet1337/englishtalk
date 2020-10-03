@@ -29,14 +29,14 @@ class Teacher(models.Model):
     class Meta:
         verbose_name_plural = "Учителя"
 
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    image = models.ImageField(upload_to=teacher_image_directory_path, blank=True)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Пользователь')
+    image = models.ImageField(upload_to=teacher_image_directory_path, blank=True,verbose_name='Фотография')
     def __str__(self):
         return self.user.username
 
 
 class DefaultCourse(models.Model):
-    name = models.CharField(max_length=64)
+    name = models.CharField(max_length=64,verbose_name='Название курса')
 
     class Meta:
         verbose_name_plural = "Базовые курсы"
@@ -46,9 +46,9 @@ class DefaultCourse(models.Model):
 
 # Create your models here.
 class DefaultLesson(models.Model):
-    course = models.ForeignKey(to=DefaultCourse, on_delete=models.CASCADE)
-    name = models.CharField(max_length=64)
-    docx_url = models.URLField()
+    course = models.ForeignKey(to=DefaultCourse, on_delete=models.CASCADE,verbose_name='Курс')
+    name = models.CharField(max_length=64,verbose_name='Название урока')
+    docx_url = models.URLField(verbose_name='Ссылка на документ с уроком')
 
     class Meta:
         verbose_name_plural = "Базовые уроки"
@@ -62,8 +62,8 @@ class DefaultLesson(models.Model):
         return Lesson_audio.objects.filter(lesson_id=self.id)
 
 class UserCourse(models.Model):
-    student = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    teacher = models.ForeignKey(to=Teacher, on_delete=models.CASCADE)
+    student = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Ученик')
+    teacher = models.ForeignKey(to=Teacher, on_delete=models.CASCADE,verbose_name='Учитель')
 
     class Meta:
         verbose_name_plural = "Ученик и его курс"
@@ -86,15 +86,15 @@ class UserCourse(models.Model):
         ('Говорим свободно', 'Говорим свободно'),
         ('Персональный курс', 'Персональный курс'),
     ]
-    course_type = models.CharField(choices=TYPE_CHOISES,max_length=64)
-    lesson_time = models.BooleanField(choices=LESSON_TIME_CHOISES,default=False)
+    course_type = models.CharField(choices=TYPE_CHOISES,max_length=64,verbose_name='Тип курса')
+    lesson_time = models.BooleanField(choices=LESSON_TIME_CHOISES,default=False,verbose_name='Продолжительность урока')
 
 
 class UserLesson(models.Model):
-    user_course = models.ForeignKey(to=UserCourse, on_delete=models.CASCADE)
-    lesson = models.ForeignKey(to=DefaultLesson, on_delete=models.CASCADE)
-    docx_url_copy = models.URLField()
-    date = models.DateTimeField()
+    user_course = models.ForeignKey(to=UserCourse, on_delete=models.CASCADE,verbose_name='В составе курса')
+    lesson = models.ForeignKey(to=DefaultLesson, on_delete=models.CASCADE,verbose_name='Материалы урока')
+    docx_url_copy = models.URLField(verbose_name='Ссылка на копию документа с уроком')
+    date = models.DateTimeField(verbose_name='Дата и время урока')
     date_end = models.DateTimeField(default=datetime.datetime.now())
     is_completed = models.BooleanField(default=False)
 
@@ -110,9 +110,9 @@ class UserLesson(models.Model):
 
 
 class Lesson_video(models.Model):
-    name = models.CharField(max_length=64)
-    video_url = models.FileField(upload_to=video_directory_path, blank=True)
-    lesson = models.ForeignKey(to=DefaultLesson, on_delete=models.CASCADE)
+    name = models.CharField(max_length=64,verbose_name='Название видеофайла')
+    video_url = models.FileField(upload_to=video_directory_path, blank=True,verbose_name='Видеофайл')
+    lesson = models.ForeignKey(to=DefaultLesson, on_delete=models.CASCADE,verbose_name='Урок')
 
     def __str__(self):
         return self.name
@@ -126,9 +126,9 @@ class Lesson_video(models.Model):
             }
 
 class Lesson_audio(models.Model):
-    name = models.CharField(max_length=64)
-    audio_url = models.FileField(upload_to=audio_directory_path, blank=True)
-    lesson = models.ForeignKey(to=DefaultLesson, on_delete=models.CASCADE)
+    name = models.CharField(max_length=64,verbose_name='Название аудиофайла')
+    audio_url = models.FileField(upload_to=audio_directory_path, blank=True,verbose_name='Аудиофайл')
+    lesson = models.ForeignKey(to=DefaultLesson, on_delete=models.CASCADE,verbose_name='Урок')
 
     def __str__(self):
         return self.name
@@ -144,24 +144,24 @@ class UserAdditional(models.Model):
     class Meta:
         verbose_name_plural = "Дополнительная информация о пользователях"
 
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    phone_number = PhoneNumberField()
-    video_chat = models.CharField(max_length=32, default=get_random_string(length=32))
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Пользователь')
+    phone_number = PhoneNumberField(verbose_name='Телефон')
+    video_chat = models.CharField(max_length=32, default=get_random_string(length=32),verbose_name='Код личного видеочата')
 
 class Blog(models.Model):
 
     class Meta:
         verbose_name_plural = "Блоги"
 
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    content = models.CharField(max_length=10000)
-    description = models.CharField(max_length=300)
-    title_picture = models.ImageField(upload_to=blog_image_directory_path, blank=True)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Автор')
+    content = models.CharField(max_length=10000,verbose_name='Контент')
+    description = models.CharField(max_length=300,verbose_name='Описание')
+    title_picture = models.ImageField(upload_to=blog_image_directory_path, blank=True,verbose_name='Превью')
     date = models.DateTimeField(auto_now_add=True)
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100,verbose_name='Заголовок')
 
 class VideoCategory(models.Model):
-    name = models.CharField(max_length=32)
+    name = models.CharField(max_length=32,verbose_name='Название категории')
 
     class Meta:
         verbose_name_plural = "Категории видео"
@@ -173,11 +173,11 @@ class VideoCategory(models.Model):
         return VideoPractise.objects.filter(category=self)
 
 class VideoPractise(models.Model):
-    author = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    video_url = models.CharField(max_length=32)
-    name = models.CharField(max_length=100)
-    picture = models.ImageField(upload_to=video_image_directory_path)
-    category = models.ForeignKey(to=VideoCategory, on_delete=models.CASCADE)
+    author = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Автор')
+    video_url = models.CharField(max_length=32,verbose_name='Ссылка на видео')
+    name = models.CharField(max_length=100,verbose_name='Название')
+    picture = models.ImageField(upload_to=video_image_directory_path,verbose_name='Превью')
+    category = models.ForeignKey(to=VideoCategory, on_delete=models.CASCADE,verbose_name='Категория')
 
     class Meta:
         verbose_name_plural = "Видеопрактика"
@@ -186,16 +186,16 @@ class VideoPractise(models.Model):
         return VideoPractiseWord.objects.filter(video_practise=self)
 
 class VideoPractiseWord(models.Model):
-    video_practise = models.ForeignKey(to=VideoPractise, on_delete=models.CASCADE)
-    word = models.CharField(max_length=100)
-    translate = models.CharField(max_length=100)
+    video_practise = models.ForeignKey(to=VideoPractise, on_delete=models.CASCADE,verbose_name='Видеопрактика')
+    word = models.CharField(max_length=100,verbose_name='Слово на английском')
+    translate = models.CharField(max_length=100,verbose_name='Перевод')
 
 class VideoPractiseConstructor(models.Model):
-    video_practise = models.ForeignKey(to=VideoPractise, on_delete=models.CASCADE)
-    video_start_time = models.TimeField()
-    video_end_time = models.TimeField()
-    answer = models.CharField(max_length=100)
-    answer_translate = models.CharField(max_length=100)
+    video_practise = models.ForeignKey(to=VideoPractise, on_delete=models.CASCADE,verbose_name='Видеопрактика')
+    video_start_time = models.TimeField(verbose_name='Время начала фрагмента из видео')
+    video_end_time = models.TimeField(verbose_name='Время конца фрагмента из видео')
+    answer = models.CharField(max_length=100,verbose_name='Правильный ответ на английском')
+    answer_translate = models.CharField(max_length=100,verbose_name='Перевод ответа')
 
     def get_possible_answers(self):
         l = list(self.answer.split())
@@ -209,11 +209,11 @@ class VideoPractiseConstructor(models.Model):
         return int(datetime.timedelta(hours=self.video_end_time.hour,minutes=self.video_end_time.minute,seconds=self.video_end_time.second).total_seconds())
 
 class VideoPractiseListening(models.Model):
-    video_practise = models.ForeignKey(to=VideoPractise, on_delete=models.CASCADE)
-    video_start_time = models.TimeField()
-    video_end_time = models.TimeField()
-    answer = models.CharField(max_length=100)
-    answer_translate = models.CharField(max_length=100)
+    video_practise = models.ForeignKey(to=VideoPractise, on_delete=models.CASCADE,verbose_name='Видеопрактика')
+    video_start_time = models.TimeField(verbose_name='Время начала фрагмента из видео')
+    video_end_time = models.TimeField(verbose_name='Время конца фрагмента из видео')
+    answer = models.CharField(max_length=100,verbose_name='Правильный ответ на английском')
+    answer_translate = models.CharField(max_length=100,verbose_name='Перевод ответа')
 
     def get_answer(self):
         l = list(self.answer.split())

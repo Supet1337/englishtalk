@@ -111,34 +111,7 @@
 			</div>
 		</section>
 
-		<div data-aos="fade-right">
-          <div class=" card text-white bg-danger" style=" border-radius: 0rem;background-color: #a7e3eb !important">
-  <div class="row no-gutters">
-    <div class="col-md-4" style="text-align: center">
-      <img src="{% static "images/chelik.jpg" %}" class="chelic" style="max-height: 300px;max-width: 335.25px">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body" style="padding-top: 0">
-		  <div class="row" style="color: #082567">
-			  <div class="col flex-basis-auto" style="text-align: center">
-				  <div class="col" style="text-align: left">
-		  <br>
-		  <p class="card-text pararam" style="font-size: 35px; margin-top: 1em;"><b>Познакомимся</b></p>
-		  <p class="card-text pararam" style="font-size: 35px;"><b>Определим уровень</b></p>
-		  <p class="card-text pararam" style="font-size: 35px; margin-bottom: 1em;"><b>Подберем программу</b></p>
-				  </div>
-		  </div>
-			  <div class="col">
-				  <h1 class="card-title pararam" style="font-size: 30px !important;color: #082567;font-weight: 600; text-align: center; margin-top: 20px">Первый урок бесплатно</h1>
-		  <p class="card-text pararam" style="text-align: center;padding-top: 7%"><a href="#" data-toggle="modal" data-target="#reqModal"><button class="btn btn-primary pararam" style="font-size: 28px;color: #082567;border-radius: 0"><b>Записаться на<br> бесплатный урок</b></button></a></p>
-				  <p class="card-text pararam" style="text-align: center;">Нажимая, вы принимаете <a href="confidentiality" style="color: #082567;"><b>условия соглашения</b></a></p>
-		 </div>
-		  </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+		{% include "freelessonblock.html" %}
 		
 
 
@@ -361,34 +334,7 @@
 			</div>
 		</section>
 
-	  		<div data-aos="fade-right">
-          <div class=" card text-white bg-danger" style=" border-radius: 0rem;background-color: #a7e3eb !important">
-  <div class="row no-gutters">
-    <div class="col-md-4" style="text-align: center">
-      <img src="{% static "images/chelik.jpg" %}" class="chelic" style="max-height: 300px;max-width: 335.25px">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body" style="padding-top: 0">
-		  <div class="row" style="color: #082567">
-			  <div class="col flex-basis-auto" style="text-align: center">
-				  <div class="col" style="text-align: left">
-		  <br>
-		  <p class="card-text pararam" style="font-size: 28px; margin-top: 1em;"><b>– Познакомимся</b></p>
-		  <p class="card-text pararam" style="font-size: 28px;"><b>- Определим уровень</b></p>
-		  <p class="card-text pararam" style="font-size: 28px; margin-bottom: 1em;"><b>- Подберем программу</b></p>
-				  </div>
-		  </div>
-			  <div class="col">
-				  <h1 class="card-title pararam" style="font-size: 30px !important;color: #082567;font-weight: 600; text-align: center;">Первый урок бесплатно</h1>
-		  <p class="card-text pararam" style="text-align: center;padding-top: 7%"><a href="#" data-toggle="modal" data-target="#reqModal"><button class="btn btn-primary pararam" style="font-size: 28px;color: #082567;border-radius: 0"><b>Записаться на<br> бесплатный урок</b></button></a></p>
-				  <p class="card-text pararam" style="text-align: center;">Нажимая, вы принимаете <a href="confidentiality" style="color: #082567;"><b>условия соглашения</b></a></p>
-		 </div>
-		  </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+	  		{% include "freelessonblock.html" %}
 
 	  <section class="ftco-section testimony-section bg-light" id="scoost">
       <div class="container">
@@ -527,7 +473,7 @@
     </section>
 
 
-	  <section class="ftco-section testimony-section bg-light">
+	  <section class="ftco-section testimony-section bg-light reasons">
 
 		  <div class="row justify-content-center mb-5 pb-2" style="margin-right: 0;">
           <div class="col-md-8 text-center heading-section ftco-animate">
@@ -536,7 +482,7 @@
 		  </div>
         </div>
 		  <div data-aos="fade-up">
-			  <div class="card-group mb-5" style="padding-right: 20%;padding-left: 20%;">
+			  <div class="card-group">
 
 				<div class="card" style="max-width: 483px; border-right: 0">
 				  <img src="{% static "images/eff1.jpg" %}" class="card-img ml-auto" style="max-width: 483px; max-height: 331.5px">
@@ -550,7 +496,7 @@
 			  </div>
 		  </div>
 		  <div data-aos="fade-up">
-		<div class="card-group mb-5" style="padding-right: 20%;padding-left: 20%;">
+		<div class="card-group">
 				<div class="card">
 				  <div class="card-body">
 					  <p class="card-title wsmtt" style="text-align: center;"><b>Повышаем усваиваемость информации на 60%</b></p>
@@ -563,7 +509,7 @@
 			</div>
 		  </div>
 		  <div data-aos="fade-up">
-		<div class="card-group mb-5" style="padding-right: 20%;padding-left: 20%;">
+		<div class="card-group">
 				<div class="card" style="max-width: 483px">
 				  <img src="{% static "images/eff3.jpg" %}" class="card-img ml-auto" style="max-width: 483px; max-height: 331.5px">
 				</div>
@@ -583,7 +529,7 @@
   <div class="row no-gutters">
     <div class="col" style="text-align: center">
 		<div class="heading-section heading-section-white ftco-animate mb-0 mt-3">
-		    <h3 class="card-title" style="color: #082567"><b>Пройти первый урок бесплатно!</b></h3>
+		    <h2 class="card-title" style="color: #082567;margin-top: 20%"><b>Пройти первый урок бесплатно!</b></h2>
 		</div>
     </div>
 	  <div class="col mx-auto" style="max-width: 272.02px">
@@ -598,11 +544,11 @@
 					  <form method="POST" action="/send_request_v" class="ftco-animate forma">
 						  {% csrf_token %}
 		            		<h5 class="card-title" style="color: #082567"><b>Мы свяжемся с вами и запишем на урок</b></h5>
-					  		<input type="text" style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;color: #082567;" id="name" name="name" class="form-control mx-auto mb-1" pattern="[А-Яа-я]{2, 20}" required placeholder="Как вас зовут?">
-					  		<input type="tel" style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;color: #082567;" id="phone" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control mx-auto mb-1" placeholder="Какой у вас номер телефона?">
-						    <input type="email" style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;color: #082567;" id="email" name="email" required class="form-control mx-auto mb-1" placeholder="Какой у вас email?">
-		  				  	<input type="submit" value="Записаться на бесплатный урок" class="btn btn-primary wsmtt py-3 px-4" style="color: #082567;max-width: 278px;" >
-							<p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <b>условия соглашения</b></p>
+					  		<input type="text" style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;color: #082567;text-align: center;" id="name" name="name" class="form-control mx-auto mb-1" pattern="[А-Яа-я]{2, 20}" required placeholder="Как вас зовут?">
+					  		<input type="tel" style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;color: #082567;text-align: center;" id="phone" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control mx-auto mb-1" placeholder="Какой у вас номер телефона?">
+						    <input type="email" style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;color: #082567;text-align: center;" id="email" name="email" required class="form-control mx-auto mb-1" placeholder="Какой у вас email?">
+		  				  	<input type="submit" value="Записаться на бесплатный урок" class="btn btn-primary wsmtt py-3 px-4" style="color: #082567;margin-top: 50px" >
+							<p style="margin-bottom: 0; font-size: 15px; text-align: center;color: #666666" >Нажимая, вы принимаете <a href="confidentiality" style="font-weight: bold; color: #666666">условия соглашения</a></p>
 					  </form>
 		            </div>
 
