@@ -51,7 +51,7 @@ class DefaultLesson(models.Model):
     docx_url = models.URLField(verbose_name='Ссылка на документ с уроком')
 
     class Meta:
-        verbose_name_plural = "Базовые уроки"
+        verbose_name_plural = "Материалы уроков"
 
     def __str__(self):
         return self.name

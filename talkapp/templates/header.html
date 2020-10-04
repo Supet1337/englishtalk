@@ -75,9 +75,12 @@
         <a class="nav-link" href="tel:89957930203" style="padding-top: 14px; padding-bottom: 14px;"><span style="padding-top: 7px; padding-bottom: 7x; padding-right: 4px;" class="fa fa-phone"></span>8 (995) 793-02-03</a>
       </li>
                         <div class="dropdown-divider"></div>
+                        {% if not request.user.is_authenticated %}
         <li class="nav-item">
             <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="#" data-toggle="modal" data-target="#reqModal">Попробовать бесплатно</a>
-      </li>             {% if request.user.is_authenticated %}
+      </li>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
                         <div class="dropdown-divider nav-user-mobile"></div>
                         <li class="nav-item nav-user-mobile">
                         <a class="nav-link" href="/logout">Выход</a>
@@ -160,6 +163,7 @@
 							<p style="margin-bottom: 0;text-align: center;font-size: 14px">Связаться с нами: 8 (995) 793-02-03 <a href="#" style="margin-right: 30px;" ><img src="https://pngicon.ru/file/uploads/instagram-256x256.png" style="width: 32px;height: 32px"></a><a href="https://t.me/Svvvnd" style="margin-right: 30px;"><img src="https://pngicon.ru/file/uploads/telegram.png" style="width: 32px;height: 32px"></a><a href="#" style="margin-right: 30px;"><img src="https://pngicon.ru/file/uploads/youtube-1.png" style="width: 32px;height: 32px"></a></p>
 						</div>
 			</div>
+                    {% if not request.user.is_authenticated %}
 					<div class="card blue-card" style="border-radius: 0;border: 0;text-align: center;background: #9ddde7;">
                         <div class="card-body">
                             <h4 class="card-title" style="color: #082567;">Первый урок - бесплатно!</h4>
@@ -168,6 +172,7 @@
 							<a href="#"><button type="button" class="btn btn-primary" style="border-radius: 0; color: #082567;font-size: large;max-width: 250px;background: #c5cfd8;border-color: #c5cfd8">Подобрать индивидуальный курс</button></a>
                         </div>
                     </div>
+                    {% endif %}
                     </div>
 						</div>
                 </div>

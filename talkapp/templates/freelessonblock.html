@@ -1,4 +1,5 @@
 {% load static %}
+{% if not request.user.is_authenticated %}
 <div data-aos="fade-right">
           <div class=" card text-white bg-danger" style=" border-radius: 0rem;background-color: #a7e3eb !important">
   <div class="row no-gutters">
@@ -27,3 +28,4 @@
   </div>
 </div>
 </div>
+{% endif %}

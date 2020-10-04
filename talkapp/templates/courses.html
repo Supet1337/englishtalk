@@ -63,7 +63,10 @@
           <div class="col-md-6 ml-auto ftco-animate">
             <h1 class="mb-4 bebebe" style="color: white;font-weight: bold;">Выучить английский в онлайн-школе EnglishTalk</h1>
 			  <p class="bababa" style="color: white;">Учите язык в интерактивном учебнике с сильными преподавателями! </p>
-            <p style="text-align: center;"><a href="#" data-toggle="modal" data-target="#reqModal" class="btn btn-secondary bobobo py-3 mt-3" style="border-radius: 0;">Начать бесплатный урок</a>
+            <p style="text-align: center;">
+				{% if not request.user.is_authenticated %}
+				<a href="#" data-toggle="modal" data-target="#reqModal" class="btn btn-secondary bobobo py-3 mt-3" style="border-radius: 0;">Начать бесплатный урок</a>
+				{% endif %}
 				<a class="btn btn-secondary bobobo py-3 mt-3 video-btn" style="border-radius: 0;color: white" data-toggle="modal" data-src="https://www.youtube.com/embed/JUSuCm6MXVI" data-target="#myModalVid"><i style="color: #fff" class="fab fa-youtube"></i> Смотреть пример урока</a>
 			</p>
           </div>

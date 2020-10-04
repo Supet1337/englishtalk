@@ -30,7 +30,10 @@
           <div class="col-md-6 ml-auto ftco-animate">
             <h1 class="mb-4 bebebe" style="color: white;font-weight: bold;">Выучить английский в онлайн-школе EnglishTalk</h1>
 			  <p class="bababa" style="color: white;">Учите язык в интерактивном учебнике с сильными преподавателями! </p>
-            <p style="text-align: center;"><a href="#" data-toggle="modal" data-target="#reqModal" class="btn btn-secondary bobobo py-3 mt-3" style="border-radius: 0;">Начать бесплатный урок</a>
+            <p style="text-align: center;">
+				{% if not request.user.is_authenticated %}
+				<a href="#" data-toggle="modal" data-target="#reqModal" class="btn btn-secondary bobobo py-3 mt-3" style="border-radius: 0;">Начать бесплатный урок</a>
+				{% endif %}
 				<a class="btn btn-secondary bobobo py-3 mt-3 video-btn" style="border-radius: 0;color: white" data-toggle="modal" data-src="https://www.youtube.com/embed/JUSuCm6MXVI" data-target="#myModalVid"><i style="color: #fff" class="fab fa-youtube"></i> Смотреть пример урока</a>
 			</p>
           </div>
@@ -148,9 +151,11 @@
 						</div>
 					</div>
 				</div>
+			{% if not request.user.is_authenticated %}
 				<div style="margin-bottom: 100px;padding-top: 50px">
 					<p style="text-align: center"><a href="#" data-toggle="modal" data-target="#reqModal"><button class="btn btn-primary asasas" style="font-size: xx-large;">Записаться на бесплатный урок</button></a></p>
 				</div>
+			{% endif %}
 
 				<div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
@@ -269,7 +274,9 @@
 			  <div class="card text-center" style="border: 0;">
 				  <h3 class="card-title text-center" style="color: white">Запишись на бесплатный урок</h3>
 					<p class="card-text text-center">Подберем удобное время для занятия. Занимайся в любом месте и в любое время</p>
+				  {% if not request.user.is_authenticated %}
 				  	<p class="card-text pararam mb-3" style="text-align: center;"><a href="#" data-toggle="modal" data-target="#reqModal"><button class="btn btn-primary">Записаться на бесплатный урок</button></a></p>
+				  {% endif %}
 			  </div>
 			</div>
           </div>
@@ -523,7 +530,7 @@
 		  </div>
 		</section>
 
-
+{% if not request.user.is_authenticated %}
 <div data-aos="fade-right" id="sreg">
           <div class=" card text-white bg-danger" style=" border-radius: 0rem;background-color: #a7e3eb !important">
   <div class="row no-gutters">
@@ -587,6 +594,7 @@
   </div>
 </div>
 </div>
+{% endif %}
 	  {% include 'footer.html' %}
 {% endblock %}
 {% block jsfiles %}
