@@ -9,6 +9,7 @@
 
 #wrapper {
     padding-left: 0;
+    padding-right: 0;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -86,7 +87,15 @@
 
 /* Toggle Buttons */
 
-
+@media(max-width:767px) {
+    #menu-toggle-right {
+        top: 40px;
+         z-index: 100001;
+    }
+    #menu-toggle {
+        top: 40px;
+    }
+}
 @media(min-width:768px) {
     #wrapper {
         padding-left: 250px;
@@ -130,6 +139,18 @@
     #wrapper.right-toggled #page-content-wrapper {
         position: relative;
         margin-left: 0;
+    }
+
+    #menu-toggle-right {
+        height: 100%;
+        bottom: 0;
+        z-index: 1001;
+    }
+    #menu-toggle {
+        bottom: 0;
+    }
+    #d0,#d1,#d2,#d3,#d4,#d15,#d6,#d7,#d8 {
+        margin: 20px;
     }
 }
 .rotate {
