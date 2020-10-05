@@ -53,8 +53,9 @@ class InLineListening(admin.StackedInline):
 @admin.register(DefaultCourse)
 class DefaultCourseAdmin(nested_admin.NestedModelAdmin):
     inlines = [InLineDefaultLesson]
-    list_display = ('name',)
-    search_fields = ['name']
+    list_display = ('name','level','module')
+    list_filter = ('name','level','module')
+    search_fields = ['name','level','module']
 
 @admin.register(UserCourse)
 class CourseAdmin(nested_admin.NestedModelAdmin):
@@ -62,7 +63,7 @@ class CourseAdmin(nested_admin.NestedModelAdmin):
     raw_id_fields = ("student","teacher")
     list_display = ('student_name','teacher_name','course_type')
     search_fields = ['student__first_name', 'teacher__first_name', 'course_type']
-    list_filter = ('teacher','course_type')
+    list_filter = ('course_type',)
     def student_name(self,obj):
         return obj.student.first_name
 
@@ -72,9 +73,13 @@ class CourseAdmin(nested_admin.NestedModelAdmin):
 @admin.register(DefaultLesson)
 class LessonAdmin(admin.ModelAdmin):
     inlines = [InLineVideoLesson,InLineAudioLesson]
-    list_display = ('name','course','docx_url')
-    list_filter = ('course',)
-    search_fields = ['name','course__name','docx_url']
+    list_display = ('name','course','course_level','course_module','docx_url')
+    list_filter = ('course','course__level','course__module')
+    search_fields = ['name','course__name','course__level','course__module','docx_url']
+    def course_level(self,obj):
+        return obj.course.level
+    def course_module(self,obj):
+        return obj.course.module
 
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):

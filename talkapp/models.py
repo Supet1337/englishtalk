@@ -38,8 +38,32 @@ class Teacher(models.Model):
 class DefaultCourse(models.Model):
     name = models.CharField(max_length=64,verbose_name='Название курса')
 
+    LEVEL_CHOICES = [
+        ('Elementary','Elementary'),
+        ('Begginer','Begginer'),
+        ('Intermediate','Intermediate'),
+        ('Pre-Intermediate','Pre-Intermediate'),
+        ('Upper-Intermediate', 'Upper-Intermediate')
+    ]
+
+    MODULE_CHOICES = [
+        (1, 1),
+        (2, 2),
+        (3, 3),
+        (4, 4),
+        (5, 5),
+        (6, 6),
+        (7, 7),
+        (8, 8),
+        (9, 9),
+        (10, 10)
+    ]
+
+    level = models.CharField(max_length=64,verbose_name='Уровень подготовки',choices=LEVEL_CHOICES)
+    module = models.IntegerField('Модуль',choices=MODULE_CHOICES)
+
     class Meta:
-        verbose_name_plural = "Базовые курсы"
+        verbose_name_plural = "Курсы"
 
     def __str__(self):
         return self.name
@@ -51,7 +75,7 @@ class DefaultLesson(models.Model):
     docx_url = models.URLField(verbose_name='Ссылка на документ с уроком')
 
     class Meta:
-        verbose_name_plural = "Материалы уроков"
+        verbose_name_plural = "Материалы урока"
 
     def __str__(self):
         return self.name
