@@ -91,7 +91,7 @@
                               <div class="item">
                                   {% if ava %}
                               <img class="mt-2" id="teacher-img" src="{{ava}}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
-                                  {% else %}
+                                  {% elif ava == "Аватар" %}
                                   <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
                                   {% endif %}
                               </div>
@@ -206,7 +206,7 @@
                         {{lsnf.date}}
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item disabled"><a href="#">{{lsnf.lesson.name}}</a></li>
+                        <li class="list-group-item "><a href="#" id="openDoc{{lsnf.id}}">{{lsnf.lesson.name}}</a></li>
                     </ul>
                 </div>
                 {% endfor %}
@@ -342,11 +342,6 @@
         </button>
       </div>
       <div class="modal-body">
-          <label for="file-name" class="col-form-label">Файл с дз:</label>
-          <a id="dzFile" href="" download>
-              <button type="button" class="btn btn-primary" id="file-name">Перейти</button>
-          </a>
-          <br>
               <a id="student_email" href="" target="_blank" rel="noopener noreferrer">Отправить домашнее задание</a>
       </div>
       <div class="modal-footer">
