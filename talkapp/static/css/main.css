@@ -188,11 +188,12 @@
 .calendar{
 	margin:.25em 10px 10px 0;
 	float:left;
-	width:80px;
+	width: 95%;
+	height: 250px;
 	background:#ededef;
 	background: -webkit-gradient(linear, left top, left bottom, from(#ededef), to(#ccc));
 	background: -moz-linear-gradient(top,  #ededef,  #ccc);
-	font:bold 30px/60px Arial Black, Arial, Helvetica, sans-serif;
+	font:bold 60px/60px Arial Black, Arial, Helvetica, sans-serif;
 	text-align:center;
 	color:#000;
 	text-shadow:#fff 0 1px 0;
@@ -206,10 +207,10 @@
 	}
 	.calendar em{
 	display:block;
-	font:normal bold 11px/30px Arial, Helvetica, sans-serif;
+	font:normal bold 20px/60px Arial, Helvetica, sans-serif;
 	color:#fff;
-	text-shadow:#d5292c 0 -1px 0;
-	background:#d5292c;
+	text-shadow:#00abef 0 -1px 0;
+	background:#00abef;
 	-moz-border-radius-bottomright:3px;
 	-webkit-border-bottom-right-radius:3px;
 	border-bottom-right-radius:3px;
@@ -286,4 +287,120 @@ footer .btn-primary{
 }
 footer .btn-primary:hover{
     color: white !important
+}
+
+@media screen and (min-width: 1463px){
+    .clpsmed{
+        margin-left: -30%;
+        transition-duration: .2s;
+    }
+}
+
+
+@media screen and (max-width: 1464px){
+    .clpsmed{
+        margin-left: -5%;
+    }
+}
+
+@media screen and (max-width: 346px){
+    .cldcard{
+        width: 200px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1460px){
+    .cldcard{
+        min-width: 120px;
+        min-height: 217px;
+        max-width: 225px;
+        max-height: 240px;
+    }
+}
+
+@media screen and (min-width: 470px) and (max-width: 1024px){
+    .cldem{
+        margin-bottom: 10%;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 470px){
+    .cldem{
+        margin-bottom: 20%;
+    }
+}
+
+@media screen and (min-width: 1024px){
+    .cldem{
+        margin-bottom: 20%;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 328px){
+    .btnteach{
+        width: 110%;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1460px){
+    .cldcard{
+        min-width: 120px;
+        min-height: 217px;
+        max-width: 225px;
+        max-height: 240px;
+    }
+}
+
+.btnonln{
+    width: 75%;
+    position: absolute;
+    left: 15%;
+    bottom: 5%;
+}
+
+.btncontman{
+    width: 75%;
+    position: absolute;
+    left: 15%;
+    bottom: 24%;
+}
+
+.btnteach{
+    width: 75%;
+    position: absolute;
+    left: 15%;
+    bottom: 5%;
+}
+
+.btnshdl{
+    width: 75%;
+    position: absolute;
+    left: 15%;
+    bottom: 5%;
+}
+
+.btnblnc{
+    width: 75%;
+    position: absolute;
+    left: 15%;
+    bottom: 5%;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1250px){
+    .txtteach{
+        margin-bottom: 100% !important;
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1250px){
+    .wlcm1{
+        font-size: large !important;
+    }
+    .wlcm2{
+        font-size: large !important;
+    }
+    .crntcrs{
+        font-size: 1rem !important;
+    }
 }

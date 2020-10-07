@@ -230,7 +230,7 @@
                             <form class="appointment-form ftco-animate" method="POST" action="../send_request_v">
                         {% csrf_token %}
                         <br>
-                       <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="name1" name="name" class="form-control" required placeholder="Как вас зовут?">
+                       <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="name1" name="name" class="form-control" pattern="[А-Яа-я]{,30}" required placeholder="Как вас зовут?">
                       <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="email1" name="email"  class="form-control" placeholder="Email" required>
                        <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone1" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control" placeholder="Телефон">
                         <input type="submit" class="btn btn-primary" style="margin-top: 100px;border-radius: 0;color: #082567;width: 100%" value="Записаться на бесплатный урок">
