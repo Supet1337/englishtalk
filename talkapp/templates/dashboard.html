@@ -32,32 +32,39 @@
             <div class="card mb-3" style="background: #a4cee7; border-color: #a4cee7">
   <div class="row no-gutters">
     <div class="col-md-4" style="position: relative">
-      <img src="{% static "images/welcome.jpg" %}" style="border-radius: 16px;bottom: 0;position: absolute;max-height: 428.31px" class="card-img">
+      <img src="{% static "images/welcome.jpg" %}" style="border-radius: 16px;bottom: 0;position: absolute;max-height: 404.95px" class="card-img">
     </div>
     <div class="col-md-8">
       <div class="card-body" style="padding-bottom: 0;padding-top: 0">
           <img src="{% static "images/welcome2.jpg" %}" style="border-radius: 16px;" class="card-img">
-          <div class="card-title" style="text-align: center"><h3 style="color: white">Добро пожаловать в ваш личный кабинет, {{request.user.first_name  | safe}}!</h3></div>
-          <p class="card-text" style="color: white;text-align: center;margin-bottom: 0;font-size: larger">Команда EnglishTalk приветствует Вас в Личном кабинете! </p>
-          <p class="card-text" style="color: white;text-align: center;font-size: larger">Если у Вас возникли вопросы, мы с радостью на них ответим или даже просто будем рады поболтать 😊</p>
+          <div class="card-title" style="text-align: center"><h3  style="color: white">Добро пожаловать в ваш личный кабинет, {{request.user.first_name  | safe}}!</h3></div>
+          <p class="card-text wlcm1"  style="color: white;text-align: center;margin-bottom: 0;font-size: larger">Команда EnglishTalk приветствует Вас в Личном кабинете! </p>
+          <p class="card-text wlcm2" style="color: white;text-align: center;font-size: larger">Если у Вас возникли вопросы, мы с радостью на них ответим или даже просто будем рады поболтать 😊</p>
           <div class="ftco-footer-widget">
-              <div>
+              <div class="row">
+                  <div class="col" >
               <a href="../accounts/password_reset"><button class="btn btn-primary mb-3"><i class="fa fa-lock"></i> Сменить пароль</button></a>
               <br>
-              <a data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2" href="#"><button class="btn btn-primary"> <i class="fas fa-envelope"></i> Сменить почту</button></a>
-              <div class="collapse" id="collapseExample2">
+                  </div>
+                  <div class="col">
+              <a data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" data-parent="#parent" role="button" aria-controls="collapseExample2" href="#"><button id="collapse_post" class="btn btn-primary  mb-3  "> <i class="fas fa-envelope"></i> Сменить почту</button></a>
+              <div class="collapse text-left clpsmed" id="collapseExample2">
               <form method="post" action="../change_email">
                                     {%csrf_token%}
-                                <div class="card-body">
+                                <div id="parent" class="card-body">
                                             <div class="card card-body" style="max-width:300px">
                                                 <input type="email" id="change_email" name="change_email" class="form-control" placeholder="Введите email" required>
-                                                <input type="submit" class= "btn btn-success" style="width:100%" value="Сохранить изменения">
+                                                <input type="submit" class= "btn btn-success mt-1" style="width:100%" value="Сохранить изменения">
                                             </div>
                                 </div>
 
               </form>
                   </div>
-              <a href="https://t.me/Svvvnd" class="btn btn-primary"><i class="fab fa-telegram"></i> Связаться с куратором</a>
+                  </div>
+
+                  <div class="col">
+              <a href="https://t.me/Svvvnd" class="btn btn-success mb-1"><i class="fab fa-telegram"></i> Связаться с куратором</a>
+                  </div>
               </div>
           </div>
       </div>
@@ -74,31 +81,31 @@
                         <div class="card-group" style="width:100%">
                         <div class="card bg-white text-center" >
                               <div class="card-body">
-                                <h5 class="card-title">Текущий курс обучения</h5>
+                                <h5 style="font-weight: bold" class="card-title crntcrs">Текущий курс обучения</h5>
                                   {% if course %}
                                 <p class="card-text ">{{course}}</p>
                                   {% else %}
-                                  <a class="btn btn-primary mb-2" href="courses">Выбрать подходяций курс</a>
+                                  <a class="btn btn-primary mb-2 w-100" href="courses">Выбрать подходяций курс</a>
                                   {% endif %}
-                                  <img class="mt-5 mb-5" src="{% static "images/kit.png" %}" style="width: auto; height: auto"  align="center">
-                                 <a class="btn btn-primary " id="ddd1" data-toggle="list" href="#d1" role="tab">Перейти в онлайн класс</a>
+                                  <img class="mt-5" src="{% static "images/kit.png" %}" style="width: auto; height: auto; margin-bottom: 35%"  align="center">
+                                 <a class="btn btn-primary  btnonln" style="white-space: pre-line;" id="ddd1" data-toggle="list" href="#d1" role="tab">Перейти в онлайн класс</a>
                                   </div>
                             </div>
                         <div class="card bg-light text-center">
                           <div class="card-body">
-                              <h5 class="card-title">Преподаватель</h5>
+                              <h5 style="font-weight: bold" class="card-title crntcrs">Преподаватель</h5>
                               {% if teacher %}
                               <div class="item">
                                   {% if ava %}
-                              <img class="mt-2" id="teacher-img" src="{{ava}}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
-                                  {% else %}
-                                  <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
+                              <img class="mt-2" id="teacher-img" src="{{ava}}" style="width: auto; height: auto; max-width: 150px;max-height: 150px; border-radius: 100%"  align="center">
+                                  {% elif ava == "Аватар" %}
+                                  <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;  border-radius: 100%"  align="center">
                                   {% endif %}
                               </div>
                             <h5 class="card-title">{{teacher}}</h5>
-                              <p class="card-text">Чтобы вы не соскучились, мы помесили сюда фото вашего преподавателя 😊</p>
-                              <a href="mailto:help.englishtalk@gmail.co?subject=Вопрос по Englishtalk" class="btn btn-primary mb-2"><i class="fas fa-envelope"></i>Написать преподавателю</a>
-                              <a href="https://t.me/Svvvnd" class="btn btn-primary"><i class="fab fa-telegram"></i> Связаться с куратором</a>
+                              <p class="card-text txtteach" style="margin-bottom: 35%">Чтобы вы не соскучились, мы помесили сюда фото вашего преподавателя 😊</p>
+                              <a href="mailto:help.englishtalk@gmail.co?subject=Вопрос по Englishtalk" style="white-space: pre-line;" class="btn btn-primary btnteach "><i class="fas fa-envelope"></i>Написать преподавателю</a>
+                              <a href="https://t.me/Svvvnd" style="white-space: pre-line;" class="btn btn-success btncontman"><i class="fab fa-telegram"></i> Связаться с куратором</a>
                               {% else %}
                               <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
                               <h5 class="card-title">У вас пока нет преподавателя</h5>
@@ -109,28 +116,28 @@
                         </div>
                         <div class="card bg-white text-center" >
                           <div class="card-body">
-                            <h5 class="card-title">Следущее занятие</h5>
-                              <div style="background: radial-gradient(circle farthest-side at 30px 20px, #37bdc7, #3495c0);" class="card mb-3">
+                            <h5 style="font-weight: bold" class="card-title crntcrs">Следущее занятие</h5>
+                              <div style="background: radial-gradient(circle farthest-side at 30px 20px, #37bdc7, #3495c0); margin-bottom: 35%" class="card ">
                                   {% if next_lsn %}
                                    {% if now_lsn %}
                                     <p class="card-text"><h3 style="color: white">Идёт сейчас</h3></p>
                                     {% else %}
-                                  <div class="calendar mx-auto"><em>{{next_lsn|date:'F'}}</em>{{next_lsn|date:'d'}}</div>
+                                  <div class="calendar mx-auto cldcard"><em class="cldem">{{next_lsn|date:'F'}}</em>{{next_lsn|date:'d'}}</div>
                                    {% endif %}
                                   {% else %}
                                   <p class="card-text"><h3 style="color: white">У вас нет занятий</h3></p>
                                   {% endif %}
                               </div>
-                              <a class="btn btn-primary " id="ddd3" data-toggle="list" href="#d3" role="tab" style="margin-top: 81%">Перейти в расписание</a>
+                              <a class="btn btn-primary btnshdl" id="ddd3" data-toggle="list" href="#d3" role="tab" style="white-space: pre-line;">Перейти в расписание</a>
                           </div>
                         </div>
                         <div class="card bg-light text-center" style="width:100%">
                               <div class="card-body">
-                                <h5 class="card-title">Баланс</h5>
+                                <h5 style="font-weight: bold" class="card-title crntcrs">Баланс</h5>
                                   <img class="mt-2" id="teacher-img" src="{% static "images/pay.png" %}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
                                   <p class="card-text">Осталось:<h2 style="color: red"> {{future_lsn|length}} </h2>
-                                   <p class="card-text">Занятия по <font color="red">{{lsn_time}}</font> минут</p>
-                                  <a class="btn btn-success" href="../price" style="margin-top: 20%">Пополнить баланс</a>
+                                   <p class="card-text" style="margin-bottom: 35%" >Занятия по <font color="red">{{lsn_time}}</font> минут</p>
+                                  <a class="btn btn-success btnblnc" href="../price" style="white-space: pre-line">Пополнить баланс</a>
                               </div>
                             </div>
                         </div>
@@ -142,7 +149,7 @@
               <div class="card-header">Материалы для самоподготовки</div>
               <div class="card-body text-success">
                 <h5 class="card-title">Учитесь и развивайтесь!</h5>
-                   <a class="btn btn-primary " id="ddd8" data-toggle="list" href="#d8" role="tab">Перейти в блог</a>
+                   <a class="btn btn-primary "  id="ddd8" data-toggle="list" href="#d8" role="tab">Перейти в блог</a>
               </div>
             </div>
 
@@ -206,7 +213,7 @@
                         {{lsnf.date}}
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item disabled"><a href="#">{{lsnf.lesson.name}}</a></li>
+                        <li class="list-group-item "><a href="#" id="openDoc{{lsnf.id}}">{{lsnf.lesson.name}}</a></li>
                     </ul>
                 </div>
                 {% endfor %}
@@ -342,11 +349,6 @@
         </button>
       </div>
       <div class="modal-body">
-          <label for="file-name" class="col-form-label">Файл с дз:</label>
-          <a id="dzFile" href="" download>
-              <button type="button" class="btn btn-primary" id="file-name">Перейти</button>
-          </a>
-          <br>
               <a id="student_email" href="" target="_blank" rel="noopener noreferrer">Отправить домашнее задание</a>
       </div>
       <div class="modal-footer">
@@ -393,6 +395,21 @@
                 $('.category-{{c.id}}').show()
                 {% endfor %}
             }
+
+            $(document).ready(function () {
+        var a = 0;
+          $("#collapse_post").click(function(event) {
+            a += 1;
+            if (a % 2 == 0){
+                $('#collapseExample2').collapse('hide');
+                return false;
+            }
+            else{
+                $('#collapseExample2').collapse('show');
+            }
+          });
+        })
+
         </script>
         <script src={% static "js/dashboard.js" %}></script>
       <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>

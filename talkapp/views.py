@@ -209,7 +209,10 @@ def dashboard(request):
         context['course'] = lessons[i].user_course.course_type
         context['teacher'] = lessons[i].user_course.teacher.user.first_name
         context["lsn"] = lessons
-        context["ava"] = lessons[i].user_course.teacher.image.url
+        try:
+            context["ava"] = lessons[i].user_course.teacher.image.url
+        except:
+            context["ava"] = "Аватар"
 
     return render(request,'dashboard.html', context)
 
