@@ -115,7 +115,8 @@
     }
 
     #right-sidebar-wrapper {
-        width: 400px;
+        width: 650px;
+        height: 400px;
     }
 
     #wrapper.left-toggled #left-sidebar-wrapper {
@@ -142,9 +143,7 @@
     }
 
     #menu-toggle-right {
-        height: 100%;
         bottom: 0;
-        z-index: 1001;
     }
     #menu-toggle {
         bottom: 0;

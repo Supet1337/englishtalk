@@ -213,8 +213,18 @@ def dashboard(request):
             context["ava"] = lessons[i].user_course.teacher.image.url
         except:
             context["ava"] = "Аватар"
+        context["paid_lessons"] = UserAdditional.objects.get(user=request.user)
+
 
     return render(request,'dashboard.html', context)
+
+
+def ajax_pay_lessons(request):
+    lsn = []
+    p = UserAdditional.objects.get(user=request.user)
+    lsn.append(p.json())
+    return HttpResponse(json.dumps(lsn))
+
 
 @login_required
 def change_email(request):

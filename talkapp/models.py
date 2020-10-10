@@ -171,6 +171,7 @@ class UserAdditional(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Пользователь')
     phone_number = PhoneNumberField(verbose_name='Телефон')
     video_chat = models.CharField(max_length=32, default=get_random_string(length=32),verbose_name='Код личного видеочата')
+    paid_lessons = models.IntegerField(verbose_name='Кол-во оплаченных занятий', default=0)
 
 class Blog(models.Model):
 

@@ -135,7 +135,7 @@
                               <div class="card-body">
                                 <h5 style="font-weight: bold" class="card-title crntcrs">Баланс</h5>
                                   <img class="mt-2" id="teacher-img" src="{% static "images/pay.png" %}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
-                                  <p class="card-text">Осталось:<h2 style="color: red"> {{future_lsn|length}} </h2>
+                                  <p class="card-text">Осталось:<h2 style="color: red"> {{paid_lessons}} </h2>
                                    <p class="card-text" style="margin-bottom: 35%" >Занятия по <font color="red">{{lsn_time}}</font> минут</p>
                                   <a class="btn btn-success btnblnc" href="../price" style="white-space: pre-line">Пополнить баланс</a>
                               </div>
@@ -165,7 +165,10 @@
     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Учебные материалы</a>
   </li>
 </ul>
+
 <div class="tab-content" id="myTabContent" style="height: 700px; overflow-y: scroll;">
+      <button class="btn btn-white fixbut mt-3" style="border-radius: 0px; float: left" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> </button>
+
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <div class="card-body" >
                 {% if lsn == 0 %}
