@@ -213,17 +213,36 @@ def dashboard(request):
             context["ava"] = lessons[i].user_course.teacher.image.url
         except:
             context["ava"] = "Аватар"
-        context["paid_lessons"] = UserAdditional.objects.get(user=request.user)
+        context["paid_lessons"] = UserAdditional.objects.get(user=request.user).paid_lessons
 
 
     return render(request,'dashboard.html', context)
 
 
 def ajax_pay_lessons(request):
-    lsn = []
-    p = UserAdditional.objects.get(user=request.user)
-    lsn.append(p.json())
-    return HttpResponse(json.dumps(lsn))
+    if request.method == 'POST':
+        p = UserAdditional.objects.get(user=request.user)
+        cost = int(request.POST.get('cost'))
+        if cost == 4300:
+            p.paid_lessons += 5
+        elif cost == 8000:
+            p.paid_lessons += 10
+        elif cost == 14800:
+            p.paid_lessons += 20
+        elif cost == 19800:
+            p.paid_lessons += 30
+        elif cost == 4600:
+            p.paid_lessons += 5
+        elif cost == 8800:
+            p.paid_lessons += 10
+        elif cost == 16400:
+            p.paid_lessons += 20
+        elif cost == 22200:
+            p.paid_lessons += 30
+        else:
+            p.paid_lessons += 0
+        p.save()
+    return HttpResponse('pay')
 
 
 @login_required
