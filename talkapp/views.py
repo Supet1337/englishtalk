@@ -159,13 +159,14 @@ def dashboard(request):
     if len(lessons) == 0:
         context["lsn"] = 0
     else:
+        student_additional = UserAdditional.objects.get(user=request.user)
         lessons.order_by('date')
         flag = False
         past_lessons = []
         future_lessons = []
         for l in lessons:
             end = l.date
-            if l.user_course.lesson_time:
+            if student_additional.lesson_time:
                 end += datetime.timedelta(minutes=60)
             else:
                 end += datetime.timedelta(minutes=45)
@@ -178,14 +179,18 @@ def dashboard(request):
                 context['now_lsn'] = True
                 flag = True
             elif end < datetime.datetime.now():
-                l.is_completed = True
-                l.save()
+                if not l.is_completed:
+                    student_additional.paid_lessons -= 1
+                    student_additional.save()
+                    l.is_completed = True
+                    l.save()
                 past_lessons.append(l)
             elif not l.is_completed:
-                if not flag:
-                    flag = True
-                    context['next_lsn'] = l.date
-                future_lessons.append(l)
+                if len(future_lessons) < student_additional.paid_lessons:
+                    if not flag:
+                        flag = True
+                        context['next_lsn'] = l.date
+                    future_lessons.append(l)
         context['past_lsn'] = past_lessons
         context['future_lsn'] = future_lessons
         calendar = []
@@ -202,7 +207,7 @@ def dashboard(request):
         calendar.append(day)
         context['calendar'] = calendar
         i = 0
-        if lessons[i].user_course.lesson_time:
+        if student_additional.lesson_time:
             context['lsn_time'] = "60"
         else:
             context['lsn_time'] = "45"
@@ -213,7 +218,7 @@ def dashboard(request):
             context["ava"] = lessons[i].user_course.teacher.image.url
         except:
             context["ava"] = "Аватар"
-        context["paid_lessons"] = UserAdditional.objects.get(user=request.user).paid_lessons
+        context["paid_lessons"] = student_additional.paid_lessons
 
 
     return render(request,'dashboard.html', context)
@@ -225,22 +230,31 @@ def ajax_pay_lessons(request):
         cost = int(request.POST.get('cost'))
         if cost == 4300:
             p.paid_lessons += 5
+            p.lesson_time = False
         elif cost == 8000:
             p.paid_lessons += 10
+            p.lesson_time = False
         elif cost == 14800:
             p.paid_lessons += 20
+            p.lesson_time = False
         elif cost == 19800:
             p.paid_lessons += 30
+            p.lesson_time = False
         elif cost == 4600:
             p.paid_lessons += 5
+            p.lesson_time = True
         elif cost == 8800:
             p.paid_lessons += 10
+            p.lesson_time = True
         elif cost == 16400:
             p.paid_lessons += 20
+            p.lesson_time = True
         elif cost == 22200:
             p.paid_lessons += 30
+            p.lesson_time = True
         else:
             p.paid_lessons += 0
+            p.lesson_time = True
         p.save()
     return HttpResponse('pay')
 

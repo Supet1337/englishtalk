@@ -92,10 +92,6 @@ class UserCourse(models.Model):
     class Meta:
         verbose_name_plural = "Ученик и его курс"
 
-    LESSON_TIME_CHOISES = [
-        (True, '60 минут'),
-       (False, '45 минут')
-    ]
     TYPE_CHOISES = [
         ('Подготовка к IELTS', 'Подготовка к IELTS'),
         ('Собеседование', 'Собеседование'),
@@ -111,7 +107,6 @@ class UserCourse(models.Model):
         ('Персональный курс', 'Персональный курс'),
     ]
     course_type = models.CharField(choices=TYPE_CHOISES,max_length=64,verbose_name='Тип курса')
-    lesson_time = models.BooleanField(choices=LESSON_TIME_CHOISES,default=False,verbose_name='Продолжительность урока')
 
 
 class UserLesson(models.Model):
@@ -171,7 +166,14 @@ class UserAdditional(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Пользователь')
     phone_number = PhoneNumberField(verbose_name='Телефон')
     video_chat = models.CharField(max_length=32, default=get_random_string(length=32),verbose_name='Код личного видеочата')
-    paid_lessons = models.IntegerField(verbose_name='Кол-во оплаченных занятий', default=0)
+    paid_lessons = models.IntegerField(verbose_name='Кол-во оплаченных занятий', default=1)
+
+    LESSON_TIME_CHOISES = [
+        (True, '60 минут'),
+        (False, '45 минут')
+    ]
+
+    lesson_time = models.BooleanField(choices=LESSON_TIME_CHOISES, default=False,verbose_name='Продолжительность уроков')
 
 class Blog(models.Model):
 
