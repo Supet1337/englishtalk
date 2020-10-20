@@ -48,7 +48,6 @@
     width: 0;
     height: 100%;
     margin-right: -250px;
-    overflow-y: auto;
     background: #000;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -99,7 +98,6 @@
 @media(min-width:768px) {
     #wrapper {
         padding-left: 250px;
-        padding-right: 250px;
     }
 
     #wrapper.left-toggled {
@@ -115,8 +113,8 @@
     }
 
     #right-sidebar-wrapper {
-        width: 650px;
-        height: 400px;
+        width: 450px;
+        height: 300px;
     }
 
     #wrapper.left-toggled #left-sidebar-wrapper {

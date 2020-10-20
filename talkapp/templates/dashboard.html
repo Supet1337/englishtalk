@@ -167,7 +167,7 @@
 </ul>
 
 <div class="tab-content" id="myTabContent" style="height: 700px; overflow-y: scroll;">
-      <button class="btn btn-white fixbut mt-3" style="border-radius: 0px; float: left" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> </button>
+      <button class="btn btn-white fixbut" style="border-radius: 0px; float: left;margin-top: 12px;margin-left: 1rem" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> Подключить видеосвязь</button>
 
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <div class="card-body" >
@@ -362,17 +362,16 @@
 </div>
 {% endblock %}
 {% block jsfiles %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
     <script src={% static "js/jquery.min.js" %}></script>
       <script src='https://meet.jit.si/external_api.js'></script>
 	  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
-	  <script src={% static "js/bootstrap.min.js" %}></script>
 	  <script src={% static "js/jquery.waypoints.min.js" %}></script>
 	  <script src={% static "js/jquery.stellar.min.js" %}></script>
 	  <script src={% static "js/owl.carousel.min.js" %}></script>
 	  <script src={% static "js/jquery.magnific-popup.min.js" %}></script>
 	  <script src={% static "js/aos.js" %}></script>
-	  <script src={% static "js/bootstrap.bundle.min.js" %}></script>
 	  <script src={% static "js/scrollax.min.js" %}></script>
 	  <script src={% static "js/main.js" %}></script>
       <script src={% static "js/shedule.js" %}></script>
