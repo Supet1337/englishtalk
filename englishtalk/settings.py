@@ -194,3 +194,5 @@ EMAIL_HOST_PASSWORD = 'zojdrhyddxdtbeag'
 DEFAULT_FROM_EMAIL = 'noreply.englishtalk@gmail.com'
 EMAIL_USE_SSL = True
 
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True

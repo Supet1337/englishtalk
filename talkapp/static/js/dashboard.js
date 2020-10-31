@@ -153,8 +153,11 @@ const options = {
     roomName: room_name,
     width: '100%',
     height: 300,
-    configOverwrite: { defaultLanguage: 'ru',
-     enableClosePage: false},
+    configOverwrite: {
+        defaultLanguage: 'ru',
+        enableClosePage: false,
+        enableWelcomePage: false
+    },
     interfaceConfigOverwrite: {
         APP_NAME : "English-talk meet",
         DEFAULT_REMOTE_DISPLAY_NAME : 'Ученик',

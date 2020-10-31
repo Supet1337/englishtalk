@@ -112,9 +112,13 @@
         width: 250px;
     }
 
+    #chat {
+        height: 100%;
+    }
+
     #right-sidebar-wrapper {
-        width: 450px;
-        height: 300px;
+        width: 27%;
+        height: 30%;
     }
 
     #wrapper.left-toggled #left-sidebar-wrapper {
