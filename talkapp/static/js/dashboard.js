@@ -58,6 +58,9 @@ $(document).ready(function(){
                                      '<a class="btn btn-white" style="border-radius: 0" id="buttonCollapseVideo'+id+'" data-toggle="collapse" href="#collapseVideo'+id+'" role="button" aria-expanded="false" aria-controls="collapseVideo'+id+'">'+
                                         'Видеоматериалы'+
                                      '</a>'+
+                                     '<a class="btn btn-white bookbtn" id="zmbtn" onclick="zoom()" style="border-radius: 0; color: #FFA500">'+
+                                        'Режим учебника'+
+                                     '</a>'+
                                  '</div>'+
                                  '<div class="collapse" id="collapseAudio'+id+'">'+
                                  '</div>'+
@@ -217,3 +220,29 @@ $("#ddd3").click(function () {
     $("#dd0").toggleClass("active");
 
 })
+var zoomS = 0;
+var pageWidth = document.body.offsetWidth;
+function zoom() {
+
+            if (pageWidth >= 1024 && pageWidth < 1440){
+                document.getElementById("menu-toggle-right").style.marginTop = "10px";
+
+            }
+            else if (pageWidth >= 1440){
+                document.getElementById("menu-toggle-right").style.marginTop = "8px";
+            }
+            zoomS += 1;
+            $("#wrapper").toggleClass("left-toggled");
+            if (zoomS % 2 != 0){
+                document.body.className += ' zoom';
+                $('html, body').animate({scrollTop:315}, 'fast');
+            }
+            else{
+                document.body.className -= ' zoom';
+            }
+        };
+
+
+
+
+

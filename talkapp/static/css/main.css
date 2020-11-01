@@ -159,7 +159,7 @@
 }
 
 
-    @media (max-width: 767px){
+@media (max-width: 767px){
       .fixbut{
         position: fixed;
         z-index: 1;
@@ -402,5 +402,32 @@ footer .btn-primary:hover{
     }
     .crntcrs{
         font-size: 1rem !important;
+    }
+}
+
+@media screen and (min-width: 1024px){
+
+    .zoom {
+        zoom: 1.2;
+        -moz-transition: all 1s ease-out;
+        -o-transition: all 1s ease-out;
+        -webkit-transition: all 1s ease-out;
+    }
+}
+
+@media screen and (min-width: 1440px){
+
+    .zoom {
+        zoom: 1.4;
+        -moz-transition: all 1s ease-out;
+        -o-transition: all 1s ease-out;
+        -webkit-transition: all 1s ease-out;
+    }
+}
+
+@media screen and (max-width: 700px){
+
+    .bookbtn {
+        display: none;
     }
 }
