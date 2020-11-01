@@ -224,21 +224,21 @@ var zoomS = 0;
 var pageWidth = document.body.offsetWidth;
 function zoom() {
 
-            if (pageWidth >= 1024 && pageWidth < 1440){
-                document.getElementById("menu-toggle-right").style.marginTop = "10px";
-
-            }
-            else if (pageWidth >= 1440){
-                document.getElementById("menu-toggle-right").style.marginTop = "8px";
-            }
             zoomS += 1;
             $("#wrapper").toggleClass("left-toggled");
             if (zoomS % 2 != 0){
                 document.body.className += ' zoom';
                 $('html, body').animate({scrollTop:315}, 'fast');
-            }
+                if (pageWidth >= 1024 && pageWidth < 1440){
+                document.getElementById("menu-toggle-right").style.marginTop = "10px";
+                }
+                else if (pageWidth >= 1440){
+                    document.getElementById("menu-toggle-right").style.marginTop = "8px";
+                }
+        }
             else{
                 document.body.className -= ' zoom';
+                document.getElementById("menu-toggle-right").style.marginTop = "12px";
             }
         };
 
