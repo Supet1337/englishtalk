@@ -170,6 +170,16 @@ const options = {
         HIDE_KICK_BUTTON_FOR_GUESTS: true,
         MOBILE_DOWNLOAD_LINK_ANDROID: '',
         MOBILE_DOWNLOAD_LINK_IOS: '',
+        DISPLAY_WELCOME_PAGE_CONTENT: false,
+        GENERATE_ROOMNAMES_ON_WELCOME_PAGE: false,
+        TOOLBAR_BUTTONS: [
+        'microphone', 'camera', 'fullscreen',
+        'fodeviceselection', 'hangup',  'chat',
+        'settings',
+        'videoquality',
+        'tileview',
+         ],
+
      },
     parentNode: document.querySelector('#chat')
 };
@@ -223,7 +233,7 @@ $("#ddd3").click(function () {
 var zoomS = 0;
 var pageWidth = document.body.offsetWidth;
 function zoom() {
-
+            $("#header").hide();
             zoomS += 1;
             $("#wrapper").toggleClass("left-toggled");
             if (zoomS % 2 != 0){
@@ -238,6 +248,7 @@ function zoom() {
         }
             else{
                 document.body.className -= ' zoom';
+                $("#header").show();
                 document.getElementById("menu-toggle-right").style.marginTop = "12px";
             }
         };

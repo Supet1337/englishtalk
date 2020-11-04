@@ -108,6 +108,27 @@
     transition: all 0.5s ease;
 }
 }
+
+@media screen and (min-width: 768px) and (max-width: 1023px){
+        #right-sidebar-wrapper {
+            width: 48% !important;
+            height: 25% !important;
+    }
+    #wrapper.right-toggled #right-sidebar-wrapper {
+        width: 0 !important ;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1439px){
+        #right-sidebar-wrapper {
+            width: 37% !important ;
+            height: 24% !important;
+    }
+    #wrapper.right-toggled #right-sidebar-wrapper {
+        width: 0 !important;
+    }
+}
+
 @media(min-width:768px) {
     #wrapper {
         padding-left: 250px;
@@ -174,3 +195,7 @@
 .rotate2 {
   transform: rotate(-180deg);
   transition: all 1s ease;
+
+
+
+
