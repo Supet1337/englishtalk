@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Курсы</title>
+ {% endblock %}
+{% block cssfiles %}
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
+    <link rel="stylesheet" href={% static "css/animate.css"%}>
+    <link rel="stylesheet" href={% static "css/owl.carousel.min.css"%}>
+    <link rel="stylesheet" href={% static "css/owl.theme.default.min.css"%}>
+    <link rel="stylesheet" href={% static "css/magnific-popup.css"%}>
+    <link rel="stylesheet" href={% static "css/aos.css"%}>
+    <link rel="stylesheet" href={% static "css/style.css"%}>
+	<link rel="stylesheet" href={% static "css/main.css" %}>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <style>
+.bobobo{
+  		font-size: large;
+  		}
+	  @media (min-width: 1200px){
+	    .bebebe{
+	    text-align: center;
+	    }
+	    .bababa{
+	    text-align: center;
+	    font-size: 31px;
+	    }
+	    .why{
+	    padding-right: 200px !important;
+	    padding-left: 200px !important;
+	    }
+	    .wsmtt{
+	    font-size: 35px;
+	    }
+	    .wsmt{
+	    font-size: xx-large;
+	    }
+	  }
+	  @media(max-width: 1400px){
+	  .pararam{
+	  	font-size: large !important;
+	  	}
+	  }
+	  @media(min-width: 1440px){
+	  	.easystart{
+	  		padding-right: 350px;
+	  		padding-left: 350px;
+	  	}
+	  }
+    </style>
+{% endblock %}
+{% block content %}
+	  {% include "header.html"%}
+    <!-- END nav -->
+    
+    <section class="ftco-section ftco-counter img"  style="background-image: url({% static "images/bg_gray.jpg" %});" data-stellar-background-ratio="0.5">
+      	<div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-md-6 ml-auto ftco-animate">
+            <h1 class="mb-4 bebebe" style="color: white;font-weight: bold;">Выучить английский в онлайн-школе EnglishTalk</h1>
+			  <p class="bababa" style="color: white;">Учите язык в интерактивном учебнике с сильными преподавателями! </p>
+            <p style="text-align: center;">
+				{% if not request.user.is_authenticated %}
+				<a href="#" data-toggle="modal" data-target="#reqModal" class="btn btn-secondary bobobo py-3 mt-3" style="border-radius: 0;">Начать бесплатный урок</a>
+				{% endif %}
+				<a class="btn btn-secondary bobobo py-3 mt-3 video-btn" style="border-radius: 0;color: white" data-toggle="modal" data-src="https://www.youtube.com/embed/JUSuCm6MXVI" data-target="#myModalVid"><i style="color: #fff" class="fab fa-youtube"></i> Смотреть пример урока</a>
+			</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+	  <div class="modal fade" id="myModalVid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="max-width: 800px; margin: 30px auto;">
+    <div class="modal-content">
+      <div class="modal-body" style=" position:relative;padding:0px;">
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute;right:-30px;top:0;z-index:999;font-size:2rem;font-weight: normal;color:#fff;opacity:1;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+			<div class="embed-responsive embed-responsive-16by9">
+			  <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+			</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <section class="ftco-section">
+		<div class="row justify-content-center mb-5 pb-2" style="margin-right: 0;">
+          <div class="col-md-8 text-center heading-section ftco-animate">
+            <h2 class="mb-4">Полезный английский</h2>
+			  <p style="font-size: 25px">Подписывайтесь на телеграмм канал с рассылкой полезных лайфхаков для эффективного изучения английского языка</p>
+			  <a href="#"><button class="btn btn-primary asasas" style="font-size: xx-large;color: #323232;">Подписаться на телеграм канал</button></a>
+		  </div>
+        </div>
+			<div class="container-fluid px-4">
+				<div class="row">
+					{% for b in blogs %}
+					<div class="col-md-3 ftco-animate" style="text-align: center">
+						<div class="blog-entry" style="margin-right: 50px; width: 300px">
+						   <a href="blog/{{b.id}}" class="block-20 d-flex align-items-end" style="background-image: {{b.title_picture.url}}">
+							<div class="meta-date text-center p-2">
+							  <span class="day">{{b.date|date:'d'}}</span>
+							  <span class="mos">{{b.date|date:'F'}}</span>
+							  <span class="yr">{{b.date|date:'y'}}</span>
+							</div>
+						  </a>
+						  <div class="text bg-white p-4">
+							<h3 class="heading" style="min-height: 50px;"><a href="#">{{b.title}}</a></h3>
+							<p style="min-height: 85px;">{{b.description}}</p>
+							<div class="d-flex align-items-center mt-4">
+								<p class="mb-0"><a href="blog/{{b.id}}" class="btn btn-primary">Читать<span class="ion-ios-arrow-round-forward"></span></a></p>
+								<p class="ml-auto mb-0">
+									<a class="mr-2">{{b.author}}</a>
+								</p>
+							</div>
+						  </div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+        	</div>
+		</section>
+
+
+	  {% include "footer.html" %}
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+{% endblock %}
+{% block jsfiles %}
+  <script src={% static "js/jquery.min.js" %}></script>
+  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
+  <script src={% static "js/bootstrap.min.js" %}></script>
+  <script src={% static "js/jquery.waypoints.min.js" %}></script>
+  <script src={% static "js/jquery.stellar.min.js" %}></script>
+  <script src={% static "js/owl.carousel.min.js" %}></script>
+  <script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+  <script src={% static "js/aos.js" %}></script>
+  <script src={% static "js/scrollax.min.js" %}></script>
+  <script src={% static "js/main.js" %}></script>
+        <script>
+$(document).ready(function() {
+
+var $videoSrc;
+$('.video-btn').click(function() {
+    $videoSrc = $(this).data( "src" );
+});
+
+$('#myModalVid').on('shown.bs.modal', function (e) {
+$("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
+})
+
+$('#myModalVid').on('hide.bs.modal', function (e) {
+    $("#video").attr('src',$videoSrc);
+})
+});
+</script>
+{% endblock %}

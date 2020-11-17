@@ -21,6 +21,7 @@ urlpatterns = [
     path('dashboard', dashboard),
     path('logout', loggout),
     path('courses', courses),
+    path('blogs', blogs),
     path('blog/<int:number>', blog),
     path('video/<int:number>', video),
     path('video-constructor/<int:number>', video_constructor),

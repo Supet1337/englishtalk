@@ -392,93 +392,87 @@
     </section>
 
 <section class="ftco-section testimony-section" id="sreview">
-      <div class="container">
-		  <div data-aos="fade-center">
+	<div data-aos="fade-center">
         <div class="row justify-content-center mb-5 pb-2">
           <div class="col-md-8 text-center heading-section ftco-animate">
             <h2 class="mb-4">Что говорят студенты о нас?</h2>
             </div>
         </div>
 		  </div>
-        <div class="row ftco-animate justify-content-center">
-          <div class="col-md-12">
-            <div class="carousel-testimony owl-carousel">
-              <div class="item">
-                <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static "images/teacher-1.jpg" %}); width: 120px; height: 120px;">
-                  </div>
-                  <div class="text ml-2">
-                  	<span class="quote d-flex align-items-center justify-content-center">
-                      <i class="fas fa-quote-left"></i>
-                    </span>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Racky Henderson</p>
-                    <span class="position">Father</span>
-                  </div>
+	<div class='reviews'>
+  <!-- Panel one -->
+  <div class='panel'>
+    <img src="https://instagram.fhel5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/12063071_1650833928530908_1783277365_a.jpg?_nc_ht=instagram.fhel5-1.fna.fbcdn.net&_nc_ohc=6uE89C-kuVoAX8v1umV&_nc_tp=25&oh=355bc4bb2ee40073e533c68041f44177&oe=5FDC4D2C">
+    <p>
+		Занятия английским языком с Мариной очень нравятся.
+		Я достаточно долгое время изучаю язык и работала со многими преподавателями.
+		С Мариной очень легко и интересно заниматься. Она легко находит общий язык с учеником, проводит занятия с учетом интересов ученика.
+		Нет ощущения занудных школьных уроков. Марина очень быстро выявляет пробелы в знаниях и помогает их восполнить.
+		Всегда готова дать дополнительные ресурсы для изучения английского языка. Занятия с ней всегда проходят с пользой и быстро виден отличный результат.
+     </p>
+    <h7>Валерия</h7>
+	  <h7><a href="https://www.instagram.com/_valeriya_s/" target="_blank">@_valeriya_s</a></h7>
+  </div>
+  <!-- Panel Two -->
+  <div class='panel'>
+    <img src="https://instagram.fhel5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/116744281_304757250868113_746172410639679685_n.jpg?_nc_ht=instagram.fhel5-1.fna.fbcdn.net&_nc_ohc=rD43PzIb0Y8AX9UZck-&_nc_tp=25&oh=d73b33d48a4c40d8b9005da0541cdd40&oe=5FDBD7ED">
+    <p>
+      Хочу выразить огромную благодарность школе и ее коллективу, ведь благодаря их методам можно быстро и качественно подтянуть язык.
+	  Занятия очень эффективные и дают хороший результат! Отдельно хочу поблагодарить своего преподавателя Марину.
+	  Она очень грамотный педагог, который может найти подход к ученикам. Занятия проходят интересно и увлекательно,
+	  знание языка увеличивается. Еще раз большое спасибо Марине и всему коллективу!</p>
+    <h7>Анастасия</h7>
+	  <h7><a href="https://www.instagram.com/__anastasiaaa_s/" target="_blank">@__anastasiaaa_s</a></h7>
+  </div>
+  <!-- Panel Three -->
+  <div class='panel'>
+    <img src="https://instagram.fhel5-1.fna.fbcdn.net/v/t51.2885-19/s150x150/120013941_1784060288408551_6212682159127378647_n.jpg?_nc_ht=instagram.fhel5-1.fna.fbcdn.net&_nc_ohc=KOHK2M9hngAAX8gvIl6&_nc_tp=25&oh=abeecf7b39c43d056622d6075f148dbd&oe=5FDE9583">
+    <p>
+      Отличная возможность повышать свой уровень языка не выходя из дома! Очень интенсивно проходят уроки,
+	но тем не менее легко и весело, в основном на английском. Рекомендую данную школу.</p>
+    <h7>Анастасия</h7>
+	  <h7><a href="https://www.instagram.com/smallbee06/" target="_blank">@smallbee06</a></h7>
+  </div>
+</div>
+    </section>
+
+	<section class="ftco-section testimony-section bg-light reasons">
+		<div class="row justify-content-center mb-5 pb-2" style="margin-right: 0;">
+          <div class="col-md-8 text-center heading-section ftco-animate">
+            <h2 class="mb-4">Полезный английский</h2>
+			  <p style="font-size: 25px">Подписывайтесь на телеграмм канал с рассылкой полезных лайфхаков для эффективного изучения английского языка</p>
+			  <a href="#"><button class="btn btn-primary asasas" style="font-size: xx-large;color: #323232;">Подписаться на телеграм канал</button></a>
+		  </div>
+        </div>
+		<div class="row justify-content-center mb-5 pb-2" style="margin-right: 0;">
+	{% for b in blog %}
+            <div class="blog-entry" style="margin-right: 50px; width: 300px">
+               <a href="blog/{{b.id}}" class="block-20 d-flex align-items-end" style="background-image: {{b.title_picture.url}}">
+				<div class="meta-date text-center p-2">
+                  <span class="day">{{b.date|date:'d'}}</span>
+                  <span class="mos">{{b.date|date:'F'}}</span>
+                  <span class="yr">{{b.date|date:'y'}}</span>
                 </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static "images/teacher-2.jpg" %}); width: 120px; height: 120px;">
-                  </div>
-                  <div class="text ml-2">
-                  	<span class="quote d-flex align-items-center justify-content-center">
-                      <i class="fas fa-quote-left"></i>
-                    </span>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Henry Dee</p>
-                    <span class="position">Mother</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static "images/teacher-3.jpg" %}); width: 120px; height: 120px;">
-                  </div>
-                  <div class="text ml-2">
-                  	<span class="quote d-flex align-items-center justify-content-center">
-                      <i class="fas fa-quote-left"></i>
-                    </span>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Mark Huff</p>
-                    <span class="position">Mother</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static "images/teacher-4.jpg" %}); width: 120px; height: 120px;">
-                  </div>
-                  <div class="text ml-2">
-                  	<span class="quote d-flex align-items-center justify-content-center">
-                      <i class="fas fa-quote-left"></i>
-                    </span>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Rodel Golez</p>
-                    <span class="position">Mother</span>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="testimony-wrap d-flex">
-                  <div class="user-img mr-4" style="background-image: url({% static "images/teacher-1.jpg" %}); width: 120px; height: 120px;">
-                  </div>
-                  <div class="text ml-2">
-                  	<span class="quote d-flex align-items-center justify-content-center">
-                      <i class="fas fa-quote-left"></i>
-                    </span>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <p class="name">Ken Bosh</p>
-                    <span class="position">Mother</span>
-                  </div>
+              </a>
+              <div class="text bg-white p-4">
+                <h3 class="heading" style="min-height: 50px;"><a href="#">{{b.title}}</a></h3>
+                <p style="min-height: 85px;">{{b.description}}</p>
+                <div class="d-flex align-items-center mt-4">
+	                <p class="mb-0"><a href="blog/{{b.id}}" class="btn btn-primary">Читать<span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a class="mr-2">{{b.author}}</a>
+	                </p>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+        {% endfor %}
+			</div>
+		<div class="row justify-content-center mb-5 pb-2" style="margin-right: 0;">
+		<div class="col-md-8 text-center heading-section ftco-animate">
+			<a href="blogs"><button class="btn btn-primary asasas" style="font-size: xx-large;color: #323232;">Все полезные статьи</button></a>
+		</div>
+		</div>
+	</section>
 
 	  <section class="ftco-section testimony-section bg-light reasons">
 
@@ -613,6 +607,7 @@
 	  <script src={% static "js/main.js" %}></script>
       <script src={% static "js/index.js" %}></script>
   <script>
+  	speed = 600;
     $(document).ready(function() {
 
 var $videoSrc;

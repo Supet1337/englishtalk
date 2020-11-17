@@ -138,7 +138,16 @@ def ask_question(request):
     return HttpResponseRedirect('/')
 
 def index(request):
-    return render(request,'index.html')
+    context = {}
+    blogs = []
+    i = 0
+    for b in Blog.objects.all():
+        if i == 4:
+            break
+        blogs.append(b)
+        i += 1
+    context['blog'] = blogs
+    return render(request,'index.html', context)
 
 @login_required
 def dashboard(request):
@@ -311,6 +320,10 @@ def blog(request, number):
     context['blog'] = blog
     return render(request, 'blog-single.html', context)
 
+def blogs(request):
+    context = {}
+    context['blogs'] = Blog.objects.all()
+    return render(request, 'blogs.html', context)
 
 
 def video(request,number):

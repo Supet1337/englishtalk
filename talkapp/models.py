@@ -180,7 +180,7 @@ class Blog(models.Model):
     class Meta:
         verbose_name_plural = "Блоги"
 
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Автор')
+    author = models.CharField(max_length=50, verbose_name='Автор')
     content = models.CharField(max_length=10000,verbose_name='Контент')
     description = models.CharField(max_length=300,verbose_name='Описание')
     title_picture = models.ImageField(upload_to=blog_image_directory_path, blank=True,verbose_name='Превью')
