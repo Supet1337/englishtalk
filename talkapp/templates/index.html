@@ -447,7 +447,7 @@
 		<div class="row justify-content-center mb-5 pb-2" style="margin-right: 0;">
 	{% for b in blog %}
             <div class="blog-entry" style="margin-right: 50px; width: 300px">
-               <a href="blog/{{b.id}}" class="block-20 d-flex align-items-end" style="background-image: {{b.title_picture.url}}">
+               <a href="blog/{{b.id}}" class="block-20 d-flex align-items-end" style="background-image: '{{b.title_picture.url}}'">
 				<div class="meta-date text-center p-2">
                   <span class="day">{{b.date|date:'d'}}</span>
                   <span class="mos">{{b.date|date:'F'}}</span>
