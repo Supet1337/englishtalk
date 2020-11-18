@@ -103,7 +103,7 @@
 					{% for b in blogs %}
 					<div class="col-md-3 ftco-animate" style="text-align: center">
 						<div class="blog-entry" style="margin-right: 50px; width: 300px">
-						   <a href="blog/{{b.id}}" class="block-20 d-flex align-items-end" style="background-image: '{{b.title_picture.url}}'">
+						   <a href="blog/{{b.id}}" class="block-20 d-flex align-items-end" style="background-image: url({{b.title_picture.url}})">
 							<div class="meta-date text-center p-2">
 							  <span class="day">{{b.date|date:'d'}}</span>
 							  <span class="mos">{{b.date|date:'F'}}</span>
