@@ -43,7 +43,7 @@
 
 #right-sidebar-wrapper {
     z-index: 1000;
-    position: fixed;
+    position: absolute;
     right: 250px;
     width: 0;
     height: 100%;
@@ -196,6 +196,15 @@
   transform: rotate(-180deg);
   transition: all 1s ease;
 
-
+#draggable {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  z-index: 99999999;
+  border-radius: 50%;
+  background: blue;
+}
 
 
