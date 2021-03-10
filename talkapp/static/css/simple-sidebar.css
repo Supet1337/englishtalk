@@ -44,15 +44,10 @@
 #right-sidebar-wrapper {
     z-index: 1000;
     position: absolute;
-    right: 250px;
-    width: 0;
+    right: 0;
+    width: 250px;
     height: 100%;
-    margin-right: -250px;
     background: #000;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
 }
 
 #wrapper.left-toggled #left-sidebar-wrapper {
@@ -60,7 +55,7 @@
 }
 
 #wrapper.right-toggled #right-sidebar-wrapper {
-    width: 250px;
+    display: none;
 }
 
 #page-content-wrapper {

@@ -401,7 +401,7 @@
             $(document).ready(function () {
             var div = document.getElementById('right-sidebar-wrapper');
             var listener = function(e) {
-                if (e.pageX > 300 && e.pageX < 1500){
+                if (e.pageX > 300 && e.pageX < 1350 && e.pageY > 325 && e.pageY < 840){
                     div.style.left = e.pageX - 20 + "px";
                     div.style.top = e.pageY - 270 + "px";
                 }
@@ -412,7 +412,7 @@
                 document.addEventListener('mousemove', listener);
             });
 
-            div.addEventListener('mouseup', e => {
+            document.addEventListener('mouseup', e => {
                 document.removeEventListener('mousemove', listener);
             });
         var a = 0;
