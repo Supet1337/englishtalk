@@ -9,5 +9,9 @@ services:
     ports:
       - "443:443"
       - "80:80"
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "127.0.0.1:6378:6378"
 
 

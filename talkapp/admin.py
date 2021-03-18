@@ -4,7 +4,7 @@ from .forms import *
 import nested_admin
 from .models import DefaultLesson, Lesson_video, Lesson_audio, UserAdditional, Teacher, DefaultCourse,\
     Blog, UserCourse, UserLesson, VideoPractiseWord, VideoPractise, VideoPractiseConstructor,VideoPractiseListening,\
-    VideoCategory
+    VideoCategory, ChatRoom, ChatMessage
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 admin.site.site_header = 'Englishtalk администрирование'
@@ -112,5 +112,7 @@ class VideoPractiseAdmin(admin.ModelAdmin):
     def author_name(self,obj):
         return obj.author.first_name
 
+
 admin.site.register(VideoCategory)
+admin.site.register(ChatRoom)
 admin.site.unregister(Group)

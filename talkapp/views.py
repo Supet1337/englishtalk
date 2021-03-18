@@ -67,12 +67,18 @@ def send_request_view(request):
         if len(User.objects.filter(email=request.POST.get('email'))) > 0:
             messages.error(request, 'Пользователь с такой почтой уже существует.')
         else:
+            roomName = get_random_string(length=32)
             user.save()
             req = UserAdditional()
             phone_number = request.POST.get('phone')
             req.user = user
             req.phone_number = phone_number
+            req.video_chat = roomName
             req.save()
+            room = ChatRoom()
+            room.name = roomName
+            room.student = user
+            room.save()
             html_message = render_to_string('request_mail.html', {'email': user.email,
                                                                   'password': password
                                                                   })
@@ -353,3 +359,9 @@ def view_404(request, exception):
 
 def view_500(request):
     return render(request, "errors/500.html")
+
+
+@login_required
+def test_chat(request):
+    chat = ChatRoom.objects.get(student=request.user)
+    return render(request, 'test_chat.html', {'chat': chat})

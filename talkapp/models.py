@@ -9,20 +9,27 @@ from django.conf import settings
 from django.contrib.auth.hashers import make_password
 from phonenumber_field.modelfields import PhoneNumberField
 
+
 def video_directory_path(instance, filename):
     return 'lessons/lesson_{0}/videos/{1}'.format(instance.lesson.id, filename)
+
 
 def audio_directory_path(instance, filename):
     return 'lessons/lesson_{0}/audio/{1}'.format(instance.lesson.id, filename)
 
+
 def teacher_image_directory_path(instance, filename):
     return 'lessons/teacher_{0}/{1}'.format(instance.user.id, filename)
+
 
 def blog_image_directory_path(instance, filename):
     return 'blogs/blog_{0}/{1}'.format(instance.id, filename)
 
+
 def video_image_directory_path(instance, filename):
     return 'Videos/video_{0}/{1}'.format(instance.id, filename)
+
+
 
 class Teacher(models.Model):
 
@@ -31,6 +38,8 @@ class Teacher(models.Model):
 
     user = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Пользователь')
     image = models.ImageField(upload_to=teacher_image_directory_path, blank=True,verbose_name='Фотография')
+
+
     def __str__(self):
         return self.user.username
 
@@ -68,6 +77,7 @@ class DefaultCourse(models.Model):
     def __str__(self):
         return self.name
 
+
 # Create your models here.
 class DefaultLesson(models.Model):
     course = models.ForeignKey(to=DefaultCourse, on_delete=models.CASCADE,verbose_name='Курс')
@@ -84,6 +94,7 @@ class DefaultLesson(models.Model):
         return Lesson_video.objects.filter(lesson_id=self.id)
     def get_lesson_audios(self):
         return Lesson_audio.objects.filter(lesson_id=self.id)
+
 
 class UserCourse(models.Model):
     student = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Ученик')
@@ -158,6 +169,7 @@ class Lesson_audio(models.Model):
             'audio_name': self.name,
             }
 
+
 class UserAdditional(models.Model):
 
     class Meta:
@@ -165,7 +177,7 @@ class UserAdditional(models.Model):
 
     user = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Пользователь')
     phone_number = PhoneNumberField(verbose_name='Телефон')
-    video_chat = models.CharField(max_length=32, default=get_random_string(length=32),verbose_name='Код личного видеочата')
+    video_chat = models.CharField(max_length=32, verbose_name='Код личного видеочата')
     paid_lessons = models.IntegerField(verbose_name='Кол-во оплаченных занятий', default=1)
 
     LESSON_TIME_CHOISES = [
@@ -174,6 +186,7 @@ class UserAdditional(models.Model):
     ]
 
     lesson_time = models.BooleanField(choices=LESSON_TIME_CHOISES, default=False,verbose_name='Продолжительность уроков')
+
 
 class Blog(models.Model):
 
@@ -187,6 +200,7 @@ class Blog(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100,verbose_name='Заголовок')
 
+
 class VideoCategory(models.Model):
     name = models.CharField(max_length=32,verbose_name='Название категории')
 
@@ -198,6 +212,7 @@ class VideoCategory(models.Model):
 
     def get_videos(self):
         return VideoPractise.objects.filter(category=self)
+
 
 class VideoPractise(models.Model):
     author = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Автор')
@@ -212,10 +227,12 @@ class VideoPractise(models.Model):
     def get_words(self):
         return VideoPractiseWord.objects.filter(video_practise=self)
 
+
 class VideoPractiseWord(models.Model):
     video_practise = models.ForeignKey(to=VideoPractise, on_delete=models.CASCADE,verbose_name='Видеопрактика')
     word = models.CharField(max_length=100,verbose_name='Слово на английском')
     translate = models.CharField(max_length=100,verbose_name='Перевод')
+
 
 class VideoPractiseConstructor(models.Model):
     video_practise = models.ForeignKey(to=VideoPractise, on_delete=models.CASCADE,verbose_name='Видеопрактика')
@@ -234,6 +251,7 @@ class VideoPractiseConstructor(models.Model):
 
     def get_end_seconds(self):
         return int(datetime.timedelta(hours=self.video_end_time.hour,minutes=self.video_end_time.minute,seconds=self.video_end_time.second).total_seconds())
+
 
 class VideoPractiseListening(models.Model):
     video_practise = models.ForeignKey(to=VideoPractise, on_delete=models.CASCADE,verbose_name='Видеопрактика')
@@ -261,3 +279,18 @@ class VideoPractiseListening(models.Model):
 
     def get_end_seconds(self):
         return int(datetime.timedelta(hours=self.video_end_time.hour,minutes=self.video_end_time.minute,seconds=self.video_end_time.second).total_seconds())
+
+
+class ChatRoom (models.Model):
+    name = models.CharField(max_length=32)
+    student = models.ForeignKey(to=User, on_delete=models.CASCADE)
+
+    def get_messages(self):
+        return ChatMessage.objects.filter(room=self)
+
+
+class ChatMessage(models.Model):
+    message = models.CharField(max_length=512)
+    timestamp = models.DateTimeField(auto_now_add=True, editable=False)
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    room = models.ForeignKey(to=ChatRoom, on_delete=models.CASCADE)

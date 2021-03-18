@@ -26,4 +26,5 @@ urlpatterns = [
     path('video/<int:number>', video),
     path('video-constructor/<int:number>', video_constructor),
     path('video-listening/<int:number>', video_listening),
+    path('test', test_chat)
 ]

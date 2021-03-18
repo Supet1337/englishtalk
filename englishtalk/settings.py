@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -43,6 +42,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'nested_admin',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -75,7 +75,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'englishtalk.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -85,7 +84,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -105,7 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -119,25 +116,20 @@ USE_L10N = True
 
 DATE_FORMAT = 'd.m G:i'
 
-
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = "./media/"
 
 STATIC_ROOT = "./collectedstatic"
 
-ASGI_APPLICATION = 'englishtalk.routing.application'
 SECURE_SSL_REDIRECT = False
 
 CKEDITOR_UPLOAD_PATH = 'blog/'
 # s3 serve static
-
 
 
 CKEDITOR_BROWSE_SHOW_DIRS = True
@@ -153,13 +145,13 @@ CKEDITOR_CONFIGS = {
              '-', 'Image',
              '-', 'Source',
              '-', 'NumberedList', 'BulletedList'
-            ],
+             ],
             ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
              '-', 'Font', 'FontSize', 'TextColor',
              '-', 'Outdent', 'Indent',
              '-', 'HorizontalRule',
              '-', 'Blockquote'
-            ]
+             ]
         ],
         'height': 500,
         'width': '100%',
@@ -167,8 +159,6 @@ CKEDITOR_CONFIGS = {
         'forcePasteAsPlainText': True
     }
 }
-
-
 
 AWS_ACCESS_KEY_ID = "SCW2K49F6ZF9M296YGH2"
 AWS_SECRET_ACCESS_KEY = "4fd5fb51-ff07-414f-8005-4b707680ce95"
@@ -196,3 +186,15 @@ EMAIL_USE_SSL = True
 
 if not DEBUG:
     SECURE_SSL_REDIRECT = True
+
+ASGI_APPLICATION = 'englishtalk.routing.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            # "hosts": [('127.0.0.1', 6379)],
+            # "hosts": [('localhost', 6379)],
+            "hosts": [('redis', '6379')],
+        },
+    },
+}
