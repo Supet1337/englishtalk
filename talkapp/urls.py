@@ -18,7 +18,7 @@ urlpatterns = [
     path('ajax_load_lessons_audios/<int:number>', ajax_load_lessons_audios),
     path('accounts/password_reset/done/', password_reset_done),
     path('accounts/reset/done/', password_reset_complete),
-    path('dashboard', dashboard),
+    path('dashboard/<int:number>', dashboard),
     path('logout', loggout),
     path('courses', courses),
     path('blogs', blogs),

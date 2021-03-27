@@ -1,9 +1,14 @@
 'use strict';
 
 // var roomName = {{ room_name_json }};
-var roomName = 'st';
+var roomName = room;
+
+function scrl() {
+    $("#chat-log").animate({ scrollTop: 100000 }, 50);
+    console.log("sssssssssss")
+}
 var ws = 'ws://';
-if(window.location.protocol=="https:"){ ws = 'wss://'; }
+if(window.location.protocol=="https:"){ ws = 'wss://';}
 var chatSocket = new WebSocket(ws + window.location.host + '/ws/chat/' + roomName + '/');
 
 chatSocket.onmessage = function(e) {
@@ -11,7 +16,8 @@ chatSocket.onmessage = function(e) {
 	// var message = data['message'];
 	// document.querySelector('#chat-log').value += (message + '\n');
 	// document.querySelector('#chat-log').append('<li>'+message+'</li>');
-	$('#chat-log').append('<li><span>'+data['user']+'</span> '+data['message']+'</li>');
+	$('#chat-log').append('<li class="p-2"><span>'+data['user']+'</span> '+data['message']+'</li>');
+	$('#chat-log').animate({ scrollTop: 100000 }, 50);
 };
 
 chatSocket.onclose = function(e) {
@@ -28,10 +34,11 @@ document.querySelector('#chat-message-input').onkeyup = function(e) {
 document.querySelector('#chat-message-submit').onclick = function(e) {
 	var messageInputDom = document.querySelector('#chat-message-input');
 	var message = messageInputDom.value;
-	chatSocket.send(JSON.stringify({
-		'message': message,
-		'room': room,
-	}));
-
+	if (message != '' && message != ' '){
+        chatSocket.send(JSON.stringify({
+            'message': message,
+            'room': room,
+        }));
+    }
 	messageInputDom.value = '';
 };

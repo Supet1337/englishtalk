@@ -40,7 +40,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             {
                 'type': 'chat_message',
                 'message': message,
-                'username': self.scope["user"].username
+                'username': self.scope["user"].first_name
             }
         )
 

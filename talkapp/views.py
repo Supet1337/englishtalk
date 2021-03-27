@@ -156,8 +156,12 @@ def index(request):
     return render(request,'index.html', context)
 
 @login_required
-def dashboard(request):
+def dashboard(request, number):
     context = {}
+    chat = ChatRoom.objects.get(student=User.objects.get(id=number))
+    if request.user.id != number:
+        return HttpResponseRedirect('/dashboard/'+str(request.user.id))
+    context["chat"] = chat
     is_teacher = False
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
