@@ -331,6 +331,10 @@ def video(request,number):
     context['video'] = VideoPractise.objects.get(id=number)
     return render(request,'video.html', context)
 
+def agoraa(request):
+
+    return render(request,'agoraa.html')
+
 def video_constructor(request,number):
     context = {}
     video = VideoPractise.objects.get(id=number)

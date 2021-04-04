@@ -3,6 +3,7 @@ from .views import *
 
 urlpatterns = [
     path('', index),
+    path('agoraa', agoraa),
     path('login-user', login_user),
     path('change_email', change_email),
     path('send_request_v', send_request_view),
