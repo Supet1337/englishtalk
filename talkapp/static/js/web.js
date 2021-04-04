@@ -5,25 +5,25 @@ var localTracks = {
   videoTrack: null,
   audioTrack: null
 };
+
+var localTrackState = {
+  videoTrackEnabled: true,
+  audioTrackEnabled: true
+}
+
+
 var remoteUsers = {};
 // Agora client options
 var options = {
-  appid: 'a07c936c45614906ab18e0649af41cd9',
-  channel: 'aaa',
-  uid: null,
-  token: null
+  appid: '75e50629d75d4fd59c9d5fc9c71c5a59',
+  channel: 'amogus',
+  uid: null
 };
 
 // the demo can auto join channel with params in url
 $(() => {
   var urlParams = new URL(location.href).searchParams;
-  options.appid = urlParams.get("appid");
-  options.channel = urlParams.get("channel");
-  options.token = urlParams.get("token");
   if (options.appid && options.channel) {
-    $("#appid").val(options.appid);
-    $("#token").val(options.token);
-    $("#channel").val(options.channel);
     $("#join-form").submit();
   }
 })
@@ -32,9 +32,6 @@ $("#join-form").submit(async function (e) {
   e.preventDefault();
   $("#join").attr("disabled", true);
   try {
-    options.appid = $("#appid").val();
-    options.token = $("#token").val();
-    options.channel = $("#channel").val();
     await join();
     if(options.token) {
       $("#success-alert-with-token").css("display", "block");
@@ -51,6 +48,22 @@ $("#join-form").submit(async function (e) {
 
 $("#leave").click(function (e) {
   leave();
+})
+
+$("#mute-audio").click(function (e) {
+  if (localTrackState.audioTrackEnabled) {
+    muteAudio();
+  } else {
+    unmuteAudio();
+  }
+});
+
+$("#mute-video").click(function (e) {
+  if (localTrackState.videoTrackEnabled) {
+    muteVideo();
+  } else {
+    unmuteVideo();
+  }
 })
 
 async function join() {
@@ -130,4 +143,42 @@ function handleUserUnpublished(user) {
   const id = user.uid;
   delete remoteUsers[id];
   $(`#player-wrapper-${id}`).remove();
+}
+
+function hideMuteButton() {
+  $("#mute-video").css("display", "none");
+  $("#mute-audio").css("display", "none");
+}
+
+function showMuteButton() {
+  $("#mute-video").css("display", "inline-block");
+  $("#mute-audio").css("display", "inline-block");
+}
+
+async function muteAudio() {
+  if (!localTracks.audioTrack) return;
+  await localTracks.audioTrack.setEnabled(false);
+  localTrackState.audioTrackEnabled = false;
+  $("#mute-audio").text("Unmute Audio");
+}
+
+async function muteVideo() {
+  if (!localTracks.videoTrack) return;
+  await localTracks.videoTrack.setEnabled(false);
+  localTrackState.videoTrackEnabled = false;
+  $("#mute-video").text("Unmute Video");
+}
+
+async function unmuteAudio() {
+  if (!localTracks.audioTrack) return;
+  await localTracks.audioTrack.setEnabled(true);
+  localTrackState.audioTrackEnabled = true;
+  $("#mute-audio").text("Mute Audio");
+}
+
+async function unmuteVideo() {
+  if (!localTracks.videoTrack) return;
+  await localTracks.videoTrack.setEnabled(true);
+  localTrackState.videoTrackEnabled = true;
+  $("#mute-video").text("Mute Video");
 }
