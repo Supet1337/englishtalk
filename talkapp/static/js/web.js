@@ -1,4 +1,3 @@
-// create Agora client
 var client = AgoraRTC.createClient({ mode: "rtc", codec: "vp8" });
 
 var localTracks = {
@@ -9,34 +8,28 @@ var localTracks = {
 var localTrackState = {
   videoTrackEnabled: true,
   audioTrackEnabled: true
-}
+};
 
 
 var remoteUsers = {};
 // Agora client options
-var options = {
+var options1 = {
   appid: '75e50629d75d4fd59c9d5fc9c71c5a59',
-  channel: 'amogus',
+  channel: room,
   uid: null
 };
 
 // the demo can auto join channel with params in url
-$(() => {
-  var urlParams = new URL(location.href).searchParams;
-  if (options.appid && options.channel) {
-    $("#join-form").submit();
-  }
-})
 
 $("#join-form").submit(async function (e) {
   e.preventDefault();
   $("#join").attr("disabled", true);
   try {
     await join();
-    if(options.token) {
+    if(options1.token) {
       $("#success-alert-with-token").css("display", "block");
     } else {
-      $("#success-alert a").attr("href", `index.html?appid=${options.appid}&channel=${options.channel}&token=${options.token}`);
+      $("#success-alert a").attr("href", `index.html?appid=${options1.appid}&channel=${options1.channel}&token=${options1.token}`);
       $("#success-alert").css("display", "block");
     }
   } catch (error) {
@@ -73,9 +66,9 @@ async function join() {
   client.on("user-unpublished", handleUserUnpublished);
 
   // join a channel and create local tracks, we can use Promise.all to run them concurrently
-  [ options.uid, localTracks.audioTrack, localTracks.videoTrack ] = await Promise.all([
+  [ options1.uid, localTracks.audioTrack, localTracks.videoTrack ] = await Promise.all([
     // join the channel
-    client.join(options.appid, options.channel, options.token || null),
+    client.join(options1.appid, options1.channel, options1.token || null),
     // create local tracks, using microphone and camera
     AgoraRTC.createMicrophoneAudioTrack(),
     AgoraRTC.createCameraVideoTrack()
@@ -83,7 +76,7 @@ async function join() {
   
   // play local video track
   localTracks.videoTrack.play("local-player");
-  $("#local-player-name").text(`localVideo(${options.uid})`);
+  $("#local-player-name").text(`localVideo(${options1.uid})`);
 
   // publish local tracks to channel
   await client.publish(Object.values(localTracks));

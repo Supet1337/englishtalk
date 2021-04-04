@@ -151,39 +151,7 @@ $(document).ready(function(){
 
 
 
-const domain = 'meet.jit.si';
-const options = {
-    roomName: room_name,
-    width: '100%',
-    height: 300,
-    configOverwrite: {
-        defaultLanguage: 'ru',
-        enableClosePage: false,
-        enableWelcomePage: false
-    },
-    interfaceConfigOverwrite: {
-        APP_NAME : "English-talk meet",
-        DEFAULT_REMOTE_DISPLAY_NAME : 'Ученик',
-        DEFAULT_LOCAL_DISPLAY_NAME : "Я",
-        JITSI_WATERMARK_LINK : "",
-        NATIVE_APP_NAME : "English-talk meet",
-        HIDE_KICK_BUTTON_FOR_GUESTS: true,
-        MOBILE_DOWNLOAD_LINK_ANDROID: '',
-        MOBILE_DOWNLOAD_LINK_IOS: '',
-        DISPLAY_WELCOME_PAGE_CONTENT: false,
-        GENERATE_ROOMNAMES_ON_WELCOME_PAGE: false,
-        TOOLBAR_BUTTONS: [
-        'microphone', 'camera', 'fullscreen',
-        'fodeviceselection', 'hangup',  'chat',
-        'settings',
-        'videoquality',
-        'tileview',
-         ],
 
-     },
-    parentNode: document.querySelector('#chat')
-};
-const api = new JitsiMeetExternalAPI(domain, options);
 
 
 $(document).ready(function(){
