@@ -9,7 +9,7 @@
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item dropdown nav-user nav-user-mobile">
                              {% if request.user.is_authenticated %}
-                                <a class="nav-link" href="../dashboard/{{request.user.id}}">Личный кабинет</a>
+                                <a class="nav-link" href="../dashboard">Личный кабинет</a>
                             {% else %}
                             <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="#" id="navbarDropdownMenuLink2" data-toggle="modal" data-target="#myModal1" aria-haspopup="true" aria-expanded="false">Войти</a>
                             {% endif %}
@@ -92,7 +92,7 @@
                                     <img alt="User Avatar" style="width: 46px; height: 40px;" src={% static "images/white_logotip.png" %}>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" style="background-color: #37bdc7;top: 90%;box-shadow: 0 1px 9px black;" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" style="" href="../dashboard/{{request.user.id}}">Личный кабинет</a>
+                                <a class="dropdown-item" style="" href="../dashboard">Личный кабинет</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="/logout">Выход</a>
                             </div>

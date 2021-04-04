@@ -3,10 +3,13 @@
 // var roomName = {{ room_name_json }};
 var roomName = room;
 
-function scrl() {
+
+$("#d1").show(function(){
     $("#chat-log").animate({ scrollTop: 100000 }, 50);
     console.log("sssssssssss")
-}
+
+})
+
 var ws = 'ws://';
 if(window.location.protocol=="https:"){ ws = 'wss://';}
 var chatSocket = new WebSocket(ws + window.location.host + '/ws/chat/' + roomName + '/');

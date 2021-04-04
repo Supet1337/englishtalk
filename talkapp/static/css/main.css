@@ -511,3 +511,21 @@ png images background
 .inpt:focus {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
+
+
+#join-form {
+  margin-top: 10px;
+}
+
+.join-info-text {
+  margin-bottom: 2px;
+}
+
+.player {
+  height: 160px;
+}
+
+.btnmute{
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}

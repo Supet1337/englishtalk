@@ -26,12 +26,6 @@ $("#join-form").submit(async function (e) {
   $("#join").attr("disabled", true);
   try {
     await join();
-    if(options1.token) {
-      $("#success-alert-with-token").css("display", "block");
-    } else {
-      $("#success-alert a").attr("href", `index.html?appid=${options1.appid}&channel=${options1.channel}&token=${options1.token}`);
-      $("#success-alert").css("display", "block");
-    }
   } catch (error) {
     console.error(error);
   } finally {
@@ -114,7 +108,6 @@ async function subscribe(user, mediaType) {
   if (mediaType === 'video') {
     const player = $(`
       <div id="player-wrapper-${uid}">
-        <p class="player-name">remoteUser(${uid})</p>
         <div id="player-${uid}" class="player"></div>
       </div>
     `);
@@ -152,26 +145,30 @@ async function muteAudio() {
   if (!localTracks.audioTrack) return;
   await localTracks.audioTrack.setEnabled(false);
   localTrackState.audioTrackEnabled = false;
-  $("#mute-audio").text("Unmute Audio");
+  $("#mute-audio").html('<i class="fas fa-microphone-slash"></i>');
+  $("#mute-audio").toggleClass('btnmute')
 }
 
 async function muteVideo() {
   if (!localTracks.videoTrack) return;
   await localTracks.videoTrack.setEnabled(false);
   localTrackState.videoTrackEnabled = false;
-  $("#mute-video").text("Unmute Video");
+  $("#mute-video").html('<i class="fas fa-video-slash"></i>');
+  $("#mute-video").toggleClass('btnmute')
 }
 
 async function unmuteAudio() {
   if (!localTracks.audioTrack) return;
   await localTracks.audioTrack.setEnabled(true);
   localTrackState.audioTrackEnabled = true;
-  $("#mute-audio").text("Mute Audio");
+  $("#mute-audio").html('<i class="fas fa-microphone"></i>');
+  $("#mute-audio").toggleClass('btnmute')
 }
 
 async function unmuteVideo() {
   if (!localTracks.videoTrack) return;
   await localTracks.videoTrack.setEnabled(true);
   localTrackState.videoTrackEnabled = true;
-  $("#mute-video").text("Mute Video");
+  $("#mute-video").html('<i class="fas fa-video"></i>');
+  $("#mute-video").toggleClass('btnmute')
 }

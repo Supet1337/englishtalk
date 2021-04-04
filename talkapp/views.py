@@ -156,12 +156,8 @@ def index(request):
     return render(request,'index.html', context)
 
 @login_required
-def dashboard(request, number):
+def dashboard(request):
     context = {}
-    chat = ChatRoom.objects.get(student=User.objects.get(id=number))
-    if request.user.id != number:
-        return HttpResponseRedirect('/dashboard/'+str(request.user.id))
-    context["chat"] = chat
     is_teacher = False
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
@@ -174,6 +170,8 @@ def dashboard(request, number):
     else:
         crs = UserCourse.objects.filter(student=request.user)
         context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
+        chat = ChatRoom.objects.get(student=request.user)
+        context["chat"] = chat
     lessons = UserLesson.objects.filter(user_course__in=crs)
     if len(lessons) == 0:
         context["lsn"] = 0
@@ -195,6 +193,8 @@ def dashboard(request, number):
                 context['cur_lsn'] = l
                 if is_teacher:
                     context['video_chat'] = UserAdditional.objects.get(user=l.user_course.student).video_chat
+                    chat = ChatRoom.objects.get(student=l.user_course.student)
+                    context["chat"] = chat
                 context['now_lsn'] = True
                 flag = True
             elif end < datetime.datetime.now():
@@ -369,7 +369,3 @@ def view_500(request):
     return render(request, "errors/500.html")
 
 
-@login_required
-def test_chat(request):
-    chat = ChatRoom.objects.get(student=request.user)
-    return render(request, 'test_chat.html', {'chat': chat})
