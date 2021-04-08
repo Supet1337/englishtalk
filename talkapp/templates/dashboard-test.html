@@ -1,0 +1,475 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}
+		<title>Онлайн-платформа</title>
+{% endblock %}
+{% block cssfiles %}
+        <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+        <link rel="stylesheet" href={% static "css/shedule.css" %}>
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/overcast/jquery-ui.css" />
+        <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
+        <link rel="stylesheet" href={% static "css/animate.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
+	    <link rel="stylesheet" href={% static "css/aos.css" %}>
+	    <link rel="stylesheet" href={% static "css/style.css" %}>
+		<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
+        <link rel="stylesheet" href={% static "css/main.css" %}>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+
+{% endblock %}
+    {% block content %}
+    <div class="d-flex right-toggled" id="wrapper">
+    {% include "leftsidebar.html" %}
+    {% include "right-sidebar.html" %}
+    <!-- Page Content -->
+    <div  id="page-content-wrapper">
+        <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="d0" role="tabpanel" aria-labelledby="dd0" style="margin: 20px;"><div role="tabpanel">
+            <div class="card mb-3" style="background: #a4cee7; border-color: #a4cee7">
+  <div class="row no-gutters">
+    <div class="col-md-4" style="position: relative">
+      <img src="{% static "images/welcome.jpg" %}" style="border-radius: 16px;bottom: 0;position: absolute;max-height: 395.95px" class="card-img">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body" style="padding-bottom: 0;padding-top: 0">
+          <img src="{% static "images/welcome2.jpg" %}" style="border-radius: 16px;" class="card-img">
+          <div class="card-title" style="text-align: center"><h3  style="color: white">Добро пожаловать в ваш личный кабинет, {{request.user.first_name  | safe}}!</h3></div>
+          <p class="card-text wlcm1"  style="color: white;text-align: center;margin-bottom: 0;font-size: larger">Команда EnglishTalk приветствует Вас в Личном кабинете! </p>
+          <p class="card-text wlcm2" style="color: white;text-align: center;font-size: larger">Если у Вас возникли вопросы, мы с радостью на них ответим или даже просто будем рады поболтать 😊</p>
+          <div class="ftco-footer-widget">
+              <div class="row">
+                  <div class="col" >
+              <a href="../accounts/password_reset"><button class="btn btn-primary mb-3"><i class="fa fa-lock"></i> Сменить пароль</button></a>
+              <br>
+                  </div>
+                  <div class="col">
+              <a data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" data-parent="#parent" role="button" aria-controls="collapseExample2" href="#"><button id="collapse_post" class="btn btn-primary  mb-3  "> <i class="fas fa-envelope"></i> Сменить почту</button></a>
+              <div class="collapse text-left clpsmed" id="collapseExample2">
+              <form method="post" action="../change_email">
+                                    {%csrf_token%}
+                                <div id="parent" class="card-body">
+                                            <div class="card card-body" style="max-width:300px">
+                                                <input type="email" id="change_email" name="change_email" class="form-control" placeholder="Введите email" required>
+                                                <input type="submit" class= "btn btn-success mt-1" style="width:100%" value="Сохранить изменения">
+                                            </div>
+                                </div>
+
+              </form>
+                  </div>
+                  </div>
+
+                  <div class="col">
+              <a href="https://t.me/Svvvnd" class="btn btn-success mb-1"><i class="fab fa-telegram"></i> Связаться с куратором</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+            <div class="card border-info mb-3">
+            <section class="ftco-services ftco-no-pb">
+                <div class="container-wrap">
+                    <div class="row no-gutters">
+                        <div class="card-group" style="width:100%">
+                        <div class="card bg-white text-center" >
+                              <div class="card-body">
+                                <h5 style="font-weight: bold" class="card-title crntcrs">Текущий курс обучения</h5>
+                                  {% if course %}
+                                <p class="card-text ">{{course}}</p>
+                                  {% else %}
+                                  <a class="btn btn-primary mb-2 w-100" href="courses">Выбрать подходяций курс</a>
+                                  {% endif %}
+                                  <img class="mt-5" src="{% static "images/kit.png" %}" style="width: auto; height: auto; margin-bottom: 35%"  align="center">
+                                 <a class="btn btn-primary  btnonln" style="white-space: pre-line;" id="ddd1" data-toggle="list" href="#d1" role="tab">Перейти в онлайн класс</a>
+                                  </div>
+                            </div>
+                        <div class="card bg-light text-center">
+                          <div class="card-body">
+                              <h5 style="font-weight: bold" class="card-title crntcrs">Преподаватель</h5>
+                              {% if teacher %}
+                              <div class="item">
+                                  {% if ava %}
+                              <img class="mt-2" id="teacher-img" src="{{ava}}" style="width: auto; height: auto; max-width: 150px;max-height: 150px; border-radius: 100%"  align="center">
+                                  {% elif ava == "Аватар" %}
+                                  <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;  border-radius: 100%"  align="center">
+                                  {% endif %}
+                              </div>
+                            <h5 class="card-title">{{teacher}}</h5>
+                              <p class="card-text txtteach" style="margin-bottom: 35%">Чтобы вы не соскучились, мы помесили сюда фото вашего преподавателя 😊</p>
+                              <a href="mailto:help.englishtalk@gmail.co?subject=Вопрос по Englishtalk" style="white-space: pre-line;" class="btn btn-primary btnteach "><i class="fas fa-envelope"></i>Написать преподавателю</a>
+                              <a href="https://t.me/Svvvnd" style="white-space: pre-line;" class="btn btn-success btncontman"><i class="fab fa-telegram"></i> Связаться с куратором</a>
+                              {% else %}
+                              <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
+                              <h5 class="card-title">У вас пока нет преподавателя</h5>
+                              {% endif %}
+                              <br>
+                              <br>
+                          </div>
+                        </div>
+                        <div class="card bg-white text-center" >
+                          <div class="card-body">
+                            <h5 style="font-weight: bold" class="card-title crntcrs">Следущее занятие</h5>
+                              <div style="background: radial-gradient(circle farthest-side at 30px 20px, #37bdc7, #3495c0); margin-bottom: 35%" class="card ">
+                                  {% if next_lsn %}
+                                   {% if now_lsn %}
+                                    <p class="card-text"><h3 style="color: white">Идёт сейчас</h3></p>
+                                    {% else %}
+                                  <div class="calendar mx-auto cldcard"><em class="cldem">{{next_lsn|date:'F'}}</em>{{next_lsn|date:'d'}}</div>
+                                   {% endif %}
+                                  {% else %}
+                                  <p class="card-text"><h3 style="color: white">У вас нет занятий</h3></p>
+                                  {% endif %}
+                              </div>
+                              <a class="btn btn-primary btnshdl" id="ddd3" data-toggle="list" href="#d3" role="tab" style="white-space: pre-line;">Перейти в расписание</a>
+                          </div>
+                        </div>
+                        <div class="card bg-light text-center" style="width:100%">
+                              <div class="card-body">
+                                <h5 style="font-weight: bold" class="card-title crntcrs">Баланс</h5>
+                                  <img class="mt-2" id="teacher-img" src="{% static "images/pay.png" %}" style="width: auto; height: auto; max-width: 150px;max-height: 150px;"  align="center">
+                                  <p class="card-text">Осталось:<h2 style="color: red"> {{paid_lessons}} </h2>
+                                   <p class="card-text" style="margin-bottom: 35%" >Занятия по <font color="red">{{lsn_time}}</font> минут</p>
+                                  <a class="btn btn-success btnblnc" href="../price" style="white-space: pre-line">Пополнить баланс</a>
+                              </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        </section>
+            </div>
+            <div class="card border-success mb-3 text-center">
+              <div class="card-header">Материалы для самоподготовки</div>
+              <div class="card-body text-success">
+                <h5 class="card-title">Учитесь и развивайтесь!</h5>
+                   <a class="btn btn-primary "  id="ddd8" data-toggle="list" href="#d8" role="tab">Перейти в блог</a>
+              </div>
+            </div>
+
+
+
+        </div>
+        </div>
+      <div class="tab-pane fade " id="d1" role="tabpanel" aria-labelledby="dd1">
+          <div class="card-group">
+          <div class="card">
+                  <div class="card-header">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Учебные материалы</a>
+                        </li>
+                    </ul>
+
+<div class="tab-content" id="myTabContent" style="height: 44em; overflow-y: scroll;">
+      <!-- <button class="btn btn-white fixbut" style="border-radius: 0px; float: left;margin-top: 12px;margin-left: 1rem" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> Подключить видеосвязь</button> -->
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="card-body" >
+                {% if lsn == 0 %}
+          <h2 style="text-align: center">Здесь будут отображаться ваши занятия</h2>
+                {% else %}
+                {% if cur_lsn %}
+                    <div class="card animate__animated animate__pulse animate__infinite infinite" style="width: 100%;text-align: center">
+                    <div class="card-header">
+                        Идет сейчас
+                    </div>
+                    <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="#" id="openDoc{{cur_lsn.id}}" style="font-size: x-large">{{cur_lsn.lesson.name}}</a></li>
+                    </ul>
+                    </div>
+                {% endif %}
+                {% if past_lsn %}
+                <div class="card mt-5" style="width: 100%;">
+                    <div class="card-header" style="text-align: center">
+                        Прошедшие занятия
+                    </div>
+          <div class="card-body">
+                {% for lesson in past_lsn %}
+                  <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        {{lesson.date}}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="#" id="openDoc{{lesson.id}}">{{lesson.lesson.name}}</a></li>
+                    </ul>
+                </div>
+                {% endfor %}
+              </div>
+                    </div>
+                {% endif %}
+
+                {% if future_lsn %}
+          <div class="card mt-3" style="width: 100%;">
+                    <div class="card-header" style="text-align: center">
+                        Предстоящие занятия
+                    </div>
+          <div class="card-body">
+                {% for lsnf in future_lsn %}
+                  <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        {{lsnf.date}}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item "><a href="#" id="openDoc{{lsnf.id}}">{{lsnf.lesson.name}}</a></li>
+                    </ul>
+                </div>
+                {% endfor %}
+              </div>
+              </div>
+                {% endif %}
+
+                {% endif %}
+              </div>
+  </div>
+
+</div>
+                </div>
+
+                  </div>
+
+                    <div class="card" style="max-width: 20%; max-height: 775px">
+                        <div class="card-body">
+                            <div class="row video-group">
+                                <div class="col">
+                                    <div id="local-player" class="player"></div>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col">
+                                    <div id="remote-playerlist"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <form id="join-form">
+                                    <div class="button-group" style="text-align: center">
+                                        <button style="margin-right: 1em;" id="join" type="submit" class="btn btn-success btn-sm"><i class="fas fa-phone"></i></button>
+                                        <button style="margin-right: 1em;" id="leave" type="button" class="btn btn-danger btn-sm" disabled><i class="fas fa-phone-slash"></i></button>
+                                        <button style="margin-right: 1em;" id="mute-audio" type="button" class="btn btn-success btn-sm"><i class="fas fa-microphone"></i></button>
+                                        <button style="margin-right: 1em;" id="mute-video" type="button" class="btn btn-success btn-sm"><i class="fas fa-video"></i></button>
+                                    </div>
+                                </form>
+                                <div class="mt-3" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 1rem; overflow: hidden">
+                                    <ul id="chat-log" style="overflow: auto;max-height: 209px;">
+                                        {% for cht in chat.get_messages %}
+                                            <li class="p-2"><span>{{cht.user.first_name}}:</span> {{cht.message}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                        <div class="row g-0">
+                                            <div style="padding:0" class="col-sm-6 col-md-8"><input id="chat-message-input" style="padding: 0.375rem 1rem;" autocomplete="off" type="text" class="form-control inpt"/></div>
+                                            <div class="col-6 col-md-4 pl-0"><button id="chat-message-submit" class="btn btn-secondary w-100 h-100" style="padding:0; border-radius: 0; font-size: x-large;" type="submit"><i class="fas fa-paper-plane"></i></button></div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+      </div>
+      <div class="tab-pane fade" id="d3" role="tabpanel" aria-labelledby="dd3">
+          <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
+
+    <div class="cd-schedule__events">
+      <ul>
+          {% for day in calendar %}
+        <li class="cd-schedule__group">
+          <div class="cd-schedule__top-info"><span>{{day.0.date|date:'d E'}}</span></div>
+            <ul>
+            {% for d in day %}
+            <li class="cd-schedule__event">
+              <a data-start="{{d.date|date:'H'}}:{{d.date|date:'i'}}" data-end="{{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}" data-content="event-abs-circuit" data-event="event-4">
+                  <em class="cd-schedule__name">{{d.user_course.course_type}}</em>
+                  <em class="cd-schedule__name">{{d.lesson.name}}</em>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="cd-schedule__cover-layer"></div>
+  </div>
+      </div>
+		<div class="tab-pane fade" id="d5" role="tabpanel" aria-labelledby="dd5">
+            <section class="ftco-section" style="padding: 1em;">
+			<div class="container">
+				<div class="row">
+          <div class="col-lg-8 ftco-animate">
+              <div class="row row-cols-1 row-cols-md-3">
+                  {% for vid in videos %}
+            <div class="card mr-2 mb-2 category-{{vid.category.id}}" style="width: 20rem;">
+                <div class="card-header">
+                    {{vid.category.name}}
+                </div>
+                <img src="{{vid.picture.url}}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{vid.name}}</h5>
+                    <div class="dropdown-divider"></div>
+                    <a href="video/{{vid.id}}"><i class="fa fa-play-circle"></i> Видео</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="video-constructor/{{vid.id}}"><i class="fa fa-cube"></i> Конструктор</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="video-listening/{{vid.id}}"><i class="fa fa-headphones"></i> Аудирование</a>
+
+                </div>
+            </div>
+                  {% endfor %}
+                  </div>
+          </div> <!-- .col-md-8 -->
+
+          <div class="col-lg-4 sidebar ftco-animate">
+            <div class="sidebar-box ftco-animate">
+            	<h3>Category</h3>
+              <ul class="categories">
+                  <li><a onclick="category_showAll()" href="#">Все<span>({{videos|length}})</span></a></li>
+                  {% for c in video_categories %}
+                <li><a onclick="category({{c.id}})" href="#">{{c.name}}<span>({{c.get_videos|length}})</span></a></li>
+                  {% endfor %}
+              </ul>
+            </div>
+          </div><!-- END COL -->
+        </div>
+			</div>
+		</section>
+        </div>
+		<div class="tab-pane fade" id="d6" role="tabpanel" aria-labelledby="dd6">6</div>
+		<div class="tab-pane fade" id="d7" role="tabpanel" aria-labelledby="dd7">7</div>
+		<div class="tab-pane fade" id="d8" role="tabpanel" aria-labelledby="dd8">
+
+          <section class="ftco-section bg-light">
+			<div class="container">
+				<div class="row">
+                    {% if not blog%}
+                    <p>Тут ничего нет :(</p>
+                    {% endif %}
+           {% for b in blog %}
+          <div class="col-md-6 col-lg-4 ftco-animate">
+            <div class="blog-entry">
+               <a href="blog/{{b.id}}" class="block-20 d-flex align-items-end" style="background-image: url({{b.title_picture.url}})">
+				<div class="meta-date text-center p-2">
+                  <span class="day">{{b.date|date:'d'}}</span>
+                  <span class="mos">{{b.date|date:'F'}}</span>
+                  <span class="yr">{{b.date|date:'y'}}</span>
+                </div>
+              </a>
+              <div class="text bg-white p-4">
+                <h3 class="heading"><a href="#">{{b.title}}</a></h3>
+                <p>{{b.description}}</p>
+                <div class="d-flex align-items-center mt-4">
+	                <p class="mb-0"><a href="blog/{{b.id}}" class="btn btn-primary">Читать<span class="ion-ios-arrow-round-forward"></span></a></p>
+	                <p class="ml-auto mb-0">
+	                	<a href="#" class="mr-2">{{b.author}}</a>
+	                </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+		</div>
+       </div>
+	</section>
+ </div>
+</div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+    <div class="modal fade" id="dzModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Здесь тема урока</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+              <a id="student_email" href="" target="_blank" rel="noopener noreferrer">Отправить домашнее задание</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block jsfiles %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+    <script src={% static "js/jquery.min.js" %}></script>
+	  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
+	  <script src={% static "js/jquery.waypoints.min.js" %}></script>
+	  <script src={% static "js/jquery.stellar.min.js" %}></script>
+	  <script src={% static "js/owl.carousel.min.js" %}></script>
+	  <script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+	  <script src={% static "js/aos.js" %}></script>
+	  <script src={% static "js/scrollax.min.js" %}></script>
+	  <script src={% static "js/main.js" %}></script>
+      <script src={% static "js/shedule.js" %}></script>
+        <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+        <script>
+            {% if is_teacher %}
+            var is_teacher = true;
+            {% else %}
+            var is_teacher = false;
+            {% endif %}
+            var room_name = '{{video_chat}}';
+            function category(id){
+                {% for c in video_categories %}
+                if (id == {{c.id}}){
+                    $('.category-{{c.id}}').show()
+                }
+                else{
+                   $('.category-{{c.id}}').hide()
+                }
+                {% endfor %}
+            }
+            function category_showAll(){
+                {% for c in video_categories %}
+                $('.category-{{c.id}}').show()
+                {% endfor %}
+            }
+
+            $(document).ready(function () {
+            var div = document.getElementById('right-sidebar-wrapper');
+            var listener = function(e) {
+                if (e.pageX > 300 && e.pageX < 1350 && e.pageY > 325 && e.pageY < 840){
+                    div.style.left = e.pageX - 20 + "px";
+                    div.style.top = e.pageY - 270 + "px";
+                }
+
+            };
+
+            div.addEventListener('mousedown', e => {
+                document.addEventListener('mousemove', listener);
+            });
+
+            document.addEventListener('mouseup', e => {
+                document.removeEventListener('mousemove', listener);
+            });
+        var a = 0;
+          $("#collapse_post").click(function(event) {
+            a += 1;
+            if (a % 2 == 0){
+                $('#collapseExample2').collapse('hide');
+                return false;
+            }
+            else{
+                $('#collapseExample2').collapse('show');
+            }
+          });
+        })
+
+        </script>
+        <script src={% static "js/dashboard.js" %}></script>
+        <script>
+			var room = '{{ chat.name }}';
+		</script>
+		<script src="{% static 'js/chat.js' %}"></script>
+        <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.4.0.js"></script>
+        <script src={% static "js/web.js" %}></script>
+
+{% endblock %}

@@ -10,6 +10,8 @@
 #wrapper {
     padding-left: 0;
     padding-right: 0;
+    margin-left: 20%;
+    margin-right: 20%;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -29,12 +31,11 @@
 #left-sidebar-wrapper {
     z-index: 1000;
     position: fixed;
-    left: 250px;
     width: 0;
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #000;
+    padding: 20px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -186,10 +187,12 @@
 .rotate {
   transform: rotate(180deg);
   transition: all 1s ease;
+  }
 
 .rotate2 {
   transform: rotate(-180deg);
   transition: all 1s ease;
+  }
 
 #draggable {
   width: 100px;
@@ -201,5 +204,239 @@
   border-radius: 50%;
   background: blue;
 }
+
+.logo {
+width: 200px;
+height: 62px;
+
+background: linear-gradient(71.87deg, #F5F5F5 9.82%, #F8F8F8 118.75%);
+border-radius: 6px;
+
+
+}
+.logo p{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+    text-align: center;
+    padding-top: 7%;
+}
+.logo b{
+    color: #2D9CDB;
+}
+
+.user-profile {
+    width: 200px;
+    height: 62px;
+    display: flex;
+    margin-top: 10px;
+
+    background: linear-gradient(71.87deg, #F5F5F5 9.82%, #F8F8F8 118.75%);
+    border-radius: 6px;
+}
+
+.user-profile p{
+
+    width: 70px;
+    height: 20px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #000000;
+}
+
+.user-profile-icon {
+width: 18px;
+height: 18px;
+text-align: center;
+}
+
+/* Frame 19 */
+
+position: static;
+width: 200px;
+height: 260px;
+left: 0px;
+top: 0px;
+
+background: linear-gradient(71.87deg, #F5F5F5 9.82%, #F8F8F8 118.75%);
+border-radius: 6px;
+
+/* Inside Auto Layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 10px 0px;
+
+
+/* главная */
+
+position: absolute;
+width: 67px;
+height: 20px;
+left: 16px;
+top: 16px;
+
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* расписание */
+
+position: absolute;
+width: 103px;
+height: 20px;
+left: 16px;
+top: 96px;
+
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+/* Gray 3 */
+color: #828282;
+
+
+
+/* онлайн класс */
+
+position: absolute;
+width: 115px;
+height: 20px;
+left: 16px;
+top: 56px;
+
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+/* Gray 3 */
+color: #828282;
+
+
+
+/* домашнее зада.. */
+
+position: absolute;
+width: 139px;
+height: 20px;
+left: 16px;
+top: 136px;
+
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+/* Gray 3 */
+color: #828282;
+
+
+
+/* лента */
+
+position: absolute;
+width: 49px;
+height: 20px;
+left: 16px;
+top: 176px;
+
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+/* Gray 3 */
+color: #828282;
+
+
+
+/* мои курсы */
+
+position: absolute;
+width: 90px;
+height: 20px;
+left: 16px;
+top: 216px;
+
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+/* identical to box height */
+
+/* Gray 3 */
+color: #828282;
+
+
+
+/* Rectangle 1 */
+
+position: absolute;
+width: 67px;
+height: 2px;
+left: 16px;
+top: 35px;
+
+/* Blue 2 */
+background: #2D9CDB;
+
+
+/* Rectangle 10 */
+
+position: absolute;
+width: 20px;
+height: 20px;
+left: 165px;
+top: 136px;
+
+/* Red */
+background: #EB5757;
+border-radius: 4px;
+
+
+/* 2 */
+
+position: absolute;
+width: 20px;
+height: 20px;
+left: 165px;
+top: 136px;
+
+font-family: Montserrat;
+font-style: normal;
+font-weight: bold;
+font-size: 12px;
+line-height: 15px;
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
 
 

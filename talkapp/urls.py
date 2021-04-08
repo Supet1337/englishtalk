@@ -20,6 +20,7 @@ urlpatterns = [
     path('accounts/password_reset/done/', password_reset_done),
     path('accounts/reset/done/', password_reset_complete),
     path('dashboard', dashboard),
+    path('dashboard2', dashboard2),
     path('logout', loggout),
     path('courses', courses),
     path('blogs', blogs),
