@@ -1,0 +1,129 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}
+		<title>Главная</title>
+{% endblock %}
+{% block cssfiles %}
+        <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+        <link rel="stylesheet" href={% static "css/shedule.css" %}>
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/overcast/jquery-ui.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
+        <link rel="stylesheet" href={% static "css/animate.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
+	    <link rel="stylesheet" href={% static "css/aos.css" %}>
+	    <link rel="stylesheet" href={% static "css/style.css" %}>
+		<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
+        <link rel="stylesheet" href={% static "css/main.css" %}>
+        <link rel="stylesheet" href={% static "css/dashboard.css" %}>
+
+{% endblock %}
+    {% block content %}
+    <div class="d-flex right-toggled" id="wrapper">
+
+        <div id="left-sidebar-wrapper">
+    <div class="logo mx-auto">
+        <p class="mx-auto"><b>English</b>Talk</p>
+    </div>
+    <div class="user-profile mx-auto">
+        <p class="mx-auto my-auto">{{request.user.first_name  | safe}}</p>
+        <div class="user-profile-icon my-auto">
+            <i class="fa fa-angle-right my-auto"></i>
+        </div>
+    </div>
+      <div class="list-group mx-auto" id="list-tab" role="tablist">
+        <a class="list-group-item list-group-item-action active" id="dd0" data-toggle="list" role="tab"><p style="margin-bottom: 0">Главная</p></a>
+          <a class="list-group-item list-group-item-action" id="dd1" data-toggle="list" href="../dashboard/platform" role="tab"><p style="margin-bottom: 0">Онлайн класс</p></a>
+        <a class="list-group-item list-group-item-action" id="dd3" data-toggle="list" href="../dashboard/schedule" role="tab"><p style="margin-bottom: 0">Расписание</p></a>
+        <a class="list-group-item list-group-item-action" id="dd5" data-toggle="list" href="../dashboard/homework" role="tab"><p style="margin-bottom: 0">Домашнее задание</p></a>
+          <a class="list-group-item list-group-item-action" id="dd8" data-toggle="list" href="../dashboard/tape" role="tab"><p style="margin-bottom: 0">Лента</p></a>
+          <a class="list-group-item list-group-item-action" id="dd9" data-toggle="list" href="../dashboard/courser" role="tab"><p style="margin-bottom: 0">Мои курсы</p></a>
+      </div>
+    <div class="empty_balance mx-auto">
+        <h1>Ваш баланс сейчас пуст :(</h1>
+        <p>Для начала учёбы нужно пополнить баланс</p>
+        <button class="dashboard-button-primary">Пополнить</button>
+    </div>
+    <div class="subscribe-block mx-auto">
+        <h1>Будьте в курсе</h1>
+        <p>Получайте информацию о сервисе и специальных предложениях</p>
+        <button class="dashboard-button-primary">Подписаться</button>
+    </div>
+    </div>
+
+    <!-- Page Content -->
+    <div  id="page-content-wrapper">
+        <div role="tabpanel">
+            <div class="card mb-3">
+            <section class="ftco-services ftco-no-pb">
+                <div class="container-wrap">
+                    <div class="row no-gutters">
+                        <div class="card bg-white text-center" style="width: 100%; border: 0" >
+                            <div class="card-header header-text" style="background: transparent">
+                                <p>Ваше следующее занятие</p>
+                            </div>
+                              <div class="card-body" style="padding: 0">
+                                  <div class="row">
+                                      <div class="col-5" style="border-right: 0.3px solid #BDBDBD; padding-left: 30px;display: grid;">
+                                          <div class="header-text">
+                                              <p>Бизнес английский</p>
+                                          </div>
+                                          <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%"  align="left">
+                                          <div class="teacher-name">
+                                              <p>Анна Иванова</p>
+                                          </div>
+                                          <div class="teacher-info">
+                                              <p>Преподаватель, менеджер предприятий</p>
+                                          </div>
+                                      </div>
+                                      <div class="col-7">
+                                            AAAAA
+                                      </div>
+                                  </div>
+                              </div>
+                            </div>
+                        </div>
+                        </div>
+                        </section>
+            </div>
+            <div class="card border-success mb-3 text-center">
+              <div class="card-header">Материалы для самоподготовки</div>
+              <div class="card-body text-success">
+                <h5 class="card-title">Учитесь и развивайтесь!</h5>
+                   <a class="btn btn-primary "  id="ddd8" data-toggle="list" href="#d8" role="tab">Перейти в блог</a>
+              </div>
+            </div>
+
+
+
+        </div>
+        </div>
+</div>
+    <!-- /#page-content-wrapper -->
+{% endblock %}
+{% block jsfiles %}
+    <script src={% static "js/jquery.min.js" %}></script>
+	  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
+	  <script src={% static "js/jquery.waypoints.min.js" %}></script>
+	  <script src={% static "js/jquery.stellar.min.js" %}></script>
+	  <script src={% static "js/owl.carousel.min.js" %}></script>
+	  <script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+	  <script src={% static "js/aos.js" %}></script>
+	  <script src={% static "js/scrollax.min.js" %}></script>
+	  <script src={% static "js/main.js" %}></script>
+      <script src={% static "js/shedule.js" %}></script>
+        <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+        <script>
+            {% if is_teacher %}
+            var is_teacher = true;
+            {% else %}
+            var is_teacher = false;
+            {% endif %}
+
+        </script>
+        <script src={% static "js/dashboard.js" %}></script>
+{% endblock %}

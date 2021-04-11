@@ -3,7 +3,6 @@ from .views import *
 
 urlpatterns = [
     path('', index),
-    path('agoraa', agoraa),
     path('login-user', login_user),
     path('change_email', change_email),
     path('send_request_v', send_request_view),
@@ -19,8 +18,12 @@ urlpatterns = [
     path('ajax_load_lessons_audios/<int:number>', ajax_load_lessons_audios),
     path('accounts/password_reset/done/', password_reset_done),
     path('accounts/reset/done/', password_reset_complete),
-    path('dashboard', dashboard),
-    path('dashboard2', dashboard2),
+    path('dashboard/lk', dashboard_lk),
+    path('dashboard/platform', dashboard_platform),
+    path('dashboard/schedule', dashboard_schedule),
+    path('dashboard/homework', dashboard_homework),
+    path('dashboard/tape', dashboard_tape),
+    path('dashboard/courses', dashboard_courses),
     path('logout', loggout),
     path('courses', courses),
     path('blogs', blogs),

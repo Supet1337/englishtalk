@@ -9,6 +9,7 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/overcast/jquery-ui.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
         <link rel="stylesheet" href={% static "css/animate.css" %}>
 	    <link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
@@ -18,13 +19,12 @@
 	    <link rel="stylesheet" href={% static "css/style.css" %}>
 		<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
         <link rel="stylesheet" href={% static "css/main.css" %}>
+        <link rel="stylesheet" href={% static "css/dashboard.css" %}>
 
 {% endblock %}
     {% block content %}
-	{% include "header.html" %}
     <div class="d-flex right-toggled" id="wrapper">
     {% include "leftsidebar.html" %}
-    {% include "right-sidebar.html" %}
     <!-- Page Content -->
     <div  id="page-content-wrapper">
         <div class="tab-content" id="nav-tabContent">

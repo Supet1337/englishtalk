@@ -258,185 +258,72 @@ height: 18px;
 text-align: center;
 }
 
-/* Frame 19 */
+.empty_balance {
+    background: radial-gradient(circle farthest-side at 10px 10px, #2D9CDB , #EB5757);
+    width: 200px;
+    height: 147px;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 10px;
 
-position: static;
-width: 200px;
-height: 260px;
-left: 0px;
-top: 0px;
+}
+.empty_balance h1 {
+    width: 167px;
+    height: 40px;
 
-background: linear-gradient(71.87deg, #F5F5F5 9.82%, #F8F8F8 118.75%);
-border-radius: 6px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
 
-/* Inside Auto Layout */
-flex: none;
-order: 0;
-flex-grow: 0;
-margin: 10px 0px;
+    color: #FFFFFF;
+}
 
+.empty_balance p{
+    width: 168px;
+    height: 30px;
 
-/* главная */
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
 
-position: absolute;
-width: 67px;
-height: 20px;
-left: 16px;
-top: 16px;
+    color: #FFFFFF;
+}
 
-font-family: Montserrat;
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 20px;
-/* identical to box height */
+.subscribe-block {
+    background: radial-gradient(circle farthest-side at 40px 30px, #EB5757, #2D9CDB);
+    width: 200px;
+    height: 147px;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 10px;
 
-color: #000000;
+}
+.subscribe-block h1 {
+    width: 168px;
+    height: 20px;
 
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
 
+    color: #FFFFFF;
+}
 
-/* расписание */
+.subscribe-block p{
+    width: 168px;
+    height: 45px;
 
-position: absolute;
-width: 103px;
-height: 20px;
-left: 16px;
-top: 96px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
 
-font-family: Montserrat;
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 20px;
-/* identical to box height */
-
-/* Gray 3 */
-color: #828282;
-
-
-
-/* онлайн класс */
-
-position: absolute;
-width: 115px;
-height: 20px;
-left: 16px;
-top: 56px;
-
-font-family: Montserrat;
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 20px;
-/* identical to box height */
-
-/* Gray 3 */
-color: #828282;
-
-
-
-/* домашнее зада.. */
-
-position: absolute;
-width: 139px;
-height: 20px;
-left: 16px;
-top: 136px;
-
-font-family: Montserrat;
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 20px;
-/* identical to box height */
-
-/* Gray 3 */
-color: #828282;
-
-
-
-/* лента */
-
-position: absolute;
-width: 49px;
-height: 20px;
-left: 16px;
-top: 176px;
-
-font-family: Montserrat;
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 20px;
-/* identical to box height */
-
-/* Gray 3 */
-color: #828282;
-
-
-
-/* мои курсы */
-
-position: absolute;
-width: 90px;
-height: 20px;
-left: 16px;
-top: 216px;
-
-font-family: Montserrat;
-font-style: normal;
-font-weight: 500;
-font-size: 16px;
-line-height: 20px;
-/* identical to box height */
-
-/* Gray 3 */
-color: #828282;
-
-
-
-/* Rectangle 1 */
-
-position: absolute;
-width: 67px;
-height: 2px;
-left: 16px;
-top: 35px;
-
-/* Blue 2 */
-background: #2D9CDB;
-
-
-/* Rectangle 10 */
-
-position: absolute;
-width: 20px;
-height: 20px;
-left: 165px;
-top: 136px;
-
-/* Red */
-background: #EB5757;
-border-radius: 4px;
-
-
-/* 2 */
-
-position: absolute;
-width: 20px;
-height: 20px;
-left: 165px;
-top: 136px;
-
-font-family: Montserrat;
-font-style: normal;
-font-weight: bold;
-font-size: 12px;
-line-height: 15px;
-display: flex;
-align-items: center;
-text-align: center;
-
-color: #FFFFFF;
-
-
+    color: #FFFFFF;
+}

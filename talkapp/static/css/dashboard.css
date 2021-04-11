@@ -1,0 +1,52 @@
+.dashboard-button-primary {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 24px 8px;
+    color: #2D9CDB;
+
+    width: 132px;
+    height: 31px;
+
+    background: #FFFFFF;
+    border-radius: 4px;
+    border-color: #2D9CDB;
+    border-width: 0;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    /* identical to box height */
+    text-align: center;
+}
+
+.header-text {
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+}
+.header-text p{
+    margin-bottom: 0;
+    color: black;
+}
+
+.teacher-name {
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+}
+.teacher-name p{
+    margin-bottom: 0;
+    color: black;
+}
+
+.teacher-info {
+    text-align: left;
+    font-size: 12px;
+}
+.teacher-info p{
+    margin-bottom: 0;
+}

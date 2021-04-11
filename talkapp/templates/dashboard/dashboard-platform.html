@@ -1,0 +1,268 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}
+		<title>Онлайн-класс</title>
+{% endblock %}
+{% block cssfiles %}
+        <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+        <link rel="stylesheet" href={% static "css/shedule.css" %}>
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/overcast/jquery-ui.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
+        <link rel="stylesheet" href={% static "css/animate.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
+	    <link rel="stylesheet" href={% static "css/aos.css" %}>
+	    <link rel="stylesheet" href={% static "css/style.css" %}>
+		<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
+        <link rel="stylesheet" href={% static "css/main.css" %}>
+        <link rel="stylesheet" href={% static "css/dashboard.css" %}>
+
+{% endblock %}
+    {% block content %}
+    <div class="d-flex right-toggled" style="margin-left: 0; margin-right: 0" id="wrapper">
+
+        <div id="left-sidebar-wrapper">
+    <div class="logo mx-auto">
+        <p class="mx-auto"><b>English</b>Talk</p>
+    </div>
+    <div class="user-profile mx-auto">
+        <p class="mx-auto my-auto">{{request.user.first_name  | safe}}</p>
+        <div class="user-profile-icon my-auto">
+            <i class="fa fa-angle-right my-auto"></i>
+        </div>
+    </div>
+      <div class="list-group mx-auto" id="list-tab" role="tablist">
+        <a class="list-group-item list-group-item-action" id="dd0" data-toggle="list" href="../dashboard/lk" role="tab"><p style="margin-bottom: 0">Главная</p></a>
+          <a class="list-group-item list-group-item-action active" id="dd1" data-toggle="list" role="tab"><p style="margin-bottom: 0">Онлайн класс</p></a>
+        <a class="list-group-item list-group-item-action" id="dd3" data-toggle="list" href="../dashboard/schedule" role="tab"><p style="margin-bottom: 0">Расписание</p></a>
+        <a class="list-group-item list-group-item-action" id="dd5" data-toggle="list" href="../dashboard/homework" role="tab"><p style="margin-bottom: 0">Домашнее задание</p></a>
+          <a class="list-group-item list-group-item-action" id="dd8" data-toggle="list" href="../dashboard/tape" role="tab"><p style="margin-bottom: 0">Лента</p></a>
+          <a class="list-group-item list-group-item-action" id="dd9" data-toggle="list" href="../dashboard/courser" role="tab"><p style="margin-bottom: 0">Мои курсы</p></a>
+      </div>
+    <div class="empty_balance mx-auto">
+        <h1>Ваш баланс сейчас пуст :(</h1>
+        <p>Для начала учёбы нужно пополнить баланс</p>
+        <button class="dashboard-button-primary">Пополнить</button>
+    </div>
+    <div class="subscribe-block mx-auto">
+        <h1>Будьте в курсе</h1>
+        <p>Получайте информацию о сервисе и специальных предложениях</p>
+        <button class="dashboard-button-primary">Подписаться</button>
+    </div>
+    </div>
+
+    <!-- Page Content -->
+    <div  id="page-content-wrapper">
+        <div class="card-group">
+          <div class="card">
+                  <div class="card-header">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Учебные материалы</a>
+                        </li>
+                    </ul>
+
+<div class="tab-content" id="myTabContent" style="height: 44em; overflow-y: scroll;">
+      <!-- <button class="btn btn-white fixbut" style="border-radius: 0px; float: left;margin-top: 12px;margin-left: 1rem" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> Подключить видеосвязь</button> -->
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="card-body" >
+                {% if lsn == 0 %}
+          <h2 style="text-align: center">Здесь будут отображаться ваши занятия</h2>
+                {% else %}
+                {% if cur_lsn %}
+                    <div class="card animate__animated animate__pulse animate__infinite infinite" style="width: 100%;text-align: center">
+                    <div class="card-header">
+                        Идет сейчас
+                    </div>
+                    <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="#" id="openDoc{{cur_lsn.id}}" style="font-size: x-large">{{cur_lsn.lesson.name}}</a></li>
+                    </ul>
+                    </div>
+                {% endif %}
+                {% if past_lsn %}
+                <div class="card mt-5" style="width: 100%;">
+                    <div class="card-header" style="text-align: center">
+                        Прошедшие занятия
+                    </div>
+          <div class="card-body">
+                {% for lesson in past_lsn %}
+                  <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        {{lesson.date}}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="#" id="openDoc{{lesson.id}}">{{lesson.lesson.name}}</a></li>
+                    </ul>
+                </div>
+                {% endfor %}
+              </div>
+                    </div>
+                {% endif %}
+
+                {% if future_lsn %}
+          <div class="card mt-3" style="width: 100%;">
+                    <div class="card-header" style="text-align: center">
+                        Предстоящие занятия
+                    </div>
+          <div class="card-body">
+                {% for lsnf in future_lsn %}
+                  <div class="card" style="width: 100%;">
+                    <div class="card-header">
+                        {{lsnf.date}}
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item "><a href="#" id="openDoc{{lsnf.id}}">{{lsnf.lesson.name}}</a></li>
+                    </ul>
+                </div>
+                {% endfor %}
+              </div>
+              </div>
+                {% endif %}
+
+                {% endif %}
+              </div>
+  </div>
+
+</div>
+                </div>
+
+                  </div>
+
+                    <div class="card" style="max-width: 20%; max-height: 775px">
+                        <div class="card-body">
+                            <div class="row video-group">
+                                <div class="col">
+                                    <div id="local-player" class="player"></div>
+                                </div>
+                                <div class="w-100"></div>
+                                <div class="col">
+                                    <div id="remote-playerlist"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <form id="join-form">
+                                    <div class="button-group" style="text-align: center">
+                                        <button style="margin-right: 1em;" id="join" type="submit" class="btn btn-success btn-sm"><i class="fas fa-phone"></i></button>
+                                        <button style="margin-right: 1em;" id="leave" type="button" class="btn btn-danger btn-sm" disabled><i class="fas fa-phone-slash"></i></button>
+                                        <button style="margin-right: 1em;" id="mute-audio" type="button" class="btn btn-success btn-sm"><i class="fas fa-microphone"></i></button>
+                                        <button style="margin-right: 1em;" id="mute-video" type="button" class="btn btn-success btn-sm"><i class="fas fa-video"></i></button>
+                                    </div>
+                                </form>
+                                <div class="mt-3" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 1rem; overflow: hidden">
+                                    <ul id="chat-log" style="overflow: auto;max-height: 209px;">
+                                        {% for cht in chat.get_messages %}
+                                            <li class="p-2"><span>{{cht.user.first_name}}:</span> {{cht.message}}</li>
+                                        {% endfor %}
+                                    </ul>
+                                        <div class="row g-0">
+                                            <div style="padding:0" class="col-sm-6 col-md-8"><input id="chat-message-input" style="padding: 0.375rem 1rem;" autocomplete="off" type="text" class="form-control inpt"/></div>
+                                            <div class="col-6 col-md-4 pl-0"><button id="chat-message-submit" class="btn btn-secondary w-100 h-100" style="padding:0; border-radius: 0; font-size: x-large;" type="submit"><i class="fas fa-paper-plane"></i></button></div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="dzModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Здесь тема урока</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+              <a id="student_email" href="" target="_blank" rel="noopener noreferrer">Отправить домашнее задание</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block jsfiles %}
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+    <script src={% static "js/jquery.min.js" %}></script>
+	  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
+	  <script src={% static "js/jquery.waypoints.min.js" %}></script>
+	  <script src={% static "js/jquery.stellar.min.js" %}></script>
+	  <script src={% static "js/owl.carousel.min.js" %}></script>
+	  <script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+	  <script src={% static "js/aos.js" %}></script>
+	  <script src={% static "js/scrollax.min.js" %}></script>
+	  <script src={% static "js/main.js" %}></script>
+      <script src={% static "js/shedule.js" %}></script>
+        <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+        <script>
+            {% if is_teacher %}
+            var is_teacher = true;
+            {% else %}
+            var is_teacher = false;
+            {% endif %}
+            var room_name = '{{video_chat}}';
+            function category(id){
+                {% for c in video_categories %}
+                if (id == {{c.id}}){
+                    $('.category-{{c.id}}').show()
+                }
+                else{
+                   $('.category-{{c.id}}').hide()
+                }
+                {% endfor %}
+            }
+            function category_showAll(){
+                {% for c in video_categories %}
+                $('.category-{{c.id}}').show()
+                {% endfor %}
+            }
+
+            $(document).ready(function () {
+            var div = document.getElementById('right-sidebar-wrapper');
+            var listener = function(e) {
+                if (e.pageX > 300 && e.pageX < 1350 && e.pageY > 325 && e.pageY < 840){
+                    div.style.left = e.pageX - 20 + "px";
+                    div.style.top = e.pageY - 270 + "px";
+                }
+
+            };
+
+            div.addEventListener('mousedown', e => {
+                document.addEventListener('mousemove', listener);
+            });
+
+            document.addEventListener('mouseup', e => {
+                document.removeEventListener('mousemove', listener);
+            });
+        var a = 0;
+          $("#collapse_post").click(function(event) {
+            a += 1;
+            if (a % 2 == 0){
+                $('#collapseExample2').collapse('hide');
+                return false;
+            }
+            else{
+                $('#collapseExample2').collapse('show');
+            }
+          });
+        })
+
+        </script>
+        <script src={% static "js/dashboard.js" %}></script>
+        <script>
+			var room = '{{ chat.name }}';
+		</script>
+		<script src="{% static 'js/chat.js' %}"></script>
+        <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.4.0.js"></script>
+        <script src={% static "js/web.js" %}></script>
+
+{% endblock %}

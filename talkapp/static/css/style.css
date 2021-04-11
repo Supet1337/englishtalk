@@ -4439,9 +4439,11 @@ input[type="button"].btn-block {
     pointer-events: none;
     background-color: #fff; }
   .list-group-item.active {
+    pointer-events: none;
     z-index: 2;
     }
     .list-group-item.active p{
+        color: black;
         border-bottom: 2px solid #2D9CDB;
         width: fit-content;
     }
