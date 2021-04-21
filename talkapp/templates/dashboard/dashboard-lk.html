@@ -15,6 +15,7 @@
 	    <link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
 	    <link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
 	    <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
+        <link rel="stylesheet" href={% static "css/calendar.css" %}>
 	    <link rel="stylesheet" href={% static "css/aos.css" %}>
 	    <link rel="stylesheet" href={% static "css/style.css" %}>
 		<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
@@ -64,7 +65,15 @@
                     <div class="row no-gutters">
                         <div class="card bg-white text-center" style="width: 100%; border: 0" >
                             <div class="card-header header-text" style="background: transparent">
-                                <p>Ваше следующее занятие</p>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <p>Ваше следующее занятие</p>
+                                    </div>
+                                    <div class="col-4" style="text-align: right">
+                                        <button class="teacher-button dashboard-button-secondary" style="width: 38%">Курсы</button>
+                                    </div>
+
+                                </div>
                             </div>
                               <div class="card-body" style="padding: 0">
                                   <div class="row">
@@ -79,9 +88,27 @@
                                           <div class="teacher-info">
                                               <p>Преподаватель, менеджер предприятий</p>
                                           </div>
+                                          <div class="teacher-buttons">
+                                              <div class="row">
+                                                <div class="col-8" style="padding: 10px;">
+                                                    <button class="teacher-button dashboard-button-secondary">Подключиться к занятию</button>
+                                                </div>
+                                                <div class="col-4" style="padding: 10px; padding-left: 0;">
+                                                    <button class="teacher-button dashboard-button-primary">В чат</button>
+                                                </div>
+                                              </div>
+                                          </div>
                                       </div>
-                                      <div class="col-7">
-                                            AAAAA
+                                      <div class="col-7" style="padding:0">
+                                          <div class="last-homework">
+                                              <p style="margin-bottom: 0">Последнее домашнее задание</p>
+                                              <p class="date-homework" style="margin-bottom: 0">12 марта 2021</p>
+                                              <p class="text-homework" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. A eget ut adipiscing amet, ut dignissim.
+                                                  Arcu fames erat cursus pellentesque eu, morbi eget neque eget.
+                                                  Nisl integer magna non vitae sollicitudin eget.
+                                                  Nunc, montes, eget eget urna cum.
+                                                  Egestas aliquam cursus amet sed.</p>
+                                          </div>
                                       </div>
                                   </div>
                               </div>
@@ -90,12 +117,8 @@
                         </div>
                         </section>
             </div>
-            <div class="card border-success mb-3 text-center">
-              <div class="card-header">Материалы для самоподготовки</div>
-              <div class="card-body text-success">
-                <h5 class="card-title">Учитесь и развивайтесь!</h5>
-                   <a class="btn btn-primary "  id="ddd8" data-toggle="list" href="#d8" role="tab">Перейти в блог</a>
-              </div>
+            <div class="card mb-3 text-center">
+                <div id='calendar'></div>
             </div>
 
 
@@ -125,5 +148,46 @@
             {% endif %}
 
         </script>
+
         <script src={% static "js/dashboard.js" %}></script>
+        <script src={% static "js/calendar.js" %}></script>
+        <script src={% static "js/ru-calendar.js" %}></script>
+        <script>
+
+          document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+              displayEventEnd: true,
+              headerToolbar: {
+                left: '',
+                center: 'title',
+                right: 'prev,next'
+              },
+              locale: 'ru',
+              navLinks: false,
+              businessHours: false,
+              editable: false,
+              selectable: false,
+
+              eventTimeFormat: {
+              hour: '2-digit',
+              minute: '2-digit',
+              meridiem: false
+              },
+
+              events: [
+                {
+                  title: 'B',
+                  start: '2021-04-03T13:00:00', //год, месяц, число. пендосы блин
+                  end: '2021-04-03T17:00:00',
+                  displayEventEnd: true
+                },
+              ]
+            });
+            calendar.setOption('locale', 'ru');
+            calendar.render();
+          });
+
+        </script>
 {% endblock %}
