@@ -4920,7 +4920,7 @@ a.close.disabled {
   line-break: auto;
   font-size: 0.875rem;
   word-wrap: break-word;
-  opacity: 0; }
+  opacity: 1; }
   .tooltip.show {
     opacity: 0.9; }
   .tooltip .arrow {
@@ -4975,12 +4975,13 @@ a.close.disabled {
       border-left-color: #000; }
 
 .tooltip-inner {
-  max-width: 200px;
-  padding: 0.25rem 0.5rem;
-  color: #fff;
-  text-align: center;
-  background-color: #000;
-  border-radius: 0.25rem; }
+    max-width: 200px;
+    padding: 0.25rem 0.3rem;
+    color: #3788d8;
+    text-align: center;
+    border: 1px solid #3788d8;
+    background-color: #fff;
+    border-radius: 0.3rem; }
 
 .popover {
   position: absolute;

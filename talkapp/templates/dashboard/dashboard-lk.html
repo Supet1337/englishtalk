@@ -139,7 +139,9 @@
 	  <script src={% static "js/scrollax.min.js" %}></script>
 	  <script src={% static "js/main.js" %}></script>
       <script src={% static "js/shedule.js" %}></script>
-        <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+      <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+      <script src="https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
         <script>
             {% if is_teacher %}
             var is_teacher = true;
@@ -158,6 +160,7 @@
             var calendarEl = document.getElementById('calendar');
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
+
               displayEventEnd: true,
               headerToolbar: {
                 left: '',
@@ -176,13 +179,28 @@
               meridiem: false
               },
 
+              eventDidMount: function(info) {
+                  var tooltip = new Tooltip(info.el, {
+                    title: info.event.extendedProps.description,
+                    placement: 'top',
+                    trigger: 'hover',
+                    container: 'body'
+              });
+            },
+
+//год, месяц, число. пендосы блин 2021-04-12T10:30:00
               events: [
-                {
-                  title: 'B',
-                  start: '2021-04-03T13:00:00', //год, месяц, число. пендосы блин
-                  end: '2021-04-03T17:00:00',
-                  displayEventEnd: true
-                },
+                    {% for day in calendar %}
+                        {
+                          start: '{{day.0.date|date:"Y-m-d"}}',
+                          end: '{{day.0.date|date:"Y-m-d"}}',
+                        {% for d in day %}
+                          title: '{{d.user_course.course_type}}',
+                          description: '{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}',
+                          displayEventEnd: true
+                        },
+                        {% endfor %}
+                    {% endfor %}
               ]
             });
             calendar.setOption('locale', 'ru');
