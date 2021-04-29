@@ -59,7 +59,45 @@
     <!-- Page Content -->
     <div  id="page-content-wrapper">
         <div role="tabpanel">
-            <div class="card mb-3">
+            <div class="row">
+                <div class="col" style="max-width: 304px; padding-right: 5px">
+                    <div class="card mb-3" style=" border-radius: 6px;">
+                        <div class="row g-0">
+                            <div class="col-md-4" style="padding-left:15px; padding-right:0">
+                                <img id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 68px;max-height: 68px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
+                            </div>
+                            <div class="col-md-7" style="padding-left:0; padding-right:0; margin-right: 10px">
+                                <div class="teacher-name">
+                                    <p style="margin:0">Анна Иванова</p>
+                                </div>
+                                <p class="card-text teacher-info">Преподаватель, менеджер меропр..</p>
+                                <button class="dashboard-button-secondary-teacher" >Перейти в онлайн класс</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col" style="max-width: 220px; padding-left: 5px; padding-right: 5px;" >
+                    <div class="balance-blck">
+                        <div class="balance-text">Баланс: 6 занятий</div>
+                        <div class="balance-time">Занятия по 45 мин</div>
+                        <div class="balance-time"><a href="#" style="color:#2F80ED; margin-bottom: 10px">Пополнить</a></div>
+                    </div>
+                </div>
+
+
+                <div class="col" style="max-width: 231px; padding-left: 5px" >
+                    <div class="balance-blck">
+                        <div class="number-number"> <i style="color: #2F80ED" class="fa fa-phone"></i> +7 995 793 02 03</div>
+                        <div class="number-number" style="color: #828282; font-weight: normal; margin-top: 0; margin-bottom: 8px">Бесплатно по всей России</div>
+                        <button style="margin: 0px 16px 19px 16px" class="dashboard-button-secondary-teacher" ><i style="margin-right: 3px;" class="fa fa-paper-plane"></i> Связаться с куратором</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- <div class="card mb-3">
             <section class="ftco-services ftco-no-pb">
                 <div class="container-wrap">
                     <div class="row no-gutters">
@@ -81,7 +119,6 @@
                                           <div class="header-text">
                                               <p>Бизнес английский</p>
                                           </div>
-                                          <img class="mt-2" id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%"  align="left">
                                           <div class="teacher-name">
                                               <p>Анна Иванова</p>
                                           </div>
@@ -116,8 +153,8 @@
                         </div>
                         </div>
                         </section>
-            </div>
-            <div class="card mb-3 text-center">
+            </div> -->
+            <div style="border-radius: 6px" class="card mb-3 text-center">
                 <div id='calendar'></div>
             </div>
 
