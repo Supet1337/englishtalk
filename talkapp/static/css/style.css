@@ -4416,7 +4416,7 @@ input[type="button"].btn-block {
     z-index: 1;
     color: #495057;
     text-decoration: none;
-    background-color: #f8f9fa; }
+    background-color: #2F80ED0A; }
   .list-group-item-action:active {
     color: #212529;
     background-color: #e9ecef; }
@@ -4426,7 +4426,8 @@ input[type="button"].btn-block {
   display: block;
   padding: 0.75rem 1.25rem;
   margin-bottom: -1px;
-  background-color: #f7f7f7; }
+  border-radius: 0.75rem;
+  background-color: #ffffff; }
   .list-group-item:first-child {
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem; }
@@ -4440,11 +4441,11 @@ input[type="button"].btn-block {
     background-color: #fff; }
   .list-group-item.active {
     pointer-events: none;
+    background-color: #2F80ED0A;
     z-index: 2;
     }
     .list-group-item.active p{
-        color: black;
-        border-bottom: 2px solid #2D9CDB;
+        color: #2F80ED;
         width: fit-content;
     }
 

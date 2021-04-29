@@ -10,8 +10,8 @@
 #wrapper {
     padding-left: 0;
     padding-right: 0;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 15%;
+    margin-right: 15%;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -33,7 +33,7 @@
     position: fixed;
     width: 0;
     height: 100%;
-    margin-left: -250px;
+    margin-left: -200px;
     overflow-y: auto;
     padding: 20px;
     -webkit-transition: all 0.5s ease;
@@ -139,7 +139,7 @@
     }
 
     #left-sidebar-wrapper {
-        width: 250px;
+        width: 200px;
     }
 
     #chat {
@@ -206,26 +206,13 @@
 }
 
 .logo {
-width: 200px;
-height: 62px;
-
-background: linear-gradient(71.87deg, #F5F5F5 9.82%, #F8F8F8 118.75%);
-border-radius: 6px;
-
-
-}
-.logo p{
+    border-radius: 6px;
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
     line-height: 29px;
-    color: #000000;
-    text-align: center;
-    padding-top: 7%;
-}
-.logo b{
-    color: #2D9CDB;
+    color: #2F80ED !important;
+    text-transform: none !important;
 }
 
 .user-profile {
@@ -260,7 +247,6 @@ text-align: center;
 
 .empty_balance {
     background: radial-gradient(circle farthest-side at 10px 10px, #2D9CDB , #EB5757);
-    width: 200px;
     height: 147px;
     border-radius: 6px;
     padding: 10px;
@@ -268,7 +254,6 @@ text-align: center;
 
 }
 .empty_balance h1 {
-    width: 167px;
     height: 40px;
 
     font-family: Montserrat;
@@ -281,13 +266,12 @@ text-align: center;
 }
 
 .empty_balance p{
-    width: 168px;
     height: 30px;
 
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 10px;
     line-height: 15px;
 
     color: #FFFFFF;
@@ -295,7 +279,6 @@ text-align: center;
 
 .subscribe-block {
     background: radial-gradient(circle farthest-side at 40px 30px, #EB5757, #2D9CDB);
-    width: 200px;
     height: 147px;
     border-radius: 6px;
     padding: 10px;
@@ -303,7 +286,6 @@ text-align: center;
 
 }
 .subscribe-block h1 {
-    width: 168px;
     height: 20px;
 
     font-family: Montserrat;
@@ -316,13 +298,12 @@ text-align: center;
 }
 
 .subscribe-block p{
-    width: 168px;
     height: 45px;
 
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 10px;
     line-height: 15px;
 
     color: #FFFFFF;
