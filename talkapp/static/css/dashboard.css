@@ -118,3 +118,60 @@
     margin-bottom: 0;
 }
 
+.dashboard-header {
+    padding-left: 19% !important;
+    padding-right: 19% !important;
+}
+
+.dashboard-header-logo {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    color: #2F80ED;
+}
+
+.dashboard-header-profile-image {
+    width: 18px;
+    height: 18px;
+}
+
+.list-group-item {
+    padding: 0.5rem !important;
+}
+
+.blogs-header-text {
+    font-family: Montserrat;
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.blogs-header-show {
+    font-family: Montserrat;
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 15px;
+    position: relative;
+}
+
+.blogs-header-show a{
+    position: absolute;
+    bottom: 3px;
+    width: 100px;
+    color: #2D9CDB !important;
+}
+
+.blogs-header {
+    display: flex;
+}
+
+.blog-card {
+    position: absolute;
+    bottom: 0;
+    background: white;
+    width: 100%;
+    padding: 0.25rem;
+}

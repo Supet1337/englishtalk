@@ -24,18 +24,10 @@
 
 {% endblock %}
     {% block content %}
+    {% include "dashboard/dashboard-header.html" %}
     <div class="d-flex right-toggled" id="wrapper">
 
         <div id="left-sidebar-wrapper">
-    <div class="logo mx-auto">
-        <p class="mx-auto"><b>English</b>Talk</p>
-    </div>
-    <div class="user-profile mx-auto">
-        <p class="mx-auto my-auto">{{request.user.first_name  | safe}}</p>
-        <div class="user-profile-icon my-auto">
-            <i class="fa fa-angle-right my-auto"></i>
-        </div>
-    </div>
       <div class="list-group mx-auto" id="list-tab" role="tablist">
         <a class="list-group-item list-group-item-action active" id="dd0" data-toggle="list" role="tab"><p style="margin-bottom: 0">Главная</p></a>
           <a class="list-group-item list-group-item-action" id="dd1" data-toggle="list" href="../dashboard/platform" role="tab"><p style="margin-bottom: 0">Онлайн класс</p></a>
@@ -121,9 +113,34 @@
                 <div id='calendar'></div>
             </div>
 
-
-
-        </div>
+            <div class="blogs">
+                <div class="blogs-header">
+                    <div class="blogs-header-text">
+                        Статьи
+                    </div>
+                    <div class="blogs-header-show">
+                        <a>Показать все</a>
+                    </div>
+                </div>
+                <div class="blogs-content">
+                    <div class="card-deck py-4">
+                        <div class="card">
+                            <img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 180px;max-width: 280px;text-align: center">
+                            <div class="card-body blog-card">
+                                <h5 class="card-title" style="margin-left: 0.75rem;">Подготовка к ЕГЭ</h5>
+                            </div>
+                        </div>
+                        <div class="card"><img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 180px;max-width: 280px;text-align: center">
+                            <div class="card-body blog-card">
+                                <h5 class="card-title" style="margin-left: 0.75rem;">Подготовка к ЕГЭ</h5>
+                            </div></div>
+                        <div class="card"><img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 180px;max-width: 280px;text-align: center">
+                            <div class="card-body blog-card">
+                                <h5 class="card-title" style="margin-left: 0.75rem;">Подготовка к ЕГЭ</h5>
+                            </div></div>
+                    </div>
+                </div>
+            </div>
         </div>
 </div>
     <!-- /#page-content-wrapper -->
@@ -204,6 +221,7 @@
               ]
             });
             calendar.setOption('locale', 'ru');
+            calendar.setOption('height', 320);
             calendar.render();
           });
 
