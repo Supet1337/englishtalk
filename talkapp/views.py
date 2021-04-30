@@ -22,6 +22,9 @@ def loggout(request):
     logout(request)
     return HttpResponseRedirect("/")
 
+def redirect_login(request):
+    return HttpResponseRedirect("/")
+
 def login_user(request):
     if request.method == "POST":
         email = request.POST['email_auth']
@@ -33,7 +36,7 @@ def login_user(request):
             user = None
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect("/dashboard")
+            return HttpResponseRedirect("/dashboard/lk")
         else:
             messages.error(request, 'Неправильный логин или пароль.')
             return HttpResponseRedirect("/")
@@ -732,7 +735,7 @@ def change_email(request):
             user.save()
             messages.success(
                     request, "Почта успешно изменена.")
-        return HttpResponseRedirect('/dashboard')
+        return HttpResponseRedirect('/dashboard/lk')
 
 def ajax_load_lessons(request, number):
     lsn = []

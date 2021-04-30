@@ -1,7 +1,4 @@
 @media(max-width: 1023px){
-	.adaptive-header{
-		position: fixed
-	}
 	.adaptive-header .nav-user-not-mobile{
 		display: none
 	}
@@ -442,6 +439,33 @@ footer .btn-primary:hover{
   position : relative ;
   box-shadow : 0 0 10px -2px #ddd ;
 }
+
+@media screen and (max-width: 768px){
+
+    .reviews {
+      width : 85%;
+      height : 300px;
+      overflow : hidden ;
+      background-color : #fff ;
+      border-radius : 5px;
+      margin : 50px auto ;
+      position : relative ;
+      box-shadow : 0 0 10px -2px #ddd ;
+    }
+
+    .panel p {
+        float: none;
+        width: 100%;
+        clear: right;
+        margin: 25px 5px 10px 5px;
+        font-size: 19px;
+        color: #aaa;
+        line-height: 1.2em;
+    }
+}
+
+
+
 .panel {
   width : 100%;
   max-height: 100%;

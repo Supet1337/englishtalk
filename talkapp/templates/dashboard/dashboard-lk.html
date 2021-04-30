@@ -35,11 +35,6 @@
         <a class="list-group-item list-group-item-action" id="dd3" data-toggle="list" href="../dashboard/schedule" role="tab"><p style="margin-bottom: 0">Расписание</p></a>
           <a class="list-group-item list-group-item-action" id="dd8" data-toggle="list" href="../dashboard/tape" role="tab"><p style="margin-bottom: 0">Словарь</p></a>
       </div>
-    <div class="empty_balance mx-auto">
-        <h1>Ваш баланс сейчас пуст :(</h1>
-        <p>Для начала учёбы нужно пополнить баланс</p>
-        <button class="dashboard-button-primary">Пополнить</button>
-    </div>
     <div class="subscribe-block mx-auto">
         <h1>Будьте в курсе</h1>
         <p>Получайте информацию о сервисе и специальных предложениях</p>
@@ -51,18 +46,18 @@
     <div  id="page-content-wrapper">
         <div role="tabpanel">
             <div class="row">
-                <div class="col" style="max-width: 304px; padding-right: 5px">
+                <div class="col-md-12" style="max-width: 304px; padding-right: 5px">
                     <div class="card mb-3" style=" border-radius: 6px;">
                         <div class="row g-0">
                             <div class="col-md-4" style="padding-left:15px; padding-right:0">
                                 <img id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 68px;max-height: 68px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
                             </div>
-                            <div class="col-md-7" style="padding-left:0; padding-right:0; margin-right: 10px">
+                            <div class="col-md-7" id="teacher-blog" style="padding-left:0; padding-right:0; margin-right: 10px">
                                 <div class="teacher-name">
-                                    <p style="margin:0">Анна Иванова</p>
+                                    <p style="margin-bottom:3px">Анна Иванова</p>
                                 </div>
                                 <p class="card-text teacher-info">Преподаватель, менеджер меропр..</p>
-                                <button class="dashboard-button-secondary-teacher" >Перейти в онлайн класс</button>
+                                <button class="dashboard-button-secondary-teacher" >Онлайн класс</button>
                             </div>
                         </div>
                     </div>
@@ -161,16 +156,16 @@
                 <div class="blogs-content">
                     <div class="card-deck py-4">
                         <div class="card">
-                            <img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 180px;max-width: 280px;text-align: center">
+                            <img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 280px;max-width: 380px;text-align: center;">
                             <div class="card-body blog-card">
                                 <h5 class="card-title" style="margin-left: 0.75rem;">Подготовка к ЕГЭ</h5>
                             </div>
                         </div>
-                        <div class="card"><img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 180px;max-width: 280px;text-align: center">
+                        <div class="card"><img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 280px;max-width: 380px;text-align: center;">
                             <div class="card-body blog-card">
                                 <h5 class="card-title" style="margin-left: 0.75rem;">Подготовка к ЕГЭ</h5>
                             </div></div>
-                        <div class="card"><img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 180px;max-width: 280px;text-align: center">
+                        <div class="card"><img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 280px;max-width: 380px;text-align: center;">
                             <div class="card-body blog-card">
                                 <h5 class="card-title" style="margin-left: 0.75rem;">Подготовка к ЕГЭ</h5>
                             </div></div>
