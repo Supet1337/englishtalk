@@ -190,6 +190,8 @@
       <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
       <script src="https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js"></script>
       <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ru.min.js"></script>
         <script>
             {% if is_teacher %}
             var is_teacher = true;
@@ -208,18 +210,18 @@
             var calendarEl = document.getElementById('calendar');
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
-
+              initialView: 'dayGridWeek',
               displayEventEnd: true,
-              headerToolbar: {
-                left: '',
-                center: 'title',
-                right: 'prev,next'
-              },
+              headerToolbar: false,
               locale: 'ru',
               navLinks: false,
               businessHours: false,
               editable: false,
               selectable: false,
+
+              dayHeaderContent: (args) => {
+                return moment(args.date).format('D MMMM yyyy[\n]dddd')
+              },
 
               eventTimeFormat: {
               hour: '2-digit',
