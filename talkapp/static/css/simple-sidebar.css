@@ -11,7 +11,7 @@
     padding-left: 0;
     padding-right: 0;
     margin-left: 15%;
-    margin-right: 5%;
+    margin-right: 1%;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -207,7 +207,7 @@
 
 .logo {
     border-radius: 6px;
-    font-family: Montserrat;
+    font-family: Arial;
     font-style: normal;
     font-weight: bold;
     line-height: 29px;
@@ -307,4 +307,42 @@ text-align: center;
     line-height: 15px;
 
     color: #FFFFFF;
+}
+
+/* Календарь */
+.fc .fc-col-header-cell-cushion {
+    padding: 8px 10px;
+    color: #333333;
+}
+
+a:not([href]):not([tabindex]) {
+    color: #333333;
+}
+
+.fc-h-event {
+        display: unset;
+        border: none;
+        border: none;
+        background-color: none;
+        background-color: none;
+}
+
+.fc-h-event .fc-event-main {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #333333;
+}
+
+.fc-daygrid-block-event .fc-event-time, .fc-daygrid-block-event .fc-event-title {
+    padding: 14px 16px 22px;
+}
+
+
+@media screen and (min-width: 1024px) and (max-width: 1440px){
+    .fc .fc-col-header-cell-cushion {
+        padding: 13px 13px;
+    }
 }

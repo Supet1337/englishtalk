@@ -6,7 +6,7 @@ var roomName = room;
 
 $("#d1").show(function(){
     $("#chat-log").animate({ scrollTop: 100000 }, 50);
-    console.log("sssssssssss")
+
 
 })
 
