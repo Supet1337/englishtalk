@@ -140,7 +140,7 @@
                         </div>
                         </section>
             </div> -->
-            <div style="border-radius: 6px" class="card mb-3 text-center">
+            <div style="border-radius: 0px; border: none" class="card mb-3 text-center">
                 <div id='calendar'></div>
             </div>
 
@@ -236,26 +236,34 @@
                     trigger: 'hover',
                     container: 'body'
               });
+
             },
 
 //год, месяц, число. пендосы блин 2021-04-12T10:30:00
               events: [
                     {% for day in calendar %}
+                        {% for d in day %}
                         {
+                          id: '{{d.id}}',
                           start: '{{day.0.date|date:"Y-m-d"}}',
                           end: '{{day.0.date|date:"Y-m-d"}}',
-                        {% for d in day %}
                           title: '{{d.user_course.course_type}}',
                           description: '{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}',
                           displayEventEnd: true
                         },
                         {% endfor %}
                     {% endfor %}
-              ]
+                    ]
             });
             calendar.setOption('locale', 'ru');
             calendar.setOption('height', 320);
             calendar.render();
+
+             $( document ).ready(function() {
+             $( ".fc-event-title" ).each(function( index ) {
+                  $(this).append('</br>' + "<a class='fs-text-calendar' >"+calendar.getEventById(index+1).extendedProps.description+"</a>");
+             });
+              });
           });
 
         </script>

@@ -302,15 +302,21 @@
 
 @media screen and (min-width: 1440px){
     #wrapper {
-        padding-left: 0;
+        margin-left: 15%;
+        margin-right: 1%;
     }
+
+    .dashboard-button-secondary-teacher {
+        height: 27%
+    }
+
+    #wrapper.right-toggled {
+        padding-right: 0;
+    }
+
 }
 
-@media screen and (min-width: 1440px){
-        .dashboard-button-secondary-teacher {
-            height: 27%
-        }
-}
+
 
 @media screen and (max-width: 768px){
         .balance-blck{
@@ -318,5 +324,41 @@
             margin-bottom: 16px;
         }
 
+        #wrapper.right-toggled {
+            padding-right: 0;
+            margin-left: 55px;
+        }
+
+
+
+
 }
 
+
+@media screen and (min-width: 1024px) and (max-width: 1440px){
+    #wrapper.right-toggled {
+        padding-right: 0;
+        margin-left: 55px;
+    }
+
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1440px){
+       .fc-col-header-cell-cushion{
+           font-size: 1.349vw;
+       }
+
+       .fc-h-event{
+            font-size: 1.1vw;
+       }
+
+}
+
+
+
+
+.fc-day-mon{
+    word-break: break-word;
+
+}

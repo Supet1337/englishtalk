@@ -1427,3 +1427,11 @@ A VERTICAL event
     color: inherit; /* natural color for navlinks */
   }
 
+.fs-text-calendar{
+    font-family: Arial !important;
+    font-style: normal !important;
+    font-weight: bold !important;
+    color: #2F80ED !important;
+    line-height: 3 !important;
+
+}
