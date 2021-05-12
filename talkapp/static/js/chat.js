@@ -19,7 +19,7 @@ chatSocket.onmessage = function(e) {
 	// var message = data['message'];
 	// document.querySelector('#chat-log').value += (message + '\n');
 	// document.querySelector('#chat-log').append('<li>'+message+'</li>');
-	$('#chat-log').append('<li class="p-2"><span>'+data['user']+'</span> '+data['message']+'</li>');
+	$('#chat-log').append('<li class="p-2 chat-message-pov">'+data['message']+'</li>');
 	$('#chat-log').animate({ scrollTop: 100000 }, 50);
 };
 

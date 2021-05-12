@@ -24,7 +24,7 @@
 {% endblock %}
     {% block content %}
     {% include "dashboard/dashboard-header.html" %}
-    <div class="d-flex right-toggled" style="margin-left: 0; margin-right: 0" id="wrapper">
+    <div class="d-flex right-toggled" id="wrapper">
 
         <div id="left-sidebar-wrapper">
       <div class="list-group mx-auto" id="list-tab" role="tablist">
@@ -48,16 +48,29 @@
 
     <!-- Page Content -->
     <div  id="page-content-wrapper">
+        <div class="blogs-header">
+            <div class="blogs-header-text">
+                Бизнес английский
+            </div>
+        </div>
         <div class="card-group">
-          <div class="card">
-                  <div class="card-header">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <div class="card" style="border: none; color: #333333">
+                  <div class="card-header" style="background: transparent; border: none">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-bottom: 0;">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Учебные материалы</a>
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Курс</a>
                         </li>
                     </ul>
 
-<div class="tab-content" id="myTabContent" style="height: 44em; overflow-y: scroll;">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb" style="background-color: transparent">
+                    <li class="breadcrumb-item">Курс</li>
+                    <li class="breadcrumb-item">Анна Иванова</li>
+                    <li class="breadcrumb-item active">Бизнес английский</li>
+                  </ol>
+                </nav>
+
+<div class="tab-content" id="myTabContent">
       <!-- <button class="btn btn-white fixbut" style="border-radius: 0px; float: left;margin-top: 12px;margin-left: 1rem" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> Подключить видеосвязь</button> -->
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <div class="card-body" >
@@ -65,36 +78,66 @@
           <h2 style="text-align: center">Здесь будут отображаться ваши занятия</h2>
                 {% else %}
                 {% if cur_lsn %}
-                    <div class="card animate__animated animate__pulse animate__infinite infinite" style="width: 100%;text-align: center">
-                    <div class="card-header">
-                        Идет сейчас
-                    </div>
-                    <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><a href="#" id="openDoc{{cur_lsn.id}}" style="font-size: x-large">{{cur_lsn.lesson.name}}</a></li>
-                    </ul>
+                    <div class="lesson">
+                        <a style="color: #333333" href="#" id="openDoc{{lsnf.id}}">
+                        <div class="lesson-name">
+                            {{lsnf.lesson.name}}
+                        </div>
+                        <div class="lesson-progress">
+                            <div class="progress-num">
+                                1/4
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        </a>
+
                     </div>
                 {% endif %}
                 {% if past_lsn %}
-                <div class="card mt-5" style="width: 100%;">
-                    <div class="card-header" style="text-align: center">
-                        Прошедшие занятия
-                    </div>
-          <div class="card-body">
                 {% for lesson in past_lsn %}
-                  <div class="card" style="width: 100%;">
-                    <div class="card-header">
-                        {{lesson.date}}
+                  <div class="lesson">
+                        <a style="color: #333333" href="#" id="openDoc{{lsnf.id}}">
+                        <div class="lesson-name">
+                            {{lsnf.lesson.name}}
+                        </div>
+                        <div class="lesson-progress">
+                            <div class="progress-num">
+                                1/4
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        </a>
+
                     </div>
-                    <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><a href="#" id="openDoc{{lesson.id}}">{{lesson.lesson.name}}</a></li>
-                    </ul>
-                </div>
                 {% endfor %}
-              </div>
-                    </div>
                 {% endif %}
 
                 {% if future_lsn %}
+                {% for lsnf in future_lsn %}
+                    <div class="lesson">
+                        <a style="color: #333333" href="#" id="openDoc{{lsnf.id}}">
+                        <div class="lesson-name">
+                            {{lsnf.lesson.name}}
+                        </div>
+                        <div class="lesson-progress">
+                            <div class="progress-num">
+                                1/4
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        </a>
+
+                    </div>
+                {% endfor %}
+                {% endif %}
+           <!--
+           {% if future_lsn %}
           <div class="card mt-3" style="width: 100%;">
                     <div class="card-header" style="text-align: center">
                         Предстоящие занятия
@@ -113,6 +156,7 @@
               </div>
               </div>
                 {% endif %}
+           -->
 
                 {% endif %}
               </div>
@@ -123,8 +167,13 @@
 
                   </div>
 
-                    <div class="card" style="max-width: 20%; max-height: 775px">
-                        <div class="card-body">
+                    <div class="card" style="max-width: 50%; max-height: 775px; border: 1px #bdbdbd solid; border-radius: 5px; height: 80vh">
+                        <div class="card-header" style="display: flex; background-color: transparent">
+                            <img id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
+                            <div class="teacher-name">Анна Иванова</div>
+                            <button style="margin-right: 1em;position: absolute; top: 9%; right: 10px; background: transparent; color: #2F80ED; border: 0;" id="join" type="submit" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
+                        </div>
+                        <div class="card-body" style="background-color: #f8f8f8">
                             <div class="row video-group">
                                 <div class="col">
                                     <div id="local-player" class="player"></div>
@@ -137,21 +186,24 @@
                             <div>
                                 <form id="join-form">
                                     <div class="button-group" style="text-align: center">
-                                        <button style="margin-right: 1em;" id="join" type="submit" class="btn btn-success btn-sm"><i class="fas fa-phone"></i></button>
                                         <button style="margin-right: 1em;" id="leave" type="button" class="btn btn-danger btn-sm" disabled><i class="fas fa-phone-slash"></i></button>
                                         <button style="margin-right: 1em;" id="mute-audio" type="button" class="btn btn-success btn-sm"><i class="fas fa-microphone"></i></button>
                                         <button style="margin-right: 1em;" id="mute-video" type="button" class="btn btn-success btn-sm"><i class="fas fa-video"></i></button>
                                     </div>
                                 </form>
-                                <div class="mt-3" style="border: 1px solid rgba(0, 0, 0, 0.125); border-radius: 1rem; overflow: hidden">
+                                <div class="mt-3" style="border-radius: 5px; overflow: hidden; position: absolute; bottom: 0; left: 0; width: 100%">
                                     <ul id="chat-log" style="overflow: auto;max-height: 209px;">
                                         {% for cht in chat.get_messages %}
-                                            <li class="p-2"><span>{{cht.user.first_name}}:</span> {{cht.message}}</li>
+                                            <li class="p-2 chat-message-pov">{{cht.message}}</li>
                                         {% endfor %}
                                     </ul>
                                         <div class="row g-0">
-                                            <div style="padding:0" class="col-sm-6 col-md-8"><input id="chat-message-input" style="padding: 0.375rem 1rem;" autocomplete="off" type="text" class="form-control inpt"/></div>
-                                            <div class="col-6 col-md-4 pl-0"><button id="chat-message-submit" class="btn btn-secondary w-100 h-100" style="padding:0; border-radius: 0; font-size: x-large;" type="submit"><i class="fas fa-paper-plane"></i></button></div>
+                                            <div style="max-width: 90%;padding:0;flex: 0 0 90%;" class="col-sm-6 col-md-8"><input id="chat-message-input" style="padding: 0.375rem 1rem;border: 0" autocomplete="off" type="text" class="form-control inpt" placeholder="Нажмите, чтобы написать сообщение"/></div>
+                                            <div class="col-6 col-md-4 pl-0" style="max-width: 10%;background: white">
+                                                <button id="chat-message-submit" class="btn btn-secondary" style="padding:0; border-radius: 50px; font-size: x-large; border: 0;background: #e0e0e0;width: 40px; height: 40px" type="submit">
+                                                    <i class="fas fa-paper-plane"></i>
+                                                </button>
+                                            </div>
                                         </div>
                                 </div>
                             </div>

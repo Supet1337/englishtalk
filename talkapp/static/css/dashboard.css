@@ -220,6 +220,7 @@
     text-align: left;
     font-size: 24px;
     font-weight: bold;
+    color: #333333;
 }
 
 .blogs-header-show {
@@ -358,4 +359,44 @@
 .fc-day-mon{
     word-break: break-word;
 
+}
+
+.lesson-name {
+    color: #333333;
+}
+
+.lesson-progress {
+    display: flex;
+}
+
+.progress {
+    height: 4px;
+    width: 50%;
+    margin-left: 1em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.lesson-name::after {
+    font-size: 18px;
+    margin-left: 90%;
+    content: ">";
+}
+
+.teacher-name {
+    margin-top: auto;
+    margin-bottom: auto;
+    color: #333333;
+    font-size: 21px;
+}
+
+.chat-message-pov {
+    background: #2F80ED;
+    border-radius: 10px;
+    width: fit-content;
+    color: white;
+    margin-top: 5px;
+    margin-right:5px;
+    float: right;
+    clear: right;
 }
