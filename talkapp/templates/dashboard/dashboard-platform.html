@@ -81,7 +81,7 @@
                     <div class="lesson">
                         <a style="color: #333333" href="#" id="openDoc{{lsnf.id}}">
                         <div class="lesson-name">
-                            {{lsnf.lesson.name}}
+                            {{cur_lsn.lesson.name}}
                         </div>
                         <div class="lesson-progress">
                             <div class="progress-num">
@@ -96,7 +96,7 @@
                     </div>
                 {% endif %}
                 {% if past_lsn %}
-                {% for lesson in past_lsn %}
+                {% for lsnf in past_lsn %}
                   <div class="lesson">
                         <a style="color: #333333" href="#" id="openDoc{{lsnf.id}}">
                         <div class="lesson-name">
@@ -168,13 +168,13 @@
                   </div>
 
                     <div class="card" style="max-width: 50%; max-height: 775px; border: 1px #bdbdbd solid; border-radius: 5px; height: 80vh">
-                        <div class="card-header" style="display: flex; background-color: transparent">
+                        <div class="card-header" id="chat-header" style="display: flex; background-color: transparent">
                             <img id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
                             <div class="teacher-name">Анна Иванова</div>
-                            <button style="margin-right: 1em;position: absolute; top: 9%; right: 10px; background: transparent; color: #2F80ED; border: 0;" id="join" type="submit" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
+                            <button style="margin-right: 1em;position: absolute; top: 9%; right: 10px; background: transparent; color: #2F80ED; border: 0;" id="join" type="submit" form="join-form" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
                         </div>
                         <div class="card-body" style="background-color: #f8f8f8">
-                            <div class="row video-group">
+                            <div class="row video-group" style="display: none">
                                 <div class="col">
                                     <div id="local-player" class="player"></div>
                                 </div>
@@ -184,15 +184,16 @@
                                 </div>
                             </div>
                             <div>
-                                <form id="join-form">
+                                <form id="join-form" style="display: none">
                                     <div class="button-group" style="text-align: center">
                                         <button style="margin-right: 1em;" id="leave" type="button" class="btn btn-danger btn-sm" disabled><i class="fas fa-phone-slash"></i></button>
                                         <button style="margin-right: 1em;" id="mute-audio" type="button" class="btn btn-success btn-sm"><i class="fas fa-microphone"></i></button>
                                         <button style="margin-right: 1em;" id="mute-video" type="button" class="btn btn-success btn-sm"><i class="fas fa-video"></i></button>
                                     </div>
                                 </form>
+
                                 <div class="mt-3" style="border-radius: 5px; overflow: hidden; position: absolute; bottom: 0; left: 0; width: 100%">
-                                    <ul id="chat-log" style="overflow: auto;max-height: 209px;">
+                                    <ul id="chat-log" style="overflow: auto;max-height: 500px;">
                                         {% for cht in chat.get_messages %}
                                             <li class="p-2 chat-message-pov">{{cht.message}}</li>
                                         {% endfor %}
@@ -298,6 +299,19 @@
             }
           });
         })
+        $('#join').on('click', function(e){
+            $('#join-form').show();
+            $('#chat-header').hide();
+            $('.video-group').show();
+            $('#chat-log').css('max-height','400px');
+        });
+
+        $('#leave').on('click', function(e){
+            $('#join-form').hide();
+            $('.video-group').hide();
+            $('#chat-header').show();
+            $('#chat-log').css('max-height','500px');
+        });
 
         </script>
         <script src={% static "js/dashboard.js" %}></script>
