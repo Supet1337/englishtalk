@@ -359,7 +359,7 @@ a:not([href]):not([tabindex]) {
 
 @media screen and (min-width: 1440px){
     .fc .fc-col-header-cell-cushion {
-        padding: 2px 21%;
+
         font-family: Arial;
         font-size: 1vw;
         color: #333333;
