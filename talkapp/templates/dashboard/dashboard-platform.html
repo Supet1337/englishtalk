@@ -167,11 +167,11 @@
 
                   </div>
 
-                    <div class="card" style="max-width: 486px; max-height: 775px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; height: 80vh">
+                    <div class="card" style="max-width: 486px; max-height: 899px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; height: 90vh">
                         <div class="card-header" id="chat-header" style="display: flex; background-color: transparent">
-                            <img id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
+                            <img id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;"  align="center">
                             <div class="teacher-name-p">Анна Иванова</div>
-                            <button style="margin-right: 1em;position: absolute; top: 6.5%; right: 10px; background: transparent; color: #2F80ED; border: 0;" id="join" type="submit" form="join-form" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
+                            <button style="margin-right: 1em;position: absolute; top: 3.5%; right: 10px; background: transparent; color: #2F80ED; border: 0;" id="join" type="submit" form="join-form" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
                         </div>
                         <div class="card-body" style="background-color: #f8f8f8">
                             <div class="row video-group" style="display: none;">
@@ -194,7 +194,17 @@
                                 <div class="mt-3" style="border-radius: 5px; overflow: hidden; position: absolute; bottom: 0; left: 0; width: 100%">
                                     <ul id="chat-log" style="overflow: auto;max-height: 500px;">
                                         {% for cht in chat.get_messages %}
-                                            <li class="p-2 chat-message-pov">{{cht.message}}</li>
+                                           <!-- {% if request.user == cht.user %}
+                                                <li class="p-2 chat-message-pov" style="padding-top: 5px !important; padding-bottom: 5px !important;background:black">
+                                                    <a class="chat-message-time">{{cht.timestamp|date:"H:i"}}</a>
+                                                    <p class="chat-text-message-pov" >{{cht.message}}</p>
+                                                </li> -->
+                                        <!--{%else%}-->
+                                            <li  class="p-2 chat-message-pov" style="padding-top: 5px !important; padding-bottom: 5px !important">
+                                                <a class="chat-message-time">{{cht.timestamp|date:"H:i"}}</a>
+                                                <p class="chat-text-message-pov" >{{cht.message}}</p>
+                                            </li>
+                                        <!--{% endif %}-->
                                         {% endfor %}
                                     </ul>
                                         <div class="row g-0" style="background: white">
@@ -214,7 +224,7 @@
     </div>
 
     <div class="modal fade" id="dzModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+    <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Здесь тема урока</h5>
@@ -229,21 +239,21 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
       </div>
     </div>
-  </div>
-</div>
-{% endblock %}
-{% block jsfiles %}
+    </div>
+    </div>
+    {% endblock %}
+    {% block jsfiles %}
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
     <script src={% static "js/jquery.min.js" %}></script>
-	  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
-	  <script src={% static "js/jquery.waypoints.min.js" %}></script>
-	  <script src={% static "js/jquery.stellar.min.js" %}></script>
-	  <script src={% static "js/owl.carousel.min.js" %}></script>
-	  <script src={% static "js/jquery.magnific-popup.min.js" %}></script>
-	  <script src={% static "js/aos.js" %}></script>
-	  <script src={% static "js/scrollax.min.js" %}></script>
-	  <script src={% static "js/main.js" %}></script>
+      <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
+      <script src={% static "js/jquery.waypoints.min.js" %}></script>
+      <script src={% static "js/jquery.stellar.min.js" %}></script>
+      <script src={% static "js/owl.carousel.min.js" %}></script>
+      <script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+      <script src={% static "js/aos.js" %}></script>
+      <script src={% static "js/scrollax.min.js" %}></script>
+      <script src={% static "js/main.js" %}></script>
       <script src={% static "js/shedule.js" %}></script>
         <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
         <script>
@@ -319,10 +329,10 @@
         </script>
         <script src={% static "js/dashboard.js" %}></script>
         <script>
-			var room = '{{ chat.name }}';
-		</script>
-		<script src="{% static 'js/chat.js' %}"></script>
+            var room = '{{ chat.name }}';
+        </script>
+        <script src="{% static 'js/chat.js' %}"></script>
         <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.4.0.js"></script>
         <script src={% static "js/web.js" %}></script>
 
-{% endblock %}
+    {% endblock %}

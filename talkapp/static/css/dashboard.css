@@ -14,7 +14,7 @@
     border-color: #2D9CDB;
     border-width: 0;
 
-    font-family: Montserrat;
+    font-family: Arial;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -39,7 +39,7 @@
     border-color: #2D9CDB;
     border-width: 0;
 
-    font-family: Montserrat;
+    font-family: Arial;
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
@@ -73,13 +73,13 @@
 
 
 .header-text {
-    font-family: Montserrat;
+    font-family: Arial;
     text-align: left;
     font-size: 24px;
     font-weight: bold;
 }
 .header-text p{
-    font-family: Montserrat;
+    font-family: Arial;
     margin-bottom: 0;
     color: black;
 }
@@ -95,7 +95,7 @@
     margin-top: 16px;
 }
 .teacher-name p{
-    font-family: Montserrat;
+    font-family: Arial;
     margin-bottom: 0;
     color: black;
 }
@@ -110,7 +110,7 @@
     margin-bottom: 8px;
 }
 .teacher-info p{
-    font-family: Montserrat;
+    font-family: Arial;
     margin-bottom: 0;
 }
 .teacher-button{
@@ -121,7 +121,7 @@
 }
 
 .last-homework{
-    font-family: Montserrat;
+    font-family: Arial;
     text-align: left;
     font-size: 18px;
     font-weight: bold;
@@ -133,7 +133,7 @@
 
 
 .date-homework{
-    font-family: Montserrat;
+    font-family: Arial;
     text-align: left;
     font-size: 16px;
     color: #2D9CDB;
@@ -141,7 +141,7 @@
 }
 
 .text-homework{
-    font-family: Montserrat;
+    font-family: Arial;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -198,7 +198,7 @@
 
 
 .dashboard-header-logo {
-    font-family: Montserrat;
+    font-family: Arial;
     font-style: normal;
     font-weight: bold;
     font-size: 24px;
@@ -216,7 +216,7 @@
 }
 
 .blogs-header-text {
-    font-family: Montserrat;
+    font-family: Arial;
     text-align: left;
     font-size: 24px;
     font-weight: bold;
@@ -224,7 +224,7 @@
 }
 
 .blogs-header-show {
-    font-family: Montserrat;
+    font-family: Arial;
     text-align: left;
     font-size: 14px;
     font-weight: bold;
@@ -363,6 +363,12 @@
 
 .lesson-name {
     color: #333333;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 18px;
+    margin-bottom: 8px;
 }
 
 .lesson-progress {
@@ -387,21 +393,56 @@
     text-align: left;
     font-family: Arial;
     font-style: normal;
-    line-height: 16px;
-
+    font-weight: normal;
+    line-height: 21px;
     margin-top: auto;
     margin-bottom: auto;
     color: #333333;
-    font-size: 18px;
+    font-size: 18px !important;
 }
 
 .chat-message-pov {
-    background: #2F80ED;
-    border-radius: 10px;
     width: fit-content;
-    color: white;
-    margin-top: 5px;
-    margin-right:5px;
+    margin-right:12px;
     float: right;
     clear: right;
+    color: white;
+    display: flex;
 }
+
+.chat-message-time {
+    margin-right: 10px;
+    margin-top: 16.4px;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: right;
+    color: #909090 !important;
+}
+
+.chat-text-message-pov {
+
+    background: #2F80ED;
+    border-radius: 10px;
+    padding: 16.4px;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+    color: #FFFFFF;
+    word-break: break-word;
+}
+
+
+.progress-num{
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 20px;
+}
+

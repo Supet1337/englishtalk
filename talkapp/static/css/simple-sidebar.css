@@ -211,9 +211,17 @@
     font-family: Arial;
     font-style: normal;
     font-weight: bold;
-    line-height: 29px;
+    line-height: 21px;
     color: #2F80ED !important;
     text-transform: none !important;
+    font-size: 18px;
+
+    background: radial-gradient(100% 66.05% at 0% 100%, #1A6BD9 0%, #569AF5 100%),
+    linear-gradient(0deg, #FFFFFF, #FFFFFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+
 }
 
 .user-profile {
