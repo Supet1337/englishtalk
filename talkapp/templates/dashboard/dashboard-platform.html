@@ -194,17 +194,17 @@
                                 <div class="mt-3" style="border-radius: 5px; overflow: hidden; position: absolute; bottom: 0; left: 0; width: 100%">
                                     <ul id="chat-log" style="overflow: auto;max-height: 500px;">
                                         {% for cht in chat.get_messages %}
-                                           <!-- {% if request.user == cht.user %}
+                                            {% if request.user == cht.user %}
                                                 <li class="p-2 chat-message-pov" style="padding-top: 5px !important; padding-bottom: 5px !important;background:black">
                                                     <a class="chat-message-time">{{cht.timestamp|date:"H:i"}}</a>
                                                     <p class="chat-text-message-pov" >{{cht.message}}</p>
-                                                </li> -->
-                                        <!--{%else%}-->
+                                                </li>
+                                        {%else%}
                                             <li  class="p-2 chat-message-pov" style="padding-top: 5px !important; padding-bottom: 5px !important">
                                                 <a class="chat-message-time">{{cht.timestamp|date:"H:i"}}</a>
                                                 <p class="chat-text-message-pov" >{{cht.message}}</p>
                                             </li>
-                                        <!--{% endif %}-->
+                                        {% endif %}
                                         {% endfor %}
                                     </ul>
                                         <div class="row g-0" style="background: white">
@@ -257,6 +257,7 @@
       <script src={% static "js/shedule.js" %}></script>
         <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
         <script>
+            var email = '{{email}}';
             {% if is_teacher %}
             var is_teacher = true;
             {% else %}

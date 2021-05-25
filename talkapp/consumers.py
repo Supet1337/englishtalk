@@ -44,7 +44,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 'type': 'chat_message',
                 'message': message,
                 'username': self.scope["user"].first_name,
-                #'email': self.scope["user"].email,
+                'email': self.scope["user"].email,
                 'time': time
             }
         )
@@ -57,7 +57,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=json.dumps({
             'message': message,
             'time': event['time'],
-            #'email': event['email'],
+            'email': event['email'],
             'user': event['username']
         }))
 

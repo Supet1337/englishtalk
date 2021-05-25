@@ -429,6 +429,7 @@ def dashboard_platform(request):
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
+    context["email"] = request.user.email
     context['blog'] = Blog.objects.all()
     context['videos'] = VideoPractise.objects.all()
     context['video_categories'] = VideoCategory.objects.all()
