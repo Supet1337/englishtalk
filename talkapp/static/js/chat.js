@@ -17,11 +17,15 @@ var chatSocket = new WebSocket(ws + window.location.host + '/ws/chat/' + roomNam
 chatSocket.onmessage = function(e) {
 	var data = JSON.parse(e.data);
 	if(email == data['email']){
-	    $('#chat-log').append('<li style="padding-top: 5px !important; padding-bottom: 5px !important;background: black" class="p-2 chat-message-pov"><a class="chat-message-time">'+data['time']+'</a><p class="chat-text-message-pov" >'+data['message']+'</p></li>');
+	    $('#chat-log').append('<li style="padding-top: 0 !important; padding-bottom: 0 !important; width: 100%" class="p-2 chat-message-pov"></li>');
+	    $('#chat-log').append('<li style="padding-top: 0 !important; padding-bottom: 0 !important" class="p-2 chat-message-pov"><a class="chat-message-time">'+data['time']+'</a><p class="chat-text-message-pov" >'+data['message']+'</p></li>');
+	    $('#chat-log').append('<li style="padding-top: 16px !important; padding-bottom: 0 !important; width: 100%" class="p-2 chat-message-pov"></li>');
+
 	}
 	else{
-	    $('#chat-log').append('<li style="padding-top: 5px !important; padding-bottom: 5px !important" class="p-2 chat-message-pov"><a class="chat-message-time">'+data['time']+'</a><p class="chat-text-message-pov" >'+data['message']+'</p></li>');
-
+	    $('#chat-log').append('<li style="padding-top: 0 !important; padding-bottom: 0 !important; width: 100%" class="p-2 chat-message-pov"></li>');
+	    $('#chat-log').append('<li style="padding-top: 0 !important; padding-bottom: 0 !important" class="p-2 chat-message-pov-left"><p class="chat-text-message-pov" style="background: #E3E3E3; color: #333333">'+data['message']+'</p><a class="chat-message-time" style="margin-left: 10px">'+data['time']+'</a></li>');
+	    $('#chat-log').append('<li style="padding-top: 16px !important; padding-bottom: 0 !important; width: 100%" class="p-2 chat-message-pov"></li>');
 	}
 
 	$('#chat-log').animate({ scrollTop: 100000 }, 50);

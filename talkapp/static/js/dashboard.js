@@ -43,7 +43,16 @@ $(document).ready(function(){
                     if(!$("#docLabel"+id).length){
                         $("#home-tab").removeClass('active');
                         $("#home").removeClass('show active');
-                        $("#myTab").append('<li class="nav-item" id="docLabel'+id+'" role="presentation">'+
+                        $("#myTab").append(
+                                    '<li class="nav-item" role="presentation">'+
+                                         '<a class="nvlnk " id="buttonCollapseAudio'+id+'" data-toggle="collapse" href="#collapseAudio'+id+'" role="button" aria-expanded="false" aria-controls="collapseAudio'+id+'">'+'Аудио'+
+                                    '</li>'+
+
+                                    '<li class="nav-item" role="presentation">'+
+                                        '<a class="nvlnk " id="buttonCollapseVideo'+id+'" data-toggle="collapse" href="#collapseVideo'+id+'" role="button" aria-expanded="false" aria-controls="collapseVideo'+id+'">'+'Видео'+
+                                    '</li>'+
+
+                                 '<li class="nav-item" id="docLabel'+id+'" role="presentation">'+
                                  '<a class="nav-link active" id="docTab'+id+'" data-toggle="tab" href="#doc'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+json[i].name+
                                  '<button type="button" class="close" onclick="closeDoc('+id+')" style="padding-left: 5px;" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
@@ -52,15 +61,15 @@ $(document).ready(function(){
                                  '</li>');
                         $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
                                  '<div class="card-header" id="doc-header'+id+'">'+
-                                     '<a class="btn btn-white" style="border-radius: 0" id="buttonCollapseAudio'+id+'" data-toggle="collapse" href="#collapseAudio'+id+'" role="button" aria-expanded="false" aria-controls="collapseAudio'+id+'">'+
-                                        'Аудиоматериалы'+
-                                     '</a>'+
-                                     '<a class="btn btn-white" style="border-radius: 0" id="buttonCollapseVideo'+id+'" data-toggle="collapse" href="#collapseVideo'+id+'" role="button" aria-expanded="false" aria-controls="collapseVideo'+id+'">'+
-                                        'Видеоматериалы'+
-                                     '</a>'+
-                                     '<a class="btn btn-white bookbtn" id="zmbtn" onclick="zoom()" style="border-radius: 0; color: #FFA500">'+
-                                        'Режим учебника'+
-                                     '</a>'+
+                                    // '<a class="btn btn-white" style="border-radius: 0" id="buttonCollapseAudio'+id+'" data-toggle="collapse" href="#collapseAudio'+id+'" role="button" aria-expanded="false" aria-controls="collapseAudio'+id+'">'+
+                                     //   'Аудиоматериалы'+
+                                    // '</a>'+
+                                    // '<a class="btn btn-white" style="border-radius: 0" id="buttonCollapseVideo'+id+'" data-toggle="collapse" href="#collapseVideo'+id+'" role="button" aria-expanded="false" aria-controls="collapseVideo'+id+'">'+
+                                    //    'Видеоматериалы'+
+                                    // '</a>'+
+                                   //  '<a class="btn btn-white bookbtn" id="zmbtn" onclick="zoom()" style="border-radius: 0; color: #FFA500">'+
+                                    //    'Режим учебника'+
+                                   //  '</a>'+
                                  '</div>'+
                                  '<div class="collapse" id="collapseAudio'+id+'">'+
                                  '</div>'+
