@@ -6,10 +6,14 @@ $('#dzModal').on('show.bs.modal', function (event) {
     $('#student_email').attr('href','mailto:'+emaill+'?subject=Домашнее задание&body=Привет, тебе пришло домашнее задание.')
 })
 function closeDoc(id){
-    if ($("#docTab"+id).hasClass('active')){
+    if ($("#docTab"+id).hasClass('nvlnk-act')){
         $("#home-tab").addClass('active');
         $("#home").addClass('show active');
     }
+    $("#bread-item"+id).remove();
+    $(".breadcrumb-item").last().addClass('active');
+    $("#buttonCollapseAudio"+id).remove();
+    $("#buttonCollapseVideo"+id).remove();
     $("#docLabel"+id).remove();
     $("#doc"+id).remove();
 }
@@ -21,10 +25,12 @@ function closeVid(id,lid){
             $("#home").addClass('show active');
         }
         else{
-            $("#docTab"+lid).addClass('active');
+            $("#docTab"+lid).addClass('nvlnk-act');
             $("#doc"+lid).addClass('show active');
         }
     }
+    $("#bread-vid"+id).remove();
+    $(".breadcrumb-item").last().addClass('active');
     $("#menu-toggle-right").show();
     $("#vidLabel"+id).remove();
     $("#vid"+id).remove();
@@ -45,22 +51,22 @@ $(document).ready(function(){
                         $("#home").removeClass('show active');
                         $("#myTab").append(
                                     '<li class="nav-item" role="presentation">'+
-                                         '<a class="nvlnk " id="buttonCollapseAudio'+id+'" data-toggle="collapse" href="#collapseAudio'+id+'" role="button" aria-expanded="false" aria-controls="collapseAudio'+id+'">'+'Аудио'+
+                                         '<a class="nvlnk " id="buttonCollapseAudio'+id+'" data-toggle="collapse" href="#" onclick="showAudios('+id+')" role="button" aria-expanded="false" aria-controls="collapseAudio'+id+'">'+'Аудио'+
                                     '</li>'+
 
                                     '<li class="nav-item" role="presentation">'+
-                                        '<a class="nvlnk " id="buttonCollapseVideo'+id+'" data-toggle="collapse" href="#collapseVideo'+id+'" role="button" aria-expanded="false" aria-controls="collapseVideo'+id+'">'+'Видео'+
+                                        '<a class="nvlnk " id="buttonCollapseVideo'+id+'" data-toggle="collapse" href="#" onclick="showVideos('+id+')" role="button" aria-expanded="false" aria-controls="collapseVideo'+id+'">'+'Видео'+
                                     '</li>'+
 
                                  '<li class="nav-item" id="docLabel'+id+'" role="presentation">'+
-                                 '<a class="nav-link active" id="docTab'+id+'" data-toggle="tab" href="#doc'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+json[i].name+
+                                 '<a class="nvlnk nvlnk-act" id="docTab'+id+'" data-toggle="tab" href="#doc'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+json[i].name+
                                  '<button type="button" class="close" onclick="closeDoc('+id+')" style="padding-left: 5px;" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
                                  '</li>');
                         $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
-                                 '<div class="card-header" id="doc-header'+id+'">'+
+                                 //'<div class="card-header" id="doc-header'+id+'">'+
                                     // '<a class="btn btn-white" style="border-radius: 0" id="buttonCollapseAudio'+id+'" data-toggle="collapse" href="#collapseAudio'+id+'" role="button" aria-expanded="false" aria-controls="collapseAudio'+id+'">'+
                                      //   'Аудиоматериалы'+
                                     // '</a>'+
@@ -70,7 +76,7 @@ $(document).ready(function(){
                                    //  '<a class="btn btn-white bookbtn" id="zmbtn" onclick="zoom()" style="border-radius: 0; color: #FFA500">'+
                                     //    'Режим учебника'+
                                    //  '</a>'+
-                                 '</div>'+
+                                 //'</div>'+
                                  '<div class="collapse" id="collapseAudio'+id+'">'+
                                  '</div>'+
                                  '<div class="collapse" id="collapseVideo'+id+'">'+
@@ -83,6 +89,8 @@ $(document).ready(function(){
                         if (is_teacher){
                             $("#doc"+id).append('<button type="button" class="btn btn-primary" data-toggle="modal" data-number="'+json[i].docx_url_copy+'" data-email="'+json[i].student_email+'" data-target="#dzModal">Отправить дз ученику</button>');
                             }
+                        $(".breadcrumb-item").removeClass('active');
+                        $("#breadcrumb").append('<li class="breadcrumb-item active" id="bread-item'+id+'">'+json[i].name+'</li>');
 
                         $.ajax({
                             url: "/ajax_load_lessons_audios/"+id,
@@ -101,7 +109,15 @@ $(document).ready(function(){
                             success: function (result) {
                                 var json = $.parseJSON(result);
                                 json.forEach(function(item, i, json) {
-                                    $("#collapseVideo"+id).append('<a id="openVid'+json[i].video_id+'" data-lesid="'+id+'" href="#">'+json[i].video_name+'</a>');
+                                    $("#collapseVideo"+id).append(
+                                        '<div class="card" style="display: flex;">'+
+                                        '<div class="preview">'+
+                                        '<video id="my-video" class="video-js" controls preload="auto" width="160" height="100" poster="" data-setup="{}" >'+
+                                        '<source src="'+json[i].video_url+'#t=0.1" type="video/mp4">'+
+                                        '</div>'+
+                                        '<a id="openVid'+json[i].video_id+'" class="video-name" data-lesid="'+id+'" href="#">'+json[i].video_name+'</a>'+
+                                        '</div>'
+                                    );
                                 });
 
                         }}));
@@ -132,7 +148,7 @@ $(document).ready(function(){
                         $("#docTab"+lid).removeClass('active');
                         $("#doc"+lid).removeClass('show active');
                         $("#myTab").append('<li class="nav-item" id="vidLabel'+id+'" role="presentation">'+
-                                 '<a class="nav-link active" id="vidTab'+id+'" data-toggle="tab" href="#vid'+id+'" role="tab" aria-controls="vid'+id+'" aria-selected="false">'+json[i].video_name+
+                                 '<a class="nvlnk nvlnk-act" id="vidTab'+id+'" data-toggle="tab" href="#vid'+id+'" role="tab" aria-controls="vid'+id+'" aria-selected="false">'+json[i].video_name+
                                  '<button type="button" class="close" onclick="closeVid('+id+','+lid+')" style="padding-left: 5px;" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
@@ -153,6 +169,8 @@ $(document).ready(function(){
                         $("#vid"+id).addClass('show active');
                     }
                 });
+                $(".breadcrumb-item").removeClass('active');
+                $("#breadcrumb").append('<li class="breadcrumb-item active" id="bread-vid'+id+'">'+json[i].video_name+'</li>');
         }});
 
     });
@@ -170,6 +188,14 @@ $(document).ready(function(){
 		return false;
 	});
 });
+
+function showVideos(id){
+    $('#collapseVideo'+id).toggleClass('show');
+}
+
+function showAudios(id){
+    $('#collapseAudio'+id).toggleClass('show');
+}
 
 var s = 1;
 function tog(){

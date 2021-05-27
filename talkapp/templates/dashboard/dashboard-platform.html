@@ -64,7 +64,7 @@
                     </ul>
 
                 <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb" style="background-color: transparent">
+                  <ol class="breadcrumb" id="breadcrumb" style="background-color: transparent">
                     <li class="breadcrumb-item">Курс</li>
                     <li class="breadcrumb-item">Анна Иванова</li>
                     <li class="breadcrumb-item active">Бизнес английский</li>
@@ -80,7 +80,7 @@
                 {% else %}
                 {% if cur_lsn %}
                     <div class="lesson">
-                        <a style="color: #333333" href="#" id="openDoc{{lsnf.id}}">
+                        <a style="color: #333333" href="#" id="openDoc{{cur_lsn.id}}">
                         <div class="lesson-name">
                             {{cur_lsn.lesson.name}}
                         </div>
