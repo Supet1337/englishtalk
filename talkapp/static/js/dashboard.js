@@ -50,15 +50,15 @@ $(document).ready(function(){
                         $("#home-tab").removeClass('active');
                         $("#home").removeClass('show active');
                         $("#myTab").append(
-                                    '<li class="nav-item" role="presentation">'+
+                                    '<li class="nav-item mb-1" role="presentation">'+
                                          '<a class="nvlnk " id="buttonCollapseAudio'+id+'" data-toggle="collapse" href="#" onclick="showAudios('+id+')" role="button" aria-expanded="false" aria-controls="collapseAudio'+id+'">'+'Аудио'+
                                     '</li>'+
 
-                                    '<li class="nav-item" role="presentation">'+
+                                    '<li class="nav-item mb-1" role="presentation">'+
                                         '<a class="nvlnk " id="buttonCollapseVideo'+id+'" data-toggle="collapse" href="#" onclick="showVideos('+id+')" role="button" aria-expanded="false" aria-controls="collapseVideo'+id+'">'+'Видео'+
                                     '</li>'+
 
-                                 '<li class="nav-item" id="docLabel'+id+'" role="presentation">'+
+                                 '<li class="nav-item mb-1" id="docLabel'+id+'" role="presentation">'+
                                  '<a class="nvlnk nvlnk-act" id="docTab'+id+'" data-toggle="tab" href="#doc'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+json[i].name+
                                  '<button type="button" class="close" onclick="closeDoc('+id+')" style="padding-left: 5px;" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
@@ -110,13 +110,17 @@ $(document).ready(function(){
                                 var json = $.parseJSON(result);
                                 json.forEach(function(item, i, json) {
                                     $("#collapseVideo"+id).append(
-                                        '<div class="card" style="display: flex;">'+
-                                        '<div class="preview">'+
-                                        '<video id="my-video" class="video-js" controls preload="auto" width="160" height="100" poster="" data-setup="{}" >'+
-                                        '<source src="'+json[i].video_url+'#t=0.1" type="video/mp4">'+
-                                        '</div>'+
-                                        '<a id="openVid'+json[i].video_id+'" class="video-name" data-lesid="'+id+'" href="#">'+json[i].video_name+'</a>'+
-                                        '</div>'
+                                        '<div class="row">'+
+                                          '<div class="col" style="display: flex">'+
+                                              '<video id="my-video" style="border-radius: 6px; background: gray" class="video-js vjs-theme-city" controls="" preload="auto" width="160" height="100" poster="" data-setup="{}">'+
+                                                  '<source src="'+json[i].video_url+'#t=0.1" type="video/mp4">'+
+                                              '</video>'+
+                                              '<div style="margin-left: 12px; margin-top: 24px">'+
+                                                  '<a style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 16px;line-height: 18px;color: #333333; margin-bottom: 0" id="openVid'+json[i].video_id+'" class="video-name" data-lesid="'+id+'" href="#">'+json[i].video_name+'</a>'+
+                                                  '<p style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 12px;line-height: 14px;color: #828282;">14:03 мин</p>'+
+                                              '</div>'+
+                                          '</div>'+
+                                      '</div>'
                                     );
                                 });
 
