@@ -112,9 +112,7 @@ $(document).ready(function(){
                                     $("#collapseVideo"+id).append(
                                         '<div class="row">'+
                                           '<div class="col" style="display: flex">'+
-                                              '<video id="my-video" style="border-radius: 6px; background: gray" class="video-js vjs-theme-city" controls="" preload="auto" width="160" height="100" poster="" data-setup="{}">'+
-                                                  '<source src="'+json[i].video_url+'#t=0.1" type="video/mp4">'+
-                                              '</video>'+
+                                              '<div id="player'+json[i].video_id+'" style="width: 160px; height: 100px;"></div>'+
                                               '<div style="margin-left: 12px; margin-top: 24px">'+
                                                   '<a style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 16px;line-height: 18px;color: #333333; margin-bottom: 0" id="openVid'+json[i].video_id+'" class="video-name" data-lesid="'+id+'" href="#">'+json[i].video_name+'</a>'+
                                                   '<p style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 12px;line-height: 14px;color: #828282;">14:03 мин</p>'+
@@ -122,6 +120,7 @@ $(document).ready(function(){
                                           '</div>'+
                                       '</div>'
                                     );
+                                    var player = new Playerjs({id:"player"+json[i].video_id, file:json[i].video_url, player: 2});
                                 });
 
                         }}));
@@ -160,10 +159,10 @@ $(document).ready(function(){
                                  '</li>');
                         $("#myTabContent").append('<div class="tab-pane fade show active" id="vid'+id+'" role="tabpanel" aria-labelledby="vidTab'+id+'">'+
                                  '<div class="card-body" style="height: 480px;">'+
-                                 '<video id="my-video" class="video-js mx-auto" controls preload="auto" width="720" height="480" poster="" data-setup="{}" >'+
-                                 '<source src="'+json[i].video_url+'" type="video/mp4" />'+
+                                 '<div id="bgPlayer'+json[i].video_id+'" style="width: 720px; height: 480px;"></div>'+
                                  '</div>'+
                                  '</div>');
+                        var player = new Playerjs({id:"bgPlayer"+json[i].video_id, file:json[i].video_url, player: 1});
                     }
 
                     else {
