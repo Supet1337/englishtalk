@@ -385,7 +385,7 @@
 
 .lesson-name::after {
     font-size: 18px;
-    margin-left: 85%;
+    float: right;
     content: ">";
 }
 

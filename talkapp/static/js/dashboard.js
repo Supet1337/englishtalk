@@ -99,9 +99,9 @@ $(document).ready(function(){
                                 json.forEach(function(item, i, json) {
                                     $("#collapseAudio"+id).append(
                                     '<p>'+json[i].audio_name+'</p>'+
-                                    '<audio controls>'+
-                                        '<source src="'+json[i].audio_url+'" type="audio/mpeg">'+
-                                        '</audio>');
+                                    '<div id="audioPlayer'+json[i].audio_id+'"></div>'
+                                    );
+                                    var audioPlayer = new Playerjs({id:"audioPlayer"+json[i].audio_id, file:json[i].audio_url, player: 2});
                                 });
                         }}).then(
                         $.ajax({
@@ -111,16 +111,16 @@ $(document).ready(function(){
                                 json.forEach(function(item, i, json) {
                                     $("#collapseVideo"+id).append(
                                         '<div class="row">'+
-                                          '<div class="col" style="display: flex">'+
-                                              '<div id="player'+json[i].video_id+'" style="width: 160px; height: 100px;"></div>'+
+                                          '<div class="col" id="openVid'+json[i].video_id+'" style="display: flex; cursor: pointer" data-lesid="'+id+'">'+
+                                              '<div id="player'+json[i].video_id+'" style="width: 160px; height: 100px; border-radius: 50px"></div>'+
                                               '<div style="margin-left: 12px; margin-top: 24px">'+
-                                                  '<a style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 16px;line-height: 18px;color: #333333; margin-bottom: 0" id="openVid'+json[i].video_id+'" class="video-name" data-lesid="'+id+'" href="#">'+json[i].video_name+'</a>'+
+                                                  '<a style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 16px;line-height: 18px;color: #333333; margin-bottom: 0" class="video-name" href="#">'+json[i].video_name+'</a>'+
                                                   '<p style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 12px;line-height: 14px;color: #828282;">14:03 мин</p>'+
                                               '</div>'+
                                           '</div>'+
                                       '</div>'
                                     );
-                                    var player = new Playerjs({id:"player"+json[i].video_id, file:json[i].video_url, player: 2});
+                                    var player = new Playerjs({id:"player"+json[i].video_id, file:json[i].video_url, player: 1});
                                 });
 
                         }}));
@@ -137,7 +137,7 @@ $(document).ready(function(){
 
     });
 
-    $("#myTabContent").on('click','a[id^="openVid"]', function () {
+    $("#myTabContent").on('click','div[id^="openVid"]', function () {
         $("#menu-toggle-right").hide();
         i = $(this).attr("id");
         lid = $(this).data("lesid");
@@ -159,7 +159,7 @@ $(document).ready(function(){
                                  '</li>');
                         $("#myTabContent").append('<div class="tab-pane fade show active" id="vid'+id+'" role="tabpanel" aria-labelledby="vidTab'+id+'">'+
                                  '<div class="card-body" style="height: 480px;">'+
-                                 '<div id="bgPlayer'+json[i].video_id+'" style="width: 720px; height: 480px;"></div>'+
+                                 '<div id="bgPlayer'+json[i].video_id+'" style="width: 500px; height: 282px;"></div>'+
                                  '</div>'+
                                  '</div>');
                         var player = new Playerjs({id:"bgPlayer"+json[i].video_id, file:json[i].video_url, player: 1});
