@@ -481,3 +481,13 @@
     color: #333333;
     background: #f2f2f273;
 }
+
+.words-search{
+    background: #F4F4F4;
+    border: 0.3px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 100%;
+    padding: 8px 0 10px 10px;
+    font-family: Arial;
+}
