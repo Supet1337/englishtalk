@@ -58,7 +58,7 @@ $(document).ready(function(){
                                         '<a class="nvlnk " id="buttonCollapseVideo'+id+'" data-toggle="collapse" href="#" onclick="showVideos('+id+')" role="button" aria-expanded="false" aria-controls="collapseVideo'+id+'">'+'Видео'+
                                     '</li>'+
 
-                                 '<li class="nav-item mb-1" id="docLabel'+id+'" role="presentation">'+
+                                 '<li  class="nav-item mb-1 mr-1" id="docLabel'+id+'" role="presentation">'+
                                  '<a class="nvlnk nvlnk-act" id="docTab'+id+'" data-toggle="tab" href="#doc'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+json[i].name+
                                  '<button type="button" class="close" onclick="closeDoc('+id+')" style="padding-left: 5px;" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
