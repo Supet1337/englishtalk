@@ -127,7 +127,7 @@
 
 @media(min-width:768px) {
     #wrapper {
-        padding-left: 150px;
+
     }
 
     #wrapper.left-toggled {
@@ -136,7 +136,7 @@
 
     #wrapper.right-toggled {
         padding-right: 0;
-        margin-left: 300px;
+
     }
 
     #left-sidebar-wrapper {

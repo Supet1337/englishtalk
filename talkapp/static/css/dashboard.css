@@ -298,10 +298,10 @@
     }
 }
 
-@media screen and (min-width: 1440px){
+@media screen and (min-width: 1440px) and (max-width: 1920px){
     #wrapper {
-        margin-left: 15%;
-        margin-right: 300px;
+        margin-left: 20%;
+
     }
 
     .dashboard-button-secondary-teacher {
@@ -309,7 +309,7 @@
     }
 
     #wrapper.right-toggled {
-        padding-right: 0;
+        padding-right: 11%;
     }
 
 }
@@ -336,9 +336,20 @@
 @media screen and (min-width: 1024px) and (max-width: 1440px){
     #wrapper.right-toggled {
         padding-right: 0;
-        margin-left: 55px;
+        margin-left: 225px;
     }
 
+}
+
+
+@media screen and (min-width: 1920px){
+    #wrapper.right-toggled {
+        padding-right: 250px;
+    }
+    #wrapper{
+        margin-left: 20%;
+
+    }
 }
 
 
@@ -490,4 +501,24 @@
     width: 100%;
     padding: 8px 0 10px 10px;
     font-family: Arial;
+}
+
+@media screen and (max-width: 1920px) and (min-width: 1440px){
+    .hdr{
+        padding-left: calc(24% - 250px);
+        padding-right: 13%;
+        }
+}
+
+@media screen and (max-width: 1440px){
+    .hdr{
+        padding-left: 3.5%;
+        padding-right: 2%
+        }
+}
+@media screen and (min-width: 1920px){
+    .hdr{
+        padding-right: calc(28% - 250px);
+        padding-left: calc(24% - 250px);
+        }
 }
