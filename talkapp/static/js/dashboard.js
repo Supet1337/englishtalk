@@ -19,9 +19,9 @@ function closeDoc(id){
 }
 
 function closeVid(id,lid){
-    if ($("#vidTab"+id).hasClass('active')){
+    if ($("#vidTab"+id).hasClass('nvlnk-act')){
         if(!$("#docTab"+lid).length){
-            $("#home-tab").addClass('active');
+            $("#home-tab").addClass('nvlnk-act');
             $("#home").addClass('show active');
         }
         else{
@@ -47,7 +47,7 @@ $(document).ready(function(){
                 var json = $.parseJSON(result);
                 json.forEach(function(item, i, json) {
                     if(!$("#docLabel"+id).length){
-                        $("#home-tab").removeClass('active');
+                        $("#home-tab").removeClass('nvlnk-act');
                         $("#home").removeClass('show active');
                         $("#myTab").append(
                                     '<li class="nav-item mb-1" role="presentation">'+
@@ -127,9 +127,9 @@ $(document).ready(function(){
                     }
 
                     else {
-                        $("#home-tab").removeClass('active');
+                        $("#home-tab").removeClass('nvlnk-act');
                         $("#home").removeClass('show active');
-                        $("#docTab"+id).addClass('active');
+                        $("#docTab"+id).addClass('nvlnk-act');
                         $("#doc"+id).addClass('show active');
                     }
                 });
@@ -148,7 +148,7 @@ $(document).ready(function(){
                 var json = $.parseJSON(result);
                 json.forEach(function(item, i, json) {
                     if(!$("#vidLabel"+id).length){
-                        $("#docTab"+lid).removeClass('active');
+                        $("#docTab"+lid).removeClass('nvlnk-act');
                         $("#doc"+lid).removeClass('show active');
                         $("#myTab").append('<li class="nav-item" id="vidLabel'+id+'" role="presentation">'+
                                  '<a class="nvlnk nvlnk-act" id="vidTab'+id+'" data-toggle="tab" href="#vid'+id+'" role="tab" aria-controls="vid'+id+'" aria-selected="false">'+json[i].video_name+
@@ -166,14 +166,14 @@ $(document).ready(function(){
                     }
 
                     else {
-                        $("#docTab"+lid).removeClass('active');
+                        $("#docTab"+lid).removeClass('nvlnk-act');
                         $("#doc"+lid).removeClass('show active');
-                        $("#vidTab"+id).addClass('active');
+                        $("#vidTab"+id).addClass('nvlnk-act');
                         $("#vid"+id).addClass('show active');
                     }
-                });
                 $(".breadcrumb-item").removeClass('active');
                 $("#breadcrumb").append('<li class="breadcrumb-item active" id="bread-vid'+id+'">'+json[i].video_name+'</li>');
+                });
         }});
 
     });

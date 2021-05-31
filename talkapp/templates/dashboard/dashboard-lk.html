@@ -25,7 +25,7 @@
 {% endblock %}
     {% block content %}
     {% include "dashboard/dashboard-header.html" %}
-    <div class="d-flex" id="wrapper"> <!-- right-toggleed -->
+    <div class="d-flex right-toggled" id="wrapper"> <!-- right-toggleed -->
 
         <div id="left-sidebar-wrapper">
       <div class="list-group mx-auto" id="list-tab" role="tablist">
@@ -50,7 +50,7 @@
                     <div class="card mb-3" style=" border-radius: 6px;">
                         <div class="row g-0">
                             <div class="col-md-4" style="padding-left:15px; padding-right:0">
-                                <img id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 68px;max-height: 68px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
+                                <img id="teacher-img" src='{% static "images/avatar.png" %}' style="width: auto; height: auto; max-width: 68px;max-height: 68px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
                             </div>
                             <div class="col-md-7" id="teacher-blog" style="padding-left:0; padding-right:0; margin-right: 10px">
                                 <div class="teacher-name">
@@ -187,7 +187,6 @@
 	  <script src={% static "js/scrollax.min.js" %}></script>
 	  <script src={% static "js/main.js" %}></script>
       <script src={% static "js/shedule.js" %}></script>
-      <script src={% static "js/bootstrap.js" %}></script>
       <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
       <script src="https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js"></script>
       <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
