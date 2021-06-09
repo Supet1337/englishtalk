@@ -472,7 +472,7 @@
     background: white;
     border-radius: 6px;
     border-color: transparent;
-    padding: 8px 64px;
+    padding: 8px 93px;
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
@@ -481,7 +481,7 @@
     display: flex;
     align-items: center;
     text-align: center;
-    color: #333333;
+    color: #333333 !important;
 }
 
 .nvlnk-act{
@@ -521,4 +521,16 @@
         padding-right: calc(28% - 250px);
         padding-left: calc(24% - 250px);
         }
+}
+
+.book-mode{
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+.book-mode-btn{
+    cursor: pointer;
+    width: fit-content;
+    background: #F2F2F2;
+    padding: 8px 16px;
 }

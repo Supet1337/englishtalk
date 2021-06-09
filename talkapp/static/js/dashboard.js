@@ -19,16 +19,8 @@ function closeDoc(id){
 }
 
 function closeVid(id,lid){
-    if ($("#vidTab"+id).hasClass('nvlnk-act')){
-        if(!$("#docTab"+lid).length){
-            $("#home-tab").addClass('nvlnk-act');
-            $("#home").addClass('show active');
-        }
-        else{
-            $("#docTab"+lid).addClass('nvlnk-act');
-            $("#doc"+lid).addClass('show active');
-        }
-    }
+    $("#buttonCollapseVideo"+lid).addClass('nvlnk-act');
+    $("#doc"+lid).addClass('show active');
     $("#bread-vid"+id).remove();
     $(".breadcrumb-item").last().addClass('active');
     $("#menu-toggle-right").show();
@@ -59,8 +51,8 @@ $(document).ready(function(){
                                     '</li>'+
 
                                  '<li  class="nav-item mb-1 mr-1" id="docLabel'+id+'" role="presentation">'+
-                                 '<a class="nvlnk nvlnk-act" id="docTab'+id+'" data-toggle="tab" href="#doc'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+json[i].name+
-                                 '<button type="button" class="close" onclick="closeDoc('+id+')" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<a class="nvlnk nvlnk-act" id="docTab'+id+'" onclick="docClick('+id+')" data-toggle="tab" href="#doc'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+json[i].name+
+                                 '<button type="button" class="close" id="docClose'+id+'" onclick="closeDoc('+id+')" style="padding-left: 5px;" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
@@ -73,15 +65,15 @@ $(document).ready(function(){
                                     // '<a class="btn btn-white" style="border-radius: 0" id="buttonCollapseVideo'+id+'" data-toggle="collapse" href="#collapseVideo'+id+'" role="button" aria-expanded="false" aria-controls="collapseVideo'+id+'">'+
                                     //    'Видеоматериалы'+
                                     // '</a>'+
-                                   //  '<a class="btn btn-white bookbtn" id="zmbtn" onclick="zoom()" style="border-radius: 0; color: #FFA500">'+
-                                    //    'Режим учебника'+
-                                   //  '</a>'+
+                                     '<a class="nvlnk book-mode-btn" id="zmbtn" onclick="zoom()">'+
+                                        'Режим учебника'+
+                                     '</a>'+
                                  //'</div>'+
                                  '<div class="collapse" id="collapseAudio'+id+'">'+
                                  '</div>'+
                                  '<div class="collapse" id="collapseVideo'+id+'">'+
                                  '</div>'+
-                                 '<div class="card-body" style="height: 600px;">'+
+                                 '<div class="collapse show" id="docCard'+id+'" style="height: 600px;">'+
                                  '<object><embed src="'+json[i].docx_url_copy+'" style="width: 100%; height: 100%"></object>'+
                                  '</div>'+
                                  '</div>');
@@ -148,18 +140,18 @@ $(document).ready(function(){
                 var json = $.parseJSON(result);
                 json.forEach(function(item, i, json) {
                     if(!$("#vidLabel"+id).length){
-                        $("#docTab"+lid).removeClass('nvlnk-act');
+                        $("#buttonCollapseVideo"+lid).removeClass('nvlnk-act');
                         $("#doc"+lid).removeClass('show active');
                         $("#myTab").append('<li class="nav-item" id="vidLabel'+id+'" role="presentation">'+
-                                 '<a class="nvlnk nvlnk-act" id="vidTab'+id+'" data-toggle="tab" href="#vid'+id+'" role="tab" aria-controls="vid'+id+'" aria-selected="false">'+json[i].video_name+
-                                 '<button type="button" class="close" onclick="closeVid('+id+','+lid+')" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<a class="nvlnk nvlnk-act vidosikTab" id="vidTab'+id+'" onclick="videoOpen('+id+','+lid+')" data-toggle="tab" href="#vid'+id+'" role="tab" aria-controls="vid'+id+'" aria-selected="false">'+json[i].video_name+
+                                 '<button type="button" class="close vidClose" onclick="event.stopPropagation();closeVid('+id+','+lid+');" style="padding-left: 5px;" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
                                  '</li>');
-                        $("#myTabContent").append('<div class="tab-pane fade show active" id="vid'+id+'" role="tabpanel" aria-labelledby="vidTab'+id+'">'+
+                        $("#myTabContent").append('<div class="tab-pane fade show active vidosik" id="vid'+id+'" role="tabpanel" aria-labelledby="vidTab'+id+'">'+
                                  '<div class="card-body" style="height: 480px;">'+
-                                 '<div id="bgPlayer'+json[i].video_id+'" style="width: 500px; height: 282px;"></div>'+
+                                 '<div id="bgPlayer'+json[i].video_id+'" style="width: 656px; height: 440px;"></div>'+
                                  '</div>'+
                                  '</div>');
                         var player = new Playerjs({id:"bgPlayer"+json[i].video_id, file:json[i].video_url, player: 1});
@@ -193,11 +185,67 @@ $(document).ready(function(){
 });
 
 function showVideos(id){
-    $('#collapseVideo'+id).toggleClass('show');
+    if(!$('#buttonCollapseVideo'+id).hasClass('nvlnk-act')){
+        $('#docCard'+id).removeClass('show');
+        $('#collapseVideo'+id).toggleClass('show');
+        $('#buttonCollapseVideo'+id).toggleClass('nvlnk-act');
+        $('#docTab'+id).removeClass('nvlnk-act');
+        $('#collapseAudio'+id).removeClass('show');
+        $('#buttonCollapseAudio'+id).removeClass('nvlnk-act');
+        $('#docClose'+id).hide();
+        $("#doc"+id).addClass('show active');
+        $('.vidClose').hide();
+        $('.vidosik').removeClass('show active');
+        $('.vidosikTab').removeClass('nvlnk-act');
+    }
 }
 
 function showAudios(id){
-    $('#collapseAudio'+id).toggleClass('show');
+    if(!$('#buttonCollapseAudio'+id).hasClass('nvlnk-act')){
+        $('#docCard'+id).removeClass('show');
+        $('#collapseAudio'+id).toggleClass('show');
+        $('#buttonCollapseAudio'+id).toggleClass('nvlnk-act');
+        $('#docTab'+id).removeClass('nvlnk-act');
+        $('#collapseVideo'+id).removeClass('show');
+        $('#buttonCollapseVideo'+id).removeClass('nvlnk-act');
+        $('#docClose'+id).hide();
+        $("#doc"+id).addClass('show active');
+        $('.vidClose').hide();
+        $('.vidosik').removeClass('show active');
+        $('.vidosikTab').removeClass('nvlnk-act');
+    }
+}
+
+function docClick(id){
+    if(!$('#docTab'+id).hasClass('nvlnk-act')){
+        $('#docCard'+id).toggleClass('show');
+        $('#collapseAudio'+id).removeClass('show');
+        $('#buttonCollapseAudio'+id).removeClass('nvlnk-act');
+        $('#docTab'+id).toggleClass('nvlnk-act');
+        $('#collapseVideo'+id).removeClass('show');
+        $('#buttonCollapseVideo'+id).removeClass('nvlnk-act');
+        $('#docClose'+id).show();
+        $('.vidosik').removeClass('show active');
+        $('.vidosikTab').removeClass('nvlnk-act');
+        $("#doc"+id).addClass('show active');
+        $('.vidClose').hide();
+    }
+}
+
+function videoOpen(id, lid){
+    if(!$('#vidTab'+id).hasClass('nvlnk-act')){
+        $('#docCard'+lid).removeClass('show');
+        $('#collapseAudio'+lid).removeClass('show');
+        $('#buttonCollapseAudio'+lid).removeClass('nvlnk-act');
+        $('#docTab'+lid).removeClass('nvlnk-act');
+        $('#collapseVideo'+lid).removeClass('show');
+        $('#buttonCollapseVideo'+lid).removeClass('nvlnk-act');
+        $('#docClose'+lid).hide();
+        $('.vidosik').addClass('show active');
+        $('.vidosikTab').addClass('nvlnk-act');
+        $("#doc"+lid).removeClass('show active');
+        $('.vidClose').show();
+    }
 }
 
 var s = 1;
@@ -239,25 +287,9 @@ $("#ddd3").click(function () {
 var zoomS = 0;
 var pageWidth = document.body.offsetWidth;
 function zoom() {
-            $("#header").hide();
-            zoomS += 1;
-            $("#wrapper").toggleClass("left-toggled");
-            if (zoomS % 2 != 0){
-                document.body.className += ' zoom';
-                $('html, body').animate({scrollTop:315}, 'fast');
-                if (pageWidth >= 1024 && pageWidth < 1440){
-                document.getElementById("menu-toggle-right").style.marginTop = "10px";
-                }
-                else if (pageWidth >= 1440){
-                    document.getElementById("menu-toggle-right").style.marginTop = "8px";
-                }
-        }
-            else{
-                document.body.className -= ' zoom';
-                $("#header").show();
-                document.getElementById("menu-toggle-right").style.marginTop = "12px";
-            }
-        };
+    $("#header").toggle();
+    $("#wrapper").toggleClass('book-mode');
+};
 
 
 
