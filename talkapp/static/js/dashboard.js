@@ -77,10 +77,6 @@ $(document).ready(function(){
                                  '<object><embed src="'+json[i].docx_url_copy+'" style="width: 100%; height: 100%"></object>'+
                                  '</div>'+
                                  '</div>');
-
-                        if (is_teacher){
-                            $("#doc"+id).append('<button type="button" class="btn btn-primary" data-toggle="modal" data-number="'+json[i].docx_url_copy+'" data-email="'+json[i].student_email+'" data-target="#dzModal">Отправить дз ученику</button>');
-                            }
                         $(".breadcrumb-item").removeClass('active');
                         $("#breadcrumb").append('<li class="breadcrumb-item active" id="bread-item'+id+'">'+json[i].name+'</li>');
 
@@ -90,7 +86,7 @@ $(document).ready(function(){
                                 var json = $.parseJSON(result);
                                 json.forEach(function(item, i, json) {
                                     $("#collapseAudio"+id).append(
-                                    '<p>'+json[i].audio_name+'</p>'+
+                                    '<p style="padding-top: 20px; margin-bottom: 14px">'+json[i].audio_name+'</p>'+
                                     '<div id="audioPlayer'+json[i].audio_id+'"></div>'
                                     );
                                     var audioPlayer = new Playerjs({id:"audioPlayer"+json[i].audio_id, file:json[i].audio_url, player: 2});
@@ -103,7 +99,7 @@ $(document).ready(function(){
                                 json.forEach(function(item, i, json) {
                                     $("#collapseVideo"+id).append(
                                         '<div class="row">'+
-                                          '<div class="col" id="openVid'+json[i].video_id+'" style="display: flex; cursor: pointer" data-lesid="'+id+'">'+
+                                          '<div class="col" id="openVid'+json[i].video_id+'" style="display: flex; cursor: pointer; padding-top: 40px" data-lesid="'+id+'">'+
                                               '<div id="player'+json[i].video_id+'" style="width: 160px; height: 100px; border-radius: 50px"></div>'+
                                               '<div style="margin-left: 12px; margin-top: 24px">'+
                                                   '<a style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 16px;line-height: 18px;color: #333333; margin-bottom: 0" class="video-name" href="#">'+json[i].video_name+'</a>'+
@@ -150,8 +146,8 @@ $(document).ready(function(){
                                  '</a>'+
                                  '</li>');
                         $("#myTabContent").append('<div class="tab-pane fade show active vidosik" id="vid'+id+'" role="tabpanel" aria-labelledby="vidTab'+id+'">'+
-                                 '<div class="card-body" style="height: 480px;">'+
-                                 '<div id="bgPlayer'+json[i].video_id+'" style="width: 656px; height: 440px;"></div>'+
+                                 '<div class="card-body" style="height: 480px; padding-top: 0">'+
+                                 '<div class="mx-auto" id="bgPlayer'+json[i].video_id+'" style="width: 90%; height: 440px;"></div>'+
                                  '</div>'+
                                  '</div>');
                         var player = new Playerjs({id:"bgPlayer"+json[i].video_id, file:json[i].video_url, player: 1});
