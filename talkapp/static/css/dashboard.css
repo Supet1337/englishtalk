@@ -534,3 +534,47 @@
     background: #F2F2F2;
     padding: 8px 16px;
 }
+
+.tape-btn{
+    background: rgba(47, 128, 237, 0.1);
+    border-radius: 6px;
+    padding: 9px 33px;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #2F80ED;
+    border: none;
+    width: fit-content;
+}
+
+.tape-btn:active, .tape-btn:focus {
+  outline: none !important;
+}
+.tape-btn::-moz-focus-inner {
+  border: 0 !important;
+}
+
+.form-word-translate{
+    background: #F0F0F0;
+    border-radius: 3px;
+    border: 0;
+    width: 100%;
+    padding: 4px;
+    font-family: Arial;
+}
+
+.submit-btn-tape{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 7px 24px 8px;
+    background: #2F80ED;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 2em;
+    color: white;
+    border: 0;
+}

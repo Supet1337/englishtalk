@@ -294,3 +294,10 @@ class ChatMessage(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True, editable=False)
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     room = models.ForeignKey(to=ChatRoom, on_delete=models.CASCADE)
+
+
+
+class Tape(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+    translate = models.CharField(max_length=60)
+    word = models.CharField(max_length=60)

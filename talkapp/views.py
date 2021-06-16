@@ -609,6 +609,7 @@ def dashboard_tape(request):
     context['blog'] = Blog.objects.all()
     context['videos'] = VideoPractise.objects.all()
     context['video_categories'] = VideoCategory.objects.all()
+    context['words'] = Tape.objects.filter(user=request.user)
     if is_teacher:
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
     else:
@@ -686,6 +687,17 @@ def dashboard_tape(request):
 
     return render(request,'dashboard/dashboard-tape.html', context)
 
+def add_word_tape(request):
+    if request.method == 'POST':
+        word = request.POST.get('word-name')
+        translate = request.POST.get('word-translate-name')
+        tape = Tape()
+        tape.word = word
+        tape.translate = translate
+        tape.user = request.user
+        tape.save()
+    return HttpResponseRedirect('/dashboard/tape')
+
 
 def ajax_pay_lessons(request):
     if request.method == 'POST':
@@ -760,6 +772,13 @@ def ajax_load_lessons_audios(request, number):
     for i in UserLesson.objects.get(id=number).lesson.get_lesson_audios():
         aud.append(i.json())
     return HttpResponse(json.dumps(aud))
+
+
+def ajax_delete_word(request, number):
+    if request.method == 'POST':
+        word = Tape.objects.get(id=number)
+        word.delete()
+    return HttpResponse('deleted')
 
 @login_required
 def price(request):
