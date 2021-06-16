@@ -167,6 +167,7 @@ class Lesson_audio(models.Model):
         return {
             'audio_url': self.audio_url.url,
             'audio_name': self.name,
+            'audio_id': self.id
             }
 
 
