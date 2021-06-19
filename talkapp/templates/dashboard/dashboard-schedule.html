@@ -4,7 +4,6 @@
 {% endblock %}
 {% block cssfiles %}
         <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
-        <link rel="stylesheet" href={% static "css/shedule.css" %}>
         <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
@@ -16,6 +15,7 @@
 	    <link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
 	    <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
 	    <link rel="stylesheet" href={% static "css/aos.css" %}>
+        <link rel="stylesheet" href={% static "css/calendar.css" %}>
 	    <link rel="stylesheet" href={% static "css/style.css" %}>
 		<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
         <link rel="stylesheet" href={% static "css/main.css" %}>
@@ -46,30 +46,10 @@
     </div>
     <!-- Page Content -->
     <div  id="page-content-wrapper">
-          <div class="cd-schedule cd-schedule--loading margin-top-lg margin-bottom-lg js-cd-schedule">
-
-    <div class="cd-schedule__events">
-      <ul>
-          {% for day in calendar %}
-        <li class="cd-schedule__group">
-          <div class="cd-schedule__top-info"><span>{{day.0.date|date:'d E'}}</span></div>
-            <ul>
-            {% for d in day %}
-            <li class="cd-schedule__event">
-              <a data-start="{{d.date|date:'H'}}:{{d.date|date:'i'}}" data-end="{{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}" data-content="event-abs-circuit" data-event="event-4">
-                  <em class="cd-schedule__name">{{d.user_course.course_type}}</em>
-                  <em class="cd-schedule__name">{{d.lesson.name}}</em>
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-        </li>
-        {% endfor %}
-      </ul>
+        <div style="border-radius: 0px; border: none" class="card mb-3 text-center">
+            <div id='calendar'></div>
+        </div>
     </div>
-    <div class="cd-schedule__cover-layer"></div>
-  </div>
-      </div>
     </div>
     <!-- /#page-content-wrapper -->
 {% endblock %}
@@ -85,7 +65,127 @@
 	  <script src={% static "js/aos.js" %}></script>
 	  <script src={% static "js/scrollax.min.js" %}></script>
 	  <script src={% static "js/main.js" %}></script>
-      <script src={% static "js/shedule.js" %}></script>
-        <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
-        <script src={% static "js/dashboard.js" %}></script>
+      <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ru.min.js"></script>
+      <script src={% static "js/dashboard.js" %}></script>
+      <script src={% static "js/calendar.js" %}></script>
+      <script src={% static "js/ru-calendar.js" %}></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+              initialView: 'dayGridMonth',
+              displayEventEnd: true,
+
+              headerToolbar: {
+                 start: 'prev,next',
+                 center: 'title',
+                 end: ''
+
+              },
+              locale: 'ru',
+              navLinks: false,
+              businessHours: false,
+              editable: false,
+              selectable: false,
+
+              dayHeaderContent: (args) => {
+                return moment(args.date).format('dddd')
+              },
+
+              eventTimeFormat: {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  meridiem: false
+              },
+
+
+//год, месяц, число. пендосы блин 2021-04-12T10:30:00
+              events: [
+                    {% for day in calendar %}
+                        {% for d in day %}
+                        {
+                          id: '{{d.id}}',
+                          start: '{{day.0.date|date:"Y-m-d"}}',
+                          end: '{{day.0.date|date:"Y-m-d"}}',
+                          title: '{{d.user_course.course_type}}',
+                          description: '{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}',
+                          displayEventEnd: true
+                        },
+                        {% endfor %}
+                    {% endfor %}
+                    ]
+            });
+            calendar.setOption('locale', 'ru');
+            calendar.setOption('height', 900);
+            calendar.render();
+
+
+
+             $( document ).ready(function() {
+             $( ".fc-event-title" ).each(function( index ) {
+                  $(this).append('</br>' + "<a class='fs-text-calendar' >"+calendar.getEventById(index+1).extendedProps.description+"</a>");
+             });
+              });
+
+     $( document ).ready(function() {
+                var date = new Date();
+
+               $(".fc-button-group").before('<select id="select" class="select_month"><option value="01">Январь</option><option value="02">Февраль</option><option value="03">Март</option><option value="04">Апрель</option><option value="05">Май</option><option value="06">Июнь</option><option value="07">Июль</option><option value="08">Август</option><option value="09">Сентябрь</option><option value="10">Октябрь</option><option value="11">Ноябрь</option><option value="12">Декабрь</option></select>');
+               $(".select_month").on("change", function(event) {
+                   calendar.gotoDate(new Date(date.getFullYear(), this.value-1, 1));
+                   $( document ).ready(function() {
+                         $( ".fc-event-title" ).each(function( index ) {
+                              $(this).append('</br>' + "<a class='fs-text-calendar' >"+calendar.getEventById(index+1).extendedProps.description+"</a>");
+                         });
+                          });
+               });
+
+               document.getElementById("select").selectedIndex = date.getMonth()
+
+
+               $(".fc-prev-button").on("click", function(event) {
+                    document.getElementById("select").selectedIndex -= 1
+                    if (document.getElementById("select").selectedIndex == -1){
+                        document.getElementById("select").selectedIndex = 11
+                    }
+
+                    $( document ).ready(function() {
+                     $( ".fc-event-title" ).each(function( index ) {
+                          $(this).append('</br>' + "<a class='fs-text-calendar' >"+calendar.getEventById(index+1).extendedProps.description+"</a>");
+                     });
+                      });
+               });
+
+               $(".fc-next-button").on("click", function(event) {
+                    document.getElementById("select").selectedIndex += 1
+                    if (document.getElementById("select").selectedIndex == -1){
+                        document.getElementById("select").selectedIndex = 0
+                    }
+                    $( document ).ready(function() {
+                     $( ".fc-event-title" ).each(function( index ) {
+                          $(this).append('</br>' + "<a class='fs-text-calendar' >"+calendar.getEventById(index+1).extendedProps.description+"</a>");
+                     });
+                      });
+
+               });
+
+
+
+    });
+
+
+
+
+          });
+
+
+
+    </script>
+
+
 {% endblock %}

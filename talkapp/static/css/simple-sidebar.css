@@ -324,6 +324,7 @@ text-align: center;
 .fc .fc-col-header-cell-cushion {
     font-family: Arial;
     font-size: 1.33vw;
+    font-weight: normal;
     color: #333333;
 }
 
@@ -374,4 +375,20 @@ a:not([href]):not([tabindex]) {
         font-size: 1vw;
         color: #333333;
     }
+}
+
+.fc-header-toolbar > .fc-toolbar-chunk:nth-child(2)::before {
+    position: absolute;
+    left: 0;
+    content: 'Расписание' !important;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #333333;
+}
+
+.fc-header-toolbar > .fc-toolbar-chunk:nth-child(1) {
+    margin-left: 170px;
 }
