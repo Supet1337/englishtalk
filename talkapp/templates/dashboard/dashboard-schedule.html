@@ -81,10 +81,19 @@
               initialView: 'dayGridMonth',
               displayEventEnd: true,
 
+              customButtons: {
+                call: {
+                  text: 'Связаться с менеджером',
+                  click: function() {
+                    alert('clicked the button!');
+                  }
+                }
+              },
+
               headerToolbar: {
                  start: 'prev,next',
                  center: 'title',
-                 end: ''
+                 end: 'call'
 
               },
               locale: 'ru',
@@ -123,7 +132,6 @@
             calendar.setOption('locale', 'ru');
             calendar.setOption('height', 900);
             calendar.render();
-
 
 
              $( document ).ready(function() {
