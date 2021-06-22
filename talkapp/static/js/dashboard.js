@@ -65,9 +65,6 @@ $(document).ready(function(){
                                     // '<a class="btn btn-white" style="border-radius: 0" id="buttonCollapseVideo'+id+'" data-toggle="collapse" href="#collapseVideo'+id+'" role="button" aria-expanded="false" aria-controls="collapseVideo'+id+'">'+
                                     //    'Видеоматериалы'+
                                     // '</a>'+
-                                     '<a class="nvlnk book-mode-btn" id="zmbtn" onclick="zoom()">'+
-                                        'Режим учебника'+
-                                     '</a>'+
                                  //'</div>'+
                                  '<div class="collapse" id="collapseAudio'+id+'">'+
                                  '</div>'+
