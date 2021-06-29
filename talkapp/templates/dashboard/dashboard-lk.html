@@ -44,12 +44,12 @@
     <!-- Page Content -->
     <div  id="page-content-wrapper">
         <div role="tabpanel">
-            <div class="row">
-                <div class="col-md-12" style="max-width: 304px; padding-right: 5px">
-                    <div class="card mb-3" style=" border-radius: 6px;">
-                        <div class="row g-0">
+            <div class="row" style="height:150px">
+                <div class="col-md-12" style="max-width: 400px; padding-right: 5px">
+                    <div class="card mb-3" style=" border-radius: 6px;height: 90%">
+                        <div class="row g-0" style="height:100%">
                             <div class="col-md-4" style="padding-left:15px; padding-right:0">
-                                <img id="teacher-img" src='{% static "images/avatar.png" %}' style="width: auto; height: auto; max-width: 68px;max-height: 68px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
+                                <img id="teacher-img" src='{% static "images/avatar.png" %}' style="width: auto; height: auto; max-width: 100px;max-height: 100px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
                             </div>
                             <div class="col-md-7" id="teacher-blog" style="padding-left:0; padding-right:0; margin-right: 10px">
                                 <div class="teacher-name">
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="col" style="max-width: 220px; padding-left: 5px; padding-right: 5px;" >
-                    <div class="balance-blck">
+                    <div class="balance-blck" style="height: 90%">
                         <div class="balance-text">Баланс: 6 занятий</div>
                         <div class="balance-time">Занятия по 45 мин</div>
                         <div class="balance-time"><a href="#" style="color:#2F80ED; margin-bottom: 10px">Пополнить</a></div>
@@ -71,8 +71,8 @@
                 </div>
 
 
-                <div class="col" style="max-width: 231px; padding-left: 5px" >
-                    <div class="balance-blck">
+                <div class="col" style="max-width: 290px; padding-left: 5px" >
+                    <div class="balance-blck" style="height: 90%">
                         <div class="number-number"> <i style="color: #2F80ED" class="fa fa-phone"></i> +7 995 793 02 03</div>
                         <div class="number-number" style="color: #828282; font-weight: normal; margin-top: 0; margin-bottom: 8px">Бесплатно по всей России</div>
                         <button style="margin: 0px 16px 19px 16px" class="dashboard-button-secondary-teacher" ><i style="margin-right: 3px;" class="fa fa-paper-plane"></i> Связаться с куратором</button>
@@ -154,20 +154,16 @@
                 </div>
                 <div class="blogs-content">
                     <div class="card-deck py-4">
-                        <div class="card">
-                            <img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 280px;max-width: 380px;text-align: center;">
-                            <div class="card-body blog-card">
-                                <h5 class="card-title" style="margin-left: 0.75rem;">Подготовка к ЕГЭ</h5>
+                        {% for b in blog %}
+                        <a href="../dashboard/blog/{{b.id}}">
+                            <div class="card">
+                                <img src="{{b.title_picture.url}}" class="card-img-top mx-auto" style="max-height: 280px;max-width: 380px;text-align: center;">
+                                <div class="card-body blog-card">
+                                    <h5 class="card-title" style="margin-left: 0.75rem;">{{b.title}}</h5>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card"><img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 280px;max-width: 380px;text-align: center;">
-                            <div class="card-body blog-card">
-                                <h5 class="card-title" style="margin-left: 0.75rem;">Подготовка к ЕГЭ</h5>
-                            </div></div>
-                        <div class="card"><img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 280px;max-width: 380px;text-align: center;">
-                            <div class="card-body blog-card">
-                                <h5 class="card-title" style="margin-left: 0.75rem;">Подготовка к ЕГЭ</h5>
-                            </div></div>
+                        </a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

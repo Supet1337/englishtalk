@@ -1,0 +1,102 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}
+		<title>Главная</title>
+{% endblock %}
+{% block cssfiles %}
+        <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/overcast/jquery-ui.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
+        <link rel="stylesheet" href={% static "css/animate.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
+        <link rel="stylesheet" href={% static "css/calendar.css" %}>
+	    <link rel="stylesheet" href={% static "css/aos.css" %}>
+	    <link rel="stylesheet" href={% static "css/style.css" %}>
+		<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
+        <link rel="stylesheet" href={% static "css/main.css" %}>
+        <link rel="stylesheet" href={% static "css/dashboard.css" %}>
+
+{% endblock %}
+    {% block content %}
+    {% include "dashboard/dashboard-header.html" %}
+    <div class="d-flex right-toggled" id="wrapper"> <!-- right-toggleed -->
+
+        <div id="left-sidebar-wrapper">
+      <div class="list-group mx-auto" id="list-tab" role="tablist">
+        <a class="list-group-item list-group-item-action" id="dd0" data-toggle="list" href="../../dashboard/lk" role="tab"><p style="margin-bottom: 0">Главная</p></a>
+          <a class="list-group-item list-group-item-action" id="dd1" data-toggle="list" href="../../dashboard/platform" role="tab"><p style="margin-bottom: 0">Класс</p></a>
+          <a class="list-group-item list-group-item-action" id="dd5" data-toggle="list" href="../../dashboard/homework" role="tab"><p style="margin-bottom: 0">Задания</p></a>
+        <a class="list-group-item list-group-item-action" id="dd3" data-toggle="list" href="../../dashboard/schedule" role="tab"><p style="margin-bottom: 0">Расписание</p></a>
+          <a class="list-group-item list-group-item-action" id="dd8" data-toggle="list" href="../../dashboard/tape" role="tab"><p style="margin-bottom: 0">Словарь</p></a>
+      </div>
+    <div class="subscribe-block mx-auto">
+        <h1>Будьте в курсе</h1>
+        <p>Получайте информацию о сервисе и специальных предложениях</p>
+        <button class="dashboard-button-primary">Подписаться</button>
+    </div>
+    </div>
+
+    <!-- Page Content -->
+    <div  id="page-content-wrapper">
+        <div role="tabpanel">
+
+            <div class="blogs">
+                <div class="blogs-header">
+                    <div class="blogs-header-back">
+                        <a href="../../dashboard/lk"><button type="button" class="btn btn-secondary mx-auto" style="padding:0; border-radius: 50px; border: 0;background: #e0e0e0;width: 30px; height: 30px; margin-top: 6px"><i class="fas fa-arrow-left" style="color: #333333;font-size: 14px"></i> </button></a>
+                    </div>
+                    <div class="blogs-header-text" style="margin-left: 10px">
+                        Статья
+                    </div>
+                </div>
+                <div class="blogs-content" style="margin-right: 11%;margin-left: 11%;">
+                    <div class="blog-image" style="margin-bottom: 18px;height: 190px;border-radius: 5px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url(https://lenizdat.ru/ckfinder/userfiles/images/%D0%9A%D1%83%D1%80%D1%81%D1%8B%20%D0%B0%D0%BD%D0%B3%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%BE%D0%B3%D0%BE.jpg)">
+                    </div>
+                    <div class="blog-content">
+                        {{blog.content | safe}}
+                    </div>
+                    {% if not is_saved_blog %}
+                    <form method="post" action="/save-blog/{{blog.id}}">
+                        {% csrf_token %}
+                        <button type="submit" class="tape-btn">Сохранить к себе</button>
+                    </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+</div>
+    <!-- /#page-content-wrapper -->
+{% endblock %}
+{% block jsfiles %}
+    <script src={% static "js/jquery.min.js" %}></script>
+	  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
+	  <script src={% static "js/jquery.waypoints.min.js" %}></script>
+	  <script src={% static "js/jquery.stellar.min.js" %}></script>
+	  <script src={% static "js/owl.carousel.min.js" %}></script>
+	  <script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+	  <script src={% static "js/aos.js" %}></script>
+	  <script src={% static "js/scrollax.min.js" %}></script>
+	  <script src={% static "js/main.js" %}></script>
+      <script src={% static "js/shedule.js" %}></script>
+      <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+      <script src="https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ru.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+        <script>
+            {% if is_teacher %}
+            var is_teacher = true;
+            {% else %}
+            var is_teacher = false;
+            {% endif %}
+
+        </script>
+
+        <script src={% static "js/dashboard.js" %}></script>
+{% endblock %}

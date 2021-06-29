@@ -253,7 +253,6 @@ def dashboard_account(request):
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
-    context['blog'] = Blog.objects.all()
     context['videos'] = VideoPractise.objects.all()
     context['video_categories'] = VideoCategory.objects.all()
     if is_teacher:
@@ -268,6 +267,18 @@ def dashboard_account(request):
         context["lsn"] = 0
     else:
         student_additional = UserAdditional.objects.get(user=request.user)
+        ids = student_additional.saved_blogs[:-1].split('/')
+        blogs = []
+        for i in ids:
+            try:
+                blogs += [Blog.objects.get(id=int(i))]
+            except:
+                if student_additional.saved_blogs.find(i+'/') == 0:
+                    student_additional.saved_blogs.replace(i + '/', '', 1)
+                student_additional.saved_blogs.replace('/' + i + '/', '', 1)
+        context['saved_blogs'] = blogs
+        context['birthday'] = student_additional.birthday
+        context['phone_number'] = student_additional.phone_number
         lessons.order_by('date')
         flag = False
         past_lessons = []
@@ -686,6 +697,100 @@ def dashboard_schedule(request):
 
     return render(request,'dashboard/dashboard-schedule.html', context)
 
+@login_required
+def dashboard_blog(request, number):
+    context = {}
+    is_teacher = False
+    if len(Teacher.objects.filter(user=request.user)) > 0:
+        is_teacher = True
+    context["is_teacher"] = is_teacher
+    context['blog'] = Blog.objects.get(id=number)
+    context['videos'] = VideoPractise.objects.all()
+    context['video_categories'] = VideoCategory.objects.all()
+    context['words'] = Tape.objects.filter(user=request.user)
+    if is_teacher:
+        crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
+    else:
+        crs = UserCourse.objects.filter(student=request.user)
+        context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
+        chat = ChatRoom.objects.get(student=request.user)
+        context["chat"] = chat
+    lessons = UserLesson.objects.filter(user_course__in=crs)
+    if len(lessons) == 0:
+        context["lsn"] = 0
+    else:
+        student_additional = UserAdditional.objects.get(user=request.user)
+        ids = student_additional.saved_blogs[:-1].split('/')
+        flag = False
+        for i in ids:
+            if len(i) != 0:
+                if int(i) == number:
+                    flag = True
+                    break
+        context['is_saved_blog'] = flag
+        lessons.order_by('date')
+        flag = False
+        past_lessons = []
+        future_lessons = []
+        for l in lessons:
+            end = l.date
+            if student_additional.lesson_time:
+                end += datetime.timedelta(minutes=60)
+            else:
+                end += datetime.timedelta(minutes=45)
+            l.date_end = end
+            l.save()
+            if l.date <= datetime.datetime.now() <= end and not flag:
+                context['cur_lsn'] = l
+                if is_teacher:
+                    context['video_chat'] = UserAdditional.objects.get(user=l.user_course.student).video_chat
+                    chat = ChatRoom.objects.get(student=l.user_course.student)
+                    context["chat"] = chat
+                context['now_lsn'] = True
+                flag = True
+            elif end < datetime.datetime.now():
+                if not l.is_completed:
+                    student_additional.paid_lessons -= 1
+                    student_additional.save()
+                    l.is_completed = True
+                    l.save()
+                past_lessons.append(l)
+            elif not l.is_completed:
+                if len(future_lessons) < student_additional.paid_lessons:
+                    if not flag:
+                        flag = True
+                        context['next_lsn'] = l.date
+                    future_lessons.append(l)
+        context['past_lsn'] = past_lessons
+        context['future_lsn'] = future_lessons
+        calendar = []
+        day = []
+        for i in range(len(lessons)):
+            if i == 0:
+                day.append(lessons[i])
+            elif lessons[i].date.day == lessons[i - 1].date.day:
+                day.append(lessons[i])
+            else:
+                calendar.append(day)
+                day = []
+                day.append(lessons[i])
+        calendar.append(day)
+        context['calendar'] = calendar
+        i = 0
+        if student_additional.lesson_time:
+            context['lsn_time'] = "60"
+        else:
+            context['lsn_time'] = "45"
+        context['course'] = lessons[i].user_course.course_type
+        context['teacher'] = lessons[i].user_course.teacher.user.first_name
+        context["lsn"] = lessons
+        try:
+            context["ava"] = lessons[i].user_course.teacher.image.url
+        except:
+            context["ava"] = "Аватар"
+        context["paid_lessons"] = student_additional.paid_lessons
+
+    return render(request, 'dashboard/dashboard-blog.html', context)
 
 @login_required
 def dashboard_tape(request):
@@ -838,6 +943,59 @@ def change_email(request):
                     request, "Почта успешно изменена.")
         return HttpResponseRedirect('/dashboard/lk')
 
+@login_required
+def change_info(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        surname = request.POST.get("surname")
+        day = request.POST.get("birth-day")
+        month = request.POST.get("birth-month")
+        year = request.POST.get("birth-year")
+        user = request.user
+        user_add = UserAdditional.objects.get(user=request.user)
+        user.first_name = name
+        user.last_name = surname
+        user_add.birthday = datetime.datetime.strptime(f'{year}-{month}-{day}', "%Y-%m-%d").date()
+        user_add.save()
+        user.save()
+        messages.success(request, "Личные данные успешно изменены")
+        return HttpResponseRedirect('/dashboard/account')
+
+@login_required
+def change_password(request):
+    if request.method == "POST":
+        old_password = request.POST.get("old-password")
+        new_password = request.POST.get("new-password")
+        new_password_repeat = request.POST.get("new-password-repeat")
+        username = request.user.username
+        if request.user.check_password(old_password):
+            if new_password == new_password_repeat:
+                request.user.set_password(new_password)
+                request.user.save()
+                user = authenticate(username=username, password=new_password)
+                if user is not None:
+                    login(request, user)
+                messages.success(request, "Пароль успешно изменён")
+            else:
+                messages.error(request, "Введённые пароли не совпадают")
+        else:
+            messages.error(request, "Неправильный пароль")
+        return HttpResponseRedirect('/dashboard/account')
+
+@login_required
+def change_additional_info(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        phone = request.POST.get("phone")
+        user = request.user
+        user_add = UserAdditional.objects.get(user=user)
+        user.email = email
+        user_add.phone_number = phone
+        user.save()
+        user_add.save()
+        messages.success(request, "Данные от аккаунта успешно изменены")
+        return HttpResponseRedirect('/dashboard/account')
+
 def ajax_load_lessons(request, number):
     lsn = []
     l = UserLesson.objects.get(id=number)
@@ -885,6 +1043,18 @@ def blogs(request):
     context = {}
     context['blogs'] = Blog.objects.all()
     return render(request, 'blogs.html', context)
+
+
+def save_blog(request, number):
+    if request.method == "POST":
+        user_add = UserAdditional.objects.get(user=request.user)
+        if not('/' + str(number) + '/' in user_add.saved_blogs) or (str(number) + '/' in user_add.saved_blogs and user_add.saved_blogs.find(str(number)+ '/') == 0):
+            user_add.saved_blogs += str(number) + '/'
+            user_add.save()
+            messages.success(request,"Блог сохранён")
+        else:
+            messages.warning(request, "Блог уже сохранён")
+        return HttpResponseRedirect(f'/dashboard/blog/{number}')
 
 
 def video(request,number):

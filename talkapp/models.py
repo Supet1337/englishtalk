@@ -170,25 +170,6 @@ class Lesson_audio(models.Model):
             'audio_id': self.id
             }
 
-
-class UserAdditional(models.Model):
-
-    class Meta:
-        verbose_name_plural = "Дополнительная информация о пользователях"
-
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Пользователь')
-    phone_number = PhoneNumberField(verbose_name='Телефон')
-    video_chat = models.CharField(max_length=32, verbose_name='Код личного видеочата')
-    paid_lessons = models.IntegerField(verbose_name='Кол-во оплаченных занятий', default=1)
-
-    LESSON_TIME_CHOISES = [
-        (True, '60 минут'),
-        (False, '45 минут')
-    ]
-
-    lesson_time = models.BooleanField(choices=LESSON_TIME_CHOISES, default=False,verbose_name='Продолжительность уроков')
-
-
 class Blog(models.Model):
 
     class Meta:
@@ -200,6 +181,26 @@ class Blog(models.Model):
     title_picture = models.ImageField(upload_to=blog_image_directory_path, blank=True,verbose_name='Превью')
     date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100,verbose_name='Заголовок')
+
+class UserAdditional(models.Model):
+
+    class Meta:
+        verbose_name_plural = "Дополнительная информация о пользователях"
+
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE,verbose_name='Пользователь')
+    phone_number = PhoneNumberField(verbose_name='Телефон')
+    video_chat = models.CharField(max_length=32, verbose_name='Код личного видеочата')
+    paid_lessons = models.IntegerField(verbose_name='Кол-во оплаченных занятий', default=1)
+    birthday = models.DateField(verbose_name='Дата рождения', default=datetime.date.today())
+    saved_blogs = models.TextField(max_length=1024, blank=True)
+    LESSON_TIME_CHOISES = [
+        (True, '60 минут'),
+        (False, '45 минут')
+    ]
+
+    lesson_time = models.BooleanField(choices=LESSON_TIME_CHOISES, default=False,verbose_name='Продолжительность уроков')
+
+
 
 
 class VideoCategory(models.Model):

@@ -61,7 +61,7 @@
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 17px;
     line-height: 14px;
     text-align: center;
     color: #FFFFFF;
@@ -90,9 +90,9 @@
     font-family: Arial;
     font-style: normal;
     font-weight: bold;
-    font-size: 14px;
-    line-height: 16px;
-    margin-top: 16px;
+    font-size: 18px;
+    line-height: 20px;
+    margin-top: 20px;
 }
 .teacher-name p{
     font-family: Arial;
@@ -104,8 +104,8 @@
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
-    font-size: 10px;
-    line-height: 11px;
+    font-size: 14px;
+    line-height: 15px;
     color: #2F80ED;
     margin-bottom: 8px;
 }
@@ -161,17 +161,17 @@
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 18px;
     margin-left: 16px;
-    margin-top: 16px;
+    margin-top: 30px;
 }
 
 .balance-time{
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 16px;
     color: #828282;
     margin-left: 16px;
@@ -184,11 +184,11 @@
     font-family: Arial;
     font-style: normal;
     font-weight: bold;
-    font-size: 12px;
-    line-height: 14px;
+    font-size: 15px;
+    line-height: 16px;
     color: #333333;
     margin-left: 16px;
-    margin-top: 16px;
+    margin-top: 24px;
     margin-bottom: 3px;
 
 }
