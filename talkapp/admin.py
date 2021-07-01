@@ -4,7 +4,7 @@ from .forms import *
 import nested_admin
 from .models import DefaultLesson, Lesson_video, Lesson_audio, UserAdditional, Teacher, DefaultCourse,\
     Blog, UserCourse, UserLesson, VideoPractiseWord, VideoPractise, VideoPractiseConstructor,VideoPractiseListening,\
-    VideoCategory, ChatRoom, ChatMessage, Tape
+    VideoCategory, ChatRoom, ChatMessage, Tape, Homework, Homework_video, Homework_audio
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 admin.site.site_header = 'Englishtalk администрирование'
@@ -18,12 +18,20 @@ class BlogAdminForm(forms.ModelForm):
 class MovieAdmin(admin.ModelAdmin):
     form = BlogAdminForm
 
-class InLineVideoLesson(nested_admin.NestedStackedInline):
+class InLineVideoLesson(admin.StackedInline):
     model = Lesson_video
     extra = 0
 
-class InLineAudioLesson(nested_admin.NestedStackedInline):
+class InLineAudioLesson(admin.StackedInline):
     model = Lesson_audio
+    extra = 0
+
+class InLineVideoHomework(admin.StackedInline):
+    model = Homework_video
+    extra = 0
+
+class InLineAudioHomework(admin.StackedInline):
+    model = Homework_audio
     extra = 0
 
 class InLineDefaultLesson(nested_admin.NestedStackedInline):
@@ -111,6 +119,11 @@ class VideoPractiseAdmin(admin.ModelAdmin):
     search_fields = ['author__first_name', 'name','category']
     def author_name(self,obj):
         return obj.author.first_name
+
+
+@admin.register(Homework)
+class HomeworkAdmin(admin.ModelAdmin):
+    inlines = [InLineAudioHomework,InLineVideoHomework]
 
 
 admin.site.register(VideoCategory)

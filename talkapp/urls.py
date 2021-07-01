@@ -18,6 +18,7 @@ urlpatterns = [
     path('confidentiality', confidentiality),
     path('oferta', oferta),
     path('ajax_load_lessons/<int:number>', ajax_load_lessons),
+    path('ajax_load_homework/<int:number>', ajax_load_homework),
     path('ajax_delete_word/<int:number>', ajax_delete_word),
     path('ajax_pay_lessons', ajax_pay_lessons),
     path('ajax_load_lessons_videos/<int:number>', ajax_load_lessons_videos),
@@ -40,4 +41,5 @@ urlpatterns = [
     path('video/<int:number>', video),
     path('video-constructor/<int:number>', video_constructor),
     path('video-listening/<int:number>', video_listening),
+    path('check_aswer/<int:number>', check_answer)
 ]

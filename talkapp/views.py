@@ -437,6 +437,9 @@ def dashboard_courses(request):
 def dashboard_homework(request):
     context = {}
     is_teacher = False
+
+    context['homework'] = Homework.objects.filter(student=request.user)
+
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
@@ -1002,6 +1005,13 @@ def ajax_load_lessons(request, number):
     lsn.append(l.json())
     return HttpResponse(json.dumps(lsn))
 
+def ajax_load_homework(request, number):
+    hwrk = []
+    h = Homework.objects.get(id=number)
+    hwrk.append(h.json())
+    return HttpResponse(json.dumps(hwrk))
+
+
 def ajax_load_lessons_videos(request, number):
     vid = []
     for i in UserLesson.objects.get(id=number).lesson.get_lesson_videos():
@@ -1084,5 +1094,24 @@ def view_404(request, exception):
 
 def view_500(request):
     return render(request, "errors/500.html")
+
+
+def check_answer(request, number):
+    if request.method == 'POST':
+        homework = Homework.objects.get(id=number)
+        answer = request.POST.get('answer')
+        homework.answer = answer
+
+        if homework.correct_answer != '':
+            if answer.replace(' ', '') == homework.correct_answer.replace(' ', ''):
+                homework.is_completed = True
+                homework.save()
+                messages.success(request,"Правильный ответ")
+            else:
+                messages.error(request,"Неправильный ответ")
+        else:
+            messages.warning(request,"Ожидайте проверки ответа преподавателем")
+
+    return HttpResponseRedirect('../dashboard/homework')
 
 

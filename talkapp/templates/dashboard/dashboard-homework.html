@@ -1,10 +1,452 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}{% load static %}
+{% block title %}
+<title>Задания</title>
+{% endblock %}
+{% block cssfiles %}
+<link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+<link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet"/>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+<link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
+<link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
+<link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
+<link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
+<link rel="stylesheet" href={% static "css/style.css" %}>
+<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
+<link rel="stylesheet" href={% static "css/main.css" %}>
+<link rel="stylesheet" href={% static "css/dashboard.css" %}>
 
-</body>
-</html>
+{% endblock %}
+{% block content %}
+{% include "dashboard/dashboard-header.html" %}
+<div class="d-flex right-toggled" id="wrapper">
+
+    <div id="left-sidebar-wrapper">
+        <div class="list-group mx-auto" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action" id="dd0" data-toggle="list" href="../dashboard/lk" role="tab"><p style="margin-bottom: 0">Главная</p></a>
+            <a class="list-group-item list-group-item-action" id="dd1" data-toggle="list" href="../dashboard/platform" role="tab"><p style="margin-bottom: 0">Класс</p></a>
+            <a class="list-group-item list-group-item-action active" id="dd5" data-toggle="list" href="../dashboard/homework" role="tab"><p style="margin-bottom: 0">Задания</p></a>
+            <a class="list-group-item list-group-item-action" id="dd3" data-toggle="list" href="../dashboard/schedule" role="tab"><p style="margin-bottom: 0">Расписание</p></a>
+            <a class="list-group-item list-group-item-action" id="dd8" data-toggle="list" href="../dashboard/tape" role="tab"><p style="margin-bottom: 0">Словарь</p></a>
+        </div>
+
+    </div>
+
+    <!-- Page Content -->
+    <div  id="page-content-wrapper">
+        <div class="card-group">
+            <div class="card" style="border: none; color: #333333">
+                <div class="card-header" style="background: transparent; border: none">
+                    <div class="blogs-header">
+                        <div class="blogs-header-text">
+                            Задания
+                        </div>
+                    </div>
+
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb" id="breadcrumb" style="background-color: transparent">
+
+                        </ol>
+                    </nav>
+
+                    <div class="tab-content" id="myTabContent">
+                        <!-- <button class="btn btn-white fixbut" style="border-radius: 0px; float: left;margin-top: 12px;margin-left: 1rem" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> Подключить видеосвязь</button> -->
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="card-body" >
+                                {% if lsn == 0 %}
+                                <h2 style="text-align: center">Здесь будут отображаться ваши домашние задания</h2>
+                                {% else %}
+
+
+                                {% for hmwrk in homework %}
+                                <div class="lesson">
+                                    <a style="color: #333333" href="#" id="openHmk{{hmwrk.id}}">
+                                        <div class="lesson-name">
+                                            {{hmwrk.homework_name}}
+                                        </div>
+                                        <div class="lesson-progress">
+                                            <div class="progress-num">
+                                                1/4
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div style="position: absolute; bottom: -1%;margin-left: auto;margin-right: auto;left: 0;right: 0;text-align: center;">
+                    <button data-bs-toggle="modal" type="button" data-bs-target="#tapeModal" class="tape-btn" style="margin-right: 32px">+ Добавить слово</button>
+                    Режим учебника
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round" id="zmbtn" onclick="zoom()"></span>
+                    </label>
+                </div>
+
+            </div>
+
+
+            <div class="card" style="max-width: 486px; max-height: 899px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; height: 90vh">
+                <div class="card-header" id="chat-header" style="display: flex; background-color: transparent">
+                    <img id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;"  align="center">
+                    <div class="teacher-name-p">{{ teacher }}</div>
+                    <button style="margin-right: 1em;position: absolute; top: 3.5%; right: 10px; background: transparent; color: #2F80ED; border: 0;" id="join" type="submit" form="join-form" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
+                </div>
+                <div class="card-body" style="background-color: #f8f8f8">
+                    <div class="row video-group" style="display: none;">
+                        <div class="col">
+                            <div id="local-player" class="player"></div>
+                        </div>
+                        <div class="col">
+                            <div id="remote-playerlist"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <form id="join-form" style="display: none">
+                            <div class="button-group" style="text-align: center">
+                                <button style="margin-right: 1em;" id="leave" type="button" class="btn btn-danger btn-sm" disabled><i class="fas fa-phone-slash"></i></button>
+                                <button style="margin-right: 1em;" id="mute-audio" type="button" class="btn btn-success btn-sm"><i class="fas fa-microphone"></i></button>
+                                <button style="margin-right: 1em;" id="mute-video" type="button" class="btn btn-success btn-sm"><i class="fas fa-video"></i></button>
+                            </div>
+                        </form>
+
+                        <div class="mt-3" style="border-radius: 5px; overflow: hidden; position: absolute; bottom: 0; left: 0; width: 100%">
+                            <ul id="chat-log" style="overflow: auto;max-height: 614px; margin-bottom: 2px">
+                                {% for cht in chat.get_messages %}
+                                {% if request.user == cht.user %}
+                                <li class="p-2 chat-message-pov" style="padding-top: 0 !important; padding-bottom: 0 !important; width:100%"></li>
+                                <li class="p-2 chat-message-pov" style="padding-top: 0 !important; padding-bottom: 0 !important">
+                                    <a class="chat-message-time">{{cht.timestamp|date:"H:i"}}</a>
+                                    <p class="chat-text-message-pov" >{{cht.message}}</p>
+                                </li>
+                                <li class="p-2 chat-message-pov" style="padding-top: 16px !important; padding-bottom: 0 !important; width:100%"></li>
+
+                                {%else%}
+                                <li class="p-2 chat-message-pov" style="padding-top: 0 !important; padding-bottom: 0 !important; width:100%"></li>
+                                <li  class="p-2 chat-message-pov-left" style="padding-top: 0 !important; padding-bottom: 0 !important">
+                                    <p class="chat-text-message-pov" style="background: #E3E3E3; color: #333333" >{{cht.message}}</p>
+                                    <a class="chat-message-time" style="margin-left: 10px">{{cht.timestamp|date:"H:i"}}</a>
+                                </li>
+                                <li class="p-2 chat-message-pov" style="padding-top: 16px !important; padding-bottom: 0 !important; width:100%"></li>
+
+
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                            <div class="row g-0" style="background: white">
+                                <div style="max-width: 87%;padding:0;flex: 0 0 88%;" class="col-sm-6 col-md-8"><input id="chat-message-input" style="padding: 16px 40px;border: 0; font-family: Arial; font-style: normal; font-weight: normal; font-size: 16px; line-height: 18px; color: #BDBDBD;" autocomplete="off" type="text" class="form-control inpt" placeholder="Нажмите, чтобы написать сообщение"/></div>
+                                <div class="col-6 col-md-4 pl-0 my-auto" style="max-width: 12%;background: white">
+                                    <button id="chat-message-submit" class="btn btn-secondary mx-auto my-auto" style="padding:0; border-radius: 50px; font-size: x-large; border: 0;background: #e0e0e0;width: 30px; height: 30px" type="submit">
+                                        <i class="fas fa-chevron-right" style="position: absolute; top:3px; left: 8px"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<div class="modal fade" id="dzModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Здесь тема урока</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+          <a id="student_email" href="" target="_blank" rel="noopener noreferrer">Отправить домашнее задание</a>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+  </div>
+</div>
+</div>
+</div>
+-->
+
+<div class="modal fade" id="tapeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-sm mx-auto">
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 24px;line-height: 28px;color: #333333;" id="exampleModalLabel">Добавить слово</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="padding-right: 30px;padding-left: 30px;">
+                <form method="POST" action="/add_word_tape">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="word-name"  style="font-family: Arial;font-style: normal;font-weight: normal;font-size: 12px;line-height: 14px;color: #333333;" class="col-form-label">Слово</label>
+                        <input type="text" class="form-word-translate" id="word-name" name="word-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="word-translate-name" style="font-family: Arial;font-style: normal;font-weight: normal;font-size: 12px;line-height: 14px;color: #333333;" class="col-form-label">Перевод</label>
+                        <input type="text" class="form-word-translate" id="word-translate-name" name="word-translate-name">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Добавить в словарь" class="submit-btn-tape" >
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block jsfiles %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+<script src={% static "js/jquery.min.js" %}></script>
+<script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
+<script src={% static "js/jquery.waypoints.min.js" %}></script>
+<script src={% static "js/jquery.stellar.min.js" %}></script>
+<script src={% static "js/owl.carousel.min.js" %}></script>
+<script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+<script src={% static "js/scrollax.min.js" %}></script>
+<script src={% static "js/main.js" %}></script>
+<script src={% static "js/shedule.js" %}></script>
+<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<script>
+            var email = '{{email}}';
+            {% if is_teacher %}
+            var is_teacher = true;
+            {% else %}
+            var is_teacher = false;
+            {% endif %}
+            var room_name = '{{video_chat}}';
+            function category(id){
+                {% for c in video_categories %}
+                if (id == {{c.id}}){
+                    $('.category-{{c.id}}').show()
+                }
+                else{
+                   $('.category-{{c.id}}').hide()
+                }
+                {% endfor %}
+            }
+            function category_showAll(){
+                {% for c in video_categories %}
+                $('.category-{{c.id}}').show()
+                {% endfor %}
+            }
+
+            $(document).ready(function () {
+            var div = document.getElementById('right-sidebar-wrapper');
+            var listener = function(e) {
+                if (e.pageX > 300 && e.pageX < 1350 && e.pageY > 325 && e.pageY < 840){
+                    div.style.left = e.pageX - 20 + "px";
+                    div.style.top = e.pageY - 270 + "px";
+                }
+
+            };
+
+            div.addEventListener('mousedown', e => {
+                document.addEventListener('mousemove', listener);
+            });
+
+            document.addEventListener('mouseup', e => {
+                document.removeEventListener('mousemove', listener);
+            });
+        var a = 0;
+          $("#collapse_post").click(function(event) {
+            a += 1;
+            if (a % 2 == 0){
+                $('#collapseExample2').collapse('hide');
+                return false;
+            }
+            else{
+                $('#collapseExample2').collapse('show');
+            }
+          });
+        })
+        $('#join').on('click', function(e){
+            $('#join-form').show();
+            $('#chat-header').hide();
+            $('.video-group').show();
+            $('#chat-log').css('max-height','485px');
+        });
+
+        $('#leave').on('click', function(e){
+            $('#join-form').hide();
+            $('.video-group').hide();
+            $('#chat-header').show();
+            $('#chat-log').css('max-height','614px');
+        });
+
+    $("document").ready(function(){
+        $("#chat-log").animate({ scrollTop: 100000 }, 50);
+    })
+
+
+
+
+
+     $(document).ready(function(){
+    $('a[id^="openHmk"]').click(function () {
+        i = $(this).attr("id");
+       const id = i.slice(7);
+        $.ajax({
+            url: "/ajax_load_homework/"+id,
+            success: function (result) {
+                var json = $.parseJSON(result);
+                json.forEach(function(item, i, json) {
+                    if(!$("#docLabel"+id).length){
+                        $("#home-tab").removeClass('nvlnk-act');
+                        $("#home").removeClass('show active');
+                        $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
+                                    '<div>'+
+                                       ' <div style="font-size: 18px;line-height: 21px; margin-bottom: 14px" class="blogs-header-text">'+
+                                           ' '+json[i].homework_exercise+' '+
+                                       ' </div>'+
+
+                                        '<div class="blog-image" style="margin-bottom: 18px;height: 174px;border-radius: 5px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url('+json[i].homework_picture+')">'+
+                                        '</div>'+
+
+                                        '<div class="card" style="border-radius: 5px; font-family: Arial; margin-bottom: 14px">'+
+                                            '<div class="card-body">'+
+                                                //'<p style="color: #4F4F4F; font-size: 16px;line-height: 18px; font-weight: bold;" class="card-title">Card title</p>'+
+                                                '<p style="color: #4F4F4F; font-size: 14px;line-height: 16px;" class="card-text">'+json[i].homework_exercise_content+'</p>'+
+                                           ' </div>'+
+                                        '</div>'+
+
+                                        '<form method="POST" action="../check_aswer/'+json[i].homework_id+'">'+
+                                            '{% csrf_token %}'+
+                                                '<input type="text" id="input_answer"  style="margin-bottom: 14px" name="answer" class="homework-form" placeholder="Написать ответ">'+
+                                                '<button id="input_answer_button" style="font-size: 12px" class="dashboard-button-secondary-teacher" > Отправить </button>'+
+                                        '</form>'+
+                                    '</div>'+
+                                 '</div>');
+                                 if (json[i].homework_is_completed){
+                                    $("#input_answer").val(json[i].homework_correct_answer)
+                                    $("#input_answer").prop('disabled', true);
+                                    $("#input_answer_button").prop('disabled', true);
+
+                                 };
+                        $(".breadcrumb-item").removeClass('active');
+                        $("#breadcrumb").append('<li class="breadcrumb-item active" ><a style="color: #333333" href="../../dashboard/homework" >Задания</a></li>');
+                        $("#breadcrumb").append('<li class="breadcrumb-item active" id="bread-item'+id+'">'+json[i].homework_name+'</li>');
+
+                        $.ajax({
+                            url: "/ajax_load_lessons_audios/"+id,
+                            success: function (result) {
+                                var json = $.parseJSON(result);
+                                json.forEach(function(item, i, json) {
+                                    $("#collapseAudio"+id).append(
+                                    '<p style="padding-top: 20px; margin-bottom: 14px">'+json[i].audio_name+'</p>'+
+                                    '<div id="audioPlayer'+json[i].audio_id+'"></div>'
+                                    );
+                                    var audioPlayer = new Playerjs({id:"audioPlayer"+json[i].audio_id, file:json[i].audio_url, player: 2});
+                                });
+                        }}).then(
+                        $.ajax({
+                            url: "/ajax_load_lessons_videos/"+id,
+                            success: function (result) {
+                                var json = $.parseJSON(result);
+                                json.forEach(function(item, i, json) {
+                                    $("#collapseVideo"+id).append(
+                                        '<div class="row">'+
+                                          '<div class="col" id="openVid'+json[i].video_id+'" style="display: flex; cursor: pointer; padding-top: 40px" data-lesid="'+id+'">'+
+                                              '<div id="player'+json[i].video_id+'" style="width: 160px; height: 100px; border-radius: 50px"></div>'+
+                                              '<div style="margin-left: 12px; margin-top: 24px">'+
+                                                  '<a style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 16px;line-height: 18px;color: #333333; margin-bottom: 0" class="video-name" href="#">'+json[i].video_name+'</a>'+
+                                                  '<p style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 12px;line-height: 14px;color: #828282;">14:03 мин</p>'+
+                                              '</div>'+
+                                          '</div>'+
+                                      '</div>'
+                                    );
+                                    var player = new Playerjs({id:"player"+json[i].video_id, file:json[i].video_url, player: 1});
+                                });
+
+                        }}));
+                    }
+
+                    else {
+                        $("#home-tab").removeClass('nvlnk-act');
+                        $("#home").removeClass('show active');
+                        $("#docTab"+id).addClass('nvlnk-act');
+                        $("#doc"+id).addClass('show active');
+                    }
+                });
+        }});
+
+    });
+
+    $("#myTabContent").on('click','div[id^="openVid"]', function () {
+        $("#menu-toggle-right").hide();
+        i = $(this).attr("id");
+        lid = $(this).data("lesid");
+       const id = i.slice(7);
+        $.ajax({
+            url: "/ajax_load_video/"+id,
+            success: function (result) {
+                var json = $.parseJSON(result);
+                json.forEach(function(item, i, json) {
+                    if(!$("#vidLabel"+id).length){
+                        $("#buttonCollapseVideo"+lid).removeClass('nvlnk-act');
+                        $("#doc"+lid).removeClass('show active');
+                        $("#myTab").append('<li class="nav-item" id="vidLabel'+id+'" role="presentation">'+
+                                 '<a class="nvlnk nvlnk-act vidosikTab" id="vidTab'+id+'" onclick="videoOpen('+id+','+lid+')" data-toggle="tab" href="#vid'+id+'" role="tab" aria-controls="vid'+id+'" aria-selected="false">'+json[i].video_name+
+                                 '<button type="button" class="close vidClose" onclick="event.stopPropagation();closeVid('+id+','+lid+');" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<span aria-hidden="true">&times;</span>'+
+                                 '</button>'+
+                                 '</a>'+
+                                 '</li>');
+                        $("#myTabContent").append('<div class="tab-pane fade show active vidosik" id="vid'+id+'" role="tabpanel" aria-labelledby="vidTab'+id+'">'+
+                                 '<div class="card-body" style="height: 480px; padding-top: 0">'+
+                                 '<div class="mx-auto" id="bgPlayer'+json[i].video_id+'" style="width: 90%; height: 440px;"></div>'+
+                                 '</div>'+
+                                 '</div>');
+                        var player = new Playerjs({id:"bgPlayer"+json[i].video_id, file:json[i].video_url, player: 1});
+                    }
+
+                    else {
+                        $("#docTab"+lid).removeClass('nvlnk-act');
+                        $("#doc"+lid).removeClass('show active');
+                        $("#vidTab"+id).addClass('nvlnk-act');
+                        $("#vid"+id).addClass('show active');
+                    }
+                $(".breadcrumb-item").removeClass('active');
+                $("#breadcrumb").append('<li class="breadcrumb-item active" id="bread-vid'+id+'">'+json[i].video_name+'</li>');
+                });
+        }});
+
+    });
+});
+
+
+
+
+
+        </script>
+<script src="{% static 'js/playerjs.js' %}"></script>
+<script src={% static "js/dashboard.js" %}></script>
+<script>
+            var room = '{{ chat.name }}';
+        </script>
+<script src="{% static 'js/chat.js' %}"></script>
+<script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.4.0.js"></script>
+<script src={% static "js/web.js" %}></script>
+
+{% endblock %}
