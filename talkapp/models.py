@@ -13,6 +13,11 @@ from phonenumber_field.modelfields import PhoneNumberField
 def video_directory_path(instance, filename):
     return 'lessons/lesson_{0}/videos/{1}'.format(instance.lesson.id, filename)
 
+def video_homework_directory_path(instance, filename):
+    return 'homeworks/homework_{0}/videos/{1}'.format(instance.homework.id, filename)
+
+def audio_homework_directory_path(instance, filename):
+    return 'homeworks/homework_{0}/audios/{1}'.format(instance.homework.id, filename)
 
 def audio_directory_path(instance, filename):
     return 'lessons/lesson_{0}/audio/{1}'.format(instance.lesson.id, filename)
@@ -317,6 +322,12 @@ class Homework(models.Model):
     correct_answer = models.CharField(max_length=1360, verbose_name='Правильный ответ', blank=True)
     is_completed = models.BooleanField(verbose_name='Задание выполнено верно', default=False)
 
+    def get_homework_videos(self):
+        return Homework_video.objects.filter(homework_id=self.id)
+
+    def get_homework_audios(self):
+        return Homework_audio.objects.filter(homework_id=self.id)
+
     def json(self):
         return {
             'homework_picture': self.picture.url,
@@ -333,7 +344,7 @@ class Homework(models.Model):
 
 class Homework_video(models.Model):
     name = models.CharField(max_length=64, verbose_name='Название видеофайла')
-    video_url = models.FileField(upload_to=video_directory_path, blank=True, verbose_name='Видеофайл')
+    video_url = models.FileField(upload_to=video_homework_directory_path, blank=True, verbose_name='Видеофайл')
     homework = models.ForeignKey(to=Homework, on_delete=models.CASCADE, blank=True)
 
     def __str__(self):
@@ -350,8 +361,9 @@ class Homework_video(models.Model):
 
 class Homework_audio(models.Model):
     name = models.CharField(max_length=64, verbose_name='Название аудиофайла')
-    audio_url = models.FileField(upload_to=audio_directory_path, blank=True, verbose_name='Аудиофайл')
+    audio_url = models.FileField(upload_to=audio_homework_directory_path, blank=True, verbose_name='Аудиофайл')
     homework = models.ForeignKey(to=Homework, on_delete=models.CASCADE, blank=True)
+
     def __str__(self):
         return self.name
 

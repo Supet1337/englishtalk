@@ -323,7 +323,8 @@
 
                                         '<div class="blog-image" style="margin-bottom: 18px;height: 174px;border-radius: 5px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url('+json[i].homework_picture+')">'+
                                         '</div>'+
-
+                                        '<div id="collapseVideo'+id+'"></div>'+
+                                        '<div id="collapseAudio'+id+'" style="margin-bottom: 18px"></div>'+
                                         '<div class="card" style="border-radius: 5px; font-family: Arial; margin-bottom: 14px">'+
                                             '<div class="card-body">'+
                                                 //'<p style="color: #4F4F4F; font-size: 16px;line-height: 18px; font-weight: bold;" class="card-title">Card title</p>'+
@@ -349,7 +350,7 @@
                         $("#breadcrumb").append('<li class="breadcrumb-item active" id="bread-item'+id+'">'+json[i].homework_name+'</li>');
 
                         $.ajax({
-                            url: "/ajax_load_lessons_audios/"+id,
+                            url: "/ajax_load_homework_audios/"+id,
                             success: function (result) {
                                 var json = $.parseJSON(result);
                                 json.forEach(function(item, i, json) {
@@ -361,22 +362,18 @@
                                 });
                         }}).then(
                         $.ajax({
-                            url: "/ajax_load_lessons_videos/"+id,
+                            url: "/ajax_load_homework_videos/"+id,
                             success: function (result) {
                                 var json = $.parseJSON(result);
                                 json.forEach(function(item, i, json) {
                                     $("#collapseVideo"+id).append(
-                                        '<div class="row">'+
-                                          '<div class="col" id="openVid'+json[i].video_id+'" style="display: flex; cursor: pointer; padding-top: 40px" data-lesid="'+id+'">'+
-                                              '<div id="player'+json[i].video_id+'" style="width: 160px; height: 100px; border-radius: 50px"></div>'+
-                                              '<div style="margin-left: 12px; margin-top: 24px">'+
-                                                  '<a style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 16px;line-height: 18px;color: #333333; margin-bottom: 0" class="video-name" href="#">'+json[i].video_name+'</a>'+
-                                                  '<p style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 12px;line-height: 14px;color: #828282;">14:03 мин</p>'+
-                                              '</div>'+
-                                          '</div>'+
-                                      '</div>'
+                                        '<div class="tab-pane fade show active vidosik" id="vid'+id+'" role="tabpanel" aria-labelledby="vidTab'+id+'">'+
+                                 '<div class="card-body" style="padding-top: 0">'+
+                                 '<div class="mx-auto" id="bgPlayer'+json[i].video_id+'" style="width: 90%; height: 440px;"></div>'+
+                                 '</div>'+
+                                 '</div>'
                                     );
-                                    var player = new Playerjs({id:"player"+json[i].video_id, file:json[i].video_url, player: 1});
+                                    var player = new Playerjs({id:"bgPlayer"+json[i].video_id, file:json[i].video_url, player: 1});
                                 });
 
                         }}));

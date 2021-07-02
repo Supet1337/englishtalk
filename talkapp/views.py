@@ -1029,6 +1029,17 @@ def ajax_load_lessons_audios(request, number):
         aud.append(i.json())
     return HttpResponse(json.dumps(aud))
 
+def ajax_load_homework_audios(request, number):
+    aud = []
+    for i in Homework.objects.get(id=number).get_homework_audios():
+        aud.append(i.json())
+    return HttpResponse(json.dumps(aud))
+
+def ajax_load_homework_videos(request, number):
+    vid = []
+    for i in Homework.objects.get(id=number).get_homework_videos():
+        vid.append(i.json())
+    return HttpResponse(json.dumps(vid))
 
 def ajax_delete_word(request, number):
     if request.method == 'POST':
@@ -1038,7 +1049,7 @@ def ajax_delete_word(request, number):
 
 @login_required
 def price(request):
-    return render(request,'price.html')
+    return render(request,'dashboard/dashboard-price.html')
 
 def courses(request):
     return render(request,'courses.html')

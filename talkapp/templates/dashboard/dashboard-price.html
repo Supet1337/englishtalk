@@ -1,0 +1,236 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}
+		<title>Главная</title>
+{% endblock %}
+{% block cssfiles %}
+        <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/overcast/jquery-ui.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
+        <link rel="stylesheet" href={% static "css/animate.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
+        <link rel="stylesheet" href={% static "css/calendar.css" %}>
+	    <link rel="stylesheet" href={% static "css/aos.css" %}>
+	    <link rel="stylesheet" href={% static "css/style.css" %}>
+		<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
+        <link rel="stylesheet" href={% static "css/main.css" %}>
+        <link rel="stylesheet" href={% static "css/dashboard.css" %}>
+
+{% endblock %}
+    {% block content %}
+    {% include "dashboard/dashboard-header.html" %}
+    <div class="d-flex right-toggled" id="wrapper"> <!-- right-toggleed -->
+
+        <div id="left-sidebar-wrapper">
+      <div class="list-group mx-auto" id="list-tab1" role="tablist">
+        <a class="list-group-item list-group-item-action" id="dd0" data-toggle="list" href="../dashboard/lk" role="tab"><p style="margin-bottom: 0">Главная</p></a>
+          <a class="list-group-item list-group-item-action" id="dd1" data-toggle="list" href="../dashboard/platform" role="tab"><p style="margin-bottom: 0">Класс</p></a>
+          <a class="list-group-item list-group-item-action" id="dd5" data-toggle="list" href="../dashboard/homework" role="tab"><p style="margin-bottom: 0">Задания</p></a>
+        <a class="list-group-item list-group-item-action" id="dd3" data-toggle="list" href="../dashboard/schedule" role="tab"><p style="margin-bottom: 0">Расписание</p></a>
+          <a class="list-group-item list-group-item-action" id="dd8" data-toggle="list" href="../dashboard/tape" role="tab"><p style="margin-bottom: 0">Словарь</p></a>
+      </div>
+    <div class="subscribe-block mx-auto">
+        <h1>Будьте в курсе</h1>
+        <p>Получайте информацию о сервисе и специальных предложениях</p>
+        <button class="dashboard-button-primary">Подписаться</button>
+    </div>
+    </div>
+
+    <!-- Page Content -->
+    <div  id="page-content-wrapper">
+        <div role="tabpanel">
+            <div class="blogs-header">
+                <div class="blogs-header-text">
+                    Баланс: 6 занятий по 45 минут
+                </div>
+            </div>
+            <div class="list-group list-group-horizontal" style="width: 100%; margin-bottom: 20px" id="list-tab" role="tablist">
+                <a class="nvlnk active" id="list-45-list" data-bs-toggle="list" href="#list-45" role="tab" aria-controls="home">45 минут</a>
+                <a class="nvlnk" id="list-60-list" data-bs-toggle="list" href="#list-60" role="tab" aria-controls="profile">60 минут</a>
+            </div>
+
+            <div class="tab-content" id="nav-tabContent">
+		<div class="tab-pane fade show active" id="list-45" role="tabpanel" aria-labelledby="list-45-list">
+  <div class="card-group">
+	  <div class="card price">
+		<div class="card-body">
+		  <p class="price-title">Начинающий</p>
+		  <p class="price-text">5 занятий по 45 минут</p>
+			<p class="price-cost">890 рублей</p>
+			<button id="pay-4450" class="price-button mt-3">Выбрать</button>
+		</div>
+	  </div>
+	<div class="card price">
+		<div class="card-body">
+            <p class="price-label">Скидка</p>
+		  <p class="price-title">Любительский</p>
+		  <p class="price-text">10 занятий по 45 минут</p>
+            <div style="display: flex">
+                <p class="price-cost">690 рублей</p>
+                <p class="price-old">790 рублей</p>
+            </div>
+			<button id="pay-6900" class="price-button mt-3">Выбрать</button>
+		</div>
+	  </div>
+	  <div class="card price popular">
+		<div class="card-body">
+            <p class="price-label">Самый популярный</p>
+		  <p class="price-title">Стандартный</p>
+		  <p class="price-text">20 занятий по 45 минут</p>
+			<p class="price-cost">590 рублей</p>
+			<button id="pay-11800" class="price-button mt-3">Выбрать</button>
+		</div>
+	  </div>
+	  <div class="card price">
+		<div class="card-body">
+		  <p class="price-title">Долгосрочный</p>
+		  <p class="price-text">30 занятий по 45 минут</p>
+			<p class="price-cost">490 рублей</p>
+			<button id="pay-14700" class="price-button mt-3">Выбрать</button>
+		</div>
+	  </div>
+	</div>
+	</div>
+	<div class="tab-pane fade" id="list-60" role="tabpanel" aria-labelledby="list-60-list"  >
+	<div class="card-group">
+	  <div class="card price">
+		<div class="card-body">
+		  <p class="price-title">Начинающий</p>
+		  <p class="price-text">5 занятий по 45 минут</p>
+			<p class="price-cost">890 рублей</p>
+			<button id="pay-1" class="price-button mt-3">Выбрать</button>
+		</div>
+	  </div>
+	<div class="card price">
+		<div class="card-body">
+		  <p class="price-title">Начинающий</p>
+		  <p class="price-text">5 занятий по 45 минут</p>
+			<p class="price-cost">890 рублей</p>
+			<button id="pay-2" class="price-button mt-3">Выбрать</button>
+		</div>
+	  </div>
+	  <div class="card price">
+		<div class="card-body">
+		  <p class="price-title">Начинающий</p>
+		  <p class="price-text">5 занятий по 45 минут</p>
+			<p class="price-cost">890 рублей</p>
+			<button id="pay-3" class="price-button mt-3">Выбрать</button>
+		</div>
+	  </div>
+	  <div class="card price">
+		<div class="card-body">
+		  <p class="price-title">Начинающий</p>
+		  <p class="price-text">5 занятий по 45 минут</p>
+			<p class="price-cost">890 рублей</p>
+			<button id="pay-4" class="price-button mt-3">Выбрать</button>
+		</div>
+	  </div>
+	</div>
+	</div>
+		 </div>
+
+            <div class="blogs">
+                <div class="blogs-header" style="margin-top: 30px;margin-bottom: 20px">
+                    <div class="blogs-header-text">
+                        FAQ
+                    </div>
+                </div>
+                <div class="blogs-content">
+                    <div class="accordion mt-2" id="accordionExample" style="font-family: Book Antiqua">
+  <div class="card faq-card">
+    <div class="card-header faq-header" id="heading1">
+        <button class="btn btn-link btn-block text-left faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+          Как происходит оплата занятий?
+        </button>
+    </div>
+
+    <div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordionExample">
+      <div class="card-body faq-answer">
+        - Оплата занятий осуществляются в Вашем личном кабинете. После бесплатного занятия Вы можете оплатить удобный пакет занятий. Чем больше занятий – тем дешевле стоимость! После произведения оплаты Вы получите электронный чек, а умная платформа откроет Ваш личный баланс-счет. В кабинете появится информация о количестве оплаченных занятий – и можно приступать к урокам в удобное для Вас время! Дату и время занятий всегда скорректировать с куратором😊
+      </div>
+    </div>
+  </div>
+  <div class="card faq-card">
+    <div class="card-header faq-header" id="heading2">
+        <button class="btn btn-link btn-block text-left faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse1">
+         2. Если я пропустил занятие, что делать?
+        </button>
+    </div>
+
+    <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
+      <div class="card-body faq-answer">
+        - Если Вы понимаете, что не успеваете на занятие, его всегда можно перенести. Одно условие – мы просим Вас предупредить за 4 часа до начала, чтобы мы успели переделать расписание. В противном случае занятие будет списано.
+      </div>
+    </div>
+  </div>
+  <div class="card faq-card">
+    <div class="card-header faq-header" id="heading3">
+        <button class="btn btn-link btn-block text-left faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse1">
+          3. Я оплатил, но появились срочные дела и пока не могу заниматься. Что делать?
+        </button>
+    </div>
+
+    <div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+      <div class="card-body faq-answer">
+        - Мы всегда готовы перенести занятия на комфортное для Вас время. Все оплаченные занятия останутся за Вами.
+      </div>
+    </div>
+  </div>
+	<div class="card faq-card">
+    <div class="card-header faq-header" id="heading4">
+        <button class="btn btn-link btn-block text-left faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse1">
+          4. Могу ли я вернуть деньги, если на данный момент я не могу продолжить обучение?
+        </button>
+    </div>
+
+    <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
+      <div class="card-body faq-answer">
+        - Да, конечно. Мы перечислим сумму за все неиспользованные занятия.
+      </div>
+    </div>
+  </div>
+</div>
+                </div>
+            </div>
+        </div>
+</div>
+    <!-- /#page-content-wrapper -->
+{% endblock %}
+{% block jsfiles %}
+    <script src={% static "js/jquery.min.js" %}></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+	  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
+	  <script src={% static "js/jquery.waypoints.min.js" %}></script>
+	  <script src={% static "js/jquery.stellar.min.js" %}></script>
+	  <script src={% static "js/owl.carousel.min.js" %}></script>
+	  <script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+	  <script src={% static "js/aos.js" %}></script>
+	  <script src={% static "js/scrollax.min.js" %}></script>
+	  <script src={% static "js/main.js" %}></script>
+      <script src={% static "js/shedule.js" %}></script>
+        <script src={% static "js/index.js" %}></script>
+        <script src="https://widget.cloudpayments.ru/bundles/cloudpayments"></script>
+        <script src={% static "js/payment.js" %}></script>
+      <script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+      <script src="https://unpkg.com/tooltip.js/dist/umd/tooltip.min.js"></script>
+      <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ru.min.js"></script>
+        <script>
+            {% if is_teacher %}
+            var is_teacher = true;
+            {% else %}
+            var is_teacher = false;
+            {% endif %}
+
+        </script>
+
+        <script src={% static "js/dashboard.js" %}></script>
+        <script src={% static "js/calendar.js" %}></script>
+        <script src={% static "js/ru-calendar.js" %}></script>
+{% endblock %}

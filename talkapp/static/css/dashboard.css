@@ -487,6 +487,9 @@
 .nvlnk-act{
     background: #F2F2F2;
 }
+.nvlnk.active {
+    background: #F2F2F2;
+}
 
 .nvlnk:hover{
     color: #333333;
@@ -723,4 +726,125 @@ input:checked + .slider:before {
     padding: 18px 16px;
     width: 100%;
 
+}
+
+.price {
+    margin-right: 10px;
+    border-radius: 6px !important;
+    border: 1px solid rgba(0,0,0,0.125) !important;
+    box-sizing: border-box;
+}
+
+.price.popular {
+    border: 2px solid #27AE60 !important;
+}
+
+.price.popular .price-cost {
+    color: #27AE60;
+}
+
+.price.popular .price-button {
+    border: 1px solid #27AE60;
+    color: white;
+    background: #27AE60;
+
+}
+
+.price.popular .price-label {
+    color: #333333;
+}
+
+.price-title {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #333333;
+    margin-top: 100px;
+}
+
+.price-text {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #333333;
+}
+
+.price-cost{
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 18px;
+    color: #2F80ED;
+    margin-bottom: 0;
+}
+
+.price-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 14px 7px;
+    border: 1px solid #2F80ED;
+    color: #2F80ED;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background: transparent;
+    width: 100%;
+}
+
+.price-label {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 14px;
+    color: #2F80ED;
+    margin-bottom: -14px;
+}
+
+.price-old {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-decoration-line: line-through;
+    color: #828282;
+    margin-left: 8px;
+    margin-bottom: 0;
+}
+
+.faq-question {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #2F80ED;
+    background: transparent;
+}
+
+.faq-answer {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #333333;
+}
+
+.faq-card {
+    background: #F8F8F8;
+    border-radius: 6px !important;
+    border: 0;
+}
+
+.faq-header {
+    background: transparent;
+    border: 0;
 }
