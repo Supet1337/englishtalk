@@ -848,3 +848,27 @@ input:checked + .slider:before {
     background: transparent;
     border: 0;
 }
+
+.site-image {
+    border: 1px solid #E0E0E0;
+    border-radius: 6px;
+    padding: 12px;
+    margin-right:10px;
+}
+
+.registration-button{
+              background: #FFFFFF;
+              border: 1px solid rgba(0,0,0,0.125);
+              box-sizing: border-box;
+              border-radius: 6px;
+              padding: 11px 15px;
+              font-family: Arial;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 14px;
+              line-height: 16px;
+              color: #333333;
+              width: 85%;
+              margin-bottom: 14px;
+              text-align: left;
+}

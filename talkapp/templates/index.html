@@ -14,6 +14,7 @@
 	  <link rel="stylesheet" href={% static "css/style.css" %}>
 	  <link rel="stylesheet" href={% static "css/timeline.css" %}>
 	<link rel="stylesheet" href={% static "css/main.css" %}>
+	<link rel="stylesheet" href={% static "css/dashboard.css" %}>
 	{% endblock %}
 
 {% block content %}
@@ -32,7 +33,7 @@
 			  <p class="bababa" style="color: white;">Учите язык в интерактивном учебнике с сильными преподавателями! </p>
             <p style="text-align: center;">
 				{% if not request.user.is_authenticated %}
-				<a href="#" data-toggle="modal" data-target="#reqModal" class="btn btn-secondary bobobo py-3 mt-3" style="border-radius: 0;">Начать бесплатный урок</a>
+				<a href="#" data-toggle="modal" data-target="#reqModal" class="btn btn-secondary bobobo py-3 mt-3" style="border-radius: 0;" onclick="change_list2()">Начать бесплатный урок</a>
 				{% endif %}
 				<a class="btn btn-secondary bobobo py-3 mt-3 video-btn" style="border-radius: 0;color: white" data-toggle="modal" data-src="" data-target="#myModalVid"><i style="color: #fff" class="fab fa-youtube"></i> Смотреть пример урока</a>
 			</p>
@@ -542,13 +543,13 @@
 
 			  <div class="col">
 				  <div class="heading-section heading-section-white ftco-animate" style=" text-align:center">
-					  <form method="POST" action="/send_request_v" class="ftco-animate forma">
+					  <form method="POST" class="ftco-animate forma">
 						  {% csrf_token %}
 		            		<h5 class="card-title" style="color: #082567"><b>Мы свяжемся с вами и запишем на урок</b></h5>
-					  		<input type="text" style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;color: #082567;text-align: center;" id="name" name="name" class="form-control mx-auto mb-1" pattern="[А-Яа-я]{2, 20}" required placeholder="Как вас зовут?">
-					  		<input type="tel" style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;color: #082567;text-align: center;" id="phone" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control mx-auto mb-1" placeholder="Какой у вас номер телефона?">
-						    <input type="email" style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;color: #082567;text-align: center;" id="email" name="email" required class="form-control mx-auto mb-1" placeholder="Какой у вас email?">
-		  				  	<input type="submit" value="Записаться на бесплатный урок" class="btn btn-primary wsmtt py-3 px-4" style="color: #082567;margin-top: 50px" >
+						  	<input type="text" disabled style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;color: #082567;text-align: center;" id="name" name="name" class="form-control mx-auto mb-1" pattern="[А-Яа-я]{2, 20}" required placeholder="Как вас зовут?">
+					  		<input type="tel" disabled style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;color: #082567;text-align: center;" id="phone" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control mx-auto mb-1" placeholder="Какой у вас номер телефона?">
+						    <input type="email" disabled style="border-radius: 50px; border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;color: #082567;text-align: center;" id="email" name="email" required class="form-control mx-auto mb-1" placeholder="Какой у вас email?">
+						  <button type="button" class="btn btn-primary wsmtt py-3 px-4" style="color: #082567;margin-top: 50px" data-toggle="modal" data-target="#reqModal" onclick="change_list2()" >Записаться на бесплатный урок</button>
 							<p style="margin-bottom: 0; font-size: 15px; text-align: center;color: #666666" >Нажимая, вы принимаете <a href="confidentiality" style="font-weight: bold; color: #666666">условия соглашения</a></p>
 					  </form>
 		            </div>

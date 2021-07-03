@@ -77,7 +77,7 @@
                         <div class="dropdown-divider"></div>
                         {% if not request.user.is_authenticated %}
         <li class="nav-item">
-            <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="#" data-toggle="modal" data-target="#reqModal">Попробовать бесплатно</a>
+            <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="#" data-toggle="modal" data-target="#reqModal" onclick="change_list2()">Попробовать бесплатно</a>
       </li>
                         {% endif %}
                         {% if request.user.is_authenticated %}
@@ -180,29 +180,24 @@
                 </div>
 
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-          <h4 class="modal-title" id="myModalLabel">Авторизация</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-                <div class="modal-body mx-auto">
-                   <form class="needs-validation" style="margin-right: 1em" method="POST" action="/login-user" novalidate>
-                        {% csrf_token %}
-                        <br>
-
-                      <input type="email" id="email_auth" name="email_auth"  class="form-control" placeholder="Email" required>
-                       <input type="password" id="password"  name="password"  class="form-control" placeholder="Пароль" required>
-                        <input type="submit" style="margin-top:10px; width:100%" value="Войти" class="btn btn-dark">
-                       <div class="invalid-feedback">
-                           Неверный логин или пароль.
+                <div class="modal-body" style="padding: 0">
+                    <div class="row" style="height: 346px">
+                        <div class="col-5" style="background-image: url({% static 'images/eng-flag.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;">
+                        </div>
+                        <div class="col-7" style="background: #f7f7f7">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="blogs-header-text" style="margin-bottom: 19px; margin-top: 10px">
+                              Авторизация
                           </div>
-                    </form>
-                    <p><a href="accounts/password_reset">Забыли пароль?</a></p>
-                    <!-- load socialaccount -->
-
+                            <button class="registration-button" data-dismiss="modal" data-toggle="modal" data-target="#reqModal" onclick="change_list()"><i style="font-size: 23px; color: #2F80ED; margin-right: 10px" class="fas fa-envelope"></i>  По почте</button>
+                            <button class="registration-button" ><img src="{% static 'images/search.png' %}" style="margin-right: 10px">  Google</button>
+                            <button class="registration-button" ><i style="font-size: 23px; color: #2F80ED; margin-right: 10px" class="fab fa-vk"></i>  Вконтакте</button>
+                        </div>
+                    </div>
                 </div>
 
                 </div>
@@ -212,36 +207,98 @@
 
 <div class="modal fade" id="reqModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-            <div class="modal-body mx-auto" style="padding: 0">
-                <div class="card-group first-lesson-modal" style="background: #9ddde7">
-                    <div class="card" style="border: 0;text-align: center;background: #9ddde7">
-                        <button type="button" class="btn button-close-modal" data-dismiss="modal" aria-label="Close">
-                             Закрыть
-                        </button>
-                        <div class="card-body">
-                            <h3 class="card-title" style="color: #082567;">Первый урок - бесплатно!</h3>
+    <div class="modal-content" style="background: transparent;border: 0">
+            <div class="modal-body mx-auto">
+                <div class="list-group list-group-horizontal" style="margin-bottom: 10px;width: 338px" id="list-tab" role="tablist">
+                    <a class="nvlnk" id="list-45-list" style="margin-right: 10px; padding: 8px 34.5px" data-bs-toggle="list" href="#list-45" role="tab" aria-controls="home">Авторизация</a>
+                    <a class="nvlnk active" id="list-60-list" style="padding: 8px 34.5px" data-bs-toggle="list" href="#list-60" role="tab" aria-controls="profile">Регистрация</a>
+                </div>
+
+                <div class="tab-content" id="nav-tabContent">
+		<div class="tab-pane fade" id="list-45" role="tabpanel" aria-labelledby="list-45-list">
+             <div class="card">
+                <div class="card-body">
+                    <div style="display: flex">
+                        <div class="site-image" style="background: #2F80ED; color: white;padding-bottom: 10px">
+                            <i class="fab fa-vk" style="font-size: 24px"></i>
                         </div>
-                        <img src="{% static "images/mahaet.jpg" %}" class="chelic mx-auto" style="max-width: 387.75px;max-height: 374.25px;">
+                        <div class="site-image">
+                            <img src="{% static 'images/search.png' %}">
+                        </div>
                     </div>
-                    <div class="card" style="border: 0;">
-                        <div class="card-body" style="background: #c5cfd8;">
-                            <h3 class="card-title" style="color: #082567;text-align: center;">Мы свяжемся с вами и запишем на первый урок</h3>
-                            <form class="appointment-form ftco-animate" method="POST" action="../send_request_v">
+                    <form class="ftco-animate" method="POST" action="../login_user">
                         {% csrf_token %}
-                        <br>
-                       <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="name1" name="name" class="form-control" pattern="[А-Яа-я]{,30}" required placeholder="Как вас зовут?">
-                      <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="email1" name="email"  class="form-control" placeholder="Email" required>
-                       <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone1" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control" placeholder="Телефон">
-                        <input type="submit" class="btn btn-primary" style="margin-top: 100px;border-radius: 0;color: #082567;width: 100%" value="Записаться на бесплатный урок">
-                                <p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <a href="confidentiality" style="font-weight: bold; color: #666666">условия соглашения</a></p>
+                        <p class="account-input-label">E-mail</p>
+                       <input type="email" id="email_auth" name="email_auth"  class="account-input" required>
+                        <p class="account-input-label">Пароль</p>
+                       <input type="password" id="password" name="password" required class="account-input">
+                        <div style="display: flex">
+                            <input type="submit" class="dashboard-button-secondary-teacher" style="margin-top: 20px;margin-right: 26px" value="Войти">
+                            <a href="accounts/password_reset" style="color:black; margin-top: 19px">Забыли пароль?</a>
+                        </div>
                     </form>
                         </div>
                     </div>
-                </div>
-
+	    </div>
+	    <div class="tab-pane fade show active" id="list-60" role="tabpanel" aria-labelledby="list-60-list"  >
+            <div class="card">
+                <div class="card-body">
+                    <div style="display: flex">
+                        <div class="site-image" style="background: #2F80ED; color: white;padding-bottom: 10px">
+                            <i class="fab fa-vk" style="font-size: 24px"></i>
+                        </div>
+                        <div class="site-image">
+                            <img src="{% static 'images/search.png' %}">
+                        </div>
                     </div>
-
+                    <form class="ftco-animate" id="reg-form" method="POST" action="../send_request_v">
+                        {% csrf_token %}
+                        <p class="account-input-label">E-mail</p>
+                       <input type="email" id="email1" name="email"  class="account-input" required>
+                        <p class="account-input-label">Номер телефона</p>
+                       <input type="tel" id="phone1" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="account-input">
+                        <p class="account-input-label">Регистрируясь вы соглашаетесь</p>
+                        <p class="account-input-label" style="margin-top: 0">с <a href="confidentiality" style="font-weight: bold; color: #2F80ED">политикой конфиденциальности</a></p>
+                        <input type="submit" class="dashboard-button-secondary-teacher" style="margin-top: 20px" value="Регистрация">
+                    </form>
+                        </div>
+                    </div>
+	    </div>
+                    <div class="tab-pane fade" id="list-60-2" style="width: 338px" role="tabpanel" aria-labelledby="list-60-list"  >
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" action="/change-info">
+                        {% csrf_token %}
+                        <input type="hidden" id="user-email" name="user-email">
+                        <p class="account-input-label">Имя</p>
+                        <input type="text" name="name" class="account-input">
+                        <p class="account-input-label">Фамилия</p>
+                        <input type="text" name="surname" class="account-input">
+                        <p class="account-input-label">Дата рождения</p>
+                        <div class="row">
+                            <div class="col">
+                                <p class="account-input-label-sm">День</p>
+                                <input type="text" name="birth-day" class="account-input">
+                            </div>
+                            <div class="col">
+                                <p class="account-input-label-sm">Месяц</p>
+                                <input type="text" name="birth-month" class="account-input">
+                            </div>
+                            <div class="col">
+                                <p class="account-input-label-sm">Год</p>
+                                <input type="text" name="birth-year" class="account-input">
+                            </div>
+                        </div>
+                        <div style="display: flex;margin-top: 24px">
+                            <input type="submit" class="dashboard-button-secondary-teacher" style="margin-right: 26px" value="Регистрация">
+                            <a href="/" style="color: #2F80ED;">Пропустить</a>
+                        </div>
+                    </form>
+                        </div>
+                    </div>
+	    </div>
+		 </div>
+            </div>
                 </div>
               </div>
             </div>
@@ -340,6 +397,64 @@
 <script src={% static "js/bootstrap.min.js" %}></script>
 
 <script>
+
+$(function() {
+
+
+    // This function gets cookie with a given name
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+
+    /*
+    The functions below will create a header with csrftoken
+    */
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    function sameOrigin(url) {
+        // test that a given url is a same-origin URL
+        // url could be relative or scheme relative or absolute
+        var host = document.location.host; // host + port
+        var protocol = document.location.protocol;
+        var sr_origin = '//' + host;
+        var origin = protocol + sr_origin;
+        // Allow absolute or scheme relative URLs to same origin
+        return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+            (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+            // or any other URL that isn't scheme relative or absolute i.e relative.
+            !(/^(\/\/|http:|https:).*/.test(url));
+    }
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+                // Send the token to same-origin, relative URLs only.
+                // Send the token only if the method warrants CSRF protection
+                // Using the CSRFToken value acquired earlier
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+});
+
+
 (function() {
   'use strict';
   window.addEventListener('load', function() {
@@ -444,5 +559,47 @@ var s = 0;
     }
   });
 })
+
+function change_list(){
+    $('#list-45-list').addClass('active');
+    $('#list-60-list').removeClass('active');
+    $('#list-45').addClass('show active');
+    $('#list-60').removeClass('show active');
+    $('#list-60-2').removeClass('show active');
+}
+
+function change_list2(){
+    $('#list-60-list').addClass('active');
+    $('#list-45-list').removeClass('active');
+    $('#list-60').addClass('show active');
+    $('#list-45').removeClass('show active');
+    $('#list-60-2').removeClass('show active');
+}
+
+$('#reg-form').on('submit', function(event){
+    event.preventDefault();
+    create_post();
+});
+
+function create_post(){
+    $.ajax({
+        url : "../send_request_v",
+        type : "POST", // http method
+        data : { email : $('#email1').val(),
+                 phone : $('#phone1').val()},
+
+        // handle a successful response
+        success : function(json) {
+            add_info();
+        }
+    });
+}
+
+function add_info(){
+    $('#list-60').removeClass('show active');
+    $('#list-60-2').addClass('show active');
+    $('#user-email').val($('#email1').val());
+}
+
 </script>
 

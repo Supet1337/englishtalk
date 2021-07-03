@@ -13,6 +13,7 @@ from django.core.mail import send_mail
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
+from django.views.decorators.csrf import csrf_protect
 
 from .models import *
 from .forms import *
@@ -63,7 +64,6 @@ def send_request_view(request):
     if request.method == "POST":
         user = User()
         user.username = get_random_string(length=32)
-        user.first_name = request.POST.get('name')
         user.email = request.POST.get('email')
         password = User.objects.make_random_password()
         user.password = make_password(password)
@@ -97,7 +97,7 @@ def send_request_view(request):
                 'Ура! У нас новая зявка на обучение!', help_message, 'noreply.englishtalk@gmail.com', [
                     "help.englishtalk@gmail.com"], fail_silently=False)
             messages.info(request, "Вы успешно подали заявку. Проверьте почтовый ящик "+str(user.email))
-    return HttpResponseRedirect('/')
+    return HttpResponse('Fine')
 
 def send_request_view_teach(request):
     if request.method == "POST":
@@ -946,7 +946,7 @@ def change_email(request):
                     request, "Почта успешно изменена.")
         return HttpResponseRedirect('/dashboard/lk')
 
-@login_required
+
 def change_info(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -954,8 +954,8 @@ def change_info(request):
         day = request.POST.get("birth-day")
         month = request.POST.get("birth-month")
         year = request.POST.get("birth-year")
-        user = request.user
-        user_add = UserAdditional.objects.get(user=request.user)
+        user = User.objects.get(email=request.POST.get("user-email"))
+        user_add = UserAdditional.objects.get(user=user)
         user.first_name = name
         user.last_name = surname
         user_add.birthday = datetime.datetime.strptime(f'{year}-{month}-{day}', "%Y-%m-%d").date()
@@ -963,6 +963,7 @@ def change_info(request):
         user.save()
         messages.success(request, "Личные данные успешно изменены")
         return HttpResponseRedirect('/dashboard/account')
+
 
 @login_required
 def change_password(request):
