@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rv(-m=hx@341@qi-$kqodugk+^#rrbiz!wq4ynxjsifjq^!3xr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -37,13 +37,47 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'talkapp',
     'phonenumber_field',
     'ckeditor',
     'ckeditor_uploader',
     'nested_admin',
     'channels',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.vk',
+    'allauth.socialaccount.providers.google',
+
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
+SOCIALACCOUNT_AUTO_SIGNUP = False
+SOCIALACCOUNT_ADAPTER = 'app.adapter.SocialAccountAdapter'
+SOCIALACCOUNT_PROVIDERS = {
+    'vk': {
+        'SCOPE': ['email', 'first_name', 'last_name', 'bdate', 'photo_max_orig']
+    }
+}
+
+
+
+VK_APP_ID = '7895116'
+VK_API_SECRET = '3c2syTOuNu03KPMa6HHe'
+
+SITE_ID = 2
+
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

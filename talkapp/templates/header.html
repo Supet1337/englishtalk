@@ -195,7 +195,8 @@
                           </div>
                             <button class="registration-button" data-dismiss="modal" data-toggle="modal" data-target="#reqModal" onclick="change_list()"><i style="font-size: 23px; color: #2F80ED; margin-right: 10px" class="fas fa-envelope"></i>  По почте</button>
                             <button class="registration-button" ><img src="{% static 'images/search.png' %}" style="margin-right: 10px">  Google</button>
-                            <button class="registration-button" ><i style="font-size: 23px; color: #2F80ED; margin-right: 10px" class="fab fa-vk"></i>  Вконтакте</button>
+                            {% load socialaccount %}
+                            <a href="{% provider_login_url 'vk' method='oauth2' %}"><button class="registration-button" ><i style="font-size: 23px; color: #2F80ED; margin-right: 10px" class="fab fa-vk"></i>  Вконтакте</button></a>
                         </div>
                     </div>
                 </div>
