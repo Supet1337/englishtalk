@@ -195,7 +195,7 @@ class UserAdditional(models.Model):
     phone_number = PhoneNumberField(verbose_name='Телефон', blank=True)
     video_chat = models.CharField(max_length=32, verbose_name='Код личного видеочата')
     paid_lessons = models.IntegerField(verbose_name='Кол-во оплаченных занятий', default=1)
-    birthday = models.DateField(verbose_name='Дата рождения', default=datetime.date.today())
+    birthday = models.DateField(verbose_name='Дата рождения', default=datetime.date.today(),blank=True)
     saved_blogs = models.TextField(max_length=1024, blank=True)
     LESSON_TIME_CHOISES = [
         (True, '60 минут'),
