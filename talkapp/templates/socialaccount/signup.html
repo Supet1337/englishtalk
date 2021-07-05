@@ -6,7 +6,7 @@
 
 
   </head>
-  <body>
+  <body style="display: none">
 
 
 
@@ -41,8 +41,39 @@ https://0.0.0.0. Чтобы завершить, заполните следую�
   </body>
 <script src='{% static "js/jquery.min.js" %}'></script>
 <script>
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() *
+ charactersLength));
+   }
+   return result;
+}
+
   $(document).ready(function(){
-  $("#signup_form").submit();
+  if ($("#id_username").val() == ""){
+    $("#id_username").val() = makeid(32);
+  }
+  $.ajax({
+        url : "../../../check-email",
+        type : "GET", // http method
+        data : "email="+$("#id_email").val(),
+        success : function(result) {
+            var json = $.parseJSON(result);
+            if (json.is_exist == 0){
+              $("#signup_form").submit();
+              }
+            else{
+                $.ajax({
+                    url : "../../../check-email",
+                    type : "GET", // http method
+                    data : "msg=1",
+                });
+              }
+        }
+    });
   })
 </script>
 </html>

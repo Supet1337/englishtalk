@@ -1,5 +1,10 @@
 """adapter.py"""
+from allauth.exceptions import ImmediateHttpResponse
 from allauth.socialaccount.adapter import DefaultSocialAccountAdapter
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
 from django.utils.crypto import get_random_string
 
 from .models import UserAdditional, ChatRoom  # pylint:disable=wildcard-import
