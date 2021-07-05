@@ -58,12 +58,18 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 
-SOCIALACCOUNT_AUTO_SIGNUP = False
-SOCIALACCOUNT_ADAPTER = 'app.adapter.SocialAccountAdapter'
+SOCIALACCOUNT_AUTO_SIGNUP = True
+SOCIALACCOUNT_ADAPTER = 'talkapp.adapter.SocialAccountAdapter'
 SOCIALACCOUNT_PROVIDERS = {
     'vk': {
         'SCOPE': ['email', 'first_name', 'last_name', 'bdate', 'photo_max_orig']
-    }
+    },
+    'google': {
+            'SCOPE': ['email', 'profile'],
+            'AUTH_PARAMS': {
+                        'access_type': 'online',
+                    }
+        }
 }
 
 
