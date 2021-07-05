@@ -192,7 +192,7 @@ class UserAdditional(models.Model):
         verbose_name_plural = "Дополнительная информация о пользователях"
 
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='Пользователь')
-    phone_number = PhoneNumberField(verbose_name='Телефон')
+    phone_number = PhoneNumberField(verbose_name='Телефон', blank=True)
     video_chat = models.CharField(max_length=32, verbose_name='Код личного видеочата')
     paid_lessons = models.IntegerField(verbose_name='Кол-во оплаченных занятий', default=1)
     birthday = models.DateField(verbose_name='Дата рождения', default=datetime.date.today())

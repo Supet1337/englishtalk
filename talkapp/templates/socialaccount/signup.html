@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    <title>Регистрация</title>
+
+
+  </head>
+  <body>
+
+
+
+
+    <div>
+      <strong>Menu:</strong>
+      <ul>
+
+        <li><a href="/accounts/login/">Sign In</a></li>
+        <li><a href="/accounts/signup/">Sign Up</a></li>
+
+      </ul>
+    </div>
+
+    <h1>Регистрация</h1>
+
+<p>Вы используете VK для авторизации на
+https://0.0.0.0. Чтобы завершить, заполните следующую форму:</p>
+ {% load socialaccount %}
+<form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+  {% csrf_token %}
+<p><label for="id_username">Имя пользователя:</label> <input type="text" name="username" value="{{form.username.value|default_if_none:''}}" placeholder="Имя пользователя" autocomplete="username" minlength="1" maxlength="150" required id="id_username"></p>
+<p><label for="id_email">E-mail (опционально):</label> <input type="email" name="email" value="{{form.email.value|default_if_none:''}}" placeholder="E-mail адрес" autocomplete="email" id="id_email"></p>
+
+  <button type="submit">Регистрация &raquo;</button>
+</form>
+
+
+
+
+
+  </body>
+<script src='{% static "js/jquery.min.js" %}'></script>
+<script>
+  $(document).ready(function(){
+  $("#signup_form").submit();
+  })
+</script>
+</html>

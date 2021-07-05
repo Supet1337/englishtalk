@@ -194,8 +194,8 @@
                               Авторизация
                           </div>
                             <button class="registration-button" data-dismiss="modal" data-toggle="modal" data-target="#reqModal" onclick="change_list()"><i style="font-size: 23px; color: #2F80ED; margin-right: 10px" class="fas fa-envelope"></i>  По почте</button>
-                            <button class="registration-button" ><img src="{% static 'images/search.png' %}" style="margin-right: 10px">  Google</button>
                             {% load socialaccount %}
+                            <a href="{% provider_login_url 'google' method='oauth2' %}"><button class="registration-button" ><img src="{% static 'images/search.png' %}" style="margin-right: 10px">  Google</button></a>
                             <a href="{% provider_login_url 'vk' method='oauth2' %}"><button class="registration-button" ><i style="font-size: 23px; color: #2F80ED; margin-right: 10px" class="fab fa-vk"></i>  Вконтакте</button></a>
                         </div>
                     </div>
@@ -220,12 +220,16 @@
              <div class="card">
                 <div class="card-body">
                     <div style="display: flex">
-                        <div class="site-image" style="background: #2F80ED; color: white;padding-bottom: 10px">
-                            <i class="fab fa-vk" style="font-size: 24px"></i>
-                        </div>
-                        <div class="site-image">
-                            <img src="{% static 'images/search.png' %}">
-                        </div>
+                        <a href="{% provider_login_url 'vk' method='oauth2' %}">
+                            <div class="site-image" style="background: #2F80ED; color: white;padding-bottom: 10px">
+                                <i class="fab fa-vk" style="font-size: 24px"></i>
+                            </div>
+                        </a>
+                        <a href="{% provider_login_url 'google' method='oauth2' %}">
+                            <div class="site-image">
+                                <img src="{% static 'images/search.png' %}">
+                            </div>
+                        </a>
                     </div>
                     <form class="ftco-animate" method="POST" action="../login_user">
                         {% csrf_token %}
@@ -245,12 +249,16 @@
             <div class="card">
                 <div class="card-body">
                     <div style="display: flex">
+                        <a href="{% provider_login_url 'vk' method='oauth2' %}">
                         <div class="site-image" style="background: #2F80ED; color: white;padding-bottom: 10px">
                             <i class="fab fa-vk" style="font-size: 24px"></i>
                         </div>
+                        </a>
+                        <a href="{% provider_login_url 'google' method='oauth2' %}">
                         <div class="site-image">
                             <img src="{% static 'images/search.png' %}">
                         </div>
+                        </a>
                     </div>
                     <form class="ftco-animate" id="reg-form" method="POST" action="../send_request_v">
                         {% csrf_token %}

@@ -25,7 +25,11 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
         roomName = get_random_string(length=32)
         user_add.user = user
         user_add.video_chat = roomName
-        user_add.birthday = user.socialaccount_set.filter(provider='vk')[0].extra_data['bdate']
+        s = str(user.socialaccount_set.filter(provider='vk')[0].extra_data['bdate'])
+        if s:
+            s = s.split('.')
+            s1 = f"{s[2]}-{s[1]}-{s[0]}"
+            user_add.birthday = s1
 
         room.name = roomName
         room.student = user
