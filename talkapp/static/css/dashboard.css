@@ -92,7 +92,7 @@
     font-weight: bold;
     font-size: 18px;
     line-height: 20px;
-    margin-top: 20px;
+    margin-top: 24px;
 }
 .teacher-name p{
     font-family: Arial;
@@ -871,4 +871,30 @@ input:checked + .slider:before {
               width: 85%;
               margin-bottom: 14px;
               text-align: left;
+}
+
+.empty-lesson{
+    background: radial-gradient(100% 2039.43% at 0% 49.66%, #2F80ED 0%, #37BD55 100%);
+    border: 0.3px solid #BDBDBD;
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 145px;
+    font-family: Arial;
+    font-style: normal;
+    color: #FFFFFF;
+    padding: 45px 0px 72px 81px;
+}
+.empty-lesson-text{
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.empty-lesson-text-small{
+    font-size: 17px;
+    line-height: 16px;
+    color: #FFFFFF !important;
+    margin-bottom: 0;
+    margin-top: 0;
 }

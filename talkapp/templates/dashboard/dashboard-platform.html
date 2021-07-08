@@ -35,11 +35,11 @@
         <a class="list-group-item list-group-item-action" id="dd3" data-toggle="list" href="../dashboard/schedule" role="tab"><p style="margin-bottom: 0">Расписание</p></a>
           <a class="list-group-item list-group-item-action" id="dd8" data-toggle="list" href="../dashboard/tape" role="tab"><p style="margin-bottom: 0">Словарь</p></a>
       </div>
-    <div class="empty_balance mx-auto">
+    <!-- <div class="empty_balance mx-auto">
         <h1>Ваш баланс сейчас пуст :(</h1>
         <p>Для начала учёбы нужно пополнить баланс</p>
         <button class="dashboard-button-primary">Пополнить</button>
-    </div>
+    </div> -->
     <div class="subscribe-block mx-auto">
         <h1>Будьте в курсе</h1>
         <p>Получайте информацию о сервисе и специальных предложениях</p>
@@ -66,7 +66,7 @@
 
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb" id="breadcrumb" style="background-color: transparent">
-                    <li class="breadcrumb-item">Курс</li>
+                    <li class="breadcrumb-item"><a style="color: #333" href="../../dashboard/platform">Курс</a></li>
                     <li class="breadcrumb-item">{{ teacher }}</li>
                     <li class="breadcrumb-item active">{{course}}</li>
                   </ol>
@@ -77,7 +77,12 @@
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
       <div class="card-body" >
                 {% if lsn == 0 %}
-          <h2 style="text-align: center">Здесь будут отображаться ваши занятия</h2>
+          <div class="empty-lesson">
+              <div>
+                  <p class="empty-lesson-text">Пока вы не записались на уроки <img src='{% static "images/sad.png" %}'></p>
+                  <a class="empty-lesson-text-small"> изменить расписание » </a>
+              </div>
+          </div>
                 {% else %}
                 {% if cur_lsn %}
                     <div class="lesson">

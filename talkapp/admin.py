@@ -18,11 +18,11 @@ class BlogAdminForm(forms.ModelForm):
 class MovieAdmin(admin.ModelAdmin):
     form = BlogAdminForm
 
-class InLineVideoLesson(admin.StackedInline):
+class InLineVideoLesson(nested_admin.NestedStackedInline):
     model = Lesson_video
     extra = 0
 
-class InLineAudioLesson(admin.StackedInline):
+class InLineAudioLesson(nested_admin.NestedStackedInline):
     model = Lesson_audio
     extra = 0
 
@@ -78,7 +78,7 @@ class CourseAdmin(nested_admin.NestedModelAdmin):
         return obj.teacher.user.first_name
 
 @admin.register(DefaultLesson)
-class LessonAdmin(admin.ModelAdmin):
+class LessonAdmin(nested_admin.NestedModelAdmin):
     inlines = [InLineVideoLesson,InLineAudioLesson]
     list_display = ('name','course','course_level','course_module','docx_url')
     list_filter = ('course','course__level','course__module')
@@ -112,7 +112,7 @@ class UserAdditionals(admin.ModelAdmin):
         return obj.user.email
 
 @admin.register(VideoPractise)
-class VideoPractiseAdmin(admin.ModelAdmin):
+class VideoPractiseAdmin(nested_admin.NestedModelAdmin):
     inlines = [InLineWord,InLineConstructor,InLineListening]
     raw_id_fields = ('author',)
     list_display = ('name','category', 'author_name', 'video_url')
