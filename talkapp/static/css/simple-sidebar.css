@@ -393,6 +393,10 @@ a:not([href]):not([tabindex]) {
     margin-left: 170px;
 }
 
+.fc-toolbar-title {
+    text-transform: capitalize;
+}
+
 .fc-button-primary {
     background: white !important;
     color: black !important;
@@ -444,4 +448,10 @@ a:not([href]):not([tabindex]) {
 
 .fc-day-other {
     background-color: #f2f2f2 !important;
+}
+
+.fc-daygrid-day-events {
+    margin-bottom: -1000px;
+    overflow-y: auto;
+    max-height: 96px;
 }

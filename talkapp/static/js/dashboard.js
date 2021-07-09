@@ -97,10 +97,13 @@ $(document).ready(function(){
                                     $("#collapseVideo"+id).append(
                                         '<div class="row">'+
                                           '<div class="col" id="openVid'+json[i].video_id+'" style="display: flex; cursor: pointer; padding-top: 40px" data-lesid="'+id+'">'+
-                                              '<div id="player'+json[i].video_id+'" style="width: 160px; height: 100px; border-radius: 50px"></div>'+
-                                              '<div style="margin-left: 12px; margin-top: 24px">'+
+                                                '<div>'+
+                                              '<div id="player'+json[i].video_id+'" style="width: 240px; height: 180px; border-radius: 50px"></div>'+
+                                              '</div>'+
+                                              '<div style="margin-left: 12px; margin-top: 40px">'+
                                                   '<a style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 16px;line-height: 18px;color: #333333; margin-bottom: 0" class="video-name" href="#">'+json[i].video_name+'</a>'+
                                                   '<p style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 12px;line-height: 14px;color: #828282;">14:03 мин</p>'+
+                                                  '<i class="fas fa-chevron-right" style="position: absolute; right: 5%; top: 56%"></i>'+
                                               '</div>'+
                                           '</div>'+
                                       '</div>'

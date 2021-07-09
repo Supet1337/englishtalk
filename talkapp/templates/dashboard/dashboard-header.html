@@ -15,13 +15,12 @@
                         <li class="nav-item nav-user-mobile">
                         <a class="nav-link" style="color:rgb(47, 128, 237); background-color: white" href="/logout">Выход</a>
                         </li>
-                        <li class="nav-item dropdown nav-user nav-user-not-mobile">
-                            <img alt="User Avatar" style="width: 40px; height: 40px;" src='{% static "images/avatar.png" %}'>
-                            <div class="dropdown-menu dropdown-menu-right" style="background-color: #37bdc7;top: 90%;box-shadow: 0 1px 9px black;" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" style="" href="../dashboard/account">Личный кабинет</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/logout">Выход</a>
-                            </div>
+                        <li class="nav-item nav-user nav-user-not-mobile" style="display: flex">
+                            <a href="../dashboard/account" style="display: flex">
+                                <p class="my-auto" style="margin-right: 7px;font-size: 14px;height: fit-content; color: #333333">{{request.user.first_name}} {{request.user.last_name}}</p>
+                                <img alt="User Avatar" style="width: 40px; height: 40px;" src='{% static "images/avatar.png" %}'>
+                            </a>
+                            <a class="my-auto" href="/logout" style="display: flex;margin-left: 10px;height: fit-content; color: rgb(0,0,0,0.125)"><i class="fas fa-sign-out-alt"></i></a>
                         </li>
                     </ul>
                 </div>

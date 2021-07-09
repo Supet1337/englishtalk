@@ -48,15 +48,17 @@
                 <div class="col-md-12" style="max-width: 400px; padding-right: 5px">
                     <div class="card mb-3" style=" border-radius: 6px;height: 90%">
                         <div class="row g-0" style="height:100%">
+                            <a href="../dashboard/account">
                             <div class="col-md-4" style="padding-left:15px; padding-right:0">
                                 <img id="teacher-img" src='{% static "images/avatar.png" %}' style="width: auto; height: auto; max-width: 100px;max-height: 100px;  border-radius: 100%; margin-left: 16px; margin-top: 20px; margin-bottom: 16px; margin-right: 8px;"  align="center">
                             </div>
+                                </a>
                             <div class="col-md-7" id="teacher-blog" style="padding-left:0; padding-right:0; margin-right: 10px">
                                 <div class="teacher-name">
-                                    <p style="margin-bottom:3px">Анна Иванова</p>
+                                    <p style="margin-bottom:3px">{{ teacher|default_if_none:"Ваш преподаватель"}}</p>
                                 </div>
                                 <p class="card-text teacher-info">Преподаватель, менеджер меропр..</p>
-                                <button class="dashboard-button-secondary-teacher" >Онлайн класс</button>
+                                <a href="../dashboard/platform"><button class="dashboard-button-secondary-teacher" >Онлайн класс</button></a>
                             </div>
                         </div>
                     </div>
