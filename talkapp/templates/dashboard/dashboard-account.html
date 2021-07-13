@@ -185,21 +185,38 @@
             <div class="blogs" style="margin-top: 40px">
                 <div class="blogs-header">
                     <div class="blogs-header-text">
-                        Сохраненные статьи
+                        Сохранённые статьи
+                    </div>
+                    <div class="blogs-header-show" >
+                        <a data-bs-toggle="collapse" href="#collapseblogs" role="button" aria-expanded="false" aria-controls="collapseblogs" >Показать все</a>
                     </div>
                 </div>
                 <div class="blogs-content">
-                    <div class="card-deck py-4">
+                    <div class="card-deck py-4" style="display: flex;">
                         {% for b in saved_blogs %}
+                        {% if forloop.counter < 5 %}
                         <a href="../dashboard/blog/{{b.id}}">
-                            <div class="card">
-                                <img src="{{b.title_picture.url}}" class="card-img-top mx-auto" style="max-height: 280px;max-width: 380px;text-align: center;">
+                            <div class="card" style="margin-right: 14px; margin-left: 14px; margin-bottom: 14px">
+                                <img class="card-img-top mx-auto" style="border-radius: 1rem;max-height: 280px;max-width: 380px;text-align: center; width: 280px; height: 380px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url({{b.title_picture.url}})">
                                 <div class="card-body blog-card">
                                     <h5 class="card-title" style="margin-left: 0.75rem;">{{b.title}}</h5>
                                 </div>
                             </div>
                         </a>
+                        {% else %}
+                        <div class="collapse" id="collapseblogs">
+                            <a href="../dashboard/blog/{{b.id}}">
+                                <div class="card">
+                                    <img class="card-img-top mx-auto" style="border-radius: 1rem; max-height: 280px;max-width: 380px;text-align: center; width: 280px; height: 380px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url({{b.title_picture.url}})">
+                                    <div class="card-body blog-card">
+                                        <h5 class="card-title" style="margin-left: 0.75rem;">{{b.title}}</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endif %}
                         {% endfor %}
+
                     </div>
                 </div>
             </div>

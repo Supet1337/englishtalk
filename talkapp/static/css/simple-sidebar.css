@@ -391,6 +391,8 @@ a:not([href]):not([tabindex]) {
 
 .fc-header-toolbar > .fc-toolbar-chunk:nth-child(1) {
     margin-left: 170px;
+    display: flex;
+    height: fit-content;
 }
 
 .fc-toolbar-title {

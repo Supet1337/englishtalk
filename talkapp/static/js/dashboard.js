@@ -51,7 +51,7 @@ $(document).ready(function(){
                                     '</li>'+
 
                                  '<li  class="nav-item mb-1 mr-1" id="docLabel'+id+'" role="presentation">'+
-                                 '<a class="nvlnk nvlnk-act" id="docTab'+id+'" onclick="docClick('+id+')" data-toggle="tab" href="#doc'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+json[i].name+
+                                 '<a class="nvlnk nvlnk-act" id="docTab'+id+'" onclick="docClick('+id+')" data-bs-toggle="tab" href="#doc'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+json[i].name+
                                  '<button type="button" class="close" id="docClose'+id+'" onclick="closeDoc('+id+')" style="padding-left: 5px;" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
@@ -146,8 +146,8 @@ $(document).ready(function(){
                                  '</a>'+
                                  '</li>');
                         $("#myTabContent").append('<div class="tab-pane fade show active vidosik" id="vid'+id+'" role="tabpanel" aria-labelledby="vidTab'+id+'">'+
-                                 '<div class="card-body" style="height: 480px; padding-top: 0">'+
-                                 '<div class="mx-auto" id="bgPlayer'+json[i].video_id+'" style="width: 90%; height: 440px;"></div>'+
+                                 '<div class="card-body" style="height: 100%; padding-top: 0">'+
+                                 '<div class="mx-auto" id="bgPlayer'+json[i].video_id+'" style="width: 86%; height: 440px;"></div>'+
                                  '</div>'+
                                  '</div>');
                         var player = new Playerjs({id:"bgPlayer"+json[i].video_id, file:json[i].video_url, player: 1});

@@ -959,7 +959,10 @@ def change_info(request):
         day = request.POST.get("birth-day")
         month = request.POST.get("birth-month")
         year = request.POST.get("birth-year")
-        user = User.objects.get(email=request.POST.get("user-email"))
+        if request.user.is_authenticated:
+            user = request.user
+        else:
+            user = User.objects.get(email=request.POST.get("user-email"))
         user_add = UserAdditional.objects.get(user=user)
         user.first_name = name
         user.last_name = surname
