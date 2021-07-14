@@ -194,12 +194,12 @@
                 <div class="blogs-content">
                     <div class="card-deck py-4" style="display: flex;">
                         {% for b in saved_blogs %}
-                        {% if forloop.counter < 5 %}
+                        {% if forloop.counter < 7 %}
                         <a href="../dashboard/blog/{{b.id}}">
-                            <div class="card" style="margin-right: 14px; margin-left: 14px; margin-bottom: 14px">
+                            <div class="card" style="margin-right: 15px; margin-left: 15px; margin-bottom: 14px">
                                 <img class="card-img-top mx-auto" style="border-radius: 1rem;max-height: 280px;max-width: 380px;text-align: center; width: 280px; height: 380px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url({{b.title_picture.url}})">
                                 <div class="card-body blog-card">
-                                    <h5 class="card-title" style="margin-left: 0.75rem;">{{b.title}}</h5>
+                                    <h6 class="card-title" style="margin-left: 0.75rem; color: #333">{{b.title}}</h6>
                                 </div>
                             </div>
                         </a>
@@ -209,7 +209,7 @@
                                 <div class="card">
                                     <img class="card-img-top mx-auto" style="border-radius: 1rem; max-height: 280px;max-width: 380px;text-align: center; width: 280px; height: 380px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url({{b.title_picture.url}})">
                                     <div class="card-body blog-card">
-                                        <h5 class="card-title" style="margin-left: 0.75rem;">{{b.title}}</h5>
+                                        <h6 class="card-title" style="margin-left: 0.75rem; color: #333">{{b.title}}</h6>
                                     </div>
                                 </div>
                             </a>

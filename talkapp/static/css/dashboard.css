@@ -249,6 +249,7 @@
     background: white;
     width: 100%;
     padding: 0.25rem;
+    min-height: 75px;
 }
 
 

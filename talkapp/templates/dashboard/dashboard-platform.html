@@ -72,6 +72,16 @@
                   </ol>
                 </nav>
 
+              <div style="margin-bottom: 12px">
+                  <button data-bs-toggle="modal" type="button" data-bs-target="#tapeModal" class="tape-btn" style="margin-right: 32px">+ Добавить слово</button>
+                  Режим учебника
+                  <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round" id="zmbtn" onclick="zoom()"></span>
+                  </label>
+                  <button type="button" class="tape-btn" style="margin-left: 32px" onclick="openChat()">Скрыть чат</button>
+              </div>
+
 <div class="tab-content" id="myTabContent">
       <!-- <button class="btn btn-white fixbut" style="border-radius: 0px; float: left;margin-top: 12px;margin-left: 1rem" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> Подключить видеосвязь</button> -->
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -171,15 +181,6 @@
 
 </div>
                 </div>
-              <div style="position: absolute; bottom: -1%;margin-left: auto;margin-right: auto;left: 0;right: 0;text-align: center;">
-                    <button data-bs-toggle="modal" type="button" data-bs-target="#tapeModal" class="tape-btn" style="margin-right: 32px">+ Добавить слово</button>
-                    Режим учебника
-                  <label class="switch">
-                        <input type="checkbox">
-                        <span class="slider round" id="zmbtn" onclick="zoom()"></span>
-                    </label>
-                    <button type="button" class="tape-btn" style="margin-left: 32px" onclick="openChat()">Скрыть чат</button>
-                        </div>
 
                   </div>
 
