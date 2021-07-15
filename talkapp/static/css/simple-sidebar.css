@@ -218,8 +218,7 @@
     text-transform: none !important;
     font-size: 18px;
 
-    background: radial-gradient(100% 66.05% at 0% 100%, #1A6BD9 0%, #569AF5 100%),
-    linear-gradient(0deg, #FFFFFF, #FFFFFF);
+    background: #2F80ED;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -456,4 +455,14 @@ a:not([href]):not([tabindex]) {
     margin-bottom: -1000px;
     overflow-y: auto;
     max-height: 96px;
+}
+
+.header-text-m {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #333333;
+    margin-left: 40px;
 }

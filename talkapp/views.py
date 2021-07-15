@@ -65,6 +65,10 @@ def send_request_view(request):
         user = User()
         user.username = get_random_string(length=32)
         user.email = request.POST.get('email')
+        try:
+            user.first_name = request.POST.get('first-name')
+        except:
+            pass
         password = User.objects.make_random_password()
         user.password = make_password(password)
         if len(User.objects.filter(email=request.POST.get('email'))) > 0:

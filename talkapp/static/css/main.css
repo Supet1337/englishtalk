@@ -114,8 +114,8 @@
 	  }
 	  @media(min-width: 1440px){
 	  	.easystart{
-	  		padding-right: 350px;
-	  		padding-left: 350px;
+	  		padding-right: 200px;
+	  		padding-left: 200px;
 	  	}
 	  }
 	   @media(min-width: 680px) and (max-width: 806px){
@@ -552,4 +552,108 @@ png images background
 .btnmute{
     background-color: #dc3545 !important;
     border-color: #dc3545 !important;
+}
+
+.modal-white-header {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 35px;
+    color: #F7F7F7;
+}
+
+.modal-white-text {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    color: #F7F7F7;
+    margin-bottom: 0;
+}
+
+.statistic {
+    margin-top: 100px;
+    border: 1px solid rgb(130,130,130, 0.125);
+    border-radius: 20px;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.stat-number {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 41px;
+    color: #2F80ED;
+    margin-bottom: 0;
+}
+
+.stat-text {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 18px;
+    color: #333333;
+    margin-bottom: 0;
+}
+
+.faq-land-question {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+    color: #2F80ED;
+    background: transparent;
+}
+
+.faq-land-answer {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #333333;
+}
+
+.faq-land-card {
+    background: white;
+    border: 0;
+    margin-top: 10px;
+}
+
+.faq-land-header {
+    background: transparent;
+    border: 1px solid rgba(47, 128, 237, 0.1);
+    border-radius: 6px !important;
+}
+
+.program-header {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 35px;
+    color: #333333;
+}
+
+.program-text {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    color: #333333;
+    margin-bottom: 0;
+}
+
+.program {
+    background: white;
+    border-radius: 20px;
+    padding: 75px;
+    text-align: center;
 }

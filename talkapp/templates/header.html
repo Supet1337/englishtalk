@@ -1,107 +1,42 @@
+{% load static %}
 {%load static%}
-<nav class="navbar sticky-top navbar-expand-lg navbar-light fixed-top adaptive-header" id="header" style="background: radial-gradient(circle farthest-side at 30px 20px, #37bdc7, #3495c0);width: 100%;padding-top: 0px;padding-bottom: 0px;box-shadow: 0px 2px 7px 0px black;">
-                    <a class="navbar-brand" href="../../">EnglishTalk</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<nav class="navbar sticky-top navbar-expand-lg navbar-light fixed-top adaptive-header dashboard-header hdr" id="header" style="background: white;width: 100%;padding-top: 0px;padding-bottom: 0px;border-bottom: 1px solid rgba(0, 0, 0, 0.125); height: 60px">
+    <a class="navbar-brand logo" href="../../">EnglishTalk</a>
+    <button class="navbar-toggler" style="background-color: #2F80ED" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
+                    <ul class="navbar-nav mr-auto navbar-left-top">
+                        <li class="nav-item header-text-m">
+                            +7 (995) 793 02 03
+                        </li>
+                        <li class="nav-item header-text-m">
+                            <a href="courses">Курсы</a>
+                        </li>
+                    </ul>
 
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item dropdown nav-user nav-user-mobile">
-                             {% if request.user.is_authenticated %}
-                                <a class="nav-link" href="../dashboard/lk">Личный кабинет</a>
-                            {% else %}
-                            <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="#" id="navbarDropdownMenuLink2" data-toggle="modal" data-target="#myModal1" aria-haspopup="true" aria-expanded="false">Войти</a>
-                            {% endif %}
+                                <a class="nav-link" style="color:rgb(47, 128, 237); background-color: white" href="../dashboard/lk">Личный кабинет</a>
                         </li>
-<div class="dropdown-divider"></div>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" style="padding-top: 14px; padding-bottom: 14px;" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Для взрослых
-        </a>
-        <div class="dropdown-menu" style="background-color: #37bdc7;top: 90%;box-shadow: 0 1px 9px black;" aria-labelledby="navbarDropdown1">
-            <a class="dropdown-item" style="" href="../courses">Все курсы</a>
-            <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item" data-course_img="{% static "images/course1.jpg" %}" data-icon1="fas fa-chalkboard-teacher" data-icon2="fas fa-clock" data-icon3="fas fa-graduation-cap" data-desc1="С вами работают преподаватели, которые подготовили десятки учеников к успешной сдаче Ielts" data-desc2="Вы выбираете для себя комфортное время для индивидуальных занятий" data-desc3="Имитация экзамена вместе с преподавателем" data-title="Подготовка к Ielts" data-toggle="modal" data-target="#CourseModal">Подготовка к Ielts</a>
-            <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item" data-course_img="{% static "images/course2.jpg" %}" data-icon1="far fa-calendar-check" data-icon2="fas fa-bell" data-icon3="fas fa-user-friends" data-desc1="Подготовка в сжатые сроки" data-desc2="Имитация реального собеседования с преподавателем" data-desc3="Индивидуальный подбор программы" data-title="Собсеседование" data-toggle="modal" data-target="#CourseModal">Cобеседование</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-course_img="{% static "images/course3.jpg" %}" data-icon1="fas fa-user-check" data-icon2="fas fa-smile" data-icon3="fas fa-spell-check" data-desc1="Только практическое применение (реальные ситуации)" data-desc2="Вы перестанете бояться ошибаться" data-desc3="Упор на живое общение, погружение в иностранную среду" data-title="Говорим свободно" data-toggle="modal" data-target="#CourseModal">Говорим свободно</a>
-            <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-course_img="{% static "images/course4.png" %}" data-icon1="far fa-address-card" data-icon2="fas fa-file-code" data-icon3="fas fa-clock" data-desc1="Упор на Ваши потребности, индивидуальная программа под задачи" data-desc2="Актуальные темы (веб-разработка, искусственный интеллект)" data-desc3="Вы выбираете для себя комфортное время для индивидуальных занятий" data-title="Английский для IT" data-toggle="modal" data-target="#CourseModal">Английский для IT</a>
-            <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-course_img="{% static "images/course5.jpg" %}" data-icon1="fas fa-spell-check" data-icon2="fas fa-compass" data-icon3="far fa-calendar-check" data-desc1="Упор на разговорную практику" data-desc2="Научим общаться в разных ситуациях (в отеле, в самолете, в городе)" data-desc3="Сжатые сроки подготовки. Индивидуально выбираете время" data-title="Для путешествий" data-toggle="modal" data-target="#CourseModal" >Для путешествий</a>
-            <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-course_img="{% static "images/course6.jpg" %}" data-icon1="fas fa-user-friends" data-icon2="fas fa-comments-dollar" data-icon3="far fa-calendar-check" data-desc1="Индивидуальный подбор программы под Ваши задачи" data-desc2="Упор на деловое общение, деловую переписку, переговоры" data-desc3="Сжатые сроки подготовки. Индивидуально выбираете время" data-title="Бизнес английский" data-toggle="modal" data-target="#CourseModal" >Бизнес английский</a>
-            <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-course_img="{% static "images/course8.jpg" %}" data-icon1="fas fa-user-friends" data-icon2="fas fa-wrench" data-icon3="far fa-calendar-check" data-desc1="Индивидуальный подбор программы под Ваши задачи" data-desc2="Упор на техническую терминологию" data-desc3="Сжатые сроки подготовки. Индивидуально выбираете время" data-title="Английский для инженеров" data-toggle="modal" data-target="#CourseModal" >Английский для инженеров</a>
-            <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-course_img="{% static "images/course11.jpg" %}" data-icon1="fas fa-user-friends" data-icon2="fas fa-smile" data-icon3="far fa-calendar-check" data-desc1="Индивидуально разработаем программу с учетом вашего уровня" data-desc2="Перестанете бояться ошибаться" data-desc3="Сжатые сроки подготовки. Индивидуально выбираете время" data-title="Персональный курс" data-toggle="modal" data-target="#CourseModal" >Персональный курс</a>
-            <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-course_img="{% static "images/course12.jpg" %}" data-icon1="fas fa-user" data-icon2="fas fa-tasks" data-icon3="fas fa-clock" data-desc1="Индивидуальный подбираем программу, исходя из вашего уровня" data-desc2="Подбираем темы, которые вам интересны. Ведем Вас до результата по проверенным программам" data-desc3="Индивидуально выбираете время для занятий" data-title="Старт с любого уровня" data-toggle="modal" data-target="#CourseModal" >Старт с любого уровня</a>
-        </div>
-      </li>
-       <div class="dropdown-divider"></div>
-       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" style="padding-top: 14px; padding-bottom: 14px;" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Для детей и подростков
-        </a>
-        <div class="dropdown-menu" style="background-color: #37bdc7;top: 90%;box-shadow: 0 1px 9px black;" aria-labelledby="navbarDropdown2">
-            <a class="dropdown-item" style="" href="../courses">Все курсы</a>
-            <div class="dropdown-divider"></div>
-          <a class="dropdown-item" data-title="Подготовка к ЕГЭ" data-course_img="{% static "images/course7.jpg" %}" data-icon1="fas fa-tasks" data-icon2="fas fa-user-check" data-icon3="far fa-calendar-check" data-desc1="Отработка всех типов заданий" data-desc2="Имитация реального экзамена" data-desc3="Сжатые сроки подготовки. Индивидуально выбираете время" data-toggle="modal" data-target="#CourseModal" href="#">Подготовка к ЕГЭ</a>
-            <div class="dropdown-divider"></div>
-          <a class="dropdown-item" data-course_img="{% static "images/course9.jpg" %}" data-icon1="fas fa-tasks" data-icon2="fas fa-film" data-icon3="fas fa-table" data-desc1="Подтянем школьные знания и выйдем за рамки школьной программы" data-desc2="Учимся на самых актуальных сериалах и фильмах" data-desc3="Простая и понятная грамматика в таблицах" data-title="Английский для подростков" data-toggle="modal" data-target="#CourseModal" href="#">Английский для подростков</a>
-            <div class="dropdown-divider"></div>
-          <a class="dropdown-item" data-title="Английский детям" data-course_img="{% static "images/course10.jpg" %}" data-icon1="fas fa-puzzle-piece" data-icon2="fas fa-atlas" data-icon3="fas fa-music" data-desc1="Никаких скучных правил! Учимся говорить и играем в игры" data-desc2="Детям проще учиться по интерактивному учебнику, видео и аудио материалам" data-desc3="Учим английскому по песням" data-toggle="modal" data-target="#CourseModal" href="#">Английский детям</a>
-            <div class="dropdown-divider"></div>
-             <a class="dropdown-item" data-course_img="{% static "images/course3.jpg" %}" data-icon1="fas fa-user-check" data-icon2="fas fa-smile" data-icon3="fas fa-spell-check" data-desc1="Только практическое применение (реальные ситуации)" data-desc2="Вы перестанете бояться ошибаться" data-desc3="Упор на живое общение, погружение в иностранную среду" data-title="Говорим свободно" data-toggle="modal" data-target="#CourseModal" href="#">Говорим свободно</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-course_img="{% static "images/course5.jpg" %}" data-icon1="fas fa-spell-check" data-icon2="fas fa-compass" data-icon3="far fa-calendar-check" data-desc1="Упор на разговорную практику" data-desc2="Научим общаться в разных ситуациях (в отеле, в самолете, в городе)" data-desc3="Сжатые сроки подготовки. Индивидуально выбираете время" data-title="Для путешествий" data-toggle="modal" data-target="#CourseModal" >Для путешествий</a>
-            <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-course_img="{% static "images/course11.jpg" %}" data-icon1="fas fa-user-friends" data-icon2="fas fa-smile" data-icon3="far fa-calendar-check" data-desc1="Индивидуально разработаем программу с учетом вашего уровня" data-desc2="Перестанете бояться ошибаться" data-desc3="Сжатые сроки подготовки. Индивидуально выбираете время" data-title="Персональный курс" data-toggle="modal" data-target="#CourseModal" >Персональный курс</a>
-        </div>
-      </li>
-                        <div class="dropdown-divider"></div>
-        <li class="nav-item">
-        <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="../#scoost">Стоимость</a>
-      </li>
-                        <div class="dropdown-divider"></div>
-     <li class="nav-item">
-        <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="../#sreview">Отзывы</a>
-      </li>
-                        <div class="dropdown-divider"></div>
-       <li class="nav-item">
-        <a class="nav-link" href="tel:89957930203" style="padding-top: 14px; padding-bottom: 14px;"><span style="padding-top: 7px; padding-bottom: 7x; padding-right: 4px;" class="fa fa-phone"></span>8 (995) 793-02-03</a>
-      </li>
-                        <div class="dropdown-divider"></div>
-                        {% if not request.user.is_authenticated %}
-        <li class="nav-item">
-            <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="#" data-toggle="modal" data-target="#reqModal" onclick="change_list2()">Попробовать бесплатно</a>
-      </li>
-                        {% endif %}
-                        {% if request.user.is_authenticated %}
                         <div class="dropdown-divider nav-user-mobile"></div>
                         <li class="nav-item nav-user-mobile">
-                        <a class="nav-link" href="/logout">Выход</a>
-                             </li>
-                        {% endif %}
-                        <li class="nav-item dropdown nav-user nav-user-not-mobile">
-                             {% if request.user.is_authenticated %}
-                            <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img alt="User Avatar" style="width: 46px; height: 40px;" src={% static "images/white_logotip.png" %}>
+                        <a class="nav-link" style="color:rgb(47, 128, 237); background-color: white" href="/logout">Выход</a>
+                        </li>
+                        <li class="nav-item nav-user nav-user-not-mobile" style="display: flex">
+                            {% if request.user.is_authenticated %}
+                            <a href="../dashboard/account" style="display: flex">
+                                <p class="my-auto header-text" style="margin-right: 7px;height: fit-content;">{{request.user.first_name}} {{request.user.last_name}}</p>
+                                <img alt="User Avatar" style="width: 40px; height: 40px;" src='{% static "images/avatar.png" %}'>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" style="background-color: #37bdc7;top: 90%;box-shadow: 0 1px 9px black;" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" style="" href="../dashboard/lk">Личный кабинет</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/logout">Выход</a>
-                            </div>
+                            <a class="my-auto" href="/logout" style="display: flex;margin-left: 10px;height: fit-content; color: rgb(0,0,0,0.125)"><i class="fas fa-sign-out-alt"></i></a>
                             {% else %}
-                            <a class="nav-link" style="padding-top: 14px; padding-bottom: 14px;" href="#" id="navbarDropdownMenuLink2" data-toggle="modal" data-target="#myModal1" aria-haspopup="true" aria-expanded="false">
-                                    Войти
-                            </a>
+                             <a href="#" id="navbarDropdownMenuLink1" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px"><button class="dashboard-button-red">Пробный урок</button></a>
+                             <a href="#" id="navbarDropdownMenuLink2" data-toggle="modal" data-target="#myModal1" aria-haspopup="true" aria-expanded="false"><button class="dashboard-button-secondary-teacher" style="height: 100%">Войти</button></a>
                             {% endif %}
                         </li>
+
                     </ul>
                 </div>
         </nav>
@@ -182,7 +117,7 @@
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-                <div class="modal-body" style="padding: 0">
+        <div class="modal-body" style="padding: 0">
                     <div class="row" style="height: 346px">
                         <div class="col-5" style="background-image: url({% static 'images/eng-flag.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;">
                         </div>
@@ -199,12 +134,48 @@
                             <a href="{% provider_login_url 'vk' method='oauth2' %}"><button class="registration-button" ><i style="font-size: 23px; color: #2F80ED; margin-right: 10px" class="fab fa-vk"></i>  Вконтакте</button></a>
                         </div>
                     </div>
-                </div>
+        </div>
+    </div>
+  </div>
+</div>
 
-                </div>
-              </div>
-            </div>
-
+<div class="modal fade" id="flModal" tabindex="-1" role="dialog" aria-labelledby="flModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-body" style="padding: 0">
+                    <div class="row" style="height: 400px">
+                        <div class="col-5" style="border-top-left-radius: 8px;border-bottom-left-radius: 8px;padding: 20px;background-image: url({% static 'images/eng-flag-dark.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;">
+                            <h3 class="modal-white-header">Пробный урок</h3>
+                            <h4 class="modal-white-text" style="font-weight: bold">На первом занятии:</h4>
+                            <p class="modal-white-text">Познакомимся</p>
+                            <p class="modal-white-text">Подберем программу</p>
+                            <p class="modal-white-text">Узнаем уровень владения</p>
+                        </div>
+                        <div class="col-7" style="border-top-right-radius: 8px;border-bottom-right-radius: 8px;background: #f7f7f7; padding-top: 10px">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="blogs-header-text" style="margin-top: 40px; font-size: 16px; line-height: 18px">
+                              Записаться на бесплатный урок
+                          </div>
+                            <form class="ftco-animate" method="POST" action="../send_request_v">
+                                {% csrf_token %}
+                                <p class="account-input-label">E-mail</p>
+                               <input type="email" id="email" name="email" style="width: 100%" class="account-input" required>
+                                <p class="account-input-label">Имя</p>
+                               <input type="text" id="first-name" name="first-name" required class="account-input">
+                                <p class="account-input-label">Телефон</p>
+                               <input type="tel" id="phone" name="phone" required class="account-input">
+                                <input type="submit" class="dashboard-button-secondary-teacher" style="margin-top: 20px" value="Начать бесплатно">
+                                <p class="account-input-label" style="margin-top: 10px">Нажимая "Начать бесплатно",</p>
+                                <p class="account-input-label" style="margin-top: 0">вы принимаете <a href="confidentiality" style="font-weight: bold; color: #2F80ED">условия соглашения</a></p>
+                        </form>
+                        </div>
+                    </div>
+        </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="reqModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">

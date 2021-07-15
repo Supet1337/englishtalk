@@ -4,17 +4,23 @@
     <title>EnglishTalk</title>
 	  {% endblock %}
 	{% block cssfiles %}
-    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href={% static "css/animate.css" %}>
-	<link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
-	  <link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
-	  <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
-	  <link rel="stylesheet" href={% static "css/aos.css" %}>
-	  <link rel="stylesheet" href={% static "css/style.css" %}>
-	  <link rel="stylesheet" href={% static "css/timeline.css" %}>
-	<link rel="stylesheet" href={% static "css/main.css" %}>
-	<link rel="stylesheet" href={% static "css/dashboard.css" %}>
+        <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/overcast/jquery-ui.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
+        <link rel="stylesheet" href={% static "css/animate.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
+        <link rel="stylesheet" href={% static "css/calendar.css" %}>
+	    <link rel="stylesheet" href={% static "css/aos.css" %}>
+	    <link rel="stylesheet" href={% static "css/style.css" %}>
+		<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
+        <link rel="stylesheet" href={% static "css/main.css" %}>
+        <link rel="stylesheet" href={% static "css/dashboard.css" %}>
 	{% endblock %}
 
 {% block content %}
@@ -23,7 +29,142 @@
 
 
     <!-- END nav -->
-    
+	<section class="ftco-section">
+		<div class="container-fluid easystart">
+			<div class="row justify-content-center mb-5 pb-2">
+				<div class="col-md-8 text-center heading-section ftco-animate">
+					<h2 class="mb-4">Обучайся иностранному языку на нашей образовательной платформе</h2>
+				</div>
+        	</div>
+			<div style="background-image: url({% static 'images/landing-image-1.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;min-height: 433px;border-radius: 10px">
+				<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px"><button class="dashboard-button-red" style="position: absolute;right: 2%;bottom: -6%;">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button></a>
+			</div>
+			<div class="row statistic">
+				<div class="col" style="padding: 34px 0px">
+					<div class="my-auto mx-auto" style="width: fit-content">
+						<p class="stat-number">1000+</p>
+						<p class="stat-text">Выпускников</p>
+					</div>
+				</div>
+				<div class="col" style="padding: 34px 0px">
+					<div class="my-auto mx-auto" style="width: fit-content">
+						<p class="stat-number">10+</p>
+						<p class="stat-text">Лет на рынке</p>
+					</div>
+				</div>
+				<div class="col" style="padding: 34px 0px">
+					<div class="my-auto mx-auto" style="width: fit-content">
+						<p class="stat-number">21</p>
+						<p class="stat-text">Учебная программа</p>
+					</div>
+				</div>
+			</div>
+			<div style="margin-top: 70px">
+				<div class="col-md-8 heading-section ftco-animate">
+					<h2 class="mb-4">Учись на практике</h2>
+				</div>
+				<div class="row">
+					<div class="col-5">
+						<img src="{% static 'images/landing-image-1.jpg' %}" width="527px" height="362px">
+					</div>
+					<div class="col-7">
+					<div id="accordionExample" style="font-family: Book Antiqua">
+					  <div class="card faq-land-card">
+						<div class="card-header faq-land-header" id="heading1">
+							<button class="btn btn-link btn-block text-left faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+							  Интерактивная платформа для занятий
+							</button>
+						</div>
+
+						<div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordionExample">
+						  <div class="card-body faq-land-answer">
+							Все материалы для обучения уже Ваши. Онлайн чат с учителем и видеосвязь в одном окне. Во время занятия Вы полностью погружаетесь в процесс обучения.						  </div>
+						</div>
+					  </div>
+					  <div class="card faq-land-card">
+						<div class="card-header faq-land-header" id="heading2">
+							<button class="btn btn-link btn-block text-left faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse1">
+							 Индивидуальные и групповые занятия
+							</button>
+						</div>
+						<div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
+						  <div class="card-body faq-land-answer">
+							Выбирайте для себя удобный формат занятий. В группах заниматься дешевле и веселее, а индивидуальные занятия позволят преподавателю максимально уделить время Вашему обучению.
+						  </div>
+						</div>
+					  </div>
+					  <div class="card faq-land-card">
+						<div class="card-header faq-land-header" id="heading3">
+							<button class="btn btn-link btn-block text-left faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse1">
+								Более 500 аудио и видео материалов для занятий
+							</button>
+						</div>
+
+						<div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
+						  <div class="card-body faq-land-answer">
+								В курсах мы используем только те методиками обучения, которые уже  помогли тысячам студентов в изучении английского языка
+						  </div>
+						</div>
+					  </div>
+						<div class="card faq-land-card">
+						<div class="card-header faq-land-header" id="heading4">
+							<button class="btn btn-link btn-block text-left faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse1">
+							  Персональный куратор и методист
+							</button>
+						</div>
+
+						<div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
+						  <div class="card-body faq-land-answer">
+							Организация расписания занятий, подбор преподавателя и индивидуальной программы обучения
+						  </div>
+						</div>
+					  </div>
+					</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section bg-light">
+		<div class="container-fluid easystart">
+			<div class="row justify-content-center mb-5 pb-2">
+          		<div class="col-md-8 text-center heading-section ftco-animate">
+            		<h2 class="mb-4">Наши программы</h2>
+				</div>
+			</div>
+			<div class="justify-content-center" style="display: flex">
+				<div class="program">
+					<img src="{% static 'images/emote-adult.jpg' %}" width="140px" height="140px">
+					<p class="program-header">
+						Для взрослых
+					</p>
+					<p class="program-text">
+						Английский для карьеры,
+					</p>
+					<p class="program-text">
+						саморазвития и путешествий
+					</p>
+					<button class="dashboard-button-secondary-teacher mx-auto"  style="margin-top: 20px">13 программ <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
+				</div>
+				<div class="program" style="margin-left:14px">
+					<img src="{% static 'images/emote-child.jpg' %}" width="140px" height="140px">
+					<p class="program-header">
+						Для детей
+					</p>
+					<p class="program-text">
+						Подготовка к экзаменам,
+					</p>
+					<p class="program-text">
+						поднятие языкового уровня
+					</p>
+					<button class="dashboard-button-green mx-auto" style="margin-top: 20px">13 программ <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
     <section class="ftco-section ftco-counter img"  style="background-image: url({% static "images/bg_gray.jpg" %});" data-stellar-background-ratio="0.7">
       	<div class="overlay"></div>
         <div class="container">
