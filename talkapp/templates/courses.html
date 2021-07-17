@@ -4,202 +4,227 @@
     <title>Курсы</title>
  {% endblock %}
 {% block cssfiles %}
-    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
-    <link rel="stylesheet" href={% static "css/animate.css"%}>
-    <link rel="stylesheet" href={% static "css/owl.carousel.min.css"%}>
-    <link rel="stylesheet" href={% static "css/owl.theme.default.min.css"%}>
-    <link rel="stylesheet" href={% static "css/magnific-popup.css"%}>
-    <link rel="stylesheet" href={% static "css/aos.css"%}>
-    <link rel="stylesheet" href={% static "css/style.css"%}>
-<link rel="stylesheet" href={% static "css/main.css" %}>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <style>
-.bobobo{
-  		font-size: large;
-  		}
-	  @media (min-width: 1200px){
-	    .bebebe{
-	    text-align: center;
-	    }
-	    .bababa{
-	    text-align: center;
-	    font-size: 31px;
-	    }
-	    .why{
-	    padding-right: 200px !important;
-	    padding-left: 200px !important;
-	    }
-	    .wsmtt{
-	    font-size: 35px;
-	    }
-	    .wsmt{
-	    font-size: xx-large;
-	    }
-	  }
-	  @media(max-width: 1400px){
-	  .pararam{
-	  	font-size: large !important;
-	  	}
-	  }
-	  @media(min-width: 1440px){
-	  	.easystart{
-	  		padding-right: 350px;
-	  		padding-left: 350px;
-	  	}
-	  }
-    </style>
+        <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/overcast/jquery-ui.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
+        <link rel="stylesheet" href={% static "css/animate.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
+        <link rel="stylesheet" href={% static "css/calendar.css" %}>
+	    <link rel="stylesheet" href={% static "css/aos.css" %}>
+	    <link rel="stylesheet" href={% static "css/style.css" %}>
+		<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
+        <link rel="stylesheet" href={% static "css/main.css" %}>
+        <link rel="stylesheet" href={% static "css/dashboard.css" %}>
 {% endblock %}
 {% block content %}
 	  {% include "header.html"%}
     <!-- END nav -->
-    
-    <section class="ftco-section ftco-counter img"  style="background-image: url({% static "images/bg_gray.jpg" %});" data-stellar-background-ratio="0.5">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
-          <div class="col-md-6 ml-auto ftco-animate">
-            <h1 class="mb-4 bebebe" style="color: white;font-weight: bold;">Выучить английский в онлайн-школе EnglishTalk</h1>
-			  <p class="bababa" style="color: white;">Учите язык в интерактивном учебнике с сильными преподавателями! </p>
-            <p style="text-align: center;">
-				{% if not request.user.is_authenticated %}
-				<a href="#" data-toggle="modal" data-target="#reqModal" class="btn btn-secondary bobobo py-3 mt-3" style="border-radius: 0;">Начать бесплатный урок</a>
-				{% endif %}
-				<a class="btn btn-secondary bobobo py-3 mt-3 video-btn" style="border-radius: 0;color: white" data-toggle="modal" data-src="https://www.youtube.com/embed/JUSuCm6MXVI" data-target="#myModalVid"><i style="color: #fff" class="fab fa-youtube"></i> Смотреть пример урока</a>
-			</p>
-          </div>
-        </div>
-        </div>
-      </div>
-    </section>
-
-	  <div class="modal fade" id="myModalVid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document" style="max-width: 800px; margin: 30px auto;">
-    <div class="modal-content">
-      <div class="modal-body" style=" position:relative;padding:0px;">
-       <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="position:absolute;right:-30px;top:0;z-index:999;font-size:2rem;font-weight: normal;color:#fff;opacity:1;">
-          <span aria-hidden="true">&times;</span>
-        </button>
-			<div class="embed-responsive embed-responsive-16by9">
-			  <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+<section class="ftco-section">
+	<div class="container-fluid easystart">
+		<div class="row mb-5 pb-2">
+			<div class="col-md-8 heading-section ftco-animate" style="display: flex">
+				<a style="height: fit-content;" class="my-auto" href="../../">
+					<button class="courses-back-button" type="button">
+						<i class="fas fa-chevron-left" style="font-size: 24px;color: #333333" aria-hidden="true"></i>
+			  		</button>
+				</a>
+				<h2 class="ml-3">Учебные программы</h2>
 			</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    <section class="ftco-section">
-			<div class="container-fluid px-4">
-				<div class="row">
-					<div class="col-md-3 course ftco-animate" style="text-align: center">
-						<img src={% static "images/course1.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
-						<div class="text pt-4">
-							<h3><a href="../course/ielts">Подготовка к Ielts</a></h3>
-							<p>После успешной подготовки 95% наших студентов сдают экзамен с первого раза!</p>
-							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course1.jpg" %}" data-icon1="fas fa-chalkboard-teacher" data-icon2="fas fa-clock" data-icon3="fas fa-graduation-cap" data-desc1="С вами работают преподаватели, которые подготовили десятки учеников к успешной сдаче Ielts" data-desc2="Вы выбираете для себя комфортное время для индивидуальных занятий" data-desc3="Имитация экзамена вместе с преподавателем" data-title="Подготовка к Ielts" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
-						</div>
+		</div>
+		<div class="row mb-5 pb-2">
+			<div class="col-md-8 heading-section ftco-animate" style="display: flex">
+				<h3 style="font-weight: bold">Для взрослых</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col course-card">
+				<div class="course-card-header">
+					<div class="course-card-header-img">
+						<img src="{% static 'images/course-personal.png' %}" width="40px" height="40px" style="display: block" class="my-auto mx-auto">
 					</div>
-					<div class="col-md-3 course ftco-animate" style="text-align: center">
-						<img src={% static "images/course2.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
-						<div class="text pt-4">
-							<h3><a href="../course/interview">Cобеседование</a></h3>
-							<p>Подготовим к собеседованию или деловой встрече в кратчайшие сроки!</p>
-							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course2.jpg" %}" data-icon1="far fa-calendar-check" data-icon2="fas fa-bell" data-icon3="fas fa-user-friends" data-desc1="Подготовка в сжатые сроки" data-desc2="Имитация реального собеседования с преподавателем" data-desc3="Индивидуальный подбор программы" data-title="Собсеседование" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
-						</div>
-					</div>
-					<div class="col-md-3 course ftco-animate" style="text-align: center">
-						<img src={% static "images/course3.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
-						<div class="text pt-4">
-							<h3><a href="../course/freespeaking">Говорим свободно</a></h3>
-							<p>Курс разработан для развития живой речи и импровизации в общении. Вы научитесь говорить легко и без страха совершить ошибку. Интерактивная платформа позволяет максимально погрузиться в иностранную среду и начать свободно говорить уже через 3 месяца регулярных занятий.</p>
-							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course3.jpg" %}" data-icon1="fas fa-user-check" data-icon2="fas fa-smile" data-icon3="fas fa-spell-check" data-desc1="Только практическое применение (реальные ситуации)" data-desc2="Вы перестанете бояться ошибаться" data-desc3="Упор на живое общение, погружение в иностранную среду" data-title="Говорим свободно" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
-						</div>
-					</div>
-					<div class="col-md-3 course ftco-animate" style="text-align: center">
-						<img src={% static "images/course4.png" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
-						<div class="text pt-4">
-							<h3><a href="../course/it">Английский для IT</a></h3>
-							<p>Один из популярнейших курсов в последнее время. Пройдя обучение Вы станете зарабатывать на 30% больше!</p>
-							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course4.png" %}" data-icon1="far fa-address-card" data-icon2="fas fa-file-code" data-icon3="fas fa-clock" data-desc1="Упор на Ваши потребности, индивидуальная программа под задачи" data-desc2="Актуальные темы (веб-разработка, искусственный интеллект)" data-desc3="Вы выбираете для себя комфортное время для индивидуальных занятий" data-title="Английский для IT" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
-						</div>
-					</div>
-
-					<div class="col-md-3 course ftco-animate" style="text-align: center">
-						<img src={% static "images/course5.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
-						<div class="text pt-4">
-							<h3><a href="../course/travel">Для путешествий</a></h3>
-							<p>Забронировать отель? Узнать дорогу в незнакомом городе? Оформить трансфер до аэропорта? Мы научим Вас это делать легко!</p>
-							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course5.jpg" %}" data-icon1="fas fa-spell-check" data-icon2="fas fa-compass" data-icon3="far fa-calendar-check" data-desc1="Упор на разговорную практику" data-desc2="Научим общаться в разных ситуациях (в отеле, в самолете, в городе)" data-desc3="Сжатые сроки подготовки. Индивидуально выбираете время" data-title="Для путешествий" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
-						</div>
-					</div>
-					<div class="col-md-3 course ftco-animate" style="text-align: center">
-						<img src={% static "images/course6.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
-						<div class="text pt-4">
-							<h3><a href="../course/business">Бизнес английский</a></h3>
-							<p>В сжатые сроки нужно подготовиться ко встрече на английском языке. Вы будете уверено себя чувствовать в любых переговорах!</p>
-							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course6.jpg" %}" data-icon1="fas fa-user-friends" data-icon2="fas fa-comments-dollar" data-icon3="far fa-calendar-check" data-desc1="Индивидуальный подбор программы под Ваши задачи" data-desc2="Упор на деловое общение, деловую переписку, переговоры" data-desc3="Сжатые сроки подготовки. Индивидуально выбираете время" data-title="Бизнес английский" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
-						</div>
-					</div>
-					<div class="col-md-3 course ftco-animate" style="text-align: center">
-						<img src={% static "images/course7.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
-						<div class="text pt-4">
-							<h3><a href="../course/exam">Подготовка к ЕГЭ</a></h3>
-							<p>Более 500 учеников подготовили наши специалисты к успешной сдаче экзамена. Заполним пробелы в грамматике и отработаем все типы заданий.</p>
-							<p align="center"><a href="#" class="btn btn-primary" data-title="Подготовка к ЕГЭ" data-course_img="{% static "images/course7.jpg" %}" data-icon1="fas fa-tasks" data-icon2="fas fa-user-check" data-icon3="far fa-calendar-check" data-desc1="Отработка всех типов заданий" data-desc2="Имитация реального экзамена" data-desc3="Сжатые сроки подготовки. Индивидуально выбираете время" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
-						</div>
-					</div>
-					<div class="col-md-3 course ftco-animate" style="text-align: center">
-						<img src={% static "images/course8.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
-						<div class="text pt-4">
-							<h3><a href="../course/engineer">Английский для инженеров</a></h3>
-							<p>Будьте на шаг впереди! Мы научим техническому английскому, а Ваши знания на рынке станут дороже на 40%</p>
-							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course8.jpg" %}" data-icon1="fas fa-user-friends" data-icon2="fas fa-wrench" data-icon3="far fa-calendar-check" data-desc1="Индивидуальный подбор программы под Ваши задачи" data-desc2="Упор на техническую терминологию" data-desc3="Сжатые сроки подготовки. Индивидуально выбираете время" data-title="Английский для инженеров" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
-						</div>
-					</div>
-					<div class="col-md-3 course ftco-animate" style="text-align: center">
-						<img src={% static "images/course9.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
-						<div class="text pt-4">
-							<h3><a href="../course/teen">Английский для подростков</a></h3>
-							<p>Хватит учиться по скучным учебникам! Мы за практический подход. Учим английский по актуальным фильмам и сериалам.</p>
-							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course9.jpg" %}" data-icon1="fas fa-tasks" data-icon2="fas fa-film" data-icon3="fas fa-table" data-desc1="Подтянем школьные знания и выйдем за рамки школьной программы" data-desc2="Учимся на самых актуальных сериалах и фильмах" data-desc3="Простая и понятная грамматика в таблицах" data-title="Английский для подростков" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
-						</div>
-					</div>
-					<div class="col-md-3 course ftco-animate" style="text-align: center">
-						<img src={% static "images/course10.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
-						<div class="text pt-4">
-							<h3><a href="../course/child">Английский детям</a></h3>
-							<p>Курс становится все более актуальным. Изучайте английский по песням и забудьте о скучных учебниках!</p>
-							<p align="center"><a href="#" class="btn btn-primary" data-title="Английский детям" data-course_img="{% static "images/course10.jpg" %}" data-icon1="fas fa-puzzle-piece" data-icon2="fas fa-atlas" data-icon3="fas fa-music" data-desc1="Никаких скучных правил! Учимся говорить и играем в игры" data-desc2="Детям проще учиться по интерактивному учебнику, видео и аудио материалам" data-desc3="Учим английскому по песням" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
-						</div>
-					</div>
-					<div class="col-md-3 course ftco-animate" style="text-align: center">
-						<img src={% static "images/course11.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
-						<div class="text pt-4">
-							<h3><a href="../course/personally">Персональный курс</a></h3>
-							<p>Учитесь так, как этого хочется Вам! Подберем актуальные для Вас темы и прокачаем ваш английский.</p>
-							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course11.jpg" %}" data-icon1="fas fa-user-friends" data-icon2="fas fa-smile" data-icon3="far fa-calendar-check" data-desc1="Индивидуально разработаем программу с учетом вашего уровня" data-desc2="Перестанете бояться ошибаться" data-desc3="Сжатые сроки подготовки. Индивидуально выбираете время" data-title="Персональный курс" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
-						</div>
-					</div>
-					<div class="col-md-3 course ftco-animate" style="text-align: center">
-						<img src={% static "images/course12.jpg" %} class="card-img-top mx-auto" style="max-height: 250px;max-width: 250px;text-align: center">
-						<div class="text pt-4">
-							<h3><a href="../course/anylevel">Старт с любого уровня</a></h3>
-							<p>Хотите вновь заняться английским? Подтянуть давно забытый уровень? Или начать говорить свободно и уверенно себя чувствовать за границей? Начнем с любого уровня и поможем достичь Ваших целей!</p>
-							<p align="center"><a href="#" class="btn btn-primary" data-course_img="{% static "images/course12.jpg" %}" data-icon1="fas fa-user" data-icon2="fas fa-tasks" data-icon3="fas fa-clock" data-desc1="Индивидуальный подбираем программу, исходя из вашего уровня" data-desc2="Подбираем темы, которые вам интересны. Ведем Вас до результата по проверенным программам" data-desc3="Индивидуально выбираете время для занятий" data-title="Старт с любого уровня" data-toggle="modal" data-target="#CourseModal">Подробнее</a></p>
-						</div>
+					<div class="course-card-header-text my-auto">
+						Персональный курс
 					</div>
 				</div>
+				<div class="course-card-text">
+					Подбираем индивидуальную программу занятий
+				</div>
+				<button class="course-card-button">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
 			</div>
-		<div class="row justify-content-center mb-5 pb-2" style="padding-top: 80px;margin-left: 0; margin-right: 0;">
-          <div class="col-md-8 text-center heading-section ftco-animate">
-            <h2 class="mb-4">Можно индивидуально выбрать подходящюю программу!</h2>
-			  <p>Наш методист свяжется с Вами и подберет индивидуальный курс</p>
-			  <a href="#" data-toggle="modal" data-target="#askModal" ><button class="btn btn-primary" style="font-size: xx-large;border-radius: 0;color: #323232;width: 60%">Спросить</button></a>
-			  </div>
-        </div>
-		</section>
+			<div class="col course-card">
+				<div class="course-card-header">
+					<div class="course-card-header-img">
+						<img src="{% static 'images/course-prepare.png' %}" width="40px" height="40px" style="display: block" class="my-auto mx-auto">
+					</div>
+					<div class="course-card-header-text my-auto">
+						Подготовка к Ilets
+					</div>
+				</div>
+				<div class="course-card-text">
+					Имитация реального экзамена и самые лучшие преподаватели
+				</div>
+				<button class="course-card-button">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
+			</div>
+			<div class="col course-card">
+				<div class="course-card-header">
+					<div class="course-card-header-img">
+						<img src="{% static 'images/course-any-level.png' %}" width="40px" height="40px" style="display: block" class="my-auto mx-auto">
+					</div>
+					<div class="course-card-header-text my-auto">
+						Старт с любого уровня
+					</div>
+				</div>
+				<div class="course-card-text">
+					Определяем Ваш уровень и прокачаем необходимые знания!
+				</div>
+				<button class="course-card-button">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col course-card">
+				<div class="course-card-header">
+					<div class="course-card-header-img">
+						<img src="{% static 'images/course-business.png' %}" width="40px" height="40px" style="display: block" class="my-auto mx-auto">
+					</div>
+					<div class="course-card-header-text my-auto">
+						Бизнес английский
+					</div>
+				</div>
+				<div class="course-card-text">
+					Упор на сферу вашей деятельности. Программа подбирается индивидуально
+				</div>
+				<button class="course-card-button">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
+			</div>
+			<div class="col course-card">
+				<div class="course-card-header">
+					<div class="course-card-header-img">
+						<img src="{% static 'images/course-free-speaking.png' %}" width="40px" height="40px" style="display: block" class="my-auto mx-auto">
+					</div>
+					<div class="course-card-header-text my-auto">
+						Говорим свободно
+					</div>
+				</div>
+				<div class="course-card-text">
+					Популярный курс, быстро развивающий разговорную практику
+				</div>
+				<button class="course-card-button">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
+			</div>
+			<div class="col course-card">
+				<div class="course-card-header">
+					<div class="course-card-header-img">
+						<img src="{% static 'images/course-travelling.png' %}" width="40px" height="40px" style="display: block" class="my-auto mx-auto">
+					</div>
+					<div class="course-card-header-text my-auto">
+						Английский для путешествий
+					</div>
+				</div>
+				<div class="course-card-text">
+					Реальные ситуации, упор на разговорную практику.
+				</div>
+				<button class="course-card-button">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
+			</div>
+		</div>
+		<div class="row mb-5 pb-2">
+			<div class="col-md-8 heading-section ftco-animate" style="display: flex">
+				<h3 style="font-weight: bold">Для детей</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col course-card">
+				<div class="course-card-header">
+					<div class="course-card-header-img">
+						<img src="{% static 'images/course-personal.png' %}" width="40px" height="40px" style="display: block" class="my-auto mx-auto">
+					</div>
+					<div class="course-card-header-text my-auto">
+						Персональный курс
+					</div>
+				</div>
+				<div class="course-card-text">
+					Подбираем индивидуальную программу занятий
+				</div>
+				<button class="course-card-button">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
+			</div>
+			<div class="col course-card">
+				<div class="course-card-header">
+					<div class="course-card-header-img">
+						<img src="{% static 'images/course-prepare.png' %}" width="40px" height="40px" style="display: block" class="my-auto mx-auto">
+					</div>
+					<div class="course-card-header-text my-auto">
+						Подготовка к ЕГЭ и ОГЭ
+					</div>
+				</div>
+				<div class="course-card-text">
+					Имитация реального экзамена и лучшие программы подготовки
+				</div>
+				<button class="course-card-button">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
+			</div>
+			<div class="col course-card">
+				<div class="course-card-header">
+					<div class="course-card-header-img">
+						<img src="{% static 'images/course-knowing.png' %}" width="40px" height="40px" style="display: block" class="my-auto mx-auto">
+					</div>
+					<div class="course-card-header-text my-auto">
+						Знакомство с английским
+					</div>
+				</div>
+				<div class="course-card-text">
+					Английский по песням и видео. Формируем базовые знания языка
+				</div>
+				<button class="course-card-button">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col course-card">
+				<div class="course-card-header">
+					<div class="course-card-header-img">
+						<img src="{% static 'images/course-speech.png' %}" width="40px" height="40px" style="display: block" class="my-auto mx-auto">
+					</div>
+					<div class="course-card-header-text my-auto">
+						Разговорная практика
+					</div>
+				</div>
+				<div class="course-card-text">
+					Популярный курс, быстро развивающий разговорную практику
+				</div>
+				<button class="course-card-button">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
+			</div>
+			<div class="col course-card">
+				<div class="course-card-header">
+					<div class="course-card-header-img">
+						<img src="{% static 'images/course-any-level.png' %}" width="40px" height="40px" style="display: block" class="my-auto mx-auto">
+					</div>
+					<div class="course-card-header-text my-auto">
+						Старт с любого уровня
+					</div>
+				</div>
+				<div class="course-card-text">
+					Определяем Ваш уровень и прокачаем необходимые знания!
+				</div>
+				<button class="course-card-button">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
+			</div>
+			<div class="col course-card">
+				<div class="course-card-header">
+					<div class="course-card-header-img">
+						<img src="{% static 'images/course-grammar.png' %}" width="40px" height="40px" style="display: block" class="my-auto mx-auto">
+					</div>
+					<div class="course-card-header-text my-auto">
+						Грамматика – это просто
+					</div>
+				</div>
+				<div class="course-card-text">
+					Объясняем сложные правила простыми словами
+				</div>
+				<button class="course-card-button">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button>
+			</div>
+		</div>
+	</div>
+</section>
 
 
 	  {% include "footer.html" %}

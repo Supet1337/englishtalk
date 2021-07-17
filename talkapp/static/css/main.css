@@ -429,29 +429,7 @@ footer .btn-primary:hover{
     }
 }
 
-.reviews {
-  width : 900px;
-  height : 300px;
-  overflow : hidden ;
-  background-color : #fff ;
-  border-radius : 5px;
-  margin : 50px auto ;
-  position : relative ;
-  box-shadow : 0 0 10px -2px #ddd ;
-}
-
 @media screen and (max-width: 768px){
-
-    .reviews {
-      width : 85%;
-      height : 300px;
-      overflow : hidden ;
-      background-color : #fff ;
-      border-radius : 5px;
-      margin : 50px auto ;
-      position : relative ;
-      box-shadow : 0 0 10px -2px #ddd ;
-    }
 
     .panel p {
         float: none;
@@ -656,4 +634,214 @@ png images background
     border-radius: 20px;
     padding: 75px;
     text-align: center;
+}
+
+.review {
+    border-radius: 20px;
+    border: 1px solid rgb(0,0,0,0.125);
+    padding: 30px;
+}
+
+.review-avatar{
+    width: 104px;
+    height: 104px;
+    border-radius: 50px;
+}
+
+.review-author {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #333333;
+    max-width: 180px;
+}
+
+.review-text {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+    color: #333333;
+}
+
+.review-inst {
+    background: #F8F8F8;
+    border-radius: 51px;
+    height: fit-content;
+    margin-left: auto;
+    height: 44px;
+    padding: 10px;
+}
+
+.review-control {
+    background: #F8F8F8;
+    border-radius: 190px;
+    width: 80px;
+    height: 80px;
+    top: 35%;
+    border: 0;
+}
+
+.test-lesson{
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.test-lesson-left{
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    background: #2F80ED;
+    padding: 80px;
+}
+
+.test-lesson-right{
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    background-image: url(/static/images/landing-image-5.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    background-position: center center;
+}
+
+.test-lesson-header {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 69px;
+    color: #F7F7F7;
+}
+
+.test-lesson-text {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 26px;
+    color: #F7F7F7;
+    margin-bottom: 0;
+}
+
+.test-lesson-button {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    height: 100%;
+    max-height: 55px;
+    background: #F2C94C;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 27px;
+    text-align: center;
+    color: #333333;
+    border: 0;
+    border-radius: 4px;
+}
+
+.footer-header {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 26px;
+    color: #333333;
+}
+
+.footer-text {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #828282;
+}
+
+.courses-back-button {
+    background: #F8F8F8;
+    border-radius: 190px;
+    width: 44px;
+    height: 44px;
+    border: 0;
+}
+
+.course-card {
+    border-radius: 10px;
+    margin-left: 15px;
+    padding: 24px;
+    max-width: 410px;
+    margin-top: 15px;
+}
+
+.course-card-header {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.course-card-header-img {
+    width: 70px;
+    height: 70px;
+    background: #F8F8F8;
+    border-radius: 175px;
+    display: flex
+}
+
+.course-card-header-text {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 35px;
+    color: #333333;
+    margin-bottom: 0;
+    margin-left: 15px;
+}
+
+.course-card-text {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+.course-card-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    height: 100%;
+    max-height: 55px;
+    background: #FFFFFF;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 27px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 0;
+    border-radius: 4px;
+}
+
+.course-card:hover {
+    border: 1px solid rgb(0,0,0,0.125);
+}
+
+.course-card:hover .course-card-button {
+    color: #2F80ED;
 }

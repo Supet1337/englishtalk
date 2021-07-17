@@ -1,60 +1,50 @@
-<footer class="ftco-footer ftco-bg-dark ftco-section" style="background: #232323;">
+<footer class="ftco-section" style="background: #F8F8F8;">
       <div class="container">
         <div class="row mb-5">
-          <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5">
-            	<h2 class="ftco-heading-2">Хотите преподавать в онлайн-школе EnglishTalk?</h2>
-            	<div class="block-23 mb-3">
-	              <ul>
-                    <li><a href="#" data-toggle="modal" data-target="#reqTeachModal"><button type="button" class="btn btn-primary" style="border-radius: 0;font-size: 20px;">Партнерская программа для преподавателей</button></a></li>
-	              </ul>
-	            </div>
+            <div class="col-md-6 col-lg-3">
+            <div class="ftco-footer-widget mb-5 ml-md-4">
+                <p class="footer-header" style="margin-bottom: 30px;text-align: center">Студентам</p>
+              <ul class="list-unstyled" style="text-align: center" >
+                <li><a class="footer-text" href="../#scourses">Курсы</a></li>
+                <li><a class="footer-text" href="../#scoost">Стоимость</a></li>
+                <li><a class="footer-text" href="../#sreview">Отзывы</a></li>
+                <li><a class="footer-text" href="#">О школе</a></li>
+              </ul>
             </div>
           </div>
             <div class="col-md-6 col-lg-3">
-            <div class="ftco-footer-widget mb-5 ml-md-4">
-                <h2 class="ftco-heading-2" style="margin-bottom: 30px;text-align: center">Студентам</h2>
-              <ul class="list-unstyled" style="text-align: center" >
-                <li><a style="font-size: 25px" href="../#scourses">Курсы</a></li>
-                <li><a style="font-size: 25px" href="../#scoost">Стоимость</a></li>
-                <li><a style="font-size: 25px" href="../#sreview">Отзывы</a></li>
-                <li><a style="font-size: 25px" href="#">О школе</a></li>
+            <div class="ftco-footer-widget mb-5">
+            	<h2 class="footer-header mb-0 ml-1">Контакты</h2>
+            	<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3 ml-1">
+                <a class="ftco-animate footer-text" href="mailto:help.englishtalk@gmail.co?subject=Вопрос по Englex">help.englishtalk@gmail.com</a>
+				<li class="ftco-animate footer-text">8 (995) 793-02-03</li>
+                    <br>
+                    <div class="mt-4">
+                <li  class="ftco-animate"><a style="color: #2F80ED;" href="https://t.me/Svvvnd"><span  class="fas fa-paper-plane"></span></a></li>
+                <li class="ftco-animate"><a style="color: #2F80ED;" href="#"><span class="fab fa-instagram"></span></a></li>
+                <li class="ftco-animate"><a style="color: #2F80ED;" href="#"><span class="fab fa-youtube"></span></a></li>
+                    </div>
               </ul>
             </div>
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="ftco-footer-widget mb-5 ml-md-4" >
-                {% if not request.user.is_authenticated %}
-              <a href="#" data-toggle="modal" data-target="#reqModal"><button type="button" class="btn btn-primary  mr-5 mb-4" style="border-radius: 0;">Записаться на бесплатное занятие</button></a>
-                {% endif %}
+                <h2 class="footer-header">Документы</h2>
                 <ul class="list-unstyled">
-                <li><a style="font-size: 25px" href="oferta">Публичная оферта</a></li>
-                <li><a style="font-size: 25px" href="confidentiality">Политика конфиденциальности</a></li>
+                <li><a class="footer-text" href="oferta">Публичная оферта</a></li>
+                <li><a class="footer-text" href="confidentiality">Политика конфиденциальности</a></li>
               </ul>
             </div>
           </div>
-          <div class="col-md-6 col-lg-3">
+            <div class="col-md-6 col-lg-3">
             <div class="ftco-footer-widget mb-5">
-            	<h2 class="ftco-heading-2 mb-0 ml-1">Связаться с нами</h2>
-            	<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3 ml-1">
-				<li class="ftco-animate" style="color: white;font-size:20px">8 (995) 793-02-03</li>
-               <a class="ftco-animate" href="mailto:help.englishtalk@gmail.co?subject=Вопрос по Englex">help.englishtalk@gmail.com</a>
-					<br>
-                    <div class="mt-4">
-                <li class="ftco-animate"><a style="color: #000; background: #6c757d;" href="#"><span class="fab fa-instagram"></span></a></li>
-                <li  class="ftco-animate"><a style="color: #000; background: #6c757d;" href="https://t.me/Svvvnd"><span  class="fas fa-paper-plane"></span></a></li>
-                <li class="ftco-animate"><a style="color: #000; background: #6c757d;" href="#"><span class="fab fa-youtube"></span></a></li>
-                        </div>
-              </ul>
+            	<h2 class="footer-header">Преподавателям</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+                    <li><a href="#" data-toggle="modal" data-target="#reqTeachModal"><button type="button" class="dashboard-button-secondary-teacher">Заказать звонок</button></a></li>
+	              </ul>
+	            </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-
-            <p style="color: #292626"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a style="color: #292626" href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>
         </div>
       </div>
