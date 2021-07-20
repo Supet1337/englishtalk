@@ -545,8 +545,8 @@ png images background
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 23px;
+    font-size: 16px;
+    line-height: 29px;
     color: #F7F7F7;
     margin-bottom: 0;
 }
@@ -665,7 +665,7 @@ png images background
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 19px;
     line-height: 18px;
     color: #333333;
 }
@@ -675,7 +675,6 @@ png images background
     border-radius: 51px;
     height: fit-content;
     margin-left: auto;
-    height: 44px;
     padding: 10px;
 }
 
@@ -704,7 +703,6 @@ png images background
 .test-lesson-right{
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
-    background-image: url(/static/images/landing-image-5.png);
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
