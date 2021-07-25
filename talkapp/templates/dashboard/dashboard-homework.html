@@ -48,6 +48,7 @@
 
 
                     <div style="display: flex; margin-bottom: 18px">
+                        <div id="submit-answer-button"></div>
                         <div style="margin-left: auto">
                         Показывать завершённые
                         <label class="switch">
@@ -59,13 +60,13 @@
 
                     <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-bottom: 0;">
                         <li class="nav-item" role="presentation">
-                            <a class="nvlnk nvlnk-act" id="tab1" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 80px">Задано</a>
+                            <a class="nvlnk active" id="tab1" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 70px">Задано</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nvlnk" id="tab2" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 80px">Проверка</a>
+                            <a class="nvlnk" id="tab2" data-bs-toggle="tab" href="#home2" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 70px">Проверка</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nvlnk" id="tab3" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 80px">Проверено</a>
+                            <a class="nvlnk" id="tab3" data-bs-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 70px">Проверено</a>
                         </li>
 
                     </ul>
@@ -74,12 +75,74 @@
                         <!-- <button class="btn btn-white fixbut" style="border-radius: 0px; float: left;margin-top: 12px;margin-left: 1rem" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> Подключить видеосвязь</button> -->
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="card-body" >
-                                {% if lsn == 0 %}
+                                {% if not homework1 %}
                                 <h2 style="text-align: center">Домашних заданий не найдено</h2>
                                 {% else %}
 
 
-                                {% for hmwrk in homework %}
+                                {% for hmwrk in homework1 %}
+                                <div class="lesson">
+                                    <a style="color: #333333" href="#" id="openHmk{{hmwrk.id}}">
+                                        <div class="lesson-name">
+                                            {{hmwrk.homework_name}}
+                                        </div>
+                                        <div class="lesson-progress">
+                                            <div class="progress-num">
+                                                1/4
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+
+
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="home2" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="card-body" >
+                                {% if not homework2 %}
+                                <h2 style="text-align: center">Домашних заданий не найдено</h2>
+                                {% else %}
+
+
+                                {% for hmwrk in homework2 %}
+                                <div class="lesson">
+                                    <a style="color: #333333" href="#" id="openHmk{{hmwrk.id}}">
+                                        <div class="lesson-name">
+                                            {{hmwrk.homework_name}}
+                                        </div>
+                                        <div class="lesson-progress">
+                                            <div class="progress-num">
+                                                1/4
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+
+
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="home3" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="card-body" >
+                                {% if not homework3 %}
+                                <h2 style="text-align: center">Домашних заданий не найдено</h2>
+                                {% else %}
+
+
+                                {% for hmwrk in homework3 %}
                                 <div class="lesson">
                                     <a style="color: #333333" href="#" id="openHmk{{hmwrk.id}}">
                                         <div class="lesson-name">
@@ -373,6 +436,7 @@
                     if(!$("#docLabel"+id).length){
                         $("#home-tab").removeClass('nvlnk-act');
                         $("#home").removeClass('show active');
+                        $("#submit-answer-button").html('<button data-bs-toggle="modal" type="button" data-bs-target="#homeModal" data-homework="'+id+'" class="tape-btn">Отправить решение</button>');
                         $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
                                     '<div>'+
                                        ' <div style="font-size: 18px;line-height: 21px; margin-bottom: 14px" class="blogs-header-text">'+
@@ -380,9 +444,8 @@
                                        ' </div>'+
                                         '<div id="collapseVideo'+id+'"></div>'+
                                         '<div id="collapseAudio'+id+'" style="margin-bottom: 18px"></div>'+
-                                        '<div class="collapse show" id="docCard'+id+'" style="height: 600px;">'+
+                                        '<div class="collapse show" id="docCard'+id+'">'+
                                         '</div>'+
-                                        '<button data-bs-toggle="modal" type="button" data-bs-target="#homeModal" data-homework="'+id+'" class="tape-btn" style="margin-right: 32px">Отправить решение</button>'+
                                     '</div>'+
                                  '</div>');
                         $(".breadcrumb-item").removeClass('active');
@@ -423,7 +486,7 @@
                                 var json = $.parseJSON(result);
                                 json.forEach(function(item, i, json) {
                                     $("#docCard"+id).append(
-                                        '<object><embed src="'+json[i].file_url+'" style="width: 100%; height: 100%"></object>'
+                                        '<a href="'+json[i].file_url+'" download><div style="display: flex; margin-bottom: 20px"><img src={% static "images/file-image.jpg" %} width="46px" height="58px"><p class="my-auto" style="margin-left: 16px">'+json[i].file_name+'</p></div></a>'
                                     );
                                 });
 

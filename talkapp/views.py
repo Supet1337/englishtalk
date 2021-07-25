@@ -446,8 +446,10 @@ def dashboard_courses(request):
 def dashboard_homework(request):
     context = {}
     is_teacher = False
-
-    context['homework'] = Homework.objects.filter(student=request.user)
+    homeworks = Homework.objects.filter(student=request.user)
+    context['homework1'] = [h for h in homeworks if h.status == 1]
+    context['homework2'] = [h for h in homeworks if h.status == 2]
+    context['homework3'] = [h for h in homeworks if h.status == 3]
 
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
@@ -1154,6 +1156,8 @@ def check_email(request):
 def homework_upload(request):
     if request.method == "POST":
         h = Homework.objects.get(id=request.POST.get('homework-id'))
+        h.status = 2
+        h.save()
         for f in request.FILES.getlist('file'):
             ans = Homework_file_answer(answer=f, homework=h)
             ans.save()

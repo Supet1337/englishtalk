@@ -322,7 +322,12 @@ class Homework(models.Model):
     student = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='Ученик')
     homework_name = models.CharField(max_length=60, verbose_name='Название дз', blank=True)
     lesson = models.ForeignKey(to=UserLesson, on_delete=models.CASCADE, verbose_name='Урок')
-    is_completed = models.BooleanField(verbose_name='Задание выполнено верно', default=False)
+    STATUS_CHOISES = [
+        (1, 'Задано'),
+        (2, 'Проверка'),
+        (3, 'Проверено')
+    ]
+    status = models.IntegerField(verbose_name='Статус домашнего задания', choices=STATUS_CHOISES, default=1)
 
     def get_homework_videos(self):
         return Homework_video.objects.filter(homework_id=self.id)
@@ -339,8 +344,7 @@ class Homework(models.Model):
     def json(self):
         return {
             'homework_name': self.homework_name,
-            'homework_id': self.id,
-            'homework_is_completed':  self.is_completed
+            'homework_id': self.id
         }
 
 class Homework_file_answer(models.Model):
