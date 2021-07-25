@@ -4,40 +4,56 @@ from .forms import *
 import nested_admin
 from .models import DefaultLesson, Lesson_video, Lesson_audio, UserAdditional, Teacher, DefaultCourse,\
     Blog, UserCourse, UserLesson, VideoPractiseWord, VideoPractise, VideoPractiseConstructor,VideoPractiseListening,\
-    VideoCategory, ChatRoom, ChatMessage, Tape, Homework, Homework_video, Homework_audio
+    VideoCategory, ChatRoom, ChatMessage, Tape, Homework, Homework_video, Homework_audio, Homework_file
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 admin.site.site_header = 'Englishtalk администрирование'
+
+
 class BlogAdminForm(forms.ModelForm):
     content = forms.CharField(widget=CKEditorUploadingWidget())
+
+
     class Meta:
         model = Blog
         fields = '__all__'
+
 
 @admin.register(Blog)
 class MovieAdmin(admin.ModelAdmin):
     form = BlogAdminForm
 
+
 class InLineVideoLesson(nested_admin.NestedStackedInline):
     model = Lesson_video
     extra = 0
+
 
 class InLineAudioLesson(nested_admin.NestedStackedInline):
     model = Lesson_audio
     extra = 0
 
+
 class InLineVideoHomework(admin.StackedInline):
     model = Homework_video
     extra = 0
+
 
 class InLineAudioHomework(admin.StackedInline):
     model = Homework_audio
     extra = 0
 
+
+class InLineFileHomework(admin.StackedInline):
+    model = Homework_file
+    extra = 0
+
+
 class InLineDefaultLesson(nested_admin.NestedStackedInline):
     inlines = [InLineAudioLesson,InLineVideoLesson]
     model = DefaultLesson
     extra = 0
+
 
 class InLineUserLesson(nested_admin.NestedStackedInline):
     model = UserLesson
@@ -45,17 +61,21 @@ class InLineUserLesson(nested_admin.NestedStackedInline):
     fields = ('lesson','docx_url_copy', 'date')
     raw_id_fields = ('lesson',)
 
+
 class InLineWord(admin.StackedInline):
     model = VideoPractiseWord
     extra = 0
+
 
 class InLineConstructor(admin.StackedInline):
     model = VideoPractiseConstructor
     extra = 0
 
+
 class InLineListening(admin.StackedInline):
     model = VideoPractiseListening
     extra = 0
+
 
 @admin.register(DefaultCourse)
 class DefaultCourseAdmin(nested_admin.NestedModelAdmin):
@@ -64,6 +84,7 @@ class DefaultCourseAdmin(nested_admin.NestedModelAdmin):
     list_filter = ('name','level','module')
     search_fields = ['name','level','module']
 
+
 @admin.register(UserCourse)
 class CourseAdmin(nested_admin.NestedModelAdmin):
     inlines = [InLineUserLesson]
@@ -71,11 +92,13 @@ class CourseAdmin(nested_admin.NestedModelAdmin):
     list_display = ('student_name','teacher_name','course_type')
     search_fields = ['student__first_name', 'teacher__first_name', 'course_type']
     list_filter = ('course_type',)
+
     def student_name(self,obj):
         return obj.student.first_name
 
     def teacher_name(self,obj):
         return obj.teacher.user.first_name
+
 
 @admin.register(DefaultLesson)
 class LessonAdmin(nested_admin.NestedModelAdmin):
@@ -83,10 +106,13 @@ class LessonAdmin(nested_admin.NestedModelAdmin):
     list_display = ('name','course','course_level','course_module','docx_url')
     list_filter = ('course','course__level','course__module')
     search_fields = ['name','course__name','course__level','course__module','docx_url']
+
     def course_level(self,obj):
         return obj.course.level
+
     def course_module(self,obj):
         return obj.course.module
+
 
 @admin.register(Teacher)
 class TeacherAdmin(admin.ModelAdmin):
@@ -100,6 +126,7 @@ class TeacherAdmin(admin.ModelAdmin):
     def teacher_name(self,obj):
         return obj.user.first_name
 
+
 @admin.register(UserAdditional)
 class UserAdditionals(admin.ModelAdmin):
     list_display = ('user_name', 'user_email', 'phone_number')
@@ -110,6 +137,7 @@ class UserAdditionals(admin.ModelAdmin):
 
     def user_email(self,obj):
         return obj.user.email
+
 
 @admin.register(VideoPractise)
 class VideoPractiseAdmin(nested_admin.NestedModelAdmin):
@@ -123,7 +151,7 @@ class VideoPractiseAdmin(nested_admin.NestedModelAdmin):
 
 @admin.register(Homework)
 class HomeworkAdmin(admin.ModelAdmin):
-    inlines = [InLineAudioHomework,InLineVideoHomework]
+    inlines = [InLineAudioHomework, InLineVideoHomework, InLineFileHomework]
 
 
 admin.site.register(VideoCategory)

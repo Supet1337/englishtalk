@@ -1054,6 +1054,12 @@ def ajax_load_homework_videos(request, number):
         vid.append(i.json())
     return HttpResponse(json.dumps(vid))
 
+def ajax_load_homework_files(request, number):
+    f = []
+    for i in Homework.objects.get(id=number).get_homework_files():
+        f.append(i.json())
+    return HttpResponse(json.dumps(f))
+
 def ajax_delete_word(request, number):
     if request.method == 'POST':
         word = Tape.objects.get(id=number)
@@ -1144,3 +1150,12 @@ def check_email(request):
         return HttpResponse(json.dumps({'is_exist': 1}))
     else:
         return HttpResponse(json.dumps({'is_exist': 0}))
+
+def homework_upload(request):
+    if request.method == "POST":
+        h = Homework.objects.get(id=request.POST.get('homework-id'))
+        for f in request.FILES.getlist('file'):
+            ans = Homework_file_answer(answer=f, homework=h)
+            ans.save()
+        messages.success(request, "Решение успешно отправлено")
+    return HttpResponseRedirect('../dashboard/homework')

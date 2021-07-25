@@ -47,18 +47,35 @@
                     </div>
 
 
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb" id="breadcrumb" style="background-color: transparent">
+                    <div style="display: flex; margin-bottom: 18px">
+                        <div style="margin-left: auto">
+                        Показывать завершённые
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                            </div>
+                    </div>
 
-                        </ol>
-                    </nav>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-bottom: 0;">
+                        <li class="nav-item" role="presentation">
+                            <a class="nvlnk nvlnk-act" id="tab1" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 80px">Задано</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nvlnk" id="tab2" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 80px">Проверка</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nvlnk" id="tab3" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 80px">Проверено</a>
+                        </li>
+
+                    </ul>
 
                     <div class="tab-content" id="myTabContent">
                         <!-- <button class="btn btn-white fixbut" style="border-radius: 0px; float: left;margin-top: 12px;margin-left: 1rem" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> Подключить видеосвязь</button> -->
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="card-body" >
                                 {% if lsn == 0 %}
-                                <h2 style="text-align: center">Здесь будут отображаться ваши домашние задания</h2>
+                                <h2 style="text-align: center">Домашних заданий не найдено</h2>
                                 {% else %}
 
 
@@ -214,6 +231,46 @@
     </div>
 </div>
 
+<div class="modal fade" id="homeModal" tabindex="-1" aria-labelledby="homeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-sm mx-auto" style="max-width:360px">
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 24px;line-height: 28px;color: #333333;" id="homeModalLabel">Добавить файл</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="padding-right: 30px;padding-left: 30px;">
+                <label style="font-family: Arial;font-style: normal;font-weight: normal;font-size: 12px;line-height: 14px;color: #333333;" class="col-form-label">Тип файла</label>
+                <div style="text-align: center">
+                    <ul class="nav nav-tabs" id="myTab1" role="tablist" style="border-bottom: 0; margin-bottom: 20px">
+                        <li class="nav-item" role="presentation">
+                            <a class="nvlnk nvlnk-act" id="tab11" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 14px">Задано</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nvlnk" id="tab22" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 14px">Проверка</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nvlnk" id="tab33" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 14px">Проверено</a>
+                        </li>
+                    </ul>
+                    <button type="button" class="tape-btn mx-auto" onclick="upload_file()" style="width: 100%">+ Добавить файл</button>
+                    <p class="mx-auto" style="margin: 8px 0px">Или</p>
+                </div>
+                <form method="post" action="/homework-upload"  id="dzForm" class="dropzone" style="margin-bottom: 24px">
+                    {% csrf_token %}
+                    <input type="hidden" name="homework-id" id="homework-id">
+                  <div class="fallback" >
+                    <input name="file" type="file" id="file-input" multiple />
+                  </div>
+                </form>
+                <input type="submit" form="dzForm" class="dashboard-button-secondary-teacher" style="width: 100%" value="Добавить файл">
+            </div>
+
+        </div>
+    </div>
+</div>
+
 {% endblock %}
 {% block jsfiles %}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
@@ -228,6 +285,7 @@
 <script src={% static "js/main.js" %}></script>
 <script src={% static "js/shedule.js" %}></script>
 <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js" integrity="sha512-VQQXLthlZQO00P+uEu4mJ4G4OAgqTtKG1hri56kQY1DtdLeIqhKUp9W/lllDDu3uN3SnUNawpW7lBda8+dSi7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
             var email = '{{email}}';
             {% if is_teacher %}
@@ -318,33 +376,15 @@
                         $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
                                     '<div>'+
                                        ' <div style="font-size: 18px;line-height: 21px; margin-bottom: 14px" class="blogs-header-text">'+
-                                           ' '+json[i].homework_exercise+' '+
+                                           ' '+json[i].homework_name+' '+
                                        ' </div>'+
-
-                                        '<div class="blog-image" style="margin-bottom: 18px;height: 174px;border-radius: 5px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url('+json[i].homework_picture+')">'+
-                                        '</div>'+
                                         '<div id="collapseVideo'+id+'"></div>'+
                                         '<div id="collapseAudio'+id+'" style="margin-bottom: 18px"></div>'+
-                                        '<div class="card" style="border-radius: 5px; font-family: Arial; margin-bottom: 14px">'+
-                                            '<div class="card-body">'+
-                                                //'<p style="color: #4F4F4F; font-size: 16px;line-height: 18px; font-weight: bold;" class="card-title">Card title</p>'+
-                                                '<p style="color: #4F4F4F; font-size: 14px;line-height: 16px;" class="card-text">'+json[i].homework_exercise_content+'</p>'+
-                                           ' </div>'+
+                                        '<div class="collapse show" id="docCard'+id+'" style="height: 600px;">'+
                                         '</div>'+
-
-                                        '<form method="POST" action="../check_aswer/'+json[i].homework_id+'">'+
-                                            '{% csrf_token %}'+
-                                                '<input type="text" id="input_answer"  style="margin-bottom: 14px" name="answer" class="homework-form" placeholder="Написать ответ">'+
-                                                '<button id="input_answer_button" style="font-size: 12px" class="dashboard-button-secondary-teacher" > Отправить </button>'+
-                                        '</form>'+
+                                        '<button data-bs-toggle="modal" type="button" data-bs-target="#homeModal" data-homework="'+id+'" class="tape-btn" style="margin-right: 32px">Отправить решение</button>'+
                                     '</div>'+
                                  '</div>');
-                                 if (json[i].homework_is_completed){
-                                    $("#input_answer").val(json[i].homework_correct_answer)
-                                    $("#input_answer").prop('disabled', true);
-                                    $("#input_answer_button").prop('disabled', true);
-
-                                 };
                         $(".breadcrumb-item").removeClass('active');
                         $("#breadcrumb").append('<li class="breadcrumb-item active" ><a style="color: #333333" href="../../dashboard/homework" >Задания</a></li>');
                         $("#breadcrumb").append('<li class="breadcrumb-item active" id="bread-item'+id+'">'+json[i].homework_name+'</li>');
@@ -374,6 +414,17 @@
                                  '</div>'
                                     );
                                     var player = new Playerjs({id:"bgPlayer"+json[i].video_id, file:json[i].video_url, player: 1});
+                                });
+
+                        }})).then(
+                        $.ajax({
+                            url: "/ajax_load_homework_files/"+id,
+                            success: function (result) {
+                                var json = $.parseJSON(result);
+                                json.forEach(function(item, i, json) {
+                                    $("#docCard"+id).append(
+                                        '<object><embed src="'+json[i].file_url+'" style="width: 100%; height: 100%"></object>'
+                                    );
                                 });
 
                         }}));
@@ -433,8 +484,19 @@
 });
 
 
+Dropzone.options.dzForm = {
+  dictDefaultMessage: "Перетащите файл в эту область"
+};
 
+function upload_file(){
+    $(".dz-button").click();
+}
 
+$('#homeModal').on('show.bs.modal', function (event) {
+    var div = $(event.relatedTarget);
+    var id = div.data('homework');
+    $('#homework-id').val(id);
+})
 
         </script>
 <script src="{% static 'js/playerjs.js' %}"></script>

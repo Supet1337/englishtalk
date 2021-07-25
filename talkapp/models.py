@@ -19,6 +19,13 @@ def video_homework_directory_path(instance, filename):
 def audio_homework_directory_path(instance, filename):
     return 'homeworks/homework_{0}/audios/{1}'.format(instance.homework.id, filename)
 
+def file_homework_directory_path(instance, filename):
+    return 'homeworks/homework_{0}/files/{1}'.format(instance.homework.id, filename)
+
+def file_homework_answer_directory_path(instance, filename):
+    return 'homeworks/homework_{0}/answers/{1}'.format(instance.id, filename)
+
+
 def audio_directory_path(instance, filename):
     return 'lessons/lesson_{0}/audio/{1}'.format(instance.lesson.id, filename)
 
@@ -313,13 +320,8 @@ class Tape(models.Model):
 
 class Homework(models.Model):
     student = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='Ученик')
-    homework_name = models.CharField(max_length=60, verbose_name='Название дз')
-    picture = models.ImageField(upload_to=blog_image_directory_path, blank=True, verbose_name='Баннер')
-    exercise = models.CharField(max_length=360, verbose_name='Формулировка задания')
-    exercise_content = models.CharField(max_length=360, verbose_name='Текст задания')
-
-    answer = models.CharField(max_length=1360, verbose_name='Ответ', blank=True)
-    correct_answer = models.CharField(max_length=1360, verbose_name='Правильный ответ', blank=True)
+    homework_name = models.CharField(max_length=60, verbose_name='Название дз', blank=True)
+    lesson = models.ForeignKey(to=UserLesson, on_delete=models.CASCADE, verbose_name='Урок')
     is_completed = models.BooleanField(verbose_name='Задание выполнено верно', default=False)
 
     def get_homework_videos(self):
@@ -328,18 +330,38 @@ class Homework(models.Model):
     def get_homework_audios(self):
         return Homework_audio.objects.filter(homework_id=self.id)
 
+    def get_homework_files(self):
+        return Homework_file.objects.filter(homework_id=self.id)
+
+    def get_homework_answers(self):
+        return Homework_file_answer.objects.filter(homework_id=self.id)
+
     def json(self):
         return {
-            'homework_picture': self.picture.url,
-            'homework_exercise': self.exercise,
             'homework_name': self.homework_name,
             'homework_id': self.id,
-            'homework_correct_answer': self.correct_answer,
-            'homework_exercise_content':  self.exercise_content,
             'homework_is_completed':  self.is_completed
         }
 
+class Homework_file_answer(models.Model):
+    answer = models.FileField(upload_to=file_homework_answer_directory_path, verbose_name="Документ", blank=True)
+    homework = models.ForeignKey(to=Homework, on_delete=models.CASCADE)
 
+class Homework_file(models.Model):
+    name = models.CharField(max_length=64, verbose_name='Название документа', blank=True)
+    file = models.FileField(upload_to=file_homework_directory_path, verbose_name="Документ")
+    homework = models.ForeignKey(to=Homework, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    def json(self):
+        return {
+            'file_url': self.file.url,
+            'file_id': self.id,
+            'file_name': self.name,
+            'homework_id': self.homework.id,
+        }
 
 
 class Homework_video(models.Model):
