@@ -28,7 +28,13 @@
                             {% if request.user.is_authenticated %}
                             <a href="../dashboard/account" style="display: flex">
                                 <p class="my-auto header-text" style="margin-right: 7px;height: fit-content;">{{request.user.first_name}} {{request.user.last_name}}</p>
-                                <img alt="User Avatar" style="width: 40px; height: 40px;" src='{% static "images/avatar.png" %}'>
+                                {% if image == -1 %}
+                                <img  style="width: 40px; height: 40px;" src='{% static "images/avatar.png" %}'>
+
+                                {% else %}
+                                <img  style="width: 40px; height: 40px;" src='{{image.url}}'>
+
+                                {% endif %}
                             </a>
                             <a class="my-auto" href="/logout" style="display: flex;margin-left: 10px;height: fit-content; color: rgb(0,0,0,0.125)"><i class="fas fa-sign-out-alt"></i></a>
                             {% else %}

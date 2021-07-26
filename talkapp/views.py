@@ -23,6 +23,14 @@ def loggout(request):
     logout(request)
     return HttpResponseRedirect("/")
 
+
+def find_image(context, user_add, name):
+    if user_add.image == '':
+        context[name] = -1
+    else:
+        context[name] = user_add.image
+
+
 def redirect_login(request):
     return HttpResponseRedirect("/")
 
@@ -157,6 +165,9 @@ def index(request):
     except:
         pass
     context = {}
+    if request.user.is_authenticated:
+        user_add_img = UserAdditional.objects.get(user=request.user)
+        find_image(context, user_add_img, "image")
     blogs = []
     i = 0
     for b in Blog.objects.all():
@@ -171,6 +182,8 @@ def index(request):
 def dashboard_lk(request):
     context = {}
     is_teacher = False
+    user_add_img = UserAdditional.objects.get(user=request.user)
+    find_image(context, user_add_img, "image")
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
@@ -259,6 +272,11 @@ def dashboard_lk(request):
 def dashboard_account(request):
     context = {}
     is_teacher = False
+    form = UserSettingsForm()
+    context['form'] = form
+    user_add_img = UserAdditional.objects.get(user=request.user)
+    find_image(context, user_add_img, "image")
+
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
@@ -358,6 +376,8 @@ def dashboard_account(request):
 def dashboard_courses(request):
     context = {}
     is_teacher = False
+    user_add_img = UserAdditional.objects.get(user=request.user)
+    find_image(context, user_add_img, "image")
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
@@ -446,6 +466,8 @@ def dashboard_courses(request):
 def dashboard_homework(request):
     context = {}
     is_teacher = False
+    user_add_img = UserAdditional.objects.get(user=request.user)
+    find_image(context, user_add_img, "image")
     homeworks = Homework.objects.filter(student=request.user)
     context['homework1'] = [h for h in homeworks if h.status == 1]
     context['homework2'] = [h for h in homeworks if h.status == 2]
@@ -539,6 +561,8 @@ def dashboard_homework(request):
 def dashboard_platform(request):
     context = {}
     is_teacher = False
+    user_add_img = UserAdditional.objects.get(user=request.user)
+    find_image(context, user_add_img, "image")
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
@@ -628,6 +652,8 @@ def dashboard_platform(request):
 def dashboard_schedule(request):
     context = {}
     is_teacher = False
+    user_add_img = UserAdditional.objects.get(user=request.user)
+    find_image(context, user_add_img, "image")
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
@@ -715,6 +741,8 @@ def dashboard_schedule(request):
 def dashboard_blog(request, number):
     context = {}
     is_teacher = False
+    user_add_img = UserAdditional.objects.get(user=request.user)
+    find_image(context, user_add_img, "image")
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
@@ -810,6 +838,8 @@ def dashboard_blog(request, number):
 def dashboard_tape(request):
     context = {}
     is_teacher = False
+    user_add_img = UserAdditional.objects.get(user=request.user)
+    find_image(context, user_add_img, "image")
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
@@ -1070,13 +1100,24 @@ def ajax_delete_word(request, number):
 
 @login_required
 def price(request):
-    return render(request,'dashboard/dashboard-price.html')
+    context = {}
+    if request.user.is_authenticated:
+        user_add_img = UserAdditional.objects.get(user=request.user)
+        find_image(context, user_add_img, "image")
+    return render(request,'dashboard/dashboard-price.html', context)
 
 def courses(request):
-    return render(request,'courses.html')
+    context = {}
+    if request.user.is_authenticated:
+        user_add_img = UserAdditional.objects.get(user=request.user)
+        find_image(context, user_add_img, "image")
+    return render(request,'courses.html', context)
 
 def blog(request, number):
     context = {}
+    if request.user.is_authenticated:
+        user_add_img = UserAdditional.objects.get(user=request.user)
+        find_image(context, user_add_img, "image")
     blog = Blog.objects.get(id=number)
     context['blog'] = blog
     return render(request, 'blog-single.html', context)
@@ -1163,3 +1204,34 @@ def homework_upload(request):
             ans.save()
         messages.success(request, "Решение успешно отправлено")
     return HttpResponseRedirect('../dashboard/homework')
+
+
+@login_required
+def update_profile_picture(request):
+
+    if request.method == "POST":
+        form = UserSettingsForm(request.POST, request.FILES)
+        if form.is_valid():
+            old_user_add = UserAdditional.objects.get(user=request.user)
+            user_add = form.save(commit=False)
+            if user_add.image != "":
+                try:
+                    image = UserAdditional.objects.get(user=request.user).image
+                    image.delete()
+                except:
+                    pass
+                old_user_add.image = user_add.image
+                old_user_add.save()
+                messages.success(request, "Аватарка успешно сохранена.")
+            else:
+                messages.error(request, "Выберите фото.")
+        else:
+            messages.error(request, "Произошла ошибка.")
+        return HttpResponseRedirect("../../dashboard/account")
+
+def delete_profile_picture(request):
+    if request.method == "POST":
+        image = UserAdditional.objects.get(user=request.user).image
+        image.delete()
+        messages.success(request, "Аватарка успешно удалена.")
+        return HttpResponseRedirect("../../dashboard/account")

@@ -33,6 +33,9 @@ def audio_directory_path(instance, filename):
 def teacher_image_directory_path(instance, filename):
     return 'lessons/teacher_{0}/{1}'.format(instance.user.id, filename)
 
+def user_image_directory_path(instance, filename):
+    return 'users/user_{0}/{1}'.format(instance.user.id, filename)
+
 
 def blog_image_directory_path(instance, filename):
     return 'blogs/blog_{0}/{1}'.format(instance.id, filename)
@@ -204,6 +207,8 @@ class UserAdditional(models.Model):
     paid_lessons = models.IntegerField(verbose_name='Кол-во оплаченных занятий', default=1)
     birthday = models.DateField(verbose_name='Дата рождения', default=datetime.date.today(),blank=True)
     saved_blogs = models.TextField(max_length=1024, blank=True)
+    image = models.ImageField(upload_to=user_image_directory_path, blank=True, verbose_name='Фотография')
+
     LESSON_TIME_CHOISES = [
         (True, '60 минут'),
         (False, '45 минут')
