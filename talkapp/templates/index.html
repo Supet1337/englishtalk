@@ -41,70 +41,50 @@
 				<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px"><button class="dashboard-button-red" style="position: absolute;right: 2%;bottom: -6%; font-size: 30px;">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button></a>
 			</div>
 
-			<div style="margin-top: 70px">
-				<div class="col-md-8 heading-section ftco-animate">
-					<h2 class="mb-4">Учись на практике</h2>
-				</div>
-				<div class="row">
-					<div class="col-5">
-						<img src="{% static 'images/landing-image-1.jpg' %}" width="527px" height="362px">
+			<div id="carouselExampleControls2" class="carousel" data-bs-interval="false" data-bs-ride="carousel" style="margin-top: 70px">
+			  <div class="carousel-inner" style="padding: 0px 300px;">
+				<div class="carousel-item active">
+					<div class="row justify-content-center pb-2">
+						<div class="col-md-8 text-center heading-section">
+							<h2>Интерактивная платформа для занятий</h2>
+						</div>
 					</div>
-					<div class="col-7">
-					<div id="accordionExample" style="font-family: Book Antiqua">
-					  <div class="card faq-land-card">
-						<div class="card-header faq-land-header" id="heading1">
-							<button class="btn btn-link btn-block text-left faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-							  Интерактивная платформа для занятий
-							</button>
-						</div>
-
-						<div id="collapse1" class="collapse" aria-labelledby="heading1" data-parent="#accordionExample">
-						  <div class="card-body faq-land-answer">
-							Все материалы для обучения уже Ваши. Онлайн чат с учителем и видеосвязь в одном окне. Во время занятия Вы полностью погружаетесь в процесс обучения.						  </div>
-						</div>
-					  </div>
-					  <div class="card faq-land-card">
-						<div class="card-header faq-land-header" id="heading2">
-							<button class="btn btn-link btn-block text-left faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse1">
-							 Индивидуальные и групповые занятия
-							</button>
-						</div>
-						<div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionExample">
-						  <div class="card-body faq-land-answer">
-							Выбирайте для себя удобный формат занятий. В группах заниматься дешевле и веселее, а индивидуальные занятия позволят преподавателю максимально уделить время Вашему обучению.
-						  </div>
-						</div>
-					  </div>
-					  <div class="card faq-land-card">
-						<div class="card-header faq-land-header" id="heading3">
-							<button class="btn btn-link btn-block text-left faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse1">
-								Более 500 аудио и видео материалов для занятий
-							</button>
-						</div>
-
-						<div id="collapse3" class="collapse" aria-labelledby="heading3" data-parent="#accordionExample">
-						  <div class="card-body faq-land-answer">
-								В курсах мы используем только те методиками обучения, которые уже  помогли тысячам студентов в изучении английского языка
-						  </div>
-						</div>
-					  </div>
-						<div class="card faq-land-card">
-						<div class="card-header faq-land-header" id="heading4">
-							<button class="btn btn-link btn-block text-left faq-question" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse1">
-							  Персональный куратор и методист
-							</button>
-						</div>
-
-						<div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionExample">
-						  <div class="card-body faq-land-answer">
-							Организация расписания занятий, подбор преподавателя и индивидуальной программы обучения
-						  </div>
-						</div>
-					  </div>
-					</div>
+					<div class="program-text" style="text-align: center; font-size: 20px">Все материалы для обучения уже Ваши. Онлайн чат с учителем и видеосвязь в одном окне. Во время занятия Вы полностью погружаетесь в процесс обучения.</div>
+					<div class="mx-auto" style="width: fit-content; height: fit-content; margin-top: 40px;padding-bottom: 10px">
+					<img src="{% static 'images/platform-screen-1.jpg' %}" width="720px" height="320px" style="box-shadow: 0 0 10px rgba(0,0,0,0.5);">
 						</div>
 				</div>
+				<div class="carousel-item">
+					<div class="row justify-content-center pb-2">
+						<div class="col-md-8 text-center heading-section">
+							<h2>Более 500 аудио и видеоматериалов для занятий</h2>
+						</div>
+					</div>
+					<div class="program-text" style="text-align: center; font-size: 20px">В курсах мы используем только те методиками обучения, которые уже помогли тысячам студентов в изучении английского языка</div>
+					<div class="mx-auto" style="width: fit-content; height: fit-content; margin-top: 40px;padding-bottom: 10px">
+					<img src="{% static 'images/platform-screen-3.jpg' %}" width="720px" height="320px" style="box-shadow: 0 0 10px rgba(0,0,0,0.5);">
+						</div>
+			  </div>
+				  <div class="carousel-item">
+				  <div class="row justify-content-center pb-2">
+						<div class="col-md-8 text-center heading-section">
+							<h2>Индивидуальные и групповые занятия</h2>
+						</div>
+					</div>
+					<div class="program-text" style="text-align: center; font-size: 20px">Выбирайте для себя удобный формат занятий. В группах заниматься дешевле и веселее, а индивидуальные занятия позволят преподавателю максимально уделить время Вашему обучению.</div>
+					<div class="mx-auto" style="width: fit-content; height: fit-content; margin-top: 40px;padding-bottom: 10px">
+					<img src="{% static 'images/platform-screen-2.jpg' %}" width="720px" height="320px" style="box-shadow: 0 0 10px rgba(0,0,0,0.5);">
+						</div>
+			  </div>
+				<button class="carousel-control-prev review-control" style="left: 14%; top: 63%" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
+				<i class="fas fa-chevron-left" style="font-size: 24px;color: #333333" aria-hidden="true"></i>
+			  </button>
+				<button class="carousel-control-next review-control" style="right: 14%; top: 63%" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+				<span class="fas fa-chevron-right" style="font-size: 24px;color: #333333" aria-hidden="true"></span>
+			  </button>
 			</div>
+		</div>
+
 		</div>
 	</section>
 
@@ -146,14 +126,14 @@
 		</div>
 	</section>
 
-	<section class="ftco-section">
+	<section class="ftco-section" id="sreview">
 		<div class="container-fluid easystart">
 			<div class="row justify-content-center mb-5 pb-2">
 				<div class="col-md-8 text-center heading-section ftco-animate">
 					<h2 class="mb-4">Отзывы учеников</h2>
 				</div>
         	</div>
-			<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+			<div id="carouselExampleControls" class="carousel" data-bs-interval="false" data-bs-ride="carousel">
 			  <div class="carousel-inner" style="padding: 0px 200px;">
 				<div class="carousel-item active">
 					<div class="row" style="margin: 0">
@@ -189,16 +169,30 @@
 					<div class="row" style="margin: 0">
 						<div class="col review" style="margin-right: 10px">
 							<div class="row" style="margin: 0;margin-bottom: 20px;">
-								<img src="{% static 'images/nastya2.jpg' %}" class="review-avatar">
+								<img src="{% static 'images/Mariya.jpg' %}" class="review-avatar">
 								<div class="review-author">
-									Анастасия
+									Мария
 								</div>
-								<a href="https://www.instagram.com/smallbee06/" target="_blank" class="review-inst my-auto"><img src="{% static 'images/intsicon.png' %}" width="24px" height="24px"></a>
+								<a href="https://www.instagram.com/M_semenova/" target="_blank" class="review-inst my-auto"><img src="{% static 'images/intsicon.png' %}" width="24px" height="24px"></a>
 							</div>
 							<div class="row" style="margin: 0">
 								<div class="review-text">
-									Отличная возможность повышать свой уровень языка не выходя из дома! Очень интенсивно проходят уроки, но тем не менее легко и весело, в основном на английском. Рекомендую данную школу.								</div>
+								Хочу сказать спасибо школе EnglishTalk за отличный подход с обучению английского языка. Я перепробовала много разных онлайн школ,но нигде не мне не нравилось. Здесь все идеально, начиная от самой платформы (спасибо,что не надо печатать учебники и тетради🙏) до профессионального и современного подхода к обучению языку.
+								</div>
+						</div>
+						</div>
+						<div class="col review" style="margin-right: 10px">
+							<div class="row" style="margin: 0;margin-bottom: 20px;">
+								<img src="{% static 'images/Yuri.jpg' %}" class="review-avatar">
+								<div class="review-author">
+									Юрий
+								</div>
+								<a href="https://www.instagram.com/Y._vrgt/" target="_blank" class="review-inst my-auto"><img src="{% static 'images/intsicon.png' %}" width="24px" height="24px"></a>
 							</div>
+							<div class="row" style="margin: 0">
+								<div class="review-text">
+									Я пришел в эту школу с целью подготовиться к переезду в Америку. Необходимо было ехать работать, поэтому упор был поставлен на коммуникативные и профессиональные навыки. Ребята из EnglishTalk подошли к этой задаче очень ответственно и в краткие сроки мне удалось восстановить мой уровень английского. Хочу сказать спасибо профессионализму учителя и куратора проекта.
+								</div>
 						</div>
 					</div>
 				</div>
@@ -211,9 +205,10 @@
 			  </button>
 			</div>
 		</div>
+		</div>
 	</section>
 
-	<section class="ftco-section">
+	<section class="ftco-section" id="scoost">
 		<div class="container-fluid easystart">
 			<div class="row justify-content-center pb-2">
 				<div class="col-md-8 text-center heading-section ftco-animate">

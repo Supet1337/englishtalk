@@ -169,11 +169,11 @@
                     <div class="card-deck py-4" style="display: flex;">
                         {% for b in blog %}
                         {% if forloop.counter < 7 %}
-                        <a href="../dashboard/blog/{{b.id}}">
-                            <div class="card" style="margin-right: 17px; margin-left: 17px; margin-bottom: 14px">
-                                <img class="card-img-top mx-auto" style="border-radius: 1rem;max-height: 280px;max-width: 380px;text-align: center; width: 280px; height: 380px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url({{b.title_picture.url}})">
+                        <a href="../dashboard/blog/{{b.id}}" style="width: 33.3333333%">
+                            <div class="card" style="margin-right: 17px; margin-left: 17px; margin-bottom: 14px;">
+                                <img class="card-img-top mx-auto" style="border-radius: 1rem;max-height: 280px;text-align: center; width: 100%; height: 280px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url({{b.title_picture.url}})">
                                 <div class="card-body blog-card">
-                                    <h6 class="card-title" style="margin-left: 0.75rem; color: #333">{{b.title}}</h6>
+                                    <h6 class="card-title" style="color: #333; font-weight: bold; text-align: center; margin-top: 10px">{{b.title}}</h6>
                                 </div>
                             </div>
                         </a>
@@ -181,9 +181,9 @@
                         <div class="collapse" id="collapseblogs">
                             <a href="../dashboard/blog/{{b.id}}">
                                 <div class="card" style="margin-right: 17px; margin-left: 17px; margin-bottom: 14px">
-                                    <img class="card-img-top mx-auto" style="border-radius: 1rem; max-height: 280px;max-width: 380px;text-align: center; width: 280px; height: 380px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url({{b.title_picture.url}})">
+                                    <img class="card-img-top mx-auto" style="border-radius: 1rem; max-height: 280px;text-align: center; width: 100%; height: 280px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url({{b.title_picture.url}})">
                                     <div class="card-body blog-card">
-                                        <h6 class="card-title" style="margin-left: 0.75rem; color: #333">{{b.title}}</h6>
+                                        <h6 class="card-title" style="color: #333; font-weight: bold; text-align: center; margin-top: 10px">{{b.title}}</h6>
                                     </div>
                                 </div>
                             </a>

@@ -536,7 +536,7 @@ png images background
     font-family: Jost;
     font-style: normal;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 41px;
     line-height: 35px;
     color: #F7F7F7;
 }
@@ -545,8 +545,8 @@ png images background
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
-    line-height: 29px;
+    font-size: 23px;
+    line-height: 50px;
     color: #F7F7F7;
     margin-bottom: 0;
 }
@@ -816,6 +816,7 @@ png images background
 }
 
 .course-card-button {
+    outline: none;
     display: flex;
     flex-direction: row;
     justify-content: center;

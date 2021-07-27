@@ -146,7 +146,7 @@
 </div>
 
 <div class="modal" id="flModal" tabindex="-1" role="dialog" aria-labelledby="flModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 600px;" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
         <div class="modal-body" style="padding: 0">
                     <div class="row" style="height: 400px">
@@ -161,10 +161,10 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
-                            <div class="blogs-header-text" style="margin-top: 40px; font-size: 16px; line-height: 18px">
+                            <div class="blogs-header-text" style="margin-top: 40px; font-size: 27px; line-height: 18px">
                               Записаться на бесплатный урок
                           </div>
-                            <form  method="POST" action="../send_request_v">
+                            <form  method="POST" action="../send_request_v" style="margin-bottom: 30px">
                                 {% csrf_token %}
                                 <p class="account-input-label">E-mail</p>
                                <input type="email" id="email" name="email" style="width: 100%" class="account-input" required>
@@ -173,6 +173,41 @@
                                 <p class="account-input-label">Телефон</p>
                                <input type="tel" id="phone" name="phone" required class="account-input">
                                 <input type="submit" class="dashboard-button-secondary-teacher" style="margin-top: 20px" value="Начать бесплатно">
+                                <p class="account-input-label" style="margin-top: 10px">Нажимая "Начать бесплатно",</p>
+                                <p class="account-input-label" style="margin-top: 0">вы принимаете <a href="confidentiality" style="font-weight: bold; color: #2F80ED">условия соглашения</a></p>
+                        </form>
+                        </div>
+                    </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="reqTeachModal" tabindex="-1" role="dialog" aria-labelledby="flModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-body" style="padding: 0">
+                    <div class="row" style="height: 400px">
+                        <div class="col-5" style="border-top-left-radius: 8px;border-bottom-left-radius: 8px;padding: 20px;background-image: url({% static 'images/telephone.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;">
+                            <h2 class="modal-white-header" style="font-size: 35px">Это будет круто!</h2>
+                            <h4 class="modal-white-text" style="font-weight: bold; font-size: 21px; line-height: 30px">Будем рады видеть вас в нашей команде</h4>
+                        </div>
+                        <div class="col-7" style="border-top-right-radius: 8px;border-bottom-right-radius: 8px;background: #f7f7f7; padding-top: 10px">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="blogs-header-text" style="margin-top: 40px; font-size: 27px; line-height: 25px">
+                              Мы свяжемся с вами и обсудим условия работы
+                          </div>
+                            <form  method="POST" action="../send_request_vt" style="margin-bottom: 30px">
+                                {% csrf_token %}
+                                <p class="account-input-label">Имя</p>
+                               <input type="text" id="name2" name="name" required class="account-input">
+                                <p class="account-input-label">E-mail</p>
+                               <input type="email" id="email2" name="email" style="width: 100%" class="account-input" required>
+                                <p class="account-input-label">Телефон</p>
+                               <input type="tel" id="phone2" name="phone" required class="account-input">
+                                <input type="submit" class="dashboard-button-secondary-teacher" style="margin-top: 20px" value="Перезвоните мне">
                                 <p class="account-input-label" style="margin-top: 10px">Нажимая "Начать бесплатно",</p>
                                 <p class="account-input-label" style="margin-top: 0">вы принимаете <a href="confidentiality" style="font-weight: bold; color: #2F80ED">условия соглашения</a></p>
                         </form>
@@ -285,43 +320,6 @@
 	    </div>
 		 </div>
             </div>
-                </div>
-              </div>
-            </div>
-
-<div class="modal fade" id="reqTeachModal" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-            <div class="modal-body mx-auto" style="padding: 0">
-                <div class="card-group teach-modal" style="background: #9ddde7">
-                    <div class="card" style="border: 0;text-align: center;background: #9ddde7">
-                        <button type="button" class="btn button-close-modal" data-dismiss="modal" aria-label="Close">
-                             Закрыть
-                        </button>
-                        <div class="card-body">
-                            <h3 class="card-title" style="color: #082567;">Это будет круто!</h3>
-                            <h4 class="card-text" style="color: #082567;">Будем рады видеть Вас в нашей команде!</h4>
-                        </div>
-                        <img src="{% static "images/teach.png" %}" class="chelic mx-auto" style="max-width: 387.75px;max-height: 374.25px;">
-                    </div>
-                    <div class="card" style="border: 0;">
-                        <div class="card-body" style="background: #c5cfd8;">
-                            <h3 class="card-title" style="color: #082567;text-align: center;">Мы свяжемся с Вами и обсудим условия работы</h3>
-                            <form class="appointment-form ftco-animate" method="POST" action="../send_request_vt">
-                        {% csrf_token %}
-                        <br>
-                         <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="name2" name="name" class="form-control" required placeholder="Как вас зовут?">
-                      <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="email2" name="email"  class="form-control" placeholder="Email" required>
-                       <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone2" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control" placeholder="Телефон">
-                        <input type="submit" style="margin-top: 100px;border-radius: 0;color: #082567;width: 100%" value="Записаться на бесплатный урок" class="btn btn-primary">
-                                <p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <a href="confidentiality" style="font-weight: bold; color: #666666">условия соглашения</a></p>
-                    </form>
-                        </div>
-                    </div>
-                </div>
-
-                    </div>
-
                 </div>
               </div>
             </div>
