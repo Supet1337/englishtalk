@@ -524,7 +524,7 @@ png images background
 }
 
 .player {
-  height: 160px;
+  height: 300px;
 }
 
 .btnmute{
@@ -545,8 +545,8 @@ png images background
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
-    font-size: 23px;
-    line-height: 50px;
+    font-size: 22px;
+    line-height: 42px;
     color: #F7F7F7;
     margin-bottom: 0;
 }

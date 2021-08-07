@@ -90,7 +90,7 @@
           <div class="empty-lesson">
               <div>
                   <p class="empty-lesson-text">Пока вы не записались на уроки <img src='{% static "images/sad.png" %}'></p>
-                  <a class="empty-lesson-text-small"> изменить расписание » </a>
+                  <a href="#" class="empty-lesson-text-small" data-bs-toggle="modal" data-bs-target="#flModal"> изменить расписание » </a>
               </div>
           </div>
                 {% else %}
@@ -193,11 +193,9 @@
                         </div>
                         <div class="card-body" style="background-color: #f8f8f8">
                             <div class="row video-group" style="display: none;">
-                                    <div class="col">
-                                        <div id="local-player" class="player"></div>
-                                    </div>
-                                    <div class="col">
-                                        <div id="remote-playerlist"></div>
+                                    <div class="col" style="padding-left: 0; padding-right: 0">
+                                        <div id="remote-playerlist" style="height: 300px"></div>
+                                        <div id="local-player" style="position: absolute;width: 100px;height: 100px;right: 0;top: 0;"></div>
                                     </div>
                             </div>
                             <div>

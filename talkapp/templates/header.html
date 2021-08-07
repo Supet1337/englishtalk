@@ -29,10 +29,10 @@
                             <a href="../dashboard/account" style="display: flex">
                                 <p class="my-auto header-text" style="margin-right: 7px;height: fit-content;">{{request.user.first_name}} {{request.user.last_name}}</p>
                                 {% if image == -1 %}
-                                <img  style="width: 40px; height: 40px;" src='{% static "images/avatar.png" %}'>
+                                <img  style="width: 40px; height: 40px;border-radius: 40px" src='{% static "images/avatar.png" %}'>
 
                                 {% else %}
-                                <img  style="width: 40px; height: 40px;" src='{{image.url}}'>
+                                <img  style="width: 40px; height: 40px;border-radius: 40px" src='{{image.url}}'>
 
                                 {% endif %}
                             </a>
@@ -146,10 +146,10 @@
 </div>
 
 <div class="modal" id="flModal" tabindex="-1" role="dialog" aria-labelledby="flModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 600px" role="document">
     <div class="modal-content">
         <div class="modal-body" style="padding: 0">
-                    <div class="row" style="height: 400px">
+                    <div class="row" style="height: 500px">
                         <div class="col-5" style="border-top-left-radius: 8px;border-bottom-left-radius: 8px;padding: 20px;background-image: url({% static 'images/eng-flag-dark.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;">
                             <h2 class="modal-white-header">Пробный урок</h2>
                             <h4 class="modal-white-text" style="font-weight: bold">На первом занятии:</h4>
@@ -161,7 +161,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
-                            <div class="blogs-header-text" style="margin-top: 40px; font-size: 27px; line-height: 18px">
+                            <div class="blogs-header-text" style="margin-top: 30px; font-size: 27px; line-height: 24px">
                               Записаться на бесплатный урок
                           </div>
                             <form  method="POST" action="../send_request_v" style="margin-bottom: 30px">
@@ -243,7 +243,7 @@
                             </div>
                         </a>
                     </div>
-                    <form class="ftco-animate" method="POST" action="../login_user">
+                    <form class="ftco-animate" method="POST" action="../login-user">
                         {% csrf_token %}
                         <p class="account-input-label">E-mail</p>
                        <input type="email" id="email_auth" name="email_auth"  class="account-input" required>
@@ -288,7 +288,7 @@
                     <div class="tab-pane fade" id="list-60-2" style="width: 338px" role="tabpanel" aria-labelledby="list-60-list"  >
             <div class="card">
                 <div class="card-body">
-                    <form method="post" action="/change-info">
+                    <form method="post" action="/change-info-reg">
                         {% csrf_token %}
                         <input type="hidden" id="user-email" name="user-email">
                         <p class="account-input-label">Имя</p>
@@ -312,7 +312,7 @@
                         </div>
                         <div style="display: flex;margin-top: 24px">
                             <input type="submit" class="dashboard-button-secondary-teacher" style="margin-right: 26px" value="Регистрация">
-                            <a href="/" style="color: #2F80ED;">Пропустить</a>
+                            <a href="#" style="color: #2F80ED;" data-bs-target="#successModal" data-bs-toggle="modal" onclick="closeModal()">Пропустить</a>
                         </div>
                     </form>
                         </div>
@@ -367,7 +367,7 @@
                         <div class="card-body">
                             <h2 class="card-title" style="color: #082567;">Ура!</h2>
                             <p class="card-text" style="color: #082567;font-size: x-large">Мы свяжемся с Вами в кратчайшие сроки и обсудим детали 😊</p>
-                            <p><button type="button" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;margin-right: 30px;width: 187.61px" data-dismiss="modal" class="btn btn-primary">Окей! <br> Буду ждать!</button><button type="button" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;background: #c5cfd8;border-color: #082567" data-dismiss="modal" data-toggle="modal" data-src="" data-target="#myModalVid" class="btn btn-primary video-btn">Хочу посмотреть <br> пример урока</button></p>
+                            <p><button type="button" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;margin-right: 30px;width: 187.61px" data-bs-dismiss="modal" class="btn btn-primary">Окей! <br> Буду ждать!</button><button type="button" style="margin-top: 10px;border-radius: 0;color: #082567;font-size: 20px;background: #c5cfd8;border-color: #082567" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-src="" data-bs-target="#myModalVid" class="btn btn-primary video-btn">Хочу посмотреть <br> пример урока</button></p>
                         </div>
                     </div>
 
@@ -583,6 +583,11 @@ function add_info(){
     $('#list-60').removeClass('show active');
     $('#list-60-2').addClass('show active');
     $('#user-email').val($('#email1').val());
+}
+
+function closeModal(){
+    $("#reqModal").hide();
+    $('.modal-backdrop').hide();
 }
 
 </script>

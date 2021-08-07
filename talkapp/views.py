@@ -76,7 +76,9 @@ def send_request_view(request):
         try:
             user.first_name = request.POST.get('first-name')
         except:
-            pass
+            user.first_name = "Новый пользователь"
+        if not user.first_name:
+            user.first_name = "Новый пользователь"
         password = User.objects.make_random_password()
         user.password = make_password(password)
         if len(User.objects.filter(email=request.POST.get('email'))) > 0:
@@ -109,7 +111,20 @@ def send_request_view(request):
                 'Ура! У нас новая зявка на обучение!', help_message, 'noreply.englishtalk@gmail.com', [
                     "help.englishtalk@gmail.com"], fail_silently=False)
             messages.info(request, "Вы успешно подали заявку. Проверьте почтовый ящик "+str(user.email))
-    return HttpResponse('Fine')
+    return HttpResponseRedirect('../')
+
+
+def send_request_first_lesson(request):
+    if request.method == "POST":
+        help_message = "Новая заявка на обучение от " + request.POST.get('first-name') + "!\n" \
+        "Телефон клиента: " + request.POST.get('phone') + ",\n" \
+        "Почта клиента: " + request.POST.get('email') + "."
+        send_mail(
+            'Ура! У нас новая зявка на обучение!', help_message, 'noreply.englishtalk@gmail.com', [
+                "help.englishtalk@gmail.com"], fail_silently=False)
+        messages.success(request, "Вы успешно подали заявку")
+    return HttpResponseRedirect('/dashboard/lk')
+
 
 def send_request_view_teach(request):
     if request.method == "POST":
@@ -202,6 +217,7 @@ def dashboard_lk(request):
         context["lsn"] = 0
     else:
         student_additional = UserAdditional.objects.get(user=request.user)
+        context['phone_number'] = student_additional.phone_number
         lessons.order_by('date')
         flag = False
         past_lessons = []
@@ -545,7 +561,7 @@ def dashboard_homework(request):
         else:
             context['lsn_time'] = "45"
         context['course'] = lessons[i].user_course.course_type
-        context['teacher'] = lessons[i].user_course.teacher.user.first_name
+        context['teacher'] = "{} {}".format(lessons[i].user_course.teacher.user.first_name, lessons[i].user_course.teacher.user.last_name)
         context["lsn"] = lessons
         try:
             context["ava"] = lessons[i].user_course.teacher.image.url
@@ -582,6 +598,7 @@ def dashboard_platform(request):
         context["lsn"] = 0
     else:
         student_additional = UserAdditional.objects.get(user=request.user)
+        context['phone_number'] = student_additional.phone_number
         lessons.order_by('date')
         flag = False
         past_lessons = []
@@ -1007,6 +1024,27 @@ def change_info(request):
         user.save()
         messages.success(request, "Личные данные успешно изменены")
         return HttpResponseRedirect('/dashboard/account')
+
+
+def change_info_reg(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        surname = request.POST.get("surname")
+        day = request.POST.get("birth-day")
+        month = request.POST.get("birth-month")
+        year = request.POST.get("birth-year")
+        if request.user.is_authenticated:
+            user = request.user
+        else:
+            user = User.objects.get(email=request.POST.get("user-email"))
+        user_add = UserAdditional.objects.get(user=user)
+        user.first_name = name
+        user.last_name = surname
+        user_add.birthday = datetime.datetime.strptime(f'{year}-{month}-{day}', "%Y-%m-%d").date()
+        user_add.save()
+        user.save()
+        messages.info(request, "Вы успешно подали заявку. Проверьте почтовый ящик.")
+        return HttpResponseRedirect('../')
 
 
 @login_required
