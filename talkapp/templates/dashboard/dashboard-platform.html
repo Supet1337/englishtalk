@@ -192,7 +192,7 @@
                             <button style="margin-right: 1em;position: absolute; top: 3.5%; right: 10px; background: transparent; color: #2F80ED; border: 0;" id="join" type="submit" form="join-form" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
                         </div>
                         <div class="card-body" style="background-color: #f8f8f8">
-                            <div class="row video-group" style="display: none;">
+                            <div class="row video-group draggable ui-widget-content" id="draggable_video" style="display: none;">
                                     <div class="col" style="padding-left: 0; padding-right: 0">
                                         <div id="remote-playerlist" style="height: 300px"></div>
                                         <div id="local-player" style="position: absolute;width: 100px;height: 100px;right: 0;top: 0;"></div>
@@ -204,6 +204,7 @@
                                         <button style="margin-right: 1em;" id="leave" type="button" class="btn btn-danger btn-sm" disabled><i class="fas fa-phone-slash"></i></button>
                                         <button style="margin-right: 1em;" id="mute-audio" type="button" class="btn btn-success btn-sm"><i class="fas fa-microphone"></i></button>
                                         <button style="margin-right: 1em;" id="mute-video" type="button" class="btn btn-success btn-sm"><i class="fas fa-video"></i></button>
+                                        <button style="margin-right: 1em;" id="drag-video" type="button" class="btn btn-warning btn-sm"><i style="color: white" class="fas fa-arrows-alt"></i></button>
                                     </div>
                                 </form>
 
@@ -388,6 +389,25 @@
     function openChat(){
         $("#chat").toggle()
     }
+
+$('#draggable_video').draggable({
+    containment: "#wrapper"
+});
+
+$( "#draggable_video" ).on( "drag", function( event, ui ) {
+    $( "#draggable_video" ).css("transition-duration", 0+"s");
+} );
+
+var c = 0;
+
+$( "#drag-video" ).on('click', function(e){
+    $( "#draggable_video" ).css("transition-duration", 1.5+"s");
+    $( "#draggable_video" ).css("left", 0);
+    $( "#draggable_video" ).css("top", 0);
+
+
+
+});
 
         </script>
         <script src="{% static 'js/playerjs.js' %}"></script>
