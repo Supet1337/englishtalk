@@ -81,6 +81,13 @@
                     </div>
                 </div>
 
+                <div class="col" style="max-width: 220px; padding-left: 5px; padding-right: 5px;" >
+                    <div class="balance-blck" style="height: 90%">
+                        <div class="balance-text">Пригласи друга и получай бонусы</div>
+                        <button style="margin: 7px 16px 19px 16px" data-bs-toggle="modal" data-bs-target="#refModal" class="dashboard-button-secondary-teacher" >Пригласить друга</button>
+                    </div>
+                </div>
+
             </div>
 
 
@@ -279,6 +286,11 @@
              });
               });
           });
-
+var refText = document.getElementById("ref");
+var refBtn = document.getElementById("refCopy");
+refBtn.onclick = function() {
+  refText.select();
+  document.execCommand("copy");
+}
         </script>
 {% endblock %}

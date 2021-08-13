@@ -91,7 +91,16 @@ def send_request_view(request):
             req.user = user
             req.phone_number = phone_number
             req.video_chat = roomName
+            req.referral = get_random_string(length=16)
             req.save()
+            try:
+                ref = request.POST.get('ref')
+                ref_friend = ReferralFriend()
+                ref_friend.invited_user = user
+                ref_friend.user = UserAdditional.objects.get(referral=ref).user
+                ref_friend.save()
+            except:
+                pass
             room = ChatRoom()
             room.name = roomName
             room.student = user
@@ -174,12 +183,19 @@ def ask_question(request):
     return HttpResponseRedirect('/')
 
 def index(request):
+    context = {}
     try:
         e = request.GET['msg']
         messages.error(request, 'Пользователь с такой почтой уже существует.')
     except:
         pass
-    context = {}
+    try:
+        ref = request.GET['ref']
+        if not request.user.is_authenticated and len(UserAdditional.objects.filter(referral=ref))>0:
+            context['is_referral'] = True
+            context['referral'] = ref
+    except:
+        pass
     if request.user.is_authenticated:
         user_add_img = UserAdditional.objects.get(user=request.user)
         find_image(context, user_add_img, "image")
@@ -279,6 +295,7 @@ def dashboard_lk(request):
         except:
             context["ava"] = "Аватар"
         context["paid_lessons"] = student_additional.paid_lessons
+        context["referral"] = student_additional.referral
 
 
     return render(request,'dashboard/dashboard-lk.html', context)

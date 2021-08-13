@@ -190,11 +190,23 @@ class Blog(models.Model):
         verbose_name_plural = "Блоги"
 
     author = models.CharField(max_length=50, verbose_name='Автор')
-    content = models.CharField(max_length=10000, verbose_name='Контент')
+    content = models.CharField(max_length=100000, verbose_name='Контент')
     description = models.CharField(max_length=300, verbose_name='Описание')
     title_picture = models.ImageField(upload_to=blog_image_directory_path, blank=True, verbose_name='Превью')
     date = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100, verbose_name='Заголовок')
+
+
+class InteractiveList(models.Model):
+    student = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='Ученик')
+    unlocked = models.BooleanField(default=False, verbose_name="Разблокировано")
+    description = models.CharField(max_length=1000, verbose_name='Описание')
+    title_picture = models.ImageField(upload_to=blog_image_directory_path, blank=True, verbose_name='Превью')
+
+
+class Interactive(models.Model):
+    list = models.ForeignKey(to=InteractiveList, on_delete=models.CASCADE)
+    content = models.CharField(max_length=100000, verbose_name='Контент')
 
 
 class UserAdditional(models.Model):
@@ -208,6 +220,7 @@ class UserAdditional(models.Model):
     birthday = models.DateField(verbose_name='Дата рождения', default=datetime.date.today(),blank=True)
     saved_blogs = models.TextField(max_length=1024, blank=True)
     image = models.ImageField(upload_to=user_image_directory_path, blank=True, verbose_name='Фотография')
+    referral = models.CharField(max_length=16, verbose_name='Реферальный код')
 
     LESSON_TIME_CHOISES = [
         (True, '60 минут'),
@@ -216,6 +229,11 @@ class UserAdditional(models.Model):
 
     lesson_time = models.BooleanField(choices=LESSON_TIME_CHOISES, default=False,
                                       verbose_name='Продолжительность уроков')
+
+
+class ReferralFriend(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="user", verbose_name='Пользователь')
+    invited_user = models.ForeignKey(to=User, on_delete=models.CASCADE,related_name="invited_user", verbose_name='Приглашённый пользователь')
 
 
 class VideoCategory(models.Model):

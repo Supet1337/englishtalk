@@ -4,7 +4,8 @@ from .forms import *
 import nested_admin
 from .models import DefaultLesson, Lesson_video, Lesson_audio, UserAdditional, Teacher, DefaultCourse,\
     Blog, UserCourse, UserLesson, VideoPractiseWord, VideoPractise, VideoPractiseConstructor,VideoPractiseListening,\
-    VideoCategory, ChatRoom, ChatMessage, Tape, Homework, Homework_video, Homework_audio, Homework_file
+    VideoCategory, ChatRoom, ChatMessage, Tape, Homework, Homework_video, Homework_audio, Homework_file, ReferralFriend,\
+    Interactive, InteractiveList
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 admin.site.site_header = 'Englishtalk администрирование'
@@ -17,6 +18,26 @@ class BlogAdminForm(forms.ModelForm):
     class Meta:
         model = Blog
         fields = '__all__'
+
+
+class InteractiveAdminForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget())
+
+
+    class Meta:
+        model = Interactive
+        fields = '__all__'
+
+
+@admin.register(Interactive)
+class InteractiveAdmin(admin.ModelAdmin):
+    form = InteractiveAdminForm
+
+
+class InLineInteractive(admin.StackedInline):
+    model = Interactive
+    form = InteractiveAdminForm
+    extra = 1
 
 
 @admin.register(Blog)
@@ -154,7 +175,14 @@ class HomeworkAdmin(admin.ModelAdmin):
     inlines = [InLineAudioHomework, InLineVideoHomework, InLineFileHomework]
 
 
+@admin.register(InteractiveList)
+class InteractiveListAdmin(admin.ModelAdmin):
+    inlines = [InLineInteractive]
+    raw_id_fields = ("student",)
+
+
 admin.site.register(VideoCategory)
 admin.site.register(ChatRoom)
 admin.site.register(Tape)
+admin.site.register(ReferralFriend)
 admin.site.unregister(Group)

@@ -38,8 +38,8 @@
                             </a>
                             <a class="my-auto" href="/logout" style="display: flex;margin-left: 10px;height: fit-content; color: rgb(0,0,0,0.125)"><i class="fas fa-sign-out-alt"></i></a>
                             {% else %}
-                             <a href="#" id="navbarDropdownMenuLink1" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px"><button class="dashboard-button-red">Пробный урок</button></a>
-                             <a href="#" id="navbarDropdownMenuLink2" data-toggle="modal" data-target="#myModal1" aria-haspopup="true" aria-expanded="false"><button class="dashboard-button-secondary-teacher" style="height: 100%">Войти</button></a>
+                             <a href="#" id="navbarDropdownMenuLink1" data-bs-toggle="modal" data-bs-target="#flModal" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px"><button class="dashboard-button-red">Пробный урок</button></a>
+                             <a href="#" id="navbarDropdownMenuLink2" data-bs-toggle="modal" data-bs-target="#myModal1" aria-haspopup="true" aria-expanded="false"><button class="dashboard-button-secondary-teacher" style="height: 100%">Войти</button></a>
                             {% endif %}
                         </li>
 
@@ -53,7 +53,7 @@
             <div class="modal-body mx-auto" style="padding: 0">
                 <div class="card-group course-modal">
                     <div class="card" style="border: 0;">
-                        <button type="button" class="btn button-close-modal" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="btn button-close-modal" data-bs-dismiss="modal" aria-label="Close">
                              Закрыть
                         </button>
 						<h3 id="titl" class="card-title mb-4" style="color: #082567;text-align: center;margin-top: 10px"></h3>
@@ -108,7 +108,7 @@
 					<div class="card blue-card" style="border-radius: 0;border: 0;text-align: center;background: #9ddde7;">
                         <div class="card-body">
                             <h4 class="card-title" style="color: #082567;">Первый урок - бесплатно!</h4>
-							<a href="#" data-dismiss="modal" data-toggle="modal" data-target="#reqModal"><button type="button" class="btn btn-primary" style="border-radius: 0; color: #082567;font-size: large;max-width: 250px">Записаться на бесплатный урок</button></a>
+							<a href="#" data-dismiss="modal" data-bs-toggle="modal" data-bs-target="#reqModal"><button type="button" class="btn btn-primary" style="border-radius: 0; color: #082567;font-size: large;max-width: 250px">Записаться на бесплатный урок</button></a>
 							<h4 class="card-title" style="color: #082567;margin-top: 50px">Можно подобрать персональную программу</h4>
 							<a href="#"><button type="button" class="btn btn-primary" style="border-radius: 0; color: #082567;font-size: large;max-width: 250px;background: #c5cfd8;border-color: #c5cfd8">Подобрать индивидуальный курс</button></a>
                         </div>
@@ -128,7 +128,7 @@
                         <div class="col-5" style="background-image: url({% static 'images/eng-flag.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;">
                         </div>
                         <div class="col-7" style="background: #f7f7f7">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                             <div class="blogs-header-text" style="margin-bottom: 19px; margin-top: 10px">
@@ -158,7 +158,7 @@
                             <p class="modal-white-text">Узнаем уровень владения</p>
                         </div>
                         <div class="col-7" style="border-top-right-radius: 8px;border-bottom-right-radius: 8px;background: #f7f7f7; padding-top: 10px">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                             <div class="blogs-header-text" style="margin-top: 30px; font-size: 27px; line-height: 24px">
@@ -166,6 +166,9 @@
                           </div>
                             <form  method="POST" action="../send_request_v" style="margin-bottom: 30px">
                                 {% csrf_token %}
+                                {% if is_referral %}
+                                <input type="hidden" id="ref" name="ref" value="{{referral}}">
+                                {% endif %}
                                 <p class="account-input-label">E-mail</p>
                                <input type="email" id="email" name="email" style="width: 100%" class="account-input" required>
                                 <p class="account-input-label">Имя</p>
@@ -193,7 +196,7 @@
                             <h4 class="modal-white-text" style="font-weight: bold; font-size: 21px; line-height: 30px">Будем рады видеть вас в нашей команде</h4>
                         </div>
                         <div class="col-7" style="border-top-right-radius: 8px;border-bottom-right-radius: 8px;background: #f7f7f7; padding-top: 10px">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
                             <div class="blogs-header-text" style="margin-top: 40px; font-size: 27px; line-height: 25px">
@@ -274,6 +277,9 @@
                     </div>
                     <form class="ftco-animate" id="reg-form" method="POST" action="../send_request_v">
                         {% csrf_token %}
+                        {% if is_referral %}
+                        <input type="hidden" id="ref" name="ref" value="{{referral}}">
+                        {% endif %}
                         <p class="account-input-label">E-mail</p>
                        <input type="email" id="email1" name="email"  class="account-input" required>
                         <p class="account-input-label">Номер телефона</p>
@@ -330,7 +336,7 @@
             <div class="modal-body mx-auto" style="padding: 0">
                 <div class="card-group ask-modal" style="background: #9ddde7">
                     <div class="card" style="border: 0;text-align: center;background: #9ddde7">
-                        <button type="button" class="btn button-close-modal" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="btn button-close-modal" data-bs-dismiss="modal" aria-label="Close">
                              Закрыть
                         </button>
                         <div class="card-body">
@@ -589,6 +595,12 @@ function closeModal(){
     $("#reqModal").hide();
     $('.modal-backdrop').hide();
 }
+
+{% if is_referral %}
+$(document).ready(function () {
+    $("#navbarDropdownMenuLink1")[0].click();
+})
+{% endif %}
 
 </script>
 
