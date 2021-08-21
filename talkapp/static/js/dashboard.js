@@ -5,10 +5,18 @@ $('#dzModal').on('show.bs.modal', function (event) {
     var modal = $(this)
     $('#student_email').attr('href','mailto:'+emaill+'?subject=Домашнее задание&body=Привет, тебе пришло домашнее задание.')
 })
+
+$("#home-tab").click(function () {
+     $("#interactivehome").removeClass('interactive-list-show');
+     $("#interactivehome").addClass('interactive-list-hide');
+})
+
 function closeDoc(id){
     if ($("#docTab"+id).hasClass('nvlnk-act')){
         $("#home-tab").addClass('active');
         $("#home").addClass('show active');
+        $("#interactivehome").removeClass('interactive-list-show');
+        $("#interactivehome").addClass('interactive-list-hide');
     }
     $("#bread-item"+id).remove();
     $(".breadcrumb-item").last().addClass('active');
@@ -26,6 +34,23 @@ function closeVid(id,lid){
     $("#menu-toggle-right").show();
     $("#vidLabel"+id).remove();
     $("#vid"+id).remove();
+}
+
+function closeInteractive(id){
+
+     if ($("#docTab"+id).hasClass('nvlnk-act')){
+            $("#home-tab").addClass('active');
+            $("#home").addClass('show active');
+        }
+        $("#bread-item"+id).remove();
+        $(".breadcrumb-item").last().addClass('active');
+        $("#InteractiveLabel"+id).remove();
+        $("#interactive"+id).remove();
+        $("#interactivehome").removeClass('interactive-list-hide');
+        $("#interactivehome").addClass('interactive-list-show');
+        $("#home-tab-interactive").addClass('active');
+
+
 }
 
 
@@ -170,6 +195,53 @@ $(document).ready(function(){
 
 
 
+$(document).ready(function(){
+    $('a[id^="openInter"]').click(function () {
+       $("#interactivehome").removeClass('interactive-list-show');
+       $("#interactivehome").addClass('interactive-list-hide');
+       $("#home-tab-interactive").removeClass('active');
+       i = $(this).attr("id");
+       const id = i.slice(9);
+        $.ajax({
+            url: "/ajax_load_interactives/"+id,
+            success: function (result) {
+                var json = $.parseJSON(result);
+                json.forEach(function(item, i, json) {
+
+                        $("#home-tab").removeClass('nvlnk-act');
+                        $("#home").removeClass('show active');
+                        if (i == 0){
+                        $("#myTabContent").append('<div class="it tab-pane fade show active" id="interactive'+id+'" role="tabpanel" aria-labelledby="interactiveTab'+id+'"></div>')
+                            $("#myTab").append(
+                                     '<li  class="nav-item mb-1 mr-1" id="InteractiveLabel'+id+'" role="presentation">'+
+                                     '<a class="nvlnk nvlnk-act" id="InteractiveTab'+id+'" onclick="InteractiveClick('+id+')" data-bs-toggle="tab" href="#interactive'+id+'" role="tab" aria-controls="interactive'+id+'" aria-selected="false">'+json[i].name+
+                                     '<button type="button" class="close" id="interactiveClose'+id+'" onclick="closeInteractive('+id+'); event.stopPropagation();" style="padding-left: 5px;" aria-label="Close">'+
+                                     '<span aria-hidden="true">&times;</span>'+
+                                     '</button>'+
+                                     '</a>'+
+                                     '</li>');
+                                     $(".breadcrumb-item").removeClass('active');
+                                     $("#breadcrumb").append('<li class="breadcrumb-item active" id="bread-item'+id+'">'+json[i].name+'</li>');
+
+                            }
+                            $("#interactive"+id).append(
+                                     '<div class="tab-pane fade show active" id="interactivemedium'+id+'" role="tabpanel" aria-labelledby="interactiveTab'+id+'">'+
+                                     '<div class="collapse show" id="interactiveCard'+id+'" style="height: 600px;">'+
+                                     '<div>'+json[i].content+'</div>'+
+                                     '</div>'+
+                                     '</div>'
+                                     );
+
+                });
+        }});
+
+    });
+});
+
+
+
+
+
 
 
 $(document).ready(function(){
@@ -228,6 +300,40 @@ function docClick(id){
     }
 }
 
+function InteractiveClick(id){
+    if($('#InteractiveTab'+id).hasClass('nvlnk-act')){
+        $('#interactiveCard'+id).toggleClass('show');
+        $('#InteractiveTab'+id).toggleClass('nvlnk-act');
+        $('#interactiveClose'+id).show();
+        $("#interactive"+id).addClass('show active');
+
+    }
+    else{
+        $("#home-tab").removeClass('active');
+        $("#home").removeClass('show active');
+        $("#home-tab").removeClass('nvlnk-act');
+    }
+
+    $("#interactivehome").removeClass('interactive-list-show');
+    $("#interactivehome").addClass('interactive-list-hide');
+
+
+}
+
+
+function interactiveClck(){
+     $("#home-tab").removeClass('active');
+     $("#home").removeClass('show active');
+     $("#home-tab").removeClass('nvlnk-act');
+     $("#interactivehome").removeClass('interactive-list-hide');
+     $("#interactivehome").addClass('interactive-list-show');
+
+     $("[id^=InteractiveTab]").removeClass('nvlnk-act');
+     $(".it").removeClass('show active');
+
+}
+
+
 function videoOpen(id, lid){
     if(!$('#vidTab'+id).hasClass('nvlnk-act')){
         $('#docCard'+lid).removeClass('show');
@@ -241,6 +347,7 @@ function videoOpen(id, lid){
         $('.vidosikTab').addClass('nvlnk-act');
         $("#doc"+lid).removeClass('show active');
         $('.vidClose').show();
+        $("#interactivehome").removeClass('interactive-list-hide');
     }
 }
 
@@ -285,6 +392,8 @@ var pageWidth = document.body.offsetWidth;
 function zoom() {
     $("#header").toggle();
     $("#wrapper").toggleClass('book-mode');
+    $("#course-name").toggle();
+    $("#breadcrumb").toggle();
 };
 
 

@@ -5,7 +5,7 @@ import nested_admin
 from .models import DefaultLesson, Lesson_video, Lesson_audio, UserAdditional, Teacher, DefaultCourse,\
     Blog, UserCourse, UserLesson, VideoPractiseWord, VideoPractise, VideoPractiseConstructor,VideoPractiseListening,\
     VideoCategory, ChatRoom, ChatMessage, Tape, Homework, Homework_video, Homework_audio, Homework_file, ReferralFriend,\
-    Interactive, InteractiveList
+    Interactive, InteractiveList, InteractiveListStudents
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 admin.site.site_header = 'Englishtalk администрирование'
@@ -37,6 +37,10 @@ class InteractiveAdmin(admin.ModelAdmin):
 class InLineInteractive(admin.StackedInline):
     model = Interactive
     form = InteractiveAdminForm
+    extra = 1
+
+class InLineInteractiveListStudents(admin.StackedInline):
+    model = InteractiveListStudents
     extra = 1
 
 
@@ -177,8 +181,7 @@ class HomeworkAdmin(admin.ModelAdmin):
 
 @admin.register(InteractiveList)
 class InteractiveListAdmin(admin.ModelAdmin):
-    inlines = [InLineInteractive]
-    raw_id_fields = ("student",)
+    inlines = [InLineInteractive, InLineInteractiveListStudents]
 
 
 admin.site.register(VideoCategory)

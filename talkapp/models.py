@@ -198,9 +198,7 @@ class Blog(models.Model):
 
 
 class InteractiveList(models.Model):
-    student = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='Ученик')
-    unlocked = models.BooleanField(default=False, verbose_name="Разблокировано")
-    description = models.CharField(max_length=1000, verbose_name='Описание')
+    name = models.CharField(max_length=1000, verbose_name='Название')
     title_picture = models.ImageField(upload_to=blog_image_directory_path, blank=True, verbose_name='Превью')
 
 
@@ -208,6 +206,17 @@ class Interactive(models.Model):
     list = models.ForeignKey(to=InteractiveList, on_delete=models.CASCADE)
     content = models.CharField(max_length=100000, verbose_name='Контент')
 
+    def json(self):
+        return {
+            'content': self.content,
+            'name': self.list.name
+        }
+
+
+class InteractiveListStudents(models.Model):
+    student = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='Ученик')
+    interactive = models.ForeignKey(to=InteractiveList, on_delete=models.CASCADE, verbose_name='Интерактив')
+    unlocked = models.BooleanField(default=False, verbose_name="Разблокировано")
 
 class UserAdditional(models.Model):
     class Meta:

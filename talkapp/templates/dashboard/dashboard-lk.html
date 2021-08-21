@@ -289,8 +289,10 @@
 var refText = document.getElementById("ref");
 var refBtn = document.getElementById("refCopy");
 refBtn.onclick = function() {
+  refText.value =  refText.value + " Дарю занятие в онлайн школе Englishtalk! ";
   refText.select();
   document.execCommand("copy");
+  refText.value = refText.value.slice(0, -42);
 }
         </script>
 {% endblock %}

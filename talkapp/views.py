@@ -603,6 +603,11 @@ def dashboard_platform(request):
     context['blog'] = Blog.objects.all()
     context['videos'] = VideoPractise.objects.all()
     context['video_categories'] = VideoCategory.objects.all()
+    interactives = InteractiveListStudents.objects.filter(student=request.user, unlocked=True)
+    intr_mas = []
+    for intr in interactives:
+        intr_mas.append(intr.interactive)
+    context['interactives'] = intr_mas
     if is_teacher:
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
     else:
@@ -1003,6 +1008,14 @@ def ajax_pay_lessons(request):
             p.lesson_time = True
         p.save()
     return HttpResponse('pay')
+
+def ajax_load_interactives(request, number):
+    intr = []
+    i = InteractiveList.objects.get(id=number)
+    for ina in Interactive.objects.filter(list=i):
+        intr.append(ina.json())
+
+    return HttpResponse(json.dumps(intr))
 
 
 @login_required

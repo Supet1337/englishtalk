@@ -27,6 +27,7 @@ urlpatterns = [
     path('ajax_load_homework/<int:number>', ajax_load_homework),
     path('ajax_delete_word/<int:number>', ajax_delete_word),
     path('ajax_pay_lessons', ajax_pay_lessons),
+    path('ajax_load_interactives/<int:number>', ajax_load_interactives),
     path('ajax_load_lessons_videos/<int:number>', ajax_load_lessons_videos),
     path('ajax_load_video/<int:number>', ajax_load_video),
     path('ajax_load_lessons_audios/<int:number>', ajax_load_lessons_audios),
