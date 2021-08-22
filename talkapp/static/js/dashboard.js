@@ -202,16 +202,25 @@ $(document).ready(function(){
        $("#home-tab-interactive").removeClass('active');
        i = $(this).attr("id");
        const id = i.slice(9);
+       if($("#InteractiveLabel"+id).length){
+            $('#interactiveCard'+id).addClass('show');
+            $('#InteractiveTab'+id).addClass('nvlnk-act');
+            $('#interactiveClose'+id).show();
+            $("#interactive"+id).addClass('show active');
+            $("#interactivehome").removeClass('interactive-list-show');
+            $("#interactivehome").addClass('interactive-list-hide');
+            $("#home-tab-interactive").removeClass('nvlnk-act')
+       }
+       else{
         $.ajax({
             url: "/ajax_load_interactives/"+id,
             success: function (result) {
                 var json = $.parseJSON(result);
                 json.forEach(function(item, i, json) {
-
                         $("#home-tab").removeClass('nvlnk-act');
                         $("#home").removeClass('show active');
                         if (i == 0){
-                        $("#myTabContent").append('<div class="it tab-pane fade show active" id="interactive'+id+'" role="tabpanel" aria-labelledby="interactiveTab'+id+'"></div>')
+                        $("#myTabContent").append('<div class="it tab-pane fade show active" id="interactive'+id+'" role="tabpanel" aria-labelledby="interactiveTab'+id+'"><div id="carouselExampleControls'+id+'" class="carousel" data-bs-interval="false" data-bs-ride="carousel"><div class="carousel-inner" id="carousel-inner'+id+'" style="padding: 0px 275px;"></div></div></div>')
                             $("#myTab").append(
                                      '<li  class="nav-item mb-1 mr-1" id="InteractiveLabel'+id+'" role="presentation">'+
                                      '<a class="nvlnk nvlnk-act" id="InteractiveTab'+id+'" onclick="InteractiveClick('+id+')" data-bs-toggle="tab" href="#interactive'+id+'" role="tab" aria-controls="interactive'+id+'" aria-selected="false">'+json[i].name+
@@ -224,16 +233,38 @@ $(document).ready(function(){
                                      $("#breadcrumb").append('<li class="breadcrumb-item active" id="bread-item'+id+'">'+json[i].name+'</li>');
 
                             }
-                            $("#interactive"+id).append(
+                            if (i == 0){
+                            $("#carousel-inner"+id).append(
+                                     '<div class="carousel-item active">'+
                                      '<div class="tab-pane fade show active" id="interactivemedium'+id+'" role="tabpanel" aria-labelledby="interactiveTab'+id+'">'+
                                      '<div class="collapse show" id="interactiveCard'+id+'" style="height: 600px;">'+
                                      '<div>'+json[i].content+'</div>'+
                                      '</div>'+
+                                     '</div>'+
                                      '</div>'
                                      );
+                            }
+                            else {
+                                $("#carousel-inner"+id).append(
+                                     '<div class="carousel-item">'+
+                                     '<div class="tab-pane fade show active" id="interactivemedium'+id+'" role="tabpanel" aria-labelledby="interactiveTab'+id+'">'+
+                                     '<div class="collapse show" id="interactiveCard'+id+'" style="height: 600px;">'+
+                                     '<div>'+json[i].content+'</div>'+
+                                     '</div>'+
+                                     '</div>'+
+                                     '</div>'
+                                     );
+                            }
+                            });
+                            $("#carousel-inner"+id).append('<button class="carousel-control-prev review-control-interactive" style="left: 1%; top: 93%" type="button" data-bs-target="#carouselExampleControls'+id+'" data-bs-slide="prev">' +
+                                '<i class="fas fa-chevron-left" style="font-size: 24px;color: #333333" aria-hidden="true"></i>'+
+                              '</button>'+
+                                '<button class="carousel-control-next review-control-interactive" style="right: 85%; top: 93%" type="button" data-bs-target="#carouselExampleControls'+id+'" data-bs-slide="next">'+
+                                '<span class="fas fa-chevron-right" style="font-size: 24px;color: #333333" aria-hidden="true"></span>'+
+                              '</button>');
 
-                });
         }});
+        }
 
     });
 });
