@@ -957,3 +957,11 @@ input:checked + .slider:before {
     border: 1px solid rgba(0,0,0,0.125);
     border-radius: 3px;
 }
+
+.review-control-interactive {
+    background: #F8F8F8;
+    width: 45px;
+    height: 35px;
+    top: 35%;
+    border: 1px solid #666666;
+}
