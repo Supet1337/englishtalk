@@ -220,7 +220,7 @@ $(document).ready(function(){
                         $("#home-tab").removeClass('nvlnk-act');
                         $("#home").removeClass('show active');
                         if (i == 0){
-                        $("#myTabContent").append('<div class="it tab-pane fade show active" id="interactive'+id+'" role="tabpanel" aria-labelledby="interactiveTab'+id+'"><div id="carouselExampleControls'+id+'" class="carousel" data-bs-interval="false" data-bs-ride="carousel"><div class="carousel-inner" id="carousel-inner'+id+'" style="padding: 0px 275px;"></div></div></div>')
+                        $("#myTabContent").append('<div class="it tab-pane fade show active" id="interactive'+id+'" role="tabpanel" aria-labelledby="interactiveTab'+id+'"><div id="carouselExampleControls'+id+'" class="carousel" data-bs-interval="false" data-bs-ride="carousel"><div class="carousel-inner" id="carousel-inner'+id+'" style="padding: 0px 10px;"></div></div></div>')
                             $("#myTab").append(
                                      '<li  class="nav-item mb-1 mr-1" id="InteractiveLabel'+id+'" role="presentation">'+
                                      '<a class="nvlnk nvlnk-act" id="InteractiveTab'+id+'" onclick="InteractiveClick('+id+')" data-bs-toggle="tab" href="#interactive'+id+'" role="tab" aria-controls="interactive'+id+'" aria-selected="false">'+json[i].name+

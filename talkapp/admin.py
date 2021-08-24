@@ -5,7 +5,7 @@ import nested_admin
 from .models import DefaultLesson, Lesson_video, Lesson_audio, UserAdditional, Teacher, DefaultCourse,\
     Blog, UserCourse, UserLesson, VideoPractiseWord, VideoPractise, VideoPractiseConstructor,VideoPractiseListening,\
     VideoCategory, ChatRoom, ChatMessage, Tape, Homework, Homework_video, Homework_audio, Homework_file, ReferralFriend,\
-    Interactive, InteractiveList, InteractiveListStudents
+    Interactive, InteractiveList, InteractiveListStudents, Homework_file_answer
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 admin.site.site_header = 'Englishtalk администрирование'
@@ -71,6 +71,11 @@ class InLineAudioHomework(admin.StackedInline):
 
 class InLineFileHomework(admin.StackedInline):
     model = Homework_file
+    extra = 0
+
+
+class InLineFileHomeworkAnswer(admin.StackedInline):
+    model = Homework_file_answer
     extra = 0
 
 
@@ -176,7 +181,7 @@ class VideoPractiseAdmin(nested_admin.NestedModelAdmin):
 
 @admin.register(Homework)
 class HomeworkAdmin(admin.ModelAdmin):
-    inlines = [InLineAudioHomework, InLineVideoHomework, InLineFileHomework]
+    inlines = [InLineAudioHomework, InLineVideoHomework, InLineFileHomework, InLineFileHomeworkAnswer]
 
 
 @admin.register(InteractiveList)
