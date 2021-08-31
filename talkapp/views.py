@@ -608,7 +608,11 @@ def dashboard_platform(request):
         context['interactives'] = intr_mas
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
         context['courses'] = crs
-    # ---------------------------------------------
+        context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
+        chat = ChatRoom.objects.get(student=request.user)
+        context["chat"] = chat
+
+        # ---------------------------------------------
     else:
         context["email"] = request.user.email
         context['blog'] = Blog.objects.all()

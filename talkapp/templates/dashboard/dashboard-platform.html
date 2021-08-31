@@ -107,7 +107,7 @@
             {% else %}
             {% for c in courses %}
             <div class="lesson-crs">
-                <a style="color: #333333" href="#" id="openUserCourse{{c.id}}" data-student="{{c.student.first_name}} {{c.student.last_name}}">
+                <a style="color: #333333" href="#" id="openUserCourse{{c.id}}" onclick="crsnm('{{c.student.first_name}} {{c.student.last_name}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}">
                     <div class="lesson-name">
                         {{c.course_type}}
                     </div>

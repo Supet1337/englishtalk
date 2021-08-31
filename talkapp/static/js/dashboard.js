@@ -76,7 +76,7 @@ $(document).ready(function(){
                 $("#myTab").append(
                                  '<li class="nav-item mb-1 mr-1" id="crsLabel'+id+'" role="presentation">'+
                                  '<a class="nvlnk nvlnk-act" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+student+
-                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+')" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+'); crsnmclose()" style="padding-left: 5px;" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
@@ -530,6 +530,14 @@ function crsClick(id){
         $('#crsClose'+id).show();
         $("#crs"+id).addClass('show active');
     }
+}
+
+function crsnm(student){
+    $('.teacher-name-p').append(student);
+}
+
+function crsnmclose(){
+    $('.teacher-name-p').html('');
 }
 
 function InteractiveClick(id){
