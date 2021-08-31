@@ -132,6 +132,13 @@ class UserCourse(models.Model):
     ]
     course_type = models.CharField(choices=TYPE_CHOISES, max_length=64, verbose_name='Тип курса')
 
+    def get_student_image(self):
+        ua = UserAdditional.objects.get(user=self.student)
+        try:
+            return ua.image.url
+        except:
+            return -1
+
 
 class UserLesson(models.Model):
     user_course = models.ForeignKey(to=UserCourse, on_delete=models.CASCADE, verbose_name='В составе курса')
@@ -148,7 +155,8 @@ class UserLesson(models.Model):
         return {
             'docx_url_copy': self.docx_url_copy,
             'name': self.lesson.name,
-            'student_email': self.user_course.student.email
+            'student_email': self.user_course.student.email,
+            'id': self.id
         }
 
 

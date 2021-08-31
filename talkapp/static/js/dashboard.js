@@ -13,8 +13,6 @@ $("#home-tab").click(function () {
 
 function closeDoc(id){
     if ($("#docTab"+id).hasClass('nvlnk-act')){
-        $("#home-tab").addClass('active');
-        $("#home").addClass('show active');
         $("#interactivehome").removeClass('interactive-list-show');
         $("#interactivehome").addClass('interactive-list-hide');
     }
@@ -24,6 +22,24 @@ function closeDoc(id){
     $("#buttonCollapseVideo"+id).remove();
     $("#docLabel"+id).remove();
     $("#doc"+id).remove();
+    $(".lesson").show();
+}
+
+function closeCrs(id){
+    if ($("#crsTab"+id).hasClass('nvlnk-act')){
+        $("#home-tab").addClass('active');
+        $("#home").addClass('show active');
+        $("#interactivehome").removeClass('interactive-list-show');
+        $("#interactivehome").addClass('interactive-list-hide');
+    }
+    $("#bread-item"+id).remove();
+    $(".breadcrumb-item").last().addClass('active');
+    $("#buttonCollapseAudio"+id).remove();
+    $("#buttonCollapseVideo"+id).remove();
+    $("#crsLabel"+id).remove();
+    $("#crs"+id).remove();
+    $(".lesson").hide();
+    $(".lesson-crs").show();
 }
 
 function closeVid(id,lid){
@@ -37,11 +53,6 @@ function closeVid(id,lid){
 }
 
 function closeInteractive(id){
-
-     if ($("#docTab"+id).hasClass('nvlnk-act')){
-            $("#home-tab").addClass('active');
-            $("#home").addClass('show active');
-        }
         $("#bread-item"+id).remove();
         $(".breadcrumb-item").last().addClass('active');
         $("#InteractiveLabel"+id).remove();
@@ -49,9 +60,191 @@ function closeInteractive(id){
         $("#interactivehome").removeClass('interactive-list-hide');
         $("#interactivehome").addClass('interactive-list-show');
         $("#home-tab-interactive").addClass('active');
-
-
+        $(".lesson").show();
 }
+
+
+$(document).ready(function(){
+    $('a[id^="openUserCourse"]').click(function () {
+        i = $(this).attr("id");
+        var student = $(this).data('student')
+        const id = i.slice(14);
+        $.ajax({
+            url: "/ajax_load_course_lessons/"+id,
+            success: function (result) {
+                var json = $.parseJSON(result);
+                $("#myTab").append(
+                                 '<li class="nav-item mb-1 mr-1" id="crsLabel'+id+'" role="presentation">'+
+                                 '<a class="nvlnk nvlnk-act" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+student+
+                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+')" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<span aria-hidden="true">&times;</span>'+
+                                 '</button>'+
+                                 '</a>'+
+                                 '</li>');
+                json.forEach(function(item, i, json) {
+
+                    if(!$("#docLabel"+id).length){
+                        $("#home-tab").removeClass('nvlnk-act');
+                        $("#home").removeClass('show active');
+                        $("#myTabContent").append('<div class="lesson">'+
+                        '<a style="color: #333333" href="#" id="openDoc'+json[i].id+'">'+
+                        '<div class="lesson-name">'+
+                            json[i].name+
+                        '</div>'+
+                        '<div class="lesson-progress">'+
+                            '<div class="progress-num">'+
+                                '1/4'+
+                            '</div>'+
+                            '<div class="progress">'+
+                                '<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>'+
+                            '</div>'+
+                        '</div>'+
+                        '</a>'+
+                    '</div>');
+
+       $('#openDoc'+json[i].id).click(function () {
+       const idDoc = json[i].id
+        $.ajax({
+            url: "/ajax_load_lessons/"+idDoc,
+            success: function (result) {
+                $(".lesson").hide();
+                var jsonDoc = $.parseJSON(result);
+                jsonDoc.forEach(function(item, i, jsonDoc) {
+                    if(!$("#docLabel"+idDoc).length){
+                        $("#home-tab").removeClass('nvlnk-act');
+                        $("#home").removeClass('show active');
+                        $("#myTab").append(
+                                    '<li class="nav-item mb-1" role="presentation">'+
+                                         '<a class="nvlnk " id="buttonCollapseAudio'+idDoc+'" data-toggle="collapse" href="#" onclick="showAudios('+idDoc+')" role="button" aria-expanded="false" aria-controls="collapseAudio'+idDoc+'">'+'Аудио'+
+                                    '</li>'+
+
+                                    '<li class="nav-item mb-1" role="presentation">'+
+                                        '<a class="nvlnk " id="buttonCollapseVideo'+idDoc+'" data-toggle="collapse" href="#" onclick="showVideos('+idDoc+')" role="button" aria-expanded="false" aria-controls="collapseVideo'+idDoc+'">'+'Видео'+
+                                    '</li>'+
+
+                                 '<li  class="nav-item mb-1 mr-1" id="docLabel'+idDoc+'" role="presentation">'+
+                                 '<a class="nvlnk nvlnk-act" id="docTab'+idDoc+'" onclick="docClick('+idDoc+')" data-bs-toggle="tab" href="#doc'+idDoc+'" role="tab" aria-controls="doc'+idDoc+'" aria-selected="false">'+jsonDoc[i].name+
+                                 '<button type="button" class="close" id="docClose'+idDoc+'" onclick="closeDoc('+idDoc+')" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<span aria-hidden="true">&times;</span>'+
+                                 '</button>'+
+                                 '</a>'+
+                                 '</li>');
+                        $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+idDoc+'" role="tabpanel" aria-labelledby="docTab'+idDoc+'">'+
+                                 '<div class="collapse" id="collapseAudio'+idDoc+'">'+
+                                 '</div>'+
+                                 '<div class="collapse" id="collapseVideo'+idDoc+'">'+
+                                 '</div>'+
+                                 '<div class="collapse show" id="docCard'+idDoc+'" style="height: 600px;">'+
+                                 '<object><embed src="'+jsonDoc[i].docx_url_copy+'" style="width: 100%; height: 100%"></object>'+
+                                 '</div>'+
+                                 '</div>');
+                        $(".breadcrumb-item").removeClass('active');
+                        $("#breadcrumb").append('<li class="breadcrumb-item active" id="bread-item'+idDoc+'">'+jsonDoc[i].name+'</li>');
+
+                        $.ajax({
+                            url: "/ajax_load_lessons_audios/"+idDoc,
+                            success: function (result) {
+                                var jsonDoc = $.parseJSON(result);
+                                jsonDoc.forEach(function(item, i, jsonDoc) {
+                                    $("#collapseAudio"+idDoc).append(
+                                    '<p style="padding-top: 20px; margin-bottom: 14px">'+jsonDoc[i].audio_name+'</p>'+
+                                    '<div id="audioPlayer'+jsonDoc[i].audio_id+'"></div>'
+                                    );
+                                    var audioPlayer = new Playerjs({id:"audioPlayer"+jsonDoc[i].audio_id, file:jsonDoc[i].audio_url, player: 2});
+                                });
+                        }}).then(
+                        $.ajax({
+                            url: "/ajax_load_lessons_videos/"+idDoc,
+                            success: function (result) {
+                                var jsonDoc = $.parseJSON(result);
+                                jsonDoc.forEach(function(item, i, jsonDoc) {
+                                    $("#collapseVideo"+idDoc).append(
+                                        '<div class="row">'+
+                                          '<div class="col" id="openVid'+jsonDoc[i].video_id+'" style="display: flex; cursor: pointer; padding-top: 40px" data-lesid="'+idDoc+'">'+
+                                                '<div>'+
+                                              '<div id="player'+jsonDoc[i].video_id+'" style="width: 240px; height: 180px; border-radius: 50px"></div>'+
+                                              '</div>'+
+                                              '<div style="margin-left: 12px; margin-top: 40px">'+
+                                                  '<a style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 16px;line-height: 18px;color: #333333; margin-bottom: 0" class="video-name" href="#">'+jsonDoc[i].video_name+'</a>'+
+                                                  '<p style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 12px;line-height: 14px;color: #828282;">14:03 мин</p>'+
+                                                  '<i class="fas fa-chevron-right" style="position: absolute; right: 5%; top: 56%"></i>'+
+                                              '</div>'+
+                                          '</div>'+
+                                      '</div>'
+                                    );
+                                    var player = new Playerjs({id:"player"+jsonDoc[i].video_id, file:jsonDoc[i].video_url, player: 1});
+                                });
+
+                        }}));
+                    }
+
+                    else {
+                        $("#home-tab").removeClass('nvlnk-act');
+                        $("#home").removeClass('show active');
+                        $("#docTab"+idDoc).addClass('nvlnk-act');
+                        $("#doc"+idDoc).addClass('show active');
+                    }
+                });
+        }});
+
+    });
+
+    $("#myTabContent").on('click','div[id^="openVid"]', function () {
+        $("#menu-toggle-right").hide();
+        i = $(this).attr("id");
+        lid = $(this).data("lesid");
+       const id = i.slice(7);
+        $.ajax({
+            url: "/ajax_load_video/"+id,
+            success: function (result) {
+                var json = $.parseJSON(result);
+                json.forEach(function(item, i, json) {
+                    if(!$("#vidLabel"+id).length){
+                        $("#buttonCollapseVideo"+lid).removeClass('nvlnk-act');
+                        $("#doc"+lid).removeClass('show active');
+                        $("#myTab").append('<li class="nav-item" id="vidLabel'+id+'" role="presentation">'+
+                                 '<a class="nvlnk nvlnk-act vidosikTab" id="vidTab'+id+'" onclick="videoOpen('+id+','+lid+')" data-toggle="tab" href="#vid'+id+'" role="tab" aria-controls="vid'+id+'" aria-selected="false">'+json[i].video_name+
+                                 '<button type="button" class="close vidClose" onclick="event.stopPropagation();closeVid('+id+','+lid+');" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<span aria-hidden="true">&times;</span>'+
+                                 '</button>'+
+                                 '</a>'+
+                                 '</li>');
+                        $("#myTabContent").append('<div class="tab-pane fade show active vidosik" id="vid'+id+'" role="tabpanel" aria-labelledby="vidTab'+id+'">'+
+                                 '<div class="card-body" style="height: 100%; padding-top: 0">'+
+                                 '<div class="mx-auto" id="bgPlayer'+json[i].video_id+'" style="width: 86%; height: 440px;"></div>'+
+                                 '</div>'+
+                                 '</div>');
+                        var player = new Playerjs({id:"bgPlayer"+json[i].video_id, file:json[i].video_url, player: 1});
+                    }
+
+                    else {
+                        $("#docTab"+lid).removeClass('nvlnk-act');
+                        $("#doc"+lid).removeClass('show active');
+                        $("#vidTab"+id).addClass('nvlnk-act');
+                        $("#vid"+id).addClass('show active');
+                    }
+                $(".breadcrumb-item").removeClass('active');
+                $("#breadcrumb").append('<li class="breadcrumb-item active" id="bread-vid'+id+'">'+json[i].video_name+'</li>');
+                });
+        }});
+
+    });
+
+                    }
+
+                    else {
+                        $("#home-tab").removeClass('nvlnk-act');
+                        $("#home").removeClass('show active');
+                        $("#crsTab"+id).addClass('nvlnk-act');
+                        $("#crs"+id).addClass('show active');
+                    }
+                });
+        }});
+
+
+    });
+
+    });
 
 
 $(document).ready(function(){
@@ -328,6 +521,14 @@ function docClick(id){
         $('.vidosikTab').removeClass('nvlnk-act');
         $("#doc"+id).addClass('show active');
         $('.vidClose').hide();
+    }
+}
+
+function crsClick(id){
+    if(!$('#crsTab'+id).hasClass('nvlnk-act')){
+        $('#crsTab'+id).toggleClass('nvlnk-act');
+        $('#crsClose'+id).show();
+        $("#crs"+id).addClass('show active');
     }
 }
 
