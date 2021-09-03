@@ -15,7 +15,7 @@ var remoteUsers = {};
 // Agora client options
 var options1 = {
   appid: '75e50629d75d4fd59c9d5fc9c71c5a59',
-  channel: room,
+  channel: '-',
   uid: null
 };
 

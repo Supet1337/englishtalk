@@ -33,8 +33,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
         message = text_data_json['message']
         room = text_data_json['room']
         time = text_data_json['time']
+        user_id = text_data_json['user_id']
         # print(message)
-        await self.save_chat(message, room,time)
+        await self.save_chat(message, room, time)
         # print(text_data_json,self.scope["user"])
 
         # Send message to room group
@@ -44,7 +45,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 'type': 'chat_message',
                 'message': message,
                 'username': self.scope["user"].first_name,
-                'email': self.scope["user"].email,
+                'user_id': user_id,
                 'time': time
             }
         )
@@ -57,13 +58,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.send(text_data=json.dumps({
             'message': message,
             'time': event['time'],
-            'email': event['email'],
+            'user_id': event['user_id'],
             'user': event['username']
         }))
 
     @database_sync_to_async
     def save_chat(self, message, room, time):
         if 'AnonymousUser' != str(self.scope["user"]):
-            r = ChatRoom.objects.get(name=room)
-            ChatMessage.objects.create(room=r, user=self.scope["user"], message=message, timestamp=time)
+            r = UserCourse.objects.get(video_chat=room)
+            ChatMessage.objects.create(course=r, user=self.scope["user"], message=message, timestamp=time)
         return True

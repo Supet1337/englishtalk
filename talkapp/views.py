@@ -84,13 +84,11 @@ def send_request_view(request):
         if len(User.objects.filter(email=request.POST.get('email'))) > 0:
             messages.error(request, 'Пользователь с такой почтой уже существует.')
         else:
-            roomName = get_random_string(length=32)
             user.save()
             req = UserAdditional()
             phone_number = request.POST.get('phone')
             req.user = user
             req.phone_number = phone_number
-            req.video_chat = roomName
             req.referral = get_random_string(length=16)
             req.save()
             try:
@@ -101,10 +99,6 @@ def send_request_view(request):
                 ref_friend.save()
             except:
                 pass
-            room = ChatRoom()
-            room.name = roomName
-            room.student = user
-            room.save()
             html_message = render_to_string('request_mail.html', {'email': user.email,
                                                                   'password': password
                                                                   })
@@ -225,63 +219,12 @@ def dashboard_lk(request):
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
     else:
         crs = UserCourse.objects.filter(student=request.user)
-        context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
-        chat = ChatRoom.objects.get(student=request.user)
-        context["chat"] = chat
     lessons = UserLesson.objects.filter(user_course__in=crs)
     if len(lessons) == 0:
         context["lsn"] = 0
     else:
         student_additional = UserAdditional.objects.get(user=request.user)
         context['phone_number'] = student_additional.phone_number
-        lessons.order_by('date')
-        flag = False
-        past_lessons = []
-        future_lessons = []
-        for l in lessons:
-            end = l.date
-            if student_additional.lesson_time:
-                end += datetime.timedelta(minutes=60)
-            else:
-                end += datetime.timedelta(minutes=45)
-            l.date_end = end
-            l.save()
-            if l.date <= datetime.datetime.now() <= end and not flag:
-                context['cur_lsn'] = l
-                if is_teacher:
-                    context['video_chat'] = UserAdditional.objects.get(user=l.user_course.student).video_chat
-                    chat = ChatRoom.objects.get(student=l.user_course.student)
-                    context["chat"] = chat
-                context['now_lsn'] = True
-                flag = True
-            elif end < datetime.datetime.now():
-                if not l.is_completed:
-                    student_additional.paid_lessons -= 1
-                    student_additional.save()
-                    l.is_completed = True
-                    l.save()
-                past_lessons.append(l)
-            elif not l.is_completed:
-                if len(future_lessons) < student_additional.paid_lessons:
-                    if not flag:
-                        flag = True
-                        context['next_lsn'] = l.date
-                    future_lessons.append(l)
-        context['past_lsn'] = past_lessons
-        context['future_lsn'] = future_lessons
-        calendar = []
-        day = []
-        for i in range(len(lessons)):
-            if i == 0:
-                day.append(lessons[i])
-            elif lessons[i].date.day == lessons[i-1].date.day:
-                day.append(lessons[i])
-            else:
-                calendar.append(day)
-                day = []
-                day.append(lessons[i])
-        calendar.append(day)
-        context['calendar'] = calendar
         i = 0
         if student_additional.lesson_time:
             context['lsn_time'] = "60"
@@ -319,9 +262,6 @@ def dashboard_account(request):
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
     else:
         crs = UserCourse.objects.filter(student=request.user)
-        context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
-        chat = ChatRoom.objects.get(student=request.user)
-        context["chat"] = chat
     lessons = UserLesson.objects.filter(user_course__in=crs)
     if len(lessons) == 0:
         context["lsn"] = 0
@@ -339,54 +279,6 @@ def dashboard_account(request):
         context['saved_blogs'] = blogs
         context['birthday'] = student_additional.birthday
         context['phone_number'] = student_additional.phone_number
-        lessons.order_by('date')
-        flag = False
-        past_lessons = []
-        future_lessons = []
-        for l in lessons:
-            end = l.date
-            if student_additional.lesson_time:
-                end += datetime.timedelta(minutes=60)
-            else:
-                end += datetime.timedelta(minutes=45)
-            l.date_end = end
-            l.save()
-            if l.date <= datetime.datetime.now() <= end and not flag:
-                context['cur_lsn'] = l
-                if is_teacher:
-                    context['video_chat'] = UserAdditional.objects.get(user=l.user_course.student).video_chat
-                    chat = ChatRoom.objects.get(student=l.user_course.student)
-                    context["chat"] = chat
-                context['now_lsn'] = True
-                flag = True
-            elif end < datetime.datetime.now():
-                if not l.is_completed:
-                    student_additional.paid_lessons -= 1
-                    student_additional.save()
-                    l.is_completed = True
-                    l.save()
-                past_lessons.append(l)
-            elif not l.is_completed:
-                if len(future_lessons) < student_additional.paid_lessons:
-                    if not flag:
-                        flag = True
-                        context['next_lsn'] = l.date
-                    future_lessons.append(l)
-        context['past_lsn'] = past_lessons
-        context['future_lsn'] = future_lessons
-        calendar = []
-        day = []
-        for i in range(len(lessons)):
-            if i == 0:
-                day.append(lessons[i])
-            elif lessons[i].date.day == lessons[i-1].date.day:
-                day.append(lessons[i])
-            else:
-                calendar.append(day)
-                day = []
-                day.append(lessons[i])
-        calendar.append(day)
-        context['calendar'] = calendar
         i = 0
         if student_additional.lesson_time:
             context['lsn_time'] = "60"
@@ -421,62 +313,11 @@ def dashboard_courses(request):
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
     else:
         crs = UserCourse.objects.filter(student=request.user)
-        context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
-        chat = ChatRoom.objects.get(student=request.user)
-        context["chat"] = chat
     lessons = UserLesson.objects.filter(user_course__in=crs)
     if len(lessons) == 0:
         context["lsn"] = 0
     else:
         student_additional = UserAdditional.objects.get(user=request.user)
-        lessons.order_by('date')
-        flag = False
-        past_lessons = []
-        future_lessons = []
-        for l in lessons:
-            end = l.date
-            if student_additional.lesson_time:
-                end += datetime.timedelta(minutes=60)
-            else:
-                end += datetime.timedelta(minutes=45)
-            l.date_end = end
-            l.save()
-            if l.date <= datetime.datetime.now() <= end and not flag:
-                context['cur_lsn'] = l
-                if is_teacher:
-                    context['video_chat'] = UserAdditional.objects.get(user=l.user_course.student).video_chat
-                    chat = ChatRoom.objects.get(student=l.user_course.student)
-                    context["chat"] = chat
-                context['now_lsn'] = True
-                flag = True
-            elif end < datetime.datetime.now():
-                if not l.is_completed:
-                    student_additional.paid_lessons -= 1
-                    student_additional.save()
-                    l.is_completed = True
-                    l.save()
-                past_lessons.append(l)
-            elif not l.is_completed:
-                if len(future_lessons) < student_additional.paid_lessons:
-                    if not flag:
-                        flag = True
-                        context['next_lsn'] = l.date
-                    future_lessons.append(l)
-        context['past_lsn'] = past_lessons
-        context['future_lsn'] = future_lessons
-        calendar = []
-        day = []
-        for i in range(len(lessons)):
-            if i == 0:
-                day.append(lessons[i])
-            elif lessons[i].date.day == lessons[i-1].date.day:
-                day.append(lessons[i])
-            else:
-                calendar.append(day)
-                day = []
-                day.append(lessons[i])
-        calendar.append(day)
-        context['calendar'] = calendar
         i = 0
         if student_additional.lesson_time:
             context['lsn_time'] = "60"
@@ -498,94 +339,45 @@ def dashboard_courses(request):
 @login_required
 def dashboard_homework(request):
     context = {}
-    is_teacher = False
-    user_add_img = UserAdditional.objects.get(user=request.user)
-    find_image(context, user_add_img, "image")
     homeworks = Homework.objects.filter(student=request.user)
     context['homework1'] = [h for h in homeworks if h.status == 1]
     context['homework2'] = [h for h in homeworks if h.status == 2]
     context['homework3'] = [h for h in homeworks if h.status == 3]
 
+    is_teacher = False
+    user_add_img = UserAdditional.objects.get(user=request.user)
+    find_image(context, user_add_img, "image")
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
-    context['blog'] = Blog.objects.all()
-    context['videos'] = VideoPractise.objects.all()
-    context['video_categories'] = VideoCategory.objects.all()
+    # ---------------------------------------------
     if is_teacher:
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
+        context['courses'] = crs
+
+        # ---------------------------------------------
     else:
         crs = UserCourse.objects.filter(student=request.user)
-        context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
-        chat = ChatRoom.objects.get(student=request.user)
-        context["chat"] = chat
-    lessons = UserLesson.objects.filter(user_course__in=crs)
-    if len(lessons) == 0:
-        context["lsn"] = 0
-    else:
-        student_additional = UserAdditional.objects.get(user=request.user)
-        lessons.order_by('date')
-        flag = False
-        past_lessons = []
-        future_lessons = []
-        for l in lessons:
-            end = l.date
-            if student_additional.lesson_time:
-                end += datetime.timedelta(minutes=60)
-            else:
-                end += datetime.timedelta(minutes=45)
-            l.date_end = end
-            l.save()
-            if l.date <= datetime.datetime.now() <= end and not flag:
-                context['cur_lsn'] = l
-                if is_teacher:
-                    context['video_chat'] = UserAdditional.objects.get(user=l.user_course.student).video_chat
-                    chat = ChatRoom.objects.get(student=l.user_course.student)
-                    context["chat"] = chat
-                context['now_lsn'] = True
-                flag = True
-            elif end < datetime.datetime.now():
-                if not l.is_completed:
-                    student_additional.paid_lessons -= 1
-                    student_additional.save()
-                    l.is_completed = True
-                    l.save()
-                past_lessons.append(l)
-            elif not l.is_completed:
-                if len(future_lessons) < student_additional.paid_lessons:
-                    if not flag:
-                        flag = True
-                        context['next_lsn'] = l.date
-                    future_lessons.append(l)
-        context['past_lsn'] = past_lessons
-        context['future_lsn'] = future_lessons
-        calendar = []
-        day = []
-        for i in range(len(lessons)):
-            if i == 0:
-                day.append(lessons[i])
-            elif lessons[i].date.day == lessons[i-1].date.day:
-                day.append(lessons[i])
-            else:
-                calendar.append(day)
-                day = []
-                day.append(lessons[i])
-        calendar.append(day)
-        context['calendar'] = calendar
-        i = 0
-        if student_additional.lesson_time:
-            context['lsn_time'] = "60"
+        context['courses'] = crs
+        lessons = UserLesson.objects.filter(user_course__in=crs)
+        if len(lessons) == 0:
+            context["lsn"] = 0
         else:
-            context['lsn_time'] = "45"
-        context['course'] = lessons[i].user_course.course_type
-        context['teacher'] = "{} {}".format(lessons[i].user_course.teacher.user.first_name, lessons[i].user_course.teacher.user.last_name)
-        context["lsn"] = lessons
-        try:
-            context["ava"] = lessons[i].user_course.teacher.image.url
-        except:
-            context["ava"] = "Аватар"
-        context["paid_lessons"] = student_additional.paid_lessons
-
+            student_additional = UserAdditional.objects.get(user=request.user)
+            context['phone_number'] = student_additional.phone_number
+            i = 0
+            if student_additional.lesson_time:
+                context['lsn_time'] = "60"
+            else:
+                context['lsn_time'] = "45"
+            context['course'] = lessons[i].user_course.course_type
+            context['teacher'] = "{} {}".format(lessons[i].user_course.teacher.user.first_name,
+                                                lessons[i].user_course.teacher.user.last_name)
+            context["lsn"] = lessons
+            try:
+                context["ava"] = lessons[i].user_course.teacher.image.url
+            except:
+                context["ava"] = "Аватар"
 
     return render(request,'dashboard/dashboard-homework.html', context)
 
@@ -601,35 +393,18 @@ def dashboard_platform(request):
     context["is_teacher"] = is_teacher
     #---------------------------------------------
     if is_teacher:
-        interactives = InteractiveListStudents.objects.filter(student=request.user, unlocked=True)
-        intr_mas = []
-        for intr in interactives:
-            intr_mas.append(intr.interactive)
-        context['interactives'] = intr_mas
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
         context['courses'] = crs
-        context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
-        chat = ChatRoom.objects.get(student=request.user)
-        context["chat"] = chat
 
         # ---------------------------------------------
     else:
-        context["email"] = request.user.email
-        context['blog'] = Blog.objects.all()
-        context['videos'] = VideoPractise.objects.all()
-        context['video_categories'] = VideoCategory.objects.all()
         interactives = InteractiveListStudents.objects.filter(student=request.user, unlocked=True)
         intr_mas = []
         for intr in interactives:
             intr_mas.append(intr.interactive)
         context['interactives'] = intr_mas
-        if is_teacher:
-            crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
-        else:
-            crs = UserCourse.objects.filter(student=request.user)
-            context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
-            chat = ChatRoom.objects.get(student=request.user)
-            context["chat"] = chat
+        crs = UserCourse.objects.filter(student=request.user)
+        context['courses'] = crs
         lessons = UserLesson.objects.filter(user_course__in=crs)
         if len(lessons) == 0:
             context["lsn"] = 0
@@ -650,10 +425,6 @@ def dashboard_platform(request):
                 l.save()
                 if l.date <= datetime.datetime.now() <= end and not flag:
                     context['cur_lsn'] = l
-                    if is_teacher:
-                        context['video_chat'] = UserAdditional.objects.get(user=l.user_course.student).video_chat
-                        chat = ChatRoom.objects.get(student=l.user_course.student)
-                        context["chat"] = chat
                     context['now_lsn'] = True
                     flag = True
                 elif end < datetime.datetime.now():
@@ -671,19 +442,6 @@ def dashboard_platform(request):
                         future_lessons.append(l)
             context['past_lsn'] = past_lessons
             context['future_lsn'] = future_lessons
-            calendar = []
-            day = []
-            for i in range(len(lessons)):
-                if i == 0:
-                    day.append(lessons[i])
-                elif lessons[i].date.day == lessons[i-1].date.day:
-                    day.append(lessons[i])
-                else:
-                    calendar.append(day)
-                    day = []
-                    day.append(lessons[i])
-            calendar.append(day)
-            context['calendar'] = calendar
             i = 0
             if student_additional.lesson_time:
                 context['lsn_time'] = "60"
@@ -696,7 +454,6 @@ def dashboard_platform(request):
                 context["ava"] = lessons[i].user_course.teacher.image.url
             except:
                 context["ava"] = "Аватар"
-            context["paid_lessons"] = student_additional.paid_lessons
 
 
     return render(request,'dashboard/dashboard-platform.html', context)
@@ -718,49 +475,12 @@ def dashboard_schedule(request):
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
     else:
         crs = UserCourse.objects.filter(student=request.user)
-        context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
-        chat = ChatRoom.objects.get(student=request.user)
-        context["chat"] = chat
     lessons = UserLesson.objects.filter(user_course__in=crs)
     if len(lessons) == 0:
         context["lsn"] = 0
     else:
         student_additional = UserAdditional.objects.get(user=request.user)
         lessons.order_by('date')
-        flag = False
-        past_lessons = []
-        future_lessons = []
-        for l in lessons:
-            end = l.date
-            if student_additional.lesson_time:
-                end += datetime.timedelta(minutes=60)
-            else:
-                end += datetime.timedelta(minutes=45)
-            l.date_end = end
-            l.save()
-            if l.date <= datetime.datetime.now() <= end and not flag:
-                context['cur_lsn'] = l
-                if is_teacher:
-                    context['video_chat'] = UserAdditional.objects.get(user=l.user_course.student).video_chat
-                    chat = ChatRoom.objects.get(student=l.user_course.student)
-                    context["chat"] = chat
-                context['now_lsn'] = True
-                flag = True
-            elif end < datetime.datetime.now():
-                if not l.is_completed:
-                    student_additional.paid_lessons -= 1
-                    student_additional.save()
-                    l.is_completed = True
-                    l.save()
-                past_lessons.append(l)
-            elif not l.is_completed:
-                if len(future_lessons) < student_additional.paid_lessons:
-                    if not flag:
-                        flag = True
-                        context['next_lsn'] = l.date
-                    future_lessons.append(l)
-        context['past_lsn'] = past_lessons
-        context['future_lsn'] = future_lessons
         calendar = []
         day = []
         for i in range(len(lessons)):
@@ -808,9 +528,6 @@ def dashboard_blog(request, number):
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
     else:
         crs = UserCourse.objects.filter(student=request.user)
-        context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
-        chat = ChatRoom.objects.get(student=request.user)
-        context["chat"] = chat
     lessons = UserLesson.objects.filter(user_course__in=crs)
     if len(lessons) == 0:
         context["lsn"] = 0
@@ -824,54 +541,6 @@ def dashboard_blog(request, number):
                     flag = True
                     break
         context['is_saved_blog'] = flag
-        lessons.order_by('date')
-        flag = False
-        past_lessons = []
-        future_lessons = []
-        for l in lessons:
-            end = l.date
-            if student_additional.lesson_time:
-                end += datetime.timedelta(minutes=60)
-            else:
-                end += datetime.timedelta(minutes=45)
-            l.date_end = end
-            l.save()
-            if l.date <= datetime.datetime.now() <= end and not flag:
-                context['cur_lsn'] = l
-                if is_teacher:
-                    context['video_chat'] = UserAdditional.objects.get(user=l.user_course.student).video_chat
-                    chat = ChatRoom.objects.get(student=l.user_course.student)
-                    context["chat"] = chat
-                context['now_lsn'] = True
-                flag = True
-            elif end < datetime.datetime.now():
-                if not l.is_completed:
-                    student_additional.paid_lessons -= 1
-                    student_additional.save()
-                    l.is_completed = True
-                    l.save()
-                past_lessons.append(l)
-            elif not l.is_completed:
-                if len(future_lessons) < student_additional.paid_lessons:
-                    if not flag:
-                        flag = True
-                        context['next_lsn'] = l.date
-                    future_lessons.append(l)
-        context['past_lsn'] = past_lessons
-        context['future_lsn'] = future_lessons
-        calendar = []
-        day = []
-        for i in range(len(lessons)):
-            if i == 0:
-                day.append(lessons[i])
-            elif lessons[i].date.day == lessons[i - 1].date.day:
-                day.append(lessons[i])
-            else:
-                calendar.append(day)
-                day = []
-                day.append(lessons[i])
-        calendar.append(day)
-        context['calendar'] = calendar
         i = 0
         if student_additional.lesson_time:
             context['lsn_time'] = "60"
@@ -905,62 +574,11 @@ def dashboard_tape(request):
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
     else:
         crs = UserCourse.objects.filter(student=request.user)
-        context['video_chat'] = UserAdditional.objects.get(user=request.user).video_chat
-        chat = ChatRoom.objects.get(student=request.user)
-        context["chat"] = chat
     lessons = UserLesson.objects.filter(user_course__in=crs)
     if len(lessons) == 0:
         context["lsn"] = 0
     else:
         student_additional = UserAdditional.objects.get(user=request.user)
-        lessons.order_by('date')
-        flag = False
-        past_lessons = []
-        future_lessons = []
-        for l in lessons:
-            end = l.date
-            if student_additional.lesson_time:
-                end += datetime.timedelta(minutes=60)
-            else:
-                end += datetime.timedelta(minutes=45)
-            l.date_end = end
-            l.save()
-            if l.date <= datetime.datetime.now() <= end and not flag:
-                context['cur_lsn'] = l
-                if is_teacher:
-                    context['video_chat'] = UserAdditional.objects.get(user=l.user_course.student).video_chat
-                    chat = ChatRoom.objects.get(student=l.user_course.student)
-                    context["chat"] = chat
-                context['now_lsn'] = True
-                flag = True
-            elif end < datetime.datetime.now():
-                if not l.is_completed:
-                    student_additional.paid_lessons -= 1
-                    student_additional.save()
-                    l.is_completed = True
-                    l.save()
-                past_lessons.append(l)
-            elif not l.is_completed:
-                if len(future_lessons) < student_additional.paid_lessons:
-                    if not flag:
-                        flag = True
-                        context['next_lsn'] = l.date
-                    future_lessons.append(l)
-        context['past_lsn'] = past_lessons
-        context['future_lsn'] = future_lessons
-        calendar = []
-        day = []
-        for i in range(len(lessons)):
-            if i == 0:
-                day.append(lessons[i])
-            elif lessons[i].date.day == lessons[i-1].date.day:
-                day.append(lessons[i])
-            else:
-                calendar.append(day)
-                day = []
-                day.append(lessons[i])
-        calendar.append(day)
-        context['calendar'] = calendar
         i = 0
         if student_additional.lesson_time:
             context['lsn_time'] = "60"
@@ -1032,6 +650,14 @@ def ajax_load_interactives(request, number):
 
     return HttpResponse(json.dumps(intr))
 
+
+def ajax_load_messages(request, name):
+    msg = []
+    r = UserCourse.objects.get(video_chat=name)
+    for m in ChatMessage.objects.filter(course=r):
+        msg.append(m.json())
+
+    return HttpResponse(json.dumps(msg))
 
 @login_required
 def change_email(request):

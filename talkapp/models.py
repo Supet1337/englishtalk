@@ -112,6 +112,7 @@ class DefaultLesson(models.Model):
 class UserCourse(models.Model):
     student = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='Ученик')
     teacher = models.ForeignKey(to=Teacher, on_delete=models.CASCADE, verbose_name='Учитель')
+    video_chat = models.CharField(max_length=32, verbose_name='Код видео-чата', default=get_random_string(length=32))
 
     class Meta:
         verbose_name_plural = "Ученик и его курс"
@@ -232,7 +233,6 @@ class UserAdditional(models.Model):
 
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='Пользователь')
     phone_number = PhoneNumberField(verbose_name='Телефон', blank=True)
-    video_chat = models.CharField(max_length=32, verbose_name='Код личного видеочата')
     paid_lessons = models.IntegerField(verbose_name='Кол-во оплаченных занятий', default=1)
     birthday = models.DateField(verbose_name='Дата рождения', default=datetime.date.today(),blank=True)
     saved_blogs = models.TextField(max_length=1024, blank=True)
@@ -337,19 +337,18 @@ class VideoPractiseListening(models.Model):
                                       seconds=self.video_end_time.second).total_seconds())
 
 
-class ChatRoom(models.Model):
-    name = models.CharField(max_length=32)
-    student = models.ForeignKey(to=User, on_delete=models.CASCADE)
-
-    def get_messages(self):
-        return ChatMessage.objects.filter(room=self)
-
-
 class ChatMessage(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     message = models.CharField(max_length=512)
     timestamp = models.DateTimeField(auto_now_add=True, editable=False)
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    room = models.ForeignKey(to=ChatRoom, on_delete=models.CASCADE)
+    course = models.ForeignKey(to=UserCourse, on_delete=models.CASCADE)
+
+    def json(self):
+        return {
+            'message': self.message,
+            'time': self.timestamp.strftime('%H:%M'),
+            'user_id': self.user.id
+        }
 
 
 class Tape(models.Model):

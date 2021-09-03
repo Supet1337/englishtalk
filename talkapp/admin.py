@@ -4,7 +4,7 @@ from .forms import *
 import nested_admin
 from .models import DefaultLesson, Lesson_video, Lesson_audio, UserAdditional, Teacher, DefaultCourse,\
     Blog, UserCourse, UserLesson, VideoPractiseWord, VideoPractise, VideoPractiseConstructor,VideoPractiseListening,\
-    VideoCategory, ChatRoom, ChatMessage, Tape, Homework, Homework_video, Homework_audio, Homework_file, ReferralFriend,\
+    VideoCategory, ChatMessage, Tape, Homework, Homework_video, Homework_audio, Homework_file, ReferralFriend,\
     Interactive, InteractiveList, InteractiveListStudents, Homework_file_answer
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
@@ -190,7 +190,6 @@ class InteractiveListAdmin(admin.ModelAdmin):
 
 
 admin.site.register(VideoCategory)
-admin.site.register(ChatRoom)
 admin.site.register(Tape)
 admin.site.register(ReferralFriend)
 admin.site.unregister(Group)

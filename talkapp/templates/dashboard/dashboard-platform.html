@@ -107,7 +107,7 @@
             {% else %}
             {% for c in courses %}
             <div class="lesson-crs">
-                <a style="color: #333333" href="#" id="openUserCourse{{c.id}}" onclick="crsnm('{{c.student.first_name}} {{c.student.last_name}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}">
+                <a style="color: #333333" href="#" id="openUserCourse{{c.id}}" data-student="{{c.student.first_name}} {{c.student.last_name}}">
                     <div class="lesson-name">
                         {{c.course_type}}
                     </div>
@@ -248,11 +248,28 @@
 
                     <div class="card" style="max-width: 486px; max-height: 899px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; height: 90vh" id="chat">
                         <div class="card-header" id="chat-header" style="display: flex; background-color: transparent">
-                            <img id="teacher-img" src="{% static "images/avatar.png" %}" style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;"  align="center">
-                            <div class="teacher-name-p">{{ teacher|default_if_none:"Ваш преподаватель"}}</div>
-                            <button style="margin-right: 1em;position: absolute; top: 3.5%; right: 10px; background: transparent; color: #2F80ED; border: 0;" id="join" type="submit" form="join-form" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
+                            <button class="btn btn-secondary my-auto" type="button" id="closeChatWindowButton" onclick="closeChatWindow()" style="display: none;padding:0; border-radius: 50px; font-size: x-large; border: 0;background: #e0e0e0;width: 30px; height: 30px">
+                                <i class="fas fa-chevron-left" style="font-size: 24px;color: #white" aria-hidden="true"></i>
+                              </button>
+                            <img id="teacher-img" src="{% static 'images/avatar.png' %}" style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;"  align="center">
+                            <div class="teacher-name-p"></div>
+                            <button style="margin-right: 1em;position: absolute; top: 3.5%; right: 10px; background: transparent; color: #2F80ED; border: 0; display: none" id="join" type="submit" form="join-form" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
                         </div>
                         <div class="card-body" style="background-color: #f8f8f8">
+                            <div id="chat-list">
+                            {% for c in courses %}
+                                {% if is_teacher %}
+                            <div onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}')">
+                                {{c.student.first_name}} {{c.student.last_name}}
+                            </div>
+                                {% else %}
+                                <div onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.teacher.user.first_name}} {{c.teacher.user.last_name}}')">
+                                {{c.teacher.user.first_name}} {{c.teacher.user.last_name}}
+                            </div>
+                                {% endif %}
+                            {% endfor %}
+                                </div>
+                            <div id="chat-window" style="display: none">
                             <div class="row video-group draggable ui-widget-content" id="draggable_video" style="display: none; visibility: visible">
                                     <div class="col" style="padding-left: 0; padding-right: 0">
                                         <div id="remote-playerlist" style="height: 300px"></div>
@@ -271,26 +288,6 @@
 
                                 <div class="mt-3" id="chat-log-p" style="border-radius: 5px;max-height: 85%; overflow: hidden; position: absolute; bottom: 0; left: 0; width: 100%">
                                     <ul id="chat-log" style="overflow: auto;max-height: 100%; margin-bottom: 2px">
-                                        {% for cht in chat.get_messages %}
-                                            {% if request.user == cht.user %}
-                                                <li class="p-2 chat-message-pov" style="padding-top: 0 !important; padding-bottom: 0 !important; width:100%"></li>
-                                                <li class="p-2 chat-message-pov" style="padding-top: 0 !important; padding-bottom: 0 !important">
-                                                    <a class="chat-message-time">{{cht.timestamp|date:"H:i"}}</a>
-                                                    <p class="chat-text-message-pov" >{{cht.message}}</p>
-                                                </li>
-                                                <li class="p-2 chat-message-pov" style="padding-top: 16px !important; padding-bottom: 0 !important; width:100%"></li>
-
-                                        {%else%}
-                                                <li class="p-2 chat-message-pov" style="padding-top: 0 !important; padding-bottom: 0 !important; width:100%"></li>
-                                                <li  class="p-2 chat-message-pov-left" style="padding-top: 0 !important; padding-bottom: 0 !important">
-                                                    <p class="chat-text-message-pov" style="background: #E3E3E3; color: #333333" >{{cht.message}}</p>
-                                                    <a class="chat-message-time" style="margin-left: 10px">{{cht.timestamp|date:"H:i"}}</a>
-                                                </li>
-                                                <li class="p-2 chat-message-pov" style="padding-top: 16px !important; padding-bottom: 0 !important; width:100%"></li>
-
-
-                                        {% endif %}
-                                        {% endfor %}
                                     </ul>
                                         <div class="row g-0" style="background: white">
                                             <div style="max-width: 87%;padding:0;flex: 0 0 88%;" class="col-sm-6 col-md-8"><input id="chat-message-input" style="padding: 16px 40px;border: 0; font-family: Arial; font-style: normal; font-weight: normal; font-size: 16px; line-height: 18px; color: #BDBDBD;" autocomplete="off" type="text" class="form-control inpt" placeholder="Нажмите, чтобы написать сообщение"/></div>
@@ -301,6 +298,7 @@
                                             </div>
                                         </div>
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -377,13 +375,8 @@
       <script src={% static "js/shedule.js" %}></script>
         <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
         <script>
+            var user_id = {{request.user.id}}
             var email = '{{email}}';
-            {% if is_teacher %}
-            var is_teacher = true;
-            {% else %}
-            var is_teacher = false;
-            {% endif %}
-            var room_name = '{{video_chat}}';
             function category(id){
                 {% for c in video_categories %}
                 if (id == {{c.id}}){
@@ -493,9 +486,6 @@ $( "#drag-video" ).on('click', function(e){
         </script>
         <script src="{% static 'js/playerjs.js' %}"></script>
         <script src={% static "js/dashboard.js" %}></script>
-        <script>
-            var room = '{{ chat.name }}';
-        </script>
         <script src="{% static 'js/chat.js' %}"></script>
         <script src="https://download.agora.io/sdk/release/AgoraRTC_N-4.4.0.js"></script>
         <script src={% static "js/web.js" %}></script>
