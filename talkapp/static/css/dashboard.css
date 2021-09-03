@@ -1020,3 +1020,9 @@ input:checked + .invslider:before {
     top: 35%;
     border: 1px solid #666666;
 }
+
+.chat-list-student:hover {
+    background: #2F80ED0A;
+    color: #2F80ED;
+    cursor: pointer;
+}
