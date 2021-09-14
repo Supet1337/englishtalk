@@ -405,57 +405,6 @@ def dashboard_platform(request):
         context['interactives'] = intr_mas
         crs = UserCourse.objects.filter(student=request.user)
         context['courses'] = crs
-        lessons = UserLesson.objects.filter(user_course__in=crs)
-        if len(lessons) == 0:
-            context["lsn"] = 0
-        else:
-            student_additional = UserAdditional.objects.get(user=request.user)
-            context['phone_number'] = student_additional.phone_number
-            lessons.order_by('date')
-            flag = False
-            past_lessons = []
-            future_lessons = []
-            for l in lessons:
-                end = l.date
-                if student_additional.lesson_time:
-                    end += datetime.timedelta(minutes=60)
-                else:
-                    end += datetime.timedelta(minutes=45)
-                l.date_end = end
-                l.save()
-                if l.date <= datetime.datetime.now() <= end and not flag:
-                    context['cur_lsn'] = l
-                    context['now_lsn'] = True
-                    flag = True
-                elif end < datetime.datetime.now():
-                    if not l.is_completed:
-                        student_additional.paid_lessons -= 1
-                        student_additional.save()
-                        l.is_completed = True
-                        l.save()
-                    past_lessons.append(l)
-                elif not l.is_completed:
-                    if len(future_lessons) < student_additional.paid_lessons:
-                        if not flag:
-                            flag = True
-                            context['next_lsn'] = l.date
-                        future_lessons.append(l)
-            context['past_lsn'] = past_lessons
-            context['future_lsn'] = future_lessons
-            i = 0
-            if student_additional.lesson_time:
-                context['lsn_time'] = "60"
-            else:
-                context['lsn_time'] = "45"
-            context['course'] = lessons[i].user_course.course_type
-            context['teacher'] = "{} {}".format(lessons[i].user_course.teacher.user.first_name, lessons[i].user_course.teacher.user.last_name)
-            context["lsn"] = lessons
-            try:
-                context["ava"] = lessons[i].user_course.teacher.image.url
-            except:
-                context["ava"] = "Аватар"
-
-
     return render(request,'dashboard/dashboard-platform.html', context)
 
 
