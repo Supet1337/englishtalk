@@ -247,6 +247,63 @@ $(document).ready(function(){
     });
 
 
+
+$(document).ready(function(){
+    $('a[id^="openUserHmwork"]').click(function () {
+        i = $(this).attr("id");
+        var student = $(this).data('student')
+        const id = i.slice(14);
+        $.ajax({
+            url: "/ajax_load_course_homeworks/"+id,
+            success: function (result) {
+                var json = $.parseJSON(result);
+                $("#myTab").append(
+                                 '<li class="nav-item mb-1 mr-1" id="crsLabel'+id+'" role="presentation">'+
+                                 '<a class="nvlnk nvlnk-act" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+student+
+                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+'); style="padding-left: 5px;" aria-label="Close">'+
+                                 '<span aria-hidden="true">&times;</span>'+
+                                 '</button>'+
+                                 '</a>'+
+                                 '</li>');
+                json.forEach(function(item, i, json) {
+
+                    if(!$("#docLabel"+id).length){
+                        $("#home-tab").removeClass('nvlnk-act');
+                        $("#home").removeClass('show active');
+                        $("#myTabContent").append('<div class="lesson">'+
+                        '<a style="color: #333333" href="#" id="openHmk'+json[i].homework_id+'">'+
+                        '<div class="lesson-name">'+
+                            json[i].homework_name+
+                        '</div>'+
+                        '<div class="lesson-progress">'+
+                            '<div class="progress-num">'+
+                                '1/4'+
+                            '</div>'+
+                            '<div class="progress">'+
+                                '<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>'+
+                            '</div>'+
+                        '</div>'+
+                        '</a>'+
+                    '</div>');
+                    }
+
+                    else {
+                        $("#home-tab").removeClass('nvlnk-act');
+                        $("#home").removeClass('show active');
+                        $("#crsTab"+id).addClass('nvlnk-act');
+                        $("#crs"+id).addClass('show active');
+                    }
+                });
+        }});
+
+
+    });
+
+    });
+
+
+
+
 $(document).ready(function(){
     $('a[id^="openDoc"]').click(function () {
         i = $(this).attr("id");

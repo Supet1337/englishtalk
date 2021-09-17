@@ -937,3 +937,10 @@ def ajax_load_course_lessons(request, number):
     for l in UserLesson.objects.filter(user_course=c):
         lsn.append(l.json())
     return HttpResponse(json.dumps(lsn))
+
+def ajax_load_course_homeworks(request, number):
+    c = UserCourse.objects.get(id=number)
+    hmk = []
+    for h in Homework.objects.filter(student=c.student):
+        hmk.append(h.json())
+    return HttpResponse(json.dumps(hmk))

@@ -75,8 +75,84 @@
 
                     </ul>
 
+
                     <div class="tab-content" id="myTabContent">
                         <!-- <button class="btn btn-white fixbut" style="border-radius: 0px; float: left;margin-top: 12px;margin-left: 1rem" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> Подключить видеосвязь</button> -->
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="card-body" >
+                                {% if is_teacher %}
+                                {% if lsn == 0 %}
+                                <div class="empty-lesson">
+                                    <div>
+                                        <p class="empty-lesson-text">Нет уроков <img src='{% static "images/sad.png" %}'></p>
+                                    </div>
+                                </div>
+                                {% else %}
+                                {% for c in courses %}
+                                <div class="lesson-crs">
+                                    <a style="color: #333333" href="#" id="openUserHmwork{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}">
+                                        <div class="lesson-name">
+                                            {{c.course_type}}
+                                        </div>
+                                        <div class="lesson-progress">
+                                            {% if c.get_student_image == -1 %}
+                                            <img src='{% static "images/avatar.png" %}' style="width: 40px; height: 40px; border-radius: 40px">
+                                            {% else %}
+                                            <img src="{{c.get_student_image}}" style="width: 40px; height: 40px; border-radius: 40px">
+                                            {% endif %}
+                                            <div class="progress-num my-auto">
+                                                {{c.student.first_name}} {{c.student.last_name}}
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                {% else %}
+                                {% if lsn == 0 %}
+                                <div class="empty-lesson">
+                                    <div>
+                                        <p class="empty-lesson-text">Пока вы не записались на уроки <img src='{% static "images/sad.png" %}'></p>
+                                        <a href="#" class="empty-lesson-text-small" data-bs-toggle="modal" data-bs-target="#flModal"> изменить расписание » </a>
+                                    </div>
+                                </div>
+                                {% else %}
+                                {% for c in courses %}
+                                <div class="lesson-crs">
+                                    <a style="color: #333333" href="#" id="openUserHmwork{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.teacher.user.first_name}} {{c.teacher.user.last_name}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}">
+                                        <div class="lesson-name">
+                                            {{c.course_type}}
+                                        </div>
+                                        <div class="lesson-progress">
+                                            {% if c.get_student_image == -1 %}
+                                            <img src='{% static "images/avatar.png" %}' style="width: 40px; height: 40px; border-radius: 40px">
+                                            {% else %}
+                                            <img src="{{c.get_student_image}}" style="width: 40px; height: 40px; border-radius: 40px">
+                                            {% endif %}
+                                            <div class="progress-num my-auto">
+                                                {{c.teacher.user.first_name}} {{c.teacher.user.last_name}}
+                                            </div>
+                                        </div>
+                                    </a>
+
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                {% endif %}
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                    <!-- <div class="tab-content" id="myTabContent">
+
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="card-body" >
                                 {% if not homework1 %}
@@ -171,7 +247,7 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> -->
                 </div>
                 <div style="position: absolute; bottom: -1%;margin-left: auto;margin-right: auto;left: 0;right: 0;text-align: center;">
                     <button data-bs-toggle="modal" type="button" data-bs-target="#tapeModal" class="tape-btn" style="margin-right: 32px">+ Добавить слово</button>
