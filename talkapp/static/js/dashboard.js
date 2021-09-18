@@ -72,6 +72,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/ajax_load_course_lessons/"+id,
             success: function (result) {
+                $('#page-content-wrapper').css('margin-top','25px')
                 var json = $.parseJSON(result);
                 $("#myTab").append(
                                  '<li class="nav-item mb-1 mr-1" id="crsLabel'+id+'" role="presentation">'+
@@ -256,6 +257,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/ajax_load_course_homeworks/"+id,
             success: function (result) {
+                $('#page-content-wrapper').css('margin-top','25px')
                 var json = $.parseJSON(result);
                 $("#myTab").append(
                                  '<li class="nav-item mb-1 mr-1" id="crsLabel'+id+'" role="presentation">'+
@@ -271,7 +273,7 @@ $(document).ready(function(){
                         $("#home-tab").removeClass('nvlnk-act');
                         $("#home").removeClass('show active');
                         $("#myTabContent").append('<div class="lesson">'+
-                        '<a style="color: #333333" href="#" id="openHmk'+json[i].homework_id+'">'+
+                        '<a style="color: #333333" href="#" id="openHmk'+json[i].homework_id+'" onclick="openHmk('+json[i].homework_id+')">'+
                         '<div class="lesson-name">'+
                             json[i].homework_name+
                         '</div>'+

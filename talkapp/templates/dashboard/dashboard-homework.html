@@ -261,7 +261,7 @@
             </div>
 
 
-            <div class="card" style="max-width: 486px; max-height: 899px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; height: 90vh" id="chat">
+            <div class="card" style="max-width: 486px; max-height: 899px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; height: 84vh" id="chat">
                         <div class="card-header" id="chat-header" style="display: flex; background-color: transparent">
                             <button class="btn btn-secondary my-auto" type="button" id="closeChatWindowButton" onclick="closeChatWindow()" style="display: none;padding:0; border-radius: 50px; border: 0;background: #e0e0e0;width: 30px; height: 30px">
                                 <i class="fas fa-chevron-left" style="font-size: 24px;color: #white; padding: 4px 4px 0px 0px;" aria-hidden="true"></i>
@@ -272,17 +272,6 @@
                         </div>
                         <div class="card-body" style="background-color: #f8f8f8">
                             <div id="chat-list">
-                            {% for c in courses %}
-                                {% if is_teacher %}
-                            <div onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}')">
-                                {{c.student.first_name}} {{c.student.last_name}}
-                            </div>
-                                {% else %}
-                                <div onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.teacher.user.first_name}} {{c.teacher.user.last_name}}')">
-                                {{c.teacher.user.first_name}} {{c.teacher.user.last_name}}
-                            </div>
-                                {% endif %}
-                            {% endfor %}
                                 </div>
                             <div id="chat-window" style="display: none">
                             <div class="row video-group draggable ui-widget-content" id="draggable_video" style="display: none; visibility: visible">
@@ -302,17 +291,17 @@
                                 </form>
 
                                 <div class="mt-3" id="chat-log-p" style="border-radius: 5px;max-height: 85%; overflow: hidden; position: absolute; bottom: 0; left: 0; width: 100%">
-                                    <ul id="chat-log" style="overflow: auto;max-height: 100%; margin-bottom: 2px">
+                                    <ul id="chat-log" style="overflow: auto;max-height: 69vh; margin-bottom: 2px">
                                     </ul>
-                                        <div class="row g-0" style="background: white">
-                                            <div style="max-width: 87%;padding:0;flex: 0 0 88%;" class="col-sm-6 col-md-8"><input id="chat-message-input" style="padding: 16px 40px;border: 0; font-family: Arial; font-style: normal; font-weight: normal; font-size: 16px; line-height: 18px; color: #BDBDBD;" autocomplete="off" type="text" class="form-control inpt" placeholder="Нажмите, чтобы написать сообщение"/></div>
+                                </div>
+                                        <div class="row g-0" style="background: white;position: absolute;bottom: -7%;width: -webkit-fill-available;">
+                                            <div style="max-width: 85%;padding:0;flex: 0 0 88%;" class="col-sm-6 col-md-8"><input id="chat-message-input" style="padding: 16px 40px;border: 0; font-family: Arial; font-style: normal; font-weight: normal; font-size: 16px; line-height: 18px; color: #BDBDBD;" autocomplete="off" type="text" class="form-control inpt" placeholder="Нажмите, чтобы написать сообщение"/></div>
                                             <div class="col-6 col-md-4 pl-0 my-auto" style="max-width: 12%;background: white">
                                                 <button id="chat-message-submit" class="btn btn-secondary mx-auto my-auto" style="padding:0; border-radius: 50px; font-size: x-large; border: 0;background: #e0e0e0;width: 30px; height: 30px" type="submit">
                                                     <i class="fas fa-chevron-right" style="position: absolute; top:3px; left: 8px"></i>
                                                 </button>
                                             </div>
                                         </div>
-                                </div>
                             </div>
                             </div>
                         </div>
@@ -502,13 +491,12 @@
 
 
 
-     $(document).ready(function(){
-    $('a[id^="openHmk"]').click(function () {
-        i = $(this).attr("id");
-       const id = i.slice(7);
+
+function openHmk(id) {
         $.ajax({
             url: "/ajax_load_homework/"+id,
             success: function (result) {
+                $(".lesson").hide();
                 var json = $.parseJSON(result);
                 json.forEach(function(item, i, json) {
                     if(!$("#docLabel"+id).length){
@@ -580,8 +568,6 @@
                 });
         }});
 
-    });
-
     $("#myTabContent").on('click','div[id^="openVid"]', function () {
         $("#menu-toggle-right").hide();
         i = $(this).attr("id");
@@ -622,7 +608,7 @@
         }});
 
     });
-});
+};
 
 
 Dropzone.options.dzForm = {
@@ -638,7 +624,6 @@ $('#homeModal').on('show.bs.modal', function (event) {
     var id = div.data('homework');
     $('#homework-id').val(id);
 })
-
             $(document).ready(function () {
             var div = document.getElementById('right-sidebar-wrapper');
             var listener = function(e) {
@@ -728,7 +713,6 @@ $( "#drag-video" ).on('click', function(e){
 
 
 });
-
         </script>
 <script src="{% static 'js/playerjs.js' %}"></script>
 <script src={% static "js/dashboard.js" %}></script>
