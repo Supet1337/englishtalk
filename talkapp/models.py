@@ -383,6 +383,7 @@ class Homework(models.Model):
     def json(self):
         return {
             'homework_name': self.homework_name,
+            'homework_status': self.status,
             'homework_id': self.id
         }
 

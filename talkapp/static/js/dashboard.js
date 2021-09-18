@@ -9,6 +9,7 @@ $('#dzModal').on('show.bs.modal', function (event) {
 $("#home-tab").click(function () {
      $("#interactivehome").removeClass('interactive-list-show');
      $("#interactivehome").addClass('interactive-list-hide');
+     $(".lesson").hide();
 })
 
 function closeDoc(id){
@@ -28,7 +29,9 @@ function closeDoc(id){
 function closeCrs(id){
     if ($("#crsTab"+id).hasClass('nvlnk-act')){
         $("#home-tab").addClass('active');
-        $("#home").addClass('show active');
+        $("#home1").removeClass('show active');
+        $("#home2").removeClass('show active');
+        $("#home3").removeClass('show active');
         $("#interactivehome").removeClass('interactive-list-show');
         $("#interactivehome").addClass('interactive-list-hide');
     }
@@ -40,6 +43,10 @@ function closeCrs(id){
     $("#crs"+id).remove();
     $(".lesson").hide();
     $(".lesson-crs").show();
+    $(".teacher-name-p").empty();
+    $("#myTab").hide();
+    $("#myTabContent").show();
+    closeChatWindow();
 }
 
 function closeVid(id,lid){
@@ -77,7 +84,7 @@ $(document).ready(function(){
                 $("#myTab").append(
                                  '<li class="nav-item mb-1 mr-1" id="crsLabel'+id+'" role="presentation">'+
                                  '<a class="nvlnk nvlnk-act" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+student+
-                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+'); style="padding-left: 5px;" aria-label="Close">'+
+                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+');" style="padding-left: 5px;" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
@@ -258,11 +265,12 @@ $(document).ready(function(){
             url: "/ajax_load_course_homeworks/"+id,
             success: function (result) {
                 $('#page-content-wrapper').css('margin-top','25px')
+                $('#myTab').show()
                 var json = $.parseJSON(result);
                 $("#myTab").append(
                                  '<li class="nav-item mb-1 mr-1" id="crsLabel'+id+'" role="presentation">'+
-                                 '<a class="nvlnk nvlnk-act" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+student+
-                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+'); style="padding-left: 5px;" aria-label="Close">'+
+                                 '<a class="nvlnk nvlnk-act" style="margin-top: 4px;" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+student+
+                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+');" style="padding-left: 5px;" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
@@ -271,8 +279,8 @@ $(document).ready(function(){
 
                     if(!$("#docLabel"+id).length){
                         $("#home-tab").removeClass('nvlnk-act');
-                        $("#home").removeClass('show active');
-                        $("#myTabContent").append('<div class="lesson">'+
+                        $("#myTabContent").hide();
+                        $("#home"+json[i].homework_status).append('<div class="lesson">'+
                         '<a style="color: #333333" href="#" id="openHmk'+json[i].homework_id+'" onclick="openHmk('+json[i].homework_id+')">'+
                         '<div class="lesson-name">'+
                             json[i].homework_name+
@@ -291,7 +299,7 @@ $(document).ready(function(){
 
                     else {
                         $("#home-tab").removeClass('nvlnk-act');
-                        $("#home").removeClass('show active');
+                        $("#home"+json[i].homework_status).addClass('show active');
                         $("#crsTab"+id).addClass('nvlnk-act');
                         $("#crs"+id).addClass('show active');
                     }
@@ -626,7 +634,7 @@ function interactiveClck(){
      $("#home-tab").removeClass('nvlnk-act');
      $("#interactivehome").removeClass('interactive-list-hide');
      $("#interactivehome").addClass('interactive-list-show');
-
+     $(".lesson").hide();
      $("[id^=InteractiveTab]").removeClass('nvlnk-act');
      $(".it").removeClass('show active');
 

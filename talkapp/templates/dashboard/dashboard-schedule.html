@@ -122,7 +122,7 @@
                           end: '{{day.0.date|date:"Y-m-d"}}',
                           title: '{{d.user_course.course_type}}',
                           description: '{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}',
-                          customHtml: '<div class="fc-event-title">{{d.user_course.course_type}} </br> <a class="fs-text-calendar" >{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}</a></div>',
+                          customHtml: '<div class="fc-event-title">{{d.user_course.course_type}} </br> <a class="fs-text-calendar" >{{teacher}}</a> </br> <a class="fs-text-calendar" >{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}</a></div>',
                           displayEventEnd: true,
                         },
                         {% endfor %}

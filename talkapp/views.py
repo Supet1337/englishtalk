@@ -449,7 +449,7 @@ def dashboard_schedule(request):
         else:
             context['lsn_time'] = "45"
         context['course'] = lessons[i].user_course.course_type
-        context['teacher'] = lessons[i].user_course.teacher.user.first_name
+        context['teacher'] = lessons[i].user_course.teacher.user.first_name + ' ' + lessons[i].user_course.teacher.user.last_name
         context["lsn"] = lessons
         try:
             context["ava"] = lessons[i].user_course.teacher.image.url

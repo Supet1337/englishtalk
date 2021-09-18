@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
-
+                    <!--
                     <div style="display: flex; margin-bottom: 18px">
                         <div id="submit-answer-button"></div>
                         <div style="margin-left: auto">
@@ -60,11 +60,11 @@
                             <span class="slider round"></span>
                         </label>
                             </div>
-                    </div>
+                    </div> -->
 
-                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-bottom: 0;">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-bottom: 0; display: none">
                         <li class="nav-item" role="presentation">
-                            <a class="nvlnk active" id="tab1" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 70px">Задано</a>
+                            <a class="nvlnk active" id="tab1" data-bs-toggle="tab" href="#home1" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 70px">Задано</a>
                         </li>
                         <li class="nav-item" role="presentation">
                             <a class="nvlnk" id="tab2" data-bs-toggle="tab" href="#home2" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 70px">Проверка</a>
@@ -77,9 +77,7 @@
 
 
                     <div class="tab-content" id="myTabContent">
-                        <!-- <button class="btn btn-white fixbut" style="border-radius: 0px; float: left;margin-top: 12px;margin-left: 1rem" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> Подключить видеосвязь</button> -->
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <div class="card-body" >
+                        <div class="card-body" >
                                 {% if is_teacher %}
                                 {% if lsn == 0 %}
                                 <div class="empty-lesson">
@@ -143,9 +141,19 @@
 
 
                             </div>
-                        </div>
+                        <!-- <button class="btn btn-white fixbut" style="border-radius: 0px; float: left;margin-top: 12px;margin-left: 1rem" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> Подключить видеосвязь</button> -->
+
 
                     </div>
+                    <div class="tab-pane fade show active" id="home1" role="tabpanel" aria-labelledby="home-tab">
+
+                        </div>
+                        <div class="tab-pane fade show active" id="home2" role="tabpanel" aria-labelledby="home-tab">
+
+                        </div>
+                        <div class="tab-pane fade show active" id="home3" role="tabpanel" aria-labelledby="home-tab">
+
+                        </div>
 
 
 
@@ -261,7 +269,7 @@
             </div>
 
 
-            <div class="card" style="max-width: 486px; max-height: 899px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; height: 84vh" id="chat">
+            <div class="card" style="max-width: 415px; max-height: 899px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; height: 84vh" id="chat">
                         <div class="card-header" id="chat-header" style="display: flex; background-color: transparent">
                             <button class="btn btn-secondary my-auto" type="button" id="closeChatWindowButton" onclick="closeChatWindow()" style="display: none;padding:0; border-radius: 50px; border: 0;background: #e0e0e0;width: 30px; height: 30px">
                                 <i class="fas fa-chevron-left" style="font-size: 24px;color: #white; padding: 4px 4px 0px 0px;" aria-hidden="true"></i>
@@ -501,9 +509,9 @@ function openHmk(id) {
                 json.forEach(function(item, i, json) {
                     if(!$("#docLabel"+id).length){
                         $("#home-tab").removeClass('nvlnk-act');
-                        $("#home").removeClass('show active');
+                        $("#myTabContent").removeClass('show active');
                         $("#submit-answer-button").html('<button data-bs-toggle="modal" type="button" data-bs-target="#homeModal" data-homework="'+id+'" class="tape-btn">Отправить решение</button>');
-                        $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
+                        $("#home"+json[i].homework_status).append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
                                     '<div>'+
                                        ' <div style="font-size: 18px;line-height: 21px; margin-bottom: 14px" class="blogs-header-text">'+
                                            ' '+json[i].homework_name+' '+
