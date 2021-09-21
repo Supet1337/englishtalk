@@ -10,6 +10,7 @@ $("#home-tab").click(function () {
      $("#interactivehome").removeClass('interactive-list-show');
      $("#interactivehome").addClass('interactive-list-hide');
      $(".lesson").hide();
+     $('.lesson-crs').show();
 })
 
 function closeDoc(id){
@@ -44,7 +45,8 @@ function closeCrs(id){
     $(".lesson").hide();
     $(".lesson-crs").show();
     $(".teacher-name-p").empty();
-    $("#myTab").hide();
+    //$("#myTab").hide();
+    $("#home").addClass('active show');
     $("#myTabContent").show();
     closeChatWindow();
 }
@@ -588,6 +590,7 @@ function docClick(id){
         $('.vidosikTab').removeClass('nvlnk-act');
         $("#doc"+id).addClass('show active');
         $('.vidClose').hide();
+        $('.lesson').hide();
     }
 }
 
@@ -597,6 +600,16 @@ function crsClick(id){
         $('#crsClose'+id).show();
         $("#crs"+id).addClass('show active');
     }
+
+    if ($('a[id^="docTab"]').hasClass('nvlnk-act')){
+        $('.lesson').show();
+        $('a[id^="docTab"]').removeClass('nvlnk-act');
+        $('div[id^="doc"]').removeClass('active show');
+    }
+
+
+    $('.lesson').show();
+    $('#home').removeClass('active show');
 }
 
 function crsnm(student){

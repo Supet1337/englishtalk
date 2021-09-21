@@ -391,6 +391,11 @@ def dashboard_platform(request):
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
+    interactives = InteractiveListStudents.objects.filter(student=request.user, unlocked=True)
+    intr_mas = []
+    for intr in interactives:
+        intr_mas.append(intr.interactive)
+    context['interactives'] = intr_mas
     #---------------------------------------------
     if is_teacher:
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
@@ -398,11 +403,6 @@ def dashboard_platform(request):
 
         # ---------------------------------------------
     else:
-        interactives = InteractiveListStudents.objects.filter(student=request.user, unlocked=True)
-        intr_mas = []
-        for intr in interactives:
-            intr_mas.append(intr.interactive)
-        context['interactives'] = intr_mas
         crs = UserCourse.objects.filter(student=request.user)
         context['courses'] = crs
     return render(request,'dashboard/dashboard-platform.html', context)
@@ -516,17 +516,17 @@ def dashboard_tape(request):
         is_teacher = True
     context["is_teacher"] = is_teacher
     context['words'] = Tape.objects.filter(user=request.user)
+    interactives = InteractiveListStudents.objects.filter(student=request.user, unlocked=True)
+    intr_mas = []
+    for intr in interactives:
+        intr_mas.append(intr.interactive)
+    context['interactives'] = intr_mas
     if is_teacher:
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
         context['courses'] = crs
 
         # ---------------------------------------------
     else:
-        interactives = InteractiveListStudents.objects.filter(student=request.user, unlocked=True)
-        intr_mas = []
-        for intr in interactives:
-            intr_mas.append(intr.interactive)
-        context['interactives'] = intr_mas
         crs = UserCourse.objects.filter(student=request.user)
         context['courses'] = crs
         lessons = UserLesson.objects.filter(user_course__in=crs)
