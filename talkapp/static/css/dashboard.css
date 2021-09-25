@@ -1026,3 +1026,8 @@ input:checked + .invslider:before {
     color: #2F80ED;
     cursor: pointer;
 }
+
+.disable-crs{
+    pointer-events: none;
+    opacity: 0.4;
+}

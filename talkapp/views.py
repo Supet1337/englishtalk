@@ -391,11 +391,11 @@ def dashboard_platform(request):
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
-    interactives = InteractiveListStudents.objects.filter(student=request.user, unlocked=True)
-    intr_mas = []
-    for intr in interactives:
-        intr_mas.append(intr.interactive)
-    context['interactives'] = intr_mas
+    # interactives = InteractiveListStudents.objects.filter(student=request.user, unlocked=True)
+    # intr_mas = []
+    # for intr in interactives:
+    #     intr_mas.append(intr.interactive)
+    # context['interactives'] = intr_mas
     #---------------------------------------------
     if is_teacher:
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
@@ -516,11 +516,11 @@ def dashboard_tape(request):
         is_teacher = True
     context["is_teacher"] = is_teacher
     context['words'] = Tape.objects.filter(user=request.user)
-    interactives = InteractiveListStudents.objects.filter(student=request.user, unlocked=True)
-    intr_mas = []
-    for intr in interactives:
-        intr_mas.append(intr.interactive)
-    context['interactives'] = intr_mas
+    # interactives = InteractiveListStudents.objects.filter(student=request.user, unlocked=True)
+    # intr_mas = []
+    # for intr in interactives:
+    #     intr_mas.append(intr.interactive)
+    # context['interactives'] = intr_mas
     if is_teacher:
         crs = UserCourse.objects.filter(teacher=Teacher.objects.get(user=request.user))
         context['courses'] = crs
@@ -793,6 +793,34 @@ def ajax_delete_word(request, number):
         word.delete()
     return HttpResponse('deleted')
 
+
+def ajax_load_course_lessons(request, number):
+    c = UserCourse.objects.get(id=number)
+    lsn = []
+    for l in UserLesson.objects.filter(user_course=c):
+        lsn.append(l.json())
+    return HttpResponse(json.dumps(lsn))
+
+def ajax_load_course_homeworks(request, number):
+    c = UserCourse.objects.get(id=number)
+    hmk = []
+    for h in Homework.objects.filter(student=c.student):
+        hmk.append(h.json())
+    return HttpResponse(json.dumps(hmk))
+
+def ajax_load_interactive_list(request, number):
+    c = UserCourse.objects.get(id=number)
+    intrlist = []
+    intrlistfull = []
+    for inter in InteractiveListStudents.objects.filter(course=c):
+        intrlist.append(inter)
+
+    for inter in intrlist:
+        intrlistfull.append(inter.json())
+
+    return HttpResponse(json.dumps(intrlistfull))
+
+
 @login_required
 def price(request):
     context = {}
@@ -931,16 +959,3 @@ def delete_profile_picture(request):
         messages.success(request, "Аватарка успешно удалена.")
         return HttpResponseRedirect("../../dashboard/account")
 
-def ajax_load_course_lessons(request, number):
-    c = UserCourse.objects.get(id=number)
-    lsn = []
-    for l in UserLesson.objects.filter(user_course=c):
-        lsn.append(l.json())
-    return HttpResponse(json.dumps(lsn))
-
-def ajax_load_course_homeworks(request, number):
-    c = UserCourse.objects.get(id=number)
-    hmk = []
-    for h in Homework.objects.filter(student=c.student):
-        hmk.append(h.json())
-    return HttpResponse(json.dumps(hmk))

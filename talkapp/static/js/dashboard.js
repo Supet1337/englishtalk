@@ -11,6 +11,8 @@ $("#home-tab").click(function () {
      $("#interactivehome").addClass('interactive-list-hide');
      $(".lesson").hide();
      $('.lesson-crs').show();
+     $('a[id^="crsTab"]').removeClass('nvlnk-act');
+
 })
 
 function closeDoc(id){
@@ -42,10 +44,16 @@ function closeCrs(id){
     $("#buttonCollapseVideo"+id).remove();
     $("#crsLabel"+id).remove();
     $("#crs"+id).remove();
-    $(".lesson").hide();
+    $(".lesson").detach();
     $(".lesson-crs").show();
     $(".teacher-name-p").empty();
-    //$("#myTab").hide();
+    $("#myTab").hide();
+    $(".lesson-crs").removeClass('disable-crs');
+    $('button[id^="docClose"]').click();
+    $('div[id^="doc"]').remove();
+    $('ul[id^="docTab"]').remove();
+    $("#closeContentWindowButton").detach();
+    $("#course-name").empty();
     $("#home").addClass('active show');
     $("#myTabContent").show();
     closeChatWindow();
@@ -69,7 +77,7 @@ function closeInteractive(id){
         $("#interactivehome").removeClass('interactive-list-hide');
         $("#interactivehome").addClass('interactive-list-show');
         $("#home-tab-interactive").addClass('active');
-        $(".lesson").show();
+
 }
 
 
@@ -77,7 +85,38 @@ $(document).ready(function(){
     $('a[id^="openUserCourse"]').click(function () {
         i = $(this).attr("id");
         var student = $(this).data('student')
+        $("#myTab").show();
+        $(".lesson-crs").addClass('disable-crs');
+        $("#home-tab").removeClass('active');
         const id = i.slice(14);
+        $("#clsbtn").prepend(
+        '<button class="btn btn-secondary my-auto" type="button" id="closeContentWindowButton" onclick="closeCrs('+id+'); event.stopPropagation()" style="padding:0; border-radius: 50px; border: 0;background: #e0e0e0;width: 30px; height: 30px; margin-right: 10px;">'+
+          '<i class="fas fa-chevron-left" style="font-size: 24px;color: #white; padding: 4px 4px 0px 0px;" aria-hidden="true"></i>'+
+        '</button>'
+        );
+        $.ajax({
+            url: "/ajax_load_interactive_list/"+id,
+            success: function (result) {
+                var jsonIntr = $.parseJSON(result);
+                jsonIntr.forEach(function(item, i, jsonIntr) {
+                    $("#interactivehome").append(
+                        '<div class="card-deck py-4" style="display: flex;">'+
+                            '<a id="openInter'+jsonIntr[i].interactive_id+'" style="width: 33.3333333%">'+
+                                '<div class="card" style="margin-right: 17px; margin-left: 17px; margin-bottom: 14px;">'+
+                                    '<img class="card-img-top mx-auto" style="border-radius: 1rem;max-height: 280px;text-align: center; width: 100%; height: 280px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url('+jsonIntr[i].interactive_pic+')">'+
+                                    '<div class="card-body blog-card">'+
+                                        '<h6 class="card-title" style="color: #333; font-weight: bold; text-align: center; margin-top: 10px">'+jsonIntr[i].interactive_name+'</h6>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</a>'+
+                        '</div>'
+                    );
+                });
+
+        }});
+
+
+
         $.ajax({
             url: "/ajax_load_course_lessons/"+id,
             success: function (result) {
@@ -86,7 +125,7 @@ $(document).ready(function(){
                 $("#myTab").append(
                                  '<li class="nav-item mb-1 mr-1" id="crsLabel'+id+'" role="presentation">'+
                                  '<a class="nvlnk nvlnk-act" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+student+
-                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+');" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+'); event.stopPropagation()" style="padding-left: 5px;" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
@@ -134,7 +173,7 @@ $(document).ready(function(){
 
                                  '<li  class="nav-item mb-1 mr-1" id="docLabel'+idDoc+'" role="presentation">'+
                                  '<a class="nvlnk nvlnk-act" id="docTab'+idDoc+'" onclick="docClick('+idDoc+')" data-bs-toggle="tab" href="#doc'+idDoc+'" role="tab" aria-controls="doc'+idDoc+'" aria-selected="false">'+jsonDoc[i].name+
-                                 '<button type="button" class="close" id="docClose'+idDoc+'" onclick="closeDoc('+idDoc+')" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<button type="button" class="close" id="docClose'+idDoc+'" onclick="closeDoc('+idDoc+'); event.stopPropagation()" style="padding-left: 5px;" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
@@ -592,6 +631,8 @@ function docClick(id){
         $('.vidClose').hide();
         $('.lesson').hide();
     }
+    $('#interactivehome').removeClass('interactive-list-show');
+    $('#interactivehome').addClass('interactive-list-hide');
 }
 
 function crsClick(id){
@@ -607,7 +648,8 @@ function crsClick(id){
         $('div[id^="doc"]').removeClass('active show');
     }
 
-
+    $('#interactivehome').removeClass('interactive-list-show');
+    $('#interactivehome').addClass('interactive-list-hide');
     $('.lesson').show();
     $('#home').removeClass('active show');
 }
@@ -618,6 +660,10 @@ function crsnm(student){
 
 function crsnmclose(){
     $('.teacher-name-p').html('');
+}
+
+function courseheader(course){
+    $('#course-name').append(course);
 }
 
 function InteractiveClick(id){
@@ -636,6 +682,7 @@ function InteractiveClick(id){
 
     $("#interactivehome").removeClass('interactive-list-show');
     $("#interactivehome").addClass('interactive-list-hide');
+
 
 
 }

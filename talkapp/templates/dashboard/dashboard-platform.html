@@ -48,25 +48,15 @@
     </div>
 
     <!-- Page Content -->
-    <div  id="page-content-wrapper">
+    <div  id="page-content-wrapper" style="padding-bottom: 42px;">
         <div class="card-group">
           <div class="card" style="border: none; color: #333333">
                   <div class="card-header" style="background: transparent; border: none">
-                      <div class="blogs-header">
+                      <div id="clsbtn" class="blogs-header">
                           <div id="course-name" class="blogs-header-text">
-                              {{course}}
+
                           </div>
                     </div>
-                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-bottom: 0;">
-                        <li class="nav-item" role="presentation">
-                            <a class="nvlnk nvlnk-act" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Курс</a>
-                        </li>
-
-                        <li class="nav-item" role="presentation">
-                            <a class="nvlnk" id="home-tab-interactive" onclick="interactiveClck()" data-bs-toggle="tab" href="#interactive" role="tab" aria-controls="home" aria-selected="true">Интерактив</a>
-                        </li>
-
-                    </ul>
               <div style="margin-bottom: 12px; margin-top: 16px">
                   <button data-bs-toggle="modal" type="button" data-bs-target="#tapeModal" class="tape-btn" style="margin-right: 32px">+ Добавить слово</button>
                   Режим учебника
@@ -84,6 +74,17 @@
                   </a>
               </div>
 
+              <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-bottom: 0; display: none">
+                  <li class="nav-item" role="presentation">
+                      <a class="nvlnk nvlnk-act" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Курс</a>
+                  </li>
+
+                  <li class="nav-item" role="presentation">
+                      <a class="nvlnk" id="home-tab-interactive" onclick="interactiveClck()" data-bs-toggle="tab" href="#interactive" role="tab" aria-controls="home" aria-selected="true">Интерактив</a>
+                  </li>
+
+              </ul>
+
 <div class="tab-content" id="myTabContent">
       <!-- <button class="btn btn-white fixbut" style="border-radius: 0px; float: left;margin-top: 12px;margin-left: 1rem" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> Подключить видеосвязь</button> -->
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -98,7 +99,7 @@
             {% else %}
             {% for c in courses %}
             <div class="lesson-crs">
-                <a style="color: #333333" href="#" id="openUserCourse{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}">
+                <a style="color: #333333" href="#" id="openUserCourse{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}'); courseheader('{{c.course_type}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}" >
                     <div class="lesson-name">
                         {{c.course_type}}
                     </div>
@@ -128,7 +129,7 @@
                 {% else %}
                 {% for c in courses %}
             <div class="lesson-crs">
-                <a style="color: #333333" href="#" id="openUserCourse{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.teacher.user.first_name}} {{c.teacher.user.last_name}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}">
+                <a style="color: #333333" href="#" id="openUserCourse{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.teacher.user.first_name}} {{c.teacher.user.last_name}}'); courseheader('{{c.course_type}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}">
                     <div class="lesson-name">
                         {{c.course_type}}
                     </div>
@@ -148,27 +149,7 @@
             {% endfor %}
             {% endif %}
           {% endif %}
-           <!--
-           {% if future_lsn %}
-          <div class="card mt-3" style="width: 100%;">
-                    <div class="card-header" style="text-align: center">
-                        Предстоящие занятия
-                    </div>
-          <div class="card-body">
-                {% for lsnf in future_lsn %}
-                  <div class="card" style="width: 100%;">
-                    <div class="card-header">
-                        {{lsnf.date}}
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item "><a href="#" id="openDoc{{lsnf.id}}">{{lsnf.lesson.name}}</a></li>
-                    </ul>
-                </div>
-                {% endfor %}
-              </div>
-              </div>
-                {% endif %}
-           -->
+
 
               </div>
   </div>

@@ -40,6 +40,7 @@ class InLineInteractive(admin.StackedInline):
     extra = 1
 
 class InLineInteractiveListStudents(admin.StackedInline):
+    raw_id_fields = ('course',)
     model = InteractiveListStudents
     extra = 1
 

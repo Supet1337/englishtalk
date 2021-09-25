@@ -225,7 +225,16 @@ class Interactive(models.Model):
 class InteractiveListStudents(models.Model):
     student = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='Ученик')
     interactive = models.ForeignKey(to=InteractiveList, on_delete=models.CASCADE, verbose_name='Интерактив')
+    course = models.ForeignKey(to=UserCourse, on_delete=models.CASCADE, verbose_name='Курс')
     unlocked = models.BooleanField(default=False, verbose_name="Разблокировано")
+
+    def json(self):
+        return {
+            'course_id': self.course.id,
+            'interactive_name': self.interactive.name,
+            'interactive_id': self.id,
+            'interactive_pic': self.interactive.title_picture.url
+        }
 
 class UserAdditional(models.Model):
     class Meta:
