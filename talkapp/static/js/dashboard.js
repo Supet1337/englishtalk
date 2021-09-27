@@ -57,6 +57,7 @@ function closeCrs(id){
     $("#home").addClass('active show');
     $("#myTabContent").show();
     closeChatWindow();
+    $('div[id^="openInter"]').detach();
 }
 
 function closeVid(id,lid){
@@ -99,17 +100,15 @@ $(document).ready(function(){
             success: function (result) {
                 var jsonIntr = $.parseJSON(result);
                 jsonIntr.forEach(function(item, i, jsonIntr) {
-                    $("#interactivehome").append(
-                        '<div class="card-deck py-4" style="display: flex;">'+
-                            '<a id="openInter'+jsonIntr[i].interactive_id+'" style="width: 33.3333333%">'+
+                    $("#interactivehome #interdeck").append(
+                            '<a id="openInter'+jsonIntr[i].interactive_id+'" onclick="openInter('+jsonIntr[i].interactive_id+')" style="width: 33.3333333%">'+
                                 '<div class="card" style="margin-right: 17px; margin-left: 17px; margin-bottom: 14px;">'+
                                     '<img class="card-img-top mx-auto" style="border-radius: 1rem;max-height: 280px;text-align: center; width: 100%; height: 280px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url('+jsonIntr[i].interactive_pic+')">'+
                                     '<div class="card-body blog-card">'+
                                         '<h6 class="card-title" style="color: #333; font-weight: bold; text-align: center; margin-top: 10px">'+jsonIntr[i].interactive_name+'</h6>'+
                                     '</div>'+
                                 '</div>'+
-                            '</a>'+
-                        '</div>'
+                            '</a>'
                     );
                 });
 
@@ -496,13 +495,11 @@ $(document).ready(function(){
 
 
 
-$(document).ready(function(){
-    $('a[id^="openInter"]').click(function () {
+function openInter (ident){
        $("#interactivehome").removeClass('interactive-list-show');
        $("#interactivehome").addClass('interactive-list-hide');
        $("#home-tab-interactive").removeClass('active');
-       i = $(this).attr("id");
-       const id = i.slice(9);
+       const id = ident;
        if($("#InteractiveLabel"+id).length){
             $('#interactiveCard'+id).addClass('show');
             $('#InteractiveTab'+id).addClass('nvlnk-act');
@@ -567,8 +564,8 @@ $(document).ready(function(){
         }});
         }
 
-    });
-});
+
+};
 
 
 

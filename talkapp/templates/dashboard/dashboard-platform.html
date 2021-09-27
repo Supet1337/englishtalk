@@ -98,7 +98,7 @@
           </div>
             {% else %}
             {% for c in courses %}
-            <div class="lesson-crs">
+            <div class="lesson-crs mb-3">
                 <a style="color: #333333" href="#" id="openUserCourse{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}'); courseheader('{{c.course_type}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}" >
                     <div class="lesson-name">
                         {{c.course_type}}
@@ -128,7 +128,7 @@
           </div>
                 {% else %}
                 {% for c in courses %}
-            <div class="lesson-crs">
+            <div class="lesson-crs mb-3">
                 <a style="color: #333333" href="#" id="openUserCourse{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.teacher.user.first_name}} {{c.teacher.user.last_name}}'); courseheader('{{c.course_type}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}">
                     <div class="lesson-name">
                         {{c.course_type}}
@@ -157,17 +157,8 @@
 
 
     <div class="intro interactive-list-hide " id="interactivehome">
-        <div class="card-deck py-4" style="display: flex;">
-            {% for interactive in interactives %}
-            <a id="openInter{{interactive.id}}" style="width: 33.3333333%">
-                <div class="card" style="margin-right: 17px; margin-left: 17px; margin-bottom: 14px;">
-                    <img class="card-img-top mx-auto" style="border-radius: 1rem;max-height: 280px;text-align: center; width: 100%; height: 280px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url({{interactive.title_picture.url}})">
-                    <div class="card-body blog-card">
-                        <h6 class="card-title" style="color: #333; font-weight: bold; text-align: center; margin-top: 10px">{{interactive.name}}</h6>
-                    </div>
-                </div>
-            </a>
-            {% endfor %}
+        <div id="interdeck" class="card-deck py-4" style="display: flex;">
+
         </div>
     </div>
 

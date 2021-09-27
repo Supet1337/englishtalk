@@ -232,7 +232,7 @@ class InteractiveListStudents(models.Model):
         return {
             'course_id': self.course.id,
             'interactive_name': self.interactive.name,
-            'interactive_id': self.id,
+            'interactive_id': self.interactive.id,
             'interactive_pic': self.interactive.title_picture.url
         }
 
