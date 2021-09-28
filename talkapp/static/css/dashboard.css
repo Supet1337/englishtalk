@@ -432,10 +432,29 @@
     margin-bottom: auto;
 }
 
-.lesson-name::after {
-    font-size: 18px;
+.lesson,
+.lesson-crs{
+    position: relative;
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    margin: 5px 0 5px 0;
+}
+
+
+.lesson::after,
+.lesson-crs::after {
     float: right;
-    content: ">";
+    background: white;
+    border-bottom: 42px solid transparent;
+    border-top: 42px solid transparent;
+    border-left: 60px solid rgba(0, 0, 0, 0.02);
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
 }
 
 .teacher-name-p {
@@ -504,13 +523,14 @@
     font-size: 14px;
     line-height: 16px;
     margin-bottom: 20px;
+    margin-left: 5px;
 }
 
 .nvlnk{
     background: white;
     border-radius: 6px;
     border-color: transparent;
-    padding: 8px 80px;
+    padding: 8px 30px;
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
@@ -520,6 +540,7 @@
     align-items: center;
     text-align: center;
     color: #333333 !important;
+    margin: 0 2px 0 2px;
 }
 
 .nvlnk-act{

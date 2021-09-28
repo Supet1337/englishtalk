@@ -35,9 +35,8 @@ function closeCrs(id){
         $("#home1").removeClass('show active');
         $("#home2").removeClass('show active');
         $("#home3").removeClass('show active');
-        $("#interactivehome").removeClass('interactive-list-show');
-        $("#interactivehome").addClass('interactive-list-hide');
     }
+    $('button[id^="interactiveClose"]').click();
     $("#bread-item"+id).remove();
     $(".breadcrumb-item").last().addClass('active');
     $("#buttonCollapseAudio"+id).remove();
@@ -48,6 +47,7 @@ function closeCrs(id){
     $(".lesson-crs").show();
     $(".teacher-name-p").empty();
     $("#myTab").hide();
+    $("#myTabAdd").hide();
     $(".lesson-crs").removeClass('disable-crs');
     $('button[id^="docClose"]').click();
     $('div[id^="doc"]').remove();
@@ -57,7 +57,13 @@ function closeCrs(id){
     $("#home").addClass('active show');
     $("#myTabContent").show();
     closeChatWindow();
-    $('div[id^="openInter"]').detach();
+    $("#interactivehome").removeClass('interactive-list-show');
+    $("#interactivehome").addClass('interactive-list-hide');
+    $("a[id^=InteractiveTab]").removeClass('nvlnk-act');
+
+    //$("a[id^=InteractiveTab]").remove();
+    //$('div[id^="interactive"]').remove();
+
 }
 
 function closeVid(id,lid){
@@ -79,16 +85,22 @@ function closeInteractive(id){
         $("#interactivehome").addClass('interactive-list-show');
         $("#home-tab-interactive").addClass('active');
 
+
 }
 
 
 $(document).ready(function(){
     $('a[id^="openUserCourse"]').click(function () {
         i = $(this).attr("id");
-        var student = $(this).data('student')
+        var coursename = $(this).data('coursename')
         $("#myTab").show();
+        $("#myTabAdd").show();
         $(".lesson-crs").addClass('disable-crs');
         $("#home-tab").removeClass('active');
+        $('a[id^="openInter"]').detach();
+        $('#interdeck').empty();
+        $("#home-tab-interactive").removeClass('active');
+
         const id = i.slice(14);
         $("#clsbtn").prepend(
         '<button class="btn btn-secondary my-auto" type="button" id="closeContentWindowButton" onclick="closeCrs('+id+'); event.stopPropagation()" style="padding:0; border-radius: 50px; border: 0;background: #e0e0e0;width: 30px; height: 30px; margin-right: 10px;">'+
@@ -119,12 +131,12 @@ $(document).ready(function(){
         $.ajax({
             url: "/ajax_load_course_lessons/"+id,
             success: function (result) {
-                $('#page-content-wrapper').css('margin-top','25px')
+                $('#page-content-wrapper').css('margin-top','5px')
                 var json = $.parseJSON(result);
                 $("#myTab").append(
                                  '<li class="nav-item mb-1 mr-1" id="crsLabel'+id+'" role="presentation">'+
-                                 '<a class="nvlnk nvlnk-act" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+student+
-                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+'); event.stopPropagation()" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<a class="nvlnk nvlnk-act" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+coursename+
+                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+'); event.stopPropagation()" style="padding-left: 5px; line-height:0" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
@@ -152,6 +164,7 @@ $(document).ready(function(){
 
        $('#openDoc'+json[i].id).click(function () {
        const idDoc = json[i].id
+       $('a[id^="crsTab"]').removeClass('nvlnk-act');
         $.ajax({
             url: "/ajax_load_lessons/"+idDoc,
             success: function (result) {
@@ -161,7 +174,7 @@ $(document).ready(function(){
                     if(!$("#docLabel"+idDoc).length){
                         $("#home-tab").removeClass('nvlnk-act');
                         $("#home").removeClass('show active');
-                        $("#myTab").append(
+                        $("#myTabAdd").append(
                                     '<li class="nav-item mb-1" role="presentation">'+
                                          '<a class="nvlnk " id="buttonCollapseAudio'+idDoc+'" data-toggle="collapse" href="#" onclick="showAudios('+idDoc+')" role="button" aria-expanded="false" aria-controls="collapseAudio'+idDoc+'">'+'Аудио'+
                                     '</li>'+
@@ -172,7 +185,7 @@ $(document).ready(function(){
 
                                  '<li  class="nav-item mb-1 mr-1" id="docLabel'+idDoc+'" role="presentation">'+
                                  '<a class="nvlnk nvlnk-act" id="docTab'+idDoc+'" onclick="docClick('+idDoc+')" data-bs-toggle="tab" href="#doc'+idDoc+'" role="tab" aria-controls="doc'+idDoc+'" aria-selected="false">'+jsonDoc[i].name+
-                                 '<button type="button" class="close" id="docClose'+idDoc+'" onclick="closeDoc('+idDoc+'); event.stopPropagation()" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<button type="button" class="close" id="docClose'+idDoc+'" onclick="closeDoc('+idDoc+'); event.stopPropagation()" style="padding-left: 5px; line-height:0" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
@@ -214,7 +227,7 @@ $(document).ready(function(){
                                               '</div>'+
                                               '<div style="margin-left: 12px; margin-top: 40px">'+
                                                   '<a style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 16px;line-height: 18px;color: #333333; margin-bottom: 0" class="video-name" href="#">'+jsonDoc[i].video_name+'</a>'+
-                                                  '<p style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 12px;line-height: 14px;color: #828282;">14:03 мин</p>'+
+                                                  //'<p style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 12px;line-height: 14px;color: #828282;">14:03 мин</p>'+
                                                   '<i class="fas fa-chevron-right" style="position: absolute; right: 5%; top: 56%"></i>'+
                                               '</div>'+
                                           '</div>'+
@@ -250,9 +263,9 @@ $(document).ready(function(){
                     if(!$("#vidLabel"+id).length){
                         $("#buttonCollapseVideo"+lid).removeClass('nvlnk-act');
                         $("#doc"+lid).removeClass('show active');
-                        $("#myTab").append('<li class="nav-item" id="vidLabel'+id+'" role="presentation">'+
+                        $("#myTabAdd").append('<li class="nav-item" id="vidLabel'+id+'" role="presentation">'+
                                  '<a class="nvlnk nvlnk-act vidosikTab" id="vidTab'+id+'" onclick="videoOpen('+id+','+lid+')" data-toggle="tab" href="#vid'+id+'" role="tab" aria-controls="vid'+id+'" aria-selected="false">'+json[i].video_name+
-                                 '<button type="button" class="close vidClose" onclick="event.stopPropagation();closeVid('+id+','+lid+');" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<button type="button" class="close vidClose" onclick="event.stopPropagation();closeVid('+id+','+lid+');" style="padding-left: 5px; line-height:0" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
@@ -299,18 +312,18 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('a[id^="openUserHmwork"]').click(function () {
         i = $(this).attr("id");
-        var student = $(this).data('student')
+        var coursename = $(this).data('coursename')
         const id = i.slice(14);
         $.ajax({
             url: "/ajax_load_course_homeworks/"+id,
             success: function (result) {
-                $('#page-content-wrapper').css('margin-top','25px')
+                $('#page-content-wrapper').css('margin-top','5px')
                 $('#myTab').show()
                 var json = $.parseJSON(result);
                 $("#myTab").append(
                                  '<li class="nav-item mb-1 mr-1" id="crsLabel'+id+'" role="presentation">'+
-                                 '<a class="nvlnk nvlnk-act" style="margin-top: 4px;" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+student+
-                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+');" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<a class="nvlnk nvlnk-act" style="margin-top: 4px;" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+coursename+
+                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+');" style="padding-left: 5px; line-height:0" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
@@ -358,6 +371,7 @@ $(document).ready(function(){
     $('a[id^="openDoc"]').click(function () {
         i = $(this).attr("id");
        const id = i.slice(7);
+       $('a[id^="crsTab"]').removeClass('nvlnk-act');
         $.ajax({
             url: "/ajax_load_lessons/"+id,
             success: function (result) {
@@ -366,7 +380,7 @@ $(document).ready(function(){
                     if(!$("#docLabel"+id).length){
                         $("#home-tab").removeClass('nvlnk-act');
                         $("#home").removeClass('show active');
-                        $("#myTab").append(
+                        $("#myTabAdd").append(
                                     '<li class="nav-item mb-1" role="presentation">'+
                                          '<a class="nvlnk " id="buttonCollapseAudio'+id+'" data-toggle="collapse" href="#" onclick="showAudios('+id+')" role="button" aria-expanded="false" aria-controls="collapseAudio'+id+'">'+'Аудио'+
                                     '</li>'+
@@ -377,7 +391,7 @@ $(document).ready(function(){
 
                                  '<li  class="nav-item mb-1 mr-1" id="docLabel'+id+'" role="presentation">'+
                                  '<a class="nvlnk nvlnk-act" id="docTab'+id+'" onclick="docClick('+id+')" data-bs-toggle="tab" href="#doc'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+json[i].name+
-                                 '<button type="button" class="close" id="docClose'+id+'" onclick="closeDoc('+id+')" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<button type="button" class="close" id="docClose'+id+'" onclick="closeDoc('+id+')" style="padding-left: 5px; line-height:0" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
@@ -427,7 +441,7 @@ $(document).ready(function(){
                                               '</div>'+
                                               '<div style="margin-left: 12px; margin-top: 40px">'+
                                                   '<a style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 16px;line-height: 18px;color: #333333; margin-bottom: 0" class="video-name" href="#">'+json[i].video_name+'</a>'+
-                                                  '<p style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 12px;line-height: 14px;color: #828282;">14:03 мин</p>'+
+                                                  //'<p style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 12px;line-height: 14px;color: #828282;">14:03 мин</p>'+
                                                   '<i class="fas fa-chevron-right" style="position: absolute; right: 5%; top: 56%"></i>'+
                                               '</div>'+
                                           '</div>'+
@@ -463,9 +477,9 @@ $(document).ready(function(){
                     if(!$("#vidLabel"+id).length){
                         $("#buttonCollapseVideo"+lid).removeClass('nvlnk-act');
                         $("#doc"+lid).removeClass('show active');
-                        $("#myTab").append('<li class="nav-item" id="vidLabel'+id+'" role="presentation">'+
+                        $("#myTabAdd").append('<li class="nav-item" id="vidLabel'+id+'" role="presentation">'+
                                  '<a class="nvlnk nvlnk-act vidosikTab" id="vidTab'+id+'" onclick="videoOpen('+id+','+lid+')" data-toggle="tab" href="#vid'+id+'" role="tab" aria-controls="vid'+id+'" aria-selected="false">'+json[i].video_name+
-                                 '<button type="button" class="close vidClose" onclick="event.stopPropagation();closeVid('+id+','+lid+');" style="padding-left: 5px;" aria-label="Close">'+
+                                 '<button type="button" class="close vidClose" onclick="event.stopPropagation();closeVid('+id+','+lid+');" style="padding-left: 5px; line-height:0" aria-label="Close">'+
                                  '<span aria-hidden="true">&times;</span>'+
                                  '</button>'+
                                  '</a>'+
@@ -649,6 +663,8 @@ function crsClick(id){
     $('#interactivehome').addClass('interactive-list-hide');
     $('.lesson').show();
     $('#home').removeClass('active show');
+    $(".it").removeClass('show active');
+    $("a[id^=InteractiveTab]").removeClass('nvlnk-act');
 }
 
 function crsnm(student){
@@ -679,12 +695,12 @@ function InteractiveClick(id){
 
     $("#interactivehome").removeClass('interactive-list-show');
     $("#interactivehome").addClass('interactive-list-hide');
-
-
+    $('a[id^="crsTab"]').removeClass('nvlnk-act');
+    $('.lesson').hide();
 
 }
 
-
+//Interactive tab
 function interactiveClck(){
      $("#home-tab").removeClass('active');
      $("#home").removeClass('show active');
@@ -692,8 +708,17 @@ function interactiveClck(){
      $("#interactivehome").removeClass('interactive-list-hide');
      $("#interactivehome").addClass('interactive-list-show');
      $(".lesson").hide();
-     $("[id^=InteractiveTab]").removeClass('nvlnk-act');
+     $("a[id^=InteractiveTab]").removeClass('nvlnk-act');
      $(".it").removeClass('show active');
+     $('a[id^="crsTab"]').removeClass('nvlnk-act');
+     $('a[id^="docTab"]').removeClass('nvlnk-act');
+
+     $('a[id^="docTab"]').remove();
+     $('a[id^="buttonCollapseAudio"').remove();
+     $('a[id^="buttonCollapseVideo"').remove();
+     $('li[id^="docLabel"').remove();
+     $('div[id^="doc"').remove();
+
 
 }
 
