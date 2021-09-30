@@ -347,7 +347,7 @@
     }
 
     #wrapper.right-toggled {
-        padding-right: 11%;
+        padding-right: 6%;
     }
 
 }
@@ -371,13 +371,6 @@
 }
 
 
-@media screen and (min-width: 1024px) and (max-width: 1440px){
-    #wrapper.right-toggled {
-        padding-right: 0;
-        margin-left: 225px;
-    }
-
-}
 
 
 @media screen and (min-width: 1920px){
@@ -568,16 +561,10 @@
 @media screen and (max-width: 1920px) and (min-width: 1440px){
     .hdr{
         padding-left: calc(24% - 250px);
-        padding-right: 13%;
+        padding-right: 7%;
         }
 }
 
-@media screen and (max-width: 1440px){
-    .hdr{
-        padding-left: 3.5%;
-        padding-right: 2%
-        }
-}
 @media screen and (min-width: 1920px){
     .hdr{
         padding-right: calc(28% - 250px);

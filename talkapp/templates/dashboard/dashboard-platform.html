@@ -60,11 +60,15 @@
               <div style="margin-bottom: 12px; margin-top: 16px">
                   <button data-bs-toggle="modal" type="button" data-bs-target="#tapeModal" class="tape-btn" style="margin-right: 32px">+ Добавить слово</button>
                   Режим учебника
-                  <label class="switch">
+                  <label class="switch" style="margin-right: 32px">
                       <input type="checkbox">
                       <span class="slider round" id="zmbtn" onclick="zoom()"></span>
                   </label>
-                  <button type="button" class="tape-btn" style="margin-left: 32px; margin-right: 32px" onclick="openChat()">Скрыть чат</button>
+                  Скрыть чат
+                  <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round" onclick="openChat()"></span>
+                  </label>
                   <a style="display: none" id="hidecam">
                       Камера
                       <label class="switch">
