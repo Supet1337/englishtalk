@@ -27,6 +27,7 @@ function closeDoc(id){
     $("#docLabel"+id).remove();
     $("#doc"+id).remove();
     $(".lesson").show();
+    $('a[id^="crsTab"]').addClass('nvlnk-act');
 }
 
 function closeCrs(id){
@@ -52,7 +53,7 @@ function closeCrs(id){
     $('button[id^="docClose"]').click();
     $('div[id^="doc"]').remove();
     $('ul[id^="docTab"]').remove();
-    $("#closeContentWindowButton").detach();
+    $("button[id^='crsClose']").detach();
     $("#course-name").empty();
     $("#home").addClass('active show');
     $("#myTabContent").show();
@@ -102,11 +103,7 @@ $(document).ready(function(){
         $("#home-tab-interactive").removeClass('active');
 
         const id = i.slice(14);
-        $("#clsbtn").prepend(
-        '<button class="btn btn-secondary my-auto" type="button" id="closeContentWindowButton" onclick="closeCrs('+id+'); event.stopPropagation()" style="padding:0; border-radius: 50px; border: 0;background: #e0e0e0;width: 30px; height: 30px; margin-right: 10px;">'+
-          '<i class="fas fa-chevron-left" style="font-size: 24px;color: #white; padding: 4px 4px 0px 0px;" aria-hidden="true"></i>'+
-        '</button>'
-        );
+
         $.ajax({
             url: "/ajax_load_interactive_list/"+id,
             success: function (result) {
@@ -133,13 +130,15 @@ $(document).ready(function(){
             success: function (result) {
                 $('#page-content-wrapper').css('margin-top','5px')
                 var json = $.parseJSON(result);
-                $("#myTab").append(
+                $("#clsbtn").prepend(
+                                 '<button type="button" class="btn btn-secondary my-auto" id="crsClose'+id+'" onclick="closeCrs('+id+'); event.stopPropagation()"  style="padding:0; border-radius: 50px; border: 0;background: #e0e0e0;width: 30px; height: 30px; margin-right: 10px;" aria-label="Close">'+
+                                 '<i class="fas fa-chevron-left" style="font-size: 24px;color: #white; padding: 4px 4px 0px 0px;" aria-hidden="true"></i>'+
+                                 '</button>'
+                                    );
+
+                $("#myTab").prepend(
                                  '<li class="nav-item mb-1 mr-1" id="crsLabel'+id+'" role="presentation">'+
-                                 '<a class="nvlnk nvlnk-act" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+coursename+
-                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+'); event.stopPropagation()" style="padding-left: 5px; line-height:0" aria-label="Close">'+
-                                 '<span aria-hidden="true">&times;</span>'+
-                                 '</button>'+
-                                 '</a>'+
+                                 '<a class="nvlnk nvlnk-act" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">Курс</a>'+
                                  '</li>');
                 json.forEach(function(item, i, json) {
 
@@ -372,6 +371,7 @@ $(document).ready(function(){
         i = $(this).attr("id");
        const id = i.slice(7);
        $('a[id^="crsTab"]').removeClass('nvlnk-act');
+       $('a[id^="crsTab"]').removeClass('active');
         $.ajax({
             url: "/ajax_load_lessons/"+id,
             success: function (result) {
@@ -597,53 +597,68 @@ $(document).ready(function(){
 
 function showVideos(id){
     if(!$('#buttonCollapseVideo'+id).hasClass('nvlnk-act')){
-        $('#docCard'+id).removeClass('show');
         $('#collapseVideo'+id).toggleClass('show');
         $('#buttonCollapseVideo'+id).toggleClass('nvlnk-act');
-        $('#docTab'+id).removeClass('nvlnk-act');
-        $('#collapseAudio'+id).removeClass('show');
-        $('#buttonCollapseAudio'+id).removeClass('nvlnk-act');
-        $('#docClose'+id).hide();
-        $("#doc"+id).addClass('show active');
-        $('.vidClose').hide();
-        $('.vidosik').removeClass('show active');
-        $('.vidosikTab').removeClass('nvlnk-act');
     }
+
+    $('#docCard'+id).removeClass('show');
+    $('#docTab'+id).removeClass('nvlnk-act active');
+    $('#collapseAudio'+id).removeClass('show');
+    $('#buttonCollapseAudio'+id).removeClass('nvlnk-act');
+    $('#docClose'+id).hide();
+    $("#doc"+id).addClass('show active');
+    $('.vidClose').hide();
+    $('.vidosik').removeClass('show active');
+    $('.vidosikTab').removeClass('nvlnk-act');
+
+     $('.lesson').hide();
+     $('a[id^="crsTab"]').removeClass('nvlnk-act');
+     $('a[id^="crsTab"]').removeClass('active');
 }
 
 function showAudios(id){
     if(!$('#buttonCollapseAudio'+id).hasClass('nvlnk-act')){
-        $('#docCard'+id).removeClass('show');
         $('#collapseAudio'+id).toggleClass('show');
         $('#buttonCollapseAudio'+id).toggleClass('nvlnk-act');
-        $('#docTab'+id).removeClass('nvlnk-act');
-        $('#collapseVideo'+id).removeClass('show');
-        $('#buttonCollapseVideo'+id).removeClass('nvlnk-act');
-        $('#docClose'+id).hide();
-        $("#doc"+id).addClass('show active');
-        $('.vidClose').hide();
-        $('.vidosik').removeClass('show active');
-        $('.vidosikTab').removeClass('nvlnk-act');
     }
+
+    $('#docCard'+id).removeClass('show');
+    $('#docTab'+id).removeClass('nvlnk-act active');
+    $('#collapseVideo'+id).removeClass('show');
+    $('#buttonCollapseVideo'+id).removeClass('nvlnk-act');
+    $('#docClose'+id).hide();
+    $("#doc"+id).addClass('show active');
+    $('.vidClose').hide();
+    $('.vidosik').removeClass('show active');
+    $('.vidosikTab').removeClass('nvlnk-act');
+
+    $('.lesson').hide();
+    $('a[id^="crsTab"]').removeClass('nvlnk-act');
+    $('a[id^="crsTab"]').removeClass('active');
 }
 
 function docClick(id){
     if(!$('#docTab'+id).hasClass('nvlnk-act')){
         $('#docCard'+id).toggleClass('show');
-        $('#collapseAudio'+id).removeClass('show');
-        $('#buttonCollapseAudio'+id).removeClass('nvlnk-act');
-        $('#docTab'+id).toggleClass('nvlnk-act');
-        $('#collapseVideo'+id).removeClass('show');
-        $('#buttonCollapseVideo'+id).removeClass('nvlnk-act');
-        $('#docClose'+id).show();
-        $('.vidosik').removeClass('show active');
-        $('.vidosikTab').removeClass('nvlnk-act');
-        $("#doc"+id).addClass('show active');
-        $('.vidClose').hide();
-        $('.lesson').hide();
     }
+    $('#collapseAudio'+id).removeClass('show');
+    $('#buttonCollapseAudio'+id).removeClass('nvlnk-act');
+    $('#docTab'+id).toggleClass('nvlnk-act');
+    $('#collapseVideo'+id).removeClass('show');
+    $('#buttonCollapseVideo'+id).removeClass('nvlnk-act');
+    $('#docClose'+id).show();
+    $('.vidosik').removeClass('show active');
+    $('.vidosikTab').removeClass('nvlnk-act');
+    $("#doc"+id).addClass('show active');
+    $('.vidClose').hide();
+
     $('#interactivehome').removeClass('interactive-list-show');
     $('#interactivehome').addClass('interactive-list-hide');
+
+    $('.lesson').hide();
+    $('a[id^="crsTab"]').removeClass('nvlnk-act');
+    $('a[id^="crsTab"]').removeClass('active');
+
 }
 
 function crsClick(id){
@@ -656,6 +671,7 @@ function crsClick(id){
     if ($('a[id^="docTab"]').hasClass('nvlnk-act')){
         $('.lesson').show();
         $('a[id^="docTab"]').removeClass('nvlnk-act');
+        $('a[id^="docTab"]').removeClass('active');
         $('div[id^="doc"]').removeClass('active show');
     }
 
@@ -665,6 +681,10 @@ function crsClick(id){
     $('#home').removeClass('active show');
     $(".it").removeClass('show active');
     $("a[id^=InteractiveTab]").removeClass('nvlnk-act');
+    $('a[id^=buttonCollapseAudio]').removeClass('nvlnk-act');
+    $('a[id^=buttonCollapseVideo]').removeClass('nvlnk-act');
+    $('#collapseVideo'+id).removeClass('show');
+    $('#collapseAudio'+id).removeClass('show');
 }
 
 function crsnm(student){
