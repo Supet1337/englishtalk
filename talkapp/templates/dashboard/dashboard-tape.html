@@ -75,7 +75,7 @@
 
 
             <div class="card" style="max-width: 415px; max-height: 899px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; height: 90vh" id="chat">
-                <div class="card-header" id="chat-header" style="display: flex; background-color: transparent">
+                <div class="card-header" id="chat-header" style="display: flex; background-color: #2f80ed1a;">
                     <button class="btn btn-secondary my-auto" type="button" id="closeChatWindowButton" onclick="closeChatWindow()" style="display: none;padding:0; border-radius: 50px; border: 0;background: #e0e0e0;width: 30px; height: 30px">
                         <i class="fas fa-chevron-left" style="font-size: 24px;color: #white; padding: 4px 4px 0px 0px;" aria-hidden="true"></i>
                     </button>
@@ -83,7 +83,7 @@
                     <div class="teacher-name-p"></div>
                     <button style="margin-right: 1em;position: absolute; top: 3.5%; right: 10px; background: transparent; color: #2F80ED; border: 0; display: none" id="join" type="submit" form="join-form" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
                 </div>
-                <div class="card-body" style="background-color: #f8f8f8">
+                <div class="card-body" style="background-color: #007bff29;">
                     <div id="chat-list">
                         {% for c in courses %}
                         {% if is_teacher %}

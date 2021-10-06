@@ -426,7 +426,8 @@
 }
 
 .lesson,
-.lesson-crs{
+.lesson-crs,
+.lesson-crs-hm{
     position: relative;
     background: rgba(0, 0, 0, 0.02);
     padding: 10px;
@@ -437,7 +438,8 @@
 
 
 .lesson::after,
-.lesson-crs::after {
+.lesson-crs::after,
+.lesson-crs-hm::after{
     float: right;
     background: white;
     border-bottom: 42px solid transparent;

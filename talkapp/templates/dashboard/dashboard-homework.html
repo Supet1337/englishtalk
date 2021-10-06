@@ -44,9 +44,15 @@
         <div class="card-group">
             <div class="card" style="border: none; color: #333333">
                 <div class="card-header" style="background: transparent; border: none">
+                    <div class="blogs-header-text">
+                        Задания
+                    </div>
                     <div class="blogs-header">
-                        <div class="blogs-header-text">
-                            Задания
+                        <div id="clsbtn" class="blogs-header">
+
+                        </div>
+                        <div id="course-name" class="blogs-header-text">
+
                         </div>
                     </div>
 
@@ -87,8 +93,8 @@
                                 </div>
                                 {% else %}
                                 {% for c in courses %}
-                                <div class="lesson-crs">
-                                    <a style="color: #333333" href="#" id="openUserHmwork{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}">
+                                <div class="lesson-crs-hm">
+                                    <a style="color: #333333" href="#" id="openUserHmwork{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}'); courseheader('{{c.course_type}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}" data-coursename="{{c.course_type}}">
                                         <div class="lesson-name">
                                             {{c.course_type}}
                                         </div>
@@ -117,8 +123,8 @@
                                 </div>
                                 {% else %}
                                 {% for c in courses %}
-                                <div class="lesson-crs">
-                                    <a style="color: #333333" href="#" id="openUserHmwork{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.teacher.user.first_name}} {{c.teacher.user.last_name}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}">
+                                <div class="lesson-crs-hw">
+                                    <a style="color: #333333" href="#" id="openUserHmwork{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.teacher.user.first_name}} {{c.teacher.user.last_name}}'); courseheader('{{c.course_type}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}" data-coursename="{{c.course_type}}">
                                         <div class="lesson-name">
                                             {{c.course_type}}
                                         </div>
@@ -158,104 +164,6 @@
 
 
 
-
-                    <!-- <div class="tab-content" id="myTabContent">
-
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <div class="card-body" >
-                                {% if not homework1 %}
-                                <h5 style="text-align: center">Домашних заданий не найдено</h5>
-                                {% else %}
-
-
-                                {% for hmwrk in homework1 %}
-                                <div class="lesson">
-                                    <a style="color: #333333" href="#" id="openHmk{{hmwrk.id}}">
-                                        <div class="lesson-name">
-                                            {{hmwrk.homework_name}}
-                                        </div>
-                                        <div class="lesson-progress">
-                                            <div class="progress-num">
-                                                1/4
-                                            </div>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                </div>
-                                {% endfor %}
-                                {% endif %}
-
-
-
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="home2" role="tabpanel" aria-labelledby="home-tab">
-                            <div class="card-body" >
-                                {% if not homework2 %}
-                                <h5 style="text-align: center">Домашних заданий не найдено</h5>
-                                {% else %}
-
-
-                                {% for hmwrk in homework2 %}
-                                <div class="lesson">
-                                    <a style="color: #333333" href="#" id="openHmk{{hmwrk.id}}">
-                                        <div class="lesson-name">
-                                            {{hmwrk.homework_name}}
-                                        </div>
-                                        <div class="lesson-progress">
-                                            <div class="progress-num">
-                                                1/4
-                                            </div>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                </div>
-                                {% endfor %}
-                                {% endif %}
-
-
-
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="home3" role="tabpanel" aria-labelledby="home-tab">
-                            <div class="card-body" >
-                                {% if not homework3 %}
-                                <h5 style="text-align: center">Домашних заданий не найдено</h5>
-                                {% else %}
-
-
-                                {% for hmwrk in homework3 %}
-                                <div class="lesson">
-                                    <a style="color: #333333" href="#" id="openHmk{{hmwrk.id}}">
-                                        <div class="lesson-name">
-                                            {{hmwrk.homework_name}}
-                                        </div>
-                                        <div class="lesson-progress">
-                                            <div class="progress-num">
-                                                1/4
-                                            </div>
-                                            <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                </div>
-                                {% endfor %}
-                                {% endif %}
-
-
-
-                            </div>
-                        </div>
-
-                    </div> -->
                 </div>
                 <div style="position: absolute; bottom: -1%;margin-left: auto;margin-right: auto;left: 0;right: 0;text-align: center;">
                     <button data-bs-toggle="modal" type="button" data-bs-target="#tapeModal" class="tape-btn" style="margin-right: 32px">+ Добавить слово</button>
@@ -270,13 +178,13 @@
 
 
             <div class="card" style="max-width: 415px; max-height: 899px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; height: 84vh" id="chat">
-                        <div class="card-header" id="chat-header" style="display: flex; background-color: transparent">
+                <div class="card-header" id="chat-header" style="display: flex; background-color: #2f80ed1a;">
 
-                            <img id="teacher-img" src="{% static 'images/avatar.png' %}" style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;"  align="center">
-                            <div class="teacher-name-p"></div>
-                            <button style="margin-right: 1em;position: absolute; top: 3.5%; right: 10px; background: transparent; color: #2F80ED; border: 0; display: none" id="join" type="submit" form="join-form" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
-                        </div>
-                        <div class="card-body" style="background-color: #f8f8f8">
+                    <img id="teacher-img" src="{% static 'images/avatar.png' %}" style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;"  align="center">
+                    <div class="teacher-name-p"></div>
+                    <button style="margin-right: 1em;position: absolute; top: 3.5%; right: 10px; background: transparent; color: #2F80ED; border: 0; display: none" id="join" type="submit" form="join-form" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
+                </div>
+                <div class="card-body" style="background-color: #007bff29;">
                             <div id="chat-list">
                                 </div>
                             <div id="chat-window" style="display: none">

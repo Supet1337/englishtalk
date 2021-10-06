@@ -78,13 +78,20 @@ function closeVid(id,lid){
 }
 
 function closeInteractive(id){
+        if ($("#crsTab"+id).hasClass('nvlnk-act')){
+            $("#interactivehome").addClass('interactive-list-hide');
+            $("#interactivehome").removeClass('interactive-list-show');
+            $("#home-tab-interactive").removeClass('active');
+        }
+        else{
+            $("#interactivehome").removeClass('interactive-list-hide');
+            $("#interactivehome").addClass('interactive-list-show');
+            $("#home-tab-interactive").addClass('active');
+        }
         $("#bread-item"+id).remove();
         $(".breadcrumb-item").last().addClass('active');
         $("#InteractiveLabel"+id).remove();
         $("#interactive"+id).remove();
-        $("#interactivehome").removeClass('interactive-list-hide');
-        $("#interactivehome").addClass('interactive-list-show');
-        $("#home-tab-interactive").addClass('active');
 
 
 }
@@ -243,6 +250,9 @@ $(document).ready(function(){
                         $("#home").removeClass('show active');
                         $("#docTab"+idDoc).addClass('nvlnk-act');
                         $("#doc"+idDoc).addClass('show active');
+                        $('#docCard'+idDoc).addClass('show');
+                        $('a[id^="crsTab"]').removeClass('nvlnk-act');
+                        $('a[id^="crsTab"]').removeClass('active');
                     }
                 });
         }});
@@ -319,14 +329,11 @@ $(document).ready(function(){
                 $('#page-content-wrapper').css('margin-top','5px')
                 $('#myTab').show()
                 var json = $.parseJSON(result);
-                $("#myTab").append(
-                                 '<li class="nav-item mb-1 mr-1" id="crsLabel'+id+'" role="presentation">'+
-                                 '<a class="nvlnk nvlnk-act" style="margin-top: 4px;" id="crsTab'+id+'" onclick="crsClick('+id+')" data-bs-toggle="tab" href="#crs'+id+'" role="tab" aria-controls="doc'+id+'" aria-selected="false">'+coursename+
-                                 '<button type="button" class="close" id="crsClose'+id+'" onclick="closeCrs('+id+');" style="padding-left: 5px; line-height:0" aria-label="Close">'+
-                                 '<span aria-hidden="true">&times;</span>'+
-                                 '</button>'+
-                                 '</a>'+
-                                 '</li>');
+                $("#clsbtn").prepend(
+                     '<button type="button" class="btn btn-secondary my-auto" id="crsClose'+id+'" onclick="closeCrs('+id+'); event.stopPropagation()"  style="padding:0; border-radius: 50px; border: 0;background: #e0e0e0;width: 30px; height: 30px; margin-right: 10px;" aria-label="Close">'+
+                     '<i class="fas fa-chevron-left" style="font-size: 24px;color: #white; padding: 4px 4px 0px 0px;" aria-hidden="true"></i>'+
+                     '</button>');
+
                 json.forEach(function(item, i, json) {
 
                     if(!$("#docLabel"+id).length){
@@ -639,7 +646,7 @@ function showAudios(id){
 
 function docClick(id){
     if(!$('#docTab'+id).hasClass('nvlnk-act')){
-        $('#docCard'+id).toggleClass('show');
+        $('#docCard'+id).addClass('show');
     }
     $('#collapseAudio'+id).removeClass('show');
     $('#buttonCollapseAudio'+id).removeClass('nvlnk-act');
@@ -801,7 +808,7 @@ var pageWidth = document.body.offsetWidth;
 function zoom() {
     $("#header").toggle();
     $("#wrapper").toggleClass('book-mode');
-    $("#course-name").toggle();
+    //$("#course-name").toggle();
     $("#breadcrumb").toggle();
 };
 
