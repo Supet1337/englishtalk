@@ -575,8 +575,9 @@
 }
 
 .book-mode{
-    padding-right: 0 !important;
-    margin-left: 0 !important;
+    padding-right: 100px !important;
+    margin-left: 100px !important;
+    padding-top: 50px;
 }
 
 .book-mode-btn{

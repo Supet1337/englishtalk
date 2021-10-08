@@ -808,6 +808,7 @@ var pageWidth = document.body.offsetWidth;
 function zoom() {
     $("#header").toggle();
     $("#wrapper").toggleClass('book-mode');
+    $("#left-sidebar-wrapper").toggle();
     //$("#course-name").toggle();
     $("#breadcrumb").toggle();
 };
