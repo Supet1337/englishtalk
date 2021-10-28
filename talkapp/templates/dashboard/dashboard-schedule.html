@@ -122,7 +122,11 @@
                           end: '{{day.0.date|date:"Y-m-d"}}',
                           title: '{{d.user_course.course_type}}',
                           description: '{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}',
-                          customHtml: '<div class="fc-event-title">{{d.user_course.course_type}} </br> <a class="fs-text-calendar" >{{teacher}}</a> </br> <a class="fs-text-calendar" >{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}</a></div>',
+                          {% if is_teacher %}
+                          customHtml: '<div class="fc-event-title">{{d.user_course.course_type}} </br> <a class="fs-text-calendar" >{{d.user_course.student.first_name}} {{d.user_course.student.last_name}}</a> </br> <a class="fs-text-calendar" href="../dashboard/platform" >{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}</a></div>',
+                          {% else %}
+                          customHtml: '<div class="fc-event-title">{{d.user_course.course_type}} </br> <a class="fs-text-calendar" >{{teacher}}</a> </br> <a class="fs-text-calendar" href="../dashboard/platform" >{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}</a></div>',
+                          {% endif %}
                           displayEventEnd: true,
                         },
                         {% endfor %}

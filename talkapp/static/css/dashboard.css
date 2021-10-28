@@ -112,7 +112,7 @@
 .header-text {
     font-family: Arial;
     text-align: left;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
 }
 .header-text p{
@@ -577,7 +577,6 @@
 .book-mode{
     padding-right: 100px !important;
     margin-left: 100px !important;
-    padding-top: 50px;
 }
 
 .book-mode-btn{
@@ -1041,4 +1040,8 @@ input:checked + .invslider:before {
 .disable-crs{
     pointer-events: none;
     opacity: 0.4;
+}
+
+.calendar-lk .fc-daygrid-day-events {
+    max-height: 275px;
 }

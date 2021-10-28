@@ -55,5 +55,6 @@ urlpatterns = [
     path('video/<int:number>', video),
     path('video-constructor/<int:number>', video_constructor),
     path('video-listening/<int:number>', video_listening),
-    path('check_aswer/<int:number>', check_answer)
+    path('check_aswer/<int:number>', check_answer),
+    path('send_call_request', call_request)
 ]

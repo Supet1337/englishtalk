@@ -224,6 +224,28 @@ def dashboard_lk(request):
         context["lsn"] = 0
     else:
         student_additional = UserAdditional.objects.get(user=request.user)
+        lessons.order_by('date')
+        calendar = []
+        day = []
+        for i in range(len(lessons)):
+            if i == 0:
+                day.append(lessons[i])
+            elif lessons[i].date.day == lessons[i-1].date.day:
+                day.append(lessons[i])
+            else:
+                calendar.append(day)
+                day = []
+                day.append(lessons[i])
+        calendar.append(day)
+        context['calendar'] = calendar
+        for l in lessons:
+            end = l.date
+            if student_additional.lesson_time:
+                end += datetime.timedelta(minutes=60)
+            else:
+                end += datetime.timedelta(minutes=45)
+            l.date_end = end
+            l.save()
         context['phone_number'] = student_additional.phone_number
         i = 0
         if student_additional.lesson_time:
@@ -443,6 +465,14 @@ def dashboard_schedule(request):
                 day.append(lessons[i])
         calendar.append(day)
         context['calendar'] = calendar
+        for l in lessons:
+            end = l.date
+            if student_additional.lesson_time:
+                end += datetime.timedelta(minutes=60)
+            else:
+                end += datetime.timedelta(minutes=45)
+            l.date_end = end
+            l.save()
         i = 0
         if student_additional.lesson_time:
             context['lsn_time'] = "60"
@@ -536,41 +566,7 @@ def dashboard_tape(request):
             student_additional = UserAdditional.objects.get(user=request.user)
             context['phone_number'] = student_additional.phone_number
             lessons.order_by('date')
-            flag = False
-            past_lessons = []
-            future_lessons = []
-            for l in lessons:
-                end = l.date
-                if student_additional.lesson_time:
-                    end += datetime.timedelta(minutes=60)
-                else:
-                    end += datetime.timedelta(minutes=45)
-                l.date_end = end
-                l.save()
-                if l.date <= datetime.datetime.now() <= end and not flag:
-                    context['cur_lsn'] = l
-                    context['now_lsn'] = True
-                    flag = True
-                elif end < datetime.datetime.now():
-                    if not l.is_completed:
-                        student_additional.paid_lessons -= 1
-                        student_additional.save()
-                        l.is_completed = True
-                        l.save()
-                    past_lessons.append(l)
-                elif not l.is_completed:
-                    if len(future_lessons) < student_additional.paid_lessons:
-                        if not flag:
-                            flag = True
-                            context['next_lsn'] = l.date
-                        future_lessons.append(l)
-            context['past_lsn'] = past_lessons
-            context['future_lsn'] = future_lessons
             i = 0
-            if student_additional.lesson_time:
-                context['lsn_time'] = "60"
-            else:
-                context['lsn_time'] = "45"
             context['course'] = lessons[i].user_course.course_type
             context['teacher'] = "{} {}".format(lessons[i].user_course.teacher.user.first_name,
                                                 lessons[i].user_course.teacher.user.last_name)
@@ -959,3 +955,14 @@ def delete_profile_picture(request):
         messages.success(request, "Аватарка успешно удалена.")
         return HttpResponseRedirect("../../dashboard/account")
 
+def call_request(request):
+    if request.method == "POST":
+        help_message = "Поступил запрос на консультацию.\n" \
+                       "Имя: " + request.user.first_name + " " + request.user.last_name + ",\n" \
+                       "Телефон: " + request.POST['phone'] + ",\n" \
+                       "Почта: " + request.user.email + "."
+        send_mail(
+            'Новая заявка на конcультацию с менеджером', help_message, 'noreply.englishtalk@gmail.com', [
+                "help.englishtalk@gmail.com"], fail_silently=False)
+        messages.info(request, "Вы успешно подали заявку. Ожидайте звонка")
+    return HttpResponseRedirect('/')

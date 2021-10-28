@@ -48,17 +48,15 @@
                 <div class="col-md-12" style="max-width: 400px; padding-right: 5px">
                     <div class="card mb-3" style=" border-radius: 6px;height: 90%">
                         <div class="row g-0 my-auto" style="height:fit-content">
-                            <a href="../dashboard/account">
                             <div class="col-md-4" style="padding-left:15px; padding-right:0">
                                 <img id="teacher-img" src='{% static "images/avatar.png" %}' style="width: auto; height: auto; max-width: 100px;max-height: 100px;  border-radius: 100%; margin-left: 16px; margin-top: 20px; margin-bottom: 16px; margin-right: 8px;"  align="center">
                             </div>
-                                </a>
                             <div class="col-md-7" id="teacher-blog" style="padding-left:0; padding-right:0; margin-right: 10px">
                                 <div class="teacher-name">
                                     <p style="margin-bottom:3px">{{ teacher|default_if_none:"Ваш преподаватель"}}</p>
                                 </div>
                                 <p class="card-text teacher-info">Преподаватель, менеджер меропр..</p>
-                                <a href="../dashboard/platform"><button class="dashboard-button-secondary-teacher" >Онлайн класс</button></a>
+                                <a href="../dashboard/platform"><button class="dashboard-button-secondary-teacher" style="margin-top: 11px" >Онлайн класс</button></a>
                             </div>
                         </div>
                     </div>
@@ -77,14 +75,14 @@
                     <div class="balance-blck" style="height: 90%">
                         <div class="number-number"> <i style="color: #2F80ED" class="fa fa-phone"></i> +7 995 793 02 03</div>
                         <div class="number-number" style="color: #828282; font-weight: normal; margin-top: 0; margin-bottom: 8px">Перейти в Telegram</div>
-                        <a href="https://t.me/eng_talk" target="_blank"><button style="margin: 0px 16px 19px 16px" class="dashboard-button-secondary-teacher" ><i style="margin-right: 3px;" class="fa fa-paper-plane"></i> Связаться с куратором</button></a>
+                        <a href="https://t.me/eng_talk" target="_blank"><button style="margin: 0px 16px 19px 16px; height: 23%;padding-top: 5px;" class="dashboard-button-secondary-teacher" ><i style="margin-right: 3px;" class="fa fa-paper-plane"></i> Связаться с куратором</button></a>
                     </div>
                 </div>
 
                 <div class="col" style="max-width: 220px; padding-left: 5px; padding-right: 5px;" >
                     <div class="balance-blck" style="height: 90%">
                         <div class="balance-text">Пригласи друга и получай бонусы</div>
-                        <button style="margin: 7px 16px 19px 16px" data-bs-toggle="modal" data-bs-target="#refModal" class="dashboard-button-secondary-teacher" >Пригласить друга</button>
+                        <button style="margin: 7px 16px 19px 16px;height: 23%;padding-top: 5px;" data-bs-toggle="modal" data-bs-target="#refModal" class="dashboard-button-secondary-teacher" >Пригласить друга</button>
                     </div>
                 </div>
 
@@ -150,14 +148,14 @@
             </div> -->
             {% if lsn != 0 %}
             <div style="border-radius: 0px; border: none" class="card mb-3 text-center">
-                <div id='calendar'></div>
+                <div id="calendar" class="calendar-lk"></div>
             </div>
             {% else %}
 
             <div class="empty-lesson">
                 <div>
                     <p class="empty-lesson-text">Пока вы не записались на уроки <img src='{% static "images/sad.png" %}'></p>
-                    <a href="#" class="empty-lesson-text-small" data-bs-toggle="modal" data-bs-target="#flModal"> изменить расписание » </a>
+                    <a href="#" class="empty-lesson-text-small" data-bs-toggle="modal" data-bs-target="#svModal"> изменить расписание » </a>
                 </div>
             </div>
             {% endif %}
@@ -270,21 +268,24 @@
                           end: '{{day.0.date|date:"Y-m-d"}}',
                           title: '{{d.user_course.course_type}}',
                           description: '{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}',
-                          displayEventEnd: true
+                          {% if is_teacher %}
+                          customHtml: '<div class="fc-event-title">{{d.user_course.course_type}} </br> <a class="fs-text-calendar" >{{d.user_course.student.first_name}} {{d.user_course.student.last_name}}</a> </br> <a class="fs-text-calendar" href="../dashboard/platform" >{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}</a></div>',
+                          {% else %}
+                          customHtml: '<div class="fc-event-title">{{d.user_course.course_type}} </br> <a class="fs-text-calendar" >{{teacher}}</a> </br> <a class="fs-text-calendar" href="../dashboard/platform" >{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}</a></div>',
+                          {% endif %}
+                          displayEventEnd: true,
                         },
                         {% endfor %}
                     {% endfor %}
-                    ]
+                    ],
+                    eventContent: function(eventInfo) {
+                        return { html: eventInfo.event.extendedProps.customHtml }
+                    }
             });
             calendar.setOption('locale', 'ru');
             calendar.setOption('height', 320);
             calendar.render();
 
-             $( document ).ready(function() {
-             $( ".fc-event-title" ).each(function( index ) {
-                  $(this).append('</br>' + "<a class='fs-text-calendar' >"+calendar.getEventById(index+1).extendedProps.description+"</a>");
-             });
-              });
           });
 var refText = document.getElementById("ref");
 var refBtn = document.getElementById("refCopy");
