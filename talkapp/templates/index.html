@@ -22,6 +22,64 @@
 		<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
         <link rel="stylesheet" href={% static "css/main.css" %}>
         <link rel="stylesheet" href={% static "css/dashboard.css" %}>
+<style>
+.carousel-inner-1 {
+	position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.carousel-item-1 {
+	position: relative;
+    display: none;
+    float: left;
+    width: 100%;
+    margin-right: -100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: -webkit-transform 0.6s ease-in-out;
+    transition: -webkit-transform 0.6s ease-in-out;
+    -o-transition: transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+	@media (max-width: 767px) {
+    .carousel-inner-1 .carousel-item-1 > div {
+        display: none;
+    }
+    .carousel-inner-1 .carousel-item-1 > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner-1 .carousel-item-1.active,
+.carousel-inner-1 .carousel-item-next,
+.carousel-inner-1 .carousel-item-prev {
+    display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+
+    .carousel-inner-1 .carousel-item-end.active,
+    .carousel-inner-1 .carousel-item-next {
+      transform: translateX(50%);
+    }
+
+    .carousel-inner-1 .carousel-item-start.active,
+    .carousel-inner-1 .carousel-item-prev {
+      transform: translateX(-50%);
+    }
+}
+
+.carousel-inner-1 .carousel-item-end,
+.carousel-inner-1 .carousel-item-start {
+  transform: translateX(0);
+}
+
+.carousel-item .fa-chevron-left {
+	display: none;
+}
+</style>
 	{% endblock %}
 
 {% block content %}
@@ -133,11 +191,11 @@
 					<h2 class="mb-4">Отзывы учеников</h2>
 				</div>
         	</div>
-			<div id="carouselExampleControls" class="carousel" data-bs-interval="false" data-bs-ride="carousel">
-			  <div class="carousel-inner" style="padding: 0px 200px;">
-				<div class="carousel-item active">
-					<div class="row" style="margin: 0">
-						<div class="col review" style="margin-right: 10px">
+			<div id="carouselExampleControls" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
+			  <div class="carousel-inner-1" role="listbox" style="padding: 0px 200px;">
+				<div class="carousel-item carousel-item-1 active">
+					<div class="col-md-6">
+                        <div class="card review" style="margin-right: 10px">
 							<div class="row" style="margin: 0;margin-bottom: 20px;">
 								<img src="{% static 'images/valeria.jpg' %}" class="review-avatar">
 								<div class="review-author">
@@ -149,8 +207,12 @@
 								<div class="review-text">
 								Занятия английским языком с Мариной очень нравятся. Я достаточно долгое время изучаю язык и работала со многими преподавателями. С Мариной очень легко и интересно заниматься. Она легко находит общий язык с учеником, проводит занятия с учетом интересов ученика. Нет ощущения занудных школьных уроков. Марина очень быстро выявляет пробелы в знаниях и помогает их восполнить. Всегда готова дать дополнительные ресурсы для изучения английского языка. Занятия с ней всегда проходят с пользой и быстро виден отличный результат.								</div>
 							</div>
-						</div>
-						<div class="col review">
+                        </div>
+                    </div>
+				</div>
+				  <div class="carousel-item carousel-item-1">
+					  	<div class="col-md-6">
+                        <div class="card review" style="margin-right: 10px">
 							<div class="row" style="margin: 0;margin-bottom: 20px;">
 								<img src="{% static 'images/nastya1.jpg' %}" class="review-avatar">
 								<div class="review-author">
@@ -162,12 +224,12 @@
 								<div class="review-text">
 									Хочу выразить огромную благодарность школе и ее коллективу, ведь благодаря их методам можно быстро и качественно подтянуть язык. Занятия очень эффективные и дают хороший результат! Отдельно хочу поблагодарить своего преподавателя Марину. Она очень грамотный педагог, который может найти подход к ученикам. Занятия проходят интересно и увлекательно, знание языка увеличивается. Еще раз большое спасибо Марине и всему коллективу!								</div>
 							</div>
-						</div>
-					</div>
+                        </div>
+                    </div>
 				</div>
-				<div class="carousel-item">
-					<div class="row" style="margin: 0">
-						<div class="col review" style="margin-right: 10px">
+				  <div class="carousel-item carousel-item-1">
+					  	<div class="col-md-6">
+                        <div class="card review" style="margin-right: 10px">
 							<div class="row" style="margin: 0;margin-bottom: 20px;">
 								<img src="{% static 'images/Mariya.jpg' %}" class="review-avatar">
 								<div class="review-author">
@@ -180,8 +242,12 @@
 								Хочу сказать спасибо школе EnglishTalk за отличный подход с обучению английского языка. Я перепробовала много разных онлайн школ,но нигде не мне не нравилось. Здесь все идеально, начиная от самой платформы (спасибо,что не надо печатать учебники и тетради🙏) до профессионального и современного подхода к обучению языку.
 								</div>
 						</div>
-						</div>
-						<div class="col review" style="margin-right: 10px">
+                        </div>
+                    </div>
+				</div>
+				  <div class="carousel-item carousel-item-1">
+					  	<div class="col-md-6">
+                        <div class="card review" style="margin-right: 10px">
 							<div class="row" style="margin: 0;margin-bottom: 20px;">
 								<img src="{% static 'images/Yuri.jpg' %}" class="review-avatar">
 								<div class="review-author">
@@ -194,9 +260,10 @@
 									Я пришел в эту школу с целью подготовиться к переезду в Америку. Необходимо было ехать работать, поэтому упор был поставлен на коммуникативные и профессиональные навыки. Ребята из EnglishTalk подошли к этой задаче очень ответственно и в краткие сроки мне удалось восстановить мой уровень английского. Хочу сказать спасибо профессионализму учителя и куратора проекта.
 								</div>
 						</div>
-					</div>
+                        </div>
+                    </div>
 				</div>
-			  </div>
+
 				<button class="carousel-control-prev review-control" style="left: 7%;" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
 				<i class="fas fa-chevron-left" style="font-size: 24px;color: #333333" aria-hidden="true"></i>
 			  </button>
@@ -212,7 +279,7 @@
 		<div class="container-fluid easystart">
 			<div class="row justify-content-center pb-2">
 				<div class="col-md-8 text-center heading-section ftco-animate">
-					<h2 class="mb-4">Стоимость занятий</h2>
+					<h2 class="mb-5">Стоимость занятий</h2>
 				</div>
         	</div>
 			<div class="list-group mx-auto list-group-horizontal" style="width: fit-content; margin-bottom: 30px" id="list-tab" role="tablist">
@@ -226,32 +293,37 @@
 		<div class="card-body">
 		  <p class="price-title">Начинающий</p>
 		  <p class="price-text">5 занятий по 45 минут</p>
-			<p class="price-cost">890 рублей</p>
+            <p class="price-old">1060 рублей</p>
+            <p class="price-cost">920 рублей</p>
 			<button id="pay-4450" class="price-button mt-3">Выбрать</button>
 		</div>
 	  </div>
-	<div class="card price">
+	<div class="card price popular">
 		<div class="card-body">
+            <p class="price-label">Самый популярный</p>
 		  <p class="price-title">Любительский</p>
 		  <p class="price-text">10 занятий по 45 минут</p>
-			<div style="height: 18px;margin-bottom: 50px;"><a class="price-cost">690 рублей <a class="price-old">790 рублей</a> </a></div>
+            <p class="price-old">950 рублей</p>
+            <p class="price-cost">830 рублей</p>
 			<button id="pay-6900" class="price-button mt-3">Выбрать</button>
 		</div>
 	  </div>
-	  <div class="card price popular">
+	  <div class="card price">
 		<div class="card-body">
-            <p class="price-label">Самый популярный</p>
 		  <p class="price-title">Стандартный</p>
 		  <p class="price-text">20 занятий по 45 минут</p>
-			<p class="price-cost">590 рублей</p>
+            <p class="price-old">900 рублей</p>
+            <p class="price-cost">780 рублей</p>
 			<button id="pay-11800" class="price-button mt-3">Выбрать</button>
 		</div>
 	  </div>
-	  <div class="card price" style="margin-right: 0">
+	  <div class="card price benefit">
 		<div class="card-body">
+            <p class="price-label">Самый выгодный</p>
 		  <p class="price-title">Долгосрочный</p>
 		  <p class="price-text">30 занятий по 45 минут</p>
-			<p class="price-cost">490 рублей</p>
+            <p class="price-old">850 рублей</p>
+            <p class="price-cost">730 рублей</p>
 			<button id="pay-14700" class="price-button mt-3">Выбрать</button>
 		</div>
 	  </div>
@@ -263,32 +335,37 @@
 		<div class="card-body">
 		  <p class="price-title">Начинающий</p>
 		  <p class="price-text">5 занятий по 60 минут</p>
-			<p class="price-cost">890 рублей</p>
+            <p class="price-old">1120 рублей</p>
+            <p class="price-cost">980 рублей</p>
 			<button id="pay-1" class="price-button mt-3">Выбрать</button>
 		</div>
 	  </div>
-	<div class="card price">
+	<div class="card price popular">
 		<div class="card-body">
+            <p class="price-label">Самый популярный</p>
 		  <p class="price-title">Любительский</p>
 		  <p class="price-text">10 занятий по 60 минут</p>
-			<p class="price-cost">890 рублей</p>
+            <p class="price-old">1010 рублей</p>
+            <p class="price-cost">880 рублей</p>
 			<button id="pay-2" class="price-button mt-3">Выбрать</button>
 		</div>
 	  </div>
-	  <div class="card price popular">
+	  <div class="card price">
 		<div class="card-body">
-			<p class="price-label">Самый популярный</p>
 		  <p class="price-title">Стандартный</p>
 		  <p class="price-text">20 занятий по 60 минут</p>
-			<p class="price-cost">890 рублей</p>
+            <p class="price-old">950 рублей</p>
+            <p class="price-cost">830 рублей</p>
 			<button id="pay-3" class="price-button mt-3">Выбрать</button>
 		</div>
 	  </div>
-	  <div class="card price" style="margin-right: 0">
+	  <div class="card price benefit">
 		<div class="card-body">
+            <p class="price-label">Самый выгодный</p>
 		  <p class="price-title">Долгосрочный</p>
 		  <p class="price-text">30 занятий по 60 минут</p>
-			<p class="price-cost">890 рублей</p>
+            <p class="price-old">890 рублей</p>
+            <p class="price-cost">780 рублей</p>
 			<button id="pay-4" class="price-button mt-3">Выбрать</button>
 		</div>
 	  </div>
@@ -297,7 +374,7 @@
 		 </div>
 		<div class="row justify-content-center mt-5 pb-2">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4">Бесплатно вы получаете</h2>
+				<h2 class="mb-4 mt-5">Бесплатно вы получаете</h2>
 			</div>
 		</div>
 			<div class="justify-content-center" style="display: flex">
@@ -407,6 +484,23 @@ $('#myModalVid').on('hide.bs.modal', function (e) {
 
 
 });
+
+let items = document.querySelectorAll('.carousel .carousel-item-1')
+
+items.forEach((el) => {
+    // number of slides per carousel-item
+    const minPerSlide = 2
+    let next = el.nextElementSibling
+    for (var i=1; i<minPerSlide; i++) {
+        if (!next) {
+            // wrap carousel by using first child
+            next = items[0]
+        }
+        let cloneChild = next.cloneNode(true)
+        el.appendChild(cloneChild.children[0])
+        next = next.nextElementSibling
+    }
+})
 
 {% if messages %}
 	{% for m in messages %}

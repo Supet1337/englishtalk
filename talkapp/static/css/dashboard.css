@@ -858,11 +858,30 @@ input:checked + .invslider:before {
     color: #333333;
 }
 
+.price.benefit {
+    border: 2px solid #eb5757 !important;
+}
+
+.price.benefit .price-cost {
+    color: #eb5757;
+}
+
+.price.benefit .price-button {
+    border: 1px solid #eb5757;
+    color: white;
+    background: #eb5757;
+
+}
+
+.price.benefit .price-label {
+    color: #333333;
+}
+
 .price-title {
     font-family: Arial;
     font-style: normal;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
     line-height: 21px;
     color: #333333;
     margin-top: 50px;
@@ -872,7 +891,7 @@ input:checked + .invslider:before {
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 16px;
     color: #333333;
 }
@@ -881,7 +900,7 @@ input:checked + .invslider:before {
     font-family: Arial !important ;
     font-style: normal !important;
     font-weight: bold !important;
-    font-size: 16px !important;
+    font-size: 18px !important;
     line-height: 18px !important;
     color: #2F80ED !important;
     margin-bottom: 50px !important;
@@ -905,7 +924,7 @@ input:checked + .invslider:before {
     font-family: Arial;
     font-style: normal;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 14px;
     color: #2F80ED;
     margin-bottom: -14px;
@@ -915,7 +934,7 @@ input:checked + .invslider:before {
     font-family: Arial !important;
     font-style: normal !important;
     font-weight: normal !important;
-    font-size: 12px !important;
+    font-size: 14px !important;
     line-height: 14px !important;
     text-decoration-line: line-through !important;
     color: #828282 !important;
@@ -937,9 +956,10 @@ input:checked + .invslider:before {
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 18px;
+    line-height: 22px;
     color: #333333;
+    margin-left: 1%;
 }
 
 .faq-card {

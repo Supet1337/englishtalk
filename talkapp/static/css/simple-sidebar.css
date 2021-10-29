@@ -295,6 +295,14 @@ text-align: center;
     margin-top: 10px;
 
 }
+.subscribe-block-2 {
+    background: radial-gradient(circle farthest-side at 40px 30px, #2D9CDB, #EB5757);
+    height: 147px;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 10px;
+
+}
 .subscribe-block h1 {
     height: 20px;
 
