@@ -26,11 +26,12 @@
     <div class="d-flex right-toggled" id="wrapper">
         <div id="left-sidebar-wrapper">
       <div class="list-group mx-auto" id="list-tab" role="tablist">
-        <a class="list-group-item list-group-item-action" id="dd0" data-toggle="list" href="../dashboard/lk" role="tab"><p style="margin-bottom: 0">Главная</p></a>
-          <a class="list-group-item list-group-item-action" id="dd1" data-toggle="list" href="../dashboard/platform" role="tab"><p style="margin-bottom: 0">Класс</p></a>
-          <a class="list-group-item list-group-item-action" id="dd5" data-toggle="list" href="../dashboard/homework" role="tab"><p style="margin-bottom: 0">Задания</p></a>
-        <a class="list-group-item list-group-item-action active" id="dd3" data-toggle="list" role="tab"><p style="margin-bottom: 0">Расписание</p></a>
+          <a class="list-group-item list-group-item-action " id="dd0" data-toggle="list" href="../dashboard/lk" role="tab"><p style="margin-bottom: 0">Личный кабинет</p></a>
+          <a class="list-group-item list-group-item-action" id="dd1" data-toggle="list" href="../dashboard/platform" role="tab"><p style="margin-bottom: 0">Онлайн класс</p></a>
+          <a class="list-group-item list-group-item-action" id="dd5" data-toggle="list" href="../dashboard/homework" role="tab"><p style="margin-bottom: 0">Домашние задания</p></a>
+          <a class="list-group-item list-group-item-action active" id="dd3" data-toggle="list" href="../dashboard/schedule" role="tab"><p style="margin-bottom: 0">Расписание</p></a>
           <a class="list-group-item list-group-item-action" id="dd8" data-toggle="list" href="../dashboard/tape" role="tab"><p style="margin-bottom: 0">Словарь</p></a>
+          <a class="list-group-item list-group-item-action " id="dd9" data-toggle="list" href="../dashboard/account" role="tab"><p style="margin-bottom: 0">Профиль</p></a>
       </div>
     <!-- <div class="empty_balance mx-auto">
         <h1>Ваш баланс сейчас пуст :(</h1>
@@ -144,7 +145,7 @@
 
      $( document ).ready(function() {
                 var date = new Date();
-
+                $('.fc-toolbar-title').html($('.fc-toolbar-title').html().slice(0,-2))
                $(".fc-button-group").before('<select id="select" class="select_month"><option value="01">Январь</option><option value="02">Февраль</option><option value="03">Март</option><option value="04">Апрель</option><option value="05">Май</option><option value="06">Июнь</option><option value="07">Июль</option><option value="08">Август</option><option value="09">Сентябрь</option><option value="10">Октябрь</option><option value="11">Ноябрь</option><option value="12">Декабрь</option></select>');
                $(".select_month").on("change", function(event) {
                    calendar.gotoDate(new Date(date.getFullYear(), this.value-1, 1));

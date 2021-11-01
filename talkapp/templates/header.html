@@ -14,6 +14,14 @@
                         <li class="nav-item header-text-m">
                             <a href="courses">Курсы</a>
                         </li>
+
+                        <li class="nav-item header-text-m">
+                            <a href="#scoost">Стоимость</a>
+                        </li>
+
+                        <li class="nav-item header-text-m">
+                            <a href="#sreview">Отзывы</a>
+                        </li>
                     </ul>
 
                     <ul class="navbar-nav ml-auto navbar-right-top">
@@ -26,7 +34,7 @@
                         </li>
                         <li class="nav-item nav-user nav-user-not-mobile" style="display: flex">
                             {% if request.user.is_authenticated %}
-                            <a href="../dashboard/account" style="display: flex">
+                            <a href="../dashboard/lk" style="display: flex">
                                 <p class="my-auto header-text" style="margin-right: 7px;height: fit-content;">{{request.user.first_name}} {{request.user.last_name}}</p>
                                 {% if image == -1 %}
                                 <img  style="width: 40px; height: 40px;border-radius: 40px" src='{% static "images/avatar.png" %}'>
