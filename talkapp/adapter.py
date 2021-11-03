@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.utils.crypto import get_random_string
 
-from .models import UserAdditional, ChatRoom  # pylint:disable=wildcard-import
+from .models import UserAdditional  # pylint:disable=wildcard-import
 
 class SocialAccountAdapter(DefaultSocialAccountAdapter):
     """
@@ -26,10 +26,9 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
         """
         user = super(SocialAccountAdapter, self).save_user(request, sociallogin, form)
         user_add = UserAdditional()
-        room = ChatRoom()
-        roomName = get_random_string(length=32)
+        ref = get_random_string(length=16)
         user_add.user = user
-        user_add.video_chat = roomName
+        user_add.referral = ref
         try:
             s = str(user.socialaccount_set.filter(provider='vk')[0].extra_data['bdate'])
             s = s.split('.')
@@ -37,8 +36,5 @@ class SocialAccountAdapter(DefaultSocialAccountAdapter):
             user_add.birthday = s1
         except:
             pass
-        room.name = roomName
-        room.student = user
         # user_add.image = user.socialaccount_set.filter(provider='vk')[0].extra_data['photo']
         user_add.save()
-        room.save()
