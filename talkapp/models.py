@@ -140,6 +140,13 @@ class UserCourse(models.Model):
         except:
             return -1
 
+    def get_teacher_image(self):
+        ua = UserAdditional.objects.get(user=self.teacher.user)
+        try:
+            return ua.image.url
+        except:
+            return -1
+
 
 class UserLesson(models.Model):
     user_course = models.ForeignKey(to=UserCourse, on_delete=models.CASCADE, verbose_name='В составе курса')

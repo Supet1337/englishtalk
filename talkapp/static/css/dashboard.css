@@ -1044,7 +1044,7 @@ input:checked + .invslider:before {
 }
 
 .review-control-interactive {
-    background: #F8F8F8;
+    background: #F8F8F8CC;
     width: 45px;
     height: 35px;
     top: 35%;

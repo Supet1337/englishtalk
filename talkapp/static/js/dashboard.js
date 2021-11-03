@@ -58,6 +58,7 @@ function closeCrs(id){
     $("#home").addClass('active show');
     $("#myTabContent").show();
     closeChatWindow();
+    crsnmclose();
     $("#interactivehome").removeClass('interactive-list-show');
     $("#interactivehome").addClass('interactive-list-hide');
     $("a[id^=InteractiveTab]").removeClass('nvlnk-act');
@@ -117,7 +118,7 @@ $(document).ready(function(){
                 var jsonIntr = $.parseJSON(result);
                 jsonIntr.forEach(function(item, i, jsonIntr) {
                     $("#interactivehome #interdeck").append(
-                            '<a id="openInter'+jsonIntr[i].interactive_id+'" onclick="openInter('+jsonIntr[i].interactive_id+')" style="width: 33.3333333%">'+
+                            '<a id="openInter'+jsonIntr[i].interactive_id+'" onclick="openInter('+jsonIntr[i].interactive_id+')" style="width: 33.3333333%; cursor: pointer">'+
                                 '<div class="card" style="margin-right: 17px; margin-left: 17px; margin-bottom: 14px;">'+
                                     '<img class="card-img-top mx-auto" style="border-radius: 1rem;max-height: 280px;text-align: center; width: 100%; height: 280px; background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;background-image: url('+jsonIntr[i].interactive_pic+')">'+
                                     '<div class="card-body blog-card">'+
@@ -328,6 +329,7 @@ $(document).ready(function(){
             success: function (result) {
                 $('#page-content-wrapper').css('margin-top','5px')
                 $('#myTab').show()
+                $('.lesson-crs').hide()
                 var json = $.parseJSON(result);
                 $("#clsbtn").prepend(
                      '<button type="button" class="btn btn-secondary my-auto" id="crsClose'+id+'" onclick="closeCrs('+id+'); event.stopPropagation()"  style="padding:0; border-radius: 50px; border: 0;background: #e0e0e0;width: 30px; height: 30px; margin-right: 10px;" aria-label="Close">'+
@@ -578,7 +580,7 @@ function openInter (ident){
                             $("#carousel-inner"+id).append('<button class="carousel-control-prev review-control-interactive" style="left: 1%; top: 93%" type="button" data-bs-target="#carouselExampleControls'+id+'" data-bs-slide="prev">' +
                                 '<i class="fas fa-chevron-left" style="font-size: 24px;color: #333333" aria-hidden="true"></i>'+
                               '</button>'+
-                                '<button class="carousel-control-next review-control-interactive" style="right: 85%; top: 93%" type="button" data-bs-target="#carouselExampleControls'+id+'" data-bs-slide="next">'+
+                                '<button class="carousel-control-next review-control-interactive" style="right: 1%; top: 93%" type="button" data-bs-target="#carouselExampleControls'+id+'" data-bs-slide="next">'+
                                 '<span class="fas fa-chevron-right" style="font-size: 24px;color: #333333" aria-hidden="true"></span>'+
                               '</button>');
 
@@ -694,12 +696,17 @@ function crsClick(id){
     $('#collapseAudio'+id).removeClass('show');
 }
 
-function crsnm(student){
+function crsnm(student,img){
     $('.teacher-name-p').append(student);
+    $('#teacher-img-2').attr("src",img)
+    $('#teacher-img-2').show()
+    $('#teacher-img').hide()
 }
 
 function crsnmclose(){
     $('.teacher-name-p').html('');
+    $('#teacher-img-2').hide()
+    $('#teacher-img').show()
 }
 
 function courseheader(course){

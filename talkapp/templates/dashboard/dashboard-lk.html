@@ -50,11 +50,13 @@
                     <div class="card mb-3" style=" border-radius: 6px;height: 90%">
                         <div class="row g-0 my-auto" style="height:fit-content">
                             <div class="col-md-4" style="padding-left:15px; padding-right:0">
-                                {% if ava == "Аватар" %}
-                                <img id="teacher-img" src='{% static "images/avatar.png" %}' style="width: auto; height: auto; max-width: 100px;max-height: 100px;  border-radius: 100%; margin-left: 16px; margin-top: 20px; margin-bottom: 16px; margin-right: 8px;"  align="center">
-                                {% else %}
-                                <img id="teacher-img" src='ava' style="width: auto; height: auto; max-width: 100px;max-height: 100px;  border-radius: 100%; margin-left: 16px; margin-top: 20px; margin-bottom: 16px; margin-right: 8px;"  align="center">
-                                {% endif %}
+                                {% if image == -1 %}
+                    <img id="teacher-img" src='{% static "images/avatar.png" %}' style="width: auto; height: auto; max-width: 115px;max-height: 115px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
+                    <br>
+                    {% else %}
+                    <img id="teacher-img" src='{{image.url}}' style="width: auto; height: auto; max-width: 115px;max-height: 115px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
+                    <br>
+                    {% endif %}
                             </div>
                             <div class="col-md-7" id="teacher-blog" style="padding-left:0; padding-right:0; margin-right: 10px">
                                 <div class="teacher-name">

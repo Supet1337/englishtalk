@@ -57,17 +57,18 @@
                         </div>
                     </div>
 
-                    <!--
                     <div style="display: flex; margin-bottom: 18px">
                         <div id="submit-answer-button"></div>
                         <div style="margin-left: auto">
+                            <!--
                         Показывать завершённые
                         <label class="switch">
                             <input type="checkbox">
                             <span class="slider round"></span>
                         </label>
+                        -->
                             </div>
-                    </div> -->
+                    </div>
 
                     <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-bottom: 0; display: none">
                         <li class="nav-item" role="presentation">
@@ -124,16 +125,20 @@
                                 </div>
                                 {% else %}
                                 {% for c in courses %}
-                                <div class="lesson-crs-hw">
-                                    <a style="color: #333333" href="#" id="openUserHmwork{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.teacher.user.first_name}} {{c.teacher.user.last_name}}'); courseheader('{{c.course_type}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}" data-coursename="{{c.course_type}}">
+                                <div class="lesson-crs">
+                                {% if c.get_teacher_image == -1 %}
+                                    <a style="color: #333333" href="#" id="openUserHmwork{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.teacher.user.first_name}} {{c.teacher.user.last_name}}','{% static 'images/avatar.png' %}'); courseheader('{{c.course_type}}')" data-coursename="{{c.course_type}}">
+                                        {% else %}
+                                    <a style="color: #333333" href="#" id="openUserHmwork{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.teacher.user.first_name}} {{c.teacher.user.last_name}}','{{c.get_teacher_image}}'); courseheader('{{c.course_type}}')" data-coursename="{{c.course_type}}">
+                                        {% endif %}
                                         <div class="lesson-name">
                                             {{c.course_type}}
                                         </div>
                                         <div class="lesson-progress">
-                                            {% if c.get_student_image == -1 %}
+                                            {% if c.get_teacher_image == -1 %}
                                             <img src='{% static "images/avatar.png" %}' style="width: 40px; height: 40px; border-radius: 40px">
                                             {% else %}
-                                            <img src="{{c.get_student_image}}" style="width: 40px; height: 40px; border-radius: 40px">
+                                            <img src="{{c.get_teacher_image}}" style="width: 40px; height: 40px; border-radius: 40px">
                                             {% endif %}
                                             <div class="progress-num my-auto">
                                                 {{c.teacher.user.first_name}} {{c.teacher.user.last_name}}
@@ -178,10 +183,18 @@
             </div>
 
 
-            <div class="card" style="max-width: 415px; max-height: 899px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; height: 84vh" id="chat">
+            <div class="card" style="max-width: 380px; max-height: 899px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; height: 84vh" id="chat">
                 <div class="card-header" id="chat-header" style="display: flex; background-color: #2f80ed1a;">
 
-                    <img id="teacher-img" src="{% static 'images/avatar.png' %}" style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;"  align="center">
+                    {% if image == -1 %}
+                    <img id="teacher-img" src='{% static "images/avatar.png" %}' style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;"  align="center">
+                    <br>
+                    {% else %}
+                    <img id="teacher-img" src='{{image.url}}' style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;"  align="center">
+                    <br>
+                    {% endif %}
+                            <img id="teacher-img-2" src='{% static "images/avatar.png" %}' style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;display: none"  align="center">
+
                     <div class="teacher-name-p"></div>
                     <button style="margin-right: 1em;position: absolute; top: 3.5%; right: 10px; background: transparent; color: #2F80ED; border: 0; display: none" id="join" type="submit" form="join-form" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
                 </div>
@@ -191,8 +204,8 @@
                             <div id="chat-window" style="display: none">
                             <div class="row video-group draggable ui-widget-content" id="draggable_video" style="display: none; visibility: visible">
                                     <div class="col" style="padding-left: 0; padding-right: 0">
-                                        <div id="remote-playerlist" style="height: 300px"></div>
-                                        <div id="local-player" style="position: absolute;width: 100px;height: 100px;right: 0;top: 0;"></div>
+                                        <div id="remote-playerlist" style="height: 250px"></div>
+                                        <div id="local-player" style="position: absolute;width: 80px;height: 100px;right: 0;top: 0;"></div>
                                     </div>
                             </div>
                             <div>
