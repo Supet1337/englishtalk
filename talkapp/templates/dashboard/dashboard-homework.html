@@ -38,6 +38,11 @@
         <p>Получайте информацию о сервисе и специальных предложениях</p>
         <button class="dashboard-button-primary">Подписаться</button>
     </div>
+    <div class="subscribe-block subscribe-block-2 mx-auto">
+        <h1>Есть вопросы?</h1>
+        <p>Не нашли ответа на свой вопрос? Задайте его нам</p>
+        <a href="https://t.me/eng_talk" target="_blank"><button class="dashboard-button-primary">Связаться</button></a>
+    </div>
     </div>
 
     <!-- Page Content -->
@@ -95,8 +100,12 @@
                                 </div>
                                 {% else %}
                                 {% for c in courses %}
-                                <div class="lesson-crs-hm">
-                                    <a style="color: #333333" href="#" id="openUserHmwork{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}'); courseheader('{{c.course_type}}')" data-student="{{c.student.first_name}} {{c.student.last_name}}" data-coursename="{{c.course_type}}">
+                                <div class="lesson-crs">
+                                        {% if c.get_student_image == -1 %}
+                                            <a style="color: #333333" href="#" id="openUserHmwork{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}', '{% static 'images/avatar.png' %}'); courseheader('{{c.course_type}}')"  data-coursename="{{c.course_type}}">
+                                        {% else %}
+                                            <a style="color: #333333" href="#" id="openUserHmwork{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}', '{{c.get_student_image}}'); courseheader('{{c.course_type}}')"  data-coursename="{{c.course_type}}">
+                                        {% endif %}
                                         <div class="lesson-name">
                                             {{c.course_type}}
                                         </div>
@@ -153,7 +162,6 @@
 
 
                             </div>
-                        <!-- <button class="btn btn-white fixbut" style="border-radius: 0px; float: left;margin-top: 12px;margin-left: 1rem" onclick="tog_right()" id="menu-toggle-right"><i class="fas fa-video" id="angle-right" aria-hidden="true"></i> Подключить видеосвязь</button> -->
 
 
                     </div>
@@ -300,17 +308,17 @@
             <div class="modal-body" style="padding-right: 30px;padding-left: 30px;">
                 <label style="font-family: Arial;font-style: normal;font-weight: normal;font-size: 12px;line-height: 14px;color: #333333;" class="col-form-label">Тип файла</label>
                 <div style="text-align: center">
-                    <ul class="nav nav-tabs" id="myTab1" role="tablist" style="border-bottom: 0; margin-bottom: 20px">
-                        <li class="nav-item" role="presentation">
-                            <a class="nvlnk nvlnk-act" id="tab11" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 14px">Задано</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nvlnk" id="tab22" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 14px">Проверка</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nvlnk" id="tab33" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 14px">Проверено</a>
-                        </li>
-                    </ul>
+<!--                    <ul class="nav nav-tabs" id="myTab1" role="tablist" style="border-bottom: 0; margin-bottom: 20px">-->
+<!--                        <li class="nav-item" role="presentation">-->
+<!--                            <a class="nvlnk nvlnk-act" id="tab11" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 14px">Задано</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item" role="presentation">-->
+<!--                            <a class="nvlnk" id="tab22" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 14px">Проверка</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item" role="presentation">-->
+<!--                            <a class="nvlnk" id="tab33" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 14px">Проверено</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
                     <button type="button" class="tape-btn mx-auto" onclick="upload_file()" style="width: 100%">+ Добавить файл</button>
                     <p class="mx-auto" style="margin: 8px 0px">Или</p>
                 </div>

@@ -46,6 +46,11 @@
         <p>Получайте информацию о сервисе и специальных предложениях</p>
         <button class="dashboard-button-primary">Подписаться</button>
     </div>
+    <div class="subscribe-block subscribe-block-2 mx-auto">
+        <h1>Есть вопросы?</h1>
+        <p>Не нашли ответа на свой вопрос? Задайте его нам</p>
+        <a href="https://t.me/eng_talk" target="_blank"><button class="dashboard-button-primary">Связаться</button></a>
+    </div>
     </div>
 
     <!-- Page Content -->
@@ -109,7 +114,11 @@
             {% else %}
             {% for c in courses %}
             <div class="lesson-crs mb-3">
-                <a style="color: #333333" href="#" id="openUserCourse{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}'); courseheader('{{c.course_type}}')" data-coursename="{{c.course_type}}" >
+                    {% if c.get_student_image == -1 %}
+                        <a style="color: #333333" href="#" id="openUserCourse{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}', '{% static 'images/avatar.png' %}'); courseheader('{{c.course_type}}')"  data-coursename="{{c.course_type}}">
+                    {% else %}
+                        <a style="color: #333333" href="#" id="openUserCourse{{c.id}}" onclick="joinToRoom('{{c.video_chat}}');crsnm('{{c.student.first_name}} {{c.student.last_name}}', '{{c.get_student_image}}'); courseheader('{{c.course_type}}')"  data-coursename="{{c.course_type}}">
+                    {% endif %}
                     <div class="lesson-name">
                         {{c.course_type}}
                     </div>
@@ -188,12 +197,12 @@
                         <div class="card-header" id="chat-header" style="display: flex; background-color: #2f80ed1a;">
 
                             {% if image == -1 %}
-                    <img id="teacher-img" src='{% static "images/avatar.png" %}' style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;"  align="center">
-                    <br>
-                    {% else %}
-                    <img id="teacher-img" src='{{image.url}}' style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;"  align="center">
-                    <br>
-                    {% endif %}
+                            <img id="teacher-img" src='{% static "images/avatar.png" %}' style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;"  align="center">
+                            <br>
+                            {% else %}
+                            <img id="teacher-img" src='{{image.url}}' style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;"  align="center">
+                            <br>
+                            {% endif %}
                             <img id="teacher-img-2" src='{% static "images/avatar.png" %}' style="width: auto; height: auto; max-width: 72px;max-height: 72px;  border-radius: 100%; margin-right: 14px;display: none"  align="center">
                             <div class="teacher-name-p"></div>
                             <button style="margin-right: 1em;position: absolute; top: 3.5%; right: 10px; background: transparent; color: #2F80ED; border: 0; display: none" id="join" type="submit" form="join-form" class="btn btn-success btn-sm"><i class="fas fa-video" style="font-size: 30px"></i></button>
@@ -379,12 +388,13 @@ function openChat(){
     if (cnt % 2 == 0){
         $('#chat').css('max-width','0');
         $('#chat').css('visibility','hidden');
-        $("#draggable_video").css('width','472px');
-        $("#draggable_video").css('left','-460px');
+        $("#draggable_video").css('width','368px');
+        $("#draggable_video").css('left','-380px');
     }
     else{
-        $('#chat').css('max-width','486px');
+        $('#chat').css('max-width','380px');
         $('#chat').css('visibility','visible');
+        $("#draggable_video").css('left','0');
         $("#draggable_video").css('left','0');
     }
     cnt = cnt + 1

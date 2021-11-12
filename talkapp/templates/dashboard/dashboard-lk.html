@@ -40,6 +40,11 @@
         <p>Получайте информацию о сервисе и специальных предложениях</p>
         <button class="dashboard-button-primary">Подписаться</button>
     </div>
+    <div class="subscribe-block subscribe-block-2 mx-auto">
+        <h1>Есть вопросы?</h1>
+        <p>Не нашли ответа на свой вопрос? Задайте его нам</p>
+        <a href="https://t.me/eng_talk" target="_blank"><button class="dashboard-button-primary">Связаться</button></a>
+    </div>
     </div>
 
     <!-- Page Content -->
@@ -63,7 +68,7 @@
                                     <p style="margin-bottom:3px">{{ teacher|default_if_none:"Ваш преподаватель"}}</p>
                                 </div>
                                 <p class="card-text teacher-info">Преподаватель, менеджер меропр..</p>
-                                <a href="../dashboard/platform"><button class="dashboard-button-secondary-teacher" style="margin-top: 11px" >Онлайн класс</button></a>
+                                <a href="../dashboard/platform"><button class="dashboard-button-secondary-teacher" style="margin-top: 11px; margin-left: 7px;" >Онлайн класс</button></a>
                             </div>
                         </div>
                     </div>
@@ -193,7 +198,7 @@
               displayEventEnd: true,
               headerToolbar: {
                  start: 'prev,next',
-                 center: 'title',
+                 center: '',
                  end: 'call'
 
               },
@@ -243,7 +248,7 @@
             calendar.render();
             $( document ).ready(function() {
                 var date = new Date();
-                $('.fc-toolbar-title').html($('.fc-toolbar-title').html().slice(0,-2))
+
                $(".fc-button-group").before('<select id="select" class="select_month"><option value="01">Январь</option><option value="02">Февраль</option><option value="03">Март</option><option value="04">Апрель</option><option value="05">Май</option><option value="06">Июнь</option><option value="07">Июль</option><option value="08">Август</option><option value="09">Сентябрь</option><option value="10">Октябрь</option><option value="11">Ноябрь</option><option value="12">Декабрь</option></select>');
                $(".select_month").on("change", function(event) {
                    calendar.gotoDate(new Date(date.getFullYear(), this.value-1, 1));
