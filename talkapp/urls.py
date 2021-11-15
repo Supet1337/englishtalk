@@ -8,6 +8,7 @@ urlpatterns = [
     path('check-email',check_email),
     path('change_email', change_email),
     path('homework-upload', homework_upload),
+    path('homework-create', homework_create),
     path('update-profile-picture', update_profile_picture),
     path('delete-profile-picture', delete_profile_picture),
     path('send_request_v', send_request_view),

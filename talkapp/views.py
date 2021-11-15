@@ -802,6 +802,8 @@ def ajax_load_course_homeworks(request, number):
     hmk = []
     for h in Homework.objects.filter(student=c.student):
         hmk.append(h.json())
+    if len(hmk) == 0:
+        return HttpResponse(json.dumps({'student_id': c.student.id}))
     return HttpResponse(json.dumps(hmk))
 
 def ajax_load_interactive_list(request, number):
@@ -922,6 +924,28 @@ def homework_upload(request):
             ans = Homework_file_answer(answer=f, homework=h)
             ans.save()
         messages.success(request, "Решение успешно отправлено")
+    return HttpResponseRedirect('../dashboard/homework')
+
+def homework_create(request):
+    if request.method == "POST":
+        s = User.objects.get(id=request.POST.get('student-id'))
+        hw = Homework()
+        hw.student = s
+        nm = request.POST.get('hw-name')
+        hw.homework_name = nm
+        hw.status = 1
+        hw.save()
+        homew = Homework.objects.get(student=s,homework_name=nm)
+        for f in request.FILES.getlist('doc-file'):
+            file = Homework_file(file=f, homework=homew)
+            file.save()
+        for f in request.FILES.getlist('video-file'):
+            file = Homework_video(video_url=f, homework=homew)
+            file.save()
+        for f in request.FILES.getlist('audio-file'):
+            file = Homework_audio(audio_url=f, homework=homew)
+            file.save()
+        messages.success(request, "Задание успешно создано")
     return HttpResponseRedirect('../dashboard/homework')
 
 

@@ -376,7 +376,6 @@ class Tape(models.Model):
 class Homework(models.Model):
     student = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='Ученик')
     homework_name = models.CharField(max_length=60, verbose_name='Название дз', blank=True)
-    lesson = models.ForeignKey(to=UserLesson, on_delete=models.CASCADE, verbose_name='Урок')
     STATUS_CHOISES = [
         (1, 'Задано'),
         (2, 'Проверка'),
@@ -400,7 +399,8 @@ class Homework(models.Model):
         return {
             'homework_name': self.homework_name,
             'homework_status': self.status,
-            'homework_id': self.id
+            'homework_id': self.id,
+            'student_id': self.student.id
         }
 
 class Homework_file_answer(models.Model):
@@ -425,7 +425,7 @@ class Homework_file(models.Model):
 
 
 class Homework_video(models.Model):
-    name = models.CharField(max_length=64, verbose_name='Название видеофайла')
+    name = models.CharField(max_length=64, verbose_name='Название видеофайла', blank=True)
     video_url = models.FileField(upload_to=video_homework_directory_path, blank=True, verbose_name='Видеофайл')
     homework = models.ForeignKey(to=Homework, on_delete=models.CASCADE, blank=True)
 
@@ -442,7 +442,7 @@ class Homework_video(models.Model):
 
 
 class Homework_audio(models.Model):
-    name = models.CharField(max_length=64, verbose_name='Название аудиофайла')
+    name = models.CharField(max_length=64, verbose_name='Название аудиофайла', blank=True)
     audio_url = models.FileField(upload_to=audio_homework_directory_path, blank=True, verbose_name='Аудиофайл')
     homework = models.ForeignKey(to=Homework, on_delete=models.CASCADE, blank=True)
 
