@@ -336,24 +336,24 @@
                 </button>
             </div>
             <div class="modal-body" style="padding-right: 30px;padding-left: 30px;">
-                <form method="post" action="/homework-create"  id="dzCreateForm" style="margin-bottom: 24px">
+                <form method="post" action="/homework-create" class="dropzone" id="dzCreateForm" style="margin-bottom: 24px">
                     {% csrf_token %}
                     <input type="hidden" name="student-id" id="student-id-input">
                     <input type="text" class="account-input" name="hw-name" placeholder="Название">
-                  <div>
+                  <div class="fallback">
                       Документ
-                    <input name="doc-file" type="file" id="doc-file-input" multiple />
+                    <input name="file" type="file" id="doc-file-input" multiple />
                   </div>
-                    <div>
-                      Видео
-                    <input name="video-file" type="file" id="video-file-input" multiple />
-                  </div>
-                    <div>
-                        Аудио
-                    <input name="audio-file" type="file" id="audio-file-input" multiple />
-                  </div>
+<!--                    <div class="fallback">-->
+<!--                      Видео-->
+<!--                    <input name="file" type="file" id="video-file-input" multiple />-->
+<!--                  </div>-->
+<!--                    <div class="fallback">-->
+<!--                        Аудио-->
+<!--                    <input name="file" type="file" id="audio-file-input" multiple />-->
+<!--                  </div>-->
                 </form>
-                <input type="submit" form="dzCreateForm" class="dashboard-button-secondary-teacher" style="width: 100%" value="Создать домашнее задание">
+                <input type="submit" id="dzCreateFormSubmit" form="dzCreateForm" class="dashboard-button-secondary-teacher" style="width: 100%" value="Создать домашнее задание">
             </div>
 
         </div>
@@ -576,6 +576,16 @@ function openHmk(id) {
 Dropzone.options.dzForm = {
   dictDefaultMessage: "Перетащите файл в эту область"
 };
+
+
+myDropzone = new Dropzone("form#dzCreateForm", {
+      dictDefaultMessage: "Перетащите файл в эту область",
+
+      parallelUploads: 3
+});
+
+
+
 
 function upload_file(){
     $(".dz-button").click();

@@ -333,7 +333,7 @@ $(document).ready(function(){
                 var json = $.parseJSON(result);
                 if (is_teacher){
                     $('#submit-answer-button').html('<button data-bs-toggle="modal" type="button" data-bs-target="#createHomeModal" class="tape-btn">Создать домашнее задание</button>');
-                    $('#student-id-input').val(json.student_id)
+                    $('#student-id-input').val(json[0].student_id)
                 }
                 $("#clsbtn").prepend(
                      '<button type="button" class="btn btn-secondary my-auto" id="crsClose'+id+'" onclick="closeCrs('+id+'); event.stopPropagation()"  style="padding:0; border-radius: 50px; border: 0;background: #e0e0e0;width: 30px; height: 30px; margin-right: 10px;" aria-label="Close">'+

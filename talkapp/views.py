@@ -1,5 +1,7 @@
 import datetime
 import json
+import os
+
 import redis
 import time
 from django.shortcuts import render
@@ -934,17 +936,20 @@ def homework_create(request):
         nm = request.POST.get('hw-name')
         hw.homework_name = nm
         hw.status = 1
-        hw.save()
+        if not(Homework.objects.filter(student=s,homework_name=nm).exists()):
+            hw.save()
         homew = Homework.objects.get(student=s,homework_name=nm)
-        for f in request.FILES.getlist('doc-file'):
-            file = Homework_file(file=f, homework=homew)
-            file.save()
-        for f in request.FILES.getlist('video-file'):
-            file = Homework_video(video_url=f, homework=homew)
-            file.save()
-        for f in request.FILES.getlist('audio-file'):
-            file = Homework_audio(audio_url=f, homework=homew)
-            file.save()
+        for f in request.FILES.getlist('file'):
+            if str(os.path.splitext(f.name)).split('.')[-1][:-2] == 'docx':
+                file1 = Homework_file(file=f, homework=homew)
+                file1.save()
+            if str(os.path.splitext(f.name)).split('.')[-1][:-2] == 'mp4':
+                file2 = Homework_video(video_url=f, homework=homew)
+                file2.save()
+            if str(os.path.splitext(f.name)).split('.')[-1][:-2] == 'mp3':
+                file3 = Homework_audio(audio_url=f, homework=homew)
+                file3.save()
+
         messages.success(request, "Задание успешно создано")
     return HttpResponseRedirect('../dashboard/homework')
 
