@@ -339,7 +339,7 @@
                 <form method="post" action="/homework-create" class="dropzone" id="dzCreateForm" style="margin-bottom: 24px">
                     {% csrf_token %}
                     <input type="hidden" name="student-id" id="student-id-input">
-                    <input type="text" class="account-input" name="hw-name" placeholder="Название">
+                    <input type="text" class="account-input" style="margin-bottom: 10px" name="hw-name" placeholder="Название">
                   <div class="fallback">
                       Документ
                     <input name="file" type="file" id="doc-file-input" multiple />

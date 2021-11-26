@@ -941,13 +941,13 @@ def homework_create(request):
         homew = Homework.objects.get(student=s,homework_name=nm)
         for f in request.FILES.getlist('file'):
             if str(os.path.splitext(f.name)).split('.')[-1][:-2] == 'docx':
-                file1 = Homework_file(file=f, homework=homew)
+                file1 = Homework_file(name=f.name, file=f, homework=homew)
                 file1.save()
             if str(os.path.splitext(f.name)).split('.')[-1][:-2] == 'mp4':
-                file2 = Homework_video(video_url=f, homework=homew)
+                file2 = Homework_video(name=f.name, video_url=f, homework=homew)
                 file2.save()
             if str(os.path.splitext(f.name)).split('.')[-1][:-2] == 'mp3':
-                file3 = Homework_audio(audio_url=f, homework=homew)
+                file3 = Homework_audio(name=f.name, audio_url=f, homework=homew)
                 file3.save()
 
         messages.success(request, "Задание успешно создано")

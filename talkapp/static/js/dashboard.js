@@ -62,6 +62,7 @@ function closeCrs(id){
     $("#interactivehome").removeClass('interactive-list-show');
     $("#interactivehome").addClass('interactive-list-hide');
     $("a[id^=InteractiveTab]").removeClass('nvlnk-act');
+    $("#submit-answer-button").html("");
 
     //$("a[id^=InteractiveTab]").remove();
     //$('div[id^="interactive"]').remove();
