@@ -56,10 +56,10 @@
                         <div class="row g-0 my-auto" style="height:fit-content">
                             <div class="col-md-4" style="padding-left:15px; padding-right:0">
                                 {% if image == -1 %}
-                    <img id="teacher-img" src='{% static "images/avatar.png" %}' style="width: auto; height: auto; max-width: 115px;max-height: 115px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
+                    <img id="teacher-img" src='{% static "images/avatar.png" %}' style="width: 100px; height: 100px; max-width: 115px;max-height: 115px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
                     <br>
                     {% else %}
-                    <img id="teacher-img" src='{{image.url}}' style="width: auto; height: auto; max-width: 115px;max-height: 115px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
+                    <img id="teacher-img" src='{{image.url}}' style="width: 100px; height: 100px; max-width: 115px;max-height: 115px;  border-radius: 100%; margin-left: 16px; margin-top: 16px; margin-bottom: 16px; margin-right: 8px;"  align="center">
                     <br>
                     {% endif %}
                             </div>

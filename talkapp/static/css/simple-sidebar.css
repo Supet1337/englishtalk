@@ -384,7 +384,7 @@ a:not([href]):not([tabindex]) {
     }
 }
 
-.fc-header-toolbar > .fc-toolbar-chunk:nth-child(2)::before {
+.calendar-lk > .fc-header-toolbar > .fc-toolbar-chunk:nth-child(2)::before {
     position: absolute;
     left: 0;
     content: 'Расписание' !important;
@@ -394,13 +394,27 @@ a:not([href]):not([tabindex]) {
     font-size: 24px;
     line-height: 28px;
     color: #333333;
-    top: 6px;
+    top: 7px;
+}
+
+ .fc-header-toolbar > .fc-toolbar-chunk:nth-child(2)::before {
+    position: absolute;
+    left: 0;
+    content: 'Расписание' !important;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #333333;
+    top: 14px;
 }
 
 .fc-header-toolbar > .fc-toolbar-chunk:nth-child(1) {
     margin-left: 170px;
     display: flex;
     height: fit-content;
+    position: relative;
 }
 
 .fc-toolbar-title {
