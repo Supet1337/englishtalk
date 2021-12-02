@@ -5,13 +5,11 @@
 {% block cssfiles %}
         <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
         <link href="https://unpkg.com/@videojs/themes@1/dist/city/index.css" rel="stylesheet"/>
-        <link rel="stylesheet" href={% static "css/shedule.css" %}>
         <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
         <link rel="stylesheet" href={% static "css/animate.css" %}>
 	    <link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
 	    <link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
@@ -231,13 +229,20 @@
                                     <ul id="chat-log" style="overflow: auto;max-height: 69vh; margin-bottom: 2px">
                                     </ul>
                                 </div>
-                                        <div class="row g-0" style="background: white;position: absolute;bottom: -7%;width: -webkit-fill-available;">
-                                            <div style="max-width: 85%;padding:0;flex: 0 0 88%;" class="col-sm-6 col-md-8"><input id="chat-message-input" style="padding: 16px 40px;border: 0; font-family: Arial; font-style: normal; font-weight: normal; font-size: 16px; line-height: 18px; color: #BDBDBD;" autocomplete="off" type="text" class="form-control inpt" placeholder="Нажмите, чтобы написать сообщение"/></div>
+                                        <div class="row g-0" style="background: white;position: absolute;bottom: -6%;left:4%;width: -webkit-fill-available;">
+                                            <div style="max-width: 85%;padding:0;flex: 0 0 88%;" class="col-sm-6 col-md-8"><input id="chat-message-input" style="padding: 16px 20px 16px 39px; border: 0; font-family: Arial; font-style: normal; font-weight: normal; font-size: 16px; line-height: 18px; color: #BDBDBD;" autocomplete="off" type="text" class="form-control inpt" placeholder="Нажмите, чтобы написать сообщение"/></div>
                                             <div class="col-6 col-md-4 pl-0 my-auto" style="max-width: 12%;background: white">
                                                 <button id="chat-message-submit" class="btn btn-secondary mx-auto my-auto" style="padding:0; border-radius: 50px; font-size: x-large; border: 0;background: #e0e0e0;width: 30px; height: 30px" type="submit">
                                                     <i class="fas fa-chevron-right" style="position: absolute; top:3px; left: 8px"></i>
                                                 </button>
                                             </div>
+                                            <div  class="col-6 col-md-4 pl-0 my-auto" style="max-width: 9%;background: white; margin-left: -97%;">
+                                                <button onclick="$('#js-file').click()" class="btn btn-secondary mx-auto my-auto" style="padding:0; border-radius: 50px; font-size: x-large; border: 0;background: #e0e0e0;width: 30px; height: 30px">
+                                                    <i class="fas fa-plus" style="position: absolute; top:3px; left: 5px"></i>
+                                                </button>
+                                                <input style="display:none" type="file" id="js-file">
+                                            </div>
+
                                         </div>
                             </div>
                             </div>
@@ -249,6 +254,8 @@
 <br>
 <br>
 <br>
+<a style="display: none" class="ID" ></a>
+<a style="display: none" class="IDr"></a>
     <!--
     <div class="modal fade" id="dzModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -310,6 +317,7 @@
       <script src={% static "js/jquery.stellar.min.js" %}></script>
       <script src={% static "js/owl.carousel.min.js" %}></script>
       <script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+      <script src={% static "js/reconnecting-websocket.min.js" %}></script>
       <script src={% static "js/aos.js" %}></script>
       <script src={% static "js/scrollax.min.js" %}></script>
       <script src={% static "js/main.js" %}></script>

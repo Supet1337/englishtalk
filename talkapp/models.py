@@ -44,6 +44,9 @@ def blog_image_directory_path(instance, filename):
 def video_image_directory_path(instance, filename):
     return 'Videos/video_{0}/{1}'.format(instance.id, filename)
 
+def message_file_directory_path(instance, filename):
+    return 'Messages/message_{0}/{1}'.format(instance.id, filename)
+
 
 class Teacher(models.Model):
     class Meta:
@@ -358,13 +361,26 @@ class ChatMessage(models.Model):
     message = models.CharField(max_length=512)
     timestamp = models.DateTimeField(auto_now_add=True, editable=False)
     course = models.ForeignKey(to=UserCourse, on_delete=models.CASCADE)
+    file_message = models.FileField(upload_to=message_file_directory_path, verbose_name="Файл", blank=True)
+    is_file_message = models.BooleanField(default=False)
 
     def json(self):
-        return {
-            'message': self.message,
-            'time': self.timestamp.strftime('%H:%M'),
-            'user_id': self.user.id
-        }
+        try:
+            return {
+                'message': self.message,
+                'time': self.timestamp.strftime('%H:%M'),
+                'user_id': self.user.id,
+                'message_url': self.file_message.url,
+                'is_file_message': True,
+            }
+        except:
+            return {
+                'message': self.message,
+                'time': self.timestamp.strftime('%H:%M'),
+                'user_id': self.user.id,
+                'message_url': "",
+                'is_file_message': False
+            }
 
 
 class Tape(models.Model):

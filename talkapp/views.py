@@ -596,28 +596,28 @@ def ajax_pay_lessons(request):
     if request.method == 'POST':
         p = UserAdditional.objects.get(user=request.user)
         cost = int(request.POST.get('cost'))
-        if cost == 4300:
+        if cost == 920:
             p.paid_lessons += 5
             p.lesson_time = False
-        elif cost == 8000:
+        elif cost == 830:
             p.paid_lessons += 10
             p.lesson_time = False
-        elif cost == 14800:
+        elif cost == 780:
             p.paid_lessons += 20
             p.lesson_time = False
-        elif cost == 19800:
+        elif cost == 730:
             p.paid_lessons += 30
             p.lesson_time = False
-        elif cost == 4600:
+        elif cost == 980:
             p.paid_lessons += 5
             p.lesson_time = True
-        elif cost == 8800:
+        elif cost == 880:
             p.paid_lessons += 10
             p.lesson_time = True
-        elif cost == 16400:
+        elif cost == 830:
             p.paid_lessons += 20
             p.lesson_time = True
-        elif cost == 22200:
+        elif cost == 780:
             p.paid_lessons += 30
             p.lesson_time = True
         else:
@@ -825,8 +825,14 @@ def ajax_load_interactive_list(request, number):
 def price(request):
     context = {}
     if request.user.is_authenticated:
-        user_add_img = UserAdditional.objects.get(user=request.user)
-        find_image(context, user_add_img, "image")
+        student_additional = UserAdditional.objects.get(user=request.user)
+        find_image(context, student_additional, "image")
+        context["paid_lessons"] = student_additional.paid_lessons
+        if student_additional.lesson_time:
+            context['lsn_time'] = "60"
+        else:
+            context['lsn_time'] = "45"
+
     return render(request,'dashboard/dashboard-price.html', context)
 
 def courses(request):
@@ -952,6 +958,35 @@ def homework_create(request):
 
         messages.success(request, "Задание успешно создано")
     return HttpResponseRedirect('../dashboard/homework')
+
+
+def message_file_upload(request, time, name, number, href):
+    if request.method == "POST":
+        file = request.FILES.get('file')
+        mess = ChatMessage.objects.latest('timestamp')
+        if mess.timestamp.strftime('%H:%M:%S') == time and mess.course==UserCourse.objects.get(id=number) and mess.message==name:
+            mess.file_message = file
+            mess.is_file_message = True
+            mess.save()
+        # mess = ChatMessage.objects.filter(message=name, user=request.user, course=UserCourse.objects.get(id=number))
+        # for message in mess:
+        #     if message.timestamp.strftime('%H:%M:%S') == time:
+        #         message.file_message = file
+        #         message.is_file_message = True
+        #         message.save()
+    if href.find("homework") != -1:
+        return HttpResponseRedirect('../../../../dashboard/homework')
+    elif href.find("platform") != -1:
+        return HttpResponseRedirect('../../../../dashboard/platform')
+    elif href.find("platform") != -1:
+        return HttpResponseRedirect('../../../../dashboard/tape')
+
+def ajax_load_url_file_messages(request, userid, roomname, time, message):
+    messagessfull = ChatMessage.objects.latest('timestamp')
+    if messagessfull.timestamp.strftime('%H:%M') == time and messagessfull.user == User.objects.get(id=userid) and messagessfull.message == message and messagessfull.course == UserCourse.objects.get(video_chat=roomname):
+        return HttpResponse(json.dumps({'file_message': messagessfull.file_message.url}))
+    else:
+        return HttpResponse(json.dumps({'file_message': " "}))
 
 
 @login_required

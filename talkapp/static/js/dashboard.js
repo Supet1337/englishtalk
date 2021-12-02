@@ -112,6 +112,7 @@ $(document).ready(function(){
         $("#home-tab-interactive").removeClass('active');
 
         const id = i.slice(14);
+        $(".ID").attr("id", id);
 
         $.ajax({
             url: "/ajax_load_interactive_list/"+id,
