@@ -596,28 +596,28 @@ def ajax_pay_lessons(request):
     if request.method == 'POST':
         p = UserAdditional.objects.get(user=request.user)
         cost = int(request.POST.get('cost'))
-        if cost == 920:
+        if cost == 920*5:
             p.paid_lessons += 5
             p.lesson_time = False
-        elif cost == 830:
+        elif cost == 830*10:
             p.paid_lessons += 10
             p.lesson_time = False
-        elif cost == 780:
+        elif cost == 780*20:
             p.paid_lessons += 20
             p.lesson_time = False
-        elif cost == 730:
+        elif cost == 730*30:
             p.paid_lessons += 30
             p.lesson_time = False
-        elif cost == 980:
+        elif cost == 980*5:
             p.paid_lessons += 5
             p.lesson_time = True
-        elif cost == 880:
+        elif cost == 880*10:
             p.paid_lessons += 10
             p.lesson_time = True
-        elif cost == 830:
+        elif cost == 830*20:
             p.paid_lessons += 20
             p.lesson_time = True
-        elif cost == 780:
+        elif cost == 780*30:
             p.paid_lessons += 30
             p.lesson_time = True
         else:
@@ -963,7 +963,7 @@ def homework_create(request):
 def message_file_upload(request, time, name, number, href):
     if request.method == "POST":
         file = request.FILES.get('file')
-        mess = ChatMessage.objects.latest('timestamp')
+        mess = ChatMessage.objects.filter(course=UserCourse.objects.get(id=number)).latest('timestamp')
         if mess.timestamp.strftime('%H:%M:%S') == time and mess.course==UserCourse.objects.get(id=number) and mess.message==name:
             mess.file_message = file
             mess.is_file_message = True
@@ -982,7 +982,7 @@ def message_file_upload(request, time, name, number, href):
         return HttpResponseRedirect('../../../../dashboard/tape')
 
 def ajax_load_url_file_messages(request, userid, roomname, time, message):
-    messagessfull = ChatMessage.objects.latest('timestamp')
+    messagessfull = ChatMessage.objects.filter(course=UserCourse.objects.get(video_chat=roomname)).latest('timestamp')
     if messagessfull.timestamp.strftime('%H:%M') == time and messagessfull.user == User.objects.get(id=userid) and messagessfull.message == message and messagessfull.course == UserCourse.objects.get(video_chat=roomname):
         return HttpResponse(json.dumps({'file_message': messagessfull.file_message.url}))
     else:
