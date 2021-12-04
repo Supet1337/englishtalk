@@ -44,12 +44,12 @@ setTimeout(() => {
                        var json = $.parseJSON(result);
                            if(user_id == data['user_id']){
                                 $('#chat-log').append('<li style="padding-top: 0 !important; padding-bottom: 0 !important; width: 100%" class="p-2 chat-message-pov"></li>');
-                                $('#chat-log').append('<li style="padding-top: 0 !important; padding-bottom: 0 !important" class="p-2 chat-message-pov"><a class="chat-message-time">'+data['time']+'</a><a href download="'+json.file_message+'" ><p class="chat-text-message-pov" >'+data['message']+'</p></a></li>');
+                                $('#chat-log').append('<li style="padding-top: 0 !important; padding-bottom: 0 !important" class="p-2 chat-message-pov"><a class="chat-message-time">'+data['time']+'</a><a href="'+json.file_message+'" target="_blank" ><p class="chat-text-message-pov" >'+data['message']+'</p></a></li>');
                                 $('#chat-log').append('<li style="padding-top: 16px !important; padding-bottom: 0 !important; width: 100%" class="p-2 chat-message-pov"></li>');
                             }
                            else{
                                $('#chat-log').append('<li style="padding-top: 0 !important; padding-bottom: 0 !important; width: 100%" class="p-2 chat-message-pov"></li>');
-                               $('#chat-log').append('<li style="padding-top: 0 !important; padding-bottom: 0 !important" class="p-2 chat-message-pov-left"><a href download="'+json.file_message+'" ><p class="chat-text-message-pov" style="background: #E3E3E3; color: #333333">'+data['message']+'</p></a><a class="chat-message-time" style="margin-left: 10px">'+data['time']+'</a></li>');
+                               $('#chat-log').append('<li style="padding-top: 0 !important; padding-bottom: 0 !important" class="p-2 chat-message-pov-left"><a href="'+json.file_message+'" target="_blank" ><p class="chat-text-message-pov" style="background: #E3E3E3; color: #333333">'+data['message']+'</p></a><a class="chat-message-time" style="margin-left: 10px">'+data['time']+'</a></li>');
                                $('#chat-log').append('<li style="padding-top: 16px !important; padding-bottom: 0 !important; width: 100%" class="p-2 chat-message-pov"></li>');
                            }
 
@@ -180,7 +180,7 @@ $("#js-file").change(function(){
                             $('#chat-log').append('<li class="p-2 chat-message-pov" style="padding-top: 0 !important; padding-bottom: 0 !important; width:100%"></li>'+
                                                     '<li class="p-2 chat-message-pov" style="padding-top: 0 !important; padding-bottom: 0 !important">'+
                                                         '<a class="chat-message-time">'+json[i].time.replace(/(^|\D)(\d)(?!\d)/g, '$10$2')+'</a>'+
-                                                        '<a href="" download="'+json[i].message_url+'" ><p class="chat-text-message-pov" >'+json[i].message+'</p></a>'+
+                                                        '<a href="'+json[i].message_url+'" target="_blank" ><p class="chat-text-message-pov" >'+json[i].message+'</p></a>'+
                                                     '</li>'+
                                                     '<li class="p-2 chat-message-pov" style="padding-top: 16px !important; padding-bottom: 0 !important; width:100%"></li>')
 
@@ -199,7 +199,7 @@ $("#js-file").change(function(){
                          if (json[i].message_url != "" ){
                              $('#chat-log').append('<li class="p-2 chat-message-pov" style="padding-top: 0 !important; padding-bottom: 0 !important; width:100%"></li>'+
                                                      '<li class="p-2 chat-message-pov-left" style="padding-top: 0 !important; padding-bottom: 0 !important">'+
-                                                         '<a href="" download="'+json[i].message_url+'" ><p class="chat-text-message-pov" style="background: #E3E3E3; color: #333333">'+json[i].message+'</p></a>'+
+                                                         '<a href="'+json[i].message_url+'" target="_blank" ><p class="chat-text-message-pov" style="background: #E3E3E3; color: #333333">'+json[i].message+'</p></a>'+
                                                          '<a class="chat-message-time" style="margin-left: 10px">'+json[i].time.replace(/(^|\D)(\d)(?!\d)/g, '$10$2')+'</a>'+
                                                      '</li>'+
                                                      '<li class="p-2 chat-message-pov" style="padding-top: 16px !important; padding-bottom: 0 !important; width:100%"></li>')
