@@ -7588,7 +7588,8 @@ var FullCalendar = (function (exports) {
                 var buttonName = widget.buttonName, buttonClick = widget.buttonClick, buttonText = widget.buttonText, buttonIcon = widget.buttonIcon;
                 if (buttonName === 'title') {
                     isOnlyButtons = false;
-                    children.push(createElement("h2", { className: "fc-toolbar-title" }, props.title));
+                    if (window.screen.width < 849) children.push(createElement("h2", { className: "fc-toolbar-title" }, (props.title.slice(0,-3)).slice(-5)));
+                    else children.push(createElement("h2", { className: "fc-toolbar-title" }, props.title.slice(0,-3)));
                 }
                 else {
                     var ariaAttrs = buttonIcon ? { 'aria-label': buttonName } : {};

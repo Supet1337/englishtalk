@@ -429,7 +429,7 @@
 .lesson-crs,
 .lesson-crs-hm{
     position: relative;
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(0, 0, 0, 0.05);
     padding: 10px;
     border-bottom-left-radius: 10px;
     border-top-left-radius: 10px;
@@ -444,7 +444,7 @@
     background: white;
     border-bottom: 42px solid transparent;
     border-top: 42px solid transparent;
-    border-left: 60px solid rgba(0, 0, 0, 0.02);
+    border-left: 60px solid rgba(0, 0, 0, 0.05);
     content: '';
     position: absolute;
     right: 0;

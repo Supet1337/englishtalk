@@ -214,7 +214,7 @@ def dashboard_lk(request):
     if len(Teacher.objects.filter(user=request.user)) > 0:
         is_teacher = True
     context["is_teacher"] = is_teacher
-    context['blog'] = Blog.objects.all()
+    context['blog'] = Blog.objects.all()[::-1]
     context['videos'] = VideoPractise.objects.all()
     context['video_categories'] = VideoCategory.objects.all()
     if is_teacher:

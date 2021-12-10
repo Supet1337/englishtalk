@@ -229,15 +229,15 @@
                                     <ul id="chat-log" style="overflow: auto;max-height: 69vh; margin-bottom: 2px">
                                     </ul>
                                 </div>
-                                        <div class="row g-0" style="background: white;position: absolute;bottom: -6%;left:4%;width: -webkit-fill-available;">
-                                            <div style="max-width: 85%;padding:0;flex: 0 0 88%;" class="col-sm-6 col-md-8"><input id="chat-message-input" style="padding: 16px 20px 16px 39px; border: 0; font-family: Arial; font-style: normal; font-weight: normal; font-size: 16px; line-height: 18px; color: #BDBDBD;" autocomplete="off" type="text" class="form-control inpt" placeholder="Нажмите, чтобы написать сообщение"/></div>
-                                            <div class="col-6 col-md-4 pl-0 my-auto" style="max-width: 12%;background: white">
-                                                <button id="chat-message-submit" class="btn btn-secondary mx-auto my-auto" style="padding:0; border-radius: 50px; font-size: x-large; border: 0;background: #e0e0e0;width: 30px; height: 30px" type="submit">
-                                                    <i class="fas fa-chevron-right" style="position: absolute; top:3px; left: 8px"></i>
+                                        <div class="row g-0" style="background: white;position: absolute;bottom: -6%;left:4%;width: 100%; border: 1px solid rgba(0,0,0,0.125);border-radius: 0px; margin-bottom: 10px;">
+                                            <div style="max-width: 100%;padding:0;flex: 0 0 90%;" class="col-sm-6 col-md-8"><input id="chat-message-input" style="padding: 16px 0px 16px 45px; border: 0; font-family: Arial; font-style: normal; font-weight: normal; font-size: 16px; line-height: 18px; color: #BDBDBD;" autocomplete="off" type="text" class="form-control inpt" placeholder="Нажмите, чтобы написать сообщение"/></div>
+                                            <div class="col-6 col-md-4  my-auto" style="max-width: 7%;background: white; padding-left: 0">
+                                                <button id="chat-message-submit" class="btn btn-secondary mx-auto my-auto" style="padding:0; border-radius: 50px; font-size: x-large; border: 0;background: #2f80ed;width: 30px; height: 30px" type="submit">
+                                                    <i class="fas fa-chevron-right" style="position: absolute; top:3px; left: 9px"></i>
                                                 </button>
                                             </div>
-                                            <div  class="col-6 col-md-4 pl-0 my-auto" style="max-width: 9%;background: white; margin-left: -97%;">
-                                                <button onclick="$('#js-file').click()" class="btn btn-secondary mx-auto my-auto" style="padding:0; border-radius: 50px; font-size: x-large; border: 0;background: #e0e0e0;width: 30px; height: 30px">
+                                            <div  class="col-6 col-md-4  my-auto" style="max-width: 9%;background: white; margin-left: -95%; padding-left: 0">
+                                                <button onclick="$('#js-file').click()" class="btn btn-secondary mx-auto my-auto" style="padding:0; border-radius: 50px; font-size: x-large; border: 0;background: #28a745ba;width: 30px; height: 30px">
                                                     <i class="fas fa-plus" style="position: absolute; top:3px; left: 5px"></i>
                                                 </button>
                                                 <input style="display:none" type="file" id="js-file">
@@ -409,9 +409,17 @@ function openChat(){
 }
 
 
-
+num = 0
 function hidcm() {
+
     $("#draggable_video").toggle();
+    if (num % 2 == 0){
+        $("#chat-log-p").css('clip', 'rect(auto, auto, auto, auto)')
+        $("#chat-log-p").css('height', '85%')
+        }
+    else
+        $("#chat-log-p").css('clip', 'rect(190px, auto, auto, 40px)')
+    num += 1
 };
 
 $('#draggable_video').draggable({
