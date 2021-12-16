@@ -350,22 +350,28 @@ $(document).ready(function(){
                     if(!$("#docLabel"+id).length){
                         $("#home-tab").removeClass('nvlnk-act');
                         $("#myTabContent").hide();
-                        $("#home"+json[i].homework_status).append('<div class="lesson">'+
-                        '<a style="color: #333333" href="#" id="openHmk'+json[i].homework_id+'" onclick="openHmk('+json[i].homework_id+')">'+
-                        '<div class="lesson-name">'+
+                        if (is_teacher){
+                        $("#home"+json[i].homework_status).append('<div style="height:87px" class="lesson">'+
+                        '<a style="color: #333333; display: flex" href="#" id="openHmk'+json[i].homework_id+'" onclick="openHmk('+json[i].homework_id+')">'+
+                        '<div style="margin-top: 24px; margin-bottom: 24px" class="lesson-name">'+
                             json[i].homework_name+
                         '</div>'+
-                        '<div class="lesson-progress">'+
-                            '<div class="progress-num">'+
-                                '1/4'+
-                            '</div>'+
-                            '<div class="progress">'+
-                                '<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>'+
-                            '</div>'+
-                        '</div>'+
+                        '<button onclick="event.stopPropagation(); delHmk('+json[i].homework_id+')" style="background: #ff00005c;border: none;border-radius: 6px;position: absolute;right: 62px; color: white; margin-top: 18px; margin-bottom: 24px">'+
+                           '<i class="far fa-trash-alt"></i>'+
+                        '</button>'+
                         '</a>'+
                     '</div>');
                     }
+                    else{
+                        $("#home"+json[i].homework_status).append('<div style="height:87px" class="lesson">'+
+                            '<a style="color: #333333; display: flex" href="#" id="openHmk'+json[i].homework_id+'" onclick="openHmk('+json[i].homework_id+')">'+
+                            '<div style="margin-top: 24px; margin-bottom: 24px" class="lesson-name">'+
+                                json[i].homework_name+
+                            '</div>'+
+                            '</a>'+
+                        '</div>');
+                    }
+                }
 
                     else {
                         $("#home-tab").removeClass('nvlnk-act');

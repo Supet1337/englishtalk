@@ -791,6 +791,12 @@ def ajax_delete_word(request, number):
         word.delete()
     return HttpResponse('deleted')
 
+def ajax_delete_homework(request, number):
+    if request.method == 'POST':
+        homework = Homework.objects.get(id=number)
+        homework.delete()
+    return HttpResponse('deleted')
+
 
 def ajax_load_course_lessons(request, number):
     c = UserCourse.objects.get(id=number)
