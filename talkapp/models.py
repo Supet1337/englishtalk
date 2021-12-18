@@ -23,7 +23,10 @@ def file_homework_directory_path(instance, filename):
     return 'homeworks/homework_{0}/files/{1}'.format(instance.homework.id, filename)
 
 def file_homework_answer_directory_path(instance, filename):
-    return 'homeworks/homework_{0}/answers/{1}'.format(instance.id, filename)
+    return 'homeworks/homework_{0}/answers/{1}'.format(instance.homework.id, filename)
+
+def file_homework_answer_teacher_directory_path(instance, filename):
+    return 'homeworks/homework_{0}/answers_teacher/{1}'.format(instance.homework.id, filename)
 
 
 def audio_directory_path(instance, filename):
@@ -411,6 +414,9 @@ class Homework(models.Model):
     def get_homework_answers(self):
         return Homework_file_answer.objects.filter(homework_id=self.id)
 
+    def get_homework_answers_teacher(self):
+        return Homework_file_answer_teacher.objects.filter(homework_id=self.id)
+
     def json(self):
         return {
             'homework_name': self.homework_name,
@@ -420,8 +426,36 @@ class Homework(models.Model):
         }
 
 class Homework_file_answer(models.Model):
+    name = models.CharField(max_length=64, verbose_name='Название документа', blank=True)
     answer = models.FileField(upload_to=file_homework_answer_directory_path, verbose_name="Документ", blank=True)
     homework = models.ForeignKey(to=Homework, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    def json(self):
+        return {
+            'filePUP_url': self.answer.url,
+            'filePUP_id': self.id,
+            'filePUP_name': self.name,
+            'homework_id': self.homework.id,
+        }
+
+class Homework_file_answer_teacher(models.Model):
+    name = models.CharField(max_length=64, verbose_name='Название документа', blank=True)
+    answer = models.FileField(upload_to=file_homework_answer_teacher_directory_path, verbose_name="Документ", blank=True)
+    homework = models.ForeignKey(to=Homework, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    def json(self):
+        return {
+            'fileTCH_url': self.answer.url,
+            'fileTCH_id': self.id,
+            'fileTCH_name': self.name,
+            'homework_id': self.homework.id,
+        }
 
 class Homework_file(models.Model):
     name = models.CharField(max_length=64, verbose_name='Название документа', blank=True)

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django_cleanup.apps.CleanupConfig',
     'talkapp',
     'phonenumber_field',
     'ckeditor',

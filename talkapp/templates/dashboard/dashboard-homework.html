@@ -63,28 +63,23 @@
                     </div>
 
                     <div style="display: flex; margin-bottom: 18px">
-                        <div id="submit-answer-button">
-                        </div>
+                        <div id="submit-answer-button"></div>
+
                         <div style="margin-left: auto">
-                            <!--
-                        Показывать завершённые
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider round"></span>
-                        </label>
-                        -->
-                            </div>
+                            <div id="submit-answer-teacher-button"> </div>
+                        </div>
+
                     </div>
 
                     <ul class="nav nav-tabs" id="myTab" role="tablist" style="border-bottom: 0; display: none">
                         <li class="nav-item" role="presentation">
-                            <a class="nvlnk active" id="tab1" data-bs-toggle="tab" href="#home1" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 70px">Задано</a>
+                            <a class="nvlnk" id="tab1" data-bs-toggle="tab" onclick="$('#home1').show(); $('#home2').hide(); $('#home3').hide()" href="#home1" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 70px">Задано</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nvlnk" id="tab2" data-bs-toggle="tab" href="#home2" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 70px">Проверка</a>
+                            <a class="nvlnk" id="tab2" data-bs-toggle="tab" onclick="$('#home2').show(); $('#home1').hide(); $('#home3').hide()" href="#home2" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 70px">Проверка</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nvlnk" id="tab3" data-bs-toggle="tab" href="#home3" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 70px">Проверено</a>
+                            <a class="nvlnk" id="tab3" data-bs-toggle="tab" onclick="$('#home3').show(); $('#home1').hide(); $('#home2').hide()" href="#home3" role="tab" aria-controls="home" aria-selected="true" style="padding: 8px 70px">Проверено</a>
                         </li>
 
                     </ul>
@@ -166,13 +161,13 @@
 
 
                     </div>
-                    <div class="tab-pane fade show active" id="home1" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="tab-pane fade " id="home1" role="tabpanel" aria-labelledby="home-tab">
 
                         </div>
-                        <div class="tab-pane fade show active" id="home2" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-pane fade " id="home2" role="tabpanel" aria-labelledby="home-tab">
 
                         </div>
-                        <div class="tab-pane fade show active" id="home3" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="tab-pane fade " id="home3" role="tabpanel" aria-labelledby="home-tab">
 
                         </div>
 
@@ -333,6 +328,38 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="homeModalCheckAns" tabindex="-1" aria-labelledby="homeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content modal-sm mx-auto" style="max-width:360px">
+            <div class="modal-header">
+                <h5 class="modal-title" style="font-family: Arial;font-style: normal;font-weight: bold;font-size: 24px;line-height: 28px;color: #333333;" id="createHomeModalLabelCheck">Добавить файл</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="padding-right: 30px;padding-left: 30px;">
+                <label style="font-family: Arial;font-style: normal;font-weight: normal;font-size: 12px;line-height: 14px;color: #333333;" class="col-form-label">Тип файла</label>
+                <div style="text-align: center">
+                    <button type="button" class="tape-btn mx-auto" onclick="upload_file_ans()" style="width: 100%">+ Добавить файл</button>
+                    <p class="mx-auto" style="margin: 8px 0px">Или</p>
+                </div>
+                <form method="post" action="/homework-upload-teach-answer"  id="dzFormCheck" class="dropzone" style="margin-bottom: 24px">
+                    {% csrf_token %}
+                    <input type="hidden" name="ans-teach-homework-id" id="ans-teach-homework-id">
+                    <div class="fallback" >
+                        <input name="file" type="file" id="ans-teac-file-input" multiple />
+                    </div>
+                </form>
+                <input type="submit" form="dzFormCheck" class="dashboard-button-secondary-teacher" style="width: 100%" value="Добавить файл">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
 <div class="modal fade" id="createHomeModal" tabindex="-1" aria-labelledby="createHomeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content modal-sm mx-auto" style="max-width:360px">
@@ -488,18 +515,35 @@ function openHmk(id) {
                         $("#myTabContent").removeClass('show active');
                         {% if not is_teacher %}
                         $("#submit-answer-button").html('<button data-bs-toggle="modal" type="button" data-bs-target="#homeModal" data-homework="'+id+'" class="tape-btn">Отправить решение</button>');
+                        {% else %}
+                        $("#submit-answer-teacher-button").html('<button data-bs-toggle="modal" type="button" data-bs-target="#homeModalCheckAns" data-homework-ans-teach="'+id+'" class="tape-btn">Отправить решение ученику</button>');
                         {% endif %}
                         $("#home"+json[i].homework_status).append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
-                                    '<div>'+
                                        ' <div style="font-size: 18px;line-height: 21px; margin-bottom: 14px" class="blogs-header-text">'+
+                                           ' <div style="font-size: 24px;line-height: 21px; margin-bottom: 14px; margin-top: 10px" class="blogs-header-text">Материалы:</div>'+
                                            ' '+json[i].homework_name+' '+
                                        ' </div>'+
                                         '<div id="collapseVideo'+id+'"></div>'+
                                         '<div id="collapseAudio'+id+'" style="margin-bottom: 18px"></div>'+
-                                        '<div class="collapse show" id="docCard'+id+'">'+
-                                        '</div>'+
-                                    '</div>'+
+                                        '<div class="collapse show" id="docCard'+id+'"></div>'+
                                  '</div>');
+                                 if(json[i].homework_status == 2){
+                                     $("#doc"+id).append(
+                                        ' <div style="font-size: 24px;line-height: 21px; margin-bottom: 14px; margin-top: 10px" class="blogs-header-text">Ответ ученика:</div>'+
+                                        '<div class="collapse show" id="docCardAnsP'+id+'"></div>'
+
+                                     );
+                                 }
+
+                                 if(json[i].homework_status == 3){
+                                     $("#doc"+id).append(
+                                        ' <div style="font-size: 24px;line-height: 21px; margin-bottom: 14px; margin-top: 10px" class="blogs-header-text">Ответ ученика:</div>'+
+                                        '<div class="collapse show" id="docCardAnsP'+id+'"></div>'+
+                                        ' <div style="font-size: 24px;line-height: 21px; margin-bottom: 14px; margin-top: 10px" class="blogs-header-text">Ответ учителя:</div>'+
+                                        '<div class="collapse show" id="docCardAnsT'+id+'"></div>'
+
+                                     );
+                                 }
                         $(".breadcrumb-item").removeClass('active');
                         $("#breadcrumb").append('<li class="breadcrumb-item active" ><a style="color: #333333" href="../../dashboard/homework" >Задания</a></li>');
                         $("#breadcrumb").append('<li class="breadcrumb-item active" id="bread-item'+id+'">'+json[i].homework_name+'</li>');
@@ -542,7 +586,29 @@ function openHmk(id) {
                                     );
                                 });
 
-                        }}));
+                        }})).then(
+                        $.ajax({
+                            url: "/ajax_load_homework_files_pup_ans/"+id,
+                            success: function (result) {
+                                var json = $.parseJSON(result);
+                                json.forEach(function(item, i, json) {
+                                    $("#docCardAnsP"+id).append(
+                                        '<a href="'+json[i].filePUP_url+'" download><div style="display: flex; margin-bottom: 20px"><img src={% static "images/file-image.jpg" %} width="46px" height="58px"><p class="my-auto" style="margin-left: 16px">'+json[i].filePUP_name+'</p></div></a>'
+                                    );
+                                });
+
+                        }})).then(
+                        $.ajax({
+                            url: "/ajax_load_homework_files_teach_ans/"+id,
+                            success: function (result) {
+                                var json = $.parseJSON(result);
+                                json.forEach(function(item, i, json) {
+                                    $("#docCardAnsT"+id).append(
+                                        '<a href="'+json[i].fileTCH_url+'" download><div style="display: flex; margin-bottom: 20px"><img src={% static "images/file-image.jpg" %} width="46px" height="58px"><p class="my-auto" style="margin-left: 16px">'+json[i].fileTCH_name+'</p></div></a>'
+                                    );
+                                });
+
+                        }}))
                     }
 
                     else {
@@ -602,6 +668,12 @@ Dropzone.options.dzForm = {
 };
 
 
+myDropzone = new Dropzone("form#dzFormCheck", {
+      dictDefaultMessage: "Перетащите файл в эту область",
+      parallelUploads: 3
+});
+
+
 myDropzone = new Dropzone("form#dzCreateForm", {
       dictDefaultMessage: "Перетащите файл в эту область",
       parallelUploads: 3
@@ -609,15 +681,24 @@ myDropzone = new Dropzone("form#dzCreateForm", {
 
 
 
-
 function upload_file(){
-    $(".dz-button").click();
+    $("#dzForm .dz-button").click();
+}
+
+function upload_file_ans(){
+    $("#dzFormCheck .dz-button").click();
 }
 
 $('#homeModal').on('show.bs.modal', function (event) {
     var div = $(event.relatedTarget);
     var id = div.data('homework');
     $('#homework-id').val(id);
+})
+
+$('#homeModalCheckAns').on('show.bs.modal', function (event) {
+    var div = $(event.relatedTarget);
+    var id = div.data('homework-ans-teach');
+    $('#ans-teach-homework-id').val(id);
 })
             $(document).ready(function () {
             var div = document.getElementById('right-sidebar-wrapper');

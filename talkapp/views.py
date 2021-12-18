@@ -785,6 +785,19 @@ def ajax_load_homework_files(request, number):
         f.append(i.json())
     return HttpResponse(json.dumps(f))
 
+def ajax_load_homework_files_pup_ans(request, number):
+    f = []
+    for i in Homework.objects.get(id=number).get_homework_answers():
+        f.append(i.json())
+    return HttpResponse(json.dumps(f))
+
+def ajax_load_homework_files_teach_ans(request, number):
+    f = []
+    for i in Homework.objects.get(id=number).get_homework_answers_teacher():
+        f.append(i.json())
+    return HttpResponse(json.dumps(f))
+
+
 def ajax_delete_word(request, number):
     if request.method == 'POST':
         word = Tape.objects.get(id=number)
@@ -935,10 +948,22 @@ def homework_upload(request):
         h.status = 2
         h.save()
         for f in request.FILES.getlist('file'):
-            ans = Homework_file_answer(answer=f, homework=h)
+            ans = Homework_file_answer(answer=f, homework=h, name=f.name)
             ans.save()
         messages.success(request, "Решение успешно отправлено")
     return HttpResponseRedirect('../dashboard/homework')
+
+def homework_upload_teach_answer(request):
+    if request.method == "POST":
+        h = Homework.objects.get(id=request.POST.get('ans-teach-homework-id'))
+        h.status = 3
+        h.save()
+        for f in request.FILES.getlist('file'):
+            ans = Homework_file_answer_teacher(answer=f, homework=h, name=f.name)
+            ans.save()
+        messages.success(request, "Ответ на решение успешно отправлен")
+    return HttpResponseRedirect('../dashboard/homework')
+
 
 def homework_create(request):
     if request.method == "POST":
