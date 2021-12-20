@@ -209,20 +209,28 @@
 }
 
 .logo {
-    border-radius: 6px;
-    font-family: Arial;
+    border: 2px solid #5B61FF;
+    box-sizing: border-box;
+    border-radius: 10px 10px 0px 10px;
+    padding: 11px 33px;
+    font-family: Rubik;
     font-style: normal;
     font-weight: bold;
-    line-height: 21px;
-    color: #2F80ED !important;
-    text-transform: none !important;
-    font-size: 20px;
+    font-size: 16px;
+    line-height: 19px;
+    color: #5B61FF;
+}
+.logo:hover{
+    color: #5B61FF;
+}
 
-    background: #2F80ED;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-
+@media(max-width:360px) {
+    .logo{
+        padding: 7px 25px;
+    }
+    .navbar{
+        height: 74px !important;
+    }
 }
 
 .user-profile {
@@ -495,9 +503,17 @@ a:not([href]):not([tabindex]) {
 .header-text-m {
     font-family: Arial;
     font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
+    font-weight: normal;
+    font-size: 14px;
     line-height: 16px;
-    color: #333333;
-    margin-left: 40px;
+    text-align: left;
+    color: #24273C;
+    margin-left: 34px;
+}
+li.nav-item.nav-user-mobile.header-text-m{
+    margin: 15px 0;
+    font-size: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
 }

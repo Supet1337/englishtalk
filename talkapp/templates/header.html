@@ -1,37 +1,33 @@
 {% load static %}
 {%load static%}
-<nav class="navbar sticky-top navbar-expand-lg navbar-light fixed-top adaptive-header dashboard-header hdr" id="header" style="background: white;width: 100%;padding-top: 0px;padding-bottom: 0px;border-bottom: 1px solid rgba(0, 0, 0, 0.125); height: 60px">
-    <a class="navbar-brand logo" href="../../">EnglishTalk</a>
-    <button class="navbar-toggler" style="background-color: #2F80ED" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+<nav class="navbar sticky-top navbar-expand-lg navbar-light fixed-top adaptive-header dashboard-header hdr" id="header" style="background: white;width: 100%;padding-top: 0px;padding-bottom: 0px;height: 100px">
+    <a class="logo" href="../../">EnglishTalk</a>
+    <button class="navbar-toggler"  type="button" data-bs-toggle="modal" data-bs-target="#mobilemodal">
+        <span style="content:url('{% static "images/toggle.svg" %}')" ></span>
     </button>
-                <div class="collapse navbar-collapse " id="navbarSupportedContent">
-
-                    <ul class="navbar-nav mr-auto navbar-left-top">
-                        <li class="nav-item header-text-m">
-                            +7 (995) 793 02 03
-                        </li>
-                        <li class="nav-item header-text-m">
+                <div class="collapse navbar-collapse mx-auto" style="display: none">
+                    <ul class="navbar-nav mx-auto navbar-left-top">
+                        <li class="nav-item nav-user-not-mobile header-text-m">
                             <a href="courses">Курсы</a>
                         </li>
 
-                        <li class="nav-item header-text-m">
+                        <li class="nav-item nav-user-not-mobile header-text-m">
                             <a href="#scoost">Стоимость</a>
                         </li>
 
-                        <li class="nav-item header-text-m">
+                        <li class="nav-item nav-user-not-mobile header-text-m">
                             <a href="#sreview">Отзывы</a>
                         </li>
                     </ul>
 
-                    <ul class="navbar-nav ml-auto navbar-right-top">
-                        <li class="nav-item dropdown nav-user nav-user-mobile">
-                                <a class="nav-link" style="color:rgb(47, 128, 237); background-color: white" href="../dashboard/lk">Личный кабинет</a>
-                        </li>
-                        <div class="dropdown-divider nav-user-mobile"></div>
-                        <li class="nav-item nav-user-mobile">
-                        <a class="nav-link" style="color:rgb(47, 128, 237); background-color: white" href="/logout">Выход</a>
-                        </li>
+<!--                    <ul class="navbar-nav navbar-right-top">-->
+<!--                        <li class="nav-item dropdown nav-user nav-user-mobile">-->
+<!--                                <a class="nav-link" style="color:rgb(47, 128, 237); background-color: white" href="../dashboard/lk">Личный кабинет</a>-->
+<!--                        </li>-->
+<!--                        <div class="dropdown-divider nav-user-mobile"></div>-->
+<!--                        <li class="nav-item nav-user-mobile">-->
+<!--                        <a class="nav-link" style="color:rgb(47, 128, 237); background-color: white" href="/logout">Выход</a>-->
+<!--                        </li>-->
                         <li class="nav-item nav-user nav-user-not-mobile" style="display: flex">
                             {% if request.user.is_authenticated %}
                             <a href="../dashboard/lk" style="display: flex">
@@ -47,13 +43,80 @@
                             <a class="my-auto" href="/logout" style="display: flex;margin-left: 10px;height: fit-content; color: rgb(0,0,0,0.125)"><i class="fas fa-sign-out-alt"></i></a>
                             {% else %}
                              <a href="#" id="navbarDropdownMenuLink1" data-bs-toggle="modal" data-bs-target="#flModal" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px"><button class="dashboard-button-red">Пробный урок</button></a>
-                             <a href="#" id="navbarDropdownMenuLink2" data-bs-toggle="modal" data-bs-target="#myModal1" aria-haspopup="true" aria-expanded="false"><button class="dashboard-button-secondary-teacher" style="height: 100%">Войти</button></a>
+                             <a href="#" id="navbarDropdownMenuLink2" data-bs-toggle="modal" data-bs-target="#myModal1" aria-haspopup="true" aria-expanded="false"><button class="land-button-secondary-teacher" style="height: 100%">Войти</button></a>
                             {% endif %}
                         </li>
 
                     </ul>
                 </div>
         </nav>
+
+
+<!-- Modal -->
+<div class="modal fade"  id="mobilemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  style="margin-right: auto;margin-left: auto;margin-top: auto;">
+        <div class="modal-content" style="border: none; border-radius: 0; background: #24273C">
+            <div class="modal-header" style="border: none">
+                <a  class="logo" href="../../">EnglishTalk</a>
+
+                <a style="outline: none;" data-bs-dismiss="modal" id="clsmod" aria-label="Close" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M23 23L0.999977 1.00001M22.9999 1L0.999977 23" stroke="#EDF1FA" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </a>
+
+            </div>
+            <div class="modal-body">
+                <ul class="navbar-nav mx-auto navbar-left-top">
+                    <li class="nav-item nav-user-mobile header-text-m">
+                        <a style=" color: #EDF1FA;">+7 (995) 793 02 03</a>
+                    </li>
+
+                    <li class="nav-item nav-user-mobile header-text-m">
+                        <a style=" color: #EDF1FA;"></a>
+                    </li>
+
+                    <li class="nav-item nav-user-mobile header-text-m">
+                        <a style=" color: #EDF1FA;" href="courses">Курсы</a>
+                    </li>
+
+                    <li class="nav-item nav-user-mobile header-text-m">
+                        <a style=" color: #EDF1FA;" href="#scoost">Стоимость</a>
+                    </li>
+
+                    <li style="margin-bottom: 179px" class="nav-item nav-user-mobile header-text-m">
+                        <a style=" color: #EDF1FA;" href="#sreview">Отзывы</a>
+                    </li>
+                </ul>
+
+                {% if request.user.is_authenticated %}
+                <div style="display: flex;" >
+                <a href="../dashboard/lk" style="display: flex">
+                    <p class="my-auto header-text" style="margin-right: 7px;height: fit-content; color: #EDF1FA; ">{{request.user.first_name}} {{request.user.last_name}}</p>
+                    {% if image == -1 %}
+                    <img  style="width: 40px; height: 40px;border-radius: 40px" src='{% static "images/avatar.png" %}'>
+
+                    {% else %}
+                    <img  style="width: 40px; height: 40px;border-radius: 40px" src='{{image.url}}'>
+
+                    {% endif %}
+                </a>
+                <a class="my-auto" href="/logout" style="display: flex;margin-left: 10px;height: fit-content; color: #EDF1FA;"><i class="fas fa-sign-out-alt"></i></a>
+                </div>
+                {% else %}
+                <a  href="#" id="navbarDropdownMenuLink2" onclick="$('#mobilemodal').click()" data-bs-toggle="modal" data-bs-target="#myModal1" aria-haspopup="true" aria-expanded="false"><button class="land-button-secondary-teacher light" style="height: 100%;font-size: 16px;line-height: 18px;padding: 14px 26px; width: 100%; margin-bottom: 10px ">Войти</button></a>
+                <a  href="#" id="navbarDropdownMenuLink1" onclick="$('#mobilemodal').click()" data-bs-toggle="modal" data-bs-target="#flModal" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px"><button style=";font-size: 16px;line-height: 18px; width: 100%; margin-left: 0" class="dashboard-button-red">Зарегистрироваться</button></a>
+                {% endif %}
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="modal fade" id="CourseModal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px" role="document">
@@ -500,6 +563,7 @@ var s = 0;
     s += 1;
     if (s % 2 == 0){
         $('.navbar-collapse').collapse('hide');
+        $('.navbar-collapse').css('back')
         return false;
     }
     else{
