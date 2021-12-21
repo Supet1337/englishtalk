@@ -279,7 +279,171 @@ body{
 	</div>
 </section>
 
-
+<section class="ftco-section" id="scoost">
+	<div class="container-fluid costlist">
+		<div style="margin-right: 0; margin-left: 0;" class="row" >
+			<h1 style="text-align: left" class="big-header2 col">Стоимость занятий</h1>
+			<div  class="time-tog">
+				Увеличить время занятий с 45 минут до 60 минут
+				<label class="switch">
+					<input type="checkbox">
+					<span class="slider-tog slider round"  onclick="toggle_time()"></span>
+				</label>
+			</div>
+		</div>
+		<div class="list-group mx-auto list-group-horizontal" style="width: fit-content; margin-bottom: 30px" id="list-tab" role="tablist">
+			<a  id="list-451-list" data-bs-toggle="list" href="#list-451" role="tab" aria-controls="home" style="margin-right: 3px"></a>
+			<a  id="list-601-list" data-bs-toggle="list" href="#list-601" role="tab" aria-controls="profile"></a>
+		</div>
+		<div class="tab-content"  id="nav-tabContent">
+			<div class="tab-pane fade show active" id="list-451" role="tabpanel" aria-labelledby="list-451-list">
+				<div class="card-group">
+					<div class="card price">
+						<div class="card-body crd-cost">
+							<p class="price-title">Начинающий</p>
+							<p class="price-text">5 занятий по 45 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">920 рублей</p>
+								<p class="price-old">1060 рублей</p>
+							</div>
+							<button style="display: block !important;" id="pay-4600" class="price-button dashboard-button-red">Выбрать</button>
+						</div>
+					</div>
+					<div class="card price popular">
+						<div class="card-body crd-cost">
+							<p class="price-label">Самый популярный</p>
+							<p class="price-title">Любительский</p>
+							<p class="price-text">10 занятий по 45 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">830 рублей</p>
+								<p class="price-old">950 рублей</p>
+							</div>
+							<button style="display: block !important;" id="pay-8300" class="price-button dashboard-button-red">Выбрать</button>
+						</div>
+					</div>
+					<div class="card price">
+						<div class="card-body crd-cost">
+							<p class="price-title">Стандартный</p>
+							<p class="price-text">20 занятий по 45 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">780 рублей</p>
+								<p class="price-old">900 рублей</p>
+							</div>
+							<button style="display: block !important;" id="pay-15600" class="price-button dashboard-button-red">Выбрать</button>
+						</div>
+					</div>
+					<div style="background-image: url({% static 'images/cardmostpopular.jpg' %}); background-size: cover; background-repeat: no-repeat;background-position: center center;" class="card price benefit">
+						<div class="card-body crd-cost">
+							<p class="price-label">Самый выгодный</p>
+							<p class="price-title">Долгосрочный</p>
+							<p class="price-text">30 занятий по 45 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">730 рублей</p>
+								<p class="price-old">850 рублей</p>
+							</div>
+							<button style="display: block !important;" id="pay-21900" class="price-button dashboard-button-red">Выбрать</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="list-601" role="tabpanel" aria-labelledby="list-601-list"  >
+				<div class="card-group">
+					<div class="card price">
+						<div class="card-body crd-cost">
+							<p class="price-title">Начинающий</p>
+							<p class="price-text">5 занятий по 60 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">980 рублей</p>
+								<p class="price-old">1120 рублей</p>
+							</div>
+							<button style="display: block !important;" id="pay-4900" class="price-button dashboard-button-red">Выбрать</button>
+						</div>
+					</div>
+					<div class="card price popular">
+						<div class="card-body crd-cost">
+							<p class="price-label">Самый популярный</p>
+							<p class="price-title">Любительский</p>
+							<p class="price-text">10 занятий по 60 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">880 рублей</p>
+								<p class="price-old">1010 рублей</p>
+							</div>
+							<button style="display: block !important;" id="pay-8800" class="price-button dashboard-button-red">Выбрать</button>
+						</div>
+					</div>
+					<div class="card price">
+						<div class="card-body crd-cost">
+							<p class="price-title">Стандартный</p>
+							<p class="price-text">20 занятий по 60 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">830 рублей</p>
+								<p class="price-old">950 рублей</p>
+							</div>
+							<button style="display: block !important;" id="pay-16600" class="price-button dashboard-button-red">Выбрать</button>
+						</div>
+					</div>
+					<div style="background-image: url({% static 'images/cardmostpopular.jpg' %}); background-size: cover; background-repeat: no-repeat;background-position: center center;" class="card price benefit">
+						<div class="card-body crd-cost">
+							<p class="price-label">Самый выгодный</p>
+							<p class="price-title">Долгосрочный</p>
+							<p class="price-text">30 занятий по 60 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">780 рублей</p>
+								<p class="price-old">890 рублей</p>
+							</div>
+							<button style="display: block !important;" id="pay-23400" class="price-button dashboard-button-red">Выбрать</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center mt-5 pb-2">
+			<div class="col-md-8 text-center heading-section ftco-animate">
+				<h2 class="mb-4 mt-5">Бесплатно вы получаете</h2>
+			</div>
+		</div>
+		<div class="justify-content-center" style="display: flex">
+			<div class="program" style="background: #F8F8F8; padding: 50px; width: 27%">
+				<img src="{% static 'images/landing-image-2.png' %}" width="90px" height="90px">
+				<p class="program-header">
+					Персональный куратор
+				</p>
+				<p class="program-text">
+					Куратор на связи в чате и всегда готов дать обратную связь по домашним заданиям, темам или иным учебным вопросам
+				</p>
+			</div>
+			<div class="program" style="background: #F8F8F8; padding: 50px; margin-left: 6%; width: 27%">
+				<img src="{% static 'images/emote-mac.png' %}" width="90px" height="90px">
+				<p class="program-header">
+					Материалы для обучения
+				</p>
+				<p class="program-text">
+					В интерактивном учебнике собраны задания и учебные материалы разделенные по темам, с его помощью можно быстро осваивать новые знания и повторять пройденные темы
+				</p>
+			</div>
+			<div class="program" style="background: #F8F8F8; padding: 50px; margin-left: 6%; width: 27%">
+				<img src="{% static 'images/landing-image-4.png' %}" width="90px" height="90px">
+				<p class="program-header">
+					Личный словарь
+				</p>
+				<p class="program-text">
+					Ведите свой личный словарь из необходимых вам слов или фраз, вы сможете в любой момент добавить необходимые вам слова
+				</p>
+			</div>
+		</div>
+		<div class="row test-lesson">
+			<div class="col-5 test-lesson-left">
+				<h2 class="test-lesson-header">Пробный урок</h2>
+				<h4 class="test-lesson-text" style="font-weight: bold">На первом занятии:</h4>
+				<p class="test-lesson-text">Познакомимся</p>
+				<p class="test-lesson-text">Подберем программу</p>
+				<p class="test-lesson-text">Узнаем уровень владения</p>
+				<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false"><button class="test-lesson-button">Пройти урок бесплатно!</button></a>
+			</div>
+			<div style="background-image: url({% static 'images/testLesson.png' %});" class="col-7 test-lesson-right"></div>
+		</div>
+	</div>
+</section>
 
 
     <!-- END nav -->
@@ -414,150 +578,7 @@ body{
 
 
 
-<!--	<section class="ftco-section" id="scoost">-->
-<!--		<div class="container-fluid easystart">-->
-<!--			<div class="row justify-content-center pb-2">-->
-<!--				<div class="col-md-8 text-center heading-section ftco-animate">-->
-<!--					<h2 class="mb-5">Стоимость занятий</h2>-->
-<!--				</div>-->
-<!--        	</div>-->
-<!--			<div class="list-group mx-auto list-group-horizontal" style="width: fit-content; margin-bottom: 30px" id="list-tab" role="tablist">-->
-<!--                <a class="nvlnk active" id="list-451-list" data-bs-toggle="list" href="#list-451" role="tab" aria-controls="home" style="margin-right: 3px">45 минут</a>-->
-<!--                <a class="nvlnk" id="list-601-list" data-bs-toggle="list" href="#list-601" role="tab" aria-controls="profile">60 минут</a>-->
-<!--            </div>-->
-<!--			<div class="tab-content" style="padding: 0px 200px;" id="nav-tabContent">-->
-<!--		<div class="tab-pane fade show active" id="list-451" role="tabpanel" aria-labelledby="list-451-list">-->
-<!--  <div class="card-group">-->
-<!--	  <div class="card price">-->
-<!--		<div class="card-body">-->
-<!--		  <p class="price-title">Начинающий</p>-->
-<!--		  <p class="price-text">5 занятий по 45 минут</p>-->
-<!--            <p class="price-old">1060 рублей</p>-->
-<!--            <p class="price-cost">920 рублей</p>-->
-<!--			<button id="pay-4450" class="price-button mt-3">Выбрать</button>-->
-<!--		</div>-->
-<!--	  </div>-->
-<!--	<div class="card price popular">-->
-<!--		<div class="card-body">-->
-<!--            <p class="price-label">Самый популярный</p>-->
-<!--		  <p class="price-title">Любительский</p>-->
-<!--		  <p class="price-text">10 занятий по 45 минут</p>-->
-<!--            <p class="price-old">950 рублей</p>-->
-<!--            <p class="price-cost">830 рублей</p>-->
-<!--			<button id="pay-6900" class="price-button mt-3">Выбрать</button>-->
-<!--		</div>-->
-<!--	  </div>-->
-<!--	  <div class="card price">-->
-<!--		<div class="card-body">-->
-<!--		  <p class="price-title">Стандартный</p>-->
-<!--		  <p class="price-text">20 занятий по 45 минут</p>-->
-<!--            <p class="price-old">900 рублей</p>-->
-<!--            <p class="price-cost">780 рублей</p>-->
-<!--			<button id="pay-11800" class="price-button mt-3">Выбрать</button>-->
-<!--		</div>-->
-<!--	  </div>-->
-<!--	  <div class="card price benefit">-->
-<!--		<div class="card-body">-->
-<!--            <p class="price-label">Самый выгодный</p>-->
-<!--		  <p class="price-title">Долгосрочный</p>-->
-<!--		  <p class="price-text">30 занятий по 45 минут</p>-->
-<!--            <p class="price-old">850 рублей</p>-->
-<!--            <p class="price-cost">730 рублей</p>-->
-<!--			<button id="pay-14700" class="price-button mt-3">Выбрать</button>-->
-<!--		</div>-->
-<!--	  </div>-->
-<!--	</div>-->
-<!--	</div>-->
-<!--	<div class="tab-pane fade" id="list-601" role="tabpanel" aria-labelledby="list-601-list"  >-->
-<!--	<div class="card-group">-->
-<!--	  <div class="card price">-->
-<!--		<div class="card-body">-->
-<!--		  <p class="price-title">Начинающий</p>-->
-<!--		  <p class="price-text">5 занятий по 60 минут</p>-->
-<!--            <p class="price-old">1120 рублей</p>-->
-<!--            <p class="price-cost">980 рублей</p>-->
-<!--			<button id="pay-1" class="price-button mt-3">Выбрать</button>-->
-<!--		</div>-->
-<!--	  </div>-->
-<!--	<div class="card price popular">-->
-<!--		<div class="card-body">-->
-<!--            <p class="price-label">Самый популярный</p>-->
-<!--		  <p class="price-title">Любительский</p>-->
-<!--		  <p class="price-text">10 занятий по 60 минут</p>-->
-<!--            <p class="price-old">1010 рублей</p>-->
-<!--            <p class="price-cost">880 рублей</p>-->
-<!--			<button id="pay-2" class="price-button mt-3">Выбрать</button>-->
-<!--		</div>-->
-<!--	  </div>-->
-<!--	  <div class="card price">-->
-<!--		<div class="card-body">-->
-<!--		  <p class="price-title">Стандартный</p>-->
-<!--		  <p class="price-text">20 занятий по 60 минут</p>-->
-<!--            <p class="price-old">950 рублей</p>-->
-<!--            <p class="price-cost">830 рублей</p>-->
-<!--			<button id="pay-3" class="price-button mt-3">Выбрать</button>-->
-<!--		</div>-->
-<!--	  </div>-->
-<!--	  <div class="card price benefit">-->
-<!--		<div class="card-body">-->
-<!--            <p class="price-label">Самый выгодный</p>-->
-<!--		  <p class="price-title">Долгосрочный</p>-->
-<!--		  <p class="price-text">30 занятий по 60 минут</p>-->
-<!--            <p class="price-old">890 рублей</p>-->
-<!--            <p class="price-cost">780 рублей</p>-->
-<!--			<button id="pay-4" class="price-button mt-3">Выбрать</button>-->
-<!--		</div>-->
-<!--	  </div>-->
-<!--	</div>-->
-<!--	</div>-->
-<!--		 </div>-->
-<!--		<div class="row justify-content-center mt-5 pb-2">-->
-<!--			<div class="col-md-8 text-center heading-section ftco-animate">-->
-<!--				<h2 class="mb-4 mt-5">Бесплатно вы получаете</h2>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--			<div class="justify-content-center" style="display: flex">-->
-<!--				<div class="program" style="background: #F8F8F8; padding: 50px; width: 27%">-->
-<!--					<img src="{% static 'images/landing-image-2.png' %}" width="90px" height="90px">-->
-<!--					<p class="program-header">-->
-<!--						Персональный куратор-->
-<!--					</p>-->
-<!--					<p class="program-text">-->
-<!--						Куратор на связи в чате и всегда готов дать обратную связь по домашним заданиям, темам или иным учебным вопросам-->
-<!--					</p>-->
-<!--				</div>-->
-<!--				<div class="program" style="background: #F8F8F8; padding: 50px; margin-left: 6%; width: 27%">-->
-<!--					<img src="{% static 'images/emote-mac.png' %}" width="90px" height="90px">-->
-<!--					<p class="program-header">-->
-<!--						Материалы для обучения-->
-<!--					</p>-->
-<!--					<p class="program-text">-->
-<!--						В интерактивном учебнике собраны задания и учебные материалы разделенные по темам, с его помощью можно быстро осваивать новые знания и повторять пройденные темы-->
-<!--					</p>-->
-<!--				</div>-->
-<!--				<div class="program" style="background: #F8F8F8; padding: 50px; margin-left: 6%; width: 27%">-->
-<!--					<img src="{% static 'images/landing-image-4.png' %}" width="90px" height="90px">-->
-<!--					<p class="program-header">-->
-<!--						Личный словарь-->
-<!--					</p>-->
-<!--					<p class="program-text">-->
-<!--						Ведите свой личный словарь из необходимых вам слов или фраз, вы сможете в любой момент добавить необходимые вам слова-->
-<!--					</p>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--			<div class="row test-lesson">-->
-<!--				<div class="col-5 test-lesson-left">-->
-<!--					<h2 class="test-lesson-header">Пробный урок</h2>-->
-<!--					<h4 class="test-lesson-text" style="font-weight: bold">На первом занятии:</h4>-->
-<!--					<p class="test-lesson-text">Познакомимся</p>-->
-<!--					<p class="test-lesson-text">Подберем программу</p>-->
-<!--					<p class="test-lesson-text">Узнаем уровень владения</p>-->
-<!--					<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false"><button class="test-lesson-button">Пройти урок бесплатно!</button></a>-->
-<!--				</div>-->
-<!--				<div style="background-image: url({% static 'images/testLesson.png' %});" class="col-7 test-lesson-right"></div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</section>-->
+
 		  <!-- <div class="col-md-12 py-0 md-5">
 		          <form method="POST" action="/send_request_v" class="appointment-form ftco-animate">
 					  {% csrf_token %}
@@ -603,6 +624,16 @@ body{
 	  <script src={% static "js/main.js" %}></script>
       <script src={% static "js/index.js" %}></script>
   <script>
+var tmtgl = 0;
+  function toggle_time(){
+	if(tmtgl % 2 == 0){
+		$('#list-tab a[href="#list-601"]').tab('show')
+	}
+	else{
+		$('#list-tab a[href="#list-451"]').tab('show')
+	}
+	tmtgl += 1;
+  }
   	speed = 600;
     $(document).ready(function() {
 

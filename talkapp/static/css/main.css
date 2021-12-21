@@ -1050,9 +1050,147 @@ h2 {
     position: absolute;
 }
 
-    #crsl-innr{
-        padding: 0px 200px;
-    }
+#crsl-innr{
+    padding: 0px 200px;
+}
+
+.costlist{
+     padding: 0px 80px;
+}
+
+.crd-cost{
+    padding: 230px 20px 20px 20px;
+    text-align: left;
+}
+
+
+.price {
+    margin-right: 10px;
+    border: 2px solid #EDF1FA !important;
+    border-radius: 20px !important;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.price.popular {
+    background: #24273C;
+}
+
+.price.popular .price-title {
+    color: #FFFFFF;
+
+}
+
+.price.popular .price-label {
+    color: #FFFFFF;
+}
+
+.price.popular .price-text {
+    color: #FFFFFF;
+}
+
+.price.benefit {
+
+}
+
+.price.benefit .price-cost {
+    background: radial-gradient(143.22% 329.31% at -9.7% -7.54%, #76FF8C 0%, #FDF87E 100%), #27AE60;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.price.benefit .price-button {
+    color: #24273C;
+    background: radial-gradient(143.22% 329.31% at -9.7% -7.54%, #76FF8C 0%, #FDF87E 100%), #27AE60;
+
+}
+
+.price.benefit .price-label {
+    color: #FFFFFF;
+}
+
+.price.benefit .price-text {
+    color: #FFFFFF;
+}
+
+.price.benefit .price-title {
+    color: #FFFFFF;
+}
+
+.price-title {
+    color: #24273C;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 36px;
+    margin-bottom: 10px;
+}
+
+.price-text {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #24273C;
+    margin-bottom: 10px;
+}
+
+.price-cost{
+    font-family: Arial !important;
+    font-style: normal !important;
+    font-weight: bold !important;
+    font-size: 24px !important;
+    line-height: 28px !important;
+    margin-bottom: 14px !important;
+    color: #5B61FF !important;
+}
+
+.price-button {
+    padding: 12px 91px !important;
+    margin-left: 0 !important;
+}
+
+.price-label {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    position: absolute;
+    top: 20px;
+}
+
+.price-old {
+    font-family: Arial !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 16px !important;
+    margin-left: 20px !important;
+    text-align: right !important;
+    text-decoration-line: line-through !important;
+    color: #8CA3C2 !important;
+}
+
+.time-tog{
+    height: fit-content;
+    width: fit-content;
+    padding: 18px;
+    border: 1px solid #EDF1FA;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #24273c;
+}
+
+input:checked + .slider-tog{
+    background-color: #5B61FF !important;
+}
 
 
 /*---------------ADAPTIVE LAND---------------*/
@@ -1227,4 +1365,44 @@ h2 {
         padding: 0;
     }
 
+    .costlist{
+        padding: 0 16px;
+    }
+
+    .price-title{
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .price-text{
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .price-cost{
+        font-size: 20px;
+        line-height: 23px;
+    }
+
+    .price-old{
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .price-button{
+        padding: 12px 104px !important;
+    }
+    .crd-cost{
+        padding: 158px 20px 20px 20px;
+    }
+
+    .price{
+        border-radius: 10px !important;
+        margin-right: 0 !important;
+    }
+
+    .time-tog{
+        font-size: 16px;
+        line-height: 18px;
+    }
 }

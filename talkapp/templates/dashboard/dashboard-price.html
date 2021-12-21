@@ -56,96 +56,119 @@
                 </div>
             </div>
             <div class="list-group list-group-horizontal" style="width: 100%; margin-bottom: 20px" id="list-tab" role="tablist">
-                <a class="nvlnk active" id="list-45-list" data-bs-toggle="list" href="#list-45" role="tab" aria-controls="home">45 минут</a>
-                <a class="nvlnk" id="list-60-list" data-bs-toggle="list" href="#list-60" role="tab" aria-controls="profile">60 минут</a>
+                <a class="" id="list-45-list" data-bs-toggle="list" href="#list-45" role="tab" aria-controls="home"></a>
+                <a class="" id="list-60-list" data-bs-toggle="list" href="#list-60" role="tab" aria-controls="profile"></a>
+            </div>
+            <div style="margin-bottom: 10px" class="time-tog">
+                Увеличить время занятий с 45 минут до 60 минут
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider-tog slider round"  onclick="toggle_time()"></span>
+                </label>
             </div>
 
-            <div class="tab-content" id="nav-tabContent">
-		<div class="tab-pane fade show active" id="list-45" role="tabpanel" aria-labelledby="list-45-list">
-  <div class="card-group">
-	  <div class="card price">
-		<div class="card-body">
-		  <p class="price-title">Начинающий</p>
-		  <p class="price-text">5 занятий по 45 минут</p>
-            <p class="price-old">1060 рублей</p>
-            <p class="price-cost">920 рублей</p>
-			<button id="pay-4600" class="price-button mt-3">Выбрать</button>
-		</div>
-	  </div>
-	<div class="card price popular">
-		<div class="card-body">
-            <p class="price-label">Самый популярный</p>
-		  <p class="price-title">Любительский</p>
-		  <p class="price-text">10 занятий по 45 минут</p>
-            <p class="price-old">950 рублей</p>
-            <p class="price-cost">830 рублей</p>
-			<button id="pay-8300" class="price-button mt-3">Выбрать</button>
-		</div>
-	  </div>
-	  <div class="card price">
-		<div class="card-body">
-		  <p class="price-title">Стандартный</p>
-		  <p class="price-text">20 занятий по 45 минут</p>
-            <p class="price-old">900 рублей</p>
-            <p class="price-cost">780 рублей</p>
-			<button id="pay-15600" class="price-button mt-3">Выбрать</button>
-		</div>
-	  </div>
-	  <div class="card price benefit">
-		<div class="card-body">
-            <p class="price-label">Самый выгодный</p>
-		  <p class="price-title">Долгосрочный</p>
-		  <p class="price-text">30 занятий по 45 минут</p>
-            <p class="price-old">850 рублей</p>
-            <p class="price-cost">730 рублей</p>
-			<button id="pay-21900" class="price-button mt-3">Выбрать</button>
-		</div>
-	  </div>
-	</div>
-	</div>
-	<div class="tab-pane fade" id="list-60" role="tabpanel" aria-labelledby="list-60-list"  >
-	<div class="card-group">
-	  <div class="card price">
-		<div class="card-body">
-		  <p class="price-title">Начинающий</p>
-		  <p class="price-text">5 занятий по 60 минут</p>
-            <p class="price-old">1120 рублей</p>
-            <p class="price-cost">980 рублей</p>
-			<button id="pay-4900" class="price-button mt-3">Выбрать</button>
-		</div>
-	  </div>
-	<div class="card price popular">
-		<div class="card-body">
-            <p class="price-label">Самый популярный</p>
-		  <p class="price-title">Любительский</p>
-		  <p class="price-text">10 занятий по 60 минут</p>
-            <p class="price-old">1010 рублей</p>
-            <p class="price-cost">880 рублей</p>
-			<button id="pay-8800" class="price-button mt-3">Выбрать</button>
-		</div>
-	  </div>
-	  <div class="card price">
-		<div class="card-body">
-		  <p class="price-title">Стандартный</p>
-		  <p class="price-text">20 занятий по 60 минут</p>
-            <p class="price-old">950 рублей</p>
-            <p class="price-cost">830 рублей</p>
-			<button id="pay-16600" class="price-button mt-3">Выбрать</button>
-		</div>
-	  </div>
-	  <div class="card price benefit">
-		<div class="card-body">
-            <p class="price-label">Самый выгодный</p>
-		  <p class="price-title">Долгосрочный</p>
-		  <p class="price-text">30 занятий по 60 минут</p>
-            <p class="price-old">890 рублей</p>
-            <p class="price-cost">780 рублей</p>
-			<button id="pay-23400" class="price-button mt-3">Выбрать</button>
-		</div>
-	  </div>
-	</div>
-	</div>
-		 </div>
+            <div class="tab-content"  id="nav-tabContent">
+                <div class="tab-pane fade show active" id="list-451" role="tabpanel" aria-labelledby="list-451-list">
+                    <div class="card-group">
+                        <div class="card price">
+                            <div class="card-body crd-cost">
+                                <p class="price-title">Начинающий</p>
+                                <p class="price-text">5 занятий по 45 минут</p>
+                                <div style="display: flex">
+                                    <p class="price-cost">920 рублей</p>
+                                    <p class="price-old">1060 рублей</p>
+                                </div>
+                                <button style="display: block !important;" id="pay-4600" class="price-button dashboard-button-red">Выбрать</button>
+                            </div>
+                        </div>
+                        <div class="card price popular">
+                            <div class="card-body crd-cost">
+                                <p class="price-label">Самый популярный</p>
+                                <p class="price-title">Любительский</p>
+                                <p class="price-text">10 занятий по 45 минут</p>
+                                <div style="display: flex">
+                                    <p class="price-cost">830 рублей</p>
+                                    <p class="price-old">950 рублей</p>
+                                </div>
+                                <button style="display: block !important;" id="pay-8300" class="price-button dashboard-button-red">Выбрать</button>
+                            </div>
+                        </div>
+                        <div class="card price">
+                            <div class="card-body crd-cost">
+                                <p class="price-title">Стандартный</p>
+                                <p class="price-text">20 занятий по 45 минут</p>
+                                <div style="display: flex">
+                                    <p class="price-cost">780 рублей</p>
+                                    <p class="price-old">900 рублей</p>
+                                </div>
+                                <button style="display: block !important;" id="pay-15600" class="price-button dashboard-button-red">Выбрать</button>
+                            </div>
+                        </div>
+                        <div style="background-image: url({% static 'images/cardmostpopular.jpg' %}); background-size: cover; background-repeat: no-repeat;background-position: center center;" class="card price benefit">
+                            <div class="card-body crd-cost">
+                                <p class="price-label">Самый выгодный</p>
+                                <p class="price-title">Долгосрочный</p>
+                                <p class="price-text">30 занятий по 45 минут</p>
+                                <div style="display: flex">
+                                    <p class="price-cost">730 рублей</p>
+                                    <p class="price-old">850 рублей</p>
+                                </div>
+                                <button style="display: block !important;" id="pay-21900" class="price-button dashboard-button-red">Выбрать</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="list-601" role="tabpanel" aria-labelledby="list-601-list"  >
+                    <div class="card-group">
+                        <div class="card price">
+                            <div class="card-body crd-cost">
+                                <p class="price-title">Начинающий</p>
+                                <p class="price-text">5 занятий по 60 минут</p>
+                                <div style="display: flex">
+                                    <p class="price-cost">980 рублей</p>
+                                    <p class="price-old">1120 рублей</p>
+                                </div>
+                                <button style="display: block !important;" id="pay-4900" class="price-button dashboard-button-red">Выбрать</button>
+                            </div>
+                        </div>
+                        <div class="card price popular">
+                            <div class="card-body crd-cost">
+                                <p class="price-label">Самый популярный</p>
+                                <p class="price-title">Любительский</p>
+                                <p class="price-text">10 занятий по 60 минут</p>
+                                <div style="display: flex">
+                                    <p class="price-cost">880 рублей</p>
+                                    <p class="price-old">1010 рублей</p>
+                                </div>
+                                <button style="display: block !important;" id="pay-8800" class="price-button dashboard-button-red">Выбрать</button>
+                            </div>
+                        </div>
+                        <div class="card price">
+                            <div class="card-body crd-cost">
+                                <p class="price-title">Стандартный</p>
+                                <p class="price-text">20 занятий по 60 минут</p>
+                                <div style="display: flex">
+                                    <p class="price-cost">830 рублей</p>
+                                    <p class="price-old">950 рублей</p>
+                                </div>
+                                <button style="display: block !important;" id="pay-16600" class="price-button dashboard-button-red">Выбрать</button>
+                            </div>
+                        </div>
+                        <div style="background-image: url({% static 'images/cardmostpopular.jpg' %}); background-size: cover; background-repeat: no-repeat;background-position: center center;" class="card price benefit">
+                            <div class="card-body crd-cost">
+                                <p class="price-label">Самый выгодный</p>
+                                <p class="price-title">Долгосрочный</p>
+                                <p class="price-text">30 занятий по 60 минут</p>
+                                <div style="display: flex">
+                                    <p class="price-cost">780 рублей</p>
+                                    <p class="price-old">890 рублей</p>
+                                </div>
+                                <button style="display: block !important;" id="pay-23400" class="price-button dashboard-button-red">Выбрать</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="blogs">
                 <div class="blogs-header" style="margin-top: 30px;margin-bottom: 20px">
