@@ -397,53 +397,70 @@ body{
 				</div>
 			</div>
 		</div>
-		<div class="row justify-content-center mt-5 pb-2">
-			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4 mt-5">Бесплатно вы получаете</h2>
+
+		<div class="free-block" >
+			<h1 style="margin-bottom: 14px;" class="big-header-card" >Бесплатно вы получаете </h1>
+			<div class="row" >
+				<div class="col-md-3 col-sm-6">
+					<div style="margin-left: 0" class="free-card-header">
+						Материалы для обучения
+					</div>
+					<div class="free-card-content">
+						В интерактивном учебнике собраны задания
+						и учебные материалы разделенные по темам,
+						с его помощью можно быстро осваивать новые
+						знания и повторять пройденные темы
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div style="margin-left: 0" class="free-card-header">
+						Персональный куратор
+					</div>
+					<div class="free-card-content">
+						Куратор на связи в чате и всегда готов дать обратную связь по домашним заданиям, темам или иным учебным вопросам
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div style="margin-left: 0" class="free-card-header">
+						Личный словарь
+					</div>
+					<div  class="free-card-content">
+						Ведите свой личный словарь из необходимых вам слов или фраз, вы сможете в любой момент добавить необходимые вам слова
+					</div>
+				</div>
+
+
+					<div style="background-image: url({% static 'images/flag-free-card.png' %})" class="card-flag">
+
 			</div>
 		</div>
-		<div class="justify-content-center" style="display: flex">
-			<div class="program" style="background: #F8F8F8; padding: 50px; width: 27%">
-				<img src="{% static 'images/landing-image-2.png' %}" width="90px" height="90px">
-				<p class="program-header">
-					Персональный куратор
-				</p>
-				<p class="program-text">
-					Куратор на связи в чате и всегда готов дать обратную связь по домашним заданиям, темам или иным учебным вопросам
-				</p>
+	</div>
+	</div>
+</section>
+
+
+<section style="padding: 0" class="secsec ftco-section">
+	<div class="secsec-container">
+		<div id="frst-les-img" style="background-image: url({% static 'images/testLesson.png' %});" class="lndimg4  justify-content-center">
+			<div style="background-color: #24273C; border: 0;" class="card">
+				<div id="frst-les-crd" style="padding: 60px" class="card-body ">
+					<h1 id="header-card-frst-les" style="margin-bottom: 16px; color: white" class="big-header-card" >Пробный урок</h1>
+					<p style="font-weight: bold" class="first-lesson-text" >На первом занятии:</p>
+					<p class="first-lesson-text" >Познакомимся</p>
+					<p class="first-lesson-text" >Подберем программу</p>
+					<p class="first-lesson-text" >Узнаем уровень владения</p>
+
+
+					<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false" ><button class="dashboard-button-frst-les" >Пройти урок бесплатно! </button></a>
+				</div>
 			</div>
-			<div class="program" style="background: #F8F8F8; padding: 50px; margin-left: 6%; width: 27%">
-				<img src="{% static 'images/emote-mac.png' %}" width="90px" height="90px">
-				<p class="program-header">
-					Материалы для обучения
-				</p>
-				<p class="program-text">
-					В интерактивном учебнике собраны задания и учебные материалы разделенные по темам, с его помощью можно быстро осваивать новые знания и повторять пройденные темы
-				</p>
-			</div>
-			<div class="program" style="background: #F8F8F8; padding: 50px; margin-left: 6%; width: 27%">
-				<img src="{% static 'images/landing-image-4.png' %}" width="90px" height="90px">
-				<p class="program-header">
-					Личный словарь
-				</p>
-				<p class="program-text">
-					Ведите свой личный словарь из необходимых вам слов или фраз, вы сможете в любой момент добавить необходимые вам слова
-				</p>
-			</div>
-		</div>
-		<div class="row test-lesson">
-			<div class="col-5 test-lesson-left">
-				<h2 class="test-lesson-header">Пробный урок</h2>
-				<h4 class="test-lesson-text" style="font-weight: bold">На первом занятии:</h4>
-				<p class="test-lesson-text">Познакомимся</p>
-				<p class="test-lesson-text">Подберем программу</p>
-				<p class="test-lesson-text">Узнаем уровень владения</p>
-				<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false"><button class="test-lesson-button">Пройти урок бесплатно!</button></a>
-			</div>
-			<div style="background-image: url({% static 'images/testLesson.png' %});" class="col-7 test-lesson-right"></div>
 		</div>
 	</div>
 </section>
+
+
 
 
     <!-- END nav -->
@@ -606,7 +623,7 @@ body{
 		    				</div>
 		    			</form>
 		    		</div> -->
-<!--	  {% include 'footer.html' %}-->
+	  {% include 'footer.html' %}
 {% endblock %}
 {% block jsfiles %}
 	  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
@@ -671,14 +688,6 @@ items.forEach((el) => {
     }
 })
 
-{% if messages %}
-	{% for m in messages %}
-	 {% if m.tags == "info" %}
-	 $(document).ready(function(){
-		$('#successModal').modal('show');
-	});
-	 {% endif %}
-	{% endfor %}
-{% endif %}
+
 </script>
 {% endblock %}

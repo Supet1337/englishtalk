@@ -116,7 +116,7 @@ def send_request_view(request):
                 'Ура! У нас новая зявка на обучение!', help_message, 'noreply.englishtalk@gmail.com', [
                     "help.englishtalk@gmail.com"], fail_silently=False)
             messages.info(request, "Вы успешно подали заявку. Проверьте почтовый ящик "+str(user.email))
-    return HttpResponseRedirect('../')
+    return HttpResponseRedirect('../thanks')
 
 
 def send_request_first_lesson(request):
@@ -1061,3 +1061,6 @@ def call_request(request):
                 "help.englishtalk@gmail.com"], fail_silently=False)
         messages.info(request, "Вы успешно подали заявку. Ожидайте звонка")
     return HttpResponseRedirect('/')
+
+def thanks(request):
+    return render(request, 'thanks.html')

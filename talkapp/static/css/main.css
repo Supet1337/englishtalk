@@ -748,21 +748,20 @@ png images background
 }
 
 .footer-header {
-    font-family: Arial;
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
-    line-height: 26px;
-    color: #333333;
+    font-size: 18px;
+    line-height: 21px;
+    color: #EDF1FA;
 }
 
 .footer-text {
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 21px;
-    color: #828282;
+    color: #8CA3C2;
 }
 
 .courses-back-button {
@@ -1192,6 +1191,80 @@ input:checked + .slider-tog{
     background-color: #5B61FF !important;
 }
 
+.card-flag{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25%;
+    height: 100%;
+}
+
+.free-card-content{
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+    align-items: center;
+    color: #24273C;
+    margin-bottom: 16px;
+}
+
+.free-card-header{
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    align-items: center;
+    color: #24273C;
+}
+
+.free-block{
+    padding: 50px;
+    border: 2px solid #EDF1FA;
+    box-sizing: border-box;
+    border-radius: 20px;
+    margin-top: 30px;
+    position: relative
+}
+
+.first-lesson-text{
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 40px;
+    color: white;
+}
+
+.dashboard-button-frst-les{
+    margin-left: 0 !important;
+    padding: 21px 56px;
+    width: 100% !important;
+    font-weight: bold !important;
+    font-size: 20px !important;
+    line-height: 23px !important;
+    background: linear-gradient(0deg, #5B61FF, #5B61FF);
+    border-radius: 10px;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    border: none;
+
+}
+
+    #frst-les-crd{
+        padding: 60px;
+    }
+
+
 
 /*---------------ADAPTIVE LAND---------------*/
 @media(max-width:540px) {
@@ -1405,4 +1478,69 @@ input:checked + .slider-tog{
         font-size: 16px;
         line-height: 18px;
     }
+
+    .free-block{
+        padding: 16px;
+        border-radius: 10px;
+    }
+
+    .free-card-header{
+        font-size: 16px;
+        line-height: 19px;
+        margin-bottom: 8px;
+    }
+
+    .free-card-content{
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .card-flag{
+        bottom: 0;
+        right: 0;
+        width: 42%;
+        height: 15%;
+        margin: -3px;
+        top: inherit;
+    }
+
+    #header-card-frst-les{
+        font-size: 28px;
+        line-height: 33px;
+    }
+
+    .first-lesson-text{
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .dashboard-button-frst-les{
+        font-size: 18px;
+        line-height: 21px;
+        padding: 9px 14px;
+    }
+
+        #frst-les-img{
+            padding: 300px 16px 16px 16px;
+        }
+
+        #frst-les-crd{
+            padding: 20px;
+        }
+
+         #frst-les-img{
+            padding: 300px 16px 16px 16px;
+        }
+
+        #frst-les-crd{
+            padding: 20px;
+        }
+
+        #footer-section{
+            padding: 7em 0 !important;
+        }
+
+
+
+
 }
