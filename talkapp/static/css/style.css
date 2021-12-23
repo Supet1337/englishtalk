@@ -4445,7 +4445,7 @@ input[type="button"].btn-block {
     z-index: 2;
     }
     .list-group-item.active p{
-        color: #2F80ED;
+        color: #5b61ff;
         width: fit-content;
     }
 

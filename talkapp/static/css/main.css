@@ -895,6 +895,8 @@ h2 {
     align-items: center;
     color: #24273C;
     margin-bottom: 10px;
+    margin-right: 73px;
+
 }
 
 .big-header3{
@@ -957,9 +959,9 @@ h2 {
 
 .lndimg2_1{
     background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    height: 492px;
+    background-repeat: inherit;
+    background-position: center top;
+    height: 488px;
     border-radius: 20px 20px 0 0;
 }
 .lndimg2_3{
@@ -972,12 +974,13 @@ h2 {
 }
 
 .lndimg3_1{
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
     height: 518px;
     border-radius: 20px;
     width: 100%;
+    background-color: white;
 
 }
 .card-img-ob{
@@ -1260,11 +1263,13 @@ input:checked + .slider-tog{
 
 }
 
-    #frst-les-crd{
-        padding: 60px;
-    }
+#frst-les-crd{
+    padding: 60px;
+}
 
-
+.crd-prc{
+ padding: 130px 20px 20px 20px;
+}
 
 /*---------------ADAPTIVE LAND---------------*/
 @media(max-width:540px) {

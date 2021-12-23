@@ -108,15 +108,15 @@ body{
 			</div>
 			<div style="padding-left: 0; margin-bottom: 80px" class="col-5">
 				<h1 style="font-size: 48px;line-height: 57px;" class="big-header" >10+</h1>
-				<h1 style="font-size: 16px;line-height: 18px;" class="big-header" >Лет на рынке</h1>
+				<h1 style="font-size: 16px;line-height: 18px;" class="big-header" >Лет опыта преподавания</h1>
 			</div>
 			<div style="padding-left: 0" class="col-5">
-				<h1 style="font-size: 48px;line-height: 57px;" class="big-header" >21</h1>
+				<h1 style="font-size: 48px;line-height: 57px;" class="big-header" >12</h1>
 				<h1 style="font-size: 16px;line-height: 18px;" class="big-header" >Учебная программа</h1>
 			</div>
 			<div style="padding-left: 0" class="col-5">
-				<h1 style="font-size: 48px;line-height: 57px;" class="big-header" >231</h1>
-				<h1 style="font-size: 16px;line-height: 18px;" class="big-header" >Преподаватель</h1>
+				<h1 style="font-size: 48px;line-height: 57px;" class="big-header" >20+</h1>
+				<h1 style="font-size: 16px;line-height: 18px;" class="big-header" >Опытных преподавателей</h1>
 			</div>
 
 		</div>
@@ -130,7 +130,7 @@ body{
 		<div style="background-image: url({% static 'images/landingback1.jpeg' %});" class="lndimg2">
 			<h1 style="color: #FFF; text-align: center" class="big-header2" >Интерактивный онлайн кабинет</h1>
 			<h5 style="color: #FFF;" class="with-big-header2" >Все материалы для обучения уже Ваши. Онлайн чат с учителем и видеосвязь в одном окне. Во время занятия Вы полностью погружаетесь в процесс обучения.</h5>
-			<div style="background-image: url({% static 'images/landing-image2.jpg' %});" class="lndimg2_1"></div>
+			<div style="background-image: url({% static 'images/landing-image2.png' %});" class="lndimg2_1"></div>
 		</div>
 	</div>
 </section>
@@ -172,7 +172,7 @@ body{
 						<h5 style="color: #24273C; text-align: left" class="with-big-header3" >Английский для карьеры, <p>саморазвития и путешевствий</p> </h5>
 					</div>
 					<div style="background-image: url({% static 'images/card-img-adult.png' %});" class="card-img-ob"></div>
-					<a href="courses"  style="color: #24273C;"  class="prog-card" >13 программ <i class="fas fa-arrow-right"></i></a>
+					<a href="courses_adult"  style="color: #24273C;"  class="prog-card" >6 программ <i class="fas fa-arrow-right"></i></a>
 				</div>
 			</a>
 			<a href="courses#kid">
@@ -182,7 +182,7 @@ body{
 						<h5 style="color: #24273C; text-align: left" class="with-big-header3" >Подготовка к экзаменам, <p>поднятие языкового уровня</p> </h5>
 					</div>
 					<div style="background-image: url({% static 'images/card-img-kid.png' %});" class="card-img-ob"></div>
-					<a href="courses#kid" style="color: #24273C;" class="prog-card" >9 программ <i class="fas fa-arrow-right"></i></a>
+					<a href="courses_kid" style="color: #24273C;" class="prog-card" >6 программ <i class="fas fa-arrow-right"></i></a>
 				</div>
 			</a>
 		</div>
@@ -306,7 +306,7 @@ body{
 								<p class="price-cost">920 рублей</p>
 								<p class="price-old">1060 рублей</p>
 							</div>
-							<button style="display: block !important;" id="pay-4600" class="price-button dashboard-button-red">Выбрать</button>
+							<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false" ><button style="display: block !important;" id="pay-4600" class="price-button dashboard-button-red">Выбрать</button></a>
 						</div>
 					</div>
 					<div class="card price popular">
@@ -318,7 +318,7 @@ body{
 								<p class="price-cost">830 рублей</p>
 								<p class="price-old">950 рублей</p>
 							</div>
-							<button style="display: block !important;" id="pay-8300" class="price-button dashboard-button-red">Выбрать</button>
+							<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false" ><button style="display: block !important;" id="pay-8300" class="price-button dashboard-button-red">Выбрать</button></a>
 						</div>
 					</div>
 					<div class="card price">
@@ -329,7 +329,7 @@ body{
 								<p class="price-cost">780 рублей</p>
 								<p class="price-old">900 рублей</p>
 							</div>
-							<button style="display: block !important;" id="pay-15600" class="price-button dashboard-button-red">Выбрать</button>
+							<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false" ><button style="display: block !important;" id="pay-15600" class="price-button dashboard-button-red">Выбрать</button></a>
 						</div>
 					</div>
 					<div style="background-image: url({% static 'images/cardmostpopular.jpg' %}); background-size: cover; background-repeat: no-repeat;background-position: center center;" class="card price benefit">
@@ -341,7 +341,7 @@ body{
 								<p class="price-cost">730 рублей</p>
 								<p class="price-old">850 рублей</p>
 							</div>
-							<button style="display: block !important;" id="pay-21900" class="price-button dashboard-button-red">Выбрать</button>
+							<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false" ><button style="display: block !important;" id="pay-21900" class="price-button dashboard-button-red">Выбрать</button></a>
 						</div>
 					</div>
 				</div>
@@ -356,7 +356,7 @@ body{
 								<p class="price-cost">980 рублей</p>
 								<p class="price-old">1120 рублей</p>
 							</div>
-							<button style="display: block !important;" id="pay-4900" class="price-button dashboard-button-red">Выбрать</button>
+							<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false" ><button style="display: block !important;" id="pay-4900" class="price-button dashboard-button-red">Выбрать</button></a>
 						</div>
 					</div>
 					<div class="card price popular">
@@ -368,7 +368,7 @@ body{
 								<p class="price-cost">880 рублей</p>
 								<p class="price-old">1010 рублей</p>
 							</div>
-							<button style="display: block !important;" id="pay-8800" class="price-button dashboard-button-red">Выбрать</button>
+							<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false" ><button style="display: block !important;" id="pay-8800" class="price-button dashboard-button-red">Выбрать</button></a>
 						</div>
 					</div>
 					<div class="card price">
@@ -379,7 +379,7 @@ body{
 								<p class="price-cost">830 рублей</p>
 								<p class="price-old">950 рублей</p>
 							</div>
-							<button style="display: block !important;" id="pay-16600" class="price-button dashboard-button-red">Выбрать</button>
+							<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false" ><button style="display: block !important;" id="pay-16600" class="price-button dashboard-button-red">Выбрать</button></a>
 						</div>
 					</div>
 					<div style="background-image: url({% static 'images/cardmostpopular.jpg' %}); background-size: cover; background-repeat: no-repeat;background-position: center center;" class="card price benefit">
@@ -391,7 +391,7 @@ body{
 								<p class="price-cost">780 рублей</p>
 								<p class="price-old">890 рублей</p>
 							</div>
-							<button style="display: block !important;" id="pay-23400" class="price-button dashboard-button-red">Выбрать</button>
+							<a href="#" data-toggle="modal" data-target="#flModal" aria-haspopup="true" aria-expanded="false" ><button style="display: block !important;" id="pay-23400" class="price-button dashboard-button-red">Выбрать</button></a>
 						</div>
 					</div>
 				</div>

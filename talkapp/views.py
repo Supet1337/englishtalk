@@ -861,6 +861,20 @@ def courses(request):
         find_image(context, user_add_img, "image")
     return render(request,'courses.html', context)
 
+def courses_adult(request):
+    context = {}
+    if request.user.is_authenticated:
+        user_add_img = UserAdditional.objects.get(user=request.user)
+        find_image(context, user_add_img, "image")
+    return render(request,'coursesadult.html', context)
+
+def courses_kid(request):
+    context = {}
+    if request.user.is_authenticated:
+        user_add_img = UserAdditional.objects.get(user=request.user)
+        find_image(context, user_add_img, "image")
+    return render(request,'courseskid.html', context)
+
 def blog(request, number):
     context = {}
     if request.user.is_authenticated:
