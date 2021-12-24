@@ -56,7 +56,6 @@ urlpatterns = [
     path('dashboard/courses', dashboard_courses),
     path('dashboard/blog/<int:number>', dashboard_blog),
     path('logout', loggout),
-    path('courses', courses),
     path('courses_adult', courses_adult),
     path('courses_kid', courses_kid),
     path('blogs', blogs),

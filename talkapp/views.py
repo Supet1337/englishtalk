@@ -854,12 +854,7 @@ def price(request):
 
     return render(request,'dashboard/dashboard-price.html', context)
 
-def courses(request):
-    context = {}
-    if request.user.is_authenticated:
-        user_add_img = UserAdditional.objects.get(user=request.user)
-        find_image(context, user_add_img, "image")
-    return render(request,'courses.html', context)
+
 
 def courses_adult(request):
     context = {}

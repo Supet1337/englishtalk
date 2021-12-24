@@ -961,8 +961,10 @@ h2 {
     background-size: cover;
     background-repeat: inherit;
     background-position: center top;
-    height: 488px;
+    height: 494px;
     border-radius: 20px 20px 0 0;
+    background-color: white;
+    width: 70%;
 }
 .lndimg2_3{
     background-size: cover;
@@ -1372,6 +1374,7 @@ input:checked + .slider-tog{
        height: 145px;
        border-radius: 6px 6px 0 0;
        background-size: contain;
+       width: 100%;
     }
     .cntlnd3{
         width: 100%;
