@@ -68,7 +68,7 @@
             </div>
 
             <div class="tab-content"  id="nav-tabContent">
-                <div class="tab-pane fade show active" id="list-451" role="tabpanel" aria-labelledby="list-451-list">
+                <div class="tab-pane fade show active" id="list-45" role="tabpanel" aria-labelledby="list-451-list">
                     <div class="card-group">
                         <div class="card price">
                             <div class="card-body crd-prc crd-cost">
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="list-601" role="tabpanel" aria-labelledby="list-601-list"  >
+                <div class="tab-pane fade" id="list-60" role="tabpanel" aria-labelledby="list-601-list"  >
                     <div class="card-group">
                         <div class="card price">
                             <div class="card-body crd-prc crd-cost">
@@ -262,6 +262,18 @@
             {% else %}
             var is_teacher = false;
             {% endif %}
+
+            var tmtgl = 0;
+            function toggle_time(){
+                if(tmtgl % 2 == 0){
+                    $('#list-tab a[href="#list-60"]').tab('show')
+                }
+                else{
+                    $('#list-tab a[href="#list-45"]').tab('show')
+                }
+                tmtgl += 1;
+            }
+
 
         </script>
 
