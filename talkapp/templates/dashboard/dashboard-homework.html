@@ -46,10 +46,10 @@
     </div>
 
     <!-- Page Content -->
-    <div  id="page-content-wrapper">
+    <div  id="page-content-wrapper" style="overflow-y: hidden">
         <div class="card-group">
             <div class="card" style="border: none; color: #333333">
-                <div class="card-header" style="background: transparent; border: none">
+                <div class="card-header" style="background: transparent; border: none; height: 100%">
                     <div class="blogs-header-text">
                         Задания
                     </div>
@@ -85,7 +85,7 @@
                     </ul>
 
 
-                    <div class="tab-content" id="myTabContent">
+                    <div class="tab-content" id="myTabContent" style="height: 100%">
                         <div class="card-body" >
                                 {% if is_teacher %}
                                 {% if lsn == 0 %}
@@ -187,7 +187,7 @@
             </div>
 
 
-            <div class="card" style="max-width: 380px; max-height: 899px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; height: 84vh" id="chat">
+            <div class="card" style="max-width: 380px; max-height: 707px; border: 1px rgb(189,189,189,0.25) solid; border-radius: 5px; min-height: 84vh; margin-top: 5px" id="chat">
                 <div class="card-header" id="chat-header" style="display: flex; background-color: #2f80ed1a;">
 
                     {% if image == -1 %}
@@ -208,7 +208,7 @@
                             <div id="chat-window" style="display: none">
                             <div class="row video-group draggable ui-widget-content mx-auto" id="draggable_video" style="display: none; visibility: visible; max-width: 300px; max-height: 170px">
                                     <div class="col" style="padding-left: 0; padding-right: 0">
-                                        <div id="remote-playerlist" style="height: 250px"></div>
+                                        <div id="remote-playerlist" style="height: 170px"></div>
                                         <div id="local-player" style="position: absolute;width: 80px;height: 100px;right: 0;top: 0;"></div>
                                     </div>
                             </div>

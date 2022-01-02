@@ -474,9 +474,7 @@ a:not([href]):not([tabindex]) {
     border: 0 !important;
 }
 
-.fc-day-today {
-    background-color: rgba(47, 128, 237, 0.2) !important;
-}
+
 
 .fc-day-other {
     background-color: #f2f2f2 !important;

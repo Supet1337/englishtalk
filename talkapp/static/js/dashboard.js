@@ -94,6 +94,8 @@ function closeInteractive(id){
         $("#bread-item"+id).remove();
         $(".breadcrumb-item").last().addClass('active');
         $("#InteractiveLabel"+id).remove();
+        $('#carouselExampleControlsRight'+id).remove();
+        $('#carouselExampleControlsLeft'+id).remove();
         $("#interactive"+id).remove();
 
 
@@ -139,7 +141,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/ajax_load_course_lessons/"+id,
             success: function (result) {
-                $('#page-content-wrapper').css('margin-top','5px')
+//                $('#page-content-wrapper').css('margin-top','5px')
                 var json = $.parseJSON(result);
                 $("#clsbtn").prepend(
                                  '<button type="button" class="btn btn-secondary my-auto" id="crsClose'+id+'" onclick="closeCrs('+id+'); event.stopPropagation()"  style="padding:0; border-radius: 50px; border: 0;background: #e0e0e0;width: 30px; height: 30px; margin-right: 10px;" aria-label="Close">'+
@@ -200,12 +202,12 @@ $(document).ready(function(){
                                  '</button>'+
                                  '</a>'+
                                  '</li>');
-                        $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+idDoc+'" role="tabpanel" aria-labelledby="docTab'+idDoc+'">'+
+                        $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+idDoc+'" style="height: 100%" role="tabpanel" aria-labelledby="docTab'+idDoc+'">'+
                                  '<div class="collapse" id="collapseAudio'+idDoc+'">'+
                                  '</div>'+
                                  '<div class="collapse" id="collapseVideo'+idDoc+'">'+
                                  '</div>'+
-                                 '<div class="collapse show" id="docCard'+idDoc+'" style="height: 600px;">'+
+                                 '<div class="collapse show" id="docCard'+idDoc+'" style="height: 100%;">'+
                                  '<object><embed src="'+jsonDoc[i].docx_url_copy+'" style="width: 100%; height: 100%"></object>'+
                                  '</div>'+
                                  '</div>');
@@ -330,7 +332,7 @@ $(document).ready(function(){
         $.ajax({
             url: "/ajax_load_course_homeworks/"+id,
             success: function (result) {
-                $('#page-content-wrapper').css('margin-top','5px')
+//                $('#page-content-wrapper').css('margin-top','5px')
                 $('#myTab').show()
                 $('.lesson-crs').hide()
                 var json = $.parseJSON(result);
@@ -421,7 +423,7 @@ $(document).ready(function(){
                                  '</button>'+
                                  '</a>'+
                                  '</li>');
-                        $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" role="tabpanel" aria-labelledby="docTab'+id+'">'+
+                        $("#myTabContent").append('<div class="tab-pane fade show active" id="doc'+id+'" style="height: 100%" role="tabpanel" aria-labelledby="docTab'+id+'">'+
                                  //'<div class="card-header" id="doc-header'+id+'">'+
                                     // '<a class="btn btn-white" style="border-radius: 0" id="buttonCollapseAudio'+id+'" data-toggle="collapse" href="#collapseAudio'+id+'" role="button" aria-expanded="false" aria-controls="collapseAudio'+id+'">'+
                                      //   'Аудиоматериалы'+
@@ -434,7 +436,7 @@ $(document).ready(function(){
                                  '</div>'+
                                  '<div class="collapse" id="collapseVideo'+id+'">'+
                                  '</div>'+
-                                 '<div class="collapse show" id="docCard'+id+'" style="height: 600px;">'+
+                                 '<div class="collapse show" id="docCard'+id+'" style="height: 100%;">'+
                                  '<object><embed src="'+json[i].docx_url_copy+'" style="width: 100%; height: 100%"></object>'+
                                  '</div>'+
                                  '</div>');
@@ -574,7 +576,7 @@ function openInter (ident){
                             $("#carousel-inner"+id).append(
                                      '<div class="carousel-item active">'+
                                      '<div class="tab-pane fade show active" id="interactivemedium'+id+'" role="tabpanel" aria-labelledby="interactiveTab'+id+'">'+
-                                     '<div class="collapse show" id="interactiveCard'+id+'" style="height: 600px;">'+
+                                     '<div class="collapse show" id="interactiveCard'+id+'" style="height: 100%;">'+
                                      '<div>'+json[i].content+'</div>'+
                                      '</div>'+
                                      '</div>'+
@@ -585,7 +587,7 @@ function openInter (ident){
                                 $("#carousel-inner"+id).append(
                                      '<div class="carousel-item">'+
                                      '<div class="tab-pane fade show active" id="interactivemedium'+id+'" role="tabpanel" aria-labelledby="interactiveTab'+id+'">'+
-                                     '<div class="collapse show" id="interactiveCard'+id+'" style="height: 600px;">'+
+                                     '<div class="collapse show" id="interactiveCard'+id+'" style="height: 100%;">'+
                                      '<div>'+json[i].content+'</div>'+
                                      '</div>'+
                                      '</div>'+
@@ -593,10 +595,10 @@ function openInter (ident){
                                      );
                             }
                             });
-                            $("#carousel-inner"+id).append('<button class="carousel-control-prev review-control-interactive" style="left: 1%; top: 93%" type="button" data-bs-target="#carouselExampleControls'+id+'" data-bs-slide="prev">' +
+                            $("#myTab").append('<button class="carousel-control-prev review-control-interactive" style="position: inherit;" type="button" id="carouselExampleControlsLeft'+id+'" data-bs-target="#carouselExampleControls'+id+'" data-bs-slide="prev">' +
                                 '<i class="fas fa-chevron-left" style="font-size: 24px;color: #333333" aria-hidden="true"></i>'+
                               '</button>'+
-                                '<button class="carousel-control-next review-control-interactive" style="right: 1%; top: 93%" type="button" data-bs-target="#carouselExampleControls'+id+'" data-bs-slide="next">'+
+                                '<button class="carousel-control-next review-control-interactive" style="position: inherit;" type="button" id="carouselExampleControlsRight'+id+'" data-bs-target="#carouselExampleControls'+id+'" data-bs-slide="next">'+
                                 '<span class="fas fa-chevron-right" style="font-size: 24px;color: #333333" aria-hidden="true"></span>'+
                               '</button>');
 

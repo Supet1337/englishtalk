@@ -710,8 +710,7 @@ A HORIZONTAL event
     z-index: 1; /* container inner z-index's because <tr>s can't do it */
   }
 .fc .fc-daygrid-day.fc-day-today {
-      background-color: rgba(255, 220, 40, 0.15);
-      background-color: var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));
+      background-color: rgba(47, 128, 237, 0.2);
     }
 .fc .fc-daygrid-day-frame {
     position: relative;
@@ -800,7 +799,7 @@ A HORIZONTAL event
 }
 .fc .fc-daygrid-event {
     z-index: 6;
-    margin-top: 1px;
+    margin-top: 0px;
   }
 .fc .fc-daygrid-event.fc-event-mirror {
     z-index: 7;
@@ -850,11 +849,11 @@ A HORIZONTAL event
   }
 .fc-direction-ltr .fc-daygrid-event.fc-event-start,
 .fc-direction-rtl .fc-daygrid-event.fc-event-end {
-  margin-left: 2px;
+  margin-left: 0px;
 }
 .fc-direction-ltr .fc-daygrid-event.fc-event-end,
 .fc-direction-rtl .fc-daygrid-event.fc-event-start {
-  margin-right: 2px;
+  margin-right: 0px;
 }
 .fc-direction-ltr .fc-daygrid-week-number {
     left: 0;
