@@ -1,10 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    {% load static %}
+    <title>Регистрация</title>
+
+
 </head>
-<body>
+<body style="display: none">
+
+
+
+
+<div>
+    <strong>Menu:</strong>
+    <ul>
+
+        <li><a href="/accounts/login/">Sign In</a></li>
+        <li><a href="/accounts/signup/">Sign Up</a></li>
+
+    </ul>
+</div>
+
+<h1>Регистрация</h1>
+
+<p>Вы используете VK для авторизации на
+    https://0.0.0.0. Чтобы завершить, заполните следующую форму:</p>
+{% load socialaccount %}
+<form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
+    {% csrf_token %}
+    <p><label for="id_username">Имя пользователя:</label> <input type="text" name="username" value="{{form.username.value|default_if_none:''}}" placeholder="Имя пользователя" autocomplete="username" minlength="1" maxlength="150" required id="id_username"></p>
+    <p><label for="id_email">E-mail (опционально):</label> <input type="email" name="email" value="{{form.email.value|default_if_none:''}}" placeholder="E-mail адрес" autocomplete="email" id="id_email"></p>
+
+    <button type="submit">Регистрация &raquo;</button>
+</form>
+
+
+
+
 
 </body>
+<script src='{% static "js/jquery.min.js" %}'></script>
+<script>
+function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() *
+ charactersLength));
+   }
+   return result;
+}
+
+  $(document).ready(function(){
+  if ($("#id_username").val() == ""){
+    $("#id_username").val() = makeid(32);
+  }
+  $.ajax({
+        url : "../../../check-email",
+        type : "GET", // http method
+        data : "email="+$("#id_email").val(),
+        success : function(result) {
+            var json = $.parseJSON(result);
+            if (json.is_exist == 0){
+              $("#signup_form").submit();
+              }
+            else{
+                $.ajax({
+                    url : "../../../check-email",
+                    type : "GET", // http method
+                    data : "msg=1",
+                });
+              }
+        }
+    });
+  })
+</script>
 </html>
