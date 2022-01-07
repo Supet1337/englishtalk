@@ -216,46 +216,7 @@
   </div>
 </div>
 
-<div class="modal" id="flModal" tabindex="-1" role="dialog" aria-labelledby="flModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 600px" role="document">
-    <div class="modal-content">
-        <div class="modal-body" style="padding: 0">
-                    <div class="row" style="height: 500px">
-                        <div class="col-sm-5" style="border-top-left-radius: 8px;border-bottom-left-radius: 8px;padding: 20px;background-image: url({% static 'images/cardmostpopular.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center right;">
-                            <h2 class="modal-white-header">Пробный урок</h2>
-                            <h4 class="modal-white-text" style="font-weight: bold">На первом занятии:</h4>
-                            <p class="modal-white-text">Познакомимся</p>
-                            <p class="modal-white-text">Подберем программу</p>
-                            <p class="modal-white-text">Узнаем уровень владения</p>
-                        </div>
-                        <div class="col-sm-7" style="border-top-right-radius: 8px;border-bottom-right-radius: 8px;background: #f7f7f7; padding-top: 10px">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                            <div class="blogs-header-text" style="margin-top: 30px; font-size: 27px; line-height: 24px">
-                              Записаться на бесплатный урок
-                          </div>
-                            <form  method="POST" action="../send_request_v" style="margin-bottom: 30px">
-                                {% csrf_token %}
-                                {% if is_referral %}
-                                <input type="hidden" id="ref" name="ref" value="{{referral}}">
-                                {% endif %}
-                                <p class="account-input-label">E-mail</p>
-                               <input type="email" id="email" name="email" style="width: 100%" class="account-input" required>
-                                <p class="account-input-label">Имя</p>
-                               <input type="text" id="first-name" name="first-name" required class="account-input">
-                                <p class="account-input-label">Телефон</p>
-                               <input type="tel" id="phone" name="phone" required class="account-input">
-                                <input type="submit" class="dashboard-button-secondary-teacher" style="margin-top: 20px" value="Начать бесплатно">
-                                <p class="account-input-label" style="margin-top: 10px">Нажимая "Начать бесплатно",</p>
-                                <p class="account-input-label" style="margin-top: 0">вы принимаете <a href="confidentiality" style="font-weight: bold; color: #2F80ED">условия соглашения</a></p>
-                        </form>
-                        </div>
-                    </div>
-        </div>
-    </div>
-  </div>
-</div>
+
 
 
 

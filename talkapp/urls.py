@@ -60,6 +60,7 @@ urlpatterns = [
     path('courses_kid', courses_kid),
     path('blogs', blogs),
     path('thanks', thanks),
+    path('frst-lesson', frst_lesson),
     path('blog/<int:number>', blog),
     path('video/<int:number>', video),
     path('video-constructor/<int:number>', video_constructor),

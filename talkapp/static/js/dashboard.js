@@ -160,16 +160,8 @@ $(document).ready(function(){
                         $("#home").removeClass('show active');
                         $("#myTabContent").append('<div class="lesson">'+
                         '<a style="color: #333333" href="#" id="openDoc'+json[i].id+'">'+
-                        '<div class="lesson-name">'+
+                        '<div style="margin-top: 24px; margin-bottom: 24px" class="lesson-name">'+
                             json[i].name+
-                        '</div>'+
-                        '<div class="lesson-progress">'+
-                            '<div class="progress-num">'+
-                                '1/4'+
-                            '</div>'+
-                            '<div class="progress">'+
-                                '<div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>'+
-                            '</div>'+
                         '</div>'+
                         '</a>'+
                     '</div>');

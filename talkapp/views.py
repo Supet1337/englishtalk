@@ -1073,3 +1073,6 @@ def call_request(request):
 
 def thanks(request):
     return render(request, 'thanks.html')
+
+def frst_lesson(request):
+    return render(request, 'freelesson.html')
