@@ -945,7 +945,7 @@ def check_answer(request, number):
     return HttpResponseRedirect('../dashboard/homework')
 
 def check_email(request):
-    e = request.GET['email']
+    e = request.GET.get('email')
     if len(User.objects.filter(email=e)) > 0:
         return HttpResponse(json.dumps({'is_exist': 1}))
     else:
