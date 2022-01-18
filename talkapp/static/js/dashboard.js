@@ -94,8 +94,8 @@ function closeInteractive(id){
         $("#bread-item"+id).remove();
         $(".breadcrumb-item").last().addClass('active');
         $("#InteractiveLabel"+id).remove();
-        $('#carouselExampleControlsRight'+id).remove();
-        $('#carouselExampleControlsLeft'+id).remove();
+        $('#carouselExampleControlsRight').remove();
+        $('#carouselExampleControlsLeft').remove();
         $("#interactive"+id).remove();
 
 
@@ -551,7 +551,7 @@ function openInter (ident){
                         $("#home-tab").removeClass('nvlnk-act');
                         $("#home").removeClass('show active');
                         if (i == 0){
-                        $("#myTabContent").append('<div class="it tab-pane fade show active" id="interactive'+id+'" role="tabpanel" aria-labelledby="interactiveTab'+id+'"><div id="carouselExampleControls'+id+'" class="carousel" data-bs-interval="false" data-bs-ride="carousel"><div class="carousel-inner" id="carousel-inner'+id+'" style="padding: 0px 10px;"></div></div></div>')
+                        $("#myTabContent").append('<div class="it tab-pane fade show active" id="interactive'+id+'" role="tabpanel" aria-labelledby="interactiveTab'+id+'"><div id="carouselExampleControls'+id+'" style="max-height: 69vh; overflow: auto;" class="carousel" data-bs-interval="false" data-bs-ride="carousel"><div class="carousel-inner" id="carousel-inner'+id+'" style="padding: 0px 10px;"></div></div></div>')
                             $("#myTab").append(
                                      '<li  class="nav-item mb-1 mr-1" id="InteractiveLabel'+id+'" role="presentation">'+
                                      '<a class="nvlnk nvlnk-act" id="InteractiveTab'+id+'" onclick="InteractiveClick('+id+')" data-bs-toggle="tab" href="#interactive'+id+'" role="tab" aria-controls="interactive'+id+'" aria-selected="false">'+json[i].name+
@@ -587,10 +587,10 @@ function openInter (ident){
                                      );
                             }
                             });
-                            $("#myTab").append('<button class="carousel-control-prev review-control-interactive" style="position: inherit;" type="button" id="carouselExampleControlsLeft'+id+'" data-bs-target="#carouselExampleControls'+id+'" data-bs-slide="prev">' +
+                            $("#myTab").append('<button class="carousel-control-prev review-control-interactive" style="position: inherit;" type="button" id="carouselExampleControlsLeft" data-bs-target="#carouselExampleControls'+id+'" data-bs-slide="prev">' +
                                 '<i class="fas fa-chevron-left" style="font-size: 24px;color: #333333" aria-hidden="true"></i>'+
                               '</button>'+
-                                '<button class="carousel-control-next review-control-interactive" style="position: inherit;" type="button" id="carouselExampleControlsRight'+id+'" data-bs-target="#carouselExampleControls'+id+'" data-bs-slide="next">'+
+                                '<button class="carousel-control-next review-control-interactive" style="position: inherit;" type="button" id="carouselExampleControlsRight" data-bs-target="#carouselExampleControls'+id+'" data-bs-slide="next">'+
                                 '<span class="fas fa-chevron-right" style="font-size: 24px;color: #333333" aria-hidden="true"></span>'+
                               '</button>');
 
@@ -828,6 +828,16 @@ function zoom() {
     $("#left-sidebar-wrapper").toggle();
     //$("#course-name").toggle();
     $("#breadcrumb").toggle();
+    if (zoomS % 2 == 0){
+        $("#chat").css("min-height", "98vh");
+        $(".carousel").css("max-height", "76vh");
+    }
+    else{
+        $("#chat").css("min-height", "91vh");
+        $(".carousel").css("max-height", "69vh");
+    }
+    zoomS += 1;
+
 };
 
 
