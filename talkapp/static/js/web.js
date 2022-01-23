@@ -35,6 +35,10 @@ $("#join-form").submit(async function (e) {
 
 $("#leave").click(function (e) {
   leave();
+  num = 0;
+  $("#chat-log-p").css('clip', 'rect(auto, auto, auto, auto)');
+  $("#chat-log-p").css('height', '85%')
+  $("#camcheck").prop("checked", false);
 })
 
 $("#mute-audio").click(function (e) {
