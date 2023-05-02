@@ -1,0 +1,41 @@
+<!DOCTYPE html> {% load static %}
+<html lang="ru">
+<head>
+    {% block meta %}
+    <meta name="facebook-domain-verification" content="6zfgxbjy3581oqxgrbw1izxq4ivg1p" />
+    {% endblock %}
+    <meta charset="UTF-8">
+    {% block title %}
+    {% endblock %}
+    <link rel="shortcut icon" href={% static "images/black_logottip.png" %} sizes="32x32" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block cssfiles %}
+    {% endblock %}
+
+    {% block pixel %}
+    <!-- Facebook Pixel Code -->
+    <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '317315313634335');
+  fbq('track', 'PageView');
+</script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=317315313634335&ev=PageView&noscript=1"/></noscript>
+    <!-- End Facebook Pixel Code -->
+    {% endblock %}
+</head>
+
+<body>
+{% include "messages.html" %}
+{% block content %}
+{% endblock %}
+{% block jsfiles %}
+{% endblock %}
+</body>
+</html>

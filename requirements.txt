@@ -1,0 +1,16 @@
+Django
+redis
+channels
+Pillow
+redis-server
+django-cleanup
+channels-redis
+gunicorn
+django-storages
+boto3
+django-debug-toolbar
+django-phonenumber-field[phonenumbers]
+django-ckeditor
+django-nested-admin
+django-agora
+django-allauth

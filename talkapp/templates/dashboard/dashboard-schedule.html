@@ -1,0 +1,191 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %}
+		<title>Расписание</title>
+{% endblock %}
+{% block cssfiles %}
+        <link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+        <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/overcast/jquery-ui.css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
+        <link rel="stylesheet" href={% static "css/animate.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
+	    <link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
+	    <link rel="stylesheet" href={% static "css/aos.css" %}>
+        <link rel="stylesheet" href={% static "css/calendar.css" %}>
+	    <link rel="stylesheet" href={% static "css/style.css" %}>
+		<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
+        <link rel="stylesheet" href={% static "css/main.css" %}>
+        <link rel="stylesheet" href={% static "css/dashboard.css" %}>
+{% endblock %}
+    {% block content %}
+    {% include "dashboard/dashboard-header.html" %}
+    <div class="d-flex right-toggled" id="wrapper">
+        <div id="left-sidebar-wrapper">
+      <div class="list-group mx-auto" id="list-tab" role="tablist">
+          <a class="list-group-item list-group-item-action " id="dd0" data-toggle="list" href="../dashboard/lk" role="tab"><p style="margin-bottom: 0">Личный кабинет</p></a>
+          <a class="list-group-item list-group-item-action" id="dd1" data-toggle="list" href="../dashboard/platform" role="tab"><p style="margin-bottom: 0">Онлайн класс</p></a>
+          <a class="list-group-item list-group-item-action" id="dd5" data-toggle="list" href="../dashboard/homework" role="tab"><p style="margin-bottom: 0">Домашние задания</p></a>
+          <a class="list-group-item list-group-item-action active" id="dd3" data-toggle="list" href="../dashboard/schedule" role="tab"><p style="margin-bottom: 0">Расписание</p></a>
+          <a class="list-group-item list-group-item-action" id="dd8" data-toggle="list" href="../dashboard/tape" role="tab"><p style="margin-bottom: 0">Словарь</p></a>
+          <a class="list-group-item list-group-item-action " id="dd9" data-toggle="list" href="../dashboard/account" role="tab"><p style="margin-bottom: 0">Профиль</p></a>
+      </div>
+    <!-- <div class="empty_balance mx-auto">
+        <h1>Ваш баланс сейчас пуст :(</h1>
+        <p>Для начала учёбы нужно пополнить баланс</p>
+        <button class="dashboard-button-primary">Пополнить</button>
+    </div>-->
+    <div class="subscribe-block mx-auto">
+        <h1>Будьте в курсе</h1>
+        <p>Получайте информацию о сервисе и специальных предложениях</p>
+        <button class="dashboard-button-primary">Подписаться</button>
+    </div>
+    <div class="subscribe-block subscribe-block-2 mx-auto">
+        <h1>Есть вопросы?</h1>
+        <p>Не нашли ответа на свой вопрос? Задайте его нам</p>
+        <a href="https://t.me/eng_talk" target="_blank"><button class="dashboard-button-primary">Связаться</button></a>
+    </div>
+    </div>
+    <!-- Page Content -->
+    <div  id="page-content-wrapper">
+        <div style="border-radius: 0px; border: none" class="card mb-3 text-center">
+            <div id='calendar'></div>
+        </div>
+    </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+{% endblock %}
+{% block jsfiles %}
+    <script src={% static "js/jquery.min.js" %}></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+	  <script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
+	  <script src={% static "js/jquery.waypoints.min.js" %}></script>
+	  <script src={% static "js/jquery.stellar.min.js" %}></script>
+	  <script src={% static "js/owl.carousel.min.js" %}></script>
+	  <script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+	  <script src={% static "js/aos.js" %}></script>
+	  <script src={% static "js/scrollax.min.js" %}></script>
+	  <script src={% static "js/main.js" %}></script>
+      <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ru.min.js"></script>
+      <script src={% static "js/dashboard.js" %}></script>
+      <script src={% static "js/calendar.js" %}></script>
+      <script src={% static "js/ru-calendar.js" %}></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+              initialView: 'dayGridMonth',
+              displayEventEnd: true,
+              dayMaxEventRows: 1.5,
+              customButtons: {
+                call: {
+                  text: 'Связаться с менеджером',
+                  click: function() {
+                    window.open('https://t.me/eng_talk', '_blank');
+                  }
+                }
+              },
+
+              headerToolbar: {
+                 start: 'prev,next',
+                 center: 'title',
+                 end: 'call'
+
+              },
+              locale: 'ru',
+              navLinks: false,
+              businessHours: false,
+              editable: false,
+              selectable: false,
+
+              dayHeaderContent: (args) => {
+                return moment(args.date).format('dddd')
+              },
+
+              eventTimeFormat: {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  meridiem: false
+              },
+
+
+//год, месяц, число. пендосы блин 2021-04-12T10:30:00
+              events: [
+                    {% for day in calendar %}
+                        {% for d in day %}
+                        {
+                          id: '{{d.id}}',
+                          start: '{{day.0.date|date:"Y-m-d"}}',
+                          end: '{{day.0.date|date:"Y-m-d"}}',
+                          title: '{{d.user_course.course_type}}',
+                          description: '{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}',
+                          {% if is_teacher %}
+                          customHtml: '<div class="fc-event-title">{{d.user_course.course_type}} </br> <a href="../dashboard/platform" class="fs-text-calendar" >{{d.user_course.student.first_name}} {{d.user_course.student.last_name}}</a> </br> <a class="fs-text-calendar" href="../dashboard/platform" >{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}</a></div>',
+                          {% else %}
+                          customHtml: '<div class="fc-event-title">{{d.user_course.course_type}} </br> <a class="fs-text-calendar" >{{teacher}}</a> </br> <a class="fs-text-calendar" href="../dashboard/platform" >{{d.date|date:'H'}}:{{d.date|date:'i'}} - {{d.date_end|date:'H'}}:{{d.date_end|date:'i'}}</a></div>',
+                          {% endif %}
+                          displayEventEnd: true,
+                        },
+                        {% endfor %}
+                    {% endfor %}
+                    ],
+
+                    eventContent: function(eventInfo) {
+                        return { html: eventInfo.event.extendedProps.customHtml }
+                    }
+
+            });
+            calendar.setOption('locale', 'ru');
+            calendar.setOption('height', 900);
+            calendar.render();
+
+     $( document ).ready(function() {
+                var date = new Date();
+               $(".fc-button-group").before('<select id="select" class="select_month"><option value="01">Январь</option><option value="02">Февраль</option><option value="03">Март</option><option value="04">Апрель</option><option value="05">Май</option><option value="06">Июнь</option><option value="07">Июль</option><option value="08">Август</option><option value="09">Сентябрь</option><option value="10">Октябрь</option><option value="11">Ноябрь</option><option value="12">Декабрь</option></select>');
+               $(".select_month").on("change", function(event) {
+                   calendar.gotoDate(new Date(date.getFullYear(), this.value-1, 1));
+               });
+
+               document.getElementById("select").selectedIndex = date.getMonth()
+
+
+               $(".fc-prev-button").on("click", function(event) {
+                    document.getElementById("select").selectedIndex -= 1
+                    if (document.getElementById("select").selectedIndex == -1){
+                        document.getElementById("select").selectedIndex = 11
+                    }
+
+               });
+
+               $(".fc-next-button").on("click", function(event) {
+                    document.getElementById("select").selectedIndex += 1
+                    if (document.getElementById("select").selectedIndex == -1){
+                        document.getElementById("select").selectedIndex = 0
+                    }
+
+               });
+
+
+
+    });
+
+
+
+
+          });
+
+
+
+    </script>
+
+
+{% endblock %}

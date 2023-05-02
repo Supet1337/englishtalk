@@ -1,0 +1,642 @@
+{% load static %}
+{%load static%}
+<nav class="navbar sticky-top navbar-expand-lg navbar-light fixed-top adaptive-header dashboard-header hdr" id="header" style="background: white;width: 100%;padding-top: 0px;padding-bottom: 0px;height: 100px">
+    <a class="logo" href="../../">EnglishTalk</a>
+    <button class="navbar-toggler"  type="button" data-bs-toggle="modal" data-bs-target="#mobilemodal">
+        <span style="content:url('{% static "images/toggle.svg" %}')" ></span>
+    </button>
+                <div class="collapse navbar-collapse mx-auto" style="display: none">
+                    <ul class="navbar-nav mx-auto navbar-left-top">
+                        <li class="nav-item nav-user-not-mobile header-text-m">
+                            <a href="#courses">Курсы</a>
+                        </li>
+
+                        <li class="nav-item nav-user-not-mobile header-text-m">
+                            <a href="#scoost">Стоимость</a>
+                        </li>
+
+                        <li class="nav-item nav-user-not-mobile header-text-m">
+                            <a href="#sreview">Отзывы</a>
+                        </li>
+                    </ul>
+
+<!--                    <ul class="navbar-nav navbar-right-top">-->
+<!--                        <li class="nav-item dropdown nav-user nav-user-mobile">-->
+<!--                                <a class="nav-link" style="color:rgb(47, 128, 237); background-color: white" href="../dashboard/lk">Личный кабинет</a>-->
+<!--                        </li>-->
+<!--                        <div class="dropdown-divider nav-user-mobile"></div>-->
+<!--                        <li class="nav-item nav-user-mobile">-->
+<!--                        <a class="nav-link" style="color:rgb(47, 128, 237); background-color: white" href="/logout">Выход</a>-->
+<!--                        </li>-->
+                        <li class="nav-item nav-user nav-user-not-mobile" style="display: flex">
+                            {% if request.user.is_authenticated %}
+                            <a href="../dashboard/lk" style="display: flex">
+                                <p class="my-auto header-text" style="margin-right: 7px;height: fit-content;">{{request.user.first_name}} {{request.user.last_name}}</p>
+                                {% if image == -1 %}
+                                <img  style="width: 40px; height: 40px;border-radius: 40px" src='{% static "images/avatar.png" %}'>
+
+                                {% else %}
+                                <img  style="width: 40px; height: 40px;border-radius: 40px" src='{{image.url}}'>
+
+                                {% endif %}
+                            </a>
+                            <a class="my-auto" href="/logout" style="display: flex;margin-left: 10px;height: fit-content; color: rgb(0,0,0,0.125)"><i class="fas fa-sign-out-alt"></i></a>
+                            {% else %}
+                             <a href="frst-lesson" id="navbarDropdownMenuLink1" style="margin-right: 20px"><button class="dashboard-button-red">Пробный урок</button></a>
+                             <a href="#" id="navbarDropdownMenuLink2" data-bs-toggle="modal" data-bs-target="#myModal1" aria-haspopup="true" aria-expanded="false"><button class="land-button-secondary-teacher" style="height: 100%">Войти</button></a>
+                            {% endif %}
+                        </li>
+
+                    </ul>
+                </div>
+        </nav>
+
+
+<!-- Modal -->
+<div class="modal fade"  id="mobilemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog"  style="margin-right: auto;margin-left: auto;margin-top: auto;">
+        <div class="modal-content" style="border: none; border-radius: 0; background: #24273C">
+            <div class="modal-header" style="border: none">
+                <a  class="logo" href="../../">EnglishTalk</a>
+
+                <a style="outline: none;" data-bs-dismiss="modal" id="clsmod" aria-label="Close" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M23 23L0.999977 1.00001M22.9999 1L0.999977 23" stroke="#EDF1FA" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </a>
+
+            </div>
+            <div class="modal-body">
+                <ul class="navbar-nav mx-auto navbar-left-top">
+                    <li class="nav-item nav-user-mobile header-text-m">
+                        <a style=" color: #EDF1FA;">8 (995) 904-27-22</a>
+                    </li>
+
+                    <li class="nav-item nav-user-mobile header-text-m">
+                        <a style=" color: #EDF1FA;"></a>
+                    </li>
+
+                    <li class="nav-item nav-user-mobile header-text-m">
+                        <a style=" color: #EDF1FA;" href="courses">Курсы</a>
+                    </li>
+
+                    <li class="nav-item nav-user-mobile header-text-m">
+                        <a style=" color: #EDF1FA;" href="#scoost">Стоимость</a>
+                    </li>
+
+                    <li style="margin-bottom: 179px" class="nav-item nav-user-mobile header-text-m">
+                        <a style=" color: #EDF1FA;" href="#sreview">Отзывы</a>
+                    </li>
+                </ul>
+
+                {% if request.user.is_authenticated %}
+                <div style="display: flex;" >
+                <a href="../dashboard/lk" style="display: flex">
+                    <p class="my-auto header-text" style="margin-right: 7px;height: fit-content; color: #EDF1FA; ">{{request.user.first_name}} {{request.user.last_name}}</p>
+                    {% if image == -1 %}
+                    <img  style="width: 40px; height: 40px;border-radius: 40px" src='{% static "images/avatar.png" %}'>
+
+                    {% else %}
+                    <img  style="width: 40px; height: 40px;border-radius: 40px" src='{{image.url}}'>
+
+                    {% endif %}
+                </a>
+                <a class="my-auto" href="/logout" style="display: flex;margin-left: 10px;height: fit-content; color: #EDF1FA;"><i class="fas fa-sign-out-alt"></i></a>
+                </div>
+                {% else %}
+                <a  href="#" id="navbarDropdownMenuLink2" onclick="$('#mobilemodal').click()" data-bs-toggle="modal" data-bs-target="#myModal1" aria-haspopup="true" aria-expanded="false"><button class="land-button-secondary-teacher light" style="height: 100%;font-size: 16px;line-height: 18px;padding: 14px 26px; width: 100%; margin-bottom: 10px ">Войти</button></a>
+                <a  href="#" id="navbarDropdownMenuLink1" onclick="$('#mobilemodal').click()" data-bs-toggle="modal" data-bs-target="#flModal" aria-haspopup="true" aria-expanded="false" style="margin-right: 20px"><button style=";font-size: 16px;line-height: 18px; width: 100%; margin-left: 0" class="dashboard-button-red">Зарегистрироваться</button></a>
+                {% endif %}
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="CourseModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" style="max-width: 1000px" role="document">
+    <div class="modal-content">
+            <div class="modal-body mx-auto" style="padding: 0">
+                <div class="card-group course-modal">
+                    <div class="card" style="border: 0;">
+                        <button type="button" class="btn button-close-modal" data-bs-dismiss="modal" aria-label="Close">
+                             Закрыть
+                        </button>
+						<h3 id="titl" class="card-title mb-4" style="color: #082567;text-align: center;margin-top: 10px"></h3>
+				<div class="card-group">
+					<div class="card" style="border: 0;">
+						<img id="course_img" class="card-img my-auto mx-auto" style="max-height: 300px;max-width: 300px;text-align: center">
+					</div>
+					<div class="card" style="border: 0;">
+                        <div class="row">
+								<div class="services-2 d-flex">
+                                    <div class="col-4">
+                                    <div class="icon d-flex justify-content-center align-items-center" style="margin-right: 0;width: 50px; height: 50px;margin-top: 0 !important;"><span style="font-size: 30px" id="icon1" class="fas fa-paper-plane"></span></div>
+									</div>
+                                    <div class="col-8">
+                                    <div class="text pl-1" style="width: 70%;text-align: center;">
+										<h3 class="course-modal-text" id="desc1">С вами работают преподаватели, которые подготовили десятки учеников к успешной сдаче Ilets</h3>
+									</div>
+                                        </div>
+								</div>
+                        </div>
+                            <div class="row">
+								<div class="services-2 d-flex">
+                                    <div class="col-4">
+									<div class="icon d-flex justify-content-center align-items-center" style="margin-right: 0;width: 50px; height: 50px;margin-top: 0 !important;"><span style="font-size: 30px" id="icon2" class="fas fa-paper-plane"></span></div>
+									</div>
+                                    <div class="col-8">
+                                        <div class="text pl-1" style="width: 70%;text-align: center;">
+										<h3 class="course-modal-text" id="desc2">Вы выбираете для себя комфортное время для индивидуальных занятий</h3>
+									</div>
+                                    </div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="services-2 d-flex">
+                                    <div class="col-4">
+									<div class="icon d-flex justify-content-center align-items-center" style="margin-right: 0;width: 50px; height: 50px;margin-top: 0 !important;"><span style="font-size: 30px" id="icon3" class="fas fa-paper-plane"></span></div>
+									</div>
+                                        <div class="col-8">
+                                    <div class="text pl-1" style="width: 70%;text-align: center;">
+										<h3 class="course-modal-text" id="desc3">Имитация экзамена вместе с преподавателем</h3>
+									</div>
+                                    </div>
+								</div>
+							</div>
+					</div>
+					</div>
+                <div class="card-footer text-muted">
+							<p style="margin-bottom: 0;text-align: center;font-size: 14px">Связаться с нами: 8 (995) 793-02-03 <a href="#" style="margin-right: 30px;" ><img src="https://pngicon.ru/file/uploads/instagram-256x256.png" style="width: 32px;height: 32px"></a><a href="https://t.me/Svvvnd" style="margin-right: 30px;"><img src="https://pngicon.ru/file/uploads/telegram.png" style="width: 32px;height: 32px"></a><a href="#" style="margin-right: 30px;"><img src="https://pngicon.ru/file/uploads/youtube-1.png" style="width: 32px;height: 32px"></a></p>
+						</div>
+			</div>
+                    {% if not request.user.is_authenticated %}
+					<div class="card blue-card" style="border-radius: 0;border: 0;text-align: center;background: #9ddde7;">
+                        <div class="card-body">
+                            <h4 class="card-title" style="color: #082567;">Первый урок - бесплатно!</h4>
+							<a href="#" data-dismiss="modal" data-bs-toggle="modal" data-bs-target="#reqModal"><button type="button" class="btn btn-primary" style="border-radius: 0; color: #082567;font-size: large;max-width: 250px">Записаться на бесплатный урок</button></a>
+							<h4 class="card-title" style="color: #082567;margin-top: 50px">Можно подобрать персональную программу</h4>
+							<a href="#"><button type="button" class="btn btn-primary" style="border-radius: 0; color: #082567;font-size: large;max-width: 250px;background: #c5cfd8;border-color: #c5cfd8">Подобрать индивидуальный курс</button></a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    </div>
+						</div>
+                </div>
+                    </div>
+                </div>
+
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-body" style="padding: 0">
+                    <div class="row" style="height: 346px">
+                        <div class="col-5" style="background-image: url({% static 'images/eng-flag.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;">
+                        </div>
+                        <div class="col-7" style="background: #f7f7f7">
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="blogs-header-text" style="margin-bottom: 19px; margin-top: 10px">
+                              Авторизация
+                          </div>
+                            <button class="registration-button" data-dismiss="modal" data-toggle="modal" data-target="#reqModal" onclick="change_list()"><i style="font-size: 23px; color: #2F80ED; margin-right: 10px" class="fas fa-envelope"></i>  По почте</button>
+                            {% load socialaccount %}
+                            <a href="{% provider_login_url 'google' method='oauth2' %}"><button class="registration-button" ><img src="{% static 'images/search.png' %}" style="margin-right: 10px">  Google</button></a>
+                            <a href="{% provider_login_url 'vk' method='oauth2' %}"><button class="registration-button" ><i style="font-size: 23px; color: #2F80ED; margin-right: 10px" class="fab fa-vk"></i>  Вконтакте</button></a>
+                        </div>
+                    </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="modal" id="reqTeachModal" tabindex="-1" role="dialog" aria-labelledby="flModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+        <div class="modal-body" style="padding: 0">
+                    <div class="row" style="height: 400px">
+                        <div class="col-5" style="border-top-left-radius: 8px;border-bottom-left-radius: 8px;padding: 20px;background-image: url({% static 'images/telephone.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;">
+                            <h2 class="modal-white-header" style="font-size: 35px">Это будет круто!</h2>
+                            <h4 class="modal-white-text" style="font-weight: bold; font-size: 21px; line-height: 30px">Будем рады видеть вас в нашей команде</h4>
+                        </div>
+                        <div class="col-7" style="border-top-right-radius: 8px;border-bottom-right-radius: 8px;background: #f7f7f7; padding-top: 10px">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="blogs-header-text" style="margin-top: 40px; font-size: 27px; line-height: 25px">
+                              Мы свяжемся с вами и обсудим условия работы
+                          </div>
+                            <form  method="POST" action="../send_request_vt" style="margin-bottom: 30px">
+                                {% csrf_token %}
+                                <p class="account-input-label">Имя</p>
+                               <input type="text" id="name2" name="name" required class="account-input">
+                                <p class="account-input-label">E-mail</p>
+                               <input type="email" id="email2" name="email" style="width: 100%" class="account-input" required>
+                                <p class="account-input-label">Телефон</p>
+                               <input type="tel" id="phone2" name="phone" required class="account-input">
+                                <input type="submit" class="dashboard-button-secondary-teacher" style="margin-top: 20px" value="Перезвоните мне">
+                                <p class="account-input-label" style="margin-top: 10px">Нажимая "Перезвоните мне",</p>
+                                <p class="account-input-label" style="margin-top: 0">вы принимаете <a href="confidentiality" style="font-weight: bold; color: #2F80ED">условия соглашения</a></p>
+                        </form>
+                        </div>
+                    </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="reqModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content" style="background: transparent;border: 0">
+            <div class="modal-body mx-auto">
+                <div class="list-group list-group-horizontal" style="margin-bottom: 10px;width: 338px" id="list-tab" role="tablist">
+                    <a class="nvlnk" id="list-45-list" style="margin-right: 10px; padding: 8px 34.5px" data-bs-toggle="list" href="#list-45" role="tab" aria-controls="home">Авторизация</a>
+                    <a class="nvlnk active" id="list-60-list" style="padding: 8px 34.5px" data-bs-toggle="list" href="#list-60" role="tab" aria-controls="profile">Регистрация</a>
+                </div>
+
+                <div class="tab-content" id="nav-tabContent">
+		<div class="tab-pane fade" id="list-45" role="tabpanel" aria-labelledby="list-45-list">
+             <div class="card">
+                <div class="card-body">
+                    <div style="display: flex">
+                        <a href="{% provider_login_url 'vk' method='oauth2' %}">
+                            <div class="site-image" style="background: #2F80ED; color: white;padding-bottom: 10px">
+                                <i class="fab fa-vk" style="font-size: 24px"></i>
+                            </div>
+                        </a>
+                        <a href="{% provider_login_url 'google' method='oauth2' %}">
+                            <div class="site-image">
+                                <img src="{% static 'images/search.png' %}">
+                            </div>
+                        </a>
+                    </div>
+                    <form class="ftco-animate" method="POST" action="../login-user">
+                        {% csrf_token %}
+                        <p class="account-input-label">E-mail</p>
+                       <input type="email" id="email_auth" name="email_auth"  class="account-input" required>
+                        <p class="account-input-label">Пароль</p>
+                       <input type="password" id="password" name="password" required class="account-input">
+                        <div style="display: flex">
+                            <input type="submit" class="dashboard-button-secondary-teacher" style="margin-top: 20px;margin-right: 26px" value="Войти">
+                            <a href="accounts/password_reset" style="color:black; margin-top: 19px">Забыли пароль?</a>
+                        </div>
+                    </form>
+                        </div>
+                    </div>
+	    </div>
+	    <div class="tab-pane fade show active" id="list-60" role="tabpanel" aria-labelledby="list-60-list"  >
+            <div class="card">
+                <div class="card-body">
+                    <div style="display: flex">
+                        <a href="{% provider_login_url 'vk' method='oauth2' %}">
+                        <div class="site-image" style="background: #2F80ED; color: white;padding-bottom: 10px">
+                            <i class="fab fa-vk" style="font-size: 24px"></i>
+                        </div>
+                        </a>
+                        <a href="{% provider_login_url 'google' method='oauth2' %}">
+                        <div class="site-image">
+                            <img src="{% static 'images/search.png' %}">
+                        </div>
+                        </a>
+                    </div>
+                    <form class="ftco-animate" id="reg-form" method="POST" action="../send_request_v">
+                        {% csrf_token %}
+                        {% if is_referral %}
+                        <input type="hidden" id="ref" name="ref" value="{{referral}}">
+                        {% endif %}
+                        <p class="account-input-label">E-mail</p>
+                       <input type="email" id="email1" name="email"  class="account-input" required>
+                        <p class="account-input-label">Номер телефона</p>
+                       <input type="tel" id="phone1" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="account-input">
+                        <p class="account-input-label">Регистрируясь вы соглашаетесь</p>
+                        <p class="account-input-label" style="margin-top: 0">с <a href="confidentiality" style="font-weight: bold; color: #2F80ED">политикой конфиденциальности</a></p>
+                        <input type="submit" class="dashboard-button-secondary-teacher" style="margin-top: 20px" value="Регистрация">
+                    </form>
+                        </div>
+                    </div>
+	    </div>
+                    <div class="tab-pane fade" id="list-60-2" style="width: 338px" role="tabpanel" aria-labelledby="list-60-list"  >
+            <div class="card">
+                <div class="card-body">
+                    <form method="post" action="/change-info-reg">
+                        {% csrf_token %}
+                        <input type="hidden" id="user-email" name="user-email">
+                        <p class="account-input-label">Имя</p>
+                        <input type="text" name="name" class="account-input">
+                        <p class="account-input-label">Фамилия</p>
+                        <input type="text" name="surname" class="account-input">
+                        <p class="account-input-label">Дата рождения</p>
+                        <div class="row">
+                            <div class="col">
+                                <p class="account-input-label-sm">День</p>
+                                <input type="text" name="birth-day" class="account-input">
+                            </div>
+                            <div class="col">
+                                <p class="account-input-label-sm">Месяц</p>
+                                <input type="text" name="birth-month" class="account-input">
+                            </div>
+                            <div class="col">
+                                <p class="account-input-label-sm">Год</p>
+                                <input type="text" name="birth-year" class="account-input">
+                            </div>
+                        </div>
+                        <div style="display: flex;margin-top: 24px">
+                            <input type="submit" class="dashboard-button-secondary-teacher" style="margin-right: 26px" value="Регистрация">
+                            <a href="#" style="color: #2F80ED;" data-bs-target="#successModal" data-bs-toggle="modal" onclick="closeModal()">Пропустить</a>
+                        </div>
+                    </form>
+                        </div>
+                    </div>
+	    </div>
+		 </div>
+            </div>
+                </div>
+              </div>
+            </div>
+
+<div class="modal fade" id="askModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+            <div class="modal-body mx-auto" style="padding: 0">
+                <div class="card-group ask-modal" style="background: #9ddde7">
+                    <div class="card" style="border: 0;text-align: center;background: #9ddde7">
+                        <button type="button" class="btn button-close-modal" data-bs-dismiss="modal" aria-label="Close">
+                             Закрыть
+                        </button>
+                        <div class="card-body">
+                            <h3 class="card-title" style="color: #082567;">Привет!</h3>
+                        </div>
+                        <img src="{% static "images/mahaet.jpg" %}" class="chelic mx-auto" style="max-width: 387.75px;max-height: 374.25px;">
+                    </div>
+                    <div class="card" style="border: 0;">
+                        <div class="card-body" style="background: #c5cfd8;">
+                            <h3 class="card-title" style="color: #082567;text-align: center;">Мы свяжемся с Вами и ответим на все вопросы по обучению </h3>
+                            <form style="margin-right: 1em" class="appointment-form ftco-animate" method="POST" action="../ask_question">
+                        {% csrf_token %}
+                        <br>
+                        <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="name3" name="name" class="form-control" required placeholder="Как вас зовут?">
+                       <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone3" name="phone" pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$" required class="form-control" placeholder="Телефон">
+                        <input type="submit" style="margin-top: 100px;border-radius: 0;color: #082567;font-size: 20px;width: 100%" value="Хочу пообщаться" class="btn btn-primary">
+                                <p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <a href="confidentiality" style="font-weight: bold; color: #666666">условия соглашения</a></p>
+                    </form>
+                        </div>
+                    </div>
+                </div>
+
+                    </div>
+
+                </div>
+              </div>
+            </div>
+
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+            <div class="modal-body mx-auto" style="padding: 0">
+                    <div class="card" style="border: 0;text-align: center; background: #e9ecef;border-radius: 0;">
+                        <div class="card-body">
+                            <h2 class="card-title" style="color: #082567;">Ура!</h2>
+                            <p class="card-text" style="color: #082567;font-size: x-large">Мы свяжемся с Вами в кратчайшие сроки и обсудим детали 😊</p>
+                            <a href="../" onclick="e.preventDefault()" style="margin-top: 10px;border-radius: 4px;color: #ffffff;font-size: 19px;width: 187.61px;background: #eb5757;border: none;font-family: Arial;font-style: normal;font-weight: bold;"  class="btn btn-primary">Окей! <br> Буду ждать!</a>
+                        </div>
+                    </div>
+
+                    </div>
+
+                </div>
+              </div>
+            </div>
+
+<script src={% static "js/jquery.min.js" %}></script>
+<script src={% static "js/bootstrap.min.js" %}></script>
+
+<script>
+
+$(function() {
+
+
+    // This function gets cookie with a given name
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getCookie('csrftoken');
+
+    /*
+    The functions below will create a header with csrftoken
+    */
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    function sameOrigin(url) {
+        // test that a given url is a same-origin URL
+        // url could be relative or scheme relative or absolute
+        var host = document.location.host; // host + port
+        var protocol = document.location.protocol;
+        var sr_origin = '//' + host;
+        var origin = protocol + sr_origin;
+        // Allow absolute or scheme relative URLs to same origin
+        return (url == origin || url.slice(0, origin.length + 1) == origin + '/') ||
+            (url == sr_origin || url.slice(0, sr_origin.length + 1) == sr_origin + '/') ||
+            // or any other URL that isn't scheme relative or absolute i.e relative.
+            !(/^(\/\/|http:|https:).*/.test(url));
+    }
+
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && sameOrigin(settings.url)) {
+                // Send the token to same-origin, relative URLs only.
+                // Send the token only if the method warrants CSRF protection
+                // Using the CSRFToken value acquired earlier
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+});
+
+
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+$('#CourseModal').on('shown.bs.modal', function (event) {
+	var div = $(event.relatedTarget);
+	var title = div.data('title');
+	var course_img = div.data('course_img');
+	var desc1 = div.data('desc1');
+	var desc2 = div.data('desc2');
+	var desc3 = div.data('desc3');
+	var icon1 = div.data('icon1');
+	var icon2 = div.data('icon2');
+	var icon3 = div.data('icon3');
+    $('#titl').html(title);
+    $('#course_img').attr('src', course_img);
+    $('#desc1').html(desc1);
+    $('#desc2').html(desc2);
+    $('#desc3').html(desc3);
+    $('#icon1').attr('class',icon1);
+    $('#icon2').attr('class',icon2);
+    $('#icon3').attr('class',icon3);
+    })
+$(document).ready(function () {
+var s = 0;
+  $(".navbar-toggler").click(function(event) {
+    s += 1;
+    if (s % 2 == 0){
+        $('.navbar-collapse').collapse('hide');
+        $('.navbar-collapse').css('back')
+        return false;
+    }
+    else{
+        $('.navbar-collapse').collapse('show');
+    }
+  });
+})
+$(document).ready(function () {
+var s = 0;
+  $("#heading1").click(function(event) {
+    s += 1;
+    if (s % 2 == 0){
+        $('#collapse1').collapse('hide');
+        return false;
+    }
+    else{
+        $('#collapse1').collapse('show');
+    }
+  });
+})
+$(document).ready(function () {
+var s = 0;
+  $("#heading2").click(function(event) {
+    s += 1;
+    if (s % 2 == 0){
+        $('#collapse2').collapse('hide');
+        return false;
+    }
+    else{
+        $('#collapse2').collapse('show');
+    }
+  });
+})
+$(document).ready(function () {
+var s = 0;
+  $("#heading3").click(function(event) {
+    s += 1;
+    if (s % 2 == 0){
+        $('#collapse3').collapse('hide');
+        return false;
+    }
+    else{
+        $('#collapse3').collapse('show');
+    }
+  });
+})
+$(document).ready(function () {
+var s = 0;
+  $("#heading4").click(function(event) {
+    s += 1;
+    if (s % 2 == 0){
+        $('#collapse4').collapse('hide');
+        return false;
+    }
+    else{
+        $('#collapse4').collapse('show');
+    }
+  });
+})
+
+function change_list(){
+    $('#list-45-list').addClass('active');
+    $('#list-60-list').removeClass('active');
+    $('#list-45').addClass('show active');
+    $('#list-60').removeClass('show active');
+    $('#list-60-2').removeClass('show active');
+    $("#myModal1").modal("hide");
+}
+
+function change_list2(){
+    $('#list-60-list').addClass('active');
+    $('#list-45-list').removeClass('active');
+    $('#list-60').addClass('show active');
+    $('#list-45').removeClass('show active');
+    $('#list-60-2').removeClass('show active');
+}
+
+$('#reg-form').on('submit', function(event){
+    event.preventDefault();
+    create_post();
+});
+
+function create_post(){
+    $.ajax({
+        url : "../send_request_v",
+        type : "POST", // http method
+        data : { email : $('#email1').val(),
+                 phone : $('#phone1').val()},
+
+        // handle a successful response
+        success : function(json) {
+            add_info();
+        }
+    });
+}
+
+function add_info(){
+    $('#list-60').removeClass('show active');
+    $('#list-60-2').addClass('show active');
+    $('#user-email').val($('#email1').val());
+}
+
+function closeModal(){
+    $("#reqModal").hide();
+    $('.modal-backdrop').hide();
+}
+
+{% if is_referral %}
+$(document).ready(function () {
+    $("#navbarDropdownMenuLink1")[0].click();
+})
+{% endif %}
+
+</script>
+

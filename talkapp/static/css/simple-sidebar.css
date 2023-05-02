@@ -1,0 +1,517 @@
+
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 15%;
+    margin-right: 1%;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    overflow-x: hidden;
+}
+
+#wrapper.left-toggled {
+    padding-left: 250px;
+}
+
+#wrapper.right-toggled {
+    padding-right: 250px;
+}
+
+
+#left-sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    width: 0;
+    height: 100%;
+    margin-left: -200px;
+    overflow-y: auto;
+    padding: 20px;
+    padding-top: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#right-sidebar-wrapper {
+    z-index: 1000;
+    position: absolute;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background: #000;
+}
+
+#wrapper.left-toggled #left-sidebar-wrapper {
+    width: 250px;
+}
+
+#wrapper.right-toggled #right-sidebar-wrapper {
+    display: none;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.left-toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+#wrapper.right-toggled #page-content-wrapper {
+    position: absolute;
+}
+
+/* Sidebar Styles */
+
+
+/* Sub-bar styles */
+
+
+/* Toggle Buttons */
+
+@media(max-width:767px) {
+    #menu-toggle-right {
+        top: 40px;
+         z-index: 100001;
+    }
+    #menu-toggle {
+        top: 40px;
+    }
+    #right-sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    right: 250px;
+    width: 0;
+    height: 0;
+    margin-right: -250px;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px){
+        #right-sidebar-wrapper {
+            width: 48% !important;
+            height: 25% !important;
+    }
+    #wrapper.right-toggled #right-sidebar-wrapper {
+        width: 0 !important ;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1439px){
+        #right-sidebar-wrapper {
+            width: 37% !important ;
+            height: 24% !important;
+    }
+    #wrapper.right-toggled #right-sidebar-wrapper {
+        width: 0 !important;
+    }
+}
+
+@media(min-width:768px) {
+    #wrapper {
+
+    }
+
+    #wrapper.left-toggled {
+        padding-left: 0;
+    }
+
+    #wrapper.right-toggled {
+        padding-right: 0;
+
+    }
+
+    #left-sidebar-wrapper {
+        width: 200px;
+    }
+
+    #chat {
+        height: 100%;
+    }
+
+    #right-sidebar-wrapper {
+        width: 27%;
+        height: 30%;
+    }
+
+    #wrapper.left-toggled #left-sidebar-wrapper {
+        width: 0;
+    }
+
+    #wrapper.right-toggled #right-sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        padding-top: 10px;
+        position: relative;
+    }
+
+    #wrapper.left-toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+
+    #wrapper.right-toggled #page-content-wrapper {
+        position: relative;
+        margin-left: 0;
+    }
+
+    #menu-toggle-right {
+        bottom: 0;
+    }
+    #menu-toggle {
+        bottom: 0;
+    }
+    #d0,#d1,#d2,#d3,#d4,#d15,#d6,#d7,#d8 {
+        margin: 20px;
+    }
+}
+.rotate {
+  transform: rotate(180deg);
+  transition: all 1s ease;
+  }
+
+.rotate2 {
+  transform: rotate(-180deg);
+  transition: all 1s ease;
+  }
+
+#draggable {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  z-index: 99999999;
+  border-radius: 50%;
+  background: blue;
+}
+
+.logo {
+    border: 2px solid #5B61FF;
+    box-sizing: border-box;
+    border-radius: 10px 10px 0px 10px;
+    padding: 11px 33px;
+    font-family: Rubik;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #5B61FF;
+}
+.logo:hover{
+    color: #5B61FF;
+}
+
+@media(max-width:360px) {
+    .logo{
+        padding: 7px 25px;
+    }
+    .navbar{
+        height: 74px !important;
+    }
+}
+
+.user-profile {
+    width: 200px;
+    height: 62px;
+    display: flex;
+    margin-top: 10px;
+
+    background: linear-gradient(71.87deg, #F5F5F5 9.82%, #F8F8F8 118.75%);
+    border-radius: 6px;
+}
+
+.user-profile p{
+
+    width: 70px;
+    height: 20px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #000000;
+}
+
+.user-profile-icon {
+width: 18px;
+height: 18px;
+text-align: center;
+}
+
+.empty_balance {
+    background: radial-gradient(circle farthest-side at 10px 10px, #2D9CDB , #EB5757);
+    height: 147px;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 10px;
+
+}
+.empty_balance h1 {
+    height: 40px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #FFFFFF;
+}
+
+.empty_balance p{
+    height: 30px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 15px;
+
+    color: #FFFFFF;
+}
+
+.subscribe-block {
+    background: radial-gradient(circle farthest-side at 40px 30px, #EB5757, #2D9CDB);
+    height: 147px;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 10px;
+
+}
+.subscribe-block-2 {
+    background: radial-gradient(circle farthest-side at 40px 30px, #2D9CDB, #EB5757);
+    height: 147px;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 10px;
+
+}
+.subscribe-block h1 {
+    height: 20px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #FFFFFF;
+}
+
+.subscribe-block p{
+    height: 45px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 15px;
+
+    color: #FFFFFF;
+}
+
+/* Календарь */
+.fc .fc-col-header-cell-cushion {
+    font-family: Arial;
+    font-size: 1.33vw;
+    font-weight: normal;
+    color: #333333;
+}
+
+a:not([href]):not([tabindex]) {
+    color: #333333;
+}
+
+.fc-h-event {
+    display: unset;
+    border: none;
+    border: none;
+    background-color: none;
+    background-color: none;
+}
+
+.fc-h-event .fc-event-main {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 14px;
+    color: #333333;
+}
+
+.fc-daygrid-block-event .fc-event-time, .fc-daygrid-block-event .fc-event-title {
+    padding: 1px 0px 0px 6%;
+    white-space: normal;
+}
+.fc-scrollgrid  {
+    border-radius: 6px
+}
+
+.fc .fc-scrollgrid-section > * {
+    border-radius: 6px !important;
+  }
+
+
+@media screen and (min-width: 1024px) and (max-width: 1440px){
+    .fc .fc-col-header-cell-cushion {
+        padding: 2px 10%;
+    }
+}
+
+@media screen and (min-width: 1440px){
+    .fc .fc-col-header-cell-cushion {
+
+        font-family: Arial;
+        font-size: 1vw;
+        color: #333333;
+    }
+}
+
+.calendar-lk > .fc-header-toolbar > .fc-toolbar-chunk:nth-child(2)::before {
+    position: absolute;
+    left: 0;
+    content: 'Расписание' !important;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #333333;
+    top: 7px;
+}
+
+ .fc-header-toolbar > .fc-toolbar-chunk:nth-child(2)::before {
+    position: absolute;
+    left: 0;
+    content: 'Расписание' !important;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    color: #333333;
+    top: 14px;
+}
+
+.fc-header-toolbar > .fc-toolbar-chunk:nth-child(1) {
+    margin-left: 170px;
+    display: flex;
+    height: fit-content;
+    position: relative;
+}
+
+.fc-toolbar-title {
+    text-transform: capitalize;
+}
+
+.fc-button-primary {
+    background: white !important;
+    color: black !important;
+    box-sizing: border-box !important;
+}
+
+.fc-prev-button{
+    border: 1px solid #BDBDBD !important;
+    border-right-width: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    padding-top: 2px !important;
+}
+
+.fc-next-button{
+    border: 1px solid #BDBDBD !important;
+    border-left-width: 0 !important;
+    padding-top: 2px !important;
+}
+
+.fc-button-group {
+    height: 30px !important;
+}
+
+.select_month {
+    border: 1px solid #BDBDBD !important;
+    margin-right: -1px;
+    width: 122px;
+    height: 30px;
+    padding-left: 5px;
+    background: url(../images/down_chevron_icon_16px.png) no-repeat right white;
+    -webkit-appearance: none;
+    background-position-x: 98px;
+}
+
+.fc-call-button {
+    font-family: Arial !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 14px !important;
+    line-height: 16px !important;
+    color: #2F80ED !important;
+    border: 0 !important;
+}
+
+
+
+.fc-day-other {
+    background-color: #f2f2f2 !important;
+}
+
+.fc-daygrid-day-events {
+    margin-bottom: -1000px;
+    overflow-y: auto;
+    max-height: 96px;
+}
+
+::-webkit-scrollbar{
+    width:6px;
+}
+::-webkit-scrollbar-thumb{
+    border-width:1px 1px 1px 2px;
+    border-color: #777;
+    background-color: #aaa;
+}
+::-webkit-scrollbar-track{
+    border-width:0;
+}
+
+.header-text-m {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 16px;
+    text-align: left;
+    color: #24273C;
+    margin-left: 34px;
+}
+li.nav-item.nav-user-mobile.header-text-m{
+    margin: 15px 0;
+    font-size: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+}

@@ -1,0 +1,134 @@
+{% load static %}
+<link href="https://fonts.googleapis.com/css?family=Rubik:200,300,600,700&display=swap" rel="stylesheet">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light fixed-top adaptive-header dashboard-header hdr" id="header" style="background: white;width: 100%;padding-top: 0px;padding-bottom: 0px;border-bottom: 1px solid rgba(0, 0, 0, 0.125); height: 60px">
+    <a class="logo" href="../../">EnglishTalk</a>
+    <button class="navbar-toggler" style="background-color: #2F80ED" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
+                    <ul class="navbar-nav ml-auto navbar-right-top">
+                        <li class="nav-item dropdown nav-user nav-user-mobile">
+                                <a class="nav-link" style="color:rgb(47, 128, 237); background-color: white" href="../dashboard/lk">Личный кабинет</a>
+                        </li>
+                        <div class="dropdown-divider nav-user-mobile"></div>
+                        <li class="nav-item nav-user-mobile">
+                        <a class="nav-link" style="color:rgb(47, 128, 237); background-color: white" href="/logout">Выход</a>
+                        </li>
+                        <li class="nav-item nav-user nav-user-not-mobile" style="display: flex">
+                            <a href="../dashboard/lk" style="display: flex">
+                                <p class="my-auto header-text" style="margin-right: 7px; height: fit-content">{{request.user.first_name}} {{request.user.last_name}}</p>
+
+                                {% if image == -1 %}
+                                <img  style="width: 40px; height: 40px;border-radius: 40px" src='{% static "images/avatar.png" %}'>
+
+                                {% else %}
+                                <img  style="width: 40px; height: 40px;border-radius: 40px" src='{{image.url}}'>
+
+                                {% endif %}
+
+                            </a>
+                            <a class="my-auto" href="/logout" style="display: flex;margin-left: 10px;height: fit-content; color: rgb(0,0,0,0.125)"><i class="fas fa-sign-out-alt"></i></a>
+                        </li>
+                    </ul>
+                </div>
+        </nav>
+
+<div class="modal" id="flModal" tabindex="-1" role="dialog" aria-labelledby="flModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 600px" role="document">
+    <div class="modal-content">
+        <div class="modal-body" style="padding: 0">
+                    <div class="row" style="height: 500px">
+                        <div class="col-5" style="border-top-left-radius: 8px;border-bottom-left-radius: 8px;padding: 20px;background-image: url({% static 'images/eng-flag-dark.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;">
+                            <h2 class="modal-white-header">Пробный урок</h2>
+                            <h4 class="modal-white-text" style="font-weight: bold">На первом занятии:</h4>
+                            <p class="modal-white-text">Познакомимся</p>
+                            <p class="modal-white-text">Подберем программу</p>
+                            <p class="modal-white-text">Узнаем уровень владения</p>
+                        </div>
+                        <div class="col-7" style="border-top-right-radius: 8px;border-bottom-right-radius: 8px;background: #f7f7f7; padding-top: 10px">
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="blogs-header-text" style="margin-top: 30px; font-size: 27px; line-height: 24px">
+                              Записаться на бесплатный урок
+                          </div>
+                            <form  method="POST" action="../send_request_fl" style="margin-bottom: 30px">
+                                {% csrf_token %}
+                                <p class="account-input-label">E-mail</p>
+                               <input type="email" id="email" name="email" style="width: 100%" class="account-input" value="{{request.user.email}}" required>
+                                <p class="account-input-label">Имя</p>
+                               <input type="text" id="first-name" name="first-name" required class="account-input" value="{{request.user.first_name}}">
+                                <p class="account-input-label">Телефон</p>
+                               <input type="tel" id="phone" name="phone" required class="account-input" value="{{phone_number}}">
+                                <input type="submit" class="dashboard-button-secondary-teacher" style="margin-top: 20px" value="Начать бесплатно">
+                                <p class="account-input-label" style="margin-top: 10px">Нажимая "Начать бесплатно",</p>
+                                <p class="account-input-label" style="margin-top: 0">вы принимаете <a href="confidentiality" style="font-weight: bold; color: #2F80ED">условия соглашения</a></p>
+                        </form>
+                        </div>
+                    </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="refModal" tabindex="-1" role="dialog" aria-labelledby="refModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 600px" role="document">
+    <div class="modal-content">
+        <div class="modal-body" style="padding: 0">
+                    <div class="row" style="height: 300px">
+                        <div class="col-5" style="border-top-left-radius: 8px;border-bottom-left-radius: 8px;padding: 20px;background-image: url({% static 'images/friends_london.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;">
+                            <h4 style="font-size: 28px; font-family: Arial" class="modal-white-header">Пригласи друга</h4>
+                            <h4 class="modal-white-text" style="font-weight: bold">Вы получите:</h4>
+                            <p class="modal-white-text">Бесплатное занятие</p>
+                            <p class="modal-white-text">Вам</p>
+                            <p class="modal-white-text">И вашему другу</p>
+                        </div>
+                        <div class="col-7" style="border-top-right-radius: 8px;border-bottom-right-radius: 8px;background: #f7f7f7; padding-top: 10px">
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="blogs-header-text" style="margin-top: 30px; font-size: 27px; line-height: 24px; margin-bottom: 20px">
+                              Ваша реферальная ссылка
+                          </div>
+                               <input type="text" id="ref" name="ref" style="width: 100%" class="account-input" value="https://eng-talk.ru/?ref={{referral}}">
+                                <button class="dashboard-button-secondary-teacher mt-3" id="refCopy">Скопировать</button>
+                        </div>
+                    </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="svModal" tabindex="-1" role="dialog" aria-labelledby="svModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" style="max-width: 600px" role="document">
+    <div class="modal-content">
+        <div class="modal-body" style="padding: 0">
+                    <div class="row" style="height: 500px">
+                        <div class="col-5" style="border-top-left-radius: 8px;border-bottom-left-radius: 8px;padding: 20px;background-image: url({% static 'images/eng-flag-dark.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;">
+                        </div>
+                        <div class="col-7" style="border-top-right-radius: 8px;border-bottom-right-radius: 8px;background: #f7f7f7; padding-top: 10px">
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="blogs-header-text" style="margin-top: 30px; font-size: 27px; line-height: 24px">
+                              Связаться с менеджером для составления расписания
+                          </div>
+                            <form  method="POST" action="../send_call_request" style="margin-bottom: 30px">
+                                {% csrf_token %}
+                                <p class="account-input-label">Контактный телефон</p>
+                               <input type="tel" id="phone" name="phone" required class="account-input">
+                                <input type="submit" class="dashboard-button-secondary-teacher" style="margin-top: 20px" value="Попросить связаться">
+                                <p class="account-input-label" style="margin-top: 10px">Нажимая "Попросить связаться",</p>
+                                <p class="account-input-label" style="margin-top: 0">вы принимаете <a href="confidentiality" style="font-weight: bold; color: #2F80ED">условия соглашения</a></p>
+                        </form>
+                            <div class="blogs-header-text" style="margin-top: 30px; font-size: 27px; line-height: 24px">
+                              Обсудить все вопросы в телеграмм
+                          </div>
+                            <a href="https://t.me/eng_talk" target="_blank"><button type="button" class="dashboard-button-secondary-teacher" style="margin-top: 20px">Перейти в телеграм</button></a>
+                        </div>
+                    </div>
+        </div>
+    </div>
+  </div>
+</div>

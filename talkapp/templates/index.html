@@ -1,0 +1,708 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block meta %}
+<meta name="facebook-domain-verification" content="6zfgxbjy3581oqxgrbw1izxq4ivg1p" />
+{% endblock %}
+{% block title %}
+<title>EnglishTalk</title>
+{% endblock %}
+{% block cssfiles %}
+<link href="https://vjs.zencdn.net/7.8.3/video-js.css" rel="stylesheet" />
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css'>
+<link href="https://fonts.googleapis.com/css?family=Rubik:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Jost:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/overcast/jquery-ui.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href={% static "css/open-iconic-bootstrap.min.css" %}>
+<link rel="stylesheet" href={% static "css/animate.css" %}>
+<link rel="stylesheet" href={% static "css/owl.carousel.min.css" %}>
+<link rel="stylesheet" href={% static "css/owl.theme.default.min.css" %}>
+<link rel="stylesheet" href={% static "css/magnific-popup.css" %}>
+<link rel="stylesheet" href={% static "css/calendar.css" %}>
+<link rel="stylesheet" href={% static "css/aos.css" %}>
+<link rel="stylesheet" href={% static "css/style.css" %}>
+<link rel="stylesheet" href={% static "css/simple-sidebar.css" %}>
+<link rel="stylesheet" href={% static "css/main.css" %}>
+<link rel="stylesheet" href={% static "css/dashboard.css" %}>
+<style>
+
+body{
+	font-family: Rubik;
+}
+.carousel-inner-1 {
+	position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+.carousel-item-1 {
+	position: relative;
+    display: none;
+    float: left;
+    width: 100%;
+    margin-right: -100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: -webkit-transform 0.6s ease-in-out;
+    transition: -webkit-transform 0.6s ease-in-out;
+    -o-transition: transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out;
+    transition: transform 0.6s ease-in-out, -webkit-transform 0.6s ease-in-out;
+}
+	@media (max-width: 767px) {
+    .carousel-inner-1 .carousel-item-1 > div {
+        display: none;
+    }
+    .carousel-inner-1 .carousel-item-1 > div:first-child {
+        display: block;
+    }
+}
+
+.carousel-inner-1 .carousel-item-1.active,
+.carousel-inner-1 .carousel-item-next,
+.carousel-inner-1 .carousel-item-prev {
+    display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+
+    .carousel-inner-1 .carousel-item-end.active,
+    .carousel-inner-1 .carousel-item-next {
+      transform: translateX(50%);
+    }
+
+    .carousel-inner-1 .carousel-item-start.active,
+    .carousel-inner-1 .carousel-item-prev {
+      transform: translateX(-50%);
+    }
+}
+
+.carousel-inner-1 .carousel-item-end,
+.carousel-inner-1 .carousel-item-start {
+  transform: translateX(0);
+}
+
+.carousel-item .fa-chevron-left {
+	display: none;
+}
+</style>
+{% endblock %}
+{% block pixel %}
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '317315313634335');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=317315313634335&ev=PageView&noscript=1"/></noscript>
+<!-- End Facebook Pixel Code -->
+{% endblock %}
+
+{% block content %}
+
+{% include "header.html" %}
+
+<section class="frstsec ftco-section ">
+	<div>
+		<div class="frstsec-container" >
+			<h1 class="big-header" >Английский язык, легко!</h1>
+			<h5 class="with-big-header" >Обучайся языку на нашей образовательной платформе!</h5>
+			<a href="frst-lesson"  ><button class="dashboard-button-red" style="padding: 20px 40px; margin: 0; margin-bottom: 110px;font-size: 18px;line-height: 21px">Пройти урок бесплатно </button></a>
+		</div>
+		<div style="background-image: url({% static 'images/landing-image1.jpg' %});" class="lndimg1"></div>
+
+		<a href="frst-lesson"  ><button class="dashboard-button-red-sec dashboard-button-red" style="display: none">Пройти урок бесплатно </button></a>
+
+		<div style="margin-left: 9%; width: fit-content" class="row row-facts">
+			<div style="padding-left: 0; margin-bottom: 80px" class="col-5">
+				<h1 style="font-size: 48px;line-height: 57px;" class="big-header" >1000+</h1>
+				<h1 style="font-size: 16px;line-height: 18px;" class="big-header" >Выпускников</h1>
+			</div>
+			<div style="padding-left: 0; margin-bottom: 80px" class="col-5">
+				<h1 style="font-size: 48px;line-height: 57px;" class="big-header" >10+</h1>
+				<h1 style="font-size: 16px;line-height: 18px;" class="big-header" >Лет опыта <p>преподавания</p></h1>
+			</div>
+			<div style="padding-left: 0" class="col-5">
+				<h1 style="font-size: 48px;line-height: 57px;" class="big-header" >12</h1>
+				<h1 style="font-size: 16px;line-height: 18px;" class="big-header" >Учебных программ</h1>
+			</div>
+			<div style="padding-left: 0" class="col-5">
+				<h1 style="font-size: 48px;line-height: 57px;" class="big-header" >20+</h1>
+				<h1 style="font-size: 16px;line-height: 18px;" class="big-header" >Опытных <p> преподавателей</p></h1>
+			</div>
+
+		</div>
+
+	</div>
+</section>
+
+
+<section style="padding: 0" class="secsec ftco-section">
+	<div class="secsec-container">
+		<div style="background-image: url({% static 'images/landingback1.jpeg' %});" class="lndimg2">
+			<h1 style="color: #FFF; text-align: center" class="big-header2" >Интерактивный онлайн кабинет</h1>
+			<h5 style="color: #FFF;" class="with-big-header2" >Все материалы для обучения уже Ваши. Онлайн чат с учителем и видеосвязь в одном окне. Во время занятия Вы полностью погружаетесь в процесс обучения.</h5>
+			<div style="background-image: url({% static 'images/landing-image2.png' %});" class="lndimg2_1 mx-auto"></div>
+		</div>
+	</div>
+</section>
+
+<section style="padding: 0" class="secsec ftco-section">
+	<div class="secsec-container">
+		<div style="background: radial-gradient(170.94% 711.31% at 98.49% 4.87%, rgba(255, 0, 214, 0.9) 0%, rgba(255, 148, 148, 0.5) 100%), url({% static 'images/landingback2.jpeg' %});" class="lndimg3">
+			<div class="cntlnd3" style="width: 63%">
+				<h1 style="color: #FFF; text-align: left" class="big-header2" >Совершенствуем платформу для вас</h1>
+				<h5 style="color: #FFF; text-align: left" class="with-big-header3" >Учебные материалы в интерактивном формате Лучшие практики для эффективного изучения языка</h5>
+			</div>
+			<div style="background-image: url({% static 'images/landing-image3.jpg' %});" class="lndimg2_3"></div>
+		</div>
+	</div>
+</section>
+
+
+<section style="padding: 0" class="secsec ftco-section">
+	<div class="secsec-container">
+		<div style="background-image: url({% static 'images/landingback3.jpeg' %})" class="lndimg4">
+			<div style="background-image: url({% static 'images/landing-image4.jpg' %});" class="lndimg3_1"></div>
+			<div class="cntlnd4" >
+				<h1 style="color: #FFF; text-align: right" class="big-header3" >Более 500 медиа материалов для занятий </h1>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+
+<section style="" id="courses" class="progob ftco-section">
+	<div class="secsec-container">
+		<h1 id="progobych" class="big-header2" >Программы обучения </h1>
+		<div id="rowcrdob" class="row" >
+			<a href="courses_adult">
+				<div id="frstcrd"  class="card crdob col-sm-12">
+					<div class="abs-txt-crd" >
+						<h1 class="big-header-card" >Для взрослых </h1>
+						<h5 style="color: #24273C; text-align: left" class="with-big-header3" >Английский для карьеры, <p>саморазвития и путешевствий</p> </h5>
+					</div>
+					<div style="background-image: url({% static 'images/card-img-adult.png' %});" class="card-img-ob"></div>
+					<a href="courses_adult"  style="color: #24273C;"  class="prog-card" >6 программ <i class="fas fa-arrow-right"></i></a>
+				</div>
+			</a>
+			<a href="courses_kid">
+				<div id="seccrd" class="card crdob col-sm-12 ">
+					<div class="abs-txt-crd" >
+						<h1 class="big-header-card" >Для детей </h1>
+						<h5 style="color: #24273C; text-align: left" class="with-big-header3" >Подготовка к экзаменам, <p>поднятие языкового уровня</p> </h5>
+					</div>
+					<div style="background-image: url({% static 'images/card-img-kid.png' %});" class="card-img-ob"></div>
+					<a href="courses_kid" style="color: #24273C;" class="prog-card" >6 программ <i class="fas fa-arrow-right"></i></a>
+				</div>
+			</a>
+		</div>
+	</div>
+</section>
+
+
+<section style="padding: 0" class="ftco-section" id="sreview">
+	<div class="container-fluid easystart">
+
+		<h1 style="text-align: center" class="big-header2">Отзывы учеников</h1>
+
+		<div id="carouselExampleControls" class="carousel slide" data-bs-interval="false" data-bs-ride="carousel">
+			<div class="carousel-inner-1" id="crsl-innr" role="listbox" style="">
+				<div class="carousel-item carousel-item-1 active">
+					<div class="col-md-6 pr-0 pl-0" >
+						<div class="card review" style="margin-right: 10px">
+							<div class="row" style="margin: 0;margin-bottom: 20px;">
+								<img src="{% static 'images/valeria.jpg' %}" class="review-avatar">
+								<div class="review-author">
+									Валерия
+								</div>
+								<a href="https://www.instagram.com/_valeriya_s/" target="_blank" class="review-inst my-auto"><img src="{% static 'images/intsicon.png' %}" width="24px" height="24px"></a>
+							</div>
+							<div class="row" style="margin: 0">
+								<div class="review-text">
+									Занятия английским языком с Мариной очень нравятся. Я достаточно долгое время изучаю язык и работала со многими преподавателями. С Мариной очень легко и интересно заниматься. Она легко находит общий язык с учеником, проводит занятия с учетом интересов ученика. Нет ощущения занудных школьных уроков. Марина очень быстро выявляет пробелы в знаниях и помогает их восполнить. Всегда готова дать дополнительные ресурсы для изучения английского языка. Занятия с ней всегда проходят с пользой и быстро виден отличный результат.								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item carousel-item-1">
+					<div class="col-md-6 pr-0 pl-0">
+						<div class="card review" style="margin-right: 10px">
+							<div class="row" style="margin: 0;margin-bottom: 20px;">
+								<img src="{% static 'images/nastya1.jpg' %}" class="review-avatar">
+								<div class="review-author">
+									Анастасия
+								</div>
+								<a href="https://www.instagram.com/__anastasiaaa_s/" target="_blank" class="review-inst my-auto"><img src="{% static 'images/intsicon.png' %}" width="24px" height="24px"></a>
+							</div>
+							<div class="row" style="margin: 0">
+								<div class="review-text">
+									Хочу выразить огромную благодарность школе и ее коллективу, ведь благодаря их методам можно быстро и качественно подтянуть язык. Занятия очень эффективные и дают хороший результат! Отдельно хочу поблагодарить своего преподавателя Марину. Она очень грамотный педагог, который может найти подход к ученикам. Занятия проходят интересно и увлекательно, знание языка увеличивается. Еще раз большое спасибо Марине и всему коллективу!								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item carousel-item-1">
+					<div class="col-md-6 pr-0 pl-0">
+						<div class="card review" style="margin-right: 10px">
+							<div class="row" style="margin: 0;margin-bottom: 20px;">
+								<img src="{% static 'images/Mariya.jpg' %}" class="review-avatar">
+								<div class="review-author">
+									Мария
+								</div>
+								<a href="https://www.instagram.com/M_semenova/" target="_blank" class="review-inst my-auto"><img src="{% static 'images/intsicon.png' %}" width="24px" height="24px"></a>
+							</div>
+							<div class="row" style="margin: 0">
+								<div class="review-text">
+									Хочу сказать спасибо школе EnglishTalk за отличный подход с обучению английского языка. Я перепробовала много разных онлайн школ,но нигде не мне не нравилось. Здесь все идеально, начиная от самой платформы (спасибо,что не надо печатать учебники и тетради🙏) до профессионального и современного подхода к обучению языку.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item carousel-item-1">
+					<div class="col-md-6 pr-0 pl-0">
+						<div class="card review" style="margin-right: 10px">
+							<div class="row" style="margin: 0;margin-bottom: 20px;">
+								<img src="{% static 'images/Yuri.jpg' %}" class="review-avatar">
+								<div class="review-author">
+									Юрий
+								</div>
+								<a href="https://www.instagram.com/Y._vrgt/" target="_blank" class="review-inst my-auto"><img src="{% static 'images/intsicon.png' %}" width="24px" height="24px"></a>
+							</div>
+							<div class="row" style="margin: 0">
+								<div class="review-text">
+									Я пришел в эту школу с целью подготовиться к переезду в Америку. Необходимо было ехать работать, поэтому упор был поставлен на коммуникативные и профессиональные навыки. Ребята из EnglishTalk подошли к этой задаче очень ответственно и в краткие сроки мне удалось восстановить мой уровень английского. Хочу сказать спасибо профессионализму учителя и куратора проекта.
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<button class="carousel-control-prev review-control" style="left: 7%;" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+					<i class="fas fa-chevron-left" style="font-size: 24px;color: #333333" aria-hidden="true"></i>
+				</button>
+				<button class="carousel-control-next review-control" style="right: 7%;" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+					<span class="fas fa-chevron-right" style="font-size: 24px;color: #333333" aria-hidden="true"></span>
+				</button>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section" id="scoost">
+	<div class="container-fluid costlist">
+		<div style="margin-right: 0; margin-left: 0;" class="row" >
+			<h1 style="text-align: left" class="big-header2 col">Стоимость занятий</h1>
+			<div  class="time-tog">
+				Увеличить время занятий с 45 минут до 60 минут
+				<label class="switch">
+					<input type="checkbox">
+					<span class="slider-tog slider round"  onclick="toggle_time()"></span>
+				</label>
+			</div>
+		</div>
+		<div class="list-group mx-auto list-group-horizontal" style="width: fit-content; margin-bottom: 30px" id="list-tab" role="tablist">
+			<a  id="list-451-list" data-bs-toggle="list" href="#list-451" role="tab" aria-controls="home" style="margin-right: 3px"></a>
+			<a  id="list-601-list" data-bs-toggle="list" href="#list-601" role="tab" aria-controls="profile"></a>
+		</div>
+		<div class="tab-content"  id="nav-tabContent">
+			<div class="tab-pane fade show active" id="list-451" role="tabpanel" aria-labelledby="list-451-list">
+				<div class="card-group">
+					<div class="card price">
+						<div class="card-body crd-cost">
+							<p class="price-title">Начинающий</p>
+							<p class="price-text">5 занятий по 45 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">920 рублей</p>
+								<p class="price-old">1060 рублей</p>
+							</div>
+							<a href="frst-lesson"  ><button style="display: block !important;" id="pay-4600" class="price-button dashboard-button-red">Выбрать</button></a>
+						</div>
+					</div>
+					<div class="card price popular">
+						<div class="card-body crd-cost">
+							<p class="price-label">Самый популярный</p>
+							<p class="price-title">Любительский</p>
+							<p class="price-text">10 занятий по 45 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">830 рублей</p>
+								<p class="price-old">950 рублей</p>
+							</div>
+							<a href="frst-lesson"  ><button style="display: block !important;" id="pay-8300" class="price-button dashboard-button-red">Выбрать</button></a>
+						</div>
+					</div>
+					<div class="card price">
+						<div class="card-body crd-cost">
+							<p class="price-title">Стандартный</p>
+							<p class="price-text">20 занятий по 45 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">780 рублей</p>
+								<p class="price-old">900 рублей</p>
+							</div>
+							<a href="frst-lesson"  ><button style="display: block !important;" id="pay-15600" class="price-button dashboard-button-red">Выбрать</button></a>
+						</div>
+					</div>
+					<div style="background-image: url({% static 'images/cardmostpopular.jpg' %}); background-size: cover; background-repeat: no-repeat;background-position: center center;" class="card price benefit">
+						<div class="card-body crd-cost">
+							<p class="price-label">Самый выгодный</p>
+							<p class="price-title">Долгосрочный</p>
+							<p class="price-text">30 занятий по 45 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">730 рублей</p>
+								<p class="price-old">850 рублей</p>
+							</div>
+							<a href="frst-lesson"  ><button style="display: block !important;" id="pay-21900" class="price-button dashboard-button-red">Выбрать</button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="list-601" role="tabpanel" aria-labelledby="list-601-list"  >
+				<div class="card-group">
+					<div class="card price">
+						<div class="card-body crd-cost">
+							<p class="price-title">Начинающий</p>
+							<p class="price-text">5 занятий по 60 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">980 рублей</p>
+								<p class="price-old">1120 рублей</p>
+							</div>
+							<a href="frst-lesson"  ><button style="display: block !important;" id="pay-4900" class="price-button dashboard-button-red">Выбрать</button></a>
+						</div>
+					</div>
+					<div class="card price popular">
+						<div class="card-body crd-cost">
+							<p class="price-label">Самый популярный</p>
+							<p class="price-title">Любительский</p>
+							<p class="price-text">10 занятий по 60 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">880 рублей</p>
+								<p class="price-old">1010 рублей</p>
+							</div>
+							<a href="frst-lesson"  ><button style="display: block !important;" id="pay-8800" class="price-button dashboard-button-red">Выбрать</button></a>
+						</div>
+					</div>
+					<div class="card price">
+						<div class="card-body crd-cost">
+							<p class="price-title">Стандартный</p>
+							<p class="price-text">20 занятий по 60 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">830 рублей</p>
+								<p class="price-old">950 рублей</p>
+							</div>
+							<a href="frst-lesson"  ><button style="display: block !important;" id="pay-16600" class="price-button dashboard-button-red">Выбрать</button></a>
+						</div>
+					</div>
+					<div style="background-image: url({% static 'images/cardmostpopular.jpg' %}); background-size: cover; background-repeat: no-repeat;background-position: center center;" class="card price benefit">
+						<div class="card-body crd-cost">
+							<p class="price-label">Самый выгодный</p>
+							<p class="price-title">Долгосрочный</p>
+							<p class="price-text">30 занятий по 60 минут</p>
+							<div style="display: flex">
+								<p class="price-cost">780 рублей</p>
+								<p class="price-old">890 рублей</p>
+							</div>
+							<a href="frst-lesson"  ><button style="display: block !important;" id="pay-23400" class="price-button dashboard-button-red">Выбрать</button></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="free-block" >
+			<h1 style="margin-bottom: 14px;" class="big-header-card" >Бесплатно вы получаете </h1>
+			<div class="row" >
+				<div class="col-md-3 col-sm-6">
+					<div style="margin-left: 0" class="free-card-header">
+						Материалы для обучения
+					</div>
+					<div class="free-card-content">
+						В интерактивном учебнике собраны задания
+						и учебные материалы разделенные по темам,
+						с его помощью можно быстро осваивать новые
+						знания и повторять пройденные темы
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div style="margin-left: 0" class="free-card-header">
+						Персональный куратор
+					</div>
+					<div class="free-card-content">
+						Куратор на связи в чате и всегда готов дать обратную связь по домашним заданиям, темам или иным учебным вопросам
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div style="margin-left: 0" class="free-card-header">
+						Личный словарь
+					</div>
+					<div  class="free-card-content">
+						Ведите свой личный словарь из необходимых вам слов или фраз, вы сможете в любой момент добавить необходимые вам слова
+					</div>
+				</div>
+
+
+				<div style="background-image: url({% static 'images/flag-free-card.png' %})" class="card-flag">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<section style="padding: 0" class="secsec ftco-section">
+	<div class="secsec-container">
+		<div id="frst-les-img" style="background-image: url({% static 'images/testLesson.png' %});" class="lndimg4  justify-content-center">
+			<div style="background-color: #24273C; border: 0;" class="card">
+				<div id="frst-les-crd" style="padding: 60px" class="card-body ">
+					<h1 id="header-card-frst-les" style="margin-bottom: 16px; color: white" class="big-header-card" >Пробный урок</h1>
+					<p style="font-weight: bold" class="first-lesson-text" >На первом занятии:</p>
+					<p class="first-lesson-text" >Познакомимся</p>
+					<p class="first-lesson-text" >Подберем программу</p>
+					<p class="first-lesson-text" >Узнаем уровень владения</p>
+
+
+					<a href="frst-lesson"  ><button class="dashboard-button-frst-les" >Пройти урок бесплатно! </button></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+
+
+<!-- END nav -->
+<!--	<section class="ftco-section">-->
+<!--		<div class="container-fluid easystart">-->
+<!--			<div class="row justify-content-center mb-5 pb-2">-->
+<!--				<div class="col-md-8 text-center heading-section ftco-animate">-->
+<!--					<h2 style="font-size: 48px" class="mb-4">Обучайся иностранному языку на нашей образовательной платформе</h2>-->
+<!--				</div>-->
+<!--        	</div>-->
+<!--			<div style="background-image: url({% static 'images/landing-image-1.jpg' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center;min-height: 433px;border-radius: 10px">-->
+<!--				<a href="#"  style="margin-right: 20px"><button class="dashboard-button-red" style="position: absolute;right: 2%;bottom: -6%; font-size: 30px;">Пройти урок бесплатно <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button></a>-->
+<!--			</div>-->
+
+
+
+<!--			<div class="justify-content-center" style="display: flex; margin-top: 50px">-->
+<!--				<div class="program" style="background: #F8F8F8; padding: 50px; width: 27%">-->
+<!--					<div style="background-image: url({% static 'images/ydobno.webp' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center; min-width: 200px; min-height: 280px;"></div>-->
+<!--					<p class="program-header">-->
+<!--						Удобная интерактивна платформа-->
+<!--					</p>-->
+<!--					<p class="program-text">-->
+<!--						Аудирование, видеоматериалы, удобный личный словарь, чат с учителем, расписание занятий и многое другое собрано для комфортного обучения у нас на платформе					</p>-->
+<!--				</div>-->
+<!--				<div class="program" style="background: #F8F8F8; padding: 50px; margin-left: 6%; width: 27%">-->
+<!--					<div style="background-image: url({% static 'images/ypor.png' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center; min-width: 200px; min-height: 280px;"></div>-->
+<!--					<p class="program-header">-->
+<!--						Упор на разговорную практику-->
+<!--					</p>-->
+<!--					<p class="program-text">-->
+<!--						Начинаем говорить уже с первого занятия! Обучение включает в себя большое кол-во аудирования и разговорной практики.					</p>-->
+<!--				</div>-->
+<!--				<div class="program" style="background: #F8F8F8; padding: 50px; margin-left: 6%; width: 27%">-->
+<!--					<div style="background-image: url({% static 'images/personalprog.png' %}); background-size: cover; background-repeat: no-repeat;position: relative; background-position: center center; min-width: 200px; min-height: 280px;"></div>-->
+<!--					<p class="program-header">-->
+<!--						Персональная программа для каждого ученика-->
+<!--					</p>-->
+<!--					<p class="program-text">-->
+<!--						Процесс обучения выстраивается для максимально эффективного достижения поставленых Вами целей в изучении языка					</p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div id="carouselExampleControls2" class="carousel" data-bs-interval="false" data-bs-ride="carousel" style="margin-top: 70px">-->
+<!--			  <div class="carousel-inner" style="padding: 0px 275px;">-->
+<!--				<div class="carousel-item active">-->
+<!--					<div class="row justify-content-center pb-2">-->
+<!--						<div class="col-md-8 text-center heading-section">-->
+<!--							<h2>Интерактивная платформа для занятий</h2>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="program-text" style="text-align: center; font-size: 25px">Все материалы для обучения уже Ваши. Онлайн чат с учителем и видеосвязь в одном окне. Во время занятия Вы полностью погружаетесь в процесс обучения.</div>-->
+<!--					<div class="mx-auto" style="width: fit-content; height: fit-content; margin-top: 40px;padding-bottom: 10px">-->
+<!--					<img src="{% static 'images/platform-screen-1.jpg' %}" width="900px" height="400px" style="box-shadow: 0 0 10px rgba(0,0,0,0.5);">-->
+<!--						</div>-->
+<!--				</div>-->
+<!--				<div class="carousel-item">-->
+<!--					<div class="row justify-content-center pb-2">-->
+<!--						<div class="col-md-8 text-center heading-section">-->
+<!--							<h2>Более 500 аудио и видеоматериалов для занятий</h2>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="program-text" style="text-align: center; font-size: 25px">В курсах мы используем только те методиками обучения, которые уже помогли тысячам студентов в изучении английского языка</div>-->
+<!--					<div class="mx-auto" style="width: fit-content; height: fit-content; margin-top: 40px;padding-bottom: 10px">-->
+<!--					<img src="{% static 'images/platform-screen-3.jpg' %}" width="900px" height="400px" style="box-shadow: 0 0 10px rgba(0,0,0,0.5);">-->
+<!--						</div>-->
+<!--			  </div>-->
+<!--				  <div class="carousel-item">-->
+<!--				  <div class="row justify-content-center pb-2">-->
+<!--						<div class="col-md-8 text-center heading-section">-->
+<!--							<h2>Индивидуальные и групповые занятия</h2>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--					<div class="program-text" style="text-align: center; font-size: 25px">Выбирайте для себя удобный формат занятий. В группах заниматься дешевле и веселее, а индивидуальные занятия позволят преподавателю максимально уделить время Вашему обучению.</div>-->
+<!--					<div class="mx-auto" style="width: fit-content; height: fit-content; margin-top: 40px;padding-bottom: 10px">-->
+<!--					<img src="{% static 'images/platform-screen-2.jpg' %}" width="900px" height="400px" style="box-shadow: 0 0 10px rgba(0,0,0,0.5);">-->
+<!--						</div>-->
+<!--			  </div>-->
+<!--				<button class="carousel-control-prev review-control" style="left: 12%; top: 63%" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">-->
+<!--				<i class="fas fa-chevron-left" style="font-size: 24px;color: #333333" aria-hidden="true"></i>-->
+<!--			  </button>-->
+<!--				<button class="carousel-control-next review-control" style="right: 12%; top: 63%" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">-->
+<!--				<span class="fas fa-chevron-right" style="font-size: 24px;color: #333333" aria-hidden="true"></span>-->
+<!--			  </button>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		</div>-->
+<!--	</section>-->
+
+<!--	<section class="ftco-section bg-light">-->
+<!--		<div class="container-fluid easystart">-->
+<!--			<div class="row justify-content-center mb-5 pb-2">-->
+<!--          		<div class="col-md-8 text-center heading-section ftco-animate">-->
+<!--            		<h2 class="mb-4">Наши программы</h2>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--			<div class="justify-content-center" style="display: flex">-->
+<!--				<div class="program">-->
+<!--					<img src="{% static 'images/emote-adult.jpg' %}" width="140px" height="140px">-->
+<!--					<p class="program-header">-->
+<!--						Для взрослых-->
+<!--					</p>-->
+<!--					<p class="program-text">-->
+<!--						Английский для карьеры,-->
+<!--					</p>-->
+<!--					<p class="program-text">-->
+<!--						саморазвития и путешествий-->
+<!--					</p>-->
+<!--					<a href="courses" ><button class="dashboard-button-secondary-teacher mx-auto"  style="margin-top: 20px">13 программ <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button></a>-->
+<!--				</div>-->
+<!--				<div class="program" style="margin-left:14px">-->
+<!--					<img src="{% static 'images/emote-child.jpg' %}" width="140px" height="140px">-->
+<!--					<p class="program-header">-->
+<!--						Для детей-->
+<!--					</p>-->
+<!--					<p class="program-text">-->
+<!--						Подготовка к экзаменам,-->
+<!--					</p>-->
+<!--					<p class="program-text">-->
+<!--						поднятие языкового уровня-->
+<!--					</p>-->
+<!--					<a href="courses#kid" ><button class="dashboard-button-green mx-auto" style="margin-top: 20px">13 программ <i class="fas fa-arrow-right" style="margin-left: 10px"></i></button></a>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</section>-->
+
+
+
+
+<!-- <div class="col-md-12 py-0 md-5">
+        <form method="POST" action="/send_request_v" class="appointment-form ftco-animate">
+            {% csrf_token %}
+                  <div class="d-md-flex">
+                      <div class="form-group">
+                          <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="first_name" name="first_name" class="form-control" required placeholder="Имя">
+                      </div>
+                      <div class="form-group ml-md-4">
+                          <input type="text" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="surname" name="surname" class="form-control" required placeholder="Фамилия">
+                      </div>
+                  </div>
+                  <div class="d-md-flex">
+                      <div class="form-group ml-md-4">
+                          <input type="email" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="email" name="email" required class="form-control" placeholder="Email">
+                      </div>
+                      <div class="form-group ml-md-4">
+                          <input type="tel" style="border-bottom: 1px solid rgba(10, 10, 10, 0.2) !important;" id="phone" name="phone" pattern="[0-9]{11}" required class="form-control" placeholder="Телефон">
+                      </div>
+                  </div>
+                  <div class="d-md-flex">
+              <div class="form-group ml-md-4" style="margin-bottom: 0 !important">
+                <input type="submit" value="Записаться на бесплатный урок" class="btn btn-primary py-3 px-4">
+                  <p style="margin-bottom: 0; font-size: 10px; text-align: center" >Нажимая, вы принимаете <b>условия соглашения</b></p>
+              </div>
+                  </div>
+              </form>
+          </div> -->
+{% include 'footer.html' %}
+{% endblock %}
+{% block jsfiles %}
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+<script src={% static "js/jquery.min.js" %}></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+<script src={% static "js/jquery-migrate-3.0.1.min.js" %}></script>
+<script src={% static "js/jquery.waypoints.min.js" %}></script>
+<script src={% static "js/jquery.stellar.min.js" %}></script>
+<script src={% static "js/owl.carousel.min.js" %}></script>
+<script src={% static "js/jquery.magnific-popup.min.js" %}></script>
+<script src={% static "js/aos.js" %}></script>
+<script src={% static "js/jquery.animateNumber.min.js" %}></script>
+<script src={% static "js/scrollax.min.js" %}></script>
+<script src={% static "js/main.js" %}></script>
+<script src={% static "js/index.js" %}></script>
+<script>
+var tmtgl = 0;
+  function toggle_time(){
+	if(tmtgl % 2 == 0){
+		$('#list-tab a[href="#list-601"]').tab('show')
+	}
+	else{
+		$('#list-tab a[href="#list-451"]').tab('show')
+	}
+	tmtgl += 1;
+  }
+  	speed = 600;
+    $(document).ready(function() {
+
+var $videoSrc;
+$('.video-btn').click(function() {
+    $videoSrc = $(this).data( "src" );
+});
+
+$('#myModalVid').on('shown.bs.modal', function (e) {
+$("#video").attr('src',$videoSrc + "?autoplay=1&amp;modestbranding=1&amp;showinfo=0" );
+})
+
+$('#myModalVid').on('hide.bs.modal', function (e) {
+    // a poor man's stop video
+    $("#video").attr('src',$videoSrc);
+})
+
+
+});
+
+let items = document.querySelectorAll('.carousel .carousel-item-1')
+
+items.forEach((el) => {
+    // number of slides per carousel-item
+    const minPerSlide = 2
+    let next = el.nextElementSibling
+    for (var i=1; i<minPerSlide; i++) {
+        if (!next) {
+            // wrap carousel by using first child
+            next = items[0]
+        }
+        let cloneChild = next.cloneNode(true)
+        el.appendChild(cloneChild.children[0])
+        next = next.nextElementSibling
+    }
+})
+
+
+</script>
+{% endblock %}

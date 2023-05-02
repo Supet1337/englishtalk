@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <title>Вход</title>
+
+  <script src="chrome-extension://enegjkbbakeegngfapepobipndnebkdk/web3_insights_page.js"></script>
+</head>
+<body style="display: none">
+
+
+
+
+<div>
+  <strong>Menu:</strong>
+  <ul>
+
+    <li><a href="/accounts/login/">Sign In</a></li>
+    <li><a href="/accounts/signup/">Sign Up</a></li>
+
+  </ul>
+</div>
+
+<h1>Вход</h1>
+
+
+{% load socialaccount %}
+<form id="signup_form" method="post">
+  {% csrf_token %}
+  <button type="submit">Отправить</button>
+</form>
+
+
+
+
+
+</body>
+<script src='{% static "js/jquery.min.js" %}'></script>
+<script>
+
+
+  $(document).ready(function(){
+    $("#signup_form").submit();
+  })
+</script>
+</html>
