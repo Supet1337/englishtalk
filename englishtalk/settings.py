@@ -75,8 +75,8 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 
-VK_APP_ID = '7895116'
-VK_API_SECRET = '3c2syTOuNu03KPMa6HHe'
+VK_APP_ID = ''
+VK_API_SECRET = ''
 
 SITE_ID = 2
 
@@ -238,12 +238,12 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-AWS_ACCESS_KEY_ID = "SCW2K49F6ZF9M296YGH2"
-AWS_SECRET_ACCESS_KEY = "4fd5fb51-ff07-414f-8005-4b707680ce95"
+AWS_ACCESS_KEY_ID = ""
+AWS_SECRET_ACCESS_KEY = ""
 AWS_STORAGE_BUCKET_NAME = "englishtalk-static"
 AWS_DEFAULT_ACL = 'public-read'
-AWS_S3_REGION_NAME = "nl-ams"
-AWS_S3_ENDPOINT_URL = "https://s3.nl-ams.scw.cloud"
+AWS_S3_REGION_NAME = ""
+AWS_S3_ENDPOINT_URL = ""
 
 if not DEBUG:
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
@@ -257,9 +257,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
 ACCOUNT_EMAIL_VERIFICATION = "none"
-EMAIL_HOST_USER = 'noreply.englishtalk@gmail.com'
-EMAIL_HOST_PASSWORD = 'zojdrhyddxdtbeag'
-DEFAULT_FROM_EMAIL = 'noreply.englishtalk@gmail.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+DEFAULT_FROM_EMAIL = ''
 EMAIL_USE_SSL = True
 
 if not DEBUG:
